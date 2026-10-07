@@ -1,0 +1,10 @@
+{
+  "name": "k-ux-ai",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "description": "Kernel-neutral UI medium with observable state and human-action return",
+  "exports": "./src/medium.js",
+  "scripts": { "test": "node --test tests/medium.test.js" },
+  "engines": { "node": ">=20" }
+}

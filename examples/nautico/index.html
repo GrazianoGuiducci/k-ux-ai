@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>K-UX-AI · Nautico, primo campo</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="masthead"><a href="../../README.md" class="wordmark">K-UX-AI <span>MEDIUM / 01</span></a><span class="eyebrow">NAUTICO · CASO ILLUSTRATIVO</span></header>
+  <main>
+    <section class="introduction"><p class="eyebrow">UNA DOMANDA, UN CAMPO CHE CAMBIA</p><h1>Dal gesto<br>al progetto.</h1><p class="intro-text">Un accesso a poppa più agevole. Segui la domanda nel suo ciclo, entra nel dettaglio e porta una scelta nel lavoro.</p></section>
+    <section class="workspace" aria-label="Campo del caso Nautico">
+      <div class="scene">
+        <div class="scene-top"><span class="eyebrow" id="view-label">VISTA D'INSIEME</span><span class="scene-index">01 / POPPA</span></div>
+        <div class="vessel" id="vessel">
+          <svg viewBox="0 0 760 380" role="img" aria-labelledby="vessel-title vessel-desc">
+            <title id="vessel-title">Yacht schematico, zona di accesso a poppa</title><desc id="vessel-desc">Una sagoma originale mostra l'oggetto del caso. La poppa è evidenziata; il suo dettaglio è raggiungibile con il pulsante sottostante.</desc>
+            <defs><linearGradient id="deck" x1="0" x2="1"><stop stop-color="#d6d8cb"/><stop offset="1" stop-color="#f1f0e3"/></linearGradient></defs>
+            <g class="water-lines" fill="none" stroke="#537e85" opacity=".23"><ellipse cx="375" cy="190" rx="320" ry="127"/><ellipse cx="375" cy="190" rx="292" ry="104"/><ellipse cx="375" cy="190" rx="264" ry="81"/></g>
+            <g class="hull-group"><path d="M145 145 Q265 99 484 123 Q573 143 638 190 Q573 237 484 257 Q265 281 145 235Z" fill="url(#deck)"/><path d="M147 162 Q280 130 484 145 L562 190 484 235 Q280 250 147 218Z" fill="#a6b6ac"/><path d="M267 151 L455 158 490 190 455 222 267 229Z" fill="#31545c"/><path d="M292 167 L440 171 461 190 440 209 292 213Z" fill="#789b9d"/><path d="M176 158 L246 147 246 233 176 222Z" fill="#e2e6d7"/><path d="M145 145 L145 235" stroke="#f0a16c" stroke-width="5"/><path d="M128 157 L145 153 145 227 128 223Z" fill="#edb180"/><g id="stern-highlight"><circle cx="148" cy="190" r="37" fill="none" stroke="#efb482" stroke-width="1.5"/><circle cx="148" cy="190" r="7" fill="#f1bb8b"/></g></g>
+            <path d="M149 236 L149 301 244 301" fill="none" stroke="#94b3b4"/><text x="252" y="306" fill="#bfd1d0" font-size="13" font-family="sans-serif" letter-spacing="2">ACCESSO A POPPA</text>
+          </svg>
+        </div>
+        <div class="scene-bottom"><p>La stessa domanda<br><strong id="scene-state">attraversa il ciclo.</strong></p><button id="toggle-view" class="primary">Esplora la poppa <span aria-hidden="true">↗</span></button></div>
+      </div>
+      <aside class="case-panel" aria-label="Domanda e possibilità">
+        <p class="eyebrow">FOCUS PRESENTE</p><h2 id="question"></h2><p id="intent" class="muted"></p>
+        <div id="overview-panel"><p class="section-label">LE RELAZIONI DEL CASO</p><div id="phases"></div></div>
+        <div id="detail-panel" hidden><p class="section-label">DUE POSSIBILITÀ DA ESPLORARE</p><div id="options"></div><p class="small muted">La scelta orienta l'esplorazione della proposta.</p></div>
+        <div class="change" aria-live="polite" aria-atomic="true"><span class="change-dot"></span><p id="last-change"></p></div>
+      </aside>
+    </section>
+    <section class="experiment"><div><p class="eyebrow">FAI CAMBIARE IL CAMPO</p><h3>Un evento, la stessa domanda.</h3><p class="muted">Simula una verifica sulla proposta B e osserva che cosa resta presente.</p></div><button id="simulate" class="secondary">Ricevi verifica di fornitura <span aria-hidden="true">↓</span></button></section>
+    <details class="observer"><summary>Osservatorio di sviluppo <span id="record-count">0 passaggi</span></summary><p class="muted small">Stato esposto e gesti ricevuti, nell'ordine locale del medium. Questo conteggio non misura la latenza.</p><pre id="trace">In attesa di un evento o di un gesto.</pre></details>
+  </main>
+  <footer><span>STATO → PERCEZIONE → INTERVENTO → CONSEGUENZA</span><span>0.1.0-alpha.1 · dati sintetici</span></footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
