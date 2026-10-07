@@ -6,8 +6,14 @@ K-UX-AI è un prodotto pubblico componibile: collega stato, accadimento, focus,
 espressione percettiva e azione della persona. Ogni kernel conserva il proprio
 oggetto e forma la UI pertinente al suo progetto, prodotto o servizio.
 
+La competenza che sa costruire il codice viene sviluppata nella sorgente
+interna del produttore. Questo repository contiene il prodotto pubblico:
+riceve gli aggiornamenti selezionati di competenza, logiche e funzioni,
+con quanto serve al kernel utilizzatore per operare nel proprio ambiente.
+
 La prima versione offre un medium JavaScript, un contratto di integrazione e
-un esempio interattivo originale per Kernel Nautico. Una richiesta di accesso
+un esempio interattivo originale per Kernel Nautico. È un prototipo iniziale;
+la competenza generale di costruzione è ancora in formazione. Una richiesta di accesso
 a poppa più agevole attraversa progetto, costruzione e uso. La persona può
 entrare nel dettaglio, scegliere una proposta e ritornare all'insieme con la
 stessa domanda e lo stato aggiornato.

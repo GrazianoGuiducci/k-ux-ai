@@ -9,11 +9,12 @@ Keep receiving-kernel data, company records, credentials and operator-specific
 working context in the receiving environment. Product examples use synthetic
 data and retain their illustrative identity.
 
-Evolve the medium from the actual relation among kernel state, focus,
-perception, human intervention and consequence. A domain example does not
-determine every future renderer. Keep product code and interface contracts
-coherent when a behavior changes; update the current state and version when
-their meaning changes.
+The construction competence is developed and evolved in the producer's private
+source. This repository receives selected assembled updates of the public
+kernel/product. Preserve the relation among kernel state, focus, perception,
+human intervention and consequence in those updates. A domain example does
+not determine every future renderer. Keep the delivered methods, code and
+contracts coherent when a selected product update changes their meaning.
 
 Preserve concurrent work. A source change is distinct from publishing a
 package, deploying a site or connecting a real receiving kernel.

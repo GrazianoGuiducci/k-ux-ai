@@ -4,10 +4,12 @@ The public repository contains original product code, neutral operating logic,
 interface documentation and synthetic examples. A receiving kernel uses
 those functions with the state it chooses to expose.
 
-The producer's working design methods and private project context are separate
-sources. They can improve the product through a selected neutral function or
-method refinement; the product is assembled through its own source history.
-It does not require access to the producer's repositories or local environment.
+The producer develops and evolves the construction competence in its private
+source. This repository is the assembled public kernel/product and receives
+selected updates of the competence, neutral methods and functions. Research
+inputs, internal iterations and the producer's private project context retain
+their own source. The public product carries what the receiver needs without
+requiring access to the producer's repositories or local environment.
 
 Keep company data, credentials, internal working traces and configuration with
 the receiving owner. Select the useful exposed state before passing it to the

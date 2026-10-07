@@ -19,9 +19,12 @@ bind this interface through their own transport; none is silently configured
 by this repository. Spatial/3D, sound, haptic, olfactory and other renderers
 remain open product directions according to the receiving environment.
 
-Continue from the Nautico exercise and the construction knowledge acquired
-through actual use and research. Keep general functions separate from domain
-data and domain renderers; retain useful relations as the product evolves.
+The operator's current direction forms the code-writing competence in the
+producer's private development source. This public kernel/product receives
+selected updates of that competence, neutral logic and usable functions.
+The existing prototype remains an attributed initial construction; its
+exercise does not define the competence's method or establish the visual and
+interaction quality sought for the continuing product.
 
 This source publication is distinct from an npm release, a deployed website
 and a live Nautico integration.
