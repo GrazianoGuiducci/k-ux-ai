@@ -1,0 +1,30 @@
+{
+  "formed": "2026-10-08",
+  "component": "KUX Window Surface + ChatForm v0.1",
+  "claim": "Local synthetic interaction proof; no live AI or Nautico domain integration",
+  "checks": {
+    "main": {
+      "passed": 23,
+      "total": 23
+    },
+    "additional": {
+      "passed": 14,
+      "total": 14
+    }
+  },
+  "observed_page_errors": [],
+  "independence": "Same component, browser, data and related test flows: not independent validations",
+  "host": "Chromium in Playwright with set_content of concatenated ES module sources to avoid blocked file:// and localhost navigation",
+  "fixes": [
+    "Storage denied in sandbox must not prevent rendering",
+    "Responsive must observe layout width (offsetWidth), not transformed visual bounds during avatar motion",
+    "Floating drag must keep resize handle inside viewport",
+    "Mobile full mode must not overwrite persistent free layout"
+  ],
+  "limits": [
+    "Actual ES module HTTP serving/build not exercised in this sandbox browser",
+    "No integration with THIA/DOMUS backend",
+    "No actual Kernel Nautico events or user acceptance test",
+    "No commercial licensing grant inferred from source catalog"
+  ]
+}
