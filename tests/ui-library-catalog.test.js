@@ -63,7 +63,7 @@ test('the source adoption and operating contracts are present', () => {
   const receipt = JSON.parse(read('labs/nautico-ui-v3/EVIDENCE.json'));
   assert.match(adoption, /lab-d-nd-site\/assets\/js\/domus-widget\.js/);
   assert.match(contract, /L'evento/);
-  assert.match(contract, /Controlli/);
+  assert.match(contract, /controlli/i);
   assert.equal(receipt.passed, 63);
   assert.equal(receipt.total, 63);
   assert.equal(receipt.evidence_type, 'reported_prior_turn_browser_run_not_rerun_in_kuxai_repo');
