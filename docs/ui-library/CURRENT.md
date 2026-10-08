@@ -1,4 +1,4 @@
-# CURRENT — K-UX-AI UI source cabinet and Nautico v3 laboratory
+# CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
 **8 October 2026 · private branch candidate · public product version remains `0.1.0-alpha.1`**
 
@@ -10,16 +10,27 @@ semantic_owner: Meta_Skill / ux-ai-kernel-design
 design_owner: D-ND Design Kernel / Agentic UX Seed
 first_domain: Kernel Nautico
 receiving_site: MAIOS (separately owned, not modified)
-status: CANDIDATE_SOURCE_CABINET + TWO_STANDALONE_LABS
+status: CANDIDATE_SOURCE_CABINET + REUSABLE_CHATFORM + INTEGRATED_GRIGLIA_V4_SYNTHETIC
 effect: no release, merge, installation or public site update
 ```
+
+## Selected current movement — Griglia del fare v4
+
+[Griglia v4 con Window Surface/ChatForm realmente riutilizzati](../../labs/nautico-ui-v4/01-griglia-chat-window-surface.html) è il primo esercizio integrato nello **stesso browser**: le altre card Nautico rimangono quelle del laboratorio v3, mentre l'assistente usa una sola istanza dei componenti pubblici di K-UX-AI. La [ricevuta](../../labs/nautico-ui-v4/EVIDENCE.json) distingue 28/28 controlli base, 28/28 integrativi e 23/23 + 14/14 sul componente riutilizzabile, tutte suite **correlate**.
+
+Tre differenze hanno già modificato l'implementazione:
+- il primo click sull'avatar del workspace deve attraversare la politica host di docking per liberare il canvas, non aprire arbitrariamente in sovrapposizione;
+- quando un cambio di forma nasconde il pulsante attivo (full/dock), il **focus deve passare a un comando visibile**; altrimenti anche Escape può perdere efficacia;
+- un evento simulato ma ancora aperto deve poter tornare come avviso attribuito all'avatar chiuso dopo il rientro nella Home, senza doppie notifiche.
+
+**Confine:** nessuna chat AI effettivamente collegata, nessuna integrazione con lo stato live Nautico, nessun Site MAIOS, nessuna approvazione aziendale o distribuzione. L'HTML v4 è un probe sinteticamente integrato, non il prodotto pubblicato. La v3 resta conservata e il codice di base `src/medium.js` non è cambiato.
 
 ## Begin here
 
 1. Read the [K-UX-AI Kernel](../../KERNEL.md) and the published [medium contract](../../docs/interface.md).
 2. Read [the module catalog](../../ui-library/catalog.v0.1.json): **20 exact source references across five owners, nine behavior families**.
 3. Read [the complete surface composition contract](OPERATING_CONTRACT.md), then the [source-by-source adoption map](SOURCE_ADOPTION_20261008.md).
-4. Open [Griglia del fare v3](../../labs/nautico-ui-v3/01-griglia-del-fare.html) and [Campo a quattro fonti v3](../../labs/nautico-ui-v3/02-campo-quattro-fonti.html) as standalone **synthetic probes**. Read their [receipt](../../labs/nautico-ui-v3/EVIDENCE.json) before making claims about what is tested.
+4. Apri prima [Griglia v4](../../labs/nautico-ui-v4/01-griglia-chat-window-surface.html) e la sua [ricevuta](../../labs/nautico-ui-v4/EVIDENCE.json). Per genealogia, conserva poi [Griglia del fare v3](../../labs/nautico-ui-v3/01-griglia-del-fare.html) and [Campo a quattro fonti v3](../../labs/nautico-ui-v3/02-campo-quattro-fonti.html) as standalone **synthetic probes**. Read their [receipt](../../labs/nautico-ui-v3/EVIDENCE.json) before making claims about what is tested.
 5. Only when a real Nautico/coder integration is selected, resolve the **current** owner-native state and source SHA again. These commits are readback coordinates, not permanent freshness claims.
 
 ## First native K-UX-AI Chat/Form module — 8 October 2026
