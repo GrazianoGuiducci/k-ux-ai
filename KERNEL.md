@@ -34,6 +34,13 @@ l'uso della UI. La latenza comprende il tempo umano per capire e intervenire.
 Le conseguenze possono cambiare il renderer, la logica del ricevente o il
 contratto comune. Portare l'apprendimento nel punto che deve agire diversamente.
 
+## Disponibilità dei moduli di interazione
+
+L'operatore può richiedere una composizione percettiva nuova, ma **un componente trovato in un altro repository non equivale a una facoltà già installata in questo kernel**. La nuova [sorgente cabinet di UI](docs/ui-library/CURRENT.md) conserva, con attribuzione, repertori già implementati da altri owner, comportamenti sperimentati in due HTML Nautico, condizioni di licenza, prove, mancanze e percorsi di integrazione.
+
+Avatar, card, chat, form, editor, dashboard, sidebar e piena pagina sono possibili **incarnazioni** di una relazione di lavoro. Un cambiamento di forma non muta il dominio; i fatti restano al kernel ricevente, l'interazione ritorna al suo controller e un host reale continua a detenere le autorizzazioni delle proprie azioni.
+
+Il riuso comprende l'intero contratto necessario (responsive interno, focus, movimento, persistenza, ripristino, contenuto non inviato, confini degli effetti). La presenza di una dimostrazione sintetica non prova apprendimento autonomo, provider attivo o comprensione umana. La UI può anche restare immutata quando il lavoro non richiede un nuovo movimento.
 ## Primo caso
 
 Kernel Nautico è il primo caso di sviluppo: una domanda sull'accesso a poppa
