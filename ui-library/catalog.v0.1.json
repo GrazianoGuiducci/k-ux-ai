@@ -221,7 +221,7 @@
         "focus preservation",
         "no fake AI calls"
       ],
-      "integration": "host_adapter_required"
+      "integration": "native_candidate_bounded_browser_exercise"
     },
     {
       "id": "window-morphology",
@@ -239,7 +239,7 @@
         "responsive inside the component",
         "local preference namespaces"
       ],
-      "integration": "candidate_lab_exercised"
+      "integration": "native_candidate_bounded_browser_exercise"
     },
     {
       "id": "chat-form",
@@ -258,7 +258,7 @@
         "submit authority belongs to host",
         "receipt/status, files and reset confirmation"
       ],
-      "integration": "partial_lab_probe_only"
+      "integration": "native_candidate_bounded_browser_exercise"
     },
     {
       "id": "workspace",
@@ -390,6 +390,74 @@
     "multiwindow concurrent domain editing",
     "real agent notification",
     "site deploy",
-    "commercial reuse license granted"
-  ]
+    "commercial reuse license granted",
+    "full THIA/DOMUS code port",
+    "runtime API/provider integration in Nautico",
+    "all original chat/form features completed",
+    "two simultaneously writable domain views"
+  ],
+  "last_formed": "2026-10-08",
+  "candidate_native_modules": [
+    {
+      "id": "window-surface",
+      "source": "src/ui/window-surface.js",
+      "styles": "src/ui/window-surface.css",
+      "export": "createWindowSurface",
+      "status": "IMPLEMENTED_PRIVATE_CANDIDATE",
+      "features": [
+        "avatar",
+        "source-keyed cue",
+        "directional window motion",
+        "drag",
+        "resize",
+        "keyboard resize",
+        "dock left/right",
+        "full page",
+        "minimize/restore",
+        "reduced motion",
+        "optional local geometry persistence",
+        "viewport-bound placement"
+      ],
+      "owner": "K-UX-AI"
+    },
+    {
+      "id": "chat-form-module",
+      "source": "src/ui/chat-form-module.js",
+      "styles": "src/ui/chat-form-module.css",
+      "export": "createChatFormModule",
+      "status": "IMPLEMENTED_PRIVATE_CANDIDATE",
+      "features": [
+        "chat and contribution module",
+        "host onAsk/onSubmit callbacks",
+        "no built-in backend",
+        "frame-relative compact tabs",
+        "persistent DOM drafts during transforms",
+        "splitter with keyboard interaction",
+        "opt-in draft storage",
+        "source-event-aligned request boundary"
+      ],
+      "owner": "K-UX-AI"
+    },
+    {
+      "id": "nautico-local-example",
+      "source": "examples/window-surface/index.html",
+      "script": "examples/window-surface/main.js",
+      "status": "SYNTHETIC_EXERCISE",
+      "features": [
+        "real createMedium integration",
+        "local source event ids",
+        "operator form dispatch",
+        "host layout adaptation"
+      ],
+      "owner": "K-UX-AI experimental receiver"
+    }
+  ],
+  "candidate_behavior_receipt": {
+    "source": "examples/window-surface/evidence.json",
+    "checks": {
+      "primary": "23/23",
+      "additional": "14/14"
+    },
+    "claim_boundary": "Browser tests of one local synthetic example, not independent product validation or live Nautico AI integration"
+  }
 }
