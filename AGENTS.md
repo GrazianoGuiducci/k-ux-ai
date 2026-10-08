@@ -16,5 +16,8 @@ human intervention and consequence in those updates. A domain example does
 not determine every future renderer. Keep the delivered methods, code and
 contracts coherent when a selected product update changes their meaning.
 
+When an operator asks for the current K-UX-AI UI module repertoire, start at [`docs/ui-library/CURRENT.md`](docs/ui-library/CURRENT.md), then [`ui-library/catalog.v0.1.json`](ui-library/catalog.v0.1.json) and [`docs/ui-library/OPERATING_CONTRACT.md`](docs/ui-library/OPERATING_CONTRACT.md). The two v3 HTML pages are local synthetic probes, not the final Nautico Site. Preserve source-pinned ownership and consult upstream behavior/parity contracts before adopting a component; never copy an endpoint, credential, administrative function, private data or licensing assumption.
+
+Run `npm test` for the original medium and `npm run test:ui-library` for candidate catalog integrity when working from a Node checkout. Actual browser/render tests and host integration remain separate receipts. Only commit a public release, merge or deployment after explicit selection.
 Preserve concurrent work. A source change is distinct from publishing a
 package, deploying a site or connecting a real receiving kernel.
