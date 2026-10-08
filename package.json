@@ -5,6 +5,11 @@
   "type": "module",
   "description": "Kernel-neutral UI medium with observable state and human-action return",
   "exports": "./src/medium.js",
-  "scripts": { "test": "node --test tests/medium.test.js" },
-  "engines": { "node": ">=20" }
+  "scripts": {
+    "test": "node --test tests/medium.test.js",
+    "test:ui-library": "node --test tests/ui-library-catalog.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }
