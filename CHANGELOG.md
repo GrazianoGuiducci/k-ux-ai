@@ -12,6 +12,10 @@
 - Preserve geometry, drafts, focus and source-event identity across avatar/floating/dock/full-page transitions.
 - Make window-responsive decisions from layout width rather than CSS-transformed visual bounds; tolerate denied storage and keep the resize handle within viewport.
 - Retain public `0.1.0-alpha.1` and unmodified `src/medium.js`; no release, merge or Site deployment.
+- Integrate the reusable Window Surface and Chat/Form into the existing synthetic Nautico Griglia v4 (one shared assistant, no duplicate chat card); preserve the two earlier v3 probes.
+- Exercise docked canvas reflow, full-page/return, mobile Chat/Form, source-attributed event cue and local contribution path.
+- Fix shared focus transfer when a placement change hides the invoking control; keep Escape and keyboard recovery working.
+- Record 93 correlated local checks across module and v4 labs, with honest provider/domain-effect boundaries.
 
 ## 0.1.0-alpha.1 — 2026-10-07
 
