@@ -1,0 +1,58 @@
+{
+  "schema": "kuxai.local-lab-v3.evidence.v1",
+  "received_from": "2026-10-08 prior laboratory artifacts",
+  "run_date": "2026-10-08",
+  "environment": "Chromium desktop/mobile Playwright",
+  "scope": "Four related suites against the same standalone synthetic HTML laboratory; not independent validation",
+  "suites": [
+    {
+      "suite": "test_v3.py",
+      "passed": 20,
+      "total": 20,
+      "exit": 0
+    },
+    {
+      "suite": "test_geometry_v3_reg.py",
+      "passed": 10,
+      "total": 10,
+      "exit": 0
+    },
+    {
+      "suite": "test_logic_v3.py",
+      "passed": 16,
+      "total": 16,
+      "exit": 0
+    },
+    {
+      "suite": "test_deep_v3_reg.py",
+      "passed": 17,
+      "total": 17,
+      "exit": 0
+    }
+  ],
+  "passed": 63,
+  "total": 63,
+  "page_errors": 0,
+  "evidence_type": "reported_prior_turn_browser_run_not_rerun_in_kuxai_repo",
+  "technical_evidence": [
+    "avatar/card/floating/fullpage local transitions",
+    "mobile Chat/Form tab behavior",
+    "local drafts retained",
+    "menu and canvas geometry",
+    "focus and return boundaries in simulated flows"
+  ],
+  "limitations": [
+    "no real AI",
+    "no authentic Nautico store inside HTML",
+    "no live Lab DOMUS code imported",
+    "no live host integrations",
+    "no production authorization",
+    "no independent human comprehension study",
+    "source UTF-8 reread during GitHub preservation may normalize line endings"
+  ],
+  "origin_paths": [
+    "/mnt/data/uxai_lab/evidence_v3.json",
+    "/mnt/data/uxai_lab/README_v3.md"
+  ],
+  "effect_boundary": "documentation and independent HTML examples only"
+}
