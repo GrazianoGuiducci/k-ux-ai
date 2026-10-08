@@ -1,0 +1,395 @@
+{
+  "schema": "kux-ai.ui-library.source-catalog.v0.1",
+  "formed": "2026-10-08",
+  "owner": "GrazianoGuiducci/k-ux-ai",
+  "state": "CANDIDATE_SOURCE_CABINET_NOT_INSTALLED",
+  "primary_receiver": "Kernel Nautico demo; MAIOS Site host integration unselected",
+  "invariant": "Domain kernel owns source/state/authority; K-UX-AI owns receiving/perceptual composition; host owns available means and effects",
+  "repositories": [
+    {
+      "id": "lab",
+      "full": "GrazianoGuiducci/lab-d-nd-site",
+      "commit": "bc92ae3f90786ceaaf84d6042aef0aec876a50cb",
+      "runtime": "vanilla-js",
+      "license": "not_verified"
+    },
+    {
+      "id": "thia",
+      "full": "GrazianoGuiducci/d-nd_com",
+      "commit": "8ad776c76f735fb36c87df2a6f73b082c2e4813d",
+      "runtime": "react",
+      "license": "not_verified"
+    },
+    {
+      "id": "seed",
+      "full": "GrazianoGuiducci/d-nd-ux-ai-seed",
+      "commit": "972349d5c38a851f40ff6d8c87f541cd0da70f9e",
+      "runtime": "react-tsx",
+      "license": "PolyForm-Noncommercial-1.0.0_declared"
+    },
+    {
+      "id": "setup",
+      "full": "GrazianoGuiducci/MAIOS_CLIENT_SETUP",
+      "commit": "21303ec074bd7bf395f4150ebc11764e0c2d1931",
+      "runtime": "vanilla-js",
+      "license": "product_specific_check_required"
+    },
+    {
+      "id": "nautico",
+      "full": "GrazianoGuiducci/kernel-nautico",
+      "commit": "82896de01829752614d04cfa6e3ffacbd9544a0a",
+      "runtime": "vanilla-js",
+      "license": "check_before_distribution"
+    }
+  ],
+  "sources": [
+    {
+      "id": "lab-widget",
+      "repository": "lab",
+      "path": "assets/js/domus-widget.js",
+      "url": "https://github.com/GrazianoGuiducci/lab-d-nd-site/blob/bc92ae3f90786ceaaf84d6042aef0aec876a50cb/assets/js/domus-widget.js",
+      "status": "source_implemented",
+      "scope": "THIA widget vanilla JS, context/manager/intake, host effects private"
+    },
+    {
+      "id": "lab-template",
+      "repository": "lab",
+      "path": "docs/LAB_TEMPLATE_SURFACE_V1.md",
+      "url": "https://github.com/GrazianoGuiducci/lab-d-nd-site/blob/bc92ae3f90786ceaaf84d6042aef0aec876a50cb/docs/LAB_TEMPLATE_SURFACE_V1.md",
+      "status": "source_documented",
+      "scope": "public visitor vs authenticated manager"
+    },
+    {
+      "id": "thia-react",
+      "repository": "thia",
+      "path": "components/Chatbot.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd_com/blob/8ad776c76f735fb36c87df2a6f73b082c2e4813d/components/Chatbot.tsx",
+      "status": "source_implemented",
+      "scope": "THIA original React chat; backend owner retained"
+    },
+    {
+      "id": "thia-intake",
+      "repository": "thia",
+      "path": "components/CommunityIntakeForm.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd_com/blob/8ad776c76f735fb36c87df2a6f73b082c2e4813d/components/CommunityIntakeForm.tsx",
+      "status": "source_implemented",
+      "scope": "contextual feedback and intake form"
+    },
+    {
+      "id": "studio-editor",
+      "repository": "thia",
+      "path": "components/admin/SitemanStudio.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd_com/blob/8ad776c76f735fb36c87df2a6f73b082c2e4813d/components/admin/SitemanStudio.tsx",
+      "status": "source_implemented",
+      "scope": "chat/editor/meta split, drafts, source actions"
+    },
+    {
+      "id": "studio-dashboard",
+      "repository": "thia",
+      "path": "components/admin/SitemanDashboard.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd_com/blob/8ad776c76f735fb36c87df2a6f73b082c2e4813d/components/admin/SitemanDashboard.tsx",
+      "status": "source_implemented",
+      "scope": "cards, filters, status, selection"
+    },
+    {
+      "id": "seed-chat",
+      "repository": "seed",
+      "path": "src/ThiaChatSeed.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/src/ThiaChatSeed.tsx",
+      "status": "portable_source_implemented",
+      "scope": "chat/avatar/intake; host callbacks required"
+    },
+    {
+      "id": "seed-cognitive",
+      "repository": "seed",
+      "path": "src/AgenticChatSystem.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/src/AgenticChatSystem.tsx",
+      "status": "portable_source_implemented",
+      "scope": "host context/knowledge/transport/effect receipts"
+    },
+    {
+      "id": "seed-split",
+      "repository": "seed",
+      "path": "src/ui/SplitPanel.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/src/ui/SplitPanel.tsx",
+      "status": "portable_source_implemented",
+      "scope": "ratio/mobile/books/keyboard"
+    },
+    {
+      "id": "seed-shell",
+      "repository": "seed",
+      "path": "src/Shell3Col.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/src/Shell3Col.tsx",
+      "status": "portable_source_implemented",
+      "scope": "3col focus, gutters, drawers"
+    },
+    {
+      "id": "seed-menu",
+      "repository": "seed",
+      "path": "src/MegaMenuSeed.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/src/MegaMenuSeed.tsx",
+      "status": "portable_source_implemented",
+      "scope": "grouped ids and navigation"
+    },
+    {
+      "id": "seed-popover",
+      "repository": "seed",
+      "path": "src/ui/HoverPopover.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/src/ui/HoverPopover.tsx",
+      "status": "portable_source_implemented",
+      "scope": "portal/placement, keyboard"
+    },
+    {
+      "id": "seed-primitives",
+      "repository": "seed",
+      "path": "src/DesignPrimitives.tsx",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/src/DesignPrimitives.tsx",
+      "status": "portable_source_implemented",
+      "scope": "cards, buttons and true modal"
+    },
+    {
+      "id": "seed-chat-parity",
+      "repository": "seed",
+      "path": "docs/THIA_CHAT_PORT_PARITY_CONTRACT.md",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/docs/THIA_CHAT_PORT_PARITY_CONTRACT.md",
+      "status": "contract_documented",
+      "scope": "full component transfer contract"
+    },
+    {
+      "id": "seed-adoption",
+      "repository": "seed",
+      "path": "docs/INTEGRATION_CHECKLIST.md",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/docs/INTEGRATION_CHECKLIST.md",
+      "status": "contract_documented",
+      "scope": "dependencies/CSS/storage/focus/QA"
+    },
+    {
+      "id": "seed-motion",
+      "repository": "seed",
+      "path": "design/references/cognitive-motion.md",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/design/references/cognitive-motion.md",
+      "status": "design_competence_reference",
+      "scope": "causal movement, interrupt, settle, reduced motion"
+    },
+    {
+      "id": "seed-form",
+      "repository": "seed",
+      "path": "design/references/context-aware-guided-form-composition.md",
+      "url": "https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed/blob/972349d5c38a851f40ff6d8c87f541cd0da70f9e/design/references/context-aware-guided-form-composition.md",
+      "status": "candidate_contract",
+      "scope": "guided dependencies, scroll/focus"
+    },
+    {
+      "id": "setup-assistant",
+      "repository": "setup",
+      "path": "web/maios-assistant.js",
+      "url": "https://github.com/GrazianoGuiducci/MAIOS_CLIENT_SETUP/blob/21303ec074bd7bf395f4150ebc11764e0c2d1931/web/maios-assistant.js",
+      "status": "source_implemented",
+      "scope": "guided chat/form, viewport movement and fullpage"
+    },
+    {
+      "id": "setup-journey",
+      "repository": "setup",
+      "path": "web/app.js",
+      "url": "https://github.com/GrazianoGuiducci/MAIOS_CLIENT_SETUP/blob/21303ec074bd7bf395f4150ebc11764e0c2d1931/web/app.js",
+      "status": "source_implemented",
+      "scope": "conditional disclosures, state and focus control"
+    },
+    {
+      "id": "nautico-public",
+      "repository": "nautico",
+      "path": "workstations/visual-presentation/production/threejs-first-encounter/app/src/public-controls.js",
+      "url": "https://github.com/GrazianoGuiducci/kernel-nautico/blob/82896de01829752614d04cfa6e3ffacbd9544a0a/workstations/visual-presentation/production/threejs-first-encounter/app/src/public-controls.js",
+      "status": "source_implemented",
+      "scope": "ten public target identities, not ten independent apps"
+    }
+  ],
+  "modules": [
+    {
+      "id": "assistant-presence",
+      "concept": "Avatar, bubble, contextual message, optional silence",
+      "references": [
+        "lab-widget",
+        "thia-react",
+        "seed-chat",
+        "seed-chat-parity"
+      ],
+      "mustTravel": [
+        "open/close locus and direction",
+        "reduced motion",
+        "local vs real source of notification",
+        "focus preservation",
+        "no fake AI calls"
+      ],
+      "integration": "host_adapter_required"
+    },
+    {
+      "id": "window-morphology",
+      "concept": "Compact card ↔ floating ↔ dock ↔ split ↔ fullscreen",
+      "references": [
+        "lab-widget",
+        "seed-chat",
+        "seed-split",
+        "seed-motion"
+      ],
+      "mustTravel": [
+        "manual geometry vs temporary geometry",
+        "cancel/retarget transition",
+        "first drag/undock/fullscreen restore",
+        "responsive inside the component",
+        "local preference namespaces"
+      ],
+      "integration": "candidate_lab_exercised"
+    },
+    {
+      "id": "chat-form",
+      "concept": "Assistant conversation alongside contextual form",
+      "references": [
+        "lab-widget",
+        "thia-intake",
+        "seed-chat",
+        "seed-cognitive",
+        "seed-chat-parity"
+      ],
+      "mustTravel": [
+        "split and divider",
+        "narrow Chat/Form tabs",
+        "draft retention",
+        "submit authority belongs to host",
+        "receipt/status, files and reset confirmation"
+      ],
+      "integration": "partial_lab_probe_only"
+    },
+    {
+      "id": "workspace",
+      "concept": "Workspace prioritizes canvas; side panels and dormant tools stay reachable",
+      "references": [
+        "seed-shell",
+        "seed-split",
+        "seed-motion"
+      ],
+      "mustTravel": [
+        "compact header",
+        "independently scrollable surfaces",
+        "closed gutters and recovery",
+        "mobile drawers or split as applicable",
+        "focus/viewport ownership"
+      ],
+      "integration": "partial_lab_probe_only"
+    },
+    {
+      "id": "navigation",
+      "concept": "Grouped intent/entity navigation and contextual handoff",
+      "references": [
+        "seed-menu",
+        "nautico-public"
+      ],
+      "mustTravel": [
+        "stable route/entity ids",
+        "active selection",
+        "keyboard/mobile menu",
+        "intent differs from domain context",
+        "no duplicate domain state"
+      ],
+      "integration": "partial_lab_probe_only"
+    },
+    {
+      "id": "guided-form",
+      "concept": "Progressive causal disclosures and decision focus",
+      "references": [
+        "setup-assistant",
+        "setup-journey",
+        "seed-form"
+      ],
+      "mustTravel": [
+        "accepted/unknown/derived distinctions",
+        "invalidate dependent answers",
+        "reversible disclosure",
+        "coordinated single scroll motion",
+        "explicit review vs submit"
+      ],
+      "integration": "source_contract_available"
+    },
+    {
+      "id": "editing",
+      "concept": "Chat/editor/metadata collaborative work",
+      "references": [
+        "studio-editor",
+        "studio-dashboard",
+        "seed-split"
+      ],
+      "mustTravel": [
+        "separate editor/domain state",
+        "persisted split and collapse",
+        "responsive inner modes",
+        "review/draft effects separate from publish",
+        "restore editing focus"
+      ],
+      "integration": "source_contract_available"
+    },
+    {
+      "id": "dashboard",
+      "concept": "Cards, status, monitoring, inspectors",
+      "references": [
+        "studio-dashboard",
+        "lab-template",
+        "lab-widget"
+      ],
+      "mustTravel": [
+        "real owner event vs render refresh",
+        "status/uncertainty provenance",
+        "filter and selection state",
+        "inspect before effect",
+        "cannot inherit manager authorization"
+      ],
+      "integration": "source_contract_available"
+    },
+    {
+      "id": "micro-feedback",
+      "concept": "Tooltips, attention indicators and notifications",
+      "references": [
+        "seed-popover",
+        "seed-motion",
+        "lab-widget"
+      ],
+      "mustTravel": [
+        "screen edge collision/portal",
+        "keyboard focus and Escape",
+        "source-grounded event key",
+        "dismissal/pinning and hysteresis",
+        "avoid masking primary work"
+      ],
+      "integration": "candidate_lab_exercised"
+    }
+  ],
+  "existing_local_experiments": [
+    {
+      "id": "griglia-del-fare-v3",
+      "path": "labs/nautico-ui-v3/01-griglia-del-fare.html",
+      "status": "LAB_EXERCISED_SYNTHETIC_NO_LIVE_KERNEL"
+    },
+    {
+      "id": "quattro-fonti-v3",
+      "path": "labs/nautico-ui-v3/02-campo-quattro-fonti.html",
+      "status": "LAB_EXERCISED_SYNTHETIC_NO_LIVE_KERNEL"
+    }
+  ],
+  "licensing": "No upstream source code is copied from Lab/THIA/Seed/Setup into this cabinet. Their source license and commercial reuse must be qualified with their owners; Seed package declares PolyForm-Noncommercial-1.0.0.",
+  "evidence": {
+    "reported_prototype_receipt": "63/63 local Playwright assertions over four related suites on the same synthetic HTML laboratory; NOT independent product validation",
+    "receipt_path": "labs/nautico-ui-v3/EVIDENCE.json",
+    "no_live_AI": true,
+    "no_public_site_effect": true,
+    "no_real_nautico_store_in_lab": true,
+    "original_live_deployment_not_verified": true
+  },
+  "no_claim": [
+    "3 production-ready chat systems",
+    "THIA backend bundled in K-UX-AI",
+    "autonomous capability learning",
+    "multiwindow concurrent domain editing",
+    "real agent notification",
+    "site deploy",
+    "commercial reuse license granted"
+  ]
+}
