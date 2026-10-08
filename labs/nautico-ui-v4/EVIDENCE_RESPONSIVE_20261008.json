@@ -1,0 +1,81 @@
+{
+  "schema": "kuxai.nautico.griglia-v4.2.responsive-local-evidence.v1",
+  "date": "2026-10-08",
+  "source": {
+    "repo": "GrazianoGuiducci/k-ux-ai",
+    "branch": "work/ux-ai-ui-library-20261008",
+    "parent_head": "8bf21f9bd099b38fe51be75882c444c01f30ad27",
+    "html": "labs/nautico-ui-v4/03-griglia-responsive-workspace.html",
+    "html_blob": "2592841b5c747c286b16866e0c90192a6adc4f03",
+    "previous": "labs/nautico-ui-v4/02-griglia-chat-window-surface-motion-parity.html",
+    "preserve_previous": true,
+    "construction": "original standalone HTML, K-UX-AI reusable Window Surface + Chat/Form inlined, synthetic Nautico scenario"
+  },
+  "method": {
+    "browser": "Chromium headless via Python Playwright",
+    "navigation": "page.set_content(exact HTML bytes); file:// navigation blocked by test environment",
+    "tests": [
+      {
+        "id": "qa_v4_2_responsive",
+        "passed": 121,
+        "total": 121,
+        "viewport_conditions": [
+          "1600x900 normal",
+          "1080x760 normal",
+          "768x740 normal",
+          "390x844 touch emulation normal",
+          "375x667 touch emulation reduced motion",
+          "1440x900 reduced motion"
+        ],
+        "coverage": [
+          "9 panels remain non-minimized",
+          "grid geometry",
+          "scroll availability and response",
+          "no overlap after settled composition",
+          "layout three and viewport fallback",
+          "popover above panels",
+          "focus dropdown",
+          "mobile rail hidden, assistant accessible",
+          "demo controls relocated",
+          "no page horizontal overflow",
+          "no page errors"
+        ]
+      },
+      {
+        "id": "qa_v4_2_continuity",
+        "passed": 19,
+        "total": 19,
+        "coverage": [
+          "explicit layout selection",
+          "draft survives full/escape",
+          "full-page covers viewport",
+          "layout restore",
+          "free geometry desktop-mobile-desktop",
+          "assistant placement and minimize",
+          "mobile stacked reflow",
+          "footer controls roundtrip",
+          "no page errors"
+        ]
+      }
+    ]
+  },
+  "observations": {
+    "all_cards_kept": true,
+    "adaptive_columns": true,
+    "three_column_choice": true,
+    "mobile_scroll": true,
+    "mobile_avatar_rail_removed": true,
+    "top_title_compacted": true,
+    "tools_menu_above_cards": true
+  },
+  "limits": [
+    "related test suites not independent statistical confirmation",
+    "file:// local navigation blocked in testing receiver",
+    "not a real device/assistive-technology audit",
+    "not a Nautico live event stream",
+    "not a model AI chat/provider",
+    "not deployed, tagged, merged or released",
+    "free-floating windows may overlap by intentional manual placement"
+  ],
+  "effects": "private candidate branch update only"
+}

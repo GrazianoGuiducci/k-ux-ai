@@ -1,5 +1,18 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## Griglia v4.2 — workspace adattivo, 8 ottobre 2026
+
+**Nuovo esercizio selezionato dall'osservazione dell'operatore**: nelle schermate originali la griglia non rendeva usabili insieme le card su mobile, il menu Strumenti poteva essere coperto, le disposizioni numeriche sovrapponevano o minimizzavano card, mancavano tre colonne e le barre/attività laterali occupavano spazio utile.
+
+- [Apri Griglia v4.2 responsiva](03-griglia-responsive-workspace.html) — HTML autonomo con le funzioni demo originali e il componente K-UX-AI Chat/Form della v4.1 conservato.
+- [Decisioni di composizione](RESPONSIVE_DESIGN_20261008.md) — sorgente del difetto, separazione fra disposizione e attività, comportamento desktop/mobile e confini.
+- [Ricevuta v4.2](EVIDENCE_RESPONSIVE_20261008.json) — due suite locali correlate, 121/121 controlli responsive su sei dimensioni/condizioni e 19/19 controlli di continuità, zero page error nelle prove. Prove effettuate tramite `page.set_content`; nel receiver di test `file://` è bloccato dall'ambiente, quindi la navigazione locale reale non è attestata.
+
+La nuova modalità **Adatta** è il punto d'ingresso iniziale; sono disponibili anche Libero, 2, 3 e 4. In griglia tutte le attività restano disponibili e il campo scorre senza un tetto artificiale di 2/4 card. **Libero** conserva la geometria scelta manualmente. Sotto spazio ridotto le card diventano una colonna scorrevole e gli avatar laterali lasciano posto all'assistente accessibile nella barra. Focus e contesto sono raggiungibili da un menu a discesa. La versione v4 originale, la v4.1 motion-parity e le relative ricevute restano immutate.
+
+La v4.2 è un laboratorio locale sintetico, non un evento owner-native collegato al Kernel Nautico, non un modello AI attivo, non una release né una distribuzione MAIOS.
+
+
 ## Rientro 8 ottobre — v4.1 motion parity, candidata locale
 
 L'HTML originale [01](01-griglia-chat-window-surface.html) e la sua ricevuta storica [EVIDENCE.json](EVIDENCE.json) restano invariati.

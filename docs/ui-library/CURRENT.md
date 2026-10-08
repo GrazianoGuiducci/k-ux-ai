@@ -1,5 +1,16 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima risultante — Griglia v4.2 workspace adattivo (8 ottobre 2026)
+
+Le schermate osservate dall'operatore hanno selezionato un problema concreto di composizione: tutte le card operative devono restare esplorabili, anche su telefono, senza che il layout diventi una quota di attività visibili. La candidata [Griglia v4.2](../../labs/nautico-ui-v4/03-griglia-responsive-workspace.html) separa il contenuto owner-native dalla sua occupazione spaziale; il [documento di decisione](../../labs/nautico-ui-v4/RESPONSIVE_DESIGN_20261008.md) conserva motivazioni, alternative e confini.
+
+La modalità Adatta (iniziale) usa una griglia a 1–3 colonne secondo il *frame* disponibile, con righe aggiuntive e scorrimento dell'intero canvas. Le scelte 2/3/4 sono composizioni, non limiti al numero di card. La modalità Libero resta distinta per geometria manuale. Sul mobile si elimina il dock di avatar laterali, si mantengono card in colonna scorrevole e si collocano assistente, focus e menu Strumenti nella barra superiore. Il menu ha un contesto di profondità proprio e non può essere coperto dal progressivo z-index delle card. Le azioni dimostrative del footer passano al menu su schermi piccoli, senza duplicare il controller.
+
+La [ricevuta separata](../../labs/nautico-ui-v4/EVIDENCE_RESPONSIVE_20261008.json) registra 121/121 + 19/19 controlli locali correlati sul file HTML v4.2 esatto, senza errori di pagina nei percorsi osservati. La v4 e la v4.1 con i loro controlli restano genealogia; la nuova prova non trasferisce automaticamente completezza o conformità di accessibilità. Il browser di prova non consentiva l'apertura `file://`, quindi i percorsi sono stati esercitati con `page.set_content`. Nessun kernel Nautico reale, hosting, provider AI, THIA o Site MAIOS è stato connesso; nessun merge/release/deploy selezionato.
+
+**Prossimo confine:** osservazione dell'operatore della v4.2 e/o esercizio di una vera modifica owner-native del Nautico nel receiver separato. Non convertire automaticamente questo miglioramento percettivo in un'integrazione live né avviare un altro layout per inerzia.
+
+
 ## Ultima differenza — candidato v4.1 motion parity (8 ottobre 2026)
 
 La Griglia v4 e [la sua ricevuta correlata da 93 controlli](../../labs/nautico-ui-v4/EVIDENCE.json) restano identità storiche conservate. Il [nuovo HTML v4.1](../../labs/nautico-ui-v4/02-griglia-chat-window-surface-motion-parity.html) usa la modifica minima applicata anche a [`createWindowSurface`](../../src/ui/window-surface.js): `minimize()` legge il token dell'animazione dopo `avatarToWindow(false)`, non prima. L'assenza di animazione deve concludere la chiusura con focus, stato e avvisi corretti.
