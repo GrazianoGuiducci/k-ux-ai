@@ -18,6 +18,8 @@ contracts coherent when a selected product update changes their meaning.
 
 When an operator asks for the current K-UX-AI UI module repertoire, start at [`docs/ui-library/CURRENT.md`](docs/ui-library/CURRENT.md), then [`ui-library/catalog.v0.1.json`](ui-library/catalog.v0.1.json) and [`docs/ui-library/OPERATING_CONTRACT.md`](docs/ui-library/OPERATING_CONTRACT.md). The two v3 HTML pages are local synthetic probes, not the final Nautico Site. Preserve source-pinned ownership and consult upstream behavior/parity contracts before adopting a component; never copy an endpoint, credential, administrative function, private data or licensing assumption.
 
+For the candidate **native UI module**, additionally read `src/ui/window-surface.js`, `src/ui/chat-form-module.js` and their CSS, plus `examples/window-surface/README.md`. Run `python tools/generate_window_surface_demo.py`, then `python tests/qa_window_surface_primary.py` and `python tests/qa_window_surface_extended.py` where Chromium and Playwright are installed. These checks do not prove an integrated agent host; never present a local synthetic event as a Nautico company event. Keep future modules headless/domain-neutral and call the appropriate owner for external actions.
+
 Run `npm test` for the original medium and `npm run test:ui-library` for candidate catalog integrity when working from a Node checkout. Actual browser/render tests and host integration remain separate receipts. Only commit a public release, merge or deployment after explicit selection.
 Preserve concurrent work. A source change is distinct from publishing a
 package, deploying a site or connecting a real receiving kernel.
