@@ -34,5 +34,11 @@ The public product remains **`0.1.0-alpha.1`** and its original medium API remai
 The prior v3 laboratory reported **63/63 correlated browser assertions** under synthetic data; that receipt is attributed and was **not rerun on this GitHub copy**. No real THIA/DOMUS adapter, Nautico event stream, owner authorization, assistant model or deployed Site has been connected by this branch.
 
 The catalog references licensed and independently owned sources. It does not duplicate their host code or grant commercial redistribution. Kernel/human comprehension and construction learning remain with Meta_Skill/UX-AI and Design; this product cabinet is the candidate receiving artifact, not the owner of their methods.
+## Native window and Chat/Form candidate — 8 October
+
+On the same private `work/ux-ai-ui-library-20261008` branch, reusable `createWindowSurface` and `createChatFormModule` implementations now live under `src/ui/`, with an example that uses the unchanged public `createMedium` interface. This is a **working source candidate**, not a released UI package. The example exercises attributed local demo events and operator actions; no real AI, THIA backend, Nautico domain or MAIOS site is wired.
+
+Two correlated local Chromium sequences passed **23/23 and 14/14**, respectively, with no JS page errors observed; see `examples/window-surface/evidence.json`. The source's internal responsive measurement, keyboard resize and free-window bounds were corrected during those tests. The modular HTTP-served example still requires receiver-native browser/build validation; reduced-motion, host-side accessibility and compositional integrity require re-evaluation in each target.
+
 This source publication is distinct from an npm release, a deployed website
 and a live Nautico integration.
