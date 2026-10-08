@@ -160,8 +160,15 @@ export function createWindowSurface({
   }
   function setPlacement(next){
     if(destroyed||!placements.has(next))return;
+    // A layout control may itself disappear after being used (full/dock).
+    // Transfer focus to a still-visible control before the document body steals it.
+    const focusedBefore=document.activeElement;
+    const focusWasInside=frame.contains(focusedBefore);
     cancelMotion();const before=frame.hidden?null:box(frame.getBoundingClientRect());
     placement=next;layout();save();
+    if(focusWasInside && (focusedBefore.hidden || !frame.contains(document.activeElement))){
+      toolbar.querySelector('button:not([hidden])')?.focus({preventScroll:true});
+    }
     if(open&&before){const after=box(frame.getBoundingClientRect());geometryMotion(before,after);}
   }
   function updateCue(event) {
