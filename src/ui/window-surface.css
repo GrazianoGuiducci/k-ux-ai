@@ -1,0 +1,29 @@
+/* K-UX-AI reusable surface carrier. Host supplies domain data and actions. */
+.kux-surface-root{--kux-ink:#17343b;--kux-tint:#caebea;--kux-edge:#709b98;--kux-bg:#f8faf3;--kux-accent:#58db93;font:14px/1.45 system-ui,'Segoe UI',sans-serif;box-sizing:border-box}
+.kux-surface-root *{box-sizing:border-box}
+.kux-surface-root button{font:inherit;cursor:pointer}
+.kux-surface-root button:focus-visible,.kux-surface-root input:focus-visible,.kux-surface-root textarea:focus-visible{outline:3px solid #8559a6;outline-offset:2px}
+.kux-surface-root [hidden]{display:none!important}
+.kux-surface-avatar{position:fixed;z-index:200;right:22px;bottom:19px;width:60px;height:60px;border-radius:50%;background:var(--kux-ink);color:#f5fff6;border:2px solid #71d5c5;box-shadow:0 8px 36px #12353745;display:grid;place-items:center;font-size:18px;font-weight:800}
+.kux-surface-avatar:hover{background:#285560}
+.kux-avatar-dot{position:absolute;right:3px;top:0;width:14px;height:14px;border:3px solid #fff;background:#db9048;border-radius:50%}
+.kux-surface-cue{position:fixed;z-index:201;right:20px;bottom:91px;display:flex;align-items:start;gap:4px;width:min(315px,calc(100vw - 30px));padding:8px;border:1px solid #5295a4;border-radius:8px;background:#effaf7;color:var(--kux-ink);box-shadow:0 8px 36px #12353738}
+.kux-cue-message{flex:1;border:0;text-align:left;padding:4px;background:transparent;color:inherit;overflow-wrap:anywhere}
+.kux-cue-dismiss{border:0;background:transparent;color:inherit;font-size:19px;padding:2px 7px}
+.kux-surface-frame{position:fixed;z-index:202;width:670px;height:535px;display:flex;flex-direction:column;overflow:hidden;min-width:0;min-height:0;border:1px solid var(--kux-edge);border-radius:9px;background:var(--kux-bg);color:var(--kux-ink);box-shadow:0 22px 75px #081c236b;transform-origin:top left}
+.kux-surface-frame[data-mode='dock-left']{inset:0 auto 0 0;width:min(42vw,680px);height:100dvh;border-radius:0}
+.kux-surface-frame[data-mode='dock-right']{inset:0 0 0 auto;width:min(42vw,680px);height:100dvh;border-radius:0}
+.kux-surface-frame[data-mode='full']{inset:0;width:100vw;height:100dvh;border:0;border-radius:0}
+.kux-surface-header{flex:0 0 auto;min-height:61px;padding:10px 13px;background:var(--kux-tint);border-bottom:1px solid var(--kux-edge);display:flex;gap:12px;align-items:center;justify-content:space-between;cursor:grab;touch-action:none}
+.kux-surface-header:active{cursor:grabbing}
+.kux-surface-heading{display:flex;flex-direction:column;min-width:0;flex:1}
+.kux-surface-heading strong{font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kux-surface-heading small{font-size:12px;opacity:.8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kux-surface-toolbar{display:flex;flex-wrap:nowrap;gap:5px}
+.kux-surface-toolbar button{width:34px;height:35px;border:1px solid var(--kux-edge);border-radius:5px;background:#f9f4e8;color:var(--kux-ink);font-size:20px;line-height:1;padding:0}
+.kux-surface-toolbar button:hover{background:#b9f3dd}
+.kux-surface-body{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}
+.kux-surface-resize{position:absolute;right:1px;bottom:1px;width:24px;height:24px;padding:0;background:linear-gradient(135deg,transparent 55%,#6099a0 56%,#6099a0 61%,transparent 62%,transparent 73%,#6099a0 74%,#6099a0 79%,transparent 80%);border:0;cursor:nwse-resize;touch-action:none}
+.kux-surface-frame[data-mode='dock-left'] .kux-surface-resize,.kux-surface-frame[data-mode='dock-right'] .kux-surface-resize,.kux-surface-frame[data-mode='full'] .kux-surface-resize{display:none}
+@media(max-width:719px){.kux-surface-frame,.kux-surface-frame[data-mode='floating'],.kux-surface-frame[data-mode='dock-left'],.kux-surface-frame[data-mode='dock-right']{inset:0!important;width:100vw!important;height:100dvh!important;border-radius:0!important;box-shadow:none}.kux-surface-header{touch-action:auto;cursor:default;padding:8px;flex-wrap:wrap}.kux-surface-toolbar{flex:0 0 100%;justify-content:space-around}.kux-surface-toolbar button{min-width:42px;height:38px}.kux-surface-heading strong{white-space:normal}.kux-surface-resize{display:none}.kux-surface-avatar{width:54px;height:54px}}
+@media(prefers-reduced-motion:reduce){.kux-surface-root *, .kux-surface-root *::before,.kux-surface-root *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
