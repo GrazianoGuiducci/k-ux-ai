@@ -71,6 +71,12 @@ Il repertorio include ora una **prima unità eseguibile originale**: [Window Sur
 
 La superficie può passare da avatar a finestra libera, sidebar agganciata e pagina intera; il contenuto Chat/Form si ricompone per **larghezza interna** e mantiene la bozza nelle trasformazioni. Nessuna API THIA o permesso del Lab è incorporato. Consulta [limiti, prove e prossimo movimento](docs/ui-library/CURRENT.md).
 
+### Integrazione corrente: Griglia del fare v4
+
+La lane privata comprende anche il [prototipo HTML v4](labs/nautico-ui-v4/01-griglia-chat-window-surface.html): la Griglia del fare utilizza ora i moduli K-UX-AI `Window Surface` e `Chat/Form` per l'assistente, invece di creare un'ulteriore card-chat locale. Dock e sidebar fanno spazio al canvas; la vista piena e il ritorno conservano bozza, focus e contesto. Il funzionamento esercitato è documentato in [EVIDENCE.json](labs/nautico-ui-v4/EVIDENCE.json).
+
+È ancora una prova **sintetica**, senza AI/Nautico live, Site o release. Il codice principale `createMedium()` e la versione pubblica `0.1.0-alpha.1` restano invariati.
+
 ## Percezione ed evoluzione
 
 Immagine, spazio, movimento, testo, suono e modalità ulteriori possono
