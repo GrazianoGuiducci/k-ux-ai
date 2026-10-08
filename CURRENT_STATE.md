@@ -26,5 +26,13 @@ The existing prototype remains an attributed initial construction; its
 exercise does not define the competence's method or establish the visual and
 interaction quality sought for the continuing product.
 
+
+## Candidate UI library and Nautico workspace (8 October 2026)
+
+The public product remains **`0.1.0-alpha.1`** and its original medium API remains unchanged. On **private branch `work/ux-ai-ui-library-20261008`**, a source-bound UI cabinet is now reachable through [`docs/ui-library/CURRENT.md`](docs/ui-library/CURRENT.md): 20 original-source references, nine modular behavior families, complete adoption/focus/motion/responsive contracts, and two preserved original Nautico v3 standalone HTML probes.
+
+The prior v3 laboratory reported **63/63 correlated browser assertions** under synthetic data; that receipt is attributed and was **not rerun on this GitHub copy**. No real THIA/DOMUS adapter, Nautico event stream, owner authorization, assistant model or deployed Site has been connected by this branch.
+
+The catalog references licensed and independently owned sources. It does not duplicate their host code or grant commercial redistribution. Kernel/human comprehension and construction learning remain with Meta_Skill/UX-AI and Design; this product cabinet is the candidate receiving artifact, not the owner of their methods.
 This source publication is distinct from an npm release, a deployed website
 and a live Nautico integration.
