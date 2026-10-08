@@ -1,5 +1,15 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## Rientro 8 ottobre — v4.1 motion parity, candidata locale
+
+L'HTML originale [01](01-griglia-chat-window-surface.html) e la sua ricevuta storica [EVIDENCE.json](EVIDENCE.json) restano invariati.
+Il nuovo [02 — Griglia v4.1, motion parity](02-griglia-chat-window-surface-motion-parity.html) incorpora la correzione anche della sorgente condivisa [Window Surface](../../src/ui/window-surface.js).
+
+**Differenza:** `minimize()` cattura il token di movimento *dopo* avere avviato `avatarToWindow(false)`. Prima, nella modalità `prefers-reduced-motion` (o senza Web Animations), il movimento non incrementava il token: la chiusura era scartata, il frame restava aperto e l'avviso non raggiungeva l'avatar.
+
+[Nuova ricevuta mirata](EVIDENCE_MOTION_PARITY_20261008.json): sul file precedente 11/13 controlli in reduced-motion (due controesempi); sul candidato 13/13 in reduced-motion e 13/13 in movimento normale, zero errori di pagina nei due percorsi nuovi. I controlli sono correlati e non sostituiscono i 93 precedenti; nessuna prova di AI live, evento Nautico reale, accessibilità completa o integrazione Site.
+
+
 **8 ottobre 2026 · PROTOTYPE_INTEGRATED_SYNTHETIC / non pubblicato**
 
 ## Apri il prototipo

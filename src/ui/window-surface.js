@@ -151,8 +151,10 @@ export function createWindowSurface({
   }
   async function minimize(){
     if(destroyed||!open||closing)return;
-    closing=true;cancelMotion();const token=animationRun+1;
-    await avatarToWindow(false);
+    closing=true;cancelMotion();
+    const closingMotion=avatarToWindow(false);
+    const token=animationRun;
+    await closingMotion;
     if(destroyed||!open||!closing||token!==animationRun)return;
     frame.hidden=true;open=false;closing=false;
     onPresenceChange({id,open:false,mode:actualPlacement()});

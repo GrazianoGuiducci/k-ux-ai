@@ -1,0 +1,57 @@
+{
+  "schema": "kuxai.nautico.griglia-v4.motion-parity-reentry.v1",
+  "date": "2026-10-08",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "base_commit": "8ee14b10b8e1acd72e9908538443a336ed92c89c",
+  "preserves": {
+    "original_html": "labs/nautico-ui-v4/01-griglia-chat-window-surface.html",
+    "original_html_blob": "0eed421359645a132f0282b466b9bf3c5fdc9672",
+    "original_integrated_evidence": "labs/nautico-ui-v4/EVIDENCE.json",
+    "original_evidence_not_retested": true
+  },
+  "candidate": {
+    "html": "labs/nautico-ui-v4/02-griglia-chat-window-surface-motion-parity.html",
+    "html_blob": "8e1171f438f9bd31e3b0704ce60e3b7ca76900e3",
+    "shared_js": "src/ui/window-surface.js",
+    "shared_js_blob": "215359b2c8f286bf28d6510752221c6792b2cda7",
+    "change": "minimize() captures animationRun after avatarToWindow(false) is started; no animation does not invalidate closing token"
+  },
+  "test_method": "Python Playwright Chromium via page.set_content on exact local HTML bytes; motion emulated at context creation; 13 smoke assertions per run",
+  "before": {
+    "html_blob": "0eed421359645a132f0282b466b9bf3c5fdc9672",
+    "motion": "reduce",
+    "passed": 11,
+    "total": 13,
+    "failed": [
+      "assistant_minimized",
+      "cue_at_closed_avatar"
+    ],
+    "javascript_page_errors": 0
+  },
+  "after": [
+    {
+      "html_blob": "8e1171f438f9bd31e3b0704ce60e3b7ca76900e3",
+      "motion": "reduce",
+      "passed": 13,
+      "total": 13,
+      "javascript_page_errors": 0
+    },
+    {
+      "html_blob": "8e1171f438f9bd31e3b0704ce60e3b7ca76900e3",
+      "motion": "no-preference",
+      "passed": 13,
+      "total": 13,
+      "javascript_page_errors": 0
+    }
+  ],
+  "correlation": "same 13 assertion smoke across two motion settings; not independent comprehensive product validation",
+  "not_established": [
+    "original 93 tests re-executed on v4.1",
+    "real Nautico owner source/events bound",
+    "real AI chat",
+    "MAIOS Site/runtime deployment",
+    "physical touchscreen/assistive technology audit",
+    "independent human comprehension"
+  ],
+  "effects": "private branch source candidate only: no main merge, tag, release, deployment, Nautico mutation or publication"
+}

@@ -1,5 +1,14 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima differenza — candidato v4.1 motion parity (8 ottobre 2026)
+
+La Griglia v4 e [la sua ricevuta correlata da 93 controlli](../../labs/nautico-ui-v4/EVIDENCE.json) restano identità storiche conservate. Il [nuovo HTML v4.1](../../labs/nautico-ui-v4/02-griglia-chat-window-surface-motion-parity.html) usa la modifica minima applicata anche a [`createWindowSurface`](../../src/ui/window-surface.js): `minimize()` legge il token dell'animazione dopo `avatarToWindow(false)`, non prima. L'assenza di animazione deve concludere la chiusura con focus, stato e avvisi corretti.
+
+La [ricevuta della prova di rientro](../../labs/nautico-ui-v4/EVIDENCE_MOTION_PARITY_20261008.json) registra 11/13 controesempi sulla v4 originale in reduced-motion, 13/13 sul candidato in reduced-motion e 13/13 con motion normale (suite locale di smoke mirata). Non sono 26 convalide indipendenti né una riesecuzione dei 93 controlli originari. La v4.1 resta **candidate/synthetic**: nessun merge, release, hosting MAIOS, stato reale Nautico o modello AI connesso.
+
+Il prossimo esperimento utile non e' un'ulteriore ottimizzazione grafica automatica: e' un evento / cambiamento owner-native reale in Kernel Nautico, osservato dal medium con identita', revisione e doppio readback, senza trasferire proprieta' del dominio a K-UX-AI. L'ingresso di costruzione cognitiva corrente e' il Code Medium Construction 0.4.0 privato in `tm7/gpt/ux-ai-code-competence`, distinto dal candidato pubblico.
+
+
 **8 October 2026 · private branch candidate · public product version remains `0.1.0-alpha.1`**
 
 ```text
