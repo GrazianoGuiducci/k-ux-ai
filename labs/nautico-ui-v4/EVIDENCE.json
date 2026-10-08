@@ -1,0 +1,92 @@
+{
+  "schema": "kuxai.nautico.griglia-v4.integration-evidence.v1",
+  "date": "2026-10-08",
+  "source": {
+    "ui": "labs/nautico-ui-v4/01-griglia-chat-window-surface.html",
+    "previous": "labs/nautico-ui-v3/01-griglia-del-fare.html",
+    "reusable": [
+      "src/ui/window-surface.js",
+      "src/ui/window-surface.css",
+      "src/ui/chat-form-module.js",
+      "src/ui/chat-form-module.css",
+      "src/medium.js"
+    ],
+    "bundle_method": "self-contained HTML with K-UX-AI original module implementations inlined for local offline review",
+    "no_upstream_lab_code_copied": true
+  },
+  "tests": [
+    {
+      "suite": "griglia_v4_smoke",
+      "passed": 28,
+      "total": 28,
+      "method": "Chromium Playwright via page.set_content",
+      "scope": "opening, dock, full, draft, minimize/restore, synthetic events, mobile, reduced motion"
+    },
+    {
+      "suite": "griglia_v4_integration",
+      "passed": 28,
+      "total": 28,
+      "method": "Chromium Playwright via page.set_content",
+      "scope": "real v3 work cards coexist, dock reserves canvas, no old assistant card, keyboard, source-demo event return, operator-approved composition, local contribution"
+    },
+    {
+      "suite": "window_surface_regression",
+      "passed": 23,
+      "total": 23,
+      "method": "Chromium Playwright",
+      "scope": "reusable module standalone including mobile/full/notify/receive"
+    },
+    {
+      "suite": "window_surface_extended",
+      "passed": 14,
+      "total": 14,
+      "method": "Chromium Playwright",
+      "scope": "drag, keyboard resize, reversible fullscreen, source notice dedup, responsive geometry"
+    }
+  ],
+  "passed": 93,
+  "total": 93,
+  "correlation": "All suites exercise related source components and synthetic flows; 93 assertions are not independent product validations",
+  "environment": "Chromium headless / browser test host, no external AI provider connected",
+  "defects_during_iteration": [
+    {
+      "problem": "clicking native avatar bypassed host first-work docking policy",
+      "change": "host capture-phase click routing to its only shared Window Surface instance"
+    },
+    {
+      "problem": "full/dock hid the currently focused toolbar button and Escape lost its target",
+      "change": "reusable WindowSurface transfers focus to a surviving visible toolbar control"
+    },
+    {
+      "problem": "a pending demo event did not appear when returning from work to Home",
+      "change": "the closed avatar receives a source-identified pending-event cue"
+    }
+  ],
+  "observed": {
+    "no_duplicate_assistant_panel": true,
+    "no_javascript_page_errors_in_checked_suites": true,
+    "draft_retained_during_full_minimize_restore": true,
+    "dock_shares_space_with_canvas": true,
+    "manual_float_still_possible": true,
+    "mobile_compact_chat_form": true,
+    "source_event_attributed_as_demo": true,
+    "local_form_contribution_registered_in_v3_demo_state": true,
+    "reduced_motion_semantic_parity_in_checked_suites": true
+  },
+  "not_established": [
+    "real Nautico kernel or company source connected",
+    "actual AI conversation, THIA backend, provider or manager roles",
+    "MAIOS Site host chat or deployment",
+    "physical device or full assistive technology audit",
+    "persistent cross-session domain state",
+    "independent usability or human-comprehension validation",
+    "two independent domain kernels collaborating",
+    "original Lab THIA source/runtime installed"
+  ],
+  "warnings": [
+    "Browser visual screenshots are local QA artifacts, not currently committed as images into GitHub",
+    "Legacy v3 assistant HTML branch remains as dead prototype code but is never instantiated by openPanel('chat'); refactor if product integration is selected",
+    "The original event teaser remains an explicit operator choice bar for synthetic events",
+    "Only source-backed local demo inputs and actions are allowed, never remote domain approval"
+  ]
+}
