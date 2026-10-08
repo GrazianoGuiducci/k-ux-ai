@@ -27,6 +27,12 @@ exercise does not define the competence's method or establish the visual and
 interaction quality sought for the continuing product.
 
 
+## Private integrated Griglia v4 — 8 October 2026
+
+The latest private candidate at [labs/nautico-ui-v4/](labs/nautico-ui-v4/) integrates the **actual original K-UX-AI Window Surface and Chat/Form modules** into the v3 Nautico Griglia while leaving other cards intact. It was exercised in correlated Chromium Playwright suites (28/28 + 28/28 integrated and 23/23 + 14/14 reusable-module checks). A newly discovered focus-loss bug when a full/dock control hides itself has been repaired in the shared `window-surface.js` and included in the v4 self-contained HTML.
+
+This is a synthetic receiving composition, **not** the live Nautico source-state owner, THIA backend, Site runtime or a public release. No update to `src/medium.js` or package version is selected.
+
 ## Candidate UI library and Nautico workspace (8 October 2026)
 
 The public product remains **`0.1.0-alpha.1`** and its original medium API remains unchanged. On **private branch `work/ux-ai-ui-library-20261008`**, a source-bound UI cabinet is now reachable through [`docs/ui-library/CURRENT.md`](docs/ui-library/CURRENT.md): 20 original-source references, nine modular behavior families, complete adoption/focus/motion/responsive contracts, and two preserved original Nautico v3 standalone HTML probes.
