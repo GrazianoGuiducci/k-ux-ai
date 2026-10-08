@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>K-UX-AI · Modulo Chat/Form</title>
+  <link rel="stylesheet" href="../../src/ui/window-surface.css">
+  <link rel="stylesheet" href="../../src/ui/chat-form-module.css">
+  <style>
+    :root{font-family:system-ui,'Segoe UI',sans-serif;color:#12323d;background:#e2efdf}
+    *{box-sizing:border-box}body{margin:0;min-height:100dvh}
+    .demo-head{background:#c5ecec;border-bottom:1px solid #79a39c;padding:13px clamp(16px,3vw,42px);display:flex;justify-content:space-between;gap:20px;align-items:center;position:relative;z-index:1}
+    .brand{font-size:19px;font-weight:750;letter-spacing:-.04em}.brand small{font-size:12px;font-weight:450;letter-spacing:0;margin-left:12px}
+    .demo-label{font-size:11px;color:#45676a;font-weight:700;letter-spacing:.11em}
+    .demo-work{padding:clamp(18px,3vw,45px);min-height:calc(100dvh - 67px);transition:margin .32s ease}
+    .intro{display:flex;gap:36px;align-items:start;justify-content:space-between}.intro h1{font-size:clamp(32px,5vw,64px);letter-spacing:-.065em;margin:10px 0;line-height:1.05}
+    .intro p{font-size:16px;line-height:1.55;max-width:690px;margin:0;color:#355b5c}
+    .notice{border-left:3px solid #b18b3e;padding:10px 18px;max-width:360px;background:#f4f3df;font-size:13px}
+    .demo-board{margin-top:25px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;align-items:stretch}
+    .tile{border:1px solid #76a3a1;background:#f9f9ed;padding:20px;min-height:165px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;border-radius:3px}
+    .tile:nth-child(1){grid-column:span 2;grid-row:span 2;min-height:339px;background:#17343b;color:#e7f6ef}
+    .tile:nth-child(2){grid-column:span 2;background:#c7ebdf}
+    .tile:nth-child(3){background:#f3d68e}.tile:nth-child(4){grid-column:span 2;background:#d5e9e0}
+    .tile h2{font-size:clamp(18px,2vw,28px);letter-spacing:-.04em;margin:0}
+    .tile:nth-child(1) h2{font-size:clamp(28px,3.5vw,45px)}
+    .tile small{opacity:.75;font-size:12px}.tile button{border:1px solid currentColor;border-radius:5px;background:transparent;color:inherit;min-height:39px;cursor:pointer;padding:6px 13px;align-self:start}
+    .tile button:hover{background:#66dcb6;color:#17343b}
+    .demo-status{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:16px;font-size:13px;border-top:1px solid #81a3a2;padding-top:15px}
+    .demo-source-status{font-weight:600}
+    .demo-events{margin-top:10px;font:12px/1.5 ui-monospace,monospace;color:#376365;max-width:900px;overflow-wrap:anywhere}
+    .kux-prompt-bar{display:flex;align-items:center;gap:12px}
+    .kux-prompt-bar button{border:1px solid #709b98;background:#fcf0cd;padding:9px 12px;border-radius:5px;cursor:pointer}
+    .demo-work[data-dock=dock-right]{margin-right:min(42vw,680px)}
+    .demo-work[data-dock=dock-left]{margin-left:min(42vw,680px)}
+    .demo-work[data-dock=full]{margin:0}
+    @media(max-width:1100px){.demo-board{grid-template-columns:repeat(3,minmax(0,1fr))}.tile:nth-child(1){grid-column:span 2}.tile:nth-child(2){grid-column:span 1}.tile:nth-child(4){grid-column:span 2}}
+    @media(max-width:719px){.intro{display:block}.notice{margin-top:18px}.demo-board{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{min-height:150px}.tile:nth-child(1){grid-column:span 2;grid-row:span 1;min-height:230px}.tile:nth-child(2),.tile:nth-child(4){grid-column:span 1}.demo-work[data-dock]{margin:0}.demo-status{display:block}.kux-prompt-bar{margin-top:15px}}
+    @media(prefers-reduced-motion:reduce){.demo-work{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="demo-head"><div class="brand">MAIOS <small>K-UX-AI / Laboratorio di modulo</small></div><span class="demo-label">DEMO LOCALE · NESSUNA AI COLLEGATA</span></header>
+  <main class="demo-work" id="demo-work">
+    <div class="intro">
+      <div><span class="demo-label">KERNEL NAUTICO · MODULO SPERIMENTALE</span><h1>Il lavoro decide<br>la forma.</h1>
+        <p>Questa pagina esercita una finestra K-UX-AI riutilizzabile. Apri <strong>Assistente</strong>, sposta, ridimensiona, aggancia o espandi; usa Chat e Modulo senza perdere la bozza.</p></div>
+      <aside class="notice"><strong>Confine del test</strong><p>Eventi e contributi sono sintetici. La richiesta non lascia questo browser; nessun modello AI, yacht o server aziendale viene contattato.</p></aside>
+    </div>
+    <section class="demo-board" aria-label="Attività dimostrative">
+      <article class="tile"><div><small>PRESENTARE</small><h2>Conoscere il Kernel Nautico</h2><p>Partire dal progetto e comprendere cosa cambia.</p></div><button type="button" data-demo-open>Apri l'assistente ↗</button></article>
+      <article class="tile"><div><small>FARE</small><h2>Contributo al progetto</h2><p>Un nuovo punto sull'accesso di poppa.</p></div><button type="button" data-demo-form>Apri il modulo ↗</button></article>
+      <article class="tile"><div><small>CONTROLLARE</small><h2>Verifica</h2><p>Una fonte richiede attenzione.</p></div><button type="button" id="demo-event">Simula evento</button></article>
+      <article class="tile"><div><small>COMUNICARE</small><h2>Dialogo e fonti</h2><p>Chiedere chiarimenti senza assumere capacità non disponibili.</p></div><button type="button" data-demo-open>Dialoga ↗</button></article>
+      <article class="tile"><div><small>ORGANIZZARE</small><h2>Composizione</h2><p>Il medium non sostituisce il Kernel.</p></div><button type="button" id="demo-dock">Aggancia ↗</button></article>
+    </section>
+    <div class="demo-status"><div><span class="demo-source-status" id="demo-status">Stato originale demo, revisione 0</span><br><span id="demo-receipt" role="status">Nessun evento nuovo</span></div><div class="kux-prompt-bar"><button type="button" id="demo-open">Apri modulo</button><button type="button" id="demo-reset-ui">Ripristina vista</button></div></div>
+    <pre id="demo-events" class="demo-events">Evento e UI sono distinti: questa superficie non cambia lo yacht.</pre>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
