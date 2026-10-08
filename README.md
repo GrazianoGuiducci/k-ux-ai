@@ -55,6 +55,16 @@ lavoro cambia. Il contratto non impone un layout o un'ontologia di dominio.
 - [Distribuzione pubblica e adattatori](docs/distribution.md)
 - [Stato corrente](CURRENT_STATE.md)
 
+## Repertorio UI del Kernel — candidato, 8 ottobre 2026
+
+La lane privata [`work/ux-ai-ui-library-20261008`](https://github.com/GrazianoGuiducci/k-ux-ai/tree/work/ux-ai-ui-library-20261008) rende disponibili **sorgenti e contratti completi di interazione** per finestre, avatar, chat, moduli, editor, dashboard e superfici componibili, senza cambiare l'interfaccia `createMedium()`.
+
+- [Rientro corrente della lane](docs/ui-library/CURRENT.md)
+- [Catalogo JSON di nove famiglie e sorgenti owner-native](ui-library/catalog.v0.1.json)
+- [Contratti di composizione, focus, responsive, motion ed effetti](docs/ui-library/OPERATING_CONTRACT.md)
+- [Prove Nautico UI v3: due HTML autonomi](labs/nautico-ui-v3/README.md)
+
+Questo è un **repertorio di fonti e prototipi**, non un'installazione dei componenti THIA/DOMUS né un'integrazione già funzionante nel Site MAIOS. Le sorgenti esterne hanno propri owner, licenze e confini di esecuzione. La versione pubblica del prodotto resta `0.1.0-alpha.1` fino a selezione e qualifica separate.
 ## Percezione ed evoluzione
 
 Immagine, spazio, movimento, testo, suono e modalità ulteriori possono
