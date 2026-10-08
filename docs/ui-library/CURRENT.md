@@ -22,6 +22,21 @@ effect: no release, merge, installation or public site update
 4. Open [Griglia del fare v3](../../labs/nautico-ui-v3/01-griglia-del-fare.html) and [Campo a quattro fonti v3](../../labs/nautico-ui-v3/02-campo-quattro-fonti.html) as standalone **synthetic probes**. Read their [receipt](../../labs/nautico-ui-v3/EVIDENCE.json) before making claims about what is tested.
 5. Only when a real Nautico/coder integration is selected, resolve the **current** owner-native state and source SHA again. These commits are readback coordinates, not permanent freshness claims.
 
+## First native K-UX-AI Chat/Form module — 8 October 2026
+
+The source cabinet now includes a **bounded executable native implementation**, not just upstream references:
+
+- [`createWindowSurface`](../../src/ui/window-surface.js) + [CSS](../../src/ui/window-surface.css) — stable window identity, avatar, attributed cue, directional open/close, free position/resize, edge docking, full-page, keyboard resize, restoration and reduced-motion support.
+- [`createChatFormModule`](../../src/ui/chat-form-module.js) + [CSS](../../src/ui/chat-form-module.css) — Chat/Form in one frame, responsive based on **layout width, not animated bounding box**, splitter, mobile tabs, drafts preserved when the window transforms, host-controlled submissions.
+- [Example using actual `createMedium`](../../examples/window-surface/index.html) and [example contract/readme](../../examples/window-surface/README.md). Demonstration state and event IDs are **synthetic**; no AI backend or real Nautico state is connected.
+- [Bounded QA receipt](../../examples/window-surface/evidence.json): 23/23 primary + 14/14 additional browser assertions on related flows, zero page errors observed. The tests were run on a self-contained inline composition of the same JS/CSS modules via Chromium `set_content` because the current browser runtime blocked file:// and localhost navigation. The repository's modular HTTP-served build was not independently browser-tested.
+
+Useful learning: during an avatar-origin animation, `getBoundingClientRect().width` shrinks because CSS transform changes visual geometry; internal module responsiveness must measure layout width (`offsetWidth`) instead. A denied browser storage must not disable the module. Free dragging must keep resize handles reachable within the viewport.
+
+**Not yet complete:** full THIA/DOMUS parity, agent/provider transport, manager privileges, actual Nautico owner event stream, general multiwindow orchestration, first-drag expansion/undock-from-full behavior, fully audited accessibility or real Site integration.
+
+This new code does not bump the public alpha or replace the historical source cabinet. Continue owner-native work from this precise candidate and the original THIA parity sources rather than copying host API/credentials.
+
 ## What moved
 
 The operator requested that the behavior of the Lab D-ND HTML/JavaScript assistant and adjacent original UI modules be made reachable within K-UX-AI, **before any new HTML generation or Codex site integration**. The need is to recover full behavior (drag, resize, inverse motion, two-pane modals, mobile, manager, guided forms, scroll/focus, state and effect boundaries), not to import its look.
