@@ -65,6 +65,12 @@ La lane privata [`work/ux-ai-ui-library-20261008`](https://github.com/GrazianoGu
 - [Prove Nautico UI v3: due HTML autonomi](labs/nautico-ui-v3/README.md)
 
 Questo è un **repertorio di fonti e prototipi**, non un'installazione dei componenti THIA/DOMUS né un'integrazione già funzionante nel Site MAIOS. Le sorgenti esterne hanno propri owner, licenze e confini di esecuzione. La versione pubblica del prodotto resta `0.1.0-alpha.1` fino a selezione e qualifica separate.
+## Primo modulo UI originale — candidato nel branch privato
+
+Il repertorio include ora una **prima unità eseguibile originale**: [Window Surface](src/ui/window-surface.js) + [Chat/Form](src/ui/chat-form-module.js), con CSS separato e un [esempio integrato al contratto `createMedium()`](examples/window-surface/index.html).
+
+La superficie può passare da avatar a finestra libera, sidebar agganciata e pagina intera; il contenuto Chat/Form si ricompone per **larghezza interna** e mantiene la bozza nelle trasformazioni. Nessuna API THIA o permesso del Lab è incorporato. Consulta [limiti, prove e prossimo movimento](docs/ui-library/CURRENT.md).
+
 ## Percezione ed evoluzione
 
 Immagine, spazio, movimento, testo, suono e modalità ulteriori possono
