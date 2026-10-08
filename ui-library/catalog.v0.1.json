@@ -372,6 +372,13 @@
       "id": "quattro-fonti-v3",
       "path": "labs/nautico-ui-v3/02-campo-quattro-fonti.html",
       "status": "LAB_EXERCISED_SYNTHETIC_NO_LIVE_KERNEL"
+    },
+    {
+      "id": "griglia-del-fare-v4-reusable-chat",
+      "path": "labs/nautico-ui-v4/01-griglia-chat-window-surface.html",
+      "status": "LAB_EXERCISED_SYNTHETIC_REUSABLE_WINDOW_CHATFORM_NOT_LIVE_KERNEL",
+      "contract": "docs/ui-library/OPERATING_CONTRACT.md",
+      "evidence": "labs/nautico-ui-v4/EVIDENCE.json"
     }
   ],
   "licensing": "No upstream source code is copied from Lab/THIA/Seed/Setup into this cabinet. Their source license and commercial reuse must be qualified with their owners; Seed package declares PolyForm-Noncommercial-1.0.0.",
@@ -381,7 +388,9 @@
     "no_live_AI": true,
     "no_public_site_effect": true,
     "no_real_nautico_store_in_lab": true,
-    "original_live_deployment_not_verified": true
+    "original_live_deployment_not_verified": true,
+    "current_integration": "labs/nautico-ui-v4/EVIDENCE.json",
+    "integration_scope": "Griglia v3 original local domain cards + K-UX-AI Window Surface/ChatForm v0.1 in one synthetic receiving host"
   },
   "no_claim": [
     "3 production-ready chat systems",
