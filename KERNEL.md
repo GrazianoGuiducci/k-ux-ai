@@ -41,6 +41,12 @@ L'operatore può richiedere una composizione percettiva nuova, ma **un component
 Avatar, card, chat, form, editor, dashboard, sidebar e piena pagina sono possibili **incarnazioni** di una relazione di lavoro. Un cambiamento di forma non muta il dominio; i fatti restano al kernel ricevente, l'interazione ritorna al suo controller e un host reale continua a detenere le autorizzazioni delle proprie azioni.
 
 Il riuso comprende l'intero contratto necessario (responsive interno, focus, movimento, persistenza, ripristino, contenuto non inviato, confini degli effetti). La presenza di una dimostrazione sintetica non prova apprendimento autonomo, provider attivo o comprensione umana. La UI può anche restare immutata quando il lavoro non richiede un nuovo movimento.
+### Prima incarnazione completa candidata
+
+Il modulo K-UX-AI [Window Surface](src/ui/window-surface.js) + [Chat/Form](src/ui/chat-form-module.js) è stato costruito e esercitato in una demo locale senza provider. Conferma che il campo del kernel può proporre un evento con identità, la finestra può mostrare un avviso in stato avatar e l'intervento dell'operatore può tornare a `createMedium().dispatch()`. Il ricevente sintetico conserva il proprio stato e produce `receive()` quando cambia.
+
+Il contenitore non crea la verità dell'evento, non apprende automaticamente come disporre tutto e non porta i diritti del gestore Lab/THIA. Il tempo della transizione appartiene alla lettura percettiva, non alla certificazione del lavoro. Le [prove](examples/window-surface/evidence.json) sono locali e il Site Nautico resta un effetto separato.
+
 ## Primo caso
 
 Kernel Nautico è il primo caso di sviluppo: una domanda sull'accesso a poppa
