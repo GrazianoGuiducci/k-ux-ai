@@ -1,0 +1,50 @@
+{
+  "schema": "kuxai.lab.v49.campo-evolutivo-evidence.v1",
+  "date": "2026-10-09",
+  "repository": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "source": {
+    "path": "labs/nautico-ui-v4/10-griglia-campo-evolutivo.html",
+    "blob_sha": "bd85631db3bfe8e25333f1dcf684db2989a4d22a",
+    "sha256": "8448c1eb8bd2a76237ebb66763535b40e0fe223baa65521e8013f1de3d978d8e",
+    "bytes": 285123,
+    "previous": "labs/nautico-ui-v4/09-griglia-contesto-focus.html",
+    "builder": "build_v49.py in user downloadable source package",
+    "baseline": "v4.8 at fc212e74fe2e8f39b8c2a6becdaa91eeb390739e"
+  },
+  "suites": [
+    {
+      "file": "tests/test_v49.py",
+      "passed": 53,
+      "total": 53,
+      "scope": "Home feature/packing, avatar double-close, sidebar footer, manual columns, free resize, mobile"
+    },
+    {
+      "file": "tests/test_v49_extended.py",
+      "passed": 39,
+      "total": 39,
+      "scope": "Exact occupied home cells, 2/3/4 column behavior, multi gesture, recompose, mobile and Libero round-trip"
+    },
+    {
+      "file": "normal-motion smoke",
+      "passed": 2,
+      "total": 2,
+      "scope": "1680 and 390 normal animation with no page errors"
+    }
+  ],
+  "passed": 94,
+  "total": 94,
+  "correlated": true,
+  "page_errors_observed": 0,
+  "environment": "Chromium headless Playwright page.set_content (normal and reduced motion); no direct Edge file:// browser automation",
+  "not_established": [
+    "Independent usability validation",
+    "Edge file:// readback, touch physical or full assistive audit",
+    "Source-owned real Kernel Nautico state or authority",
+    "AI provider or installed Section Kernel",
+    "Persistent cross-session preferences in test host; localStorage denied",
+    "Modular product refactor completed",
+    "Merge, public release or site deployment"
+  ],
+  "effect": "Candidate source added to existing K-UX-AI development branch only; main and Nautico left unchanged"
+}

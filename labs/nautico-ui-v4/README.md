@@ -1,5 +1,12 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 9 ottobre 2026 — v4.9 Campo evolutivo
+
+[HTML autonomo v4.9](10-griglia-campo-evolutivo.html) · [sorgente e metodo](FIELD_COMPOSITION_V49_20261009.md) · [ricevuta](EVIDENCE_CAMPO_EVOLUTIVO_20261009.json). La Home passa a una matrice piena senza le celle vuote di v4.8; il drag sopra un'altra tessera rende principale quella trascinata. Avatar già aperto: due click per chiudere; Chat/Home affiancate alla base della sidebar. Contesto/Azione in primo piano, separatori indipendenti per colonne realmente disponibili, gestione Libero che preserva dimensioni manuali. Il builder con test e baseline v4.8 è nel pacchetto scaricabile consegnato all'operatore; nel repository resta anche l'HTML esatto.
+
+94/94 controlli **correlati** (53+39+2 smoke), senza errori JS osservati; non è prova di Edge dell'operatore, touch fisico, AI, eventi Nautico reali, o refactor modulare completo. Nessun merge, release, deployment o mutazione Nautico.
+
+
 ## 9 ottobre 2026 — v4.8 Contesto e Focus stabili
 
 [HTML autonomo](09-griglia-contesto-focus.html) · [sorgente/decisioni](CONTEXT_FOCUS_20261009.md) · [prove attribuite](EVIDENCE_CONTEXT_FOCUS_20261009.json) · [moduli della composizione](source-v48/). Divisore centrale stabile sul tap, drag con isteresi di pairing e allineamento al bordo delle medie anche con assistente dock; avatar già aperto senza hover peek duplicato e click ripetuto idempotente; uno scroller degli avatar; **Contesto → Azione** sempre visibili in testata, incluso mobile.

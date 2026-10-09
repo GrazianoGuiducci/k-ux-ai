@@ -1,5 +1,14 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Risultante 9 ottobre — v4.9 Campo evolutivo
+
+Dalle quattro osservazioni Edge sulla v4.8: la Home deve colmare i vuoti e consentire la promozione tramite drag di una tessera sopra un'altra; le finestre Libero non devono essere riordinate o ridimensionate senza gesto corrispondente; la sidebar deve preservare spazio agli avatar con Chat/Home sulla stessa riga; Contesto/Azione restano visibili; ogni confine reale di colonna deve avere una maniglia indipendente. [HTML v4.9](../../labs/nautico-ui-v4/10-griglia-campo-evolutivo.html), [decisioni](../../labs/nautico-ui-v4/FIELD_COMPOSITION_V49_20261009.md), [evidenza](../../labs/nautico-ui-v4/EVIDENCE_CAMPO_EVOLUTIVO_20261009.json).
+
+HTML exact blob `bd85631db3bfe8e25333f1dcf684db2989a4d22a`, SHA256 `8448c1eb8bd2a76237ebb66763535b40e0fe223baa65521e8013f1de3d978d8e`; test in Chromium headless 53/53 e 39/39 più 2 smoke normale-motion, tutti correlati, zero JS error nei percorsi. Mappa Home senza lacune, 1+2 maniglie Adatta quando medie affiancate, 1/2 maniglie in 2/3 colonne quando fisicamente valide, doppia conferma avatar, Libero dimensioni restaurate. La sorgente è una trasformazione controllata dell'HTML v4.8, non un refactor completo del monolite. Il pacchetto operatore contiene il builder e i test; l'evidenza non rivendica storage, Edge reale, AI, Nautico live, touch/AT.
+
+**Prossimo:** esercizio Edge; nessun altro layout, merge o integrazione Nautico/MAIOS selezionata per inerzia.
+
+
 ## Nuova candidata — v4.8 Contesto → Azione e divider stabile (9 ottobre 2026)
 
 Da tre schermate Edge e osservazione operatore: [v4.8](../../labs/nautico-ui-v4/09-griglia-contesto-focus.html) corregge touch/drag del divisore e l'auto pairing oscillante delle medie, il ridimensionamento quando l'assistente riduce lo stage, l'hover di un avatar già attivo, la ripetizione del click, i due scroller della sidebar e la scarsa visibilità del contesto. La sorgente sposta l'unico selettore reale prima dell'azione corrente e non altera la semantica del Nautico o i suoi dati. [Ragioni e confini](../../labs/nautico-ui-v4/CONTEXT_FOCUS_20261009.md).
