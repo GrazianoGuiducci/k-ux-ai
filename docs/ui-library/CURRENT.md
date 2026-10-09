@@ -1,5 +1,16 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Resultant privato 9 ottobre 2026 — Griglia v4.4, slot + sezione
+
+Da screenshot dell'operatore v4.3: focus semantico bloccato non impediva sovrapposizione delle card libere, drag da griglia sganciava il campo, mini anteprima aveva comportamento di movimento/resize incongruente. La nuova [v4.4](../../labs/nautico-ui-v4/05-griglia-ecosistemi-smart-slots.html) introduce una composizione dei ruoli Grande/Media/Piccola/Full indipendente dallo stato di dominio, mappa facoltativa negli avatar, collocazione in griglia per trascinamento, lettura preview mobile e ridimensionabile, focus non rubato e 750 ms sui passaggi strutturali con reduced-motion equivalente.
+
+La [Section Workspace dimostrativa](../../labs/nautico-ui-v4/SMART_GRID_SECTION_ECOSYSTEM_20261009.md) dimostra quadro, fonti, conversazione e collegamenti dentro una card senza montare automaticamente un Section Kernel o AI provider. Kernel Nautico conserva la propria semantica e topologia federata; il primo collegamento reale resta un **altro** movimento con fonte/revisione/owner/autorità. L'ipotesi SK è possibilità, non nuova architettura promossa.
+
+[Evidence v4.4](../../labs/nautico-ui-v4/EVIDENCE_SMART_GRID_20261009.json): 23/23 + 26/26 + 10/10 assertions Chromium locali, correlate, 0 page errors osservati, identificati con blob `de2dc784d9a51f162cd13587c9ca0d461b396c47`. Test riproducibili consegnati in pacchetto separato. Nessun `main`/release/deploy/site/Kernel Nautico modificato.
+
+**Prossimo rientro:** prima leggere questo CURRENT e osservare la v4.4 insieme all'operatore; una nuova differenza reale può richiedere un evento source-owned Nautico, non aggiungere altre card o una finta AI per inerzia.
+
+
 ## Rientro del 9 ottobre 2026 — Griglia del fare v4.3, focus dinamico
 
 L'operatore ha osservato quattro schermate della v4.2 e ha distinto una nuova pressione: lo spazio e l'attenzione non si distribuiscono automaticamente allo stesso modo. Una sola attività occupa il campo; due lo condividono; dalla terza il focus può prevalere, senza escludere gli altri oggetti. Aggiungere o controllare una scheda non autorizza di per sé a perdere il focus principale. È pertanto pertinente la distinzione [anteprima/attività/focus/full e Ricomponi](../../labs/nautico-ui-v4/FOCUS_COMPOSITION_20261009.md), non un semplice cambio di proporzioni.

@@ -1,5 +1,14 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 9 ottobre 2026 — Griglia del fare v4.4, ruoli e ambiente di sezione
+
+**Candidato successivo alla v4.3**, conservando tutte le precedenti versioni. [Apri il nuovo HTML](05-griglia-ecosistemi-smart-slots.html) e leggi [dinamiche, significato, limiti e sezione](SMART_GRID_SECTION_ECOSYSTEM_20261009.md) e la [ricevuta](EVIDENCE_SMART_GRID_20261009.json).
+
+La mappa (▦) dell'avatar rende raggiungibili Grande/Media/Piccola; un click semplice aggiunge l'attività come complemento quando è attivo Mantieni focus. Il drag in griglia assegna lo slot senza sganciare l'intero campo; le altre card restano scrollabili. La quick preview ora consente spostamento e resize reali. Le transizioni strutturali hanno durata indicativa 750 ms, mentre la manipolazione diretta segue il puntatore. L'ambiente interno della card (◇) comprende quadro/fonti/conversazione/collegamenti, ma conserva solo note demo: nessuna AI o Section Kernel operativo è montato.
+
+59/59 controlli Playwright Chromium correlati su tre suite con dati locali e zero page errors nei casi osservati; non è prova di Edge, touch fisico, source Nautico live o agenti AI. Codice pubblico, `src/medium.js`, Kernel Nautico e MAIOS Site non modificati. Nessun rilascio o merge.
+
+
 ## Griglia del fare v4.3 — focus, anteprime e riorganizzazione, 9 ottobre 2026
 
 [Apri la **v4.3 Focus dinamico**](04-griglia-focus-dinamico.html), candidato HTML autonomo originato dalle quattro schermate e dalla nuova richiesta dell'operatore. La [fonte del comportamento](FOCUS_COMPOSITION_20261009.md) e [la ricevuta](EVIDENCE_FOCUS_20261009.json) conservano le distinzioni esercitate.

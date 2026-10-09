@@ -1,0 +1,53 @@
+{
+  "schema": "kuxai.griglia-v4.4.focus-slots-section-ecosystem-probe.v1",
+  "date": "2026-10-09",
+  "owner": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "base_commit": "6a6b3bd1263f4f757bbb366ba6e3e509ffd153a2",
+  "artifact": {
+    "path": "labs/nautico-ui-v4/05-griglia-ecosistemi-smart-slots.html",
+    "git_blob_sha": "de2dc784d9a51f162cd13587c9ca0d461b396c47",
+    "sha256": "1d567f4bdd28d0175689744e135d8b7f5f1797d7817eceee30a4d82accb6b27c",
+    "bytes": 222308
+  },
+  "source": "operator-supplied browser screenshot v4.3 + original K-UX-AI v4.3 candidate; synthetic Nautico case",
+  "tests": [
+    {
+      "suite": "qa_v44.py",
+      "passed": 23,
+      "total": 23,
+      "scope": "focus lock, pair/roles, no overlap, drag/resize peek, slot map, local section, mini->large, mobile"
+    },
+    {
+      "suite": "qa_v44_extended.py",
+      "passed": 26,
+      "total": 26,
+      "scope": "8 panels, desktop and mobile 1680/1040/390/375, scroll, slot drag, keyboard, preview resize, full escape/return, motion 750ms"
+    },
+    {
+      "suite": "qa_v44_functional.py",
+      "passed": 10,
+      "total": 10,
+      "scope": "avatar hover map, focus preserved, mini expansion, section draft and notes, cross-activity link, 3-col alternative, full return"
+    }
+  ],
+  "total": {
+    "passed": 59,
+    "assertions": 59,
+    "correlated": true,
+    "javascript_page_errors_observed": 0
+  },
+  "environment": "Python Playwright, Chromium headless, file content provided via page.set_content; normal and reduced motion; mobile touch emulation not physical touch",
+  "tests_reproducibility": "QA scripts and screenshots preserved in the generated downloadable KUX_v44_Smart_Grid_Section_Ecosystem_20261009.zip; not part of this GitHub commit",
+  "not_established": [
+    "real Kernel Nautico event source",
+    "actual section kernel installation",
+    "AI provider or inference",
+    "human independent UX validation",
+    "physical touch or screen reader audit",
+    "Edge file:// use verification",
+    "actual outside domain changes",
+    "public Site update"
+  ],
+  "effects": "candidate commit to current K-UX-AI work branch only; no merge/tag/release/deploy; Nautico owner unchanged"
+}
