@@ -1,5 +1,13 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Nuova candidata — v4.8 Contesto → Azione e divider stabile (9 ottobre 2026)
+
+Da tre schermate Edge e osservazione operatore: [v4.8](../../labs/nautico-ui-v4/09-griglia-contesto-focus.html) corregge touch/drag del divisore e l'auto pairing oscillante delle medie, il ridimensionamento quando l'assistente riduce lo stage, l'hover di un avatar già attivo, la ripetizione del click, i due scroller della sidebar e la scarsa visibilità del contesto. La sorgente sposta l'unico selettore reale prima dell'azione corrente e non altera la semantica del Nautico o i suoi dati. [Ragioni e confini](../../labs/nautico-ui-v4/CONTEXT_FOCUS_20261009.md).
+
+Prove locali nuove 100/100, più suite v4.7 rieseguite sul file corrente 97/97 e 51/51, correlate; no JS page errors nei percorsi Chromium. [EVIDENCE](../../labs/nautico-ui-v4/EVIDENCE_CONTEXT_FOCUS_20261009.json). HTML blob `d4534238ee0ae8c587132a0736e0bfb99a335951`. Builder, baseline e screenshot/test nel pacchetto scaricabile. La v4.7 resta invariata.
+
+**Prossimo movimento:** osservazione Edge del comportamento reale; soltanto dopo un nuovo caso owner-native Nautico o un'integrazione assistente/AI selezionati. Nessun merge, release, deploy, modifica a Kernel Nautico, aggiornamento di provider o competenza assimilata rivendicata.
+
 ## Ultimo candidato — K-UX-AI v4.7 (9 ottobre 2026)
 
 Da osservazione Edge dell'operatore: la barra di avatar chiusa e' ora un campo stabile di icone a 86px; le anteprime complete vivono nella barra aperta 255–395px e il quickpeek dell'avatar e' attivo solo a barra chiusa. [Nuovo HTML](../../labs/nautico-ui-v4/08-griglia-campo-medie.html), [contratto](../../labs/nautico-ui-v4/FIELD_AND_RESPONSE_MEDIUM_20261009.md), [evidenza](../../labs/nautico-ui-v4/EVIDENCE_FIELD_20261009.json).

@@ -1,0 +1,62 @@
+{
+  "schema": "kuxai.v48.context-focus-local-evidence.v1",
+  "date": "2026-10-09",
+  "owner": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "artifact": {
+    "path": "labs/nautico-ui-v4/09-griglia-contesto-focus.html",
+    "git_blob_sha": "d4534238ee0ae8c587132a0736e0bfb99a335951",
+    "sha256": "d421e729507b1aa1a8c00bba7b4ca2e2a8dc24c2ef2ca9bec017f8490a147978",
+    "bytes": 268723
+  },
+  "previous": {
+    "path": "labs/nautico-ui-v4/08-griglia-campo-medie.html",
+    "blob": "08834da1c5e3edb9f40a5cce6d1d4dfb8aaff4a3"
+  },
+  "method": "Playwright Chromium headless via page.set_content; tests and builder in downloadable ZIP",
+  "tests": [
+    {
+      "name": "test_v48.py",
+      "passed": 100,
+      "total": 100,
+      "conditions": [
+        "1700x900 reduced",
+        "1600x900 normal",
+        "1280x800 reduced",
+        "1050x800 normal",
+        "390x844 reduced",
+        "375x667 normal"
+      ]
+    },
+    {
+      "name": "test_layout_regression.py",
+      "passed": 97,
+      "total": 97
+    },
+    {
+      "name": "test_interactions_regression.py",
+      "passed": 51,
+      "total": 51
+    }
+  ],
+  "total": 248,
+  "passed": 248,
+  "correlated": true,
+  "page_errors_observed": 0,
+  "coverage": [
+    "divider tap no reflow, drag, assistant-docked alignment",
+    "active avatar peek suppression and idempotent activation",
+    "single sidebar scroller",
+    "context then action visible, mobile scroll and resizing",
+    "legacy v4.7 layout and interactions"
+  ],
+  "not_established": [
+    "operator Edge file:// / hardware",
+    "assistive technology audit",
+    "external LLM/provider",
+    "true Nautico kernel event and authority",
+    "actual competence assimilation",
+    "PC shared filesystem integration"
+  ],
+  "effects": "K-UX-AI development branch only, no public main or Nautico mutation/release/deploy"
+}

@@ -1,5 +1,11 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 9 ottobre 2026 — v4.8 Contesto e Focus stabili
+
+[HTML autonomo](09-griglia-contesto-focus.html) · [sorgente/decisioni](CONTEXT_FOCUS_20261009.md) · [prove attribuite](EVIDENCE_CONTEXT_FOCUS_20261009.json) · [moduli della composizione](source-v48/). Divisore centrale stabile sul tap, drag con isteresi di pairing e allineamento al bordo delle medie anche con assistente dock; avatar già aperto senza hover peek duplicato e click ripetuto idempotente; uno scroller degli avatar; **Contesto → Azione** sempre visibili in testata, incluso mobile.
+
+100+97+51 = 248 check Chromium correlati, zero errori JS osservati. Builder e suite riproducibili nel pacchetto della conversazione. Nessuna AI reale, data-source Nautico, merge/release/deploy. La v4.7 e le prove precedenti restano intatte.
+
 ## 9 ottobre 2026 — v4.7 Sidebar + Medie affiancate
 
 [Apri HTML](08-griglia-campo-medie.html) · [metodo, significato e orizzonte artefatti](FIELD_AND_RESPONSE_MEDIUM_20261009.md) · [ricevuta](EVIDENCE_FIELD_20261009.json) · [JS/CSS](source-v47/). La barra chiusa è larga 86px, con icone distanziate e anteprima solo su hover; quella aperta contiene già preview scorrevoli e non apre un ulteriore popup dagli avatar. La mappa tratta le medie come un solo settore; affianca due card solo con larghezza adeguata o le impila conservando lo scroll. Divisore 27–60%.
