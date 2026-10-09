@@ -1,5 +1,22 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## Griglia del fare v4.3 — focus, anteprime e riorganizzazione, 9 ottobre 2026
+
+[Apri la **v4.3 Focus dinamico**](04-griglia-focus-dinamico.html), candidato HTML autonomo originato dalle quattro schermate e dalla nuova richiesta dell'operatore. La [fonte del comportamento](FOCUS_COMPOSITION_20261009.md) e [la ricevuta](EVIDENCE_FOCUS_20261009.json) conservano le distinzioni esercitate.
+
+Il nuovo *campo operativo* interpreta **aprire**, **leggere in anteprima**, **promuovere a focus** e **pagina intera** come azioni differenti:
+- 1 attività: occupa il campo. 2: dividono il campo. 3 o 4: la principale riceve più spazio, le altre restano consultabili. 5+: campo scorrevole, principale riconoscibile, le altre non scompaiono. Le modalità scelte 2/3/4 e Libero restano disponibili e soggette allo spazio reale.
+- **Mantieni focus** protegge il principale dalle aperture ordinarie, ma un'esplicita selezione dal menu focus o "Porta al centro" può cambiarlo.
+- **Anteprima** è un livello di sola lettura che mostra informazioni e notifiche della demo; non apre un'attività, non cambia il controller e non prende il focus. Nel picker "Aggiungi" e accanto agli avatar si può scegliere senza aprire.
+- **Ricomponi** riporta alla disposizione adattiva senza minimizzare le attività, perdere input locali o sostituire la geometria manuale salvata per Libero.
+- La pagina intera prende temporaneamente la precedenza e ripristina il focus precedente quando termina; la chiusura di una scheda secondaria non sottrae il focus bloccato.
+- Le card libere usano una maniglia esplicita con lo stesso aspetto e cursore diagonale della Window Surface/Chat. Nella griglia, la misura della card appartiene al layout anziché a una maniglia inefficace. Un semplice click sull'intestazione non porta più la griglia in Libero: il trascinamento richiede un gesto misurabile.
+
+[Verifiche](EVIDENCE_FOCUS_20261009.json): 160/160 controlli di comportamento e 66/66 controlli aggiuntivi multi-card, correlati sullo stesso HTML e tramite `page.set_content`. Sono prove locali sintetiche; nessuna compatibilità con touchscreen fisici/tecnologie assistive, eventi owner-native Nautico, AI remota o MAIOS deploy è attestata.
+
+Le versioni v4.0–v4.2 e relative ricevute rimangono intatte, così come `src/ui/window-surface.js` e il contratto pubblico `src/medium.js`. La v4.3 è una candidata privata, non una release.
+
+
 ## Griglia v4.2 — workspace adattivo, 8 ottobre 2026
 
 **Nuovo esercizio selezionato dall'osservazione dell'operatore**: nelle schermate originali la griglia non rendeva usabili insieme le card su mobile, il menu Strumenti poteva essere coperto, le disposizioni numeriche sovrapponevano o minimizzavano card, mancavano tre colonne e le barre/attività laterali occupavano spazio utile.

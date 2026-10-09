@@ -1,0 +1,73 @@
+{
+  "schema": "kuxai.nautico.griglia-v4.3.focus-composition-evidence.v1",
+  "date": "2026-10-09",
+  "owner": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "source": {
+    "html": "labs/nautico-ui-v4/04-griglia-focus-dinamico.html",
+    "git_blob_sha": "75d065cb961d28b545c77f820d9328abeec7663e",
+    "sha256": "f7cd9dc8bd11798cc54329467ea08ee2ad307da5ab509f216596577540c8d0d4",
+    "previous": "labs/nautico-ui-v4/03-griglia-responsive-workspace.html",
+    "source_state": "synthetic local Nautico illustration",
+    "reusable_components": "Window Surface and Chat/Form inlined from previous K-UX-AI source"
+  },
+  "tests": [
+    {
+      "name": "qa_v43_focus",
+      "passed": 160,
+      "total": 160,
+      "viewports": [
+        "1600x900 reduced",
+        "1280x800 normal",
+        "900x760 reduced",
+        "390x844 reduced",
+        "375x667 normal",
+        "1450x850 reduced free/resize flow"
+      ],
+      "method": "Python Playwright Chromium via page.set_content exact HTML",
+      "coverage": [
+        "single pane fills",
+        "two equal panes",
+        "three focused weighted",
+        "locked focus preserved on add",
+        "preview no add/no promote",
+        "explicit focus change",
+        "recompose preserves selection and draft",
+        "fullscreen Escape returns prior focus",
+        "mobile scroll",
+        "free card/chat resize cursor parity"
+      ],
+      "page_errors": 0
+    },
+    {
+      "name": "qa_v43_many",
+      "passed": 66,
+      "total": 66,
+      "viewports": [
+        "1680x960 reduced",
+        "1050x760 reduced",
+        "390x844 reduced"
+      ],
+      "method": "Python Playwright Chromium via page.set_content exact HTML",
+      "coverage": [
+        "eight cards nonoverlap and stage scroll",
+        "peek overlay and source demo",
+        "synthetic event leaves focus",
+        "locked focus survives secondary close",
+        "reading secondary without promotion",
+        "recompose remains view-only"
+      ],
+      "page_errors": 0
+    }
+  ],
+  "correlated": true,
+  "independent_human_validation": false,
+  "warnings": [
+    "Local file:// navigation blocked by test receiver; tested with page.set_content",
+    "Browser tests are related probes and not independent product acceptance",
+    "No validation with actual assistive technology, physical touch devices or independent operators",
+    "Actual Nautico kernel/source state, real AI/provider or MAIOS site never connected",
+    "The design's proportional ratios are contextual to this illustrative field, not universal defaults"
+  ],
+  "effects": "candidate source committed on private work branch only; no merge, public release, actual domain mutation or deployment"
+}

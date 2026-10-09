@@ -1,5 +1,16 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Rientro del 9 ottobre 2026 — Griglia del fare v4.3, focus dinamico
+
+L'operatore ha osservato quattro schermate della v4.2 e ha distinto una nuova pressione: lo spazio e l'attenzione non si distribuiscono automaticamente allo stesso modo. Una sola attività occupa il campo; due lo condividono; dalla terza il focus può prevalere, senza escludere gli altri oggetti. Aggiungere o controllare una scheda non autorizza di per sé a perdere il focus principale. È pertanto pertinente la distinzione [anteprima/attività/focus/full e Ricomponi](../../labs/nautico-ui-v4/FOCUS_COMPOSITION_20261009.md), non un semplice cambio di proporzioni.
+
+**Artefatto corrente:** [Griglia v4.3 Focus dinamico](../../labs/nautico-ui-v4/04-griglia-focus-dinamico.html), blob Git `75d065cb961d28b545c77f820d9328abeec7663e` e [receipt separato](../../labs/nautico-ui-v4/EVIDENCE_FOCUS_20261009.json). Il prototipo accetta selezioni e produce cambi di layout/attenzione locali; la sorgente di stato e gli eventi Nautico rimangono *sintetici*. Il focus bloccabile protegge le aperture successive; l'anteprima mostra fonte, dato ancora da qualificare, ultime tracce/segnali demo senza aprire/approvare; la pagina intera è temporanea; Ricomponi non elimina i pannelli e non resetta i dati. L'input di resize di chat e card free ha un'impugnatura visiva e un cursor uguali nel ricevente di laboratorio.
+
+**Evidenza propria:** 160/160 + 66/66 controlli browser Playwright/Chromium headless su dati locali, zero page errors rilevati nelle suite, su viewport 375–1680, modalità normale e reduced-motion. Queste due prove sono correlate e non 226 validazioni indipendenti. Test eseguiti con `page.set_content` perché `file://` era bloccato nel receiver di prova. Prova di navigazione diretta in Edge, touch fisico, utenti reali e accessibilità completa non acquisita. Le ricevute storiche v4–v4.2 restano valide solo per le loro identità testate.
+
+**Confini:** non cambia `main`, `src/medium.js`, Kernel Nautico, THIA/provider, pubblico MAIOS, release o deploy. Il prossimo effetto non è selezionato automaticamente: prima osservare il candidato con l'operatore, poi eventualmente usare un vero cambiamento source-owned del Kernel Nautico nel suo receiver. La forma del campo non è autorità sul lavoro o sul suo significato.
+
+
 ## Ultima risultante — Griglia v4.2 workspace adattivo (8 ottobre 2026)
 
 Le schermate osservate dall'operatore hanno selezionato un problema concreto di composizione: tutte le card operative devono restare esplorabili, anche su telefono, senza che il layout diventi una quota di attività visibili. La candidata [Griglia v4.2](../../labs/nautico-ui-v4/03-griglia-responsive-workspace.html) separa il contenuto owner-native dalla sua occupazione spaziale; il [documento di decisione](../../labs/nautico-ui-v4/RESPONSIVE_DESIGN_20261008.md) conserva motivazioni, alternative e confini.
