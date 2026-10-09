@@ -1,5 +1,12 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima candidata 9 ottobre — v4.6 Convergenza
+
+Dal feedback dell'operatore: sidebar da Nautico con avatar e anteprime, area principale/complementari ridimensionabile, chat globale e dialoghi locali, contributi candidati non assimilati, Presentare FORM/BUILD/LIVE/RETURN, etichetta Media affiancata. [Bundle HTML](../../labs/nautico-ui-v4/07-griglia-convergenza.html), [fonte/contratto](../../labs/nautico-ui-v4/CONVERGENCE_20261009.md), [receipt](../../labs/nautico-ui-v4/EVIDENCE_CONVERGENCE_20261009.json), due [moduli sorgente](../../labs/nautico-ui-v4/source-v46/); builder e script nel pacchetto ZIP dell'interazione.
+
+HTML blob `39cdf482ec810437b79aa16d6e39a6653c1f8f87`; due suite Chromium correlate 64/64 + 30/30, zero page errors osservati con `page.set_content`. Non dimostra AI reale, SK, assimilazione, filesystem Codex o Nautico live. Nessun merge/release/deploy. Prossimo: prova Edge dell'operatore o nuovo movimento owner-native distinto.
+
+
 ## Ultima risultante — Griglia v4.5 Campo focale (9 ottobre 2026)
 
 Nuova osservazione diretta: nella v4.4 l'operatore ha chiesto **anteprima diretta sull'hover** dell'avatar anziché mini-icona, click sempre nel posto principale spostando il precedente in seconda posizione, drag che riorganizza il campo, audit delle icone, una scheda dominante e altre impilate in una colonna, con opzione due-affiancate solo con spazio sufficiente. La [v4.5](../../labs/nautico-ui-v4/06-griglia-campo-focale.html) implementa questa relazione e conserva `main` e le v4.0–v4.4 storiche invariate.

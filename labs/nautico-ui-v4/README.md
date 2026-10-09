@@ -1,5 +1,10 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## Candidato 9 ottobre — v4.6 Convergenza
+
+[Prototipo v4.6](07-griglia-convergenza.html) · [contratto e confini](CONVERGENCE_20261009.md) · [receipt](EVIDENCE_CONVERGENCE_20261009.json) · [nuovi moduli](source-v46/). Chat per scheda e chat generale **dimostrative**, barra avatar espandibile, divisore principale/complementari, card Presentare e Media affiancata. Build/test riproducibili nel pacchetto dell'interazione, non un provider live. 64/64 + 30/30 test correlati. Nessun merge, deploy, Nautico o MAIOS modificato.
+
+
 ## Griglia v4.5 — 9 ottobre 2026 · campo focale e avatar diretti
 
 [Apri il candidato autonomo](06-griglia-campo-focale.html) e [leggi il contratto situato](FOCAL_FIELD_20261009.md) con [ricevuta](EVIDENCE_FOCAL_FIELD_20261009.json). Questa revisione risponde all'osservazione dell'operatore sulla v4.4; le versioni precedenti e le loro ricevute restano intatte.

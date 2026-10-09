@@ -1,0 +1,47 @@
+{
+  "schema": "kuxai.v46.convergence.receipt.v1",
+  "date": "2026-10-09",
+  "repo": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "exact_file": "labs/nautico-ui-v4/07-griglia-convergenza.html",
+  "git_blob_sha": "39cdf482ec810437b79aa16d6e39a6653c1f8f87",
+  "sha256": "6ac5ac378e7cb06b8756e31aeec91a7b5c51616cedd407b658f586c08cca2574",
+  "bytes": 259485,
+  "tests": [
+    {
+      "name": "test_v46.py",
+      "passed": 64,
+      "total": 64,
+      "viewports": [
+        "1680x900",
+        "1280x800",
+        "390x844"
+      ]
+    },
+    {
+      "name": "test_interactions_v46.py",
+      "passed": 30,
+      "total": 30,
+      "viewports": [
+        "1024x880",
+        "1680x880",
+        "2050x880",
+        "375x880"
+      ]
+    }
+  ],
+  "correlated": true,
+  "js_errors_observed": 0,
+  "method": "Chromium headless Playwright via page.set_content; local ZIP includes build and tests; file:// blocked in test receiver",
+  "not_proved": [
+    "actual Nautico domain events",
+    "AI model/provider",
+    "Section Kernel installed",
+    "competence assimilation",
+    "PC/Codex filesystem access",
+    "Edge file://",
+    "real touchscreen/assistive technology",
+    "public MAIOS Site"
+  ],
+  "effect": "K-UX-AI work branch candidate only"
+}
