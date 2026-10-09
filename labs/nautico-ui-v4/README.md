@@ -1,5 +1,16 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## Griglia v4.5 — 9 ottobre 2026 · campo focale e avatar diretti
+
+[Apri il candidato autonomo](06-griglia-campo-focale.html) e [leggi il contratto situato](FOCAL_FIELD_20261009.md) con [ricevuta](EVIDENCE_FOCAL_FIELD_20261009.json). Questa revisione risponde all'osservazione dell'operatore sulla v4.4; le versioni precedenti e le loro ricevute restano intatte.
+
+La barra avatar è ridimensionabile con maniglia e frecce (62–150 px). **Hover** sull'avatar apre direttamente una anteprima non invasiva, senza pulsante mini; **click** lo porta nel ruolo principale e sposta la scheda precedente nella colonna delle complementari, anche con Mantieni focus attivo (gesto esplicito); **drag** dispone la scheda nel campo o riorganizza le secondarie. La disposizione normale è composta da **una scheda principale + una colonna secondaria scorrevole**, dentro due aree operative oltre agli avatar. Solo quando il frame secondario è adeguato e ci sono almeno due complementari, una modalità Veloce può affiancarle. Mobile: sequenza principale → secondarie in normale flusso verticale, senza sovrapposizioni di contenuto.
+
+Le icone delle card sono state esercitate per sezione, anteprima, compatta, full/ritorno, riduci, chiudi, Porta al centro e dock in Libero. La loro disponibilità non conferisce autorità di dominio. Il readback `KUXAIDemo.perception().view` espone geometria concettuale/focus/peek per osservazione, non una AI live.
+
+La suite locale (Playwright Chromium, `page.set_content`) registra **74/74 + 32/32 + 17/17 = 123/123 controlli correlati** e zero errori JavaScript di pagina osservati. Test e screenshot riproducibili sono nel pacchetto consegnato nel turno; non costituiscono prova di Edge fisico, interazione touch reale, assistive technology, kernel Nautico collegato o rilascio pubblico. Nessun merge, deploy o modifica di `src/medium.js` eseguita.
+
+
 ## 9 ottobre 2026 — Griglia del fare v4.4, ruoli e ambiente di sezione
 
 **Candidato successivo alla v4.3**, conservando tutte le precedenti versioni. [Apri il nuovo HTML](05-griglia-ecosistemi-smart-slots.html) e leggi [dinamiche, significato, limiti e sezione](SMART_GRID_SECTION_ECOSYSTEM_20261009.md) e la [ricevuta](EVIDENCE_SMART_GRID_20261009.json).

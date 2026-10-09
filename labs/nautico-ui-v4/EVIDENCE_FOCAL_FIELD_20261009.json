@@ -1,0 +1,55 @@
+{
+  "schema": "kuxai.griglia.v45.focus-field-evidence.v1",
+  "date": "2026-10-09",
+  "artifact": {
+    "path": "labs/nautico-ui-v4/06-griglia-campo-focale.html",
+    "git_blob_sha": "15b66abd4793de9dff2f9a33efb914ec20c696c5",
+    "sha256": "e8dd429f61a2814aa529dd0b908b105290b72afe3af2cca480347283cd2275ae",
+    "bytes": 238835
+  },
+  "parent": "labs/nautico-ui-v4/05-griglia-ecosistemi-smart-slots.html",
+  "tests": [
+    {
+      "suite": "qa_v45.py",
+      "passed": 74,
+      "total": 74,
+      "scope": "viewport, main and scroll rail, hover and explicit avatar focus, keyboard rail, superwide fast"
+    },
+    {
+      "suite": "qa_v45_interactions.py",
+      "passed": 32,
+      "total": 32,
+      "scope": "8 card operation icons, real secondary DOM drag, preview passage, focus lock, draft, pointer rail, chat opens"
+    },
+    {
+      "suite": "qa_v45_regression.py",
+      "passed": 17,
+      "total": 17,
+      "scope": "mobile content and footer bounds 375–920, scroll, avatar HTML drag and JS errors"
+    }
+  ],
+  "total": {
+    "passed": 123,
+    "assertions": 123,
+    "correlated": true,
+    "page_errors": 0
+  },
+  "method": "Python Playwright Chromium headless, page.set_content, normal and reduced motion, synthetic Nautico state. Scripts and screenshots available in conversation's downloadable zip.",
+  "observations": [
+    "source unchanged except candidate standalone HTML and owner-native documentation",
+    "one main plus secondary rail; dock width adjustable",
+    "mobile content inside card and stage scroll",
+    "read-only hover preview and explicit click/focus",
+    "manual drag reordering and role correspondence",
+    "card icons individually exercised"
+  ],
+  "not_established": [
+    "Edge file:// actual usage",
+    "physical touch, assistive tech and independent comprehension",
+    "real Kernel Nautico event and authority",
+    "Section Kernel/AI backend",
+    "MAIOS Site/public release",
+    "independent statistical test validation"
+  ],
+  "effects": "Candidate development branch only; prior versions, public main, Nautico and Site unchanged."
+}

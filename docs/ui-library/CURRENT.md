@@ -1,5 +1,20 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima risultante — Griglia v4.5 Campo focale (9 ottobre 2026)
+
+Nuova osservazione diretta: nella v4.4 l'operatore ha chiesto **anteprima diretta sull'hover** dell'avatar anziché mini-icona, click sempre nel posto principale spostando il precedente in seconda posizione, drag che riorganizza il campo, audit delle icone, una scheda dominante e altre impilate in una colonna, con opzione due-affiancate solo con spazio sufficiente. La [v4.5](../../labs/nautico-ui-v4/06-griglia-campo-focale.html) implementa questa relazione e conserva `main` e le v4.0–v4.4 storiche invariate.
+
+[Contratto e osservazioni](../../labs/nautico-ui-v4/FOCAL_FIELD_20261009.md), [ricevuta bounded](../../labs/nautico-ui-v4/EVIDENCE_FOCAL_FIELD_20261009.json). Blob del sorgente HTML candidato `15b66abd4793de9dff2f9a33efb914ec20c696c5`, SHA-256 `e8dd429f61a2814aa529dd0b908b105290b72afe3af2cca480347283cd2275ae`.
+
+Scissione operativa: `state.focused` identifica il principale, `state.slotOrder` conserva l'ordine della colonna complementare; anteprima/hover non muta dominio né focus, click è promozione esplicita anche con pin, drag in campo riordina, Libero resta manuale. Il contenitore secondario diventa una vera scroll region invece di celle grandi vuote; DOM order e visual order restano coerenti dopo spostamento. Desktop con frame >=2050 px può usare due piccole affiancate. Barra avatar 62–150 px ridimensionabile. Su mobile il contenuto e il piede della card rimangono **dentro** il riquadro e scorrono in normale flusso: un controesempio iniziale ha richiesto di riapplicare `data-placement=tiled` dopo `moduleStyles` e correggere flex/height del contenitore.
+
+L'ultimo `KUXAIDemo.perception().view` descrive composizione, impilamento o coppie, ampiezza degli avatar e anteprima in corso; è soltanto un readback locale. Le fonti e gli effetti Nautico appartengono ancora ai rispettivi owner; Section Workspace e assistente locale rimangono simulazioni. Nessun nuovo kernel, controller o provider è stato installato.
+
+**Proof**: 74+32+17 controlli Playwright/Chromium correlati sul file HTML esatto (totale 123), 0 page errors nei percorsi. Test ripetuti anche dalla copia distribuita nel pacchetto. Non provati: Edge sul PC dell'operatore, touchscreen, AT completa, comprensione umana, trasporto AI, dati enterprise. Nessuna release/merge/deploy, `src/medium.js`, Kernel Nautico o Site MAIOS modificati.
+
+**Prossimo momento:** osservare v4.5 su Edge; cambiare layout solo per un controesempio materiale. L'integrazione con uno stato autentico Nautico resta un distinto movimento quando il ricevente e la sorgente siano disponibili.
+
+
 ## Resultant privato 9 ottobre 2026 — Griglia v4.4, slot + sezione
 
 Da screenshot dell'operatore v4.3: focus semantico bloccato non impediva sovrapposizione delle card libere, drag da griglia sganciava il campo, mini anteprima aveva comportamento di movimento/resize incongruente. La nuova [v4.4](../../labs/nautico-ui-v4/05-griglia-ecosistemi-smart-slots.html) introduce una composizione dei ruoli Grande/Media/Piccola/Full indipendente dallo stato di dominio, mappa facoltativa negli avatar, collocazione in griglia per trascinamento, lettura preview mobile e ridimensionabile, focus non rubato e 750 ms sui passaggi strutturali con reduced-motion equivalente.
