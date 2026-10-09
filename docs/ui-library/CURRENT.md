@@ -1,5 +1,13 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultimo candidato — K-UX-AI v4.7 (9 ottobre 2026)
+
+Da osservazione Edge dell'operatore: la barra di avatar chiusa e' ora un campo stabile di icone a 86px; le anteprime complete vivono nella barra aperta 255–395px e il quickpeek dell'avatar e' attivo solo a barra chiusa. [Nuovo HTML](../../labs/nautico-ui-v4/08-griglia-campo-medie.html), [contratto](../../labs/nautico-ui-v4/FIELD_AND_RESPONSE_MEDIUM_20261009.md), [evidenza](../../labs/nautico-ui-v4/EVIDENCE_FIELD_20261009.json).
+
+La mappa espone «Grande» e un unico «Medie affiancate». L'ordine delle medie dipende dal drop; la geometria dipende dalla larghezza effettiva e dal divisore 27–60%. Un settore troppo stretto usa stack, non card affiancate illeggibili. Blob HTML `08834da1c5e3edb9f40a5cce6d1d4dfb8aaff4a3`, SHA256 `2f134374521e886c0d5ea4102972006110b716797406f49691c2d0a23b5903c7`. Browser proof 97+51 correlati, zero JS page errors nelle prove.
+
+L'oriente futuro delle risposte aumentate con artefatti e memoria riusabile e' conservato nel contratto e restituito a Code Medium Construction come metodo candidate; l'annuncio OpenAI su Intelligent UI non implica API/provider installati. Non aprire in automatico una integrazione Nautico, una release, un deploy o un provider AI: servono receiver, source/effect boundary e la prossima selezione materiale.
+
 ## Ultima candidata 9 ottobre — v4.6 Convergenza
 
 Dal feedback dell'operatore: sidebar da Nautico con avatar e anteprime, area principale/complementari ridimensionabile, chat globale e dialoghi locali, contributi candidati non assimilati, Presentare FORM/BUILD/LIVE/RETURN, etichetta Media affiancata. [Bundle HTML](../../labs/nautico-ui-v4/07-griglia-convergenza.html), [fonte/contratto](../../labs/nautico-ui-v4/CONVERGENCE_20261009.md), [receipt](../../labs/nautico-ui-v4/EVIDENCE_CONVERGENCE_20261009.json), due [moduli sorgente](../../labs/nautico-ui-v4/source-v46/); builder e script nel pacchetto ZIP dell'interazione.

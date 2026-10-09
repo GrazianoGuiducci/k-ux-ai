@@ -1,5 +1,11 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 9 ottobre 2026 — v4.7 Sidebar + Medie affiancate
+
+[Apri HTML](08-griglia-campo-medie.html) · [metodo, significato e orizzonte artefatti](FIELD_AND_RESPONSE_MEDIUM_20261009.md) · [ricevuta](EVIDENCE_FIELD_20261009.json) · [JS/CSS](source-v47/). La barra chiusa è larga 86px, con icone distanziate e anteprima solo su hover; quella aperta contiene già preview scorrevoli e non apre un ulteriore popup dagli avatar. La mappa tratta le medie come un solo settore; affianca due card solo con larghezza adeguata o le impila conservando lo scroll. Divisore 27–60%.
+
+148/148 controlli Chromium **correlati**, nessun errore JS osservato, senza AI o Nautico live. Costruzione fail-closed riproducibile nel pacchetto ZIP consegnato; HTML v4.6 e precedenti conservati. Nessun merge, release, deploy.
+
 ## Candidato 9 ottobre — v4.6 Convergenza
 
 [Prototipo v4.6](07-griglia-convergenza.html) · [contratto e confini](CONVERGENCE_20261009.md) · [receipt](EVIDENCE_CONVERGENCE_20261009.json) · [nuovi moduli](source-v46/). Chat per scheda e chat generale **dimostrative**, barra avatar espandibile, divisore principale/complementari, card Presentare e Media affiancata. Build/test riproducibili nel pacchetto dell'interazione, non un provider live. 64/64 + 30/30 test correlati. Nessun merge, deploy, Nautico o MAIOS modificato.

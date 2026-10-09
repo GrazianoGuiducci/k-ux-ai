@@ -1,0 +1,61 @@
+{
+  "schema": "kuxai.v47.focus-field.evidence.v1",
+  "date": "2026-10-09",
+  "source": {
+    "repository": "GrazianoGuiducci/k-ux-ai",
+    "branch": "work/ux-ai-ui-library-20261008",
+    "html": "labs/nautico-ui-v4/08-griglia-campo-medie.html",
+    "git_blob_sha": "08834da1c5e3edb9f40a5cce6d1d4dfb8aaff4a3",
+    "sha256": "2f134374521e886c0d5ea4102972006110b716797406f49691c2d0a23b5903c7",
+    "bytes": 262771,
+    "parent": "labs/nautico-ui-v4/07-griglia-convergenza.html"
+  },
+  "tests": [
+    {
+      "suite": "test_layout_v47.py",
+      "passed": 97,
+      "total": 97,
+      "viewport": [
+        "390x844",
+        "1024x780",
+        "1280x800",
+        "1680x900",
+        "2050x950"
+      ]
+    },
+    {
+      "suite": "test_interactions_v47.py",
+      "passed": 51,
+      "total": 51,
+      "viewport": [
+        "390x900",
+        "1024x900",
+        "1680x900",
+        "2050x900"
+      ]
+    }
+  ],
+  "total": 148,
+  "passed": 148,
+  "correlated": true,
+  "page_errors_observed": 0,
+  "method": "Python Playwright Chromium /usr/bin/chromium, exact standalone HTML page.set_content, fixture Nautico, normal + reduced motion",
+  "coverage": [
+    "collapsed fixed 86px and icon spacing",
+    "expanded rail read-only previews, no floating avatar hover peek",
+    "map Grande and single Medie affiancate sector",
+    "drag placement and secondary order",
+    "medium sector auto pairing based on usable width",
+    "divider from 27 to 60 percent",
+    "scroll and responsive reflow",
+    "section draft persistence and no JavaScript exceptions"
+  ],
+  "limits": [
+    "not independently validated by users",
+    "Edge file:// not tested",
+    "no physical touch/screen reader audit",
+    "no active provider/AI or Nautico owner-native event",
+    "no Section Kernel, PC filesystem bridge, external data effects or evidence of competence assimilation"
+  ],
+  "effect": "candidate K-UX-AI work branch only, no merge/release/deploy/KN modifications"
+}
