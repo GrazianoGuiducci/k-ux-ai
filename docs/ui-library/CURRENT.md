@@ -1,5 +1,13 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima candidata — v5.0 Campo coerente (9 ottobre 2026)
+
+Dalle nuove schermate dell'operatore sulla v4.9: divisore a 2 card visibile ma inerte per override CSS 50/50; FLIP durante il drag produceva ritardo a 3 card; toolbar necessitava composizione funzionale; le tessere della Home devono scambiare i ruoli della posizione di drop anche fra tessere non principali e le 10 tessere devono entrare nel viewport desktop dove leggibile. [HTML v5.0](../../labs/nautico-ui-v4/11-griglia-campo-coerente.html), [causalità e metodo](../../labs/nautico-ui-v4/FOCAL_LAYOUT_V50_20261009.md), [ricevuta](../../labs/nautico-ui-v4/EVIDENCE_CAMPO_COHERENTE_20261009.json).
+
+HTML blob esatto `a533b4e2751580c3fd0dae28c4025470a8011ff1`, SHA256 `baecb8930291f05aa07acf96888ec8147260183b8187e9f458a49b9e5343c56e`. 103/103 + 53/53 + 39/39 check Chromium correlati, 0 JS page errors osservati; `node --check` su 3 script. Test via `page.set_content`, non Edge locale. Pacchetto scaricabile con baseline v4.9, builder e test. Nessun nuovo controller sovrapposto e nessuna trasformazione owner-native del Nautico. Refactor modulare completo non selezionato in questo effetto.
+
+**Rientro successivo:** osservazione Edge v5.0, poi solo differenze materiali. Nessun merge/release/deploy, provider, Section Kernel, filesystem esterno o autorità nuove.
+
 ## Risultante 9 ottobre — v4.9 Campo evolutivo
 
 Dalle quattro osservazioni Edge sulla v4.8: la Home deve colmare i vuoti e consentire la promozione tramite drag di una tessera sopra un'altra; le finestre Libero non devono essere riordinate o ridimensionate senza gesto corrispondente; la sidebar deve preservare spazio agli avatar con Chat/Home sulla stessa riga; Contesto/Azione restano visibili; ogni confine reale di colonna deve avere una maniglia indipendente. [HTML v4.9](../../labs/nautico-ui-v4/10-griglia-campo-evolutivo.html), [decisioni](../../labs/nautico-ui-v4/FIELD_COMPOSITION_V49_20261009.md), [evidenza](../../labs/nautico-ui-v4/EVIDENCE_CAMPO_EVOLUTIVO_20261009.json).

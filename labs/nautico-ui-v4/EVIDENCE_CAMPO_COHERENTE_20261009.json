@@ -1,0 +1,56 @@
+{
+  "schema": "kuxai.lab.v5.0.campo-coerente-evidence.v1",
+  "date": "2026-10-09",
+  "repo": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "artifact": {
+    "path": "labs/nautico-ui-v4/11-griglia-campo-coerente.html",
+    "git_blob_sha": "a533b4e2751580c3fd0dae28c4025470a8011ff1",
+    "sha256": "baecb8930291f05aa07acf96888ec8147260183b8187e9f458a49b9e5343c56e",
+    "bytes": 298435
+  },
+  "baseline": {
+    "file": "labs/nautico-ui-v4/10-griglia-campo-evolutivo.html",
+    "parentCommit": "12871d8616382e7bf0c4061f74c256f2ec61bb43",
+    "sourceSha256": "8448c1eb8bd2a76237ebb66763535b40e0fe223baa65521e8013f1de3d978d8e"
+  },
+  "execution": {
+    "browser": "Chromium headless via Python Playwright",
+    "method": "page.set_content(exact HTML bytes)",
+    "javascriptSyntax": "3 JS blocks passed node --check",
+    "pageErrorsObserved": 0
+  },
+  "suites": [
+    {
+      "name": "tests/test_v50.py",
+      "passed": 103,
+      "total": 103,
+      "scope": "two-panel live divider, no drag lag, assistant docked, grouped toolbar, Home spatial role swap with drag and keyboard, 10-tile viewport fit desktop/mobile"
+    },
+    {
+      "name": "tests/regression_v49_main.py",
+      "passed": 53,
+      "total": 53,
+      "scope": "v4.9 main behavior rerun on v5.0 exact artifact"
+    },
+    {
+      "name": "tests/regression_v49_extended_adapted.py",
+      "passed": 39,
+      "total": 39,
+      "scope": "v4.9 extended behavior rerun, toolbar Ricomponi through Strumenti"
+    }
+  ],
+  "total": 195,
+  "passed": 195,
+  "correlated": true,
+  "limitations": [
+    "Not a controlled user study or independent acceptance",
+    "No Edge file:// automated validation on operator machine",
+    "Mobile is emulated; no real touchscreen or accessibility device audit",
+    "No Nautico live controller or authenticated source",
+    "No real AI/Section Kernel/provider",
+    "No completed monolith-to-modules migration",
+    "No production/site deployment"
+  ],
+  "effects": "Only candidate development branch source update. Public K-UX-AI main, Kernel Nautico main, MAIOS Site and external domain effects unchanged."
+}

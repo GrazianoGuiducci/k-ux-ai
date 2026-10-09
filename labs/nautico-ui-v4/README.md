@@ -1,5 +1,11 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 9 ottobre 2026 — v5.0 Campo coerente
+
+[HTML v5.0](11-griglia-campo-coerente.html) · [metodo e cause](FOCAL_LAYOUT_V50_20261009.md) · [ricevuta](EVIDENCE_CAMPO_COHERENTE_20261009.json). Due schede si ridimensionano realmente (eliminato override 50/50), nessun FLIP durante drag, toolbar riaggregata Contesto/Azione → Griglia/Campo → Strumenti, Home con 10 tessere tutte visibili nei desktop compatibili e con ruoli scambiabili a ogni posizione. Mobile scorre quando utile. Baseline v4.9 conservata; codice aggiornato in un singolo bundle HTML senza un secondo controller runtime. Builder, test e screenshot riproducibili sono nel pacchetto ZIP consegnato.
+
+103/103 nuovi check + 53/53 + 39/39 regressioni sul file v5.0 esatto, **195 correlati**, 0 page errors osservati. Nessuna AI reale o fonte Nautico connessa, merge o deploy.
+
 ## 9 ottobre 2026 — v4.9 Campo evolutivo
 
 [HTML autonomo v4.9](10-griglia-campo-evolutivo.html) · [sorgente e metodo](FIELD_COMPOSITION_V49_20261009.md) · [ricevuta](EVIDENCE_CAMPO_EVOLUTIVO_20261009.json). La Home passa a una matrice piena senza le celle vuote di v4.8; il drag sopra un'altra tessera rende principale quella trascinata. Avatar già aperto: due click per chiudere; Chat/Home affiancate alla base della sidebar. Contesto/Azione in primo piano, separatori indipendenti per colonne realmente disponibili, gestione Libero che preserva dimensioni manuali. Il builder con test e baseline v4.8 è nel pacchetto scaricabile consegnato all'operatore; nel repository resta anche l'HTML esatto.
