@@ -1,5 +1,9 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## 10 ottobre 2026 — integrazione Nautico: terzo owner identificato
+
+La candidata site-host non è soltanto un owner da ricercare: esiste `GrazianoGuiducci/maios_it/codex/nautico-integrated-20261006` con pagina/chat/export Nautico. Il [raccordo aggiornato](NAUTICO_RECEIVER_INTEGRATION_20261010.md#10-ottobre-2026--site-owner-risolto-destinazione-live-ancora-da-verificare) collega anche la [preparazione nel site owner](https://github.com/GrazianoGuiducci/maios_it/blob/codex/nautico-integrated-20261006/docs/NAUTICAL_KUX_V541_RECEIVER_HANDOFF_20261010.md). Resta aperto il gate del primo incontro pubblico / distribuzione: nessun host live o URL effettiva provati da questa nota; nessun deploy.
+
 ## 10 ottobre 2026 — v5.4.1 Continuità operativa verificata e seam Nautico
 
 Dal [controllo statico v5.4](../../labs/nautico-ui-v4/MAINTENANCE_REVIEW_V54_20261010.md) due rischi sono stati riprodotti in Chromium, corretti nella [nuova candidata v5.4.1](../../labs/nautico-ui-v4/16-griglia-continuity-v541.html) e [documentati](../../labs/nautico-ui-v4/CONTINUITY_V541_20261010.md): ritorno alla disposizione per-contesto dopo Home e conservazione di valore/focus/caret del draft durante l'aggiornamento di una card. Debug version corretta. [Builder](../../tools/build_nautico_v541.py) SHA-guarded e [test portabili](../../tests/qa_nautico_v541.py) sono ora in repository. [Ricevuta](../../labs/nautico-ui-v4/EVIDENCE_CONTINUITY_V541_20261010.json): 97/97 check correlati, quattro viewport/motion, zero errori JS osservati; test su `page.set_content`, non Edge locale o host pubblicato. La v5.4 precedente resta byte-identica. Nessuna pulizia CSS zombie o refactor wholesale introdotta senza esercizio.

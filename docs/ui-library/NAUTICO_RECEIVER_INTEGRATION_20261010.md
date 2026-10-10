@@ -54,3 +54,11 @@ I dieci target Nautico (`nautico-presentazione`, `nautico-apprendimento`, `nauti
 Freshness/owner → readback browser del sito già presente → confronto v5.4.1 / native entity desk / host → adattatore/composizione minima completa → QA reale con 10 ACK source-owned, presentazione, bozza, rientro, zoom, popup, keyboard, mobile, reduced motion, failure states → screenshot/receipt e differenze tornate alle competenze → candidato mostrato all'operatore.
 
 **Stop prima di merge e pubblicazione**, salvo una nuova selezione esatta dell'effetto. L'operatore potrà quindi decidere quando sostituire la versione ospitata dopo aver visto il risultato.
+
+## 10 ottobre 2026 — site owner risolto, destinazione live ancora da verificare
+
+La successiva ricognizione owner-native ha trovato **un terzo candidato sorgente concreto**, `GrazianoGuiducci/maios_it` sul ramo `codex/nautico-integrated-20261006`, con `kernel-nautico.html`, shell chat, bundle `kernel-nautico-demo/` e verifiche attribuite del 6 ottobre. Non si tratta soltanto di un ipotetico host: il [raccordo sito per Codex](https://github.com/GrazianoGuiducci/maios_it/blob/codex/nautico-integrated-20261006/docs/NAUTICAL_KUX_V541_RECEIVER_HANDOFF_20261010.md) è ora persistito nella sua stessa sorgente, commit candidato di preparazione `78dc579ac06b2f09c0299e4e1a64fd9ab8c31694`. Il nuovo raccordo è **documentale**; non ha sostituito la UI integrata.
+
+Non confondere una **sorgente site identificata** con una **URL/live runtime confermata**. L'ultimo `CURRENT_STATE.md` di quel ramo mantiene una correzione aperta: l'incontro pubblico deve iniziare da racconto 3D + esplorazione, separando workspace e documenti sensibili/specialistici, e l'export da pubblicare va ripulito. Il 6 ottobre la destinazione Nautico maios.it era 404; la versione che l'operatore ha visto su un sito resta da associare mediante readback dell'ambiente. `maios_it/main` era osservato a `ce7935ee668a2572adea496ff694c939bafa7846`, non al ramo candidato. Codex deve riconciliare questi delta senza promuovere per inerzia il ramo o il catalogo.
+
+Il terzo owner non aggiunge un quarto kernel: **K-UX-AI** è medium, **Kernel Nautico** dominio, **maios_it** host/presentazione pubblica, **Codex** receiver che può eseguire il lavoro. La competenza privata Code Medium Construction in tm7 resta proprietaria del metodo appreso, non del sito.
