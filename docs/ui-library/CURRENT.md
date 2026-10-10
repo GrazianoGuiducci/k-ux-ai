@@ -1,5 +1,12 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## 10 ottobre 2026 — v5.4.1 Continuità operativa verificata e seam Nautico
+
+Dal [controllo statico v5.4](../../labs/nautico-ui-v4/MAINTENANCE_REVIEW_V54_20261010.md) due rischi sono stati riprodotti in Chromium, corretti nella [nuova candidata v5.4.1](../../labs/nautico-ui-v4/16-griglia-continuity-v541.html) e [documentati](../../labs/nautico-ui-v4/CONTINUITY_V541_20261010.md): ritorno alla disposizione per-contesto dopo Home e conservazione di valore/focus/caret del draft durante l'aggiornamento di una card. Debug version corretta. [Builder](../../tools/build_nautico_v541.py) SHA-guarded e [test portabili](../../tests/qa_nautico_v541.py) sono ora in repository. [Ricevuta](../../labs/nautico-ui-v4/EVIDENCE_CONTINUITY_V541_20261010.json): 97/97 check correlati, quattro viewport/motion, zero errori JS osservati; test su `page.set_content`, non Edge locale o host pubblicato. La v5.4 precedente resta byte-identica. Nessuna pulizia CSS zombie o refactor wholesale introdotta senza esercizio.
+
+Il [raccordo Nautico/sito per Codex](NAUTICO_RECEIVER_INTEGRATION_20261010.md) distingue il kernel UI, i dieci target owner-native del branch Nautico, il site host ancora da identificare e il receiver Codex. Nessuna chat reale, account, permesso, release, merge o deploy è stato costruito. Prossimo movimento: Codex qualifica host/owner reali e riconcilia la UI con il bridge Nautico, prima di proporre un candidato pubblico.
+
+
 ## Revisione statica 10 ottobre 2026 — mantenibilità v5.4 e moduli multi-attore
 
 L'operatore considera sostanzialmente soddisfacente la forma della v5.4. Un [audit source-bound](../../labs/nautico-ui-v4/MAINTENANCE_REVIEW_V54_20261010.md) ha distinto residui CSS candidati, metadato debug obsoleto, riordino di builder/QA e due percorsi da esercitare (rientro che forza `auto`; caret/focus durante aggiornamento di card). Nessun nuovo browser test, correzione dell'HTML, permesso, account o modulo generato è rivendicato. L'evoluzione per progettisti/operatori/clienti resta un **contratto da formare con Kernel Nautico owner-native e identità/permessi reali**, non una nuova variante fittizia della demo. La candidata v5.4 e la sua prova esatta restano intatte.

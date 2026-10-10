@@ -1,0 +1,108 @@
+"""Reproducible v5.4.1 Nautico laboratory patch; preserve the pinned v5.4 baseline.
+
+Run from any directory:
+  python tools/build_nautico_v541.py
+  python tools/build_nautico_v541.py --check
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+BASE = ROOT / "labs/nautico-ui-v4/15-griglia-focus-tour-tools.html"
+OUTPUT = ROOT / "labs/nautico-ui-v4/16-griglia-continuity-v541.html"
+BASE_SHA256 = "1a9ef7846a18cff981af61f47cd8ff50cfee3c102fb146a69d44c56726395ff2"
+# Filled after a local deterministic build; not authority over future revisions.
+OUTPUT_SHA256 = "7e8a35dc21bdc6940e1ad00db47fbe9327237a33c6aede5a71aaf03f7d8f9716"
+
+# Keep patches local and deliberately explicit, rather than rewriting the old
+# full HTML. This baseline is an existing synthetic K-UX-AI laboratory probe.
+CHANGES = [
+    (
+        "<title>MAIOS · K-UX-AI — Griglia del fare v5.4 · Focus e Strumenti</title>",
+        "<title>MAIOS · K-UX-AI — Griglia del fare v5.4.1 · Continuità</title>",
+    ),
+    (
+        " state.layout='auto';state.focusLocked=true;\n state.contextViews[context]={layout:'auto',locked:false};state.viewContext=context;",
+        " const previousView=state.contextViews[context]||{layout:'auto',locked:false};\n"
+        " // First entry remains adaptive; a return restores this context's chosen view.\n"
+        " state.layout=['auto','free','split','triple','quad'].includes(previousView.layout)?previousView.layout:'auto';\n"
+        " state.focusLocked=true;\n"
+        " state.contextViews[context]={layout:state.layout,locked:!!previousView.locked};state.viewContext=context;",
+    ),
+    (
+        " state.focusLocked=false;\n state.slotOrder=[...(featured?[featured.id]:[]),...chosen.map(id=>state.panels.find(p=>p.intent===id&&p.context===context)?.id).filter(x=>x&&x!==featured?.id)];",
+        " state.focusLocked=!!previousView.locked;\n state.slotOrder=[...(featured?[featured.id]:[]),...chosen.map(id=>state.panels.find(p=>p.intent===id&&p.context===context)?.id).filter(x=>x&&x!==featured?.id)];",
+    ),
+    (
+        "function renderModule(p){if(!p.el)return;const intent=readIntent(p.intent);",
+        "function renderModule(p){if(!p.el)return;\n"
+        " const prior=document.activeElement;\n"
+        " const oldBody=p.el.querySelector('.module-content');\n"
+        " const activeDraft=oldBody?.contains(prior)&&prior?.matches?.(editableDraft)\n"
+        "  ?{key:draftKey(p,prior),value:prior.value,start:null,end:null,direction:null,scrollTop:prior.scrollTop,scrollLeft:prior.scrollLeft}:null;\n"
+        " if(activeDraft){\n"
+        "  state.drafts[activeDraft.key]=activeDraft.value;\n"
+        "  try{activeDraft.start=prior.selectionStart;activeDraft.end=prior.selectionEnd;activeDraft.direction=prior.selectionDirection;}catch{}\n"
+        " }\n"
+        " const intent=readIntent(p.intent);",
+    ),
+    (
+        " body.prepend(capsule);body.querySelectorAll(editableDraft).forEach(field=>{const key=draftKey(p,field);if(Object.hasOwn(state.drafts,key))field.value=state.drafts[key];});body.scrollTop=scroll;renderSection(p);",
+        " body.prepend(capsule);body.querySelectorAll(editableDraft).forEach(field=>{const key=draftKey(p,field);if(Object.hasOwn(state.drafts,key))field.value=state.drafts[key];});body.scrollTop=scroll;renderSection(p);\n"
+        " // Re-rendering must not interrupt a gesture in an editor that still exists.\n"
+        " if(activeDraft&&!body.hidden){\n"
+        "  const replacement=[...body.querySelectorAll(editableDraft)].find(field=>draftKey(p,field)===activeDraft.key);\n"
+        "  if(replacement&&!replacement.closest('[inert]')){\n"
+        "   replacement.focus({preventScroll:true});\n"
+        "   if(activeDraft.start!==null&&typeof replacement.setSelectionRange==='function')\n"
+        "    try{replacement.setSelectionRange(activeDraft.start,activeDraft.end,activeDraft.direction||'none');}catch{}\n"
+        "   replacement.scrollTop=activeDraft.scrollTop;replacement.scrollLeft=activeDraft.scrollLeft;\n"
+        "  }\n"
+        " }",
+    ),
+    (
+        "version:'lab-2026-10-10-r5.1',liveAI:false",
+        "version:'lab-2026-10-10-r5.4.1',liveAI:false",
+    ),
+]
+
+
+def digest(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def build() -> bytes:
+    raw = BASE.read_bytes()
+    if digest(raw) != BASE_SHA256:
+        raise RuntimeError("Refuse to patch: v5.4 baseline differs from its exact receipt")
+    text = raw.decode("utf-8")
+    for before, after in CHANGES:
+        occurrences = text.count(before)
+        if occurrences != 1:
+            raise RuntimeError(f"Expected exactly one target, found {occurrences}: {before[:75]}")
+        text = text.replace(before, after, 1)
+    output = text.encode("utf-8")
+    if OUTPUT_SHA256 != "__PENDING__" and digest(output) != OUTPUT_SHA256:
+        raise RuntimeError("v5.4.1 generated bytes differ from expected digest")
+    return output
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="Compare without modifying the candidate")
+    args = parser.parse_args()
+    expected = build()
+    if args.check:
+        if not OUTPUT.exists() or OUTPUT.read_bytes() != expected:
+            raise SystemExit("candidate differs; regenerate before new QA")
+        print(f"OK exact v5.4.1: {digest(expected)}")
+    else:
+        OUTPUT.write_bytes(expected)
+        print(f"Built {OUTPUT.relative_to(ROOT)}: {len(expected)} bytes SHA256={digest(expected)}")
+
+
+if __name__ == "__main__":
+    main()

@@ -25,3 +25,5 @@ For the candidate **native UI module**, additionally read `src/ui/window-surface
 Run `npm test` for the original medium and `npm run test:ui-library` for candidate catalog integrity when working from a Node checkout. Actual browser/render tests and host integration remain separate receipts. Only commit a public release, merge or deployment after explicit selection.
 Preserve concurrent work. A source change is distinct from publishing a
 package, deploying a site or connecting a real receiving kernel.
+
+For the v5.4.1 Nautico laboratory continuation, read `docs/ui-library/CURRENT.md`, `labs/nautico-ui-v4/CONTINUITY_V541_20261010.md` and `docs/ui-library/NAUTICO_RECEIVER_INTEGRATION_20261010.md`. Its exact candidate is generated with `python tools/build_nautico_v541.py --check` and checked with `python tests/qa_nautico_v541.py` in a receiver with Chromium/Playwright. Do not replace the Nautico source controllers or infer a live site from the synthetic HTML.

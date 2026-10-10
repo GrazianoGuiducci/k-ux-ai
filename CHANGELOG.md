@@ -2,6 +2,9 @@
 
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
+- Form and exercise an additive Griglia v5.4.1 candidate with restored per-context layout on Home reentry and live-editor focus/caret continuity during local demo event re-render. Preserve v5.4 exact baseline; pin deterministic builder and 97-check Chromium QA plus scoped receipt.
+- Prepare source-owned Nautico adapter/host-site reconciliation for Codex; no release, site integration or external permissions.
+
 - Preserve Nautico UI laboratory v3 as two autonomous HTML examples.
 - Register 20 source-pinned UI units across five owner repositories and nine composable behavior families.
 - Consolidate chat/avatar, directional motion, draft/geometry persistence, internal responsive, splitting, megamenu, guided form, editor, dashboard and host-effect boundaries.
