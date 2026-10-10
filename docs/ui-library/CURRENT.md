@@ -1,5 +1,9 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Revisione statica 10 ottobre 2026 — mantenibilità v5.4 e moduli multi-attore
+
+L'operatore considera sostanzialmente soddisfacente la forma della v5.4. Un [audit source-bound](../../labs/nautico-ui-v4/MAINTENANCE_REVIEW_V54_20261010.md) ha distinto residui CSS candidati, metadato debug obsoleto, riordino di builder/QA e due percorsi da esercitare (rientro che forza `auto`; caret/focus durante aggiornamento di card). Nessun nuovo browser test, correzione dell'HTML, permesso, account o modulo generato è rivendicato. L'evoluzione per progettisti/operatori/clienti resta un **contratto da formare con Kernel Nautico owner-native e identità/permessi reali**, non una nuova variante fittizia della demo. La candidata v5.4 e la sua prova esatta restano intatte.
+
 ## Ultima candidata 10 ottobre 2026 — K-UX-AI v5.4 Tour/Preparazione/Strumenti
 
 Dalle due schermate Edge dell'operatore v5.3: il tour attuale non rende focale il controllo e non dice concretamente cosa fare; «Prepara il campo» separava eccessivamente il riepilogo dalla CTA; i controlli della toolbar e di Strumenti apparivano giustapposti. La [v5.4](../../labs/nautico-ui-v4/15-griglia-focus-tour-tools.html) ricompone queste superfici **senza sostituire lo stato per-contesto della v5.3**. Il [documento di decisione](../../labs/nautico-ui-v4/FOCUS_TOUR_TOOLS_V54_20261010.md) conserva sorgente, cause e confini.
