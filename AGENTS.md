@@ -1,5 +1,7 @@
 # K-UX-AI product source
 
+Reach [MANIFESTO.md](MANIFESTO.md) when selecting the project horizon, experiential direction or a new perceptual possibility. The manifesto is the living vision; [KERNEL.md](KERNEL.md) and [CURRENT_STATE.md](CURRENT_STATE.md) carry present operating relations and current source truth. Let generative possibilities emerge through source-grounded work, perception and operator feedback.
+
 Use [KERNEL.md](KERNEL.md) and [CURRENT_STATE.md](CURRENT_STATE.md) to continue
 the selected product work. The medium contract is in `docs/interface.md`;
 the executable source is in `src/medium.js`.

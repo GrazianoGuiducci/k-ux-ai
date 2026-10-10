@@ -1,5 +1,7 @@
 # K-UX-AI — relazione operativa
 
+Il [Manifesto del Web vivente](MANIFESTO.md) custodisce la direzione aperta della ricerca. Questo Kernel rende operativa nel presente la relazione fra esperienza, significato e intervento.
+
 K-UX-AI è il medium UI pubblico utilizzabile da kernel differenti. Il suo
 oggetto è la relazione fra ciò che accade nel lavoro, ciò che diventa
 percepibile e ciò che l'intervento umano cambia nel seguito.
