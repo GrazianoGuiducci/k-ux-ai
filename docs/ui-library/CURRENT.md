@@ -1,5 +1,14 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima candidata 10 ottobre — v5.3 Navigatore contestuale
+
+Dallo screenshot e dall'osservazione dell'operatore: la v5.2 poteva mostrare Contesto «A bordo» ma tenere schede Fornitori/Assistenza sul canvas perché il selettore mutava il contesto del pannello in focus. Inoltre la tessera Home principale non era automaticamente preparata. [v5.3 HTML](../../labs/nautico-ui-v4/14-griglia-navigatore-contestuale.html) sostituisce l'affordance con un navigatore dei cinque ambienti, ognuno con la propria proiezione di schede/avatar, focus e disposizione; il menu Azione governa solo il focus interno, non la sorgente. L'Home featured è sempre selezionata; l'ingresso resta esplicito. [Metodo e confini](../../labs/nautico-ui-v4/CONTEXT_NAVIGATION_V53_20261010.md), [receipt](../../labs/nautico-ui-v4/EVIDENCE_CONTEXT_NAV_V53_20261010.json).
+
+Source HTML Git blob `55812cc3033f80d7a9357c85f5de68200eaff7e4`, SHA256 `bba2db6f1c395733b429b73db9606a5bbbe8aa5daaa17d06452ef6f7ae9b8ffd`. Sei suite Chromium Playwright correlate 240/240 check, zero JS page errors osservati. Include due contesti, bozze, layout, navigatore tastiera, popup zoom CSS e rientro; mock storage, non riavvio Edge reale. Pacchetto con builder, baseline hash-guarded, test e screenshot. Nessuna integrazione Nautico/AI o risultato di assimilazione automatica.
+
+**Prossimo:** osservazione operatore sul passaggio Fornitori ↔ A bordo in Edge e persistenza al ricaricamento. Nessun merge, rilascio, deploy, movimento su `main` o Kernel Nautico selezionato.
+
+
 ## Ultima candidata — 10 ottobre 2026 · K-UX-AI v5.2 Contesti preparati e tour situato
 
 Feedback Edge sulla v5.1: il tour centrato nascondeva ciò che spiegava e il messaggio non esplicitava sufficientemente ambito/causa/conseguenza; cinque contesti non conservavano piani separati (la selezione era ricostruita dalle card aperte); secondo divisore centrato solo sulla prima media e piccoli margini incoerenti. [HTML v5.2](../../labs/nautico-ui-v4/13-griglia-contesti-tour.html), [metodo](../../labs/nautico-ui-v4/CONTEXTS_AND_TOUR_20261010.md), [prova](../../labs/nautico-ui-v4/EVIDENCE_CONTEXTS_TOUR_20261010.json).

@@ -1,5 +1,12 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 10 ottobre 2026 — v5.3 Navigatore contestuale
+
+[Apri HTML](14-griglia-navigatore-contestuale.html) · [sorgente e confini](CONTEXT_NAVIGATION_V53_20261010.md) · [evidenza](EVIDENCE_CONTEXT_NAV_V53_20261010.json). Il contesto ora cambia coerentemente l'ambiente proiettato: schede/avatar, focus e disposizione. Non riscrive più la provenienza delle schede conservate negli altri ambienti. Il menu Azione governa il focus del contesto corrente, mentre la tessera principale Home è già inclusa nella selezione preparata. Navigatore ergonomico con cinque ambienti e conteggi, tastiera e popup responsive.
+
+Sei suite Chromium/Playwright correlate **240/240**, senza errori JS osservati. Test `page.set_content`; reload con mock `localStorage`, non persistenza Edge reale. Builder portabile e baseline v5.2 nel pacchetto ZIP dell'operatore. Nessun merge/release/deploy né Nautico, provider AI o MAIOS modificati.
+
+
 ## 10 ottobre 2026 — v5.2 Contesti preparati e tour situato
 
 [Apri HTML](13-griglia-contesti-tour.html) · [decisioni e confini](CONTEXTS_AND_TOUR_20261010.md) · [receipt](EVIDENCE_CONTEXTS_TOUR_20261010.json). La Home conserva separatamente attività, ordine e ruolo principale dei cinque contesti; il tour non modale mostra ciascun controllo reale, esplicita ambito/quando/conseguenza, supporta tastiera e ingrandimento verificato; il secondo divisore si centra sulle sole righe che divide. Spaziature e margini delle card corretti. 319/319 controlli Chromium **correlati**, zero JS errors osservati. Persistenza Edge reale non attestata (storage simulato nei test). Baseline v5.1, patch-builder/test/screenshot nel pacchetto ZIP dell'interazione. Nessun merge/release/deploy, provider o Kernel Nautico modificato.

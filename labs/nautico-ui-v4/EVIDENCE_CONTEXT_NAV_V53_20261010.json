@@ -1,0 +1,70 @@
+{
+  "schema": "kuxai.v53.context-navigation-local-evidence.v1",
+  "date": "2026-10-10",
+  "owner": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "artifact": {
+    "path": "labs/nautico-ui-v4/14-griglia-navigatore-contestuale.html",
+    "git_blob_sha": "55812cc3033f80d7a9357c85f5de68200eaff7e4",
+    "sha256": "bba2db6f1c395733b429b73db9606a5bbbe8aa5daaa17d06452ef6f7ae9b8ffd",
+    "bytes": 335858
+  },
+  "baseline": {
+    "path": "labs/nautico-ui-v4/13-griglia-contesti-tour.html",
+    "sha256": "624d18f6b95e6d6703a898075e590457e1c65425f533f23e0f0a7b2f2d0201fa"
+  },
+  "method": "Chromium Playwright headless via page.set_content exact standalone HTML; CSS zoom emulation and mock localStorage for reload tests",
+  "tests": [
+    {
+      "suite": "qa_smoke.py",
+      "passed": 42,
+      "total": 42,
+      "coverage": "context and base rendering in three viewports"
+    },
+    {
+      "suite": "qa_context.py",
+      "passed": 84,
+      "total": 84,
+      "coverage": "two environments, independent drafts, context menu, mock storage"
+    },
+    {
+      "suite": "qa_geometry.py",
+      "passed": 60,
+      "total": 60,
+      "coverage": "six viewport dimensions, scroll and contextual visibility"
+    },
+    {
+      "suite": "qa_views.py",
+      "passed": 12,
+      "total": 12,
+      "coverage": "per-context layout and assistant dock"
+    },
+    {
+      "suite": "qa_access.py",
+      "passed": 33,
+      "total": 33,
+      "coverage": "Home primary selection, keyboard navigation, popup zoom"
+    },
+    {
+      "suite": "qa_home_reentry.py",
+      "passed": 9,
+      "total": 9,
+      "coverage": "Home/workspace roundtrip and layout independence"
+    }
+  ],
+  "total": {
+    "passed": 240,
+    "checks": 240,
+    "correlated": true,
+    "observed_javascript_page_errors": 0
+  },
+  "not_established": [
+    "Real Edge file:// execution on operator PC",
+    "Physical touch and screen reader audit",
+    "Browser localStorage persistence from actual restarts",
+    "Company or Nautico real owner-native state and effects",
+    "AI model/provider and Section Kernel integration",
+    "Independent usability assessment"
+  ],
+  "effects": "only work-branch K-UX-AI source candidate; main/Kernel Nautico/MAIOS not changed"
+}
