@@ -1,0 +1,67 @@
+{
+  "schema": "kuxai.v54.focus-tour-tools.evidence.v1",
+  "date": "2026-10-10",
+  "owner": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "source": {
+    "path": "labs/nautico-ui-v4/15-griglia-focus-tour-tools.html",
+    "git_blob_sha": "a431c48c310f904f954804a9e6504c986b602d84",
+    "sha256": "1a9ef7846a18cff981af61f47cd8ff50cfee3c102fb146a69d44c56726395ff2",
+    "bytes": 349260,
+    "base": "labs/nautico-ui-v4/14-griglia-navigatore-contestuale.html",
+    "zip_sha256": "7c184a5fb513306cf76714fec059c07895857e66579a65f01868851e04ab4820"
+  },
+  "method": "Chromium Playwright headless via page.set_content; normal and reduced motion; CSS-root zoom 125-150% in selected combinations; portable build re-executed byte-identical 2026-10-10",
+  "tests": [
+    {
+      "name": "qa_v54.py",
+      "passed": 80,
+      "total": 80,
+      "scope": "4 viewports Home, setup, three tour steps, spotlight masks, toolbar/menu and handlers"
+    },
+    {
+      "name": "qa_zoom.py",
+      "passed": 68,
+      "total": 68,
+      "scope": "tour and popup usable across six viewport/zoom conditions"
+    },
+    {
+      "name": "qa_home_reentry.py (v5.3 regression)",
+      "passed": 9,
+      "total": 9
+    },
+    {
+      "name": "qa_context.py (v5.3 regression)",
+      "passed": 84,
+      "total": 84
+    },
+    {
+      "name": "qa_access.py (v5.3 regression)",
+      "passed": 33,
+      "total": 33
+    },
+    {
+      "name": "qa_geometry.py (v5.3 regression)",
+      "passed": 60,
+      "total": 60
+    }
+  ],
+  "passed": 334,
+  "total": 334,
+  "correlated": true,
+  "page_errors_observed": 0,
+  "additional_checks": [
+    "byte-exact portable build comparison",
+    "three JavaScript script syntax checks"
+  ],
+  "not_established": [
+    "user Edge actual file:// browser behavior",
+    "independent human comprehension",
+    "physical touchscreen or screen reader audit",
+    "full browser-zoom across all devices",
+    "Kernel Nautico source binding or operational effect",
+    "real LLM/Section Kernel, provider, filesystem synchronization",
+    "public release, merge, deployment"
+  ],
+  "effects": "New candidate in K-UX-AI work branch; preserve prior snapshots and source ownership"
+}

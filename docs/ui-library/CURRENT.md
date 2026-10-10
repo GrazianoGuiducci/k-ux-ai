@@ -1,5 +1,13 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima candidata 10 ottobre 2026 — K-UX-AI v5.4 Tour/Preparazione/Strumenti
+
+Dalle due schermate Edge dell'operatore v5.3: il tour attuale non rende focale il controllo e non dice concretamente cosa fare; «Prepara il campo» separava eccessivamente il riepilogo dalla CTA; i controlli della toolbar e di Strumenti apparivano giustapposti. La [v5.4](../../labs/nautico-ui-v4/15-griglia-focus-tour-tools.html) ricompone queste superfici **senza sostituire lo stato per-contesto della v5.3**. Il [documento di decisione](../../labs/nautico-ui-v4/FOCUS_TOUR_TOOLS_V54_20261010.md) conserva sorgente, cause e confini.
+
+Tour con quattro regioni attenuate attorno al target, guida adiacente e non sovrapposta, focus/close/Escape/zoom/reduced motion; Home preparativa con cinque ambienti, riepilogo e CTA coerenti; toolbar raggruppata e strumenti suddivisi per effetti. Ricevuta [v5.4](../../labs/nautico-ui-v4/EVIDENCE_FOCUS_TOUR_V54_20261010.json): Git blob `a431c48c310f904f954804a9e6504c986b602d84`, SHA256 `1a9ef7846a18cff981af61f47cd8ff50cfee3c102fb146a69d44c56726395ff2`; builder byte-identico ripetuto, tre JS sintatticamente validi, Chromium 334/334 controlli correlati, zero errori pagina osservati. File HTML standalone e builder nel pacchetto dell'operatore.
+
+Questo è un diverso resultant dalla v5.3. Non è stato esercitato su Edge fisico e non installa AI, Nautico, Section Kernel o host-site. Nessun `main`, release, deploy o merge selezionato. Prossima osservazione: tour/CTA/Strumenti sul dispositivo dell'operatore.
+
 ## Ultima candidata 10 ottobre — v5.3 Navigatore contestuale
 
 Dallo screenshot e dall'osservazione dell'operatore: la v5.2 poteva mostrare Contesto «A bordo» ma tenere schede Fornitori/Assistenza sul canvas perché il selettore mutava il contesto del pannello in focus. Inoltre la tessera Home principale non era automaticamente preparata. [v5.3 HTML](../../labs/nautico-ui-v4/14-griglia-navigatore-contestuale.html) sostituisce l'affordance con un navigatore dei cinque ambienti, ognuno con la propria proiezione di schede/avatar, focus e disposizione; il menu Azione governa solo il focus interno, non la sorgente. L'Home featured è sempre selezionata; l'ingresso resta esplicito. [Metodo e confini](../../labs/nautico-ui-v4/CONTEXT_NAVIGATION_V53_20261010.md), [receipt](../../labs/nautico-ui-v4/EVIDENCE_CONTEXT_NAV_V53_20261010.json).

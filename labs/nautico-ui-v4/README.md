@@ -1,5 +1,11 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 10 ottobre 2026 — v5.4 Tour focale e Strumenti coerenti
+
+[HTML v5.4](15-griglia-focus-tour-tools.html) · [sorgente/decisioni](FOCUS_TOUR_TOOLS_V54_20261010.md) · [ricevuta](EVIDENCE_FOCUS_TOUR_V54_20261010.json). «Prepara il campo» aggrega contesti, stato e CTA in un unico pannello; il tour attenua ciò che non è al centro, lascia scoperto il target e spiega ambito, azioni e conseguenze; toolbar e Strumenti sono raggruppati per funzione senza duplicare i gestori. Su mobile popup nel viewport, e ritorno tramite tastiera.
+
+Prova esatta: 80+68 nuovi controlli e 9+84+33+60 regression checks v5.3 sul nuovo file = 334/334 **correlati**, 0 JS page errors nei casi verificati. Builder hash-guarded/test/screenshot nel pacchetto dell'operatore; non è prova di Edge reale, API, Nautico live, compliance accessibilità o refactor completo. v5.3 e precedenti conservate, nessun merge/release/deploy.
+
 ## 10 ottobre 2026 — v5.3 Navigatore contestuale
 
 [Apri HTML](14-griglia-navigatore-contestuale.html) · [sorgente e confini](CONTEXT_NAVIGATION_V53_20261010.md) · [evidenza](EVIDENCE_CONTEXT_NAV_V53_20261010.json). Il contesto ora cambia coerentemente l'ambiente proiettato: schede/avatar, focus e disposizione. Non riscrive più la provenienza delle schede conservate negli altri ambienti. Il menu Azione governa il focus del contesto corrente, mentre la tessera principale Home è già inclusa nella selezione preparata. Navigatore ergonomico con cinque ambienti e conteggi, tastiera e popup responsive.
