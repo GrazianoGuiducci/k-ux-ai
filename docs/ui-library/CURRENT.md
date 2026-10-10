@@ -1,5 +1,14 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima candidata 10 ottobre — K-UX-AI v5.1 Campo preparato
+
+L'operatore, dopo quattro schermate Edge della v5.0, seleziona la Home come superficie per **preparare** il campo: cinque contesti visibili, multi-selezione di attività, Entrare nel canvas soltanto con selezione esplicita, tour opzionale. Gli avatar conservano peek pertinente; le card già aperte non mostrano un pulsante Anteprima duplicato. Dopo drag/avatar e reflow, i divisori non usati si sospendono e ritornano al bordo geometrico finale; le medie occupano righe/colonne compatibili con minimi di lettura.
+
+[HTML v5.1](../../labs/nautico-ui-v4/12-griglia-campo-preparato.html), [contratto](../../labs/nautico-ui-v4/PREPARED_FIELD_20261010.md), [receipt](../../labs/nautico-ui-v4/EVIDENCE_PREPARED_FIELD_20261010.json). HTML Git blob `ac8de5bf2597759e9098c680d0295f730df26b51`, SHA256 `b5f11f4227a92e4f731d595c904ba93ec26e702036ac280319b12f6438f4d007`; tre suite Chromium correlate 103/103 + 26/26 + 23/23, 0 page errors osservati, provate via `page.set_content`. Builder, baseline immutata e test nel pacchetto consegnato all'operatore. Real Edge, gesture/device, storage intersessione, AI reale, filesystem e Nautico non provati. La Home usa `state.activeContext`, non introduce un owner di dominio; preparazione/entrata/autorizzazione restano distinti.
+
+Questo modifica solo la candidata del branch di sviluppo, non `main`, Kernel Nautico o MAIOS. Prossimo: readback operatore in Edge; un altro movimento di integrazione si seleziona solo quando emergerà una differenza owner-native reale.
+
+
 ## Ultima candidata — v5.0 Campo coerente (9 ottobre 2026)
 
 Dalle nuove schermate dell'operatore sulla v4.9: divisore a 2 card visibile ma inerte per override CSS 50/50; FLIP durante il drag produceva ritardo a 3 card; toolbar necessitava composizione funzionale; le tessere della Home devono scambiare i ruoli della posizione di drop anche fra tessere non principali e le 10 tessere devono entrare nel viewport desktop dove leggibile. [HTML v5.0](../../labs/nautico-ui-v4/11-griglia-campo-coerente.html), [causalità e metodo](../../labs/nautico-ui-v4/FOCAL_LAYOUT_V50_20261009.md), [ricevuta](../../labs/nautico-ui-v4/EVIDENCE_CAMPO_COHERENTE_20261009.json).

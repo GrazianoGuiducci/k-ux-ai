@@ -1,5 +1,12 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 10 ottobre 2026 — v5.1 Campo preparato
+
+[HTML v5.1](12-griglia-campo-preparato.html) · [contratto e continuità](PREPARED_FIELD_20261010.md) · [ricevuta attribuita](EVIDENCE_PREPARED_FIELD_20261010.json). La Home consente preparazione del contesto e selezione multipla delle attività prima dell'ingresso nel canvas. Un tour facoltativo spiega il percorso, il pulsante Entra appare con una scelta e l'ingresso recupera i pannelli invece di distruggere bozze. Divisori secondari temporaneamente nascosti durante il drag e riallineati a geometria conclusa; migliorata l'occupazione delle medie. Anteprima rimossa dalle card già aperte.
+
+Chromium Playwright **103/103 + 26/26 + 23/23 controlli correlati**, senza errori JS nei percorsi. Builder hash-guarded, baseline v5.0, test e screenshot nel pacchetto scaricabile dell'interazione. Nessuna AI collegata, Nautico reale, merge, rilascio o deploy. La v5.0 e le versioni precedenti restano intatte.
+
+
 ## 9 ottobre 2026 — v5.0 Campo coerente
 
 [HTML v5.0](11-griglia-campo-coerente.html) · [metodo e cause](FOCAL_LAYOUT_V50_20261009.md) · [ricevuta](EVIDENCE_CAMPO_COHERENTE_20261009.json). Due schede si ridimensionano realmente (eliminato override 50/50), nessun FLIP durante drag, toolbar riaggregata Contesto/Azione → Griglia/Campo → Strumenti, Home con 10 tessere tutte visibili nei desktop compatibili e con ruoli scambiabili a ogni posizione. Mobile scorre quando utile. Baseline v4.9 conservata; codice aggiornato in un singolo bundle HTML senza un secondo controller runtime. Builder, test e screenshot riproducibili sono nel pacchetto ZIP consegnato.

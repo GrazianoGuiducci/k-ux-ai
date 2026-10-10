@@ -1,0 +1,71 @@
+{
+  "schema": "kuxai.v51.prepared-field-evidence.v1",
+  "date": "2026-10-10",
+  "owner": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "source": {
+    "path": "labs/nautico-ui-v4/12-griglia-campo-preparato.html",
+    "git_blob_sha": "ac8de5bf2597759e9098c680d0295f730df26b51",
+    "sha256": "b5f11f4227a92e4f731d595c904ba93ec26e702036ac280319b12f6438f4d007",
+    "bytes": 311180,
+    "baseline_v50": "labs/nautico-ui-v4/11-griglia-campo-coerente.html",
+    "baseline_sha256": "baecb8930291f05aa07acf96888ec8147260183b8187e9f458a49b9e5343c56e"
+  },
+  "method": "Python Playwright headless Chromium via page.set_content exact standalone HTML; three scripts syntax checked with node --check. Builder, baseline, tests and screenshots delivered in conversation ZIP.",
+  "tests": [
+    {
+      "name": "test_preparation.py",
+      "passed": 103,
+      "total": 103,
+      "coverage": [
+        "five context chips reuse existing context field",
+        "multi activity staging",
+        "conditional Enter button and reduced motion",
+        "Home tour",
+        "Home to canvas and back, context",
+        "keyboard and Home role-swap",
+        "desktop viewport and mobile scroll",
+        "mobile Home return"
+      ]
+    },
+    {
+      "name": "test_dividers.py",
+      "passed": 26,
+      "total": 26,
+      "coverage": [
+        "two card main divider",
+        "multiple medium columns",
+        "hide unused divider during drag",
+        "return at settled actual boundaries",
+        "avatar addition and geometry",
+        "width/height fill of sector"
+      ]
+    },
+    {
+      "name": "test_regression.py",
+      "passed": 23,
+      "total": 23,
+      "coverage": [
+        "draft continuity through contexts",
+        "minimization preserving work",
+        "Free geometry roundtrip",
+        "no mobile page overflow",
+        "source attribution"
+      ]
+    }
+  ],
+  "total": 152,
+  "passed": 152,
+  "correlated": true,
+  "page_errors_observed": 0,
+  "not_established": [
+    "actual Edge file:// user test",
+    "physical touch/screen reader/independent UX validation",
+    "Nautico owner-native events or effects",
+    "remote/local AI or filesystem integration",
+    "persistence across different sessions",
+    "complete modular refactor",
+    "merge, release, site deployment"
+  ],
+  "effect": "Candidate on existing K-UX-AI work branch only, no public main or Nautico changes"
+}
