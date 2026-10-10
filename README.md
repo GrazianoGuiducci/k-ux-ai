@@ -2,6 +2,8 @@
 
 **Una UI attraverso cui un kernel rende percepibile il proprio lavoro e riceve l'intervento umano.**
 
+Il [Manifesto del Web vivente](MANIFESTO.md) esprime la direzione di K-UX-AI: **dal Web che consultiamo al Web che abitiamo**. Il [Kernel](KERNEL.md) descrive la relazione operativa; il [repertorio UI](docs/ui-library/CURRENT.md) rende raggiungibili i componenti e gli esercizi del ramo corrente.
+
 K-UX-AI è un prodotto pubblico componibile: collega stato, accadimento, focus,
 espressione percettiva e azione della persona. Ogni kernel conserva il proprio
 oggetto e forma la UI pertinente al suo progetto, prodotto o servizio.

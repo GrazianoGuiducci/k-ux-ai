@@ -1,5 +1,7 @@
 # K-UX-AI product source
 
+Reach [MANIFESTO.md](MANIFESTO.md) for the evolving experiential horizon: temporal, participatory, generative and semantic UX. Let the current object and operator feedback form the perceptual direction. [KERNEL.md](KERNEL.md), [CURRENT_STATE.md](CURRENT_STATE.md), and [docs/ui-library/CURRENT.md](docs/ui-library/CURRENT.md) give the operational contract, released status, and candidate UI source status respectively.
+
 Use [KERNEL.md](KERNEL.md) and [CURRENT_STATE.md](CURRENT_STATE.md) to continue
 the selected product work. The medium contract is in `docs/interface.md`;
 the executable source is in `src/medium.js`.
