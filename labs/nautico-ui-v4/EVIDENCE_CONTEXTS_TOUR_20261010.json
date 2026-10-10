@@ -1,0 +1,70 @@
+{
+  "schema": "kuxai.v52.context-preparation-and-situated-tour.v1",
+  "date": "2026-10-10",
+  "repo": "GrazianoGuiducci/k-ux-ai",
+  "branch": "work/ux-ai-ui-library-20261008",
+  "source": {
+    "path": "labs/nautico-ui-v4/13-griglia-contesti-tour.html",
+    "git_blob_sha": "6461b505b358bcce3e7bf78aacc47135a850e139",
+    "sha256": "624d18f6b95e6d6703a898075e590457e1c65425f533f23e0f0a7b2f2d0201fa",
+    "bytes": 321357,
+    "baseline": "labs/nautico-ui-v4/12-griglia-campo-preparato.html",
+    "baseline_git_blob": "ac8de5bf2597759e9098c680d0295f730df26b51"
+  },
+  "tests": [
+    {
+      "name": "test_v52.py",
+      "passed": 41,
+      "total": 41
+    },
+    {
+      "name": "test_geometry_v52.py",
+      "passed": 107,
+      "total": 107
+    },
+    {
+      "name": "test_plans_v52.py",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "name": "test_zoom_v52.py",
+      "passed": 12,
+      "total": 12
+    },
+    {
+      "name": "regressions/test_preparation.py",
+      "passed": 103,
+      "total": 103
+    },
+    {
+      "name": "regressions/test_dividers.py",
+      "passed": 26,
+      "total": 26
+    },
+    {
+      "name": "regressions/test_regression.py",
+      "passed": 23,
+      "total": 23,
+      "adaptation": "test no longer toggles a saved-selected tile off when returning Home"
+    }
+  ],
+  "total": {
+    "passed": 319,
+    "assertions": 319,
+    "correlated": true,
+    "javascript_page_errors_observed": 0,
+    "script_syntax_checks": 3
+  },
+  "method": "Playwright headless Chromium via page.set_content, exact standalone HTML; zoom via CSS root zoom, localStorage via injected mock to verify serialization/rehydration in a fresh document because local navigation blocked",
+  "limits": [
+    "real Edge file:// persistent storage and restart untested",
+    "browser-native zoom/low-vision users and assistive technology audit untested",
+    "independent human use and physical touch untested",
+    "no Nautico owner-native data or effects",
+    "no AI/Section Kernel, remote/local provider or PC filesystem",
+    "legacy monolith not fully refactored",
+    "no main merge/release/deploy"
+  ],
+  "effect": "work branch candidate only; main/Nautico/Site unchanged"
+}

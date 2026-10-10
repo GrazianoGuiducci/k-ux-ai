@@ -1,5 +1,10 @@
 # K-UX-AI · Griglia del fare v4 — assistente modulare
 
+## 10 ottobre 2026 — v5.2 Contesti preparati e tour situato
+
+[Apri HTML](13-griglia-contesti-tour.html) · [decisioni e confini](CONTEXTS_AND_TOUR_20261010.md) · [receipt](EVIDENCE_CONTEXTS_TOUR_20261010.json). La Home conserva separatamente attività, ordine e ruolo principale dei cinque contesti; il tour non modale mostra ciascun controllo reale, esplicita ambito/quando/conseguenza, supporta tastiera e ingrandimento verificato; il secondo divisore si centra sulle sole righe che divide. Spaziature e margini delle card corretti. 319/319 controlli Chromium **correlati**, zero JS errors osservati. Persistenza Edge reale non attestata (storage simulato nei test). Baseline v5.1, patch-builder/test/screenshot nel pacchetto ZIP dell'interazione. Nessun merge/release/deploy, provider o Kernel Nautico modificato.
+
+
 ## 10 ottobre 2026 — v5.1 Campo preparato
 
 [HTML v5.1](12-griglia-campo-preparato.html) · [contratto e continuità](PREPARED_FIELD_20261010.md) · [ricevuta attribuita](EVIDENCE_PREPARED_FIELD_20261010.json). La Home consente preparazione del contesto e selezione multipla delle attività prima dell'ingresso nel canvas. Un tour facoltativo spiega il percorso, il pulsante Entra appare con una scelta e l'ingresso recupera i pannelli invece di distruggere bozze. Divisori secondari temporaneamente nascosti durante il drag e riallineati a geometria conclusa; migliorata l'occupazione delle medie. Anteprima rimossa dalle card già aperte.

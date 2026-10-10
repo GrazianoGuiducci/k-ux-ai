@@ -1,5 +1,14 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## Ultima candidata — 10 ottobre 2026 · K-UX-AI v5.2 Contesti preparati e tour situato
+
+Feedback Edge sulla v5.1: il tour centrato nascondeva ciò che spiegava e il messaggio non esplicitava sufficientemente ambito/causa/conseguenza; cinque contesti non conservavano piani separati (la selezione era ricostruita dalle card aperte); secondo divisore centrato solo sulla prima media e piccoli margini incoerenti. [HTML v5.2](../../labs/nautico-ui-v4/13-griglia-contesti-tour.html), [metodo](../../labs/nautico-ui-v4/CONTEXTS_AND_TOUR_20261010.md), [prova](../../labs/nautico-ui-v4/EVIDENCE_CONTEXTS_TOUR_20261010.json).
+
+Cinque piani Home separati contengono selezioni, ruolo principale e ordine e usano best-effort `localStorage` senza diventare fonti nautiche. Il tour è un `dialog.show()` non modale accanto a contesto/attività/ingresso con enfasi, narrazione in tre relazioni, tasti/chiusura centrata e reflow sotto zoom CSS. Il secondo handle si centra sul settore delle sole coppie anche quando l'ultima media occupa tutta la riga. Margini della card rivisti. HTML SHA256 `624d18f6b95e6d6703a898075e590457e1c65425f533f23e0f0a7b2f2d0201fa`, blob `6461b505b358bcce3e7bf78aacc47135a850e139`. Chromium: 41+107+7+12 test nuovi +103+26+23 regressioni = 319 controlli **correlati** e zero JS errors nei percorsi. Edge reale, browser native zoom, storage persistente dopo riavvio e accessibilità assistita non provati; test di storage su mock a causa del blocco dell'host.
+
+Nessun effetto su `main`, Kernel Nautico, MAIOS o provider. Prossimo: osservazione operatore e solo nuovi movimenti source-bound.
+
+
 ## Ultima candidata 10 ottobre — K-UX-AI v5.1 Campo preparato
 
 L'operatore, dopo quattro schermate Edge della v5.0, seleziona la Home come superficie per **preparare** il campo: cinque contesti visibili, multi-selezione di attività, Entrare nel canvas soltanto con selezione esplicita, tour opzionale. Gli avatar conservano peek pertinente; le card già aperte non mostrano un pulsante Anteprima duplicato. Dopo drag/avatar e reflow, i divisori non usati si sospendono e ritornano al bordo geometrico finale; le medie occupano righe/colonne compatibili con minimi di lettura.
