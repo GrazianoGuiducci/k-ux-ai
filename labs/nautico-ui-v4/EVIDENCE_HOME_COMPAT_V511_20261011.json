@@ -1,0 +1,350 @@
+{
+  "candidate": "v5.11, v5.10.1 Home compatibility",
+  "sha256": "67e8a1104d2abd66b886fad5354753a4db8964321c93947937de15f1917f434a",
+  "method": "Playwright Chromium page.set_content, headless, local synthetic demo",
+  "passed": 67,
+  "total": 67,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "1715x842-reduce:no_js_errors",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:ten_tiles",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:five_context_choices",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:controls_inside_tile",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:copy_wider_than_setup",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:setup_minimum_width",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:grid_scroll_or_fit",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:bottom_within_viewport",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:short_viewport_grid_scrolls",
+      "passed": true
+    },
+    {
+      "name": "1715x842-reduce:last_card_action_reachable",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:no_js_errors",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:ten_tiles",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:five_context_choices",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:controls_inside_tile",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:copy_wider_than_setup",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:setup_minimum_width",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:grid_scroll_or_fit",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:bottom_within_viewport",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:last_card_action_reachable",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:no_js_errors",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:ten_tiles",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:five_context_choices",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:controls_inside_tile",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:copy_wider_than_setup",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:setup_minimum_width",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:grid_scroll_or_fit",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:bottom_within_viewport",
+      "passed": true
+    },
+    {
+      "name": "1440x900-reduce:last_card_action_reachable",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:no_js_errors",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:ten_tiles",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:five_context_choices",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:controls_inside_tile",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:copy_wider_than_setup",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:setup_minimum_width",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:grid_scroll_or_fit",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:bottom_within_viewport",
+      "passed": true
+    },
+    {
+      "name": "1280x800-reduce:last_card_action_reachable",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:no_js_errors",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:ten_tiles",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:five_context_choices",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:controls_inside_tile",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:copy_wider_than_setup",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:setup_minimum_width",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:grid_scroll_or_fit",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:bottom_within_viewport",
+      "passed": true
+    },
+    {
+      "name": "1160x780-reduce:last_card_action_reachable",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:no_js_errors",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:ten_tiles",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:five_context_choices",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:controls_inside_tile",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:tablet_document_reflow",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:tablet_tiles_readable",
+      "passed": true
+    },
+    {
+      "name": "1050x800-reduce:last_card_action_reachable",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:no_js_errors",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:ten_tiles",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:five_context_choices",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:controls_inside_tile",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:mobile_document_scroll",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:mobile_tiles_readable",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:last_card_action_reachable",
+      "passed": true
+    }
+  ],
+  "measurements": [
+    {
+      "viewport": "1715x842-reduce",
+      "left_width": 938,
+      "setup_width": 693,
+      "intro_height": 356,
+      "grid_scroll_height": 386,
+      "grid_client_height": 302,
+      "page_scroll_height": 842
+    },
+    {
+      "viewport": "1715x913-no-preference",
+      "left_width": 938,
+      "setup_width": 693,
+      "intro_height": 356,
+      "grid_scroll_height": 386,
+      "grid_client_height": 373,
+      "page_scroll_height": 913
+    },
+    {
+      "viewport": "1440x900-reduce",
+      "left_width": 780,
+      "setup_width": 576,
+      "intro_height": 365,
+      "grid_scroll_height": 386,
+      "grid_client_height": 351,
+      "page_scroll_height": 900
+    },
+    {
+      "viewport": "1280x800-reduce",
+      "left_width": 692,
+      "setup_width": 512,
+      "intro_height": 357,
+      "grid_scroll_height": 386,
+      "grid_client_height": 259,
+      "page_scroll_height": 800
+    },
+    {
+      "viewport": "1160x780-reduce",
+      "left_width": 580,
+      "setup_width": 510,
+      "intro_height": 375,
+      "grid_scroll_height": 386,
+      "grid_client_height": 221,
+      "page_scroll_height": 780
+    },
+    {
+      "viewport": "1050x800-reduce",
+      "left_width": 998,
+      "setup_width": 998,
+      "intro_height": 596,
+      "grid_scroll_height": 398,
+      "grid_client_height": 398,
+      "page_scroll_height": 1185
+    },
+    {
+      "viewport": "390x844-reduce",
+      "left_width": 366,
+      "setup_width": 366,
+      "intro_height": 868,
+      "grid_scroll_height": 904,
+      "grid_client_height": 904,
+      "page_scroll_height": 2179
+    }
+  ],
+  "unverified": [
+    "Edge physical browser",
+    "live Nautico kernel",
+    "site deployment",
+    "screen-reader accessibility",
+    "multi-session persistence"
+  ]
+}
