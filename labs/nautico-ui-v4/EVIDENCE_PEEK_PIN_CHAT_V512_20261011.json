@@ -1,0 +1,383 @@
+{
+  "candidate": "v5.12",
+  "sha256": "1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b",
+  "method": "Chromium Playwright page.set_content on pinned candidate",
+  "passed": 80,
+  "total": 80,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "1715x913-no-preference:version",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:home-activities",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:canvas",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:hidden",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:peek",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:peek-icons-visible",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:hover-animation-present",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:hover-animation-860",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:pins-icons",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:focus-restored",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:same-icon-DOM",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:no-second-reveal",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:edge-disappears",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:hover-motion-continues",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:can-expand-previews",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:can-collapse-previews",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:chat-visible",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:one-row-empty",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:one-row-height",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:starter-separation",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:send-control-reachable",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:no-chat-horizontal-overflow",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:multiline-autogrow",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:resets-after-send",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:local-message-readback",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:no-page-errors",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:version",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:home-activities",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:canvas",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:hidden",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:peek",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:peek-icons-visible",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:hover-animation-present",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:hover-animation-860",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:pins-icons",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:focus-restored",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:same-icon-DOM",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:no-second-reveal",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:edge-disappears",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:hover-motion-continues",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:can-expand-previews",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:can-collapse-previews",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:no-page-errors",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:version",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:home-activities",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:canvas",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:hidden",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:peek",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:peek-icons-visible",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:reduce-no-hover-motion",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:pins-icons",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:focus-restored",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:same-icon-DOM",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:no-second-reveal",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:edge-disappears",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:can-expand-previews",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:can-collapse-previews",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:chat-visible",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:one-row-empty",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:one-row-height",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:starter-separation",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:send-control-reachable",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:no-chat-horizontal-overflow",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:multiline-autogrow",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:resets-after-send",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:local-message-readback",
+      "passed": true
+    },
+    {
+      "name": "1715x913-reduce:no-page-errors",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:version",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:home-activities",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:canvas",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:chat-visible",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:one-row-empty",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:one-row-height",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:starter-separation",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:send-control-reachable",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:no-chat-horizontal-overflow",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:multiline-autogrow",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:resets-after-send",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:local-message-readback",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:no-page-errors",
+      "passed": true
+    }
+  ],
+  "samples": [
+    {
+      "viewport": "1715x913-no-preference",
+      "pin_carrier_kept": true
+    },
+    {
+      "viewport": "1715x913-no-preference",
+      "composer_at_rest": {
+        "rows": 1,
+        "value": "",
+        "placeholder": "",
+        "rect": 46
+      },
+      "grown": 79,
+      "gap": 21
+    },
+    {
+      "viewport": "1366x768-no-preference",
+      "pin_carrier_kept": true
+    },
+    {
+      "viewport": "1715x913-reduce",
+      "pin_carrier_kept": true
+    },
+    {
+      "viewport": "1715x913-reduce",
+      "composer_at_rest": {
+        "rows": 1,
+        "value": "",
+        "placeholder": "",
+        "rect": 46
+      },
+      "grown": 79,
+      "gap": 21
+    },
+    {
+      "viewport": "390x844-reduce",
+      "composer_at_rest": {
+        "rows": 1,
+        "value": "",
+        "placeholder": "",
+        "rect": 46
+      },
+      "grown": 79,
+      "gap": 13
+    }
+  ],
+  "scope": [
+    "Single-line empty composer, growing/shrinking textarea, send and starter spacing",
+    "Hover-to-pinned rail continuity with identical carrier and animation identity",
+    "Reduced-motion remains instantaneous",
+    "No real Nautico or AI provider, no physical Edge"
+  ]
+}

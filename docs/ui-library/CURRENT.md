@@ -1,5 +1,14 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## 11 ottobre 2026 — v5.12: fissaggio continuo delle Attività e composer chat a una riga
+
+L'operatore osserva nel proprio Edge che **cliccando per fissare le icone già mostrate dall'hover** il rail scompare e riappare, e chiede un compositore chat inizialmente vuoto a una riga, con suggerimenti più distanziati. La [v5.12](../../labs/nautico-ui-v4/25-griglia-rail-composer-v512.html) corregge l'effetto nel medesimo controller: **`peek → icons` mantiene il carrier e la rivelazione già iniziata**, evitando di far ripartire da `clipPath: 100%` l'animazione di 860 ms. Il focus passa dalla linguetta non più visibile al controllo fissato, mentre `hidden → icons` continua ad animare e reduced motion resta immediato.
+
+La chat globale si apre con textarea `rows=1` realmente vuota, autosize durante la scrittura e ritorno alla riga minima dopo invio; le starter questions distano 21 px dal composer su desktop (13 px in compatto). **Non** è stato aggiunto un agente AI o modificato il modulo di contributo. La fonte fotografica appartiene a una versione locale precedente, ma la correzione parte dall'owner del codice **v5.11 corrente** mantenendo la baseline invariata. [Causa, metodo e limiti](../../labs/nautico-ui-v4/RAIL_PIN_CHAT_V512_20261011.md).
+
+Nuovo HTML SHA-256 `1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b`, Git blob `886ce34a70b4ba10ec204668047f9574e841d3e7`. [Builder](../../tools/build_nautico_v512.py) `--check` byte-identico, quattro script validi con `node --check`. Ricevute Chromium `page.set_content`: [80/80 nuove](../../labs/nautico-ui-v4/EVIDENCE_PEEK_PIN_CHAT_V512_20261011.json), 65/65 contenuto, 9/9 motion, 67/67 Home compatibilità (221 controlli correlati, nessun page JS error). Non è prova Edge fisico, kernel Nautico, sito MAIOS, provider o release. `main` e package pubblico invariati.
+
+
 ## 11 ottobre 2026 — v5.11: gerarchia del lavoro, rail coerente e aperture orientate
 
 Il readback Edge sulla v5.10.1 chiarisce che il problema della gerarchia era **nel contenuto**: un avviso lungo sulla sorgente e un secondo avviso sui dati dimostrativi precedevano categoria, titolo e descrizione. La [v5.11](../../labs/nautico-ui-v4/24-griglia-content-hierarchy-v511.html) dà precedenza alla categoria, al titolo e alla descrizione; la fonte KN/… e i limiti illustrativi rimangono nella disclosure accessibile «Fonte e limiti». L'intestazione dispone icona, contesto, azione e nome funzionale in una sola riga, adattandosi alle card strette. La provenienza conserva il proprio significato: non è un avallo Nautico.

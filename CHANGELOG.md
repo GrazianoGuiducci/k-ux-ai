@@ -2,6 +2,9 @@
 
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
+- K-UX-AI Griglia v5.12: preserve the existing hover-reveal when pinning the Activity rail (no second clip-to-hidden), keep same controls and focus return; use empty single-line growing chat composer with separated suggested questions.
+- Pin hash-guarded source/builder and 80 new + 141 compatible Chromium checks, correlated and zero observed JS errors. Keep v5.11 unchanged; no public KUX release or Nautico/MAIOS site effect.
+
 - K-UX-AI Griglia v5.11: move duplicated source limitations into one accessible in-card disclosure after the work title and description; keep single-line card headers, fix nonfocused Activity close state, and add 750ms-or-longer main opening motion with reduced-motion alternative. Pinned source and correlated Chromium checks (65 + 9 + 67); no public release.
 
 - K-UX-AI Griglia v5.10.1: preserve the v5.10 readable Home copy and narrow the "Dove lavoriamo?" setup panel so the introduction takes fewer lines; guard tile controls with a minimum row height and conditional inner grid scroll, with tablet natural-page fallback. Preserve the locally observed v5.10 HTML separately from this new source-bound candidate.

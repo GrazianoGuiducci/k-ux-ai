@@ -1,0 +1,183 @@
+{
+  "sha256": "1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b",
+  "candidate": "v5.12 compatibility with v5.11",
+  "checks": [
+    {
+      "name": "context-menu-opening>=750",
+      "passed": true,
+      "meta": [
+        {
+          "name": "kux-v511-menu-arrive",
+          "duration": 800,
+          "state": "running"
+        }
+      ]
+    },
+    {
+      "name": "tools-opening>=750",
+      "passed": true,
+      "meta": [
+        {
+          "name": "kuxToolsArrive",
+          "duration": 750,
+          "state": "running"
+        }
+      ]
+    },
+    {
+      "name": "picker-opening>=750",
+      "passed": true,
+      "meta": [
+        {
+          "name": "kux-v511-menu-arrive",
+          "duration": 800,
+          "state": "running"
+        }
+      ]
+    },
+    {
+      "name": "activity-return>=750",
+      "passed": true,
+      "meta": [
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.89086806421258,
+          "state": "running"
+        },
+        {
+          "name": "kux-activity-return",
+          "duration": 860,
+          "state": "running"
+        }
+      ]
+    },
+    {
+      "name": "activity-shows-icons",
+      "passed": true,
+      "meta": null
+    },
+    {
+      "name": "no-preference:js-clean",
+      "passed": true,
+      "meta": []
+    },
+    {
+      "name": "reduce-motion-no-activity-reveal",
+      "passed": true,
+      "meta": [
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        },
+        {
+          "name": "",
+          "duration": 136.74921654628193,
+          "state": "running"
+        }
+      ]
+    },
+    {
+      "name": "reduce-motion-icons",
+      "passed": true,
+      "meta": null
+    },
+    {
+      "name": "reduce:js-clean",
+      "passed": true,
+      "meta": []
+    }
+  ],
+  "passed": 9,
+  "total": 9,
+  "method": "Chromium Playwright page.set_content; CSS/WAAPI opening durations measured on live DOM",
+  "notes": [
+    "750ms requirement applies to spatial/opening animation; immediate reduced-motion mode remains available",
+    "No physical Edge/browser assistive verification"
+  ]
+}

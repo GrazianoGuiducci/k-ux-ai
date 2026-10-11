@@ -1,0 +1,50 @@
+/* K-UX-AI 5.12: rail pin is a continuation of peek; the shared DOM remains visible.
+   Motion belongs to the initial hover reveal, not to a second reveal after click.
+   This CSS does not introduce a second state authority. */
+body[data-kux-screen='work'][data-kux-activities='peek'] .intent-dock,
+body[data-kux-screen='work'][data-kux-activities='icons'] .intent-dock{
+  /* The same icon carrier stays readable through the state transition. */
+  opacity:1;
+}
+
+/* Chat composer: starts as one truly empty line; grows while typing and shrinks
+   when sent. Keep prompts visually apart from the editing action. */
+.kux-chat-quick{
+  padding:12px 14px 0!important;
+  margin-bottom:21px!important;
+  gap:9px!important;
+}
+.kux-chat-inputrow{
+  padding:11px 14px 13px!important;
+  gap:10px!important;
+  align-items:center!important;
+}
+.kux-chat-inputrow textarea{
+  min-height:46px!important;
+  height:46px;
+  max-height:190px!important;
+  padding:10px 13px!important;
+  line-height:1.4!important;
+  border-radius:11px!important;
+  overflow-y:auto!important;
+  resize:none!important;
+}
+.kux-chat-inputrow button{
+  min-height:46px!important;
+  min-width:86px!important;
+  border-radius:11px!important;
+  align-self:end!important;
+  padding:0 14px!important;
+}
+@media(max-width:900px){
+  .kux-chat-quick{margin-bottom:13px!important}
+  .kux-chat-inputrow{grid-template-columns:minmax(0,1fr) auto!important}
+  .kux-chat-inputrow button{width:auto!important;min-width:78px!important}
+}
+@media(max-width:470px){
+  .kux-chat-inputrow{padding-inline:9px!important;gap:7px!important}
+  .kux-chat-inputrow button{min-width:66px!important;padding-inline:9px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .kux-chat-inputrow textarea,.kux-chat-inputrow button{transition:none!important}
+}

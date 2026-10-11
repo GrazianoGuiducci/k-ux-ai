@@ -1,0 +1,345 @@
+{
+  "candidate": "v5.12 compatibility with v5.11",
+  "source_sha256": "1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b",
+  "method": "Playwright Chromium page.set_content; local synthetic Nautico UI",
+  "checks_passed": 65,
+  "checks_total": 65,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "1715x913-no-preference:home",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:home-ten",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:home-no-overflow",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:canvas",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:five-panels",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:headers-in-one-row",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:header-has-context-action",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:body-starts-with-semantic-label",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:provenance-follows-work",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:single-provenance",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:provenance-real-limit",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:disclosure-closed",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:disclosure-expand",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:disclosure-collapse",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:activity-open-before",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:double-click-armed",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:activity-off-after",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:activity-not-in-canvas",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:rail-hidden",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:rail-restored",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:rail-return-duration",
+      "passed": true
+    },
+    {
+      "name": "1715x913-no-preference:no-js-errors",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:home",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:home-ten",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:home-no-overflow",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:canvas",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:five-panels",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:headers-in-one-row",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:header-has-context-action",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:body-starts-with-semantic-label",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:provenance-follows-work",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:single-provenance",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:provenance-real-limit",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:disclosure-closed",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:disclosure-expand",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:disclosure-collapse",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:activity-open-before",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:double-click-armed",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:activity-off-after",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:activity-not-in-canvas",
+      "passed": true
+    },
+    {
+      "name": "1366x768-no-preference:no-js-errors",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:home",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:home-ten",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:home-no-overflow",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:canvas",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:five-panels",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:headers-in-one-row",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:header-has-context-action",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:body-starts-with-semantic-label",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:provenance-follows-work",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:single-provenance",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:provenance-real-limit",
+      "passed": true
+    },
+    {
+      "name": "768x900-reduce:no-js-errors",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:home",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:home-ten",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:home-no-overflow",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:canvas",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:five-panels",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:headers-in-one-row",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:header-has-context-action",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:body-starts-with-semantic-label",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:provenance-follows-work",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:single-provenance",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:provenance-real-limit",
+      "passed": true
+    },
+    {
+      "name": "390x844-reduce:no-js-errors",
+      "passed": true
+    }
+  ],
+  "samples": [
+    {
+      "viewport": "1715x913-no-preference",
+      "rail_animation": [
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "",
+          "duration": 205.97388393823502,
+          "phase": 0.9584532427656308
+        },
+        {
+          "id": "kux-activity-return",
+          "duration": 860,
+          "phase": 0.5249726496683687
+        }
+      ]
+    }
+  ],
+  "viewports": [
+    "1715x913-no-preference",
+    "1366x768-no-preference",
+    "768x900-reduce",
+    "390x844-reduce"
+  ],
+  "limits": [
+    "Not Edge physical browser",
+    "Not real Nautico or MAIOS site",
+    "No server permissions/AI provider",
+    "Reduced-motion is an alternate final state, not a 750ms requirement",
+    "No full accessibility audit"
+  ]
+}
