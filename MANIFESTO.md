@@ -8,6 +8,16 @@ Il cinema ci ha insegnato la forza del movimento, della luce, del ritmo, del suo
 
 **K-UX-AI esplora questa possibilità: un Web che prende forma mentre lo abitiamo.**
 
+### La UX per l'AI attraversa il Web e le applicazioni
+
+Il Web vivente è una delle espressioni di un campo più ampio. K-UX-AI sviluppa la **UX per l'intelligenza artificiale**: un medium attraverso cui persone e sistemi intelligenti possono incontrarsi, comprendere situazioni e operare negli ambienti digitali che partecipano al mondo — pagine Web, applicazioni, spazi di lavoro e nuovi dispositivi.
+
+I sistemi agentici e i kernel che li accompagnano possono avere conoscenze, strumenti, capacità e ambienti differenti. K-UX-AI coltiva la competenza di renderne percepibili le relazioni, di dare forma agli interventi possibili e di mantenere riconoscibile il lavoro mentre contesti, eventi e forme evolvono. Il kernel ricevente mantiene il proprio significato, le fonti, lo stato e l'autorità sulle conseguenze.
+
+Una griglia di attività, una chat, un dialogo specializzato, una scena animata, una superficie spaziale o un'altra forma che ancora emergerà possono incarnare questa relazione. La nostra Griglia è un esercizio generativo e trasferibile, non il modello imposto agli altri kernel. Kernel Nautico è il primo dominio che ne esplora l'adozione; il medium cresce anche attraverso casi aziendali, professionali, di ricerca e altri contesti.
+
+La capacità futura di comprendere il contesto, proporre o generare strumenti e adattare il campo dipende dalle competenze, dai mezzi e dalle sorgenti realmente raggiungibili in ciascun ricevente. La qualità della UX accompagna l'evoluzione del sistema e permette alla persona di parteciparvi consapevolmente.
+
 ### La scena diventa campo
 
 Una pagina può diventare un luogo. Un dato può diventare una relazione visibile. Un evento può modificare lo spazio percettivo; una domanda può aprire un'altra profondità; un'intuizione può produrre uno strumento con cui proseguire.

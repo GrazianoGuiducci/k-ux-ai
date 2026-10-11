@@ -2,6 +2,9 @@
 
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
+- New synthetic Griglia v5.6: Home-only toolbar cleanup, seven-step contextual Canvas tour, 10 visible activity entries, collapsible/reveal-on-edge Activity rail, real fullscreen/rail coexistence, no orphan dividers, functional Esplora context transitions and one assistant entry per surface. Carry baseline v5.5 and product-neutral medium unchanged.
+- Build source v5.6 with a pinned deterministic builder; 126 targeted and 59 compatibility Chromium checks, correlated, with a scoped receipt. Complete canonical Manifesto to reach AI UX across Web, applications and receiving kernels; do not infer site release or live Nautico integration.
+
 - K-UX-AI v5.5 synthetic demo: situated Home/tour, Ricomponi divider anchoring, directional fullscreen morph for cards and chat, left dock respecting the activity rail, optional form, and existing local section dialogue made legible. Preserve v5.4.1 and current neutral `createMedium` API.
 - Deterministic pinned builder, 59 new plus 97 compatibility correlated Chromium checks and receipts, no site or Nautico integration.
 
