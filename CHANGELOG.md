@@ -2,6 +2,9 @@
 
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
+- K-UX-AI v5.5 synthetic demo: situated Home/tour, Ricomponi divider anchoring, directional fullscreen morph for cards and chat, left dock respecting the activity rail, optional form, and existing local section dialogue made legible. Preserve v5.4.1 and current neutral `createMedium` API.
+- Deterministic pinned builder, 59 new plus 97 compatibility correlated Chromium checks and receipts, no site or Nautico integration.
+
 - Form and exercise an additive Griglia v5.4.1 candidate with restored per-context layout on Home reentry and live-editor focus/caret continuity during local demo event re-render. Preserve v5.4 exact baseline; pin deterministic builder and 97-check Chromium QA plus scoped receipt.
 - Prepare source-owned Nautico adapter/host-site reconciliation for Codex; no release, site integration or external permissions.
 

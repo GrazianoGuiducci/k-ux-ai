@@ -1,5 +1,10 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## 11 ottobre 2026 — candidata v5.5: Home, tour, dialoghi e interazioni
+
+La [v5.5](../../labs/nautico-ui-v4/17-griglia-situated-v55.html) usa la Griglia come una possibile proiezione del medium neutrale K-UX-AI. Il [documento di costruzione](../../labs/nautico-ui-v4/SITUATED_INTERACTION_V55_20261011.md) conserva il ritorno dell'operatore e le modifiche: Home/tour più espliciti e generalizzabili, divisore di Ricomponi ancorato al settore effettivo, drag-to-full e pull-down restore di card e chat, chat a sinistra con fascia Attività visibile, modulo globale facoltativo, Dialogo scheda già esistente reso riconoscibile senza provider inventato. Builder `tools/build_nautico_v55.py` e due suite Chromium con ricevute 59/59 + 97/97 correlate, zero page error osservati, test su `page.set_content`. HTML SHA-256 `d5a87e294d6fea395664d258d65c9a40f4c94d190bb807177146bd7301432d1c`, blob `b84046ab5285823ba418d131bc36e56810cdc0fc`. La v5.4.1 è preservata. Nessuna modifica a Nautico, maios.it, package pubblico, merge, release o deploy.
+
+
 ## 10 ottobre 2026 — integrazione Nautico: terzo owner identificato
 
 La candidata site-host non è soltanto un owner da ricercare: esiste `GrazianoGuiducci/maios_it/codex/nautico-integrated-20261006` con pagina/chat/export Nautico. Il [raccordo aggiornato](NAUTICO_RECEIVER_INTEGRATION_20261010.md#10-ottobre-2026--site-owner-risolto-destinazione-live-ancora-da-verificare) collega anche la [preparazione nel site owner](https://github.com/GrazianoGuiducci/maios_it/blob/codex/nautico-integrated-20261006/docs/NAUTICAL_KUX_V541_RECEIVER_HANDOFF_20261010.md). Resta aperto il gate del primo incontro pubblico / distribuzione: nessun host live o URL effettiva provati da questa nota; nessun deploy.

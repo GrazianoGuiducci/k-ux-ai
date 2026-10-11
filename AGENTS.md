@@ -27,3 +27,5 @@ Preserve concurrent work. A source change is distinct from publishing a
 package, deploying a site or connecting a real receiving kernel.
 
 For the v5.4.1 Nautico laboratory continuation, read `docs/ui-library/CURRENT.md`, `labs/nautico-ui-v4/CONTINUITY_V541_20261010.md` and `docs/ui-library/NAUTICO_RECEIVER_INTEGRATION_20261010.md`. Its exact candidate is generated with `python tools/build_nautico_v541.py --check` and checked with `python tests/qa_nautico_v541.py` in a receiver with Chromium/Playwright. Do not replace the Nautico source controllers or infer a live site from the synthetic HTML.
+
+For the 11 October v5.5 candidate, read `docs/ui-library/CURRENT.md` and `labs/nautico-ui-v4/SITUATED_INTERACTION_V55_20261011.md`. Build/check with `python tools/build_nautico_v55.py --check` and run `python tests/qa_nautico_v55.py` and `python tests/qa_nautico_v55_compat.py` where Chromium/Playwright are available. This laboratory does not install an agent, account permissions or Nautico source controllers; preserve the neutral medium and its separate receiver owners.
