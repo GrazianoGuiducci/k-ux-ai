@@ -2,6 +2,10 @@
 
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
+- K-UX-AI Griglia v5.7: three coherent Activity rail states (hidden, icons, previews) with transient hover icons and explicit preview expansion; remove the stray overlay tab in expanded mode, preserve user-control and original source. Re-anchor free dragging to the rendered pointer offset, including after right-side focus; raise small body/label text 1–2 px while retaining title hierarchy.
+- Pin deterministic v5.7 builder and exact candidate; 124 new and 126 v5.6 compatibility Chromium checks, correlated, zero observed page JS errors. No release, Nautico/MAIOS integration or external effects.
+
+
 - New synthetic Griglia v5.6: Home-only toolbar cleanup, seven-step contextual Canvas tour, 10 visible activity entries, collapsible/reveal-on-edge Activity rail, real fullscreen/rail coexistence, no orphan dividers, functional Esplora context transitions and one assistant entry per surface. Carry baseline v5.5 and product-neutral medium unchanged.
 - Build source v5.6 with a pinned deterministic builder; 126 targeted and 59 compatibility Chromium checks, correlated, with a scoped receipt. Complete canonical Manifesto to reach AI UX across Web, applications and receiving kernels; do not infer site release or live Nautico integration.
 
