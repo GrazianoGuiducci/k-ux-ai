@@ -3,7 +3,7 @@
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
 - K-UX-AI Griglia v5.9: source-owned tour spotlight/dialog transitions, reduced-motion branch, consistent section/action/title/subtitle/source heading, restrained Home/Canvas/Sidebar/Strumenti motion, centered divider dots and first-line checkbox alignment. Preserve v5.8 source and UI controller.
-- Deterministic v5.9 builder, three embedded-script syntax checks, and 139 new + 159 v5.8 + 126 prior Canvas correlated Chromium checks, no observed page JS error. No \`main\` merge, release, real Nautico controller or MAIOS site effect.
+- Deterministic v5.9 builder, three embedded-script syntax checks, and 139 new + 159 v5.8 + 126 prior Canvas correlated Chromium checks, no observed page JS error. No `main` merge, release, real Nautico controller or MAIOS site effect.
 
 
 - K-UX-AI Griglia v5.8: fold the Activity rail's hide and icon/preview controls into one compact row, remove the redundant `10 accessi / nel campo` count, keep edge peek as icons, and clarify the Home as Kernel UX-AI for intelligent systems. Preserve actual demo/horizon distinction.
