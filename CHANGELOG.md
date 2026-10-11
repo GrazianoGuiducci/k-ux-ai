@@ -2,6 +2,10 @@
 
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
+- K-UX-AI Griglia v5.10.1: preserve the v5.10 readable Home copy and narrow the "Dove lavoriamo?" setup panel so the introduction takes fewer lines; guard tile controls with a minimum row height and conditional inner grid scroll, with tablet natural-page fallback. Preserve the locally observed v5.10 HTML separately from this new source-bound candidate.
+- Exact-pinned v5.10.1 builder, CSS, 67/67 bounded Chromium home checks over seven viewport/motion profiles, 4 embedded script blocks unchanged from local v5.10. This is not v5.9 regression proof, a package release or a Nautico/MAIOS integration.
+
+
 - K-UX-AI Griglia v5.9: source-owned tour spotlight/dialog transitions, reduced-motion branch, consistent section/action/title/subtitle/source heading, restrained Home/Canvas/Sidebar/Strumenti motion, centered divider dots and first-line checkbox alignment. Preserve v5.8 source and UI controller.
 - Deterministic v5.9 builder, three embedded-script syntax checks, and 139 new + 159 v5.8 + 126 prior Canvas correlated Chromium checks, no observed page JS error. No `main` merge, release, real Nautico controller or MAIOS site effect.
 
