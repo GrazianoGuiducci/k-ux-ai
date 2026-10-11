@@ -2,6 +2,9 @@
 
 ## Unreleased — candidate UI source cabinet (branch `work/ux-ai-ui-library-20261008`)
 
+- K-UX-AI Griglia v5.8: fold the Activity rail's hide and icon/preview controls into one compact row, remove the redundant `10 accessi / nel campo` count, keep edge peek as icons, and clarify the Home as Kernel UX-AI for intelligent systems. Preserve actual demo/horizon distinction.
+- Pin deterministic v5.8 builder and exact source; 159 new and 126 prior-behaviour Chromium checks, correlated, zero observed JS page errors. No release or Nautico/MAIOS site effect.
+
 - K-UX-AI Griglia v5.7: three coherent Activity rail states (hidden, icons, previews) with transient hover icons and explicit preview expansion; remove the stray overlay tab in expanded mode, preserve user-control and original source. Re-anchor free dragging to the rendered pointer offset, including after right-side focus; raise small body/label text 1–2 px while retaining title hierarchy.
 - Pin deterministic v5.7 builder and exact candidate; 124 new and 126 v5.6 compatibility Chromium checks, correlated, zero observed page JS errors. No release, Nautico/MAIOS integration or external effects.
 
