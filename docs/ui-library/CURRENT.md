@@ -1,5 +1,11 @@
 # CURRENT — K-UX-AI UI source cabinet, reusable Chat/Form and Nautico v4
 
+## 12 ottobre 2026 — dimostratore Nautico e orizzonte di interfaccia governata dal sistema
+
+L'operatore conferma l'utilità del presente lavoro K-UX-AI per **completare una superficie del Kernel Nautico utilizzabile anche come presentazione delle dinamiche interne del kernel** e come mezzo per rendere comprensibile l'adozione o un possibile investimento. Questa funzione non richiede di trattare la griglia/canvas candidata come UI operativa definitiva. L'orizzonte è un medium più evoluto nel quale il sistema compone e gestisce dinamicamente l'interazione in base al campo; l'implementazione e il suo comportamento reale sono da formare e provare, non sono già l'effetto del prototipo.
+
+La v5.12 conserva codice e ricevute propri in questa lane; il suo controllo di UI e i suoi dati dimostrativi non equivalgono a controller, AI, account o lifecycle Nautico collegati. `GrazianoGuiducci/kernel-nautico` possiede dominio e [scopo della presentazione](https://github.com/GrazianoGuiducci/kernel-nautico/blob/main/docs/PUBLIC_PURPOSE.md); il vero host/site e Codex possiedono i propri passaggi di integrazione. Il Business Manager distingue il primo interlocutore proposto Pershing/Ferretti dalle altre possibilità economiche e dai kernel semantici MAIOS. Questo aggiornamento è una **precisazione di scopo**: nessun HTML, contract, builder, test, release o sito è stato modificato qui.
+
 ## 11 ottobre 2026 — v5.12: fissaggio continuo delle Attività e composer chat a una riga
 
 L'operatore osserva nel proprio Edge che **cliccando per fissare le icone già mostrate dall'hover** il rail scompare e riappare, e chiede un compositore chat inizialmente vuoto a una riga, con suggerimenti più distanziati. La [v5.12](../../labs/nautico-ui-v4/25-griglia-rail-composer-v512.html) corregge l'effetto nel medesimo controller: **`peek → icons` mantiene il carrier e la rivelazione già iniziata**, evitando di far ripartire da `clipPath: 100%` l'animazione di 860 ms. Il focus passa dalla linguetta non più visibile al controllo fissato, mentre `hidden → icons` continua ad animare e reduced motion resta immediato.
