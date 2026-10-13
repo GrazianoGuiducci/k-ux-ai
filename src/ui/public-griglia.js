@@ -119,7 +119,7 @@
 
   function focusedTarget() {
     const assistant=core?.getAssistant?.(),requested=profile().targets[target];
-    if(core?.state.screen==='work'&&assistant?.open&&assistant.visible&&assistant.focused) {
+    if(core?.state.screen==='work'&&assistant?.open&&assistant.visible&&(requested?.intent==='chat'||(!requested&&assistant.focused))) {
       if(requested?.intent==='chat'&&requested.context===core.state.activeContext)return target;
       return Object.entries(profile().targets).find(([,x])=>x.context===core.state.activeContext&&x.intent==='chat')?.[0]||'';
     }
@@ -137,6 +137,7 @@
   function install(api) {
     core=api;
     document.addEventListener('click',event=>{
+      if(event.target.closest?.('.module'))target='';
       const button=event.target.closest?.('[data-kux-ai-target]');if(!button)return;
       const key=button.dataset.kuxAiTarget;if(!Object.hasOwn(profile().targets,key))return;
       const route=profile().targets[key];target=key;

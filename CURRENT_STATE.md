@@ -39,8 +39,11 @@ Eighteen Node tests pass: fifteen medium/MessagePort contracts and three
 public-adapter contracts for explicit data, separate history, failed transport,
 proposal attribution and same-origin correlated selection. Generated scripts
 pass syntax checks. The site candidate uses the two GPT derivatives as its
-primary UI; a nautical Cantiere command and a contextual dialog were observed.
-The preview is a labelled fixture with zero provider calls.
+primary UI. The browser exercised six complementary GPT cards, preservation
+of a draft across comparison, computed comparison, local item reordering and
+the native Chat/Form window with a received fixture reply. The page observes
+the actual window and card selection. The preview is a labelled fixture with
+zero provider calls; these observations do not qualify LLM inference.
 
 Those observations do not inherit the previous kernel-mirror flow's proof.
 The smaller examples remain available as technical exercises. Build identities

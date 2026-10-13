@@ -84,15 +84,19 @@
   "documents": [
     {
       "label": "Scopo e logiche di K-UX-AI",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/KERNEL.md"
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/KERNEL.md"
     },
     {
       "label": "Competenza e metodo",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/competences/ux-ai/COMPETENCE.md"
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/competences/ux-ai/COMPETENCE.md"
     },
     {
       "label": "Guida di costruzione e continuità",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/competences/ux-ai/GUIDE.md"
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/competences/ux-ai/GUIDE.md"
+    },
+    {
+      "label": "Guida della presentazione interattiva",
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/docs/public-griglia.md"
     }
   ],
   "contexts": {
