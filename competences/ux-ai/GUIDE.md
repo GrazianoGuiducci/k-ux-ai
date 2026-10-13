@@ -314,3 +314,24 @@ contesto originari e non porta nel trasporto le bozze di altre schede. La
 proposta esportata può partecipare al lavoro del kernel senza essere trattata
 come apprendimento già assimilato. Sorgente, derivata, host e conseguenza
 mantengono la propria identità mentre l'integrazione le collega.
+
+## Spazio della guida e orientamento nel sito — 13 ottobre 2026
+
+La pagina del prodotto e la Home della sua UI hanno profondità diverse.
+La prima definisce sistema, destinatari e situazione; la seconda introduce
+il mezzo di lavoro, il metodo e il caso da esplorare. La presentazione non
+deve consumare lo spazio delle attività con titoli ripetuti o pannelli vuoti.
+Il profilo Nautico usa il testo scelto dall'operatore e una geometria propria
+nel builder; il riferimento GPT e la derivata neutra restano invariati.
+
+Un mezzo incorporato riceve l'altezza del suo frame, non quella del browser.
+Quel valore può cambiare anche la disposizione della Griglia alla soglia
+responsive. Conserva schede leggibili e scorrimento effettivo quando serve;
+non comprimerle per simulare la completezza di una singola schermata.
+Il pannello di preparazione occupa lo spazio utile dei suoi comandi.
+
+Se un comando della pagina apre un campo, la persona deve raggiungere quel
+campo dopo la conferma effettiva. L'host considera la barra fissa, l'ultimo
+comando ancora pertinente e la preferenza di movimento ridotto. Su mobile
+una barra che scorre con il documento non riserva spazio sopra il frame.
+Questo orientamento continua il gesto senza ricostruire il campo o le bozze.

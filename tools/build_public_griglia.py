@@ -52,7 +52,8 @@ def build(profile_path: Path, output: Path) -> dict:
     text = replace_pattern(text, r'const contexts=\{.*?\n\};?\s*const scenarios=', 'const contexts=' + script_data(profile['contexts']) + ';\nconst scenarios=')
     text = replace_pattern(text, r'const scenarios=\[.*?\n\];', 'const scenarios=' + script_data(profile['events']) + ';')
     story = profile['home']
-    intro = '<div class="kux-home-story"><div class="eyebrow">' + html.escape(story['eyebrow']) + '</div><h1 id="homeTitle">' + html.escape(story['title']) + '</h1><h2 class="kux-home-thesis">' + html.escape(story['subtitle']) + '</h2>'
+    eyebrow = '<div class="eyebrow">' + html.escape(story['eyebrow']) + '</div>' if story['eyebrow'] else ''
+    intro = '<div class="kux-home-story">' + eyebrow + '<h1 id="homeTitle">' + html.escape(story['title']) + '</h1><h2 class="kux-home-thesis">' + html.escape(story['subtitle']) + '</h2>'
     intro += ''.join('<p class="' + cls + '">' + html.escape(story[key]) + '</p>' for cls, key in [('intro-desc', 'intro'), ('kux-home-depth', 'method'), ('kux-home-next', 'use'), ('kux-home-demo-boundary', 'scope')])
     intro += '</div>'
     text = replace_pattern(text, r'<div class="kux-home-story">[^\r\n]*</div>', intro)
@@ -107,6 +108,20 @@ def build(profile_path: Path, output: Path) -> dict:
     text = text.replace("setStatus('Consegna al controller…');", "setStatus('Conservo il contributo…');")
     text = text.replace('Il modulo non invia automaticamente dati o email. L’host determina l’effetto.', 'Il contributo resta in questo spazio. La domanda si invia nella chat.')
     text = replace_one(text, '</head>', '<style>body[data-kux-product="k-ux-ai"] .kux-present-object{clip-path:none;border-radius:14px;width:55%;height:48%;background:linear-gradient(90deg,#c7ecec 36%,#fffaf0 36%);box-shadow:0 0 0 1px #527675} .kux-public-source a{color:inherit}.kux-ai-note{font-size:.82rem;line-height:1.45;color:#496667}.kux-source-diagram{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.kux-source-diagram>span{padding:18px 10px;border:1px solid #a9c7bc;border-radius:10px;background:#edf4e8;text-align:center}.kux-ai-error{color:#7b4a21}</style></head>')
+    if profile['id'] == 'kernel-nautico':
+        # Hosting-domain presentation: leave the GPT reference and neutral receiver intact.
+        text = replace_one(text, '</head>', '''<style id="kux-nautical-home-space">
+body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story #homeTitle{font-size:clamp(28px,2.6vw,42px);line-height:1.08;margin:0 0 6px;letter-spacing:-.035em}
+body[data-kux-product="kernel-nautico"] .kux-home-story .kux-home-thesis{font-size:clamp(17px,1.35vw,22px);line-height:1.25;margin:0 0 10px}
+body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story .intro-desc,
+body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story .kux-home-depth,
+body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story .kux-home-next,
+body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story .kux-home-demo-boundary{font-size:13px;line-height:1.35;margin:0 0 7px;max-width:none}
+body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story p:last-child{margin-bottom:0}
+body[data-kux-product="kernel-nautico"] .kux-home-setup{align-self:start}
+@media(min-width:1051px){body[data-kux-product="kernel-nautico"] .home-intro{grid-template-columns:minmax(0,1.15fr) minmax(370px,.85fr)}}
+@media(max-width:780px){body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story p[class]{font-size:14px;line-height:1.42}}
+</style></head>''')
     output.mkdir(parents=True, exist_ok=True)
     (output / 'index.html').write_text(text, encoding='utf-8', newline='\n')
     manifest = {'schema': 'kux.public-griglia-build.v1', 'profile_id': profile['id'], 'semantic_owner': profile['semanticOwner'], 'reference_sha256': REFERENCE_SHA256, 'profile_sha256': hashlib.sha256(profile_bytes).hexdigest(), 'runtime_sha256': hashlib.sha256(runtime.encode()).hexdigest(), 'html_sha256': hashlib.sha256(text.encode()).hexdigest(), 'means': {'ui': 'GPT Griglia v5.12 derived public incarnation', 'dialogs': 'explicit MAIOS public assistant requests when host configured', 'company_integrations': False}}

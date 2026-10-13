@@ -20,6 +20,12 @@ functions. Kernel Nautico owns a separate domain profile and uses this same
 builder and adapter. Neither the nautical example nor this rendering exhausts
 the competence's possibility field.
 
+The nautical receiver now uses the operator's distinct product/UI introductions
+and compact domain presentation spacing. The shared builder permits an omitted
+eyebrow and preserves the neutral derivative's exact HTML. Embedded frame height
+and confirmed-view orientation are carried by the site host; the accumulated
+UX guide records the relationship with the GPT responsive packing threshold.
+
 The original `examples/griglia/index.html` remains byte-identical:
 SHA-256 1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b.
 The derived interface retains Home, preparation, rail, simultaneous cards,
