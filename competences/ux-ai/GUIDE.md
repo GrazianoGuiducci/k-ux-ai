@@ -249,6 +249,22 @@ Non riaprire l'analisi iniziale o rigenerare il codice perché è avvenuto un
 compact. Una nuova fonte o un difetto reale possono rendere utile un'altra lettura.
 La guida cresce dove evita all'operatore di ricostruire il contesto.
 
+### La lingua viene dal kernel ospitante — 13 ottobre 2026
+
+La UI riceve dal dominio anche il significato delle parole con cui presenta
+competenze, attività, oggetti e interventi. Nella nautica una scheda può
+seguire l'accesso a poppa, una richiesta di modifica o una segnalazione di
+bordo. Per il destinatario professionale, il primo incontro spiega il kernel
+attraverso il caso e usa direttamente la lingua del settore. Editoriali
+possiede il metodo della relazione col lettore e il dominio qualifica le
+accezioni e la nomenclatura aziendale.
+
+Il template pubblico fornisce titoli, testi, azioni e `labels` nel proprio
+contesto. Il componente usa queste parole per guida, appunti ed esiti, mentre
+mantiene identificatori, provenienza e contratto delle azioni. Nessuna conoscenza
+nautica diventa una condizione universale del medium. Il caso Nautico alimenta
+questo saper fare: un altro kernel può parlare attraverso il suo dominio.
+
 ## Provenienza e apertura
 
 Questa versione deriva relazioni operative dalle competenze di generazione,
@@ -261,3 +277,40 @@ Il campo rimane aperto a nuovi mezzi, modalità percettive, dominio e strumenti.
 Una nuova tecnica può cambiare la costruzione e il suo metodo. Preserva il
 saper fare riusabile nell'owner che dovrà usarlo, fino al compimento utile
 del risultato selezionato e della sua capacità di continuare.
+
+## Correzione sul riferimento UI — 13 ottobre 2026
+
+Graziano confronta la presentazione Nautico incorporata nel candidato con la
+Griglia GPT v5.12. La Griglia era stata recuperata, preservata byte-identica e
+provata come riferimento K-UX-AI, ma il candidato Nautico non l'aveva adattata
+come interfaccia del kernel ospitante. La presentazione 3D esistente e il nuovo
+componente a schede semplici hanno riscontri propri; non completano quel
+trasferimento e non sostituiscono il riferimento selezionato.
+
+La continuità deve conservare il ruolo operativo della sorgente, oltre alla
+sua identità. Contesto e attività, campo centrale e schede complementari,
+dialogo della scheda, focus e continuità del contributo partecipano alla
+costruzione del ricevente. La comprensione di queste relazioni deve guidare
+l'adattamento al dominio e alle sue azioni. Il seguito recupera il sapere e
+l'architettura della UI originale prima di decidere la forma del raccordo.
+
+## La costruzione scelta continua nel ricevente — 13 ottobre 2026
+
+La Griglia GPT può presentare K-UX-AI stesso con un profilo neutro e un altro
+kernel con i significati del suo dominio. Conservare il riferimento come
+iframe non realizza da solo questa relazione: la guida, il contenuto e il
+gesto del medium devono continuare il kernel ospitante. Una scheda più
+semplice o test verdi su altri flussi non sostituiscono la forma selezionata.
+
+Un profilo porta oggetto, contesti, fonti, logiche e primo assetto; il motore
+continua i gesti già costruiti. La revisione corregge ogni consumer pertinente:
+introduzione completa, comandi del renderer, risposta del modulo Chat e
+protocollo del parent. Un ancoraggio su un elemento annidato può duplicare
+l'introduzione; verificare il risultato che la persona vede, non il solo build.
+
+La funzione forma il tipo di scheda: guida, contributo, riscontro, confronto,
+monitoraggio, ripresa o dialogo. Una risposta asincrona conserva owner e
+contesto originari e non porta nel trasporto le bozze di altre schede. La
+proposta esportata può partecipare al lavoro del kernel senza essere trattata
+come apprendimento già assimilato. Sorgente, derivata, host e conseguenza
+mantengono la propria identità mentre l'integrazione le collega.

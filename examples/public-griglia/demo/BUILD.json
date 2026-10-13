@@ -1,0 +1,14 @@
+{
+  "schema": "kux.public-griglia-build.v1",
+  "profile_id": "k-ux-ai",
+  "semantic_owner": "GrazianoGuiducci/k-ux-ai",
+  "reference_sha256": "1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b",
+  "profile_sha256": "505e45fa7207562eb4be54aa9c35a1c19e6be781d35933b1aed639cfedcd7b5a",
+  "runtime_sha256": "f7a48c967cd61c32fbc4685b45a53a3a7e9cc3966e357ab0cb3ff0176a7e4c02",
+  "html_sha256": "2658a91ca6d43f2ebdad1211914d66e888cb462ced5ea7970b016cac9081c98e",
+  "means": {
+    "ui": "GPT Griglia v5.12 derived public incarnation",
+    "dialogs": "explicit MAIOS public assistant requests when host configured",
+    "company_integrations": false
+  }
+}

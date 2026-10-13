@@ -1,7 +1,7 @@
 {
   "schema_version": "kux.competence-kernel-manifest.v1",
   "identity": "K-UX-AI",
-  "version": "0.2.0-alpha.2",
+  "version": "0.2.0-alpha.3",
   "kernel_class": "compositional_competence_kernel",
   "semantic_owner": "GrazianoGuiducci/k-ux-ai",
   "purpose": "Comprendere cosa e come rendere percepibile e operabile il lavoro, costruirne il codice e imparare attraverso l'uso.",
@@ -34,7 +34,14 @@
     "interactive_reference": "examples/griglia/README.md",
     "kernel_grid": "src/ui/kernel-grid.js",
     "presentation_template": "examples/kernel-mirror/contexts.json",
-    "first_encounter": "examples/kernel-mirror/index.html"
+    "first_encounter": "examples/public-griglia/demo/index.html",
+    "public_griglia": {
+      "profile": "examples/public-griglia/PROFILE.json",
+      "builder": "tools/build_public_griglia.py",
+      "adapter": "src/ui/public-griglia.js",
+      "guide": "docs/public-griglia.md",
+      "reference": "examples/griglia/index.html"
+    }
   },
   "formation": "Il produttore trasferisce aggiornamenti selezionati; il metodo pubblico è raggiungibile senza sorgenti private di formazione."
 }

@@ -32,42 +32,42 @@ Il [raccordo all'ambiente](docs/receiving-environment.md) collega metodo
 e mezzi effettivi. Il dominio custodisce dati, fonti e significato degli
 effetti; il ricevente mantiene contesto e learning propri.
 
-## Sorgenti eseguibili
+## Presentazione e primo uso
 
-Il [primo incontro](examples/kernel-mirror/) usa la Griglia per presentare
-il kernel stesso: conoscenza del sistema, guida, caso, memoria e apprendimento
-diventano schede contestuali. Il template include anche Nautico, primo dominio
-applicato. I contributi restano nel browser o si esportano; il ricevente AI
-li usa quando sono condivisi nel lavoro. Il riferimento Griglia v5.12 resta
-disponibile nella sua forma originale.
+La [Griglia pubblica](examples/public-griglia/demo/) usa il medium costruito
+con GPT per presentare K-UX-AI stesso. È neutra: Presentazione, Composizione,
+Mezzi e strumenti, Interazione, Ripresa e apprendimento sono contesti del
+suo servizio. Home prepara un campo di schede complementari; il campo
+conserva focus e bozze mentre il lavoro si ricompone.
 
-La versione `0.2.0-alpha.2` include il medium JavaScript, un adattatore
-MessagePort, Window Surface e Chat/Form originali. Sono mezzi componibili
-e sorgenti da cui continuare la costruzione.
+Le schede hanno funzioni diverse: presentare e guidare, ricevere un contributo,
+controllare, esplorare, progettare, organizzare, comunicare, riprendere,
+sperimentare, monitorare eventi illustrativi, confrontare testi e dialogare.
+Il kernel ospitante fornisce significati e fonti attraverso il proprio profilo.
+Kernel Nautico usa questa stessa base con il suo profilo di dominio.
 
-La [Griglia del fare v5.12](examples/griglia/README.md) è l'esempio principale:
-la UI interattiva formata con GPT, conservata nella sua sorgente originale.
-Attività, card, focus, barra e chat possono ricomporsi mantenendo continuità.
-
-Servi questa directory con un server statico:
+Servi il repository con un server statico:
 
 ```sh
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
-Apri `http://127.0.0.1:8080/examples/griglia/` per usare la v5.12.
-Il dimostratore ha fonti e risposte sintetiche locali. Il collegamento a
-un LLM e al dominio prosegue dai controller del ricevente.
+Apri `http://127.0.0.1:8080/examples/public-griglia/demo/`.
+Il campo e le schede funzionano localmente. Le domande inviate esplicitamente
+usano il servizio pubblico MAIOS del sito configurato; il server statico
+semplice non fornisce quel servizio e la UI mostra il collegamento indisponibile.
+Le altre bozze restano locali. Dialoghi e proposte si esportano su richiesta;
+il trasferimento al kernel ricevente continua il lavoro e il suo apprendimento.
 
-L'[esercizio tecnico MessagePort](examples/workspace/README.md) resta
-raggiungibile a `examples/workspace/`. Il controller sintetico
-aggiorna una fonte mentre l'operatore prepara un contributo; oggetto e
-bozza continuano attraverso le trasformazioni. Evento, azione e conferma
-percorrono un MessageChannel locale. La chat riceve una risposta sintetica.
+La [guida del mezzo pubblico](docs/public-griglia.md) spiega profilo,
+ricostruzione, collegamenti e uso. Il [riferimento GPT originale](examples/griglia/README.md)
+resta invariato e raggiungibile separatamente, con il suo caso nautico e le
+risposte sintetiche. I precedenti [esercizi MessagePort](examples/workspace/README.md)
+e [kernel-mirror](examples/kernel-mirror/) conservano il proprio compito tecnico.
 
-Il primo [esempio Nautico](examples/nautico/) conserva la domanda di accesso
-a poppa attraverso esplorazione e scelta. Gli esempi usano dati sintetici.
-Lo [stato corrente](CURRENT_STATE.md) attribuisce sorgenti ed esercizi.
+La versione `0.2.0-alpha.3` comprende il kernel di competenza, i moduli
+JavaScript e questa incarnazione pubblica derivata dalla Griglia GPT.
+La competenza può costruire altre forme per altre situazioni.
 
 ## Collegare il runtime
 
@@ -98,4 +98,4 @@ Per il contratto eseguibile: `npm test`, Node.js 20+.
 Il produttore continua la formazione nella propria sorgente e trasferisce
 aggiornamenti selezionati a questo prodotto. Il sapere pubblico permette
 di comprendere, costruire e continuare nel proprio ambiente.
-Versione sorgente: **0.2.0-alpha.2**.
+Versione sorgente: **0.2.0-alpha.3**.

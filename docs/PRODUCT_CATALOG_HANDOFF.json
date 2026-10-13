@@ -4,7 +4,7 @@
   "product_name": "K-UX-AI",
   "canonical_repository": "https://github.com/GrazianoGuiducci/k-ux-ai",
   "prepared_from_main": "99ac261e4facc41c1e8c6002c606e4258eab9ad6",
-  "source_version": "0.2.0-alpha.2",
+  "source_version": "0.2.0-alpha.3",
   "product_class": "compositional_competence_kernel",
   "distribution_state": "public_source_alpha",
   "licence": "Existing source rights retained; no permissive licence inferred from public visibility.",
@@ -36,7 +36,7 @@
     "source_commit": "45152db3ca5e7dca1de524f7d02301adbe857cfe",
     "scope": "Original local synthetic demo; read-only perception API, no installed AI/domain controller."
   },
-  "evidence_boundary": "15 medium/port Node tests, the original Griglia flow and a new template flow observed on 13 October 2026 in Chrome mobile: retained contribution/card and confirmed native nautical view. Chat transport used a labelled fixture with zero provider calls. No model-inference, general privacy or assimilation claim.",
+  "evidence_boundary": "18 Node tests and generated-script syntax; the correlated nautical view and contextual dialog were observed in a labelled site fixture with zero provider calls. Model inference, company integration and assimilation remain distinct.",
   "open_horizons": "New expressive means, situated renderers and receiving integrations can develop through the work; no fixed UI layout or component list is the field boundary.",
   "site_owner": "GrazianoGuiducci/maios_it",
   "publication_effect_state": "Site candidate separately prepared; no website deployment from this handoff.",
@@ -47,7 +47,15 @@
       "kernel-nautico"
     ],
     "runtime": "src/ui/kernel-grid.js",
-    "scope": "Contextual introduction, guide and activity cards; browser-local contributions are not autonomous competence learning."
+    "scope": "Earlier smaller technical exercise; it is not the primary GPT-derived public interface."
   },
-  "reader_entry": "Make situation, participants, object and case recognizable before technical terminology."
+  "reader_entry": "Make situation, participants, object and case recognizable before technical terminology.",
+  "public_interface": {
+    "path": "examples/public-griglia/demo/index.html",
+    "profile": "examples/public-griglia/PROFILE.json",
+    "builder": "tools/build_public_griglia.py",
+    "guide": "docs/public-griglia.md",
+    "role": "Neutral presentation and guide of K-UX-AI through the selected GPT engine; a domain supplies its own profile.",
+    "assistant": "Explicit MAIOS public assistant requests on a configured host; other drafts remain local."
+  }
 }

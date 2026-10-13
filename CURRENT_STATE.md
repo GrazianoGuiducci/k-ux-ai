@@ -1,92 +1,51 @@
 # K-UX-AI current state
 
-version: 0.2.0-alpha.2
+version: 0.2.0-alpha.3
 date: 2026-10-13
 product_owner: GrazianoGuiducci/k-ux-ai
 form: public compositional competence kernel
 source_lane: work/public-kernel-consolidation-20261012
 
-## Kernel and knowledge
+## Kernel and present incarnation
 
-The operator's 13 October clarification starts from a reader who does not
-know the system: make situation, participants, object and case recognizable
-before technical terms. The kernel can introduce itself through its own
-interactive competence/activity cards. The public guide owns that method.
+Boot, Kernel, manifest, competence and accumulated guide are the public entry.
+K-UX-AI understands and builds the means through which work becomes perceivable
+and actionable, and learns from construction and use. The receiver supplies
+LLM, tools, persistence and controllers; a domain owns its sources and effects.
 
-Boot, Kernel, manifest, native competence and guide form the public entry.
-K-UX-AI understands what and how to make work perceivable and operable,
-composes the pertinent knowledge, builds original code and learns through use.
+The current first encounter is `examples/public-griglia/demo/`: a neutral
+public incarnation derived from the GPT Griglia v5.12 engine. A source profile
+introduces K-UX-AI itself through five service contexts and distinct card
+functions. Kernel Nautico owns a separate domain profile and uses this same
+builder and adapter. Neither the nautical example nor this rendering exhausts
+the competence's possibility field.
 
-The LLM entry and receiving-environment guide let an agent reach this
-method through its own harness or an existing core such as MPK. The host
-provides model, tools, persistence and controllers; the domain owns its
-sources and effect meaning. The public method can continue without the
-producer's private formation sources.
+The original `examples/griglia/index.html` remains byte-identical:
+SHA-256 1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b.
+The derived interface retains Home, preparation, rail, simultaneous cards,
+composition, focus and drafts. The public adapter replaces local canned dialogs
+with explicit requests to the MAIOS public assistant when hosted on a configured
+site. A simple static server provides the local UI and exposes that the endpoint
+is unavailable. An API reply is distinct from observed model inference.
 
-## Executable incarnation
+Local contributions, comparison and illustrative events remain attributed.
+An exported proposal can continue in a receiving kernel; saving it is not
+automatic competence assimilation. General and per-card dialogs preserve
+their own context and history. Other local drafts are excluded from requests.
 
-The immutable JSON medium retains its existing receive/dispatch/observe
-contract. The preceding alpha.1 brought MessagePort transport, original Window Surface
-and Chat/Form modules, their styles and a neutral workspace composition.
-The original Nautico example is preserved.
-The new kernel-grid surface and `examples/kernel-mirror/contexts.json` form
-an initial presentation, guide and contribution space for K-UX-AI and Nautico.
-Local notes retain context/card provenance; exported notes can continue in a
-receiving AI environment. This is distinct from autonomous competence learning.
-The main interactive reference is the original Griglia del fare v5.12 at
-examples/griglia/index.html, selected from the public GPT candidate.
-The operator's supplied HTML has identical bytes and SHA-256
-1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b.
+## Current observations
 
-The workspace uses a real local MessageChannel and synthetic controller.
-A source update and a human contribution share the object reference;
-the controller confirms its result with a state snapshot. It makes no
-provider or business-service call. UI storage is disabled in this example.
+Eighteen Node tests pass: fifteen medium/MessagePort contracts and three
+public-adapter contracts for explicit data, separate history, failed transport,
+proposal attribution and same-origin correlated selection. Generated scripts
+pass syntax checks. The site candidate uses the two GPT derivatives as its
+primary UI; a nautical Cantiere command and a contextual dialog were observed.
+The preview is a labelled fixture with zero provider calls.
 
-The code and styles selected from the public UI candidate belong to
-45152db3ca5e7dca1de524f7d02301adbe857cfe. The original v5.12 HTML is carried unchanged as the main interactive
-reference. Its builder and attributed observations remain on the candidate's
-lane. This preserves source identity, while new host/domain integrations
-have their own consequences and exercise.
+Those observations do not inherit the previous kernel-mirror flow's proof.
+The smaller examples remain available as technical exercises. Build identities
+record the exact reference, profile, runtime and generated HTML hashes.
 
-## Exercise and continuation
-
-The new template was exercised in the MAIOS site candidate on 13 October,
-with Chrome at 390 by 844: card selection, contribution storage, source
-context, opening a nautical design view through the real controller,
-recovery of the contribution and selected guide card after reload.
-The public Chat transport used an explicitly labelled fixture with zero
-provider calls; its captured request did not contain the synthetic local
-note. This observes that flow, not general privacy or model inference.
-
-On 13 October, fifteen Node tests pass for the medium and MessagePort contract, including
-duplicate/invalid state, renderer failure, unknown messages, disconnect and
-acknowledgement transport failure without revoking accepted state.
-Chromium interaction exercise on 12 October: open the window, prepare a
-contribution, receive a new source, preserve the object and draft, submit
-explicitly and observe controller acceptance with state/action/state order.
-The browser reported no console errors or warnings during this exercise.
-This observes the synthetic interaction above; it does not exercise every
-window gesture, viewport or perceptual mode.
-
-The original Griglia v5.12 was opened in the Codex in-app browser at
-1280 by 720 on 13 October. Entering the field, opening a section conversation,
-preparing a contribution and receiving a synthetic event preserved the draft
-and the section reference. This observes that local flow, not every gesture,
-viewport or a connected model/domain controller.
-
-The public construction guide now makes operational derivation, asymmetric
-human/AI coverage, capability/applicability and the observed continuity
-mechanisms usable without the producer's private source. Kernel and runtime
-remain different roles of the same product. The source-bound catalogue handoff
-is in docs/PRODUCT_CATALOG_HANDOFF.json; site composition has its own identity.
-
-The source version remains alpha. A real LLM/domain connection is a
-receiving incarnation with its own identity and observed consequences.
-Nautico adoption, MPK installation, site deployment and package release
-remain distinct movements.
-
-The guide carries mechanisms and reasons that can change the next
-construction; the receiving owner retains its own learning and context.
-Spatial, multimodal and other expressive forms remain open through
-available means and original construction.
+Website publication, backend activation, adoption in a company, MPK integration
+and package release retain their own effect and source identity. The common
+integration knowledge returns to MPK after this product work is stabilised.

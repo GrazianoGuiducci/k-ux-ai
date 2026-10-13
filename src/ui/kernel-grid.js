@@ -5,6 +5,7 @@ import { createMedium } from '../medium.js';
 export function createKernelGrid({ host, context, locale = 'it', onAction = async () => ({ ok: false }) }) {
   const text = value => typeof value === 'string' ? value : value[locale] || value.it;
   const en = locale === 'en';
+  const word = (name, fallback) => text(context.labels?.[name] || fallback);
   const key = `kux:kernel-grid:${context.id}:v1`;
   const element = (tag, className, content) => {
     const node = document.createElement(tag);
@@ -30,30 +31,30 @@ export function createKernelGrid({ host, context, locale = 'it', onAction = asyn
   const body = element('p');
   const action = element('button', 'kux-kernel-grid-action');
   action.type = 'button';
-  const source = element('a', 'kux-kernel-grid-source', en ? 'Read the kernel’s guide ↗' : 'La guida del kernel ↗');
+  const source = element('a', 'kux-kernel-grid-source', word('guide', en ? 'Read the kernel’s guide ↗' : 'La guida del kernel ↗'));
   source.href = context.guide;
   source.target = '_blank'; source.rel = 'noreferrer';
   const memory = element('div', 'kux-kernel-grid-memory');
   memory.dataset.privateContext = 'true';
-  const label = element('label', '', en ? 'A question or something to remember about this card' : 'Una domanda o qualcosa da ricordare su questa scheda');
+  const label = element('label', '', word('note', en ? 'A question or something to remember about this card' : 'Una domanda o qualcosa da ricordare su questa scheda'));
   const draft = element('textarea');
   draft.maxLength = 4000; draft.rows = 3;
   label.append(draft);
-  const save = element('button', '', en ? 'Save the contribution' : 'Conserva il contributo');
+  const save = element('button', '', word('save', en ? 'Save the contribution' : 'Conserva il contributo'));
   save.type = 'button';
-  const exportButton = element('button', '', en ? 'Export these notes' : 'Esporta queste note');
+  const exportButton = element('button', '', word('export', en ? 'Export these notes' : 'Esporta queste note'));
   exportButton.type = 'button';
   const count = element('span', 'kux-kernel-grid-note-count');
   const remembered = element('details', 'kux-kernel-grid-remembered');
-  remembered.append(element('summary', '', en ? 'Contributions retained for this card' : 'Contributi conservati in questa scheda'));
+  remembered.append(element('summary', '', word('remembered', en ? 'Contributions retained for this card' : 'Contributi conservati in questa scheda')));
   const recalled = element('div'); remembered.append(recalled);
   const status = element('p', 'kux-kernel-grid-status');
   status.setAttribute('role', 'status');
   memory.append(label, save, exportButton, count, remembered);
   detail.append(title, body, action, source, memory, status);
-  const scope = element('p', 'kux-kernel-grid-scope', en
+  const scope = element('p', 'kux-kernel-grid-scope', word('scope', en
     ? 'The cards describe the kernel’s competences and first activities. Here, contributions stay in this browser or in the exported file. A connected AI environment can use them to continue the work and improve the method.'
-    : 'Le schede descrivono competenze e prime attività del kernel. Qui i contributi restano in questo browser o nel file esportato. Un ambiente AI collegato può usarli per continuare il lavoro e migliorare il metodo.');
+    : 'Le schede descrivono competenze e prime attività del kernel. Qui i contributi restano in questo browser o nel file esportato. Un ambiente AI collegato può usarli per continuare il lavoro e migliorare il metodo.'));
   root.append(heading, premise, board, detail, scope);
   host.append(root);
   const buttons = new Map();
@@ -93,15 +94,18 @@ export function createKernelGrid({ host, context, locale = 'it', onAction = asyn
     detail.dataset.agentMarker = `${context.id}/${state.cardId}`;
     title.textContent = text(card.title);
     body.textContent = text(card.body);
+    source.href = card.guide || context.guide;
     action.hidden = !card.action;
     action.textContent = card.action ? text(card.action.label) : '';
-    count.textContent = en ? `${state.contributionCount} saved contribution${state.contributionCount === 1 ? '' : 's'}`
-      : `${state.contributionCount} contribut${state.contributionCount === 1 ? 'o conservato' : 'i conservati'}`;
+    const one = state.contributionCount === 1;
+    count.textContent = word(one ? 'countOne' : 'countMany', en
+      ? `{count} saved contribution${one ? '' : 's'}`
+      : `{count} contribut${one ? 'o conservato' : 'i conservati'}`).replace('{count}', state.contributionCount);
     recalled.replaceChildren();
     for (const note of notes.filter(item => item.cardId === state.cardId).slice(-10)) {
       const area = element('textarea'); area.readOnly = true; area.rows = 2;
       area.value = note.text;
-      area.setAttribute('aria-label', en ? 'Retained contribution' : 'Contributo conservato');
+      area.setAttribute('aria-label', word('retained', en ? 'Retained contribution' : 'Contributo conservato'));
       recalled.append(area);
     }
     root.dataset.lastConfirmedTarget = state.lastConfirmedTarget;
@@ -117,15 +121,15 @@ export function createKernelGrid({ host, context, locale = 'it', onAction = asyn
     if (request.type !== 'use-card' || !card.action) return { ok: false, reason: 'unknown-action' };
     const run = ++actionRun;
     action.disabled = true;
-    status.textContent = en ? 'Opening the selected view…' : 'Apertura della vista scelta…';
+    status.textContent = word('opening', en ? 'Opening the selected view…' : 'Apertura della vista scelta…');
     let result;
     try { result = await onAction({ ...card.action, cardId: card.id, contextId: context.id }); }
     catch { result = { ok: false }; }
     if (run !== actionRun) return { ok: false, reason: 'superseded' };
     action.disabled = false;
     status.textContent = result?.ok
-      ? (en ? 'The view has been opened.' : 'La vista è stata aperta.')
-      : (en ? 'This view is not available here yet.' : 'Questa vista qui non è ancora disponibile.');
+      ? word('opened', en ? 'The view has been opened.' : 'La vista è stata aperta.')
+      : word('unavailable', en ? 'This view is not available here yet.' : 'Questa vista qui non è ancora disponibile.');
     if (result?.ok) publish({ lastConfirmedTarget: card.action.target });
     return result;
   } });
@@ -139,8 +143,8 @@ export function createKernelGrid({ host, context, locale = 'it', onAction = asyn
     try { localStorage.setItem(key, JSON.stringify(notes)); persisted = true; } catch { /* Export remains available. */ }
     publish({ contributionCount: notes.length });
     status.textContent = persisted
-      ? (en ? 'Contribution saved in this browser.' : 'Contributo conservato in questo browser.')
-      : (en ? 'Contribution kept in this session. Export it to retain it.' : 'Contributo conservato nella sessione. Esportalo per mantenerlo.');
+      ? word('saved', en ? 'Contribution saved in this browser.' : 'Contributo conservato in questo browser.')
+      : word('sessionOnly', en ? 'Contribution kept in this session. Export it to retain it.' : 'Contributo conservato nella sessione. Esportalo per mantenerlo.');
   });
   exportButton.addEventListener('click', () => {
     const blob = new Blob([JSON.stringify({ schema: 'kux.context-contributions.v1',

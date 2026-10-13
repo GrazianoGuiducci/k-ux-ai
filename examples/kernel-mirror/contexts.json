@@ -1,38 +1,343 @@
 {
   "k-ux-ai": {
     "id": "k-ux-ai",
-    "title": {"it": "K-UX-AI si presenta attraverso le sue schede", "en": "K-UX-AI introduces itself through its cards"},
-    "premise": {"it": "Qui una persona incontra un assistente AI e il modo in cui può lavorare. Il primo caso è questa stessa interfaccia: le schede presentano il kernel, spiegano come usarlo e conservano contributi per continuare.", "en": "Here, a person meets an AI assistant and the way it can work. This interface is the first case: its cards introduce the kernel, explain how to use it and retain contributions for later work."},
+    "title": {
+      "it": "K-UX-AI si presenta attraverso le sue schede",
+      "en": "K-UX-AI introduces itself through its cards"
+    },
+    "premise": {
+      "it": "Qui una persona incontra un assistente AI e il modo in cui può lavorare. Il primo caso è questa stessa interfaccia: le schede presentano il kernel, spiegano come usarlo e conservano contributi per continuare.",
+      "en": "Here, a person meets an AI assistant and the way it can work. This interface is the first case: its cards introduce the kernel, explain how to use it and retain contributions for later work."
+    },
     "subject": "person, receiving AI assistant and available sources",
     "object": "the kernel's own working interface",
     "case": "understand and use K-UX-AI through its own presentation",
-    "source": {"repository": "GrazianoGuiducci/k-ux-ai", "definition_revision": "48ef3e4c3cdaf6c758f6202137092b3b761fdb52"},
+    "source": {
+      "repository": "GrazianoGuiducci/k-ux-ai",
+      "definition_revision": "48ef3e4c3cdaf6c758f6202137092b3b761fdb52"
+    },
     "guide": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/competences/ux-ai/GUIDE.md",
     "cards": [
-      {"id": "presentation", "role": "competence", "title": {"it": "Conoscere il kernel", "en": "Meet the kernel"}, "short": {"it": "Che cos’è e perché serve", "en": "What it is and why it helps"}, "body": {"it": "Un assistente AI può leggere informazioni e aiutare a svolgere un lavoro. Il kernel gli dà conoscenze, competenze e un metodo per farlo nel contesto. K-UX-AI si occupa di ciò che la persona vede e può fare: costruisce l’interfaccia e la fa cambiare insieme al lavoro.", "en": "An AI assistant can read information and help carry out work. The kernel gives it knowledge, competences and a method suited to that context. K-UX-AI deals with what a person can see and do: it builds the interface and lets it change with the work."}},
-      {"id": "guide", "role": "competence", "title": {"it": "Orientarsi", "en": "Find your way"}, "short": {"it": "Una guida e una mappa del lavoro", "en": "A guide and a map of the work"}, "body": {"it": "Una scheda mette a fuoco qualcosa da conoscere o da fare. Può rappresentare una competenza, come spiegare il sistema, oppure un’attività, come preparare una domanda. Insieme, le schede rendono riconoscibili contesto, fonti e possibilità di continuare.", "en": "A card focuses on something to understand or do. It can represent a competence, such as explaining the system, or an activity, such as preparing a question. Together, cards make context, sources and ways to continue easier to recognize."}},
-      {"id": "capabilities", "role": "competence", "title": {"it": "Comprendere e costruire", "en": "Understand and build"}, "short": {"it": "Dal lavoro alla sua forma visibile", "en": "From work to a visible expression"}, "body": {"it": "K-UX-AI comprende intento, informazioni e cambiamenti del lavoro. Sceglie cosa rendere visibile, costruisce codice originale e conserva il riferimento mentre cambiano spazio, strumenti e attività. Il kernel di dominio, per esempio quello nautico, custodisce i fatti e le azioni del proprio lavoro.", "en": "K-UX-AI understands the work’s intent, information and changes. It chooses what needs to become visible, builds original code and preserves the referent as space, tools and activities change. A domain kernel, such as Kernel Nautico, owns its work’s facts and actions."}},
-      {"id": "case", "role": "activity", "title": {"it": "Provare un primo caso", "en": "Try a first case"}, "short": {"it": "Preparare e seguire un’attività", "en": "Prepare and follow an activity"}, "body": {"it": "La Griglia originale qui sotto permette di scegliere un contesto, preparare attività e continuare un contributo. Il caso illustrativo riguarda l’accesso a poppa di una barca. Le stesse idee possono prendere forme differenti per ricerca, progetti o altri lavori.", "en": "The original Grid below lets a person choose a context, prepare activities and continue a contribution. Its illustrative case concerns access to a boat’s stern. The same ideas can take different forms for research, projects or other work."}, "action": {"kind": "focus", "target": "#demo", "label": {"it": "Apri la Griglia originale", "en": "Open the original Grid"}}},
-      {"id": "memory", "role": "competence", "title": {"it": "Ricordare ciò che conta", "en": "Remember what matters"}, "short": {"it": "Contributi legati al loro contesto", "en": "Contributions kept with their context"}, "body": {"it": "Una domanda, una scelta o una ragione utile resta collegata alla scheda e al lavoro a cui appartiene. In questo esempio possiamo conservare una nota nel browser ed esportarla. Nell’ambiente di lavoro, il kernel usa la memoria disponibile per riprendere senza perdere quelle relazioni.", "en": "A question, choice or useful reason stays connected to its card and work context. In this example, a note can be retained in the browser and exported. In a working environment, the kernel uses the available memory to resume without losing those relations."}},
-      {"id": "learning", "role": "competence", "title": {"it": "Imparare dall’uso", "en": "Learn through use"}, "short": {"it": "Ciò che accade migliora il metodo", "en": "What happens improves the method"}, "body": {"it": "Una domanda che ritorna può migliorare la guida. Una correzione utile può cambiare il modo di costruire un’interfaccia. Il kernel conserva ciò che il lavoro insegna nella competenza che deve agire diversamente. Le note di questa pagina sono contributi da usare in quel processo, nell’ambiente AI collegato.", "en": "A recurring question can improve the guide. A useful correction can change how an interface is built. The kernel retains what the work teaches in the competence that needs to act differently. This page’s notes are contributions for that process in the connected AI environment."}}
+      {
+        "id": "presentation",
+        "role": "competence",
+        "title": {
+          "it": "Conoscere il kernel",
+          "en": "Meet the kernel"
+        },
+        "short": {
+          "it": "Che cos’è e perché serve",
+          "en": "What it is and why it helps"
+        },
+        "body": {
+          "it": "Un assistente AI può leggere informazioni e aiutare a svolgere un lavoro. Il kernel gli dà conoscenze, competenze e un metodo per farlo nel contesto. K-UX-AI si occupa di ciò che la persona vede e può fare: costruisce l’interfaccia e la fa cambiare insieme al lavoro.",
+          "en": "An AI assistant can read information and help carry out work. The kernel gives it knowledge, competences and a method suited to that context. K-UX-AI deals with what a person can see and do: it builds the interface and lets it change with the work."
+        }
+      },
+      {
+        "id": "guide",
+        "role": "competence",
+        "title": {
+          "it": "Orientarsi",
+          "en": "Find your way"
+        },
+        "short": {
+          "it": "Una guida e una mappa del lavoro",
+          "en": "A guide and a map of the work"
+        },
+        "body": {
+          "it": "Una scheda mette a fuoco qualcosa da conoscere o da fare. Può rappresentare una competenza, come spiegare il sistema, oppure un’attività, come preparare una domanda. Insieme, le schede rendono riconoscibili contesto, fonti e possibilità di continuare.",
+          "en": "A card focuses on something to understand or do. It can represent a competence, such as explaining the system, or an activity, such as preparing a question. Together, cards make context, sources and ways to continue easier to recognize."
+        }
+      },
+      {
+        "id": "capabilities",
+        "role": "competence",
+        "title": {
+          "it": "Comprendere e costruire",
+          "en": "Understand and build"
+        },
+        "short": {
+          "it": "Dal lavoro alla sua forma visibile",
+          "en": "From work to a visible expression"
+        },
+        "body": {
+          "it": "K-UX-AI comprende intento, informazioni e cambiamenti del lavoro. Sceglie cosa rendere visibile, costruisce codice originale e conserva il riferimento mentre cambiano spazio, strumenti e attività. Il kernel di dominio, per esempio quello nautico, custodisce i fatti e le azioni del proprio lavoro.",
+          "en": "K-UX-AI understands the work’s intent, information and changes. It chooses what needs to become visible, builds original code and preserves the referent as space, tools and activities change. A domain kernel, such as Kernel Nautico, owns its work’s facts and actions."
+        }
+      },
+      {
+        "id": "case",
+        "role": "activity",
+        "title": {
+          "it": "Provare un primo caso",
+          "en": "Try a first case"
+        },
+        "short": {
+          "it": "Preparare e seguire un’attività",
+          "en": "Prepare and follow an activity"
+        },
+        "body": {
+          "it": "La Griglia originale qui sotto permette di scegliere un contesto, preparare attività e continuare un contributo. Il caso illustrativo riguarda l’accesso a poppa di una barca. Le stesse idee possono prendere forme differenti per ricerca, progetti o altri lavori.",
+          "en": "The original Grid below lets a person choose a context, prepare activities and continue a contribution. Its illustrative case concerns access to a boat’s stern. The same ideas can take different forms for research, projects or other work."
+        },
+        "action": {
+          "kind": "focus",
+          "target": "#demo",
+          "label": {
+            "it": "Apri la Griglia originale",
+            "en": "Open the original Grid"
+          }
+        }
+      },
+      {
+        "id": "memory",
+        "role": "competence",
+        "title": {
+          "it": "Ricordare ciò che conta",
+          "en": "Remember what matters"
+        },
+        "short": {
+          "it": "Contributi legati al loro contesto",
+          "en": "Contributions kept with their context"
+        },
+        "body": {
+          "it": "Una domanda, una scelta o una ragione utile resta collegata alla scheda e al lavoro a cui appartiene. In questo esempio possiamo conservare una nota nel browser ed esportarla. Nell’ambiente di lavoro, il kernel usa la memoria disponibile per riprendere senza perdere quelle relazioni.",
+          "en": "A question, choice or useful reason stays connected to its card and work context. In this example, a note can be retained in the browser and exported. In a working environment, the kernel uses the available memory to resume without losing those relations."
+        }
+      },
+      {
+        "id": "learning",
+        "role": "competence",
+        "title": {
+          "it": "Imparare dall’uso",
+          "en": "Learn through use"
+        },
+        "short": {
+          "it": "Ciò che accade migliora il metodo",
+          "en": "What happens improves the method"
+        },
+        "body": {
+          "it": "Una domanda che ritorna può migliorare la guida. Una correzione utile può cambiare il modo di costruire un’interfaccia. Il kernel conserva ciò che il lavoro insegna nella competenza che deve agire diversamente. Le note di questa pagina sono contributi da usare in quel processo, nell’ambiente AI collegato.",
+          "en": "A recurring question can improve the guide. A useful correction can change how an interface is built. The kernel retains what the work teaches in the competence that needs to act differently. This page’s notes are contributions for that process in the connected AI environment."
+        }
+      }
     ]
   },
   "kernel-nautico": {
     "id": "kernel-nautico",
-    "title": {"it": "Kernel Nautico si presenta nel suo primo caso", "en": "Kernel Nautico introduces itself through its first case"},
-    "premise": {"it": "Progettisti, reparti del cantiere, fornitori ed equipaggio lavorano sulla stessa imbarcazione in momenti diversi. Qui seguiamo un esempio: rendere più agevole l’accesso a poppa. Le schede collegano la presentazione del kernel, la guida e le prime attività di questo lavoro.", "en": "Designers, shipyard teams, suppliers and crew work on the same vessel at different times. Here we follow an example: making access to the stern easier. The cards connect the kernel’s introduction, its guide and the first activities in that work."},
+    "title": {
+      "it": "Kernel Nautico si presenta nel suo primo caso",
+      "en": "Kernel Nautico introduces itself through its first case"
+    },
+    "premise": {
+      "it": "Ufficio tecnico, reparti del cantiere, fornitori ed equipaggio seguono la stessa imbarcazione dal progetto alla navigazione. Nel caso illustrativo CYS-01 il cliente chiede un accesso a poppa più agevole. Le schede collegano la presentazione, la mappa del lavoro e le prime attività del caso.",
+      "en": "The design office, shipyard teams, suppliers and crew follow the same vessel from design to operation. In illustrative case CYS-01, the customer asks for easier stern access. The cards connect the introduction, the work map and the first activities in this case."
+    },
     "subject": "designers, shipyard teams, suppliers, crew and a receiving AI assistant",
     "object": "a vessel across design, construction, use and service",
     "case": "illustrative stern access, CYS-01",
-    "source": {"repository": "GrazianoGuiducci/kernel-nautico", "definition_revision": "5e15f69e4cfb7d36c03684a312b256bd7a7ac45a"},
+    "source": {
+      "repository": "GrazianoGuiducci/kernel-nautico",
+      "definition_revision": "5e15f69e4cfb7d36c03684a312b256bd7a7ac45a"
+    },
     "guide": "https://github.com/GrazianoGuiducci/kernel-nautico/blob/main/BOOT.md",
     "cards": [
-      {"id": "presentation", "role": "competence", "title": {"it": "Conoscere il kernel", "en": "Meet the kernel"}, "short": {"it": "Il sapere lungo la vita della barca", "en": "Knowledge across the boat’s life"}, "body": {"it": "Kernel Nautico dà all’assistente AI conoscenze e metodo per seguire un lavoro nautico. Collega progettazione, costruzione, utilizzo e assistenza, conserva le ragioni delle scelte e sviluppa competenze attraverso ciò che accade. La presentazione 3D permette di cominciare a conoscerlo.", "en": "Kernel Nautico gives an AI assistant knowledge and a method for following marine work. It connects design, construction, use and service, retains decision reasons and develops competences through what happens. The 3D presentation offers a first introduction."}, "action": {"kind": "native-view", "target": "#nautico-presentazione", "label": {"it": "Apri la presentazione 3D", "en": "Open the 3D presentation"}}},
-      {"id": "guide", "role": "competence", "title": {"it": "Orientarsi nel lavoro", "en": "Find your way through the work"}, "short": {"it": "Persone, fonti e contesti collegati", "en": "People, sources and connected contexts"}, "body": {"it": "L’esigenza del cliente passa attraverso studio, cantiere, fornitori, equipaggio e assistenza. Il kernel mantiene le relazioni fra questi contesti. La mappa e le schede aiutano a capire dove siamo, su quale oggetto si lavora e chi partecipa al prossimo passo.", "en": "A customer’s need passes through design, shipyard teams, suppliers, crew and service. The kernel keeps these contexts related. Its map and cards help explain where the work stands, what object is involved and who participates in the next step."}, "action": {"kind": "native-view", "target": "#nautico-cantiere", "label": {"it": "Esplora il cantiere", "en": "Explore the shipyard"}}},
-      {"id": "case", "role": "activity", "title": {"it": "Comprendere il caso", "en": "Understand the case"}, "short": {"it": "Un accesso a poppa più agevole", "en": "Easier access to the stern"}, "body": {"it": "Nel caso illustrativo CYS-01, una richiesta riguarda l’accesso alla parte posteriore della barca. Il team collega l’esigenza alle possibilità di progetto e alle verifiche necessarie. La vista di progettazione mostra come fonti, oggetto e proposte possono restare collegati.", "en": "In illustrative case CYS-01, a request concerns access to the back of the boat. The team relates that need to design possibilities and required checks. The design view shows how sources, the object and proposals can stay connected."}, "action": {"kind": "native-view", "target": "#nautico-studio", "label": {"it": "Apri la progettazione", "en": "Open the design view"}}},
-      {"id": "contribute", "role": "activity", "title": {"it": "Portare un contributo", "en": "Make a contribution"}, "short": {"it": "Domande, note e proposte", "en": "Questions, notes and proposals"}, "body": {"it": "Una persona può descrivere un’esigenza, annotare un dubbio o preparare una proposta. La scheda conserva il contributo con il suo contesto. Nel progetto di poppa della demo si possono provare note, schizzi e scambi di varianti attraverso file locali.", "en": "A person can describe a need, record a question or prepare a proposal. The card keeps the contribution with its context. The demo’s stern project lets people try notes, sketches and variant exchanges through local files."}, "action": {"kind": "native-view", "target": "#nautico-progetto", "label": {"it": "Apri il progetto di poppa", "en": "Open the stern project"}}},
-      {"id": "memory", "role": "competence", "title": {"it": "Conservare le ragioni", "en": "Retain the reasons"}, "short": {"it": "Riprendere senza perdere il caso", "en": "Resume without losing the case"}, "body": {"it": "Chi progetta e chi interviene in seguito ha bisogno di conoscere anche perché una scelta è stata fatta. Il kernel conserva fonti, ragioni e conseguenze nel contesto dell’azienda e dell’imbarcazione. Qui le nostre note restano nel browser o nel file esportato.", "en": "Designers and people who later work on the vessel need to know why a choice was made. The kernel retains sources, reasons and consequences in the company and vessel’s context. Here, our notes stay in the browser or exported file."}},
-      {"id": "learning", "role": "competence", "title": {"it": "Imparare dal ciclo di vita", "en": "Learn across the lifecycle"}, "short": {"it": "L’esperienza torna al lavoro successivo", "en": "Experience returns to later work"}, "body": {"it": "Una segnalazione durante l’uso può riguardare assistenza, progettazione o più reparti. Il kernel collega la conseguenza alle persone e alle competenze che devono cambiare. La vista Come impara racconta questo metodo; la scena è una dimostrazione del sapere già formato.", "en": "A report during use can concern service, design or several teams. The kernel relates that consequence to the people and competences that need to change. The How it learns view explains this method; the scene demonstrates knowledge already formed."}, "action": {"kind": "native-view", "target": "#nautico-apprendimento", "label": {"it": "Vedi come impara", "en": "See how it learns"}}}
-    ]
+      {
+        "id": "presentation",
+        "role": "competence",
+        "title": {
+          "it": "Conoscere Kernel Nautico",
+          "en": "Meet Kernel Nautico"
+        },
+        "short": {
+          "it": "Dal progetto alla navigazione",
+          "en": "From design to operation"
+        },
+        "body": {
+          "it": "Kernel Nautico dà all’assistente AI conoscenze e metodo per seguire un lavoro nautico. Collega progettazione, costruzione, utilizzo e assistenza, conserva le ragioni delle scelte e sviluppa competenze attraverso ciò che accade. La presentazione 3D permette di cominciare a conoscerlo.",
+          "en": "Kernel Nautico gives an AI assistant knowledge and a method for following marine work. It connects design, construction, use and service, retains decision reasons and develops competences through what happens. The 3D presentation offers a first introduction."
+        },
+        "action": {
+          "kind": "native-view",
+          "target": "#nautico-presentazione",
+          "label": {
+            "it": "Apri la presentazione 3D",
+            "en": "Open the 3D presentation"
+          }
+        }
+      },
+      {
+        "id": "guide",
+        "role": "competence",
+        "title": {
+          "it": "Dal progetto al cantiere e a bordo",
+          "en": "From design to shipyard and onboard work"
+        },
+        "short": {
+          "it": "Ufficio tecnico, reparti ed equipaggio",
+          "en": "Design office, shipyard teams and crew"
+        },
+        "body": {
+          "it": "L’esigenza del cliente passa attraverso ufficio tecnico, reparti del cantiere, fornitori, equipaggio e assistenza. Il kernel mantiene le relazioni fra questi contesti. La mappa e le schede aiutano a capire dove siamo, su quale oggetto si lavora e chi partecipa al prossimo passo.",
+          "en": "A customer’s need passes through the design office, shipyard teams, suppliers, crew and service. The kernel keeps these contexts related. Its map and cards help explain where the work stands, what object is involved and who participates in the next step."
+        },
+        "action": {
+          "kind": "native-view",
+          "target": "#nautico-cantiere",
+          "label": {
+            "it": "Esplora il cantiere",
+            "en": "Explore the shipyard"
+          }
+        },
+        "guide": "https://github.com/GrazianoGuiducci/kernel-nautico/blob/main/docs/DOMAIN_LANGUAGE.md"
+      },
+      {
+        "id": "case",
+        "role": "activity",
+        "title": {
+          "it": "Progettare l’accesso a poppa",
+          "en": "Design the stern access"
+        },
+        "short": {
+          "it": "Un accesso a bordo più agevole",
+          "en": "Easier boarding access"
+        },
+        "body": {
+          "it": "Nel caso illustrativo CYS-01, il cliente chiede un accesso a poppa più agevole. Il team collega l’esigenza alle possibilità di progetto e alle verifiche necessarie. La vista di progettazione mostra come fonti, oggetto e proposte possono restare collegati.",
+          "en": "In illustrative case CYS-01, the customer asks for easier stern access. The team relates that need to design possibilities and required checks. The design view shows how sources, the object and proposals can stay connected."
+        },
+        "action": {
+          "kind": "native-view",
+          "target": "#nautico-studio",
+          "label": {
+            "it": "Apri la progettazione",
+            "en": "Open the design view"
+          }
+        }
+      },
+      {
+        "id": "contribute",
+        "role": "activity",
+        "title": {
+          "it": "Annotare una richiesta di modifica",
+          "en": "Record a change request"
+        },
+        "short": {
+          "it": "Esigenza, disegno e proposta",
+          "en": "Need, drawing and proposal"
+        },
+        "body": {
+          "it": "Il progettista può annotare sul disegno un’esigenza del cliente, un dubbio o una richiesta di modifica. La scheda conserva il contributo con il suo contesto. Nel progetto di poppa della demo si possono provare note, schizzi e scambi di varianti attraverso file locali.",
+          "en": "A designer can annotate a drawing with a customer’s need, a question or a change request. The card keeps the contribution with its context. The demo’s stern project lets people try notes, sketches and variant exchanges through local files."
+        },
+        "action": {
+          "kind": "native-view",
+          "target": "#nautico-progetto",
+          "label": {
+            "it": "Apri il progetto di poppa",
+            "en": "Open the stern project"
+          }
+        }
+      },
+      {
+        "id": "memory",
+        "role": "competence",
+        "title": {
+          "it": "Riprendere il caso dell’imbarcazione",
+          "en": "Resume the vessel’s case"
+        },
+        "short": {
+          "it": "Disegni, decisioni e ragioni collegate",
+          "en": "Connected drawings, decisions and reasons"
+        },
+        "body": {
+          "it": "Chi progetta e chi interviene in seguito ha bisogno di conoscere anche perché una scelta è stata fatta. Il kernel conserva fonti, ragioni e conseguenze nel contesto dell’azienda e dell’imbarcazione. Qui le nostre note restano nel browser o nel file esportato.",
+          "en": "Designers and people who later work on the vessel need to know why a choice was made. The kernel retains sources, reasons and consequences in the company and vessel’s context. Here, our notes stay in the browser or exported file."
+        }
+      },
+      {
+        "id": "learning",
+        "role": "competence",
+        "title": {
+          "it": "Imparare dalle segnalazioni di bordo",
+          "en": "Learn from onboard reports"
+        },
+        "short": {
+          "it": "L’esperienza aiuta i reparti",
+          "en": "Experience informs the shipyard teams"
+        },
+        "body": {
+          "it": "Una segnalazione di bordo può riguardare assistenza, progettazione o più reparti. Il kernel collega la conseguenza alle persone e alle competenze che devono cambiare. La vista Come impara racconta questo metodo; la scena è una dimostrazione del sapere già formato.",
+          "en": "An onboard report can concern service, design or several teams. The kernel relates that consequence to the people and competences that need to change. The How it learns view explains this method; the scene demonstrates knowledge already formed."
+        },
+        "action": {
+          "kind": "native-view",
+          "target": "#nautico-apprendimento",
+          "label": {
+            "it": "Vedi come impara",
+            "en": "See how it learns"
+          }
+        }
+      }
+    ],
+    "labels": {
+      "guide": {
+        "it": "Guida al lavoro nautico ↗",
+        "en": "Guide to the marine work ↗"
+      },
+      "note": {
+        "it": "Un appunto sul caso o sull’attività",
+        "en": "A note about the case or activity"
+      },
+      "save": {
+        "it": "Conserva l’appunto",
+        "en": "Save the note"
+      },
+      "export": {
+        "it": "Esporta gli appunti",
+        "en": "Export the notes"
+      },
+      "remembered": {
+        "it": "Appunti conservati per questa attività",
+        "en": "Notes retained for this activity"
+      },
+      "retained": {
+        "it": "Appunto conservato",
+        "en": "Retained note"
+      },
+      "countOne": {
+        "it": "{count} appunto conservato",
+        "en": "{count} saved note"
+      },
+      "countMany": {
+        "it": "{count} appunti conservati",
+        "en": "{count} saved notes"
+      },
+      "opening": {
+        "it": "Apertura del contesto nautico…",
+        "en": "Opening the marine work context…"
+      },
+      "opened": {
+        "it": "Il contesto nautico è stato aperto.",
+        "en": "The marine work context has been opened."
+      },
+      "unavailable": {
+        "it": "Il contesto nautico non è disponibile in questa demo.",
+        "en": "This marine work context is unavailable in this demo."
+      },
+      "saved": {
+        "it": "Appunto conservato in questo browser.",
+        "en": "Note saved in this browser."
+      },
+      "sessionOnly": {
+        "it": "Appunto conservato nella sessione. Esportalo per riprenderlo.",
+        "en": "Note kept in this session. Export it to resume later."
+      },
+      "scope": {
+        "it": "Le schede collegano presentazione, progettazione, cantiere e segnalazioni di bordo. Gli appunti restano in questo browser o nel file esportato. Nell’ambiente aziendale, l’assistente AI può usarli con le fonti della commessa e dell’imbarcazione.",
+        "en": "The cards connect the introduction, design, shipyard work and onboard reports. Notes stay in this browser or the exported file. In the company’s environment, the AI assistant can use them with project and vessel sources."
+      }
+    }
   }
 }
