@@ -1,10 +1,23 @@
 {
   "name": "k-ux-ai",
-  "version": "0.1.0-alpha.1",
+  "version": "0.2.0-alpha.1",
   "private": true,
   "type": "module",
-  "description": "Kernel-neutral UI medium with observable state and human-action return",
-  "exports": "./src/medium.js",
-  "scripts": { "test": "node --test tests/medium.test.js" },
-  "engines": { "node": ">=20" }
+  "description": "Compositional UX-AI competence kernel, construction knowledge and original agent-host UI medium",
+  "exports": {
+    ".": "./src/medium.js",
+    "./message-port": "./src/adapters/message-port.js",
+    "./window-surface": "./src/ui/window-surface.js",
+    "./chat-form": "./src/ui/chat-form-module.js",
+    "./window-surface.css": "./src/ui/window-surface.css",
+    "./chat-form.css": "./src/ui/chat-form-module.css",
+    "./BOOT.md": "./BOOT.md",
+    "./KERNEL_MANIFEST.json": "./KERNEL_MANIFEST.json"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }

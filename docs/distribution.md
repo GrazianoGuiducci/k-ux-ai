@@ -1,8 +1,10 @@
 # Public product and receiving environment
 
-The public repository contains original product code, neutral operating logic,
-interface documentation and synthetic examples. A receiving kernel uses
-those functions with the state it chooses to expose.
+The public repository carries a compositional competence kernel: operating
+meaning, native method, construction knowledge, continuity and receiving entry,
+alongside original code and synthetic examples. A receiving LLM uses this
+knowledge to understand, compose, build and learn with its host's actual means.
+A receiving domain supplies the state and effects that the incarnation exposes.
 
 The producer develops and evolves the construction competence in its private
 source. This repository is the assembled public kernel/product and receives

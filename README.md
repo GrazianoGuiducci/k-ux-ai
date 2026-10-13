@@ -1,38 +1,68 @@
 # K-UX-AI
 
-**Una UI attraverso cui un kernel rende percepibile il proprio lavoro e riceve l'intervento umano.**
+**Una competenza che un LLM usa per rendere il lavoro percepibile e operabile,
+costruirne il codice e imparare attraverso il suo uso.**
 
-Il [Manifesto del Web vivente](MANIFESTO.md) orienta la ricerca K-UX-AI: **dal Web che consultiamo al Web che abitiamo**, attraverso interazione, tempo, percezione e forme generative. Il [Kernel](KERNEL.md) conserva la relazione operativa e lo [stato corrente](CURRENT_STATE.md) documenta le capacità effettivamente esercitate.
+K-UX-AI è un kernel pubblico di competenza componibile con sistemi agentici
+e kernel di dominio. Il suo sapere collega intento, fonti, accadimenti,
+focus, espressione e intervento umano. Può formare siti, mappe concettuali,
+ambienti interattivi e pannelli di lavoro attraverso i mezzi del ricevente.
 
-K-UX-AI è un prodotto pubblico componibile: collega stato, accadimento, focus,
-espressione percettiva e azione della persona. Ogni kernel conserva il proprio
-oggetto e forma la UI pertinente al suo progetto, prodotto o servizio.
+Il [Manifesto del Web vivente](MANIFESTO.md) custodisce l'orizzonte:
+**dal Web che consultiamo al Web che abitiamo**. Il [Kernel](KERNEL.md)
+porta la relazione operativa, la [competenza](competences/ux-ai/COMPETENCE.md)
+il metodo e la [guida](competences/ux-ai/GUIDE.md) le ragioni e il saper fare.
+Kernel Nautico è riferimento e primo dominio operativo.
 
-La competenza che sa costruire il codice viene sviluppata nella sorgente
-interna del produttore. Questo repository contiene il prodotto pubblico:
-riceve gli aggiornamenti selezionati di competenza, logiche e funzioni,
-con quanto serve al kernel utilizzatore per operare nel proprio ambiente.
+## Usarlo nel proprio sistema
 
-La prima versione offre un medium JavaScript, un contratto di integrazione e
-un esempio interattivo originale per Kernel Nautico. È un prototipo iniziale;
-la competenza generale di costruzione è ancora in formazione. Una richiesta di accesso
-a poppa più agevole attraversa progetto, costruzione e uso. La persona può
-entrare nel dettaglio, scegliere una proposta e ritornare all'insieme con la
-stessa domanda e lo stato aggiornato.
+Rendi raggiungibile il repository o allega i corpi pertinenti al modello.
+Parti da [BOOT.md](BOOT.md) e dal [raccordo LLM](adapters/llm/ENTRY.md),
+insieme alla fonte del lavoro. Un core come MPK può comporre K-UX-AI
+tra le proprie competenze; un altro harness usa gli stessi metodi con
+i suoi strumenti e controller.
 
-## Prova l'esempio
+La competenza comprende cosa deve diventare possibile, compone le capacità
+utili e costruisce una forma originale. Movimento, testo, spazio, immagine
+e altri canali partecipano secondo il lavoro. La resa e le conseguenze
+possono cambiare la comprensione e il codice. La guida conserva quanto
+cambia il prossimo fare.
 
-Servi questa directory con un server statico, per esempio:
+Il [raccordo all'ambiente](docs/receiving-environment.md) collega metodo
+e mezzi effettivi. Il dominio custodisce dati, fonti e significato degli
+effetti; il ricevente mantiene contesto e learning propri.
+
+## Sorgenti eseguibili
+
+La versione `0.2.0-alpha.1` include il medium JavaScript, un adattatore
+MessagePort, Window Surface e Chat/Form originali. Sono mezzi componibili
+e sorgenti da cui continuare la costruzione.
+
+La [Griglia del fare v5.12](examples/griglia/README.md) è l'esempio principale:
+la UI interattiva formata con GPT, conservata nella sua sorgente originale.
+Attività, card, focus, barra e chat possono ricomporsi mantenendo continuità.
+
+Servi questa directory con un server statico:
 
 ```sh
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
-Apri `http://127.0.0.1:8080/examples/nautico/`. Il caso è illustrativo: contiene
-dati sintetici e uno yacht schematico originale. Il controller dimostrativo
-simula il kernel ricevente; nessun sistema aziendale viene contattato.
+Apri `http://127.0.0.1:8080/examples/griglia/` per usare la v5.12.
+Il dimostratore ha fonti e risposte sintetiche locali. Il collegamento a
+un LLM e al dominio prosegue dai controller del ricevente.
 
-## Collegalo a un kernel
+L'[esercizio tecnico MessagePort](examples/workspace/README.md) resta
+raggiungibile a `examples/workspace/`. Il controller sintetico
+aggiorna una fonte mentre l'operatore prepara un contributo; oggetto e
+bozza continuano attraverso le trasformazioni. Evento, azione e conferma
+percorrono un MessageChannel locale. La chat riceve una risposta sintetica.
+
+Il primo [esempio Nautico](examples/nautico/) conserva la domanda di accesso
+a poppa attraverso esplorazione e scelta. Gli esempi usano dati sintetici.
+Lo [stato corrente](CURRENT_STATE.md) attribuisce sorgenti ed esercizi.
+
+## Collegare il runtime
 
 ```js
 import { createMedium } from './src/medium.js';
@@ -48,24 +78,17 @@ ui.dispatch({ type: 'compare', objectId: 'your-object' });
 ui.observe(record => yourDevelopmentObserver(record));
 ```
 
-Il kernel sceglie lo stato da esporre e il renderer. Il medium consegna le
-azioni umane al controller; il controller restituisce uno stato quando il
-lavoro cambia. Il contratto non impone un layout o un'ontologia di dominio.
+Il controller decide il risultato del gesto e restituisce lo stato.
+Schema di dominio, renderer e trasporto si compongono secondo il ricevente.
+Per il contratto eseguibile: `npm test`, Node.js 20+.
 
-- [Relazione operativa del prodotto](KERNEL.md)
-- [Interfaccia JavaScript e osservazione](docs/interface.md)
-- [Distribuzione pubblica e adattatori](docs/distribution.md)
-- [Stato corrente](CURRENT_STATE.md)
+- [Interfaccia JavaScript](docs/interface.md)
+- [Adattamento e MessagePort](docs/receiving-environment.md)
+- [Continuità e apprendimento](docs/continuity.md)
+- [Distribuzione](docs/distribution.md)
+- [Sorgenti ed evoluzione](docs/source-and-evolution.md)
 
-## Percezione ed evoluzione
-
-Immagine, spazio, movimento, testo, suono e modalità ulteriori possono
-esprimere la stessa relazione secondo persona, contesto e mezzi disponibili.
-Questo primo esempio usa testo e grafica SVG accessibile. Tatto, olfatto e
-altri canali richiedono adattatori e dispositivi propri.
-
-Il risultato percettivo e l'intervento umano possono far cambiare ciò che il
-kernel comprende e ciò che la UI rende presente. Una forma ancora adeguata
-può persistere mentre lo stato evolve.
-
-Versione: **0.1.0-alpha.1**. Per verificare il contratto: `npm test` (Node.js 20+).
+Il produttore continua la formazione nella propria sorgente e trasferisce
+aggiornamenti selezionati a questo prodotto. Il sapere pubblico permette
+di comprendere, costruire e continuare nel proprio ambiente.
+Versione sorgente: **0.2.0-alpha.1**.

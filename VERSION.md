@@ -1,6 +1,10 @@
 # Version
 
-0.1.0-alpha.1 — 2026-10-07
+0.2.0-alpha.1 — 2026-10-12
 
-First public product source: neutral medium, receiving contract and original
-Nautico development example. Package publication is a separate effect.
+Public competence-kernel consolidation: native method, accumulated guide,
+LLM entry, original UI modules and concrete MessagePort composition.
+This is a source version; receiving installation and package publication
+carry their own identities.
+
+Previous source: 0.1.0-alpha.1 — 2026-10-07.

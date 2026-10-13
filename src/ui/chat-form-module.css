@@ -1,0 +1,43 @@
+.kux-chat-form{--kux-chat-split:43%;display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;background:#f8faf3;color:#15323b;font:14px/1.45 system-ui,'Segoe UI',sans-serif}
+.kux-chat-form *{box-sizing:border-box}
+.kux-chat-tabs{display:none;gap:6px;padding:8px;background:#e9f2ed;border-bottom:1px solid #adc9c4}
+.kux-chat-tabs button{min-height:38px;flex:1;border:1px solid #84aaa5;border-radius:5px;background:#fffdf7}
+.kux-chat-tabs [aria-selected=true]{background:#173d43;color:#fff;border-color:#173d43}
+.kux-chat-regions{display:grid;grid-template-columns:minmax(225px,var(--kux-chat-split)) 7px minmax(0,1fr);flex:1;min-height:0;min-width:0}
+.kux-chat-pane,.kux-form-pane{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.kux-chat-pane{border-right:1px solid #acc7c3}
+.kux-chat-messages{flex:1;overflow:auto;min-height:0;padding:15px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;scrollbar-gutter:stable}
+.kux-chat-msg{padding:10px 12px;max-width:94%;border-radius:9px;background:#e7f3f0;border:1px solid #a9d3ca}
+.kux-chat-msg[data-role=operator]{margin-left:auto;background:#fff2d2;border-color:#dec489}
+.kux-chat-msg strong{font-size:11px;color:#386167}
+.kux-chat-msg p{margin:4px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.kux-chat-quick{display:flex;flex-wrap:wrap;gap:7px;padding:8px 11px}
+.kux-chat-quick button{border:1px solid #78aaa2;background:#f9fafa;border-radius:999px;padding:7px 10px;font-size:12px}
+.kux-chat-inputrow{display:flex;gap:6px;align-items:flex-end;padding:9px;border-top:1px solid #acc7c3;background:#e7f3f0}
+.kux-chat-inputrow textarea{min-width:0;flex:1;min-height:42px;max-height:140px;resize:vertical;border:1px solid #91b6ac;border-radius:5px;padding:8px;background:#fff}
+.kux-chat-inputrow button,.kux-form-tools button{border:1px solid #6b9a91;border-radius:5px;background:#daf1e2;padding:9px 12px;min-height:42px;color:#17343b}
+.kux-chat-inputrow button:hover,.kux-form-tools button:hover{background:#afe5cb}
+.kux-chat-splitter{background:#accac6;cursor:col-resize;touch-action:none;border-left:1px solid #83aaa5;border-right:1px solid #83aaa5;position:relative}
+.kux-chat-splitter::after{content:'';display:block;width:2px;height:41px;border-radius:2px;background:#588e8b;position:absolute;left:2px;top:calc(50% - 20px)}
+.kux-chat-splitter:focus-visible{outline:3px solid #8b62a9;outline-offset:2px}
+.kux-form-pane{overflow:auto;scrollbar-gutter:stable}
+.kux-form{padding:14px 17px 22px;display:flex;flex-direction:column;gap:12px}
+.kux-form-heading{display:flex;flex-direction:column;gap:4px}
+.kux-form-heading strong{font-size:17px}.kux-form-heading small{color:#4b686e}
+.kux-form-kinds{display:flex;gap:6px;flex-wrap:wrap}
+.kux-form-kinds button{padding:7px 12px;border:1px solid #83afa5;background:#fff;border-radius:5px;min-height:38px}
+.kux-form-kinds [aria-pressed=true]{background:#173d43;color:#fff;border-color:#173d43}
+.kux-field{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600}
+.kux-field input,.kux-field textarea{width:100%;font:14px/1.5 system-ui,sans-serif;border:1px solid #92b6ac;border-radius:5px;background:#fff;padding:10px;resize:vertical;color:#17343b}
+.kux-field textarea{min-height:120px}
+.kux-form-tools{display:flex;flex-wrap:wrap;gap:6px}.kux-form-tools button:last-child{margin-left:auto;background:#a5e8bd}
+.kux-form-preview{white-space:pre-wrap;background:#e8f3f0;border:1px solid #a3c3bb;border-radius:6px;padding:12px;overflow-wrap:anywhere;font-size:12px}
+.kux-form-status{min-height:19px;color:#32605c;font-size:12px}.kux-form-status[data-error=true]{color:#a04323}
+.kux-form-boundary{font-size:11px;color:#557276;border-top:1px solid #acc7c3;padding-top:8px}
+.kux-chat-form[data-compact=true] .kux-chat-tabs{display:flex}
+.kux-chat-form[data-compact=true] .kux-chat-regions{display:flex;flex-direction:column}
+.kux-chat-form[data-compact=true] .kux-chat-splitter{display:none}
+.kux-chat-form[data-compact=true] .kux-chat-pane,.kux-chat-form[data-compact=true] .kux-form-pane{flex:1;border-right:0}
+.kux-chat-form[data-compact=true][data-pane=chat] .kux-form-pane,.kux-chat-form[data-compact=true][data-pane=form] .kux-chat-pane{display:none}
+.kux-chat-form[data-compact=true] .kux-form{padding:12px}.kux-chat-form[data-compact=true] .kux-field textarea{min-height:100px}
+@media(prefers-reduced-motion:reduce){.kux-chat-form *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

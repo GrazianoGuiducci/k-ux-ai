@@ -3,3 +3,5 @@ output/
 .env
 .env.*
 *.log
+.playwright-cli/
+.playwright/

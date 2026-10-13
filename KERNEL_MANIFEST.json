@@ -1,0 +1,37 @@
+{
+  "schema_version": "kux.competence-kernel-manifest.v1",
+  "identity": "K-UX-AI",
+  "version": "0.2.0-alpha.1",
+  "kernel_class": "compositional_competence_kernel",
+  "semantic_owner": "GrazianoGuiducci/k-ux-ai",
+  "purpose": "Comprendere cosa e come rendere percepibile e operabile il lavoro, costruirne il codice e imparare attraverso l'uso.",
+  "entry": {
+    "boot": "BOOT.md",
+    "kernel": "KERNEL.md",
+    "competence": "competences/ux-ai/COMPETENCE.md",
+    "guide": "competences/ux-ai/GUIDE.md",
+    "current_state": "CURRENT_STATE.md",
+    "horizon": "MANIFESTO.md"
+  },
+  "receiver": {
+    "entry": "adapters/llm/ENTRY.md",
+    "composition": "docs/receiving-environment.md",
+    "continuity": "docs/continuity.md",
+    "means": "LLM, strumenti, persistenza e controller forniti dall'ambiente ospitante."
+  },
+  "knowledge_relation": {
+    "field": "Facoltà componibili e aperte dentro la competenza; metodo, ragioni, sorgenti ed esperienza formano il lavoro.",
+    "domain": "Fonti, dati e significato degli effetti restano al kernel di dominio.",
+    "evolution": "Il risultato può cambiare la competenza, la sua guida e il seguito; il ricevente conserva il proprio learning."
+  },
+  "runtime": {
+    "contract": "docs/interface.md",
+    "medium": "src/medium.js",
+    "message_port": "src/adapters/message-port.js",
+    "window_surface": "src/ui/window-surface.js",
+    "chat_form": "src/ui/chat-form-module.js",
+    "example": "examples/workspace/README.md",
+    "interactive_reference": "examples/griglia/README.md"
+  },
+  "formation": "Il produttore trasferisce aggiornamenti selezionati; il metodo pubblico è raggiungibile senza sorgenti private di formazione."
+}

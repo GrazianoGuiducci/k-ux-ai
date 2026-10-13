@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-UX-AI · Esercizio tecnico</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../../src/ui/window-surface.css">
+<link rel="stylesheet" href="../../src/ui/chat-form-module.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-head"><a href="../../README.md">K-UX-AI</a><span>MessagePort · esercizio tecnico</span><a href="../../BOOT.md">Ingresso del kernel</a></header>
+<main>
+<section class="intro">
+<p class="eyebrow">Oggetto, evento e intervento nello stesso campo</p>
+<h1>Il lavoro cambia.<br>Il punto rimane riconoscibile.</h1>
+<p>Esplora un oggetto di progetto, conserva una bozza e osserva un nuovo riscontro.
+Il controller locale restituisce uno stato confermato attraverso un MessagePort.</p>
+<p class="demo-note">Dati sintetici · ricevente locale · nessun modello AI o servizio esterno collegato.</p>
+</section>
+<section class="field" aria-labelledby="object-title">
+<div class="object-heading"><span id="object-id">project/object-01</span><span id="revision"></span></div>
+<h2 id="object-title"></h2>
+<p id="object-summary"></p>
+<div class="relations">
+<article class="relation"><span>Fonte</span><strong id="source-title"></strong><p id="source-description"></p></article>
+<article class="relation"><span>Conseguenza</span><strong id="consequence-title"></strong><p id="consequence-description"></p></article>
+</div>
+<div class="actions">
+<button id="source-event" type="button">Simula nuovo riscontro</button>
+<button id="open-interaction" type="button">Apri dialogo e modulo</button>
+</div>
+<p id="guide" role="status">Puoi preparare una domanda o un contributo mentre la fonte evolve.</p>
+</section>
+<details class="observer"><summary>Readback del campo per un agente</summary><p>Stato esposto, forma della finestra, bozza e ultimi eventi. Questa traccia non è ragionamento nascosto.</p><pre id="readback"></pre></details>
+<footer>Lo stesso nucleo può sostenere un altro progetto, renderer o harness. La forma di questo esempio è una possibilità.</footer>
+</main>
+<script type="module" src="app.js"></script>
+</body></html>
