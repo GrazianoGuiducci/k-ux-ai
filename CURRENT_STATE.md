@@ -52,3 +52,7 @@ record the exact reference, profile, runtime and generated HTML hashes.
 Website publication, backend activation, adoption in a company, MPK integration
 and package release retain their own effect and source identity. The common
 integration knowledge returns to MPK after this product work is stabilised.
+
+The neutral presentation uses a relation diagram of present work, interface
+and feedback. Visual readback removed a nautical silhouette inherited from
+the reference while retaining the GPT surface and card composition.
