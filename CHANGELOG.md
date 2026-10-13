@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0-alpha.2 — 2026-10-13
+
+- Start the first encounter from situation, participants, object and case.
+- Let K-UX-AI introduce itself through contextual competence/activity cards.
+- Supply the same initial template for the first nautical domain case.
+- Retain local contributions and selected cards across reentry; export notes
+  with context/source provenance and keep note text out of shared perception.
+- Keep view actions with the receiver's controller and await confirmation.
+- Preserve the original Griglia v5.12 and its source identity.
+- Return construction and reader learning to the operating guide.
+
 ## 0.2.0-alpha.1 — 2026-10-12
 
 - Form K-UX-AI as a public compositional competence kernel, with native method,

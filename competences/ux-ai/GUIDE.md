@@ -206,6 +206,39 @@ temporanea: due messaggi sovrapposti possono far perdere cosa sta accadendo.
 
 ## Ritorno e rientro nel ricevente
 
+### La Griglia come specchio del kernel — 13 ottobre 2026
+
+La persona può incontrare il sistema senza conoscere i nostri nomi o i
+sistemi agentici. Parti dalla situazione, dai soggetti, dall'oggetto e da un
+caso quando rendono comprensibile il primo uso. La premessa partecipa alla
+costruzione, non viene aggiunta dopo che il layout ha già scelto il lettore.
+
+La Griglia può essere il primo caso del kernel che rappresenta. Il kernel
+presenta se stesso, rende raggiungibili guida e mappa e dà un assetto iniziale
+alle competenze contestuali e alle attività. Quelle schede possono continuare
+il lavoro: contributi, memoria e conseguenze appartengono al relativo contesto.
+L'espressione può cambiare quando emerge un lavoro diverso; il template non
+definisce una tassonomia o un percorso obbligatorio.
+
+`examples/kernel-mirror/contexts.json` incarna due contesti: K-UX-AI che
+presenta se stesso e Nautico nel caso illustrativo dell'accesso a poppa.
+`src/ui/kernel-grid.js` usa il medium esistente; le azioni appartengono al
+controller del ricevente. La sua vista condivisa contiene fonte, scheda,
+conteggio dei contributi e ultima destinazione confermata, non i testi locali.
+Il dominio conserva separatamente la propria osservazione corrente.
+
+Il contributo scritto è della persona. Il browser lo conserva per contesto
+e scheda e può esportarlo; non per questo la competenza si è evoluta da sola.
+Nel ricevente AI, ciò che il lavoro insegna può cambiare il sapere e il metodo
+della competenza responsabile. Il sistema mantiene fonte e ragioni di quella
+variazione e le usa nel caso seguente.
+
+Il cambio di scheda conserva la bozza; una conferma tardiva non sostituisce
+la scelta successiva della persona. Le note restano nel campo locale finché
+una relazione di condivisione le rende pertinenti altrove. La Griglia v5.12
+rimane la sorgente originale, con identità e riscontri propri: questa nuova
+incarnazione non ne eredita automaticamente ogni qualità o prova.
+
 La [continuità](../../docs/continuity.md) collega margine vivo e sapere.
 Conserva perché il risultato cambia il prossimo movimento, insieme alle
 condizioni della sua osservazione. Una differenza valida in un caso può

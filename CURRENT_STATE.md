@@ -1,12 +1,17 @@
 # K-UX-AI current state
 
-version: 0.2.0-alpha.1
+version: 0.2.0-alpha.2
 date: 2026-10-13
 product_owner: GrazianoGuiducci/k-ux-ai
 form: public compositional competence kernel
 source_lane: work/public-kernel-consolidation-20261012
 
 ## Kernel and knowledge
+
+The operator's 13 October clarification starts from a reader who does not
+know the system: make situation, participants, object and case recognizable
+before technical terms. The kernel can introduce itself through its own
+interactive competence/activity cards. The public guide owns that method.
 
 Boot, Kernel, manifest, native competence and guide form the public entry.
 K-UX-AI understands what and how to make work perceivable and operable,
@@ -21,9 +26,13 @@ producer's private formation sources.
 ## Executable incarnation
 
 The immutable JSON medium retains its existing receive/dispatch/observe
-contract. This version adds MessagePort transport, original Window Surface
+contract. The preceding alpha.1 brought MessagePort transport, original Window Surface
 and Chat/Form modules, their styles and a neutral workspace composition.
 The original Nautico example is preserved.
+The new kernel-grid surface and `examples/kernel-mirror/contexts.json` form
+an initial presentation, guide and contribution space for K-UX-AI and Nautico.
+Local notes retain context/card provenance; exported notes can continue in a
+receiving AI environment. This is distinct from autonomous competence learning.
 The main interactive reference is the original Griglia del fare v5.12 at
 examples/griglia/index.html, selected from the public GPT candidate.
 The operator's supplied HTML has identical bytes and SHA-256
@@ -41,6 +50,14 @@ lane. This preserves source identity, while new host/domain integrations
 have their own consequences and exercise.
 
 ## Exercise and continuation
+
+The new template was exercised in the MAIOS site candidate on 13 October,
+with Chrome at 390 by 844: card selection, contribution storage, source
+context, opening a nautical design view through the real controller,
+recovery of the contribution and selected guide card after reload.
+The public Chat transport used an explicitly labelled fixture with zero
+provider calls; its captured request did not contain the synthetic local
+note. This observes that flow, not general privacy or model inference.
 
 On 13 October, fifteen Node tests pass for the medium and MessagePort contract, including
 duplicate/invalid state, renderer failure, unknown messages, disconnect and

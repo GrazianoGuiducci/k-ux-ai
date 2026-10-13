@@ -1,7 +1,7 @@
 {
   "schema_version": "kux.competence-kernel-manifest.v1",
   "identity": "K-UX-AI",
-  "version": "0.2.0-alpha.1",
+  "version": "0.2.0-alpha.2",
   "kernel_class": "compositional_competence_kernel",
   "semantic_owner": "GrazianoGuiducci/k-ux-ai",
   "purpose": "Comprendere cosa e come rendere percepibile e operabile il lavoro, costruirne il codice e imparare attraverso l'uso.",
@@ -31,7 +31,10 @@
     "window_surface": "src/ui/window-surface.js",
     "chat_form": "src/ui/chat-form-module.js",
     "example": "examples/workspace/README.md",
-    "interactive_reference": "examples/griglia/README.md"
+    "interactive_reference": "examples/griglia/README.md",
+    "kernel_grid": "src/ui/kernel-grid.js",
+    "presentation_template": "examples/kernel-mirror/contexts.json",
+    "first_encounter": "examples/kernel-mirror/index.html"
   },
   "formation": "Il produttore trasferisce aggiornamenti selezionati; il metodo pubblico è raggiungibile senza sorgenti private di formazione."
 }

@@ -34,7 +34,14 @@ effetti; il ricevente mantiene contesto e learning propri.
 
 ## Sorgenti eseguibili
 
-La versione `0.2.0-alpha.1` include il medium JavaScript, un adattatore
+Il [primo incontro](examples/kernel-mirror/) usa la Griglia per presentare
+il kernel stesso: conoscenza del sistema, guida, caso, memoria e apprendimento
+diventano schede contestuali. Il template include anche Nautico, primo dominio
+applicato. I contributi restano nel browser o si esportano; il ricevente AI
+li usa quando sono condivisi nel lavoro. Il riferimento Griglia v5.12 resta
+disponibile nella sua forma originale.
+
+La versione `0.2.0-alpha.2` include il medium JavaScript, un adattatore
 MessagePort, Window Surface e Chat/Form originali. Sono mezzi componibili
 e sorgenti da cui continuare la costruzione.
 
@@ -91,4 +98,4 @@ Per il contratto eseguibile: `npm test`, Node.js 20+.
 Il produttore continua la formazione nella propria sorgente e trasferisce
 aggiornamenti selezionati a questo prodotto. Il sapere pubblico permette
 di comprendere, costruire e continuare nel proprio ambiente.
-Versione sorgente: **0.2.0-alpha.1**.
+Versione sorgente: **0.2.0-alpha.2**.

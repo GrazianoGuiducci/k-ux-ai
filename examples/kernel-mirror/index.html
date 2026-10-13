@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-UX-AI — il kernel presenta se stesso</title>
+<style>body{margin:0;background:#edf7ef;color:#173b34;font:17px/1.6 system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:24px}h1{font-size:clamp(32px,4vw,50px);line-height:1.1}iframe{width:100%;height:85vh;min-height:620px;border:1px solid #87aaa1;border-radius:12px}a{color:#245c4e}.premessa{max-width:900px}header{border-bottom:1px solid #87aaa1;padding-bottom:24px}</style>
+<style id="kernel-grid-styles">.kux-kernel-grid { padding: 32px 0; }
+.kux-kernel-grid h2 { margin: 0 0 12px; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; }
+.kux-kernel-grid-premise { max-width: 850px; line-height: 1.65; }
+.kux-kernel-grid-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 24px 0 18px; }
+.kux-kernel-grid-card { padding: 18px; text-align: left; font: inherit; background: #f8faf1; border: 1px solid #87aaa1; border-radius: 10px; cursor: pointer; color: #153936; }
+.kux-kernel-grid-card strong, .kux-kernel-grid-card span { display: block; }
+.kux-kernel-grid-card strong { margin-bottom: 8px; font-size: 18px; }
+.kux-kernel-grid-card span { line-height: 1.45; font-size: 15px; }
+.kux-kernel-grid-card[aria-pressed="true"] { background: #c7e9da; border-color: #2b7262; box-shadow: inset 0 0 0 1px #2b7262; }
+.kux-kernel-grid-card:focus-visible, .kux-kernel-grid button:focus-visible, .kux-kernel-grid textarea:focus-visible { outline: 3px solid #1e7964; outline-offset: 3px; }
+.kux-kernel-grid-detail { border: 1px solid #87aaa1; background: #eaf4eb; border-radius: 10px; padding: 24px; }
+.kux-kernel-grid-detail h3 { margin-top: 0; font-size: 24px; }
+.kux-kernel-grid-detail p { max-width: 900px; line-height: 1.65; }
+.kux-kernel-grid-action, .kux-kernel-grid-memory button { padding: 10px 14px; border: 1px solid #4e8275; background: #f9e5a1; color: #173b34; border-radius: 5px; font: inherit; cursor: pointer; margin-right: 10px; }
+.kux-kernel-grid-source { display: inline-block; padding: 10px 0; }
+.kux-kernel-grid-memory { margin-top: 24px; padding-top: 18px; border-top: 1px solid #aac2b9; }
+.kux-kernel-grid-memory label { display: block; }
+.kux-kernel-grid-memory textarea { box-sizing: border-box; display: block; width: 100%; margin: 8px 0 12px; border: 1px solid #87aaa1; padding: 10px; border-radius: 5px; font: inherit; color: #173b34; background: #fffef8; }
+.kux-kernel-grid-note-count { display: inline-block; margin: 8px 0; font-size: 14px; }
+.kux-kernel-grid-scope { max-width: 950px; color: #47665d; font-size: 15px; line-height: 1.65; }
+@media (max-width: 700px) { .kux-kernel-grid-cards { grid-template-columns: 1fr 1fr; } .kux-kernel-grid-card { padding: 13px; } .kux-kernel-grid-card strong { font-size: 16px; } .kux-kernel-grid-card span { font-size: 14px; } .kux-kernel-grid-detail { padding: 16px; } }
+@media (max-width: 420px) { .kux-kernel-grid-cards { grid-template-columns: 1fr; gap: 8px; } }
+</style>
+</head><body><main><header><p>K-UX-AI / Primo incontro</p><h1>Un’interfaccia per capire e seguire il lavoro.</h1>
+<p class="premessa">In un progetto, persone, documenti e attività cambiano insieme. Un assistente AI può leggere le informazioni e partecipare al lavoro. Il kernel gli dà conoscenze, competenze e un metodo per farlo nel contesto. K-UX-AI si occupa della forma in cui quel lavoro diventa visibile e possiamo intervenire.</p>
+<p class="premessa">Questa Griglia presenta il proprio kernel e un modo per iniziare: possiamo esplorare le schede, lasciare un contributo e conservarlo nel browser o esportarlo. L’uso con un assistente AI collegato avviene nell’ambiente che adotta il kernel.</p></header>
+<div id="kernel-grid"></div><section id="demo"><h2>Il riferimento originale: Griglia v5.12</h2><p>Nel caso illustrativo dell’accesso a poppa possiamo preparare attività e continuare un contributo. Dati e risposte sono sintetici locali.</p><iframe title="Griglia v5.12" src="../griglia/"></iframe></section>
+</main><script type="module">
+import { createKernelGrid } from '../../src/ui/kernel-grid.js';
+const contexts = await fetch('./contexts.json').then(response => response.json());
+createKernelGrid({host:document.querySelector('#kernel-grid'),context:contexts['k-ux-ai'],onAction: async action=>{
+  const target=document.getElementById(action.target.slice(1));
+  if(action.kind!=='focus'||!target)return {ok:false};
+  target.scrollIntoView({behavior:'smooth',block:'start'}); return {ok:true};
+}});
+</script></body></html>

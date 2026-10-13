@@ -1,6 +1,6 @@
 {
   "name": "k-ux-ai",
-  "version": "0.2.0-alpha.1",
+  "version": "0.2.0-alpha.2",
   "private": true,
   "type": "module",
   "description": "Compositional UX-AI competence kernel, construction knowledge and original agent-host UI medium",
