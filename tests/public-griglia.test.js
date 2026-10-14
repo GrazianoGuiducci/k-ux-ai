@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {localizeDocument} from '../tools/localize_public_griglia.mjs';
 
 function receiver(fetch,locale='en') {
   const profile=JSON.parse(fs.readFileSync(new URL(`../examples/public-griglia/PROFILE${locale==='it'?'.it':''}.json`,import.meta.url),'utf8'));
@@ -12,7 +13,12 @@ function receiver(fetch,locale='en') {
   const state={screen:'work',activeContext:'poppa',panels:[],notes:[{text:'PRIVATE-DRAFT-DO-NOT-SEND'}]};
   const core={state,getFocused:()=>focused,switchWorkspaceContext:c=>{state.activeContext=c;},activateScreen:s=>{state.screen=s;},openPanel:(intent,context,options)=>{focused={intent,context,options,el:{isConnected:true,getClientRects:()=>[{}]}};return focused;}};
   const scope={window,parent,document,location:{origin:'https://maios.test'},fetch,crypto:{randomUUID:()=>`id-${++id}`},getComputedStyle:()=>({display:'block',visibility:'visible'}),CustomEvent:class{},MutationObserver:class{observe(){}},requestAnimationFrame:fn=>fn(),addEventListener:(name,fn)=>{listeners[name]=fn;}};
-  vm.runInNewContext(fs.readFileSync(new URL('../src/ui/public-griglia.js',import.meta.url),'utf8'),scope);
+  let source=fs.readFileSync(new URL('../src/ui/public-griglia.js',import.meta.url),'utf8');
+  if(locale==='en') {
+    const entries=JSON.parse(fs.readFileSync(new URL('../src/ui/locales/public-workspace.json',import.meta.url),'utf8')).entries;
+    source=localizeDocument('<script>'+source+'</script>',entries).slice(8,-9);
+  }
+  vm.runInNewContext(source,scope);
   window.KUXHostedGriglia.install(core);
   return {api:window.KUXHostedGriglia,state,profile,listeners,parent,wire};
 }
@@ -64,6 +70,25 @@ test('explicit UI locale chooses its own public route and readable context, with
     assert.equal(payload.context.path,locale==='en'?'/k-ux-ai.html':'/k-ux-ai-it.html');
     assert.equal(payload.context.active_label,locale==='en'?'Introduction · Understand':'Presentazione · Capire');
     assert.equal(payload.history.length,0);
+  }
+});
+
+test('pending and unavailable dialogue states follow UI language while preserving the submitted words',async()=>{
+  for(const locale of ['en','it']) {
+    let finish;
+    const r=receiver(()=>new Promise(resolve=>{finish=resolve;}),locale);
+    const discussions=r.api.createDiscussions();
+    discussions.post('card-a','Questa domanda resta in italiano.',r.profile.contexts.poppa);
+    assert.equal(discussions.getMessages('card-a')[0].text,'Questa domanda resta in italiano.');
+    assert.equal(discussions.getMessages('card-a')[1].text,locale==='en'
+      ? 'MAIOS AI is reading the question and this card’s context.'
+      : 'MAIOS AI sta leggendo la domanda e il contesto di questa scheda.');
+    finish({ok:false,status:429,json:async()=>({error:'busy'})});
+    await new Promise(resolve=>setImmediate(resolve));
+    const failed=discussions.getMessages('card-a')[1];
+    assert.equal(failed.kind,'unavailable');
+    assert.match(failed.text,locale==='en'?/busy/:/occupato/);
+    assert.equal(discussions.propose('card-a'),null);
   }
 });
 

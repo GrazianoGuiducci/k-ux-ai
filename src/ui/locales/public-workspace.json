@@ -3021,6 +3021,46 @@
       "key": "compare.initial_state",
       "it": "Il confronto partirà dai testi presenti.",
       "en": "Comparison will use the current texts."
+    },
+    {
+      "key": "dialogue.public_source_prefix",
+      "it": "Fonte pubblica: ",
+      "en": "Public source: "
+    },
+    {
+      "key": "dialogue.empty_question",
+      "it": "Scrivi una domanda prima di inviarla.",
+      "en": "Write a question before sending it."
+    },
+    {
+      "key": "dialogue.person_contribution",
+      "it": "Contributo della persona",
+      "en": "Contribution from the person"
+    },
+    {
+      "key": "dialogue.card_pending",
+      "it": "MAIOS AI sta leggendo la domanda e il contesto di questa scheda.",
+      "en": "MAIOS AI is reading the question and this card’s context."
+    },
+    {
+      "key": "dialogue.pending",
+      "it": "MAIOS AI sta leggendo la domanda e il contesto.",
+      "en": "MAIOS AI is reading the question and context."
+    },
+    {
+      "key": "dialogue.request_failed_draft_kept",
+      "it": "Richiesta non eseguita. La bozza resta disponibile.",
+      "en": "The request was not completed. Your draft is still available."
+    },
+    {
+      "key": "dialogue.request_failed_no_reply",
+      "it": "Richiesta non eseguita. Nessuna risposta AI verificata.",
+      "en": "The request was not completed. No AI reply was verified."
+    },
+    {
+      "key": "dialogue.workspace_intro_prefix",
+      "it": "Questo spazio presenta ",
+      "en": "This workspace introduces "
     }
   ]
 }

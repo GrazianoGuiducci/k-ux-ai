@@ -116,3 +116,12 @@ explicit user sizing overrides the initial 350 × 235 compact cap and retains
 the card content. Keyboard and pointer resize preserve the user's geometry.
 The shared executable regression fails on the previous derivative and passes
 on this one. The selected original remains unchanged and attributed.
+
+## Dialogue transition copy — CUR-36 live correction
+
+The real English dialogue exposed an Italian waiting message. Waiting, empty
+question, attribution and unavailable-request copy now follow the selected
+language. A regression exercises pending and busy states in both languages,
+preserving a submitted Italian question verbatim. This is a shared display-copy
+correction; conversation knowledge, provider routing and company authority retain
+their existing meaning. Italian artifact HTML is unchanged.

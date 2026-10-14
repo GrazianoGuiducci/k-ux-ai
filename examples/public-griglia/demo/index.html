@@ -1675,12 +1675,12 @@ body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
     return {path: p.pagePath, hash: marker ? '#' + marker : '#kernel-guide', title: p.home.title,
       surface: p.id, expression: 'product', h1: p.home.title, headings: [c.name, c.subtitle],
       active_label: c.name + ' · ' + (p.activityLabels?.[intent] || intent), active_marker: marker,
-      visible_text: [c.goal, "Source pubblica: " + c.source, "Open point: " + c.unknown, 'Seguito: ' + c.next].join('\n')};
+      visible_text: [c.goal, "Public source: " + c.source, "Open point: " + c.unknown, 'Seguito: ' + c.next].join('\n')};
   }
 
   async function ask(text, context, intent, owner) {
     const messages = thread(owner), message = String(text || '').trim().slice(0, 6000);
-    if (!message) return {accepted: false, message: 'Scrivi una domanda prima di inviarla.'};
+    if (!message) return {accepted: false, message: "Write a question before sending it."};
     const history = messages.filter(x => ['user','assistant'].includes(x.role) && !['pending','unavailable'].includes(x.kind)).slice(-12).map(x => ({role:x.role,content:x.text}));
     if(history.at(-1)?.role==='user' && history.at(-1).content===message)history.pop();
     const requestId = uuid();
@@ -1701,8 +1701,8 @@ body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
     const get = id => { if(!entries.has(id))entries.set(id,[]);return entries.get(id); };
     function post(id,text,context) {
       const clean=String(text||'').trim().slice(0,3000);if(!clean)return null;
-      const c=get(id), user={id:uuid(),role:'operator',text:clean,owner:id,context:context.name,source:"Contribution della persona",kind:'explicit-question'};
-      const pending={id:uuid(),role:'pending',text:'MAIOS AI sta leggendo la domanda e il contesto di questa scheda.',owner:id,context:context.name,source:context.source,kind:'pending'};
+      const c=get(id), user={id:uuid(),role:'operator',text:clean,owner:id,context:context.name,source:"Contribution from the person",kind:'explicit-question'};
+      const pending={id:uuid(),role:'pending',text:"MAIOS AI is reading the question and this card’s context.",owner:id,context:context.name,source:context.source,kind:'pending'};
       c.push(user,pending);
       const panel=core?.state.panels.find(x=>x.id===id);
       const contextId=panel?.context || Object.keys(profile().contexts).find(k=>profile().contexts[k].name===context.name) || 'poppa';
@@ -1758,7 +1758,7 @@ body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
   async function sendChat(p,message) {
     const clean=String(message||'').trim();if(!clean)return;
     const owner='chat-'+p.id, messages=thread(owner);messages.push({role:'user',text:clean});
-    const pending={role:'assistant',kind:'pending',text:'MAIOS AI sta leggendo la domanda e il contesto.'};messages.push(pending);
+    const pending={role:'assistant',kind:'pending',text:"MAIOS AI is reading the question and context."};messages.push(pending);
     const input=p.el.querySelector('.chat-editor');if(input)input.value='';core.renderModule(p);
     try{const answer=await ask(clean,p.context,p.intent,owner);pending.text=answer.message;pending.kind='maios-response';pending.proposedActions=answer.proposedActions;}catch(error){pending.text=error.message;pending.kind='unavailable';}
     if(core.state.panels.includes(p))core.renderModule(p);
@@ -2270,7 +2270,7 @@ function createChatFormModule({
       const outcome=await onSubmit({...d});
       if(outcome?.accepted===true){setStatus(outcome.message||'Controller ha accettato la richiesta.');}
       else setStatus(outcome?.message||"The contribution was not retained. The draft remains available.",true);
-    }catch(e){setStatus('Richiesta non eseguita. La bozza resta disponibile.',true)}
+    }catch(e){setStatus("The request was not completed. Your draft is still available.",true)}
     finally{busy=false;submit.disabled=false}
   });
   const appendMessage=(role,text)=>{
@@ -2287,7 +2287,7 @@ function createChatFormModule({
       const result=await onAsk(msg);
       if(result?.reply)appendMessage('assistant',result.reply);
       else if(result?.accepted!==true)appendMessage('system',result?.message||'Nessun assistente connesso: richiesta registrata solo dal ricevente locale.');
-    }catch(e){appendMessage('system','Richiesta non eseguita. Nessuna risposta AI verificata.');}
+    }catch(e){appendMessage('system',"The request was not completed. No AI reply was verified.");}
     finally{busy=false;askButton.disabled=false}
   }
   askButton.addEventListener('click',send);ask.addEventListener('keydown',ev=>{if(ev.key==='Enter'&&!ev.shiftKey){ev.preventDefault();send();}});
@@ -2545,7 +2545,7 @@ const additional=[{id:'monitorare',verb:"Monitor",icon:'◉',short:"Several sour
 const allIntents=[...intents,...additional];const byIntent=Object.fromEntries(allIntents.map(x=>[x.id,x]));
 const contexts={"poppa":{"name":"Introduction","subtitle":"K-UX-AI introduces itself","goal":"Understand how the kernel forms the medium through which people and AI can work.","source":"Public K-UX-AI method · its own interface as a case","items":["Kernel purpose","Work and action","Constructed medium"],"unknown":"Which relationship needs to become understandable?","next":"Open a card and observe how it preserves the point of work."},"cantiere":{"name":"Composition","subtitle":"The workspace forms around the work","goal":"Compose cards, focus and tools around what needs to become usable.","source":"K-UX-AI guide · workspace composition","items":["Main subject","Relevant activities","Focus and contribution"],"unknown":"Which arrangement makes the work clearer?","next":"Place a relationship beside the main work or bring it into focus, preserving the draft."},"fornitori":{"name":"Tools","subtitle":"What the medium can do","goal":"Connect perceptual forms to the means and tools actually available.","source":"K-UX-AI competences for sources and tools","items":["Work source","Available means","Action and confirmation"],"unknown":"Can the form express and receive the required action?","next":"Connect the documents and tools needed for the activity."},"bordo":{"name":"Interaction","subtitle":"A gesture, a consequence","goal":"Preserve input, references and ways to act as the situation changes.","source":"K-UX-AI guide · continuity of the gesture","items":["Current gesture","Retained contribution","Perceivable consequence"],"unknown":"What must remain recognisable during a change?","next":"Observe how the workspace responds to a gesture or a new relationship."},"assistenza":{"name":"Learning","subtitle":"What is learned changes the next use","goal":"Retain a useful difference in the competence that must build or operate differently.","source":"K-UX-AI guide · learning and resumption","items":["Observed situation","Method correction","Point of continuation"],"unknown":"What knowledge changes the next action?","next":"Retain the reason for the change and make it reachable at reentry."}};
 const scenarios=[{"context":"fornitori","intent":"controllare","title":"A source adds a difference","description":"A new contribution appears in the case, to compare with the current subject.","source":"Illustrative event","next":"Connect the documents and tools needed for the activity."},{"context":"cantiere","intent":"controllare","title":"An observation needs attention","description":"The case connects a new observation to its context and to the people who can understand it.","source":"Illustrative event","next":"Place a relationship beside the main work or bring it into focus, preserving the draft."},{"context":"assistenza","intent":"controllare","title":"A consequence returns to the method","description":"A useful difference can continue in the relevant competence at its next use.","source":"Illustrative event","next":"Retain the reason for the change and make it reachable at reentry."}];
-const state={homeSelected:new Set(),screen:'home',order:intents.map(x=>x.id),homeFeatured:intents.find(x=>x.weight==='hero')?.id||'capire',usage:{},layout:'auto',focusLocked:false,slotOrder:[],activeContext:'poppa',panels:[],focused:null,seq:0,z:1,events:[],nextEvent:0,notes:[],checks:{},selections:{},messages:[{role:'assistant',text:"Questo spazio presenta K-UX-AI. The guide uses the kernel’s sources; explicitly submitted questions can reach MAIOS AI on the configured site."}],capabilities:new Set(cfg.profile.capabilities||[]),drafts:{},stageStep:0,lastNotice:null,manualOrder:false,contextFocus:{}};
+const state={homeSelected:new Set(),screen:'home',order:intents.map(x=>x.id),homeFeatured:intents.find(x=>x.weight==='hero')?.id||'capire',usage:{},layout:'auto',focusLocked:false,slotOrder:[],activeContext:'poppa',panels:[],focused:null,seq:0,z:1,events:[],nextEvent:0,notes:[],checks:{},selections:{},messages:[{role:'assistant',text:"This workspace introduces K-UX-AI. The guide uses the kernel’s sources; explicitly submitted questions can reach MAIOS AI on the configured site."}],capabilities:new Set(cfg.profile.capabilities||[]),drafts:{},stageStep:0,lastNotice:null,manualOrder:false,contextFocus:{}};
 try{const prev=JSON.parse(localStorage.getItem('kux-public:' + cfg.profile.id + ':preferences')||'null');if(prev&&Array.isArray(prev.order)){const vals=prev.order.filter(id=>intents.some(x=>x.id===id));state.order=[...new Set([...vals,...intents.map(x=>x.id)])];}if(prev&&intents.some(x=>x.id===prev.homeFeatured))state.homeFeatured=prev.homeFeatured;if(prev&&prev.usage&&typeof prev.usage==='object'){for(const x of intents)state.usage[x.id]=Math.min(999,Math.max(0,Number(prev.usage[x.id])||0));}}catch{}
 // Home configurations are receiver-owned view plans, never Nautico work state.
 // Keep them separate by context; missing or unavailable storage leaves this
