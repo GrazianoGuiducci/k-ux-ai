@@ -372,3 +372,30 @@ contesto determina forme e strumenti: queste quattro relazioni non impongono
 un flusso fisso a ogni kernel. Fonti e avvio restano raggiungibili. L'applicazione
 Nautico conserva il dominio e permette di comprendere una composizione;
 il suo ciclo e il suo lessico non diventano la presentazione neutra.
+
+## Progettare l’incontro con il prodotto
+
+La fonte completa permette di capire il prodotto; il destinatario incontra
+la parte che gli serve per riconoscere il lavoro, comprendere una capacità
+e continuare. Comporre parole, diagrammi e azioni da questa relazione prima
+di scegliere una forma. Provenienza e storia della costruzione restano
+raggiungibili per chi deve studiare o integrare il codice.
+
+Preservare un riferimento non impone di mostrarlo nell’interfaccia. Scegliere
+ogni collegamento dalla continuazione che offre. Una guida all’uso conduce
+alle attività; una fonte tecnica spiega il metodo o l’integrazione; un caso
+di dominio permette di esplorare il lavoro di quel settore. Anche un dato
+vero può essere estraneo alla funzione del primo incontro.
+
+La correzione continua nei profili, nei generatori, nei testi delle schede
+e nella conoscenza usata dalla guida AI. Le osservazioni del rendering e
+i contratti tecnici conservano la loro portata; la riuscita dell’espressione
+si comprende attraverso soggetto, significato, azioni e scopo per chi la usa.
+
+Scegliere i nomi da ciò che la persona può riconoscere e fare. In questa
+interfaccia, Spazio di lavoro nomina l’insieme, Panoramica permette di
+orientarsi e preparare le attività, Lavoro in corso raccoglie le schede
+aperte. Un pannello di controllo rende pertinenti stato e interventi sui
+sistemi collegati; il dominio può formare nomi propri dalle sue attività.
+La stessa relazione continua nei pulsanti, nelle istruzioni accessibili,
+nei tour e nella guida AI.

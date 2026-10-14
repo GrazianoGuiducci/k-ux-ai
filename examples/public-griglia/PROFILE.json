@@ -20,11 +20,11 @@
     "subtitle": "Comprendere il lavoro, costruire l’interfaccia.",
     "intro": "Persone e assistenti AI lavorano con documenti, strumenti e decisioni. K-UX-AI dà all’AI il sapere per rendere visibile ciò che conta e costruire i modi per intervenire.",
     "method": "Il kernel conserva conoscenze, competenze e metodo. Compone testo, spazio, movimento e strumenti secondo il contesto; l’esperienza può migliorare le competenze pertinenti.",
-    "use": "Questa interfaccia presenta se stessa. Scegli un argomento ed entra nel campo: puoi affiancare schede, portarne una al centro e riprendere una bozza.",
-    "scope": "La Griglia usa esempi del proprio servizio. Con Invia puoi porre una domanda a MAIOS AI nel sito configurato; contributi e bozze delle altre schede restano in questa sessione."
+    "use": "Qui si può conoscere K-UX-AI e provare modi diversi di lavorare. Scegli un argomento ed apri il lavoro: puoi affiancare schede, portarne una al centro e riprendere una bozza.",
+    "scope": "Le schede usano esempi del servizio K-UX-AI. Con Invia puoi porre una domanda a MAIOS AI nel sito configurato; contributi e bozze delle altre schede restano in questa sessione."
   },
   "presentationTitle": "Il lavoro prende forma nell’interfaccia.",
-  "presentationMeaning": "K-UX-AI comprende e costruisce il mezzo. Il kernel ospitante porta il proprio sapere; persone e AI usano la stessa situazione attraverso proiezioni adatte ai loro mezzi.",
+  "presentationMeaning": "K-UX-AI costruisce il modo in cui persone e assistenti AI possono comprendere e svolgere il lavoro. Documenti, strumenti e azioni appartengono al progetto che lo usa.",
   "exploreTitle": "Un mezzo, più modi di partecipare.",
   "exploreMeaning": "Guida, strumenti, intervento e ripresa mantengono riconoscibile il lavoro mentre cambia la disposizione delle schede.",
   "phases": [
@@ -49,14 +49,14 @@
     "kind": "K-UX-AI · GUIDA DEL SERVIZIO",
     "object": "Il mezzo che rende il lavoro comprensibile e utilizzabile",
     "method": "La forma deriva dal lavoro presente. Il codice conserva input, focus e referenti; una conseguenza può correggere il metodo e la costruzione.",
-    "contributionTitle": "Un gesto o un riscontro può insegnare al mezzo.",
-    "checkTitle": "La forma conserva ciò che conta?",
+    "contributionTitle": "Un riscontro può migliorare l’interazione.",
+    "checkTitle": "L’interfaccia rende chiaro il lavoro?",
     "checkMeaning": "I riscontri locali aiutano a osservare il rapporto tra il lavoro, la sua forma e l’intervento della persona.",
     "designTitle": "Due modi di rendere percepibile il lavoro.",
     "organizeTitle": "Componi le relazioni utili.",
     "communicateTitle": "Rendi comprensibile il punto da continuare.",
     "communicationMeaning": "Una descrizione del gesto, dell’oggetto e della conseguenza permette a un’altra persona o AI di riprendere il lavoro.",
-    "reentryMeaning": "La continuità conserva ragioni, contributi e referenti. Nella Griglia si possono ritrovare i contributi di questa sessione; nel kernel di lavoro il sapere continua attraverso le sue competenze.",
+    "reentryMeaning": "La continuità conserva ragioni, contributi e referenti. Nello spazio di lavoro si possono ritrovare i contributi di questa sessione; nel kernel di lavoro il sapere continua attraverso le sue competenze.",
     "experimentTitle": "Che forma serve in questa situazione?",
     "experimentMeaning": "Si possono esplorare disposizioni e modalità differenti mantenendo lo stesso oggetto.",
     "monitorTitle": "Osserva ciò che cambia nel campo.",
@@ -68,7 +68,7 @@
       "Conservare oggetto e bozza, portare al centro una nuova relazione"
     ],
     "aiTitle": "Comprendere il servizio K-UX-AI.",
-    "aiMeaning": "La guida risponde sul kernel, sul contesto pubblico e sul modo di usare queste superfici.",
+    "aiMeaning": "La guida risponde su K-UX-AI, sull’argomento aperto e sul modo di usare le schede.",
     "aiPrompt": "Come si può usare questa scheda per comprendere K-UX-AI?"
   },
   "possibilities": [
@@ -84,19 +84,19 @@
   "documents": [
     {
       "label": "Scopo e logiche di K-UX-AI",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/KERNEL.md"
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/KERNEL.md"
     },
     {
       "label": "Competenza e metodo",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/competences/ux-ai/COMPETENCE.md"
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/competences/ux-ai/COMPETENCE.md"
     },
     {
-      "label": "Guida di costruzione e continuità",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/competences/ux-ai/GUIDE.md"
+      "label": "Metodo per costruire interfacce",
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/competences/ux-ai/GUIDE.md"
     },
     {
-      "label": "Guida della presentazione interattiva",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/2a310498ffb7d4c8627de81c79047a0cc0a770da/docs/public-griglia.md"
+      "label": "Guida all’uso delle schede",
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/docs/public-griglia.md"
     }
   ],
   "contexts": {
@@ -130,14 +130,14 @@
       "name": "Strumenti",
       "subtitle": "La capacità del mezzo",
       "goal": "Collegare le forme percettive ai mezzi e agli strumenti realmente disponibili.",
-      "source": "Competenza K-UX-AI · ricevente e controller",
+      "source": "Competenze K-UX-AI per fonti e strumenti",
       "items": [
         "Fonte del lavoro",
         "Mezzo disponibile",
         "Azione e conferma"
       ],
       "unknown": "La forma può esprimere e ricevere l’azione richiesta?",
-      "next": "Raggiungere i mezzi e il controller del sistema ospitante."
+      "next": "Collegare documenti e strumenti necessari all’attività."
     },
     "bordo": {
       "name": "Interazione",
@@ -156,7 +156,7 @@
       "name": "Apprendimento",
       "subtitle": "Ciò che si impara cambia il prossimo uso",
       "goal": "Conservare una differenza utile nella competenza che deve costruire o operare diversamente.",
-      "source": "Guida K-UX-AI · learning e rientro",
+      "source": "Guida K-UX-AI · apprendimento e ripresa",
       "items": [
         "Situazione osservata",
         "Correzione del metodo",
@@ -173,7 +173,7 @@
       "title": "Una fonte aggiunge una differenza",
       "description": "Nel caso compare un nuovo contributo da confrontare con l’oggetto presente.",
       "source": "Evento illustrativo",
-      "next": "Raggiungere i mezzi e il controller del sistema ospitante."
+      "next": "Collegare documenti e strumenti necessari all’attività."
     },
     {
       "context": "cantiere",
@@ -523,5 +523,6 @@
     "k-ux-ai-memory": "kux-riprendere",
     "k-ux-ai-learning": "kux-assistenza-riprendere",
     "kernel-guide": "kux-presentare"
-  }
+  },
+  "presentationCaseLabel": "Comprendere il funzionamento"
 }

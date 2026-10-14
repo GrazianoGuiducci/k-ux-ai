@@ -49,3 +49,26 @@ né introduce una licenza upstream per supposizione.
 Le future versioni possono ampliare renderer, adattatori e sapere conservando
 contratti e identità utili. Il ricevente mantiene evoluzioni e dati propri
 e può insegnare al prodotto attraverso il contributo autorizzato che possiede.
+
+## Costruire la presentazione interattiva
+
+`examples/griglia/index.html` conserva il riferimento GPT v5.12 originale.
+`src/ui/public-griglia.js` fornisce contenuti, dialoghi e osservazione delle
+viste. `examples/public-griglia/PROFILE.json` definisce il servizio K-UX-AI;
+un kernel di dominio usa un profilo proprio. Il builder compone questi file
+senza modificare l’originale e registra le identità in BUILD.json.
+
+```sh
+python tools/build_public_griglia.py --profile examples/public-griglia/PROFILE.json --output examples/public-griglia/demo
+```
+
+La domanda esplicita usa `/api/setup/v1/assistant/site-turn` con lo schema
+`maios.public-assistant-request.v1`. Per un campo incorporato, il sito attende
+una conferma correlata della vista effettiva, verifica origine e frame e
+non riceve le altre note locali. Un host statico può servire l’interfaccia
+senza fornire il servizio AI. Una fixture esercita il trasporto senza LLM.
+I cinque identificatori di contesto sono compatibilità del riferimento;
+i loro nomi e significati appartengono al profilo ospitante.
+
+Queste informazioni servono alla costruzione e all’integrazione tecnica.
+La [guida all’uso](public-griglia.md) conduce l’incontro con il prodotto.

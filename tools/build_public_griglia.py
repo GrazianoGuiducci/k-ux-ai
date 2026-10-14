@@ -30,6 +30,70 @@ def script_data(value: object) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
 
 
+def compose_tour(text: str, name: str, steps: list[dict]) -> str:
+    """Keep the reference's tour anchors while composing its public guidance."""
+    pattern = rf'const {name}=\[(.*?)\n\];'
+    match = re.search(pattern, text, flags=re.S)
+    if not match:
+        raise ValueError(f'Missing guided tour: {name}')
+    targets = [line.rsplit(',target:', 1)[1].rstrip(',').removesuffix('}')
+               for line in match.group(1).splitlines() if ',target:' in line]
+    if len(targets) != len(steps):
+        raise ValueError(f'Guided-tour targets changed: {name}')
+    composed = [script_data(step)[:-1] + ',target:' + target + '}'
+                for step, target in zip(steps, targets)]
+    return replace_pattern(text, pattern, f'const {name}=[\n' + ',\n'.join(composed) + '\n];')
+
+
+def public_tours(profile: dict) -> tuple[list[dict], list[dict]]:
+    contexts = ', '.join(context['name'] for context in profile['contexts'].values())
+    home = [
+        dict(title='Scegli un argomento', body='Lo spazio raccoglie attività e fonti intorno allo stesso lavoro. Scegli da dove iniziare.',
+             scope=contexts + '.', when='All’inizio o quando cambia il lavoro da esplorare.',
+             action='Scegli uno degli argomenti. Potrai cambiarlo dalla barra del lavoro in corso.',
+             effect='Ritrovi le schede e le attività preparate per quell’argomento.'),
+        dict(title='Prepara le attività', body='Le schede permettono di comprendere, contribuire, confrontare e riprendere. Puoi affiancare quelle utili allo stesso lavoro.',
+             scope='Le dieci attività iniziali e le altre disponibili da +Attività.', when='Per preparare una vista o esplorare più prospettive.',
+             action='Seleziona le tessere e trascinale per scambiare i posti. Puoi aggiungere attività anche dopo.',
+             effect='La panoramica prepara le schede da aprire.'),
+        dict(title='Apri il lavoro', body='Le attività preparate diventano schede che puoi leggere, affiancare e portare al centro.',
+             scope='L’argomento scelto, le attività e le bozze di questa sessione.', when='Quando vuoi esplorare il lavoro o portare un contributo.',
+             action='Premi “Apri il lavoro”. Puoi spostare le schede, aggiungere attività o aprire un dialogo.',
+             effect='Con Invia puoi porre una domanda a MAIOS AI nel sito configurato; le bozze delle altre schede restano locali.')
+    ]
+    work = [
+        dict(title='Argomento e attività', body='La barra mostra su cosa stai lavorando e permette di aprire le attività pertinenti.',
+             scope='Argomento scelto, schede e punto da approfondire.', when='Quando cambi argomento o riprendi il lavoro.',
+             action='Apri il menu dell’argomento. Dal menu Azione puoi scegliere una scheda.',
+             effect='Ritrovi le attività e le bozze preparate per quel lavoro.'),
+        dict(title='Attività a disposizione', body='Le icone laterali aprono le attività. Puoi scorrere la barra e usare +Attività per trovarne altre.',
+             scope='Le attività disponibili e le schede già aperte.', when='Per aprire o ritrovare una funzione.',
+             action='Scegli un’icona o +Attività. Puoi nascondere la barra e richiamarla dal bordo.',
+             effect='Le schede cambiano disposizione conservando i contributi locali.'),
+        dict(title='Scheda e comandi', body='Ogni scheda tratta una parte del lavoro. I comandi in alto permettono di affiancarla alle altre o darle più spazio.',
+             scope='Una scheda e il suo argomento.', when='Per leggere, spostare o approfondire.',
+             action='Usa i comandi in alto o trascina l’intestazione. Porta la scheda al centro quando vuoi concentrarti su di essa.',
+             effect='La scheda conserva il proprio oggetto e le bozze durante il movimento.'),
+        dict(title='Componi lo spazio', body='Ricomponi dispone le schede aperte. Puoi scegliere una vista libera o a colonne e regolare lo spazio fra le schede.',
+             scope='Schede visibili e punto di attenzione.', when='Quando cambiano le attività o vuoi leggerle insieme.',
+             action='Apri Strumenti e scegli una disposizione. Mantieni focus conserva la scheda principale mentre ricomponi.',
+             effect='Cambia il modo di leggere e usare lo stesso lavoro.'),
+        dict(title='Dialogo della scheda', body='Il dialogo riguarda l’argomento della scheda e le sue fonti pubbliche.',
+             scope='La domanda che scrivi e la scheda aperta.', when='Per capire una fonte o chiedere come proseguire.',
+             action='Apri Dialogo scheda, scrivi la domanda e premi Invia.',
+             effect='Nel sito configurato la domanda raggiunge MAIOS AI con il contesto pubblico della scheda. Le bozze delle altre schede restano locali.'),
+        dict(title='Guida e contributi', body='L’assistente aiuta a conoscere il kernel e orientarsi nel lavoro. Il modulo permette di preparare un contributo.',
+             scope='Guida del prodotto, domande e contributi di questa sessione.', when='Per chiedere aiuto o descrivere un riscontro.',
+             action='Apri l’icona assistente in basso a sinistra e scegli Chat o Modulo.',
+             effect='Invia consegna la domanda a MAIOS AI dove collegata. Conserva contributo mantiene il testo in questa sessione.'),
+        dict(title='Variazioni e ripresa', body='Una variazione può richiamare l’attenzione su un punto del lavoro. Qui gli eventi sono esempi illustrativi.',
+             scope='Registro della sessione e variazioni del caso.', when='Per esaminare un segnale o ritrovare il punto da continuare.',
+             action='Prova Simula variazione o apri Registro. Torna alla Panoramica per preparare altre attività.',
+             effect='Puoi esplorare il percorso di un riscontro. Gli eventi illustrativi restano distinti dal lavoro aziendale.')
+    ]
+    return home, work
+
+
 def build(profile_path: Path, output: Path) -> dict:
     source = REFERENCE.read_bytes()
     if hashlib.sha256(source).hexdigest() != REFERENCE_SHA256:
@@ -46,6 +110,9 @@ def build(profile_path: Path, output: Path) -> dict:
                 raise ValueError(f'Missing carrier field: {field}')
     runtime = (ROOT / 'src/ui/public-griglia.js').read_text(encoding='utf-8')
     text = source.decode('utf-8')
+    home_tour, work_tour = public_tours(profile)
+    text = compose_tour(text, 'tourSteps', home_tour)
+    text = compose_tour(text, 'workTourSteps', work_tour)
     prelude = '<script>window.__UXAI_CONFIG__=' + script_data({'skin': 'atlas', 'start': 'home', 'profile': profile}) + ';\n' + runtime + '\n</script>'
     text = replace_one(text, "window.__UXAI_CONFIG__ = {skin:'atlas',start:'home'};", "// Hosting-kernel configuration is provided by the public source profile.")
     text = replace_one(text, '<body data-skin="atlas" data-start="home">', '<body data-skin="atlas" data-start="home" data-kux-product="' + html.escape(profile['id'], quote=True) + '">' + prelude)
@@ -133,6 +200,42 @@ body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
 @media(min-width:1051px){body[data-kux-product="k-ux-ai"] .home-intro{grid-template-columns:minmax(0,1.15fr) minmax(370px,.85fr)}}
 @media(max-width:780px){body[data-kux-product="k-ux-ai"] .home-screen .home-intro .kux-home-story p[class]{font-size:14px!important;line-height:1.42!important}}
 </style></head>""")
+    text = text.replace('Informazioni sul prototipo', 'Guida all’interfaccia')
+    text = text.replace('STATO LOCALE · SORGENTI DEMO', 'SESSIONE LOCALE · CASO ILLUSTRATIVO')
+    text = text.replace('CAPACITÀ NEL PROTOTIPO', 'COME USARE LA SCHEDA')
+    text = text.replace('La correlazione è illustrativa: l’effetto resta nel controller del contesto.', 'Il caso è illustrativo; il contributo resta in questa sessione.')
+    text = text.replace("guidedTourKind==='work'?'CANVAS':'HOME'", "guidedTourKind==='work'?'LAVORO IN CORSO':'PANORAMICA'")
+    # User-facing names express what the person can do; source identifiers remain stable.
+    text = text.replace('>Griglia<', '>Panoramica<')
+    text = text.replace('Apri Griglia iniziale', 'Apri Panoramica')
+    text = text.replace('Griglia iniziale', 'Panoramica')
+    text = text.replace('Apri griglia iniziale', 'Apri panoramica')
+    text = text.replace('Spostati fra Griglia e Campo', 'Spostati fra Panoramica e Lavoro in corso')
+    text = text.replace('Torna alla griglia iniziale', 'Torna alla panoramica')
+    text = text.replace('Apri Campo attivo', 'Apri Lavoro in corso')
+    text = text.replace('Campo attivo', 'Lavoro in corso')
+    text = text.replace('Entra nel campo', 'Apri il lavoro')
+    text = text.replace('PREPARA IL CAMPO', 'PREPARA IL LAVORO')
+    text = text.replace('Il tuo campo', 'Le attività preparate')
+    text = text.replace('IL TUO CAMPO', 'ATTIVITÀ PREPARATE')
+    text = text.replace('attività pronte per il canvas', 'attività pronte per il lavoro')
+    text = text.replace('per il canvas', 'per il lavoro')
+    text = text.replace('dalla griglia', 'dalla panoramica')
+    text = text.replace('Campo preparato · ', 'Lavoro preparato · ')
+    text = text.replace('Griglia illustrativa · ', 'Spazio di lavoro illustrativo · ')
+    text = text.replace('Simula nuova capacità', 'Apri confronto')
+    text = text.replace('Avvia il tour del Canvas', 'Avvia il tour del lavoro in corso')
+    text = text.replace('Campo operativo', 'Spazio di lavoro')
+    text = text.replace('FIELD / 01', 'SPAZIO DI LAVORO')
+    text = text.replace('Il campo è pronto.', 'Lo spazio di lavoro è pronto.')
+    text = text.replace('cambia l’intero campo e gli avatar', 'cambia argomento e attività')
+    text = text.replace('cambia il canvas e gli avatar, senza cambiare la fonte di una scheda', 'cambia argomento e attività conservando le fonti delle schede')
+    text = text.replace('Strumento di prova: struttura e funzioni potranno cambiare con il kernel ricevente.', 'Descrivi il tuo riscontro e conserva il contributo insieme al suo contesto.')
+    text = text.replace('Nessun effetto confermato dal controller. La bozza resta disponibile.', 'Il contributo non è stato conservato. La bozza resta disponibile.')
+    text = text.replace('trasferiti al ricevente pertinente', 'trasferiti al kernel che continua il lavoro')
+    text = text.replace('Apri il modulo sperimentale a fianco della chat, se lo spazio lo consente', 'Apri il modulo per preparare un contributo')
+    text = text.replace('Riparti dalla Griglia', 'Riparti dalla panoramica')
+    text = text.replace('Torna al campo', 'Torna al lavoro')
     output.mkdir(parents=True, exist_ok=True)
     (output / 'index.html').write_text(text, encoding='utf-8', newline='\n')
     manifest = {'schema': 'kux.public-griglia-build.v1', 'profile_id': profile['id'], 'semantic_owner': profile['semanticOwner'], 'reference_sha256': REFERENCE_SHA256, 'profile_sha256': hashlib.sha256(profile_bytes).hexdigest(), 'runtime_sha256': hashlib.sha256(runtime.encode()).hexdigest(), 'html_sha256': hashlib.sha256(text.encode()).hexdigest(), 'means': {'ui': 'GPT Griglia v5.12 derived public incarnation', 'dialogs': 'explicit MAIOS public assistant requests when host configured', 'company_integrations': False}}

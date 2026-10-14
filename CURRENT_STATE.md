@@ -24,8 +24,9 @@ The nautical receiver uses the operator's distinct product/UI introductions
 and compact domain spacing. The neutral receiver now introduces K-UX-AI by
 name and purpose, with concise context and service labels. Its own compact
 Home styles retain readable text and make room for the GPT activities. The
-shared builder keeps each profile's expression separate: this neutral
-refinement leaves the nautical derivative byte-identical. Embedded frame
+shared builder keeps each profile's expression separate. The subsequent
+public-projection correction updates both derivatives with purpose-owned
+use guidance and interface labels; the GPT original remains byte-identical. Embedded frame
 height and confirmed-view orientation are carried by the site host; the
 accumulated UX guide records their relation to GPT responsive packing.
 
@@ -65,3 +66,24 @@ integration knowledge returns to MPK after this product work is stabilised.
 The neutral presentation uses a relation diagram of present work, interface
 and feedback. Visual readback removed a nautical silhouette inherited from
 the reference while retaining the GPT surface and card composition.
+
+## Public projection correction — 14 October 2026
+
+The operator rejects development history in the product introduction. The
+neutral profile now explains service, work and next actions; source/controller
+jargon in its tool context is translated into documents and tools. The use
+guide leads with activities and dialogue; build provenance is retained in
+source-and-evolution. The original GPT artifact remains preserved without a
+first-encounter website CTA. The site and assistant knowledge continue this
+correction. Earlier checks retain their artifact identity; the corrected
+projection requires its own semantic and functional readback.
+
+The current public interface uses Spazio di lavoro, Panoramica and Lavoro in
+corso to name the environment, preparation and opened activities. Both
+derived profiles include purpose-owned guided tours, accessible names and
+explicit question handling. Browser readback reaches the 13 neutral views,
+the three preparation steps and the seven work steps. The unchanged selected
+reference remains attributed in source documentation. Node contracts and
+derivative syntax/build identities qualify the implementation; they do not
+measure visitor understanding. The current browser renders at 1280 × 721;
+the attempted viewport override did not provide new breakpoint evidence.
