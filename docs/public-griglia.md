@@ -54,3 +54,19 @@ Il dominio continua a possedere fonti, significati e autorità sui suoi effetti.
 L'adozione aziendale collega gli strumenti di quell'ambiente e conserva
 il sapere locale. Un aggiornamento sorgente rende disponibile un miglioramento;
 la sua adozione preserva la configurazione e le competenze del ricevente.
+
+## Neutral first encounter — 14 October 2026
+
+Home now names K-UX-AI and its interface-construction purpose, introduces
+people and AI working with documents, tools and decisions, then explains
+the first useful gestures. Five service contexts are Presentation,
+Composition, Tools, Interaction and Learning; their source identifiers and
+card contracts are unchanged. The neutral Home uses its own compact styles.
+The original GPT file and nautical derivative remain byte-identical.
+
+On the MAIOS site candidate, confirmed-view shortcuts scroll the field under
+the actual fixed header and respect reduced motion. Four introduction choices
+remain visible and nine work-card choices can be expanded. The final bilingual
+map explains K-UX-AI's method, environment composition and Grid, with source
+links, the original reference, the nautical application and the entry guide.
+Publication and assistant activation retain their own receiving owners.

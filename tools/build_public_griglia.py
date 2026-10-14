@@ -122,6 +122,17 @@ body[data-kux-product="kernel-nautico"] .kux-home-setup{align-self:start}
 @media(min-width:1051px){body[data-kux-product="kernel-nautico"] .home-intro{grid-template-columns:minmax(0,1.15fr) minmax(370px,.85fr)}}
 @media(max-width:780px){body[data-kux-product="kernel-nautico"] .home-screen .home-intro .kux-home-story p[class]{font-size:14px;line-height:1.42}}
 </style></head>''')
+    if profile['id'] == 'k-ux-ai':
+        # The neutral introduction uses its own language and leaves the domain derivative intact.
+        text = replace_one(text, '</head>', """<style id="kux-neutral-home-space">
+body[data-kux-product="k-ux-ai"] .home-screen .home-intro .kux-home-story #homeTitle{font-size:clamp(30px,2.8vw,44px);line-height:1.08;margin:0 0 6px;letter-spacing:-.035em}
+body[data-kux-product="k-ux-ai"] .kux-home-story .kux-home-thesis{font-size:clamp(17px,1.4vw,23px);line-height:1.25;margin:0 0 10px}
+body[data-kux-product="k-ux-ai"] .home-screen .home-intro .kux-home-story p[class]{font-size:15px!important;line-height:1.5!important;margin:0 0 6px;max-width:none}
+body[data-kux-product="k-ux-ai"] .home-screen .home-intro .kux-home-story p:last-child{margin-bottom:0}
+body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
+@media(min-width:1051px){body[data-kux-product="k-ux-ai"] .home-intro{grid-template-columns:minmax(0,1.15fr) minmax(370px,.85fr)}}
+@media(max-width:780px){body[data-kux-product="k-ux-ai"] .home-screen .home-intro .kux-home-story p[class]{font-size:14px!important;line-height:1.42!important}}
+</style></head>""")
     output.mkdir(parents=True, exist_ok=True)
     (output / 'index.html').write_text(text, encoding='utf-8', newline='\n')
     manifest = {'schema': 'kux.public-griglia-build.v1', 'profile_id': profile['id'], 'semantic_owner': profile['semanticOwner'], 'reference_sha256': REFERENCE_SHA256, 'profile_sha256': hashlib.sha256(profile_bytes).hexdigest(), 'runtime_sha256': hashlib.sha256(runtime.encode()).hexdigest(), 'html_sha256': hashlib.sha256(text.encode()).hexdigest(), 'means': {'ui': 'GPT Griglia v5.12 derived public incarnation', 'dialogs': 'explicit MAIOS public assistant requests when host configured', 'company_integrations': False}}

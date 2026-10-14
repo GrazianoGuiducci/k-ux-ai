@@ -15,13 +15,13 @@
     "Interfaccia"
   ],
   "home": {
-    "eyebrow": "K-UX-AI · IL KERNEL CHE FORMA L’INTERAZIONE",
-    "title": "Un’interfaccia che segue il lavoro.",
-    "subtitle": "Comprendere, comporre e costruire il mezzo adatto.",
-    "intro": "K-UX-AI porta all’AI il sapere per progettare e costruire interfacce: riconosce cosa deve diventare visibile, come le persone possono intervenire e quale forma serve al lavoro.",
-    "method": "Un kernel conserva conoscenze, competenze e un metodo che evolve. K-UX-AI usa questa relazione per comporre testo, spazio, movimento e strumenti, imparando dalle conseguenze della loro costruzione e del loro uso.",
-    "use": "Questa interfaccia presenta il proprio funzionamento. Si può scegliere un contesto, aprire schede diverse, comporre un campo di lavoro e chiedere alla guida come continuare.",
-    "scope": "Le interazioni della Griglia sono utilizzabili. Gli esempi rendono visibile il metodo; le domande inviate raggiungono MAIOS AI nel sito configurato. Contributi e bozze nelle altre schede restano nella sessione locale."
+    "eyebrow": "",
+    "title": "K-UX-AI",
+    "subtitle": "Comprendere il lavoro, costruire l’interfaccia.",
+    "intro": "Persone e assistenti AI lavorano con documenti, strumenti e decisioni. K-UX-AI dà all’AI il sapere per rendere visibile ciò che conta e costruire i modi per intervenire.",
+    "method": "Il kernel conserva conoscenze, competenze e metodo. Compone testo, spazio, movimento e strumenti secondo il contesto; l’esperienza può migliorare le competenze pertinenti.",
+    "use": "Questa interfaccia presenta se stessa. Scegli un argomento ed entra nel campo: puoi affiancare schede, portarne una al centro e riprendere una bozza.",
+    "scope": "La Griglia usa esempi del proprio servizio. Con Invia puoi porre una domanda a MAIOS AI nel sito configurato; contributi e bozze delle altre schede restano in questa sessione."
   },
   "presentationTitle": "Il lavoro prende forma nell’interfaccia.",
   "presentationMeaning": "K-UX-AI comprende e costruisce il mezzo. Il kernel ospitante porta il proprio sapere; persone e AI usano la stessa situazione attraverso proiezioni adatte ai loro mezzi.",
@@ -127,7 +127,7 @@
       "next": "Affiancare o portare al centro una relazione e conservare la bozza."
     },
     "fornitori": {
-      "name": "Mezzi e strumenti",
+      "name": "Strumenti",
       "subtitle": "La capacità del mezzo",
       "goal": "Collegare le forme percettive ai mezzi e agli strumenti realmente disponibili.",
       "source": "Competenza K-UX-AI · ricevente e controller",
@@ -153,7 +153,7 @@
       "next": "Osservare la risposta del campo a un gesto o a una nuova relazione."
     },
     "assistenza": {
-      "name": "Ripresa e apprendimento",
+      "name": "Apprendimento",
       "subtitle": "Ciò che si impara cambia il prossimo uso",
       "goal": "Conservare una differenza utile nella competenza che deve costruire o operare diversamente.",
       "source": "Guida K-UX-AI · learning e rientro",

@@ -335,3 +335,40 @@ campo dopo la conferma effettiva. L'host considera la barra fissa, l'ultimo
 comando ancora pertinente e la preferenza di movimento ridotto. Su mobile
 una barra che scorre con il documento non riserva spazio sopra il frame.
 Questo orientamento continua il gesto senza ricostruire il campo o le bozze.
+
+## Orientamento e spazio nel servizio neutro — 14 ottobre 2026
+
+Il trattamento della pagina K-UX-AI continua il metodo esercitato nel Nautico,
+con i soggetti del servizio neutro. La premessa nomina persone, assistente,
+documenti e strumenti; nome e scopo precedono il metodo e il primo gesto.
+La Griglia presenta se stessa e mantiene un primo assetto leggibile per
+capire, contribuire, confrontare e riprendere. Le schede conservano le bozze
+anche quando un'altra relazione riceve il focus.
+
+Nel sito, il comando di apertura, la conferma della vista e il riposizionamento
+del campo sono momenti distinti. Un evento che annuncia il comando conserva
+quel significato; lo scorrimento segue la conferma correlata del controller.
+La richiesta più recente determina il focus. Il sito usa altezza reale della
+barra fissa, viewport e preferenza di movimento ridotto; una barra mobile non
+fissa non riserva spazio. Questi riflessi locali usano il contratto del mezzo.
+
+Il respiro della Home deriva dalla relazione fra premessa, preparazione e
+attività. Conservare caratteri leggibili e accorciare testi e nomi dei contesti
+ha liberato spazio effettivo nel caso neutro. Controllare la resa e gli stili
+calcolati: una dichiarazione CSS presente può essere superata dal riferimento
+GPT. Le regole con `!important` per la leggibilità vanno composte nella nuova
+incarnazione, mantenendo originale e profilo di dominio con la loro identità.
+
+Nel riscontro a 1902×936, le dieci attività entrano nel campo senza scorrimento
+interno della Griglia; a 1366×768 la Griglia conserva la dimensione leggibile
+delle attività e usa lo scorrimento interno. Il parent porta la vista aperta
+sotto la barra del sito. Una bozza è rimasta presente passando al confronto
+e tornando alla scheda. Sono osservazioni del ricevente locale con risposte
+fixture, senza chiamate al modello; non provano apprendimento assimilato.
+
+La mappa della pagina rende visibili comprensione, costruzione, uso e ritorno
+alla competenza, poi il rapporto fra ambiente, K-UX-AI e partecipanti. Il
+contesto determina forme e strumenti: queste quattro relazioni non impongono
+un flusso fisso a ogni kernel. Fonti e avvio restano raggiungibili. L'applicazione
+Nautico conserva il dominio e permette di comprendere una composizione;
+il suo ciclo e il suo lessico non diventano la presentazione neutra.

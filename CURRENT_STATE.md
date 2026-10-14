@@ -1,7 +1,7 @@
 # K-UX-AI current state
 
 version: 0.2.0-alpha.3
-date: 2026-10-13
+date: 2026-10-14
 product_owner: GrazianoGuiducci/k-ux-ai
 form: public compositional competence kernel
 source_lane: work/public-kernel-consolidation-20261012
@@ -20,11 +20,14 @@ functions. Kernel Nautico owns a separate domain profile and uses this same
 builder and adapter. Neither the nautical example nor this rendering exhausts
 the competence's possibility field.
 
-The nautical receiver now uses the operator's distinct product/UI introductions
-and compact domain presentation spacing. The shared builder permits an omitted
-eyebrow and preserves the neutral derivative's exact HTML. Embedded frame height
-and confirmed-view orientation are carried by the site host; the accumulated
-UX guide records the relationship with the GPT responsive packing threshold.
+The nautical receiver uses the operator's distinct product/UI introductions
+and compact domain spacing. The neutral receiver now introduces K-UX-AI by
+name and purpose, with concise context and service labels. Its own compact
+Home styles retain readable text and make room for the GPT activities. The
+shared builder keeps each profile's expression separate: this neutral
+refinement leaves the nautical derivative byte-identical. Embedded frame
+height and confirmed-view orientation are carried by the site host; the
+accumulated UX guide records their relation to GPT responsive packing.
 
 The original `examples/griglia/index.html` remains byte-identical:
 SHA-256 1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b.
