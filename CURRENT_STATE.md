@@ -1,5 +1,24 @@
 # K-UX-AI current state
 
+## English standard, Italian support — 14 October 2026
+
+The public interface defaults to English. `PROFILE.json` is canonical English;
+`PROFILE.it.json` supports Italian with the same semantic IDs and actions.
+The native `demo/` entry is English, `demo/it/` Italian. Each compiled variant
+has its own BUILD identity. Repository README and public card guide use English
+as their principal entrance and retain Italian counterparts.
+
+Page language selects the corresponding embedded UI and trusted interface
+knowledge. Submitted dialogues carry that locale and the matching product page;
+source language does not determine response language. The shared keyed copy and
+tour catalogues localise compiled interface text through Acorn syntax, preserving
+expressions and the selected original reference. Visitor drafts and model replies
+are never translated by the compiler. Each card keeps its own conversation.
+
+Locale work preserves activity IDs, transport targets, card geometry and draft
+behaviour. It changes neither the core, adoption configuration nor AI provider.
+The AI connection remains the public MAIOS service configured by the adopting site.
+
 version: 0.2.0-alpha.3
 date: 2026-10-14
 product_owner: GrazianoGuiducci/k-ux-ai

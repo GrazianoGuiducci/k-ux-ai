@@ -1,0 +1,175 @@
+{
+  "schema": "kux.public-tours.v1",
+  "en": {
+    "home": [
+      {
+        "title": "Choose a topic",
+        "body": "The workspace gathers activities and sources around the same work. Choose where to begin.",
+        "scope": "{contexts}.",
+        "when": "At the start, or when the work to explore changes.",
+        "action": "Choose a topic. You can change it later from the work bar.",
+        "effect": "Retrieve the cards and activities prepared for that topic."
+      },
+      {
+        "title": "Prepare activities",
+        "body": "Cards let you understand, contribute, compare and resume. Place useful ones alongside the same work.",
+        "scope": "The ten initial activities and others available through +Activity.",
+        "when": "To prepare a view or explore several perspectives.",
+        "action": "Select tiles and drag them to swap places. You can add activities later.",
+        "effect": "Overview prepares the cards to open."
+      },
+      {
+        "title": "Open the work",
+        "body": "Prepared activities become cards you can read, place side by side and bring into focus.",
+        "scope": "The selected topic, activities and drafts of this session.",
+        "when": "To explore the work or bring a contribution.",
+        "action": "Press “Open work”. Move cards, add activities or open a dialogue.",
+        "effect": "Send lets you ask MAIOS AI a question on the configured site; drafts in other cards stay local."
+      }
+    ],
+    "work": [
+      {
+        "title": "Topic and activity",
+        "body": "The bar shows what you are working on and lets you open relevant activities.",
+        "scope": "Selected topic, cards and the point to examine.",
+        "when": "When changing topic or resuming work.",
+        "action": "Open the topic menu. Choose a card from the Action menu.",
+        "effect": "Retrieve activities and drafts prepared for that work."
+      },
+      {
+        "title": "Available activities",
+        "body": "Side icons open activities. Scroll the bar or use +Activity to find more.",
+        "scope": "Available activities and cards already open.",
+        "when": "To open or retrieve a function.",
+        "action": "Choose an icon or +Activity. Hide the bar and recall it from the edge.",
+        "effect": "Cards change arrangement while retaining local contributions."
+      },
+      {
+        "title": "Card and controls",
+        "body": "Each card handles a part of the work. Controls at the top place it beside others or give it more space.",
+        "scope": "A card and its topic.",
+        "when": "To read, move or examine more closely.",
+        "action": "Use the top controls or drag the header. Bring a card into focus to concentrate on it.",
+        "effect": "The card retains its subject and drafts as it moves."
+      },
+      {
+        "title": "Compose the workspace",
+        "body": "Recompose arranges open cards. Choose a free or column layout and adjust the space between cards.",
+        "scope": "Visible cards and the point of attention.",
+        "when": "When activities change or you want to read them together.",
+        "action": "Open Tools and choose a layout. Keep focus retains the primary card while recomposing.",
+        "effect": "Change how you read and use the same work."
+      },
+      {
+        "title": "Card dialogue",
+        "body": "The dialogue concerns the card’s topic and public sources.",
+        "scope": "The question you write and the open card.",
+        "when": "To understand a source or ask how to continue.",
+        "action": "Open Card dialogue, write a question and press Send.",
+        "effect": "On the configured site, the question reaches MAIOS AI with the card’s public context. Drafts in other cards stay local."
+      },
+      {
+        "title": "Guidance and contributions",
+        "body": "The assistant introduces the kernel and helps you navigate the work. The form prepares a contribution.",
+        "scope": "Product guidance, questions and contributions in this session.",
+        "when": "To ask for help or describe an observation.",
+        "action": "Open the assistant icon at the lower left and choose Chat or Form.",
+        "effect": "Send delivers a question to MAIOS AI where connected. Retain contribution keeps the text in this session."
+      },
+      {
+        "title": "Changes and resumption",
+        "body": "A change can draw attention to a point in the work. Events here are illustrative examples.",
+        "scope": "Session log and changes in the case.",
+        "when": "To review a signal or find where to continue.",
+        "action": "Try Simulate change or open Log. Return to Overview to prepare other activities.",
+        "effect": "Explore the path of an observation. Illustrative events remain distinct from company work."
+      }
+    ]
+  },
+  "it": {
+    "home": [
+      {
+        "title": "Scegli un argomento",
+        "body": "Lo spazio raccoglie attività e fonti intorno allo stesso lavoro. Scegli da dove iniziare.",
+        "scope": "{contexts}.",
+        "when": "All’inizio o quando cambia il lavoro da esplorare.",
+        "action": "Scegli uno degli argomenti. Potrai cambiarlo dalla barra del lavoro in corso.",
+        "effect": "Ritrovi le schede e le attività preparate per quell’argomento."
+      },
+      {
+        "title": "Prepara le attività",
+        "body": "Le schede permettono di comprendere, contribuire, confrontare e riprendere. Puoi affiancare quelle utili allo stesso lavoro.",
+        "scope": "Le dieci attività iniziali e le altre disponibili da +Attività.",
+        "when": "Per preparare una vista o esplorare più prospettive.",
+        "action": "Seleziona le tessere e trascinale per scambiare i posti. Puoi aggiungere attività anche dopo.",
+        "effect": "La panoramica prepara le schede da aprire."
+      },
+      {
+        "title": "Apri il lavoro",
+        "body": "Le attività preparate diventano schede che puoi leggere, affiancare e portare al centro.",
+        "scope": "L’argomento scelto, le attività e le bozze di questa sessione.",
+        "when": "Quando vuoi esplorare il lavoro o portare un contributo.",
+        "action": "Premi “Apri il lavoro”. Puoi spostare le schede, aggiungere attività o aprire un dialogo.",
+        "effect": "Con Invia puoi porre una domanda a MAIOS AI nel sito configurato; le bozze delle altre schede restano locali."
+      }
+    ],
+    "work": [
+      {
+        "title": "Argomento e attività",
+        "body": "La barra mostra su cosa stai lavorando e permette di aprire le attività pertinenti.",
+        "scope": "Argomento scelto, schede e punto da approfondire.",
+        "when": "Quando cambi argomento o riprendi il lavoro.",
+        "action": "Apri il menu dell’argomento. Dal menu Azione puoi scegliere una scheda.",
+        "effect": "Ritrovi le attività e le bozze preparate per quel lavoro."
+      },
+      {
+        "title": "Attività a disposizione",
+        "body": "Le icone laterali aprono le attività. Puoi scorrere la barra e usare +Attività per trovarne altre.",
+        "scope": "Le attività disponibili e le schede già aperte.",
+        "when": "Per aprire o ritrovare una funzione.",
+        "action": "Scegli un’icona o +Attività. Puoi nascondere la barra e richiamarla dal bordo.",
+        "effect": "Le schede cambiano disposizione conservando i contributi locali."
+      },
+      {
+        "title": "Scheda e comandi",
+        "body": "Ogni scheda tratta una parte del lavoro. I comandi in alto permettono di affiancarla alle altre o darle più spazio.",
+        "scope": "Una scheda e il suo argomento.",
+        "when": "Per leggere, spostare o approfondire.",
+        "action": "Usa i comandi in alto o trascina l’intestazione. Porta la scheda al centro quando vuoi concentrarti su di essa.",
+        "effect": "La scheda conserva il proprio oggetto e le bozze durante il movimento."
+      },
+      {
+        "title": "Componi lo spazio",
+        "body": "Ricomponi dispone le schede aperte. Puoi scegliere una vista libera o a colonne e regolare lo spazio fra le schede.",
+        "scope": "Schede visibili e punto di attenzione.",
+        "when": "Quando cambiano le attività o vuoi leggerle insieme.",
+        "action": "Apri Strumenti e scegli una disposizione. Mantieni focus conserva la scheda principale mentre ricomponi.",
+        "effect": "Cambia il modo di leggere e usare lo stesso lavoro."
+      },
+      {
+        "title": "Dialogo della scheda",
+        "body": "Il dialogo riguarda l’argomento della scheda e le sue fonti pubbliche.",
+        "scope": "La domanda che scrivi e la scheda aperta.",
+        "when": "Per capire una fonte o chiedere come proseguire.",
+        "action": "Apri Dialogo scheda, scrivi la domanda e premi Invia.",
+        "effect": "Nel sito configurato la domanda raggiunge MAIOS AI con il contesto pubblico della scheda. Le bozze delle altre schede restano locali."
+      },
+      {
+        "title": "Guida e contributi",
+        "body": "L’assistente aiuta a conoscere il kernel e orientarsi nel lavoro. Il modulo permette di preparare un contributo.",
+        "scope": "Guida del prodotto, domande e contributi di questa sessione.",
+        "when": "Per chiedere aiuto o descrivere un riscontro.",
+        "action": "Apri l’icona assistente in basso a sinistra e scegli Chat o Modulo.",
+        "effect": "Invia consegna la domanda a MAIOS AI dove collegata. Conserva contributo mantiene il testo in questa sessione."
+      },
+      {
+        "title": "Variazioni e ripresa",
+        "body": "Una variazione può richiamare l’attenzione su un punto del lavoro. Qui gli eventi sono esempi illustrativi.",
+        "scope": "Registro della sessione e variazioni del caso.",
+        "when": "Per esaminare un segnale o ritrovare il punto da continuare.",
+        "action": "Prova Simula variazione o apri Registro. Torna alla Panoramica per preparare altre attività.",
+        "effect": "Puoi esplorare il percorso di un riscontro. Gli eventi illustrativi restano distinti dal lavoro aziendale."
+      }
+    ]
+  }
+}

@@ -26,7 +26,7 @@
     const marker = Object.entries(p.targets).find(([, v]) => v.context === context && v.intent === intent)?.[0] || '';
     return {path: p.pagePath, hash: marker ? '#' + marker : '#kernel-guide', title: p.home.title,
       surface: p.id, expression: 'product', h1: p.home.title, headings: [c.name, c.subtitle],
-      active_label: c.name + ' · ' + intent, active_marker: marker,
+      active_label: c.name + ' · ' + (p.activityLabels?.[intent] || intent), active_marker: marker,
       visible_text: [c.goal, 'Fonte pubblica: ' + c.source, 'Punto aperto: ' + c.unknown, 'Seguito: ' + c.next].join('\n')};
   }
 
@@ -38,7 +38,7 @@
     const requestId = uuid();
     const response = await fetch('/api/setup/v1/assistant/site-turn', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       schema:'maios.public-assistant-request.v1',request_id:requestId,session_id:transportSession,
-      locale:profile().locale || 'it',message,history,context:publicContext(context,intent),
+      locale:profile().locale || 'en',message,history,context:publicContext(context,intent),
       allowed_action_kinds:['focus_section'],processing_consent:{external_processing:true,disclosure_id:'maios-ai-processing-footer-v1'}
     })});
     let body; try { body = await response.json(); } catch { throw new Error('Il collegamento MAIOS AI non è disponibile in questo ambiente.'); }

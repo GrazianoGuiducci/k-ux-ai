@@ -7,6 +7,7 @@ import html
 import json
 from pathlib import Path
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE = ROOT / 'examples/griglia/index.html'
@@ -46,52 +47,12 @@ def compose_tour(text: str, name: str, steps: list[dict]) -> str:
 
 
 def public_tours(profile: dict) -> tuple[list[dict], list[dict]]:
-    contexts = ', '.join(context['name'] for context in profile['contexts'].values())
-    home = [
-        dict(title='Scegli un argomento', body='Lo spazio raccoglie attività e fonti intorno allo stesso lavoro. Scegli da dove iniziare.',
-             scope=contexts + '.', when='All’inizio o quando cambia il lavoro da esplorare.',
-             action='Scegli uno degli argomenti. Potrai cambiarlo dalla barra del lavoro in corso.',
-             effect='Ritrovi le schede e le attività preparate per quell’argomento.'),
-        dict(title='Prepara le attività', body='Le schede permettono di comprendere, contribuire, confrontare e riprendere. Puoi affiancare quelle utili allo stesso lavoro.',
-             scope='Le dieci attività iniziali e le altre disponibili da +Attività.', when='Per preparare una vista o esplorare più prospettive.',
-             action='Seleziona le tessere e trascinale per scambiare i posti. Puoi aggiungere attività anche dopo.',
-             effect='La panoramica prepara le schede da aprire.'),
-        dict(title='Apri il lavoro', body='Le attività preparate diventano schede che puoi leggere, affiancare e portare al centro.',
-             scope='L’argomento scelto, le attività e le bozze di questa sessione.', when='Quando vuoi esplorare il lavoro o portare un contributo.',
-             action='Premi “Apri il lavoro”. Puoi spostare le schede, aggiungere attività o aprire un dialogo.',
-             effect='Con Invia puoi porre una domanda a MAIOS AI nel sito configurato; le bozze delle altre schede restano locali.')
-    ]
-    work = [
-        dict(title='Argomento e attività', body='La barra mostra su cosa stai lavorando e permette di aprire le attività pertinenti.',
-             scope='Argomento scelto, schede e punto da approfondire.', when='Quando cambi argomento o riprendi il lavoro.',
-             action='Apri il menu dell’argomento. Dal menu Azione puoi scegliere una scheda.',
-             effect='Ritrovi le attività e le bozze preparate per quel lavoro.'),
-        dict(title='Attività a disposizione', body='Le icone laterali aprono le attività. Puoi scorrere la barra e usare +Attività per trovarne altre.',
-             scope='Le attività disponibili e le schede già aperte.', when='Per aprire o ritrovare una funzione.',
-             action='Scegli un’icona o +Attività. Puoi nascondere la barra e richiamarla dal bordo.',
-             effect='Le schede cambiano disposizione conservando i contributi locali.'),
-        dict(title='Scheda e comandi', body='Ogni scheda tratta una parte del lavoro. I comandi in alto permettono di affiancarla alle altre o darle più spazio.',
-             scope='Una scheda e il suo argomento.', when='Per leggere, spostare o approfondire.',
-             action='Usa i comandi in alto o trascina l’intestazione. Porta la scheda al centro quando vuoi concentrarti su di essa.',
-             effect='La scheda conserva il proprio oggetto e le bozze durante il movimento.'),
-        dict(title='Componi lo spazio', body='Ricomponi dispone le schede aperte. Puoi scegliere una vista libera o a colonne e regolare lo spazio fra le schede.',
-             scope='Schede visibili e punto di attenzione.', when='Quando cambiano le attività o vuoi leggerle insieme.',
-             action='Apri Strumenti e scegli una disposizione. Mantieni focus conserva la scheda principale mentre ricomponi.',
-             effect='Cambia il modo di leggere e usare lo stesso lavoro.'),
-        dict(title='Dialogo della scheda', body='Il dialogo riguarda l’argomento della scheda e le sue fonti pubbliche.',
-             scope='La domanda che scrivi e la scheda aperta.', when='Per capire una fonte o chiedere come proseguire.',
-             action='Apri Dialogo scheda, scrivi la domanda e premi Invia.',
-             effect='Nel sito configurato la domanda raggiunge MAIOS AI con il contesto pubblico della scheda. Le bozze delle altre schede restano locali.'),
-        dict(title='Guida e contributi', body='L’assistente aiuta a conoscere il kernel e orientarsi nel lavoro. Il modulo permette di preparare un contributo.',
-             scope='Guida del prodotto, domande e contributi di questa sessione.', when='Per chiedere aiuto o descrivere un riscontro.',
-             action='Apri l’icona assistente in basso a sinistra e scegli Chat o Modulo.',
-             effect='Invia consegna la domanda a MAIOS AI dove collegata. Conserva contributo mantiene il testo in questa sessione.'),
-        dict(title='Variazioni e ripresa', body='Una variazione può richiamare l’attenzione su un punto del lavoro. Qui gli eventi sono esempi illustrativi.',
-             scope='Registro della sessione e variazioni del caso.', when='Per esaminare un segnale o ritrovare il punto da continuare.',
-             action='Prova Simula variazione o apri Registro. Torna alla Panoramica per preparare altre attività.',
-             effect='Puoi esplorare il percorso di un riscontro. Gli eventi illustrativi restano distinti dal lavoro aziendale.')
-    ]
-    return home, work
+    """Stable tour fields select the public UI language without changing targets."""
+    data = json.loads((ROOT / 'src/ui/locales/public-tours.json').read_text(encoding='utf-8'))
+    selected = data[profile['locale']]
+    selected['home'][0]['scope'] = selected['home'][0]['scope'].format(
+        contexts=', '.join(context['name'] for context in profile['contexts'].values()))
+    return selected['home'], selected['work']
 
 
 def compose_card_layout(text: str) -> str:
@@ -152,12 +113,18 @@ function moduleElement(p){''')
 </style></head>''')
 
 
-def build(profile_path: Path, output: Path) -> dict:
+def build(profile_path: Path, output: Path, locale: str = 'en') -> dict:
+    if locale not in {'en', 'it'}:
+        raise ValueError('Unsupported public UI locale')
+    if locale == 'it':
+        profile_path = profile_path.with_name('PROFILE.it.json')
     source = REFERENCE.read_bytes()
     if hashlib.sha256(source).hexdigest() != REFERENCE_SHA256:
         raise ValueError('The selected GPT reference changed; assimilate it before rebuilding.')
     profile_bytes = profile_path.read_bytes()
     profile = json.loads(profile_bytes)
+    if profile.get('locale') != locale:
+        raise ValueError('Profile and public UI locale differ')
     if profile.get('schema') != 'kux.hosting-kernel-profile.v1':
         raise ValueError('Unknown hosting-kernel profile')
     if set(profile['contexts']) != {'poppa', 'cantiere', 'fornitori', 'bordo', 'assistenza'}:
@@ -177,6 +144,8 @@ def build(profile_path: Path, output: Path) -> dict:
     text = replace_one(text, '<body data-skin="atlas" data-start="home">', '<body data-skin="atlas" data-start="home" data-kux-product="' + html.escape(profile['id'], quote=True) + '">' + prelude)
     text = replace_pattern(text, r'const contexts=\{.*?\n\};?\s*const scenarios=', 'const contexts=' + script_data(profile['contexts']) + ';\nconst scenarios=')
     text = replace_pattern(text, r'const scenarios=\[.*?\n\];', 'const scenarios=' + script_data(profile['events']) + ';')
+    text = replace_pattern(text, r'(<select id="contextSelect"[^>]*>).*?(</select>)',
+                           '<select id="contextSelect" aria-label="' + ('Active context' if locale == 'en' else 'Contesto attivo') + '">' + ''.join('<option value="' + key + '">' + html.escape(value['name']) + '</option>' for key,value in profile['contexts'].items()) + '</select>')
     story = profile['home']
     eyebrow = '<div class="eyebrow">' + html.escape(story['eyebrow']) + '</div>' if story['eyebrow'] else ''
     intro = '<div class="kux-home-story">' + eyebrow + '<h1 id="homeTitle">' + html.escape(story['title']) + '</h1><h2 class="kux-home-thesis">' + html.escape(story['subtitle']) + '</h2>'
@@ -295,9 +264,29 @@ body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
     text = text.replace('Apri il modulo sperimentale a fianco della chat, se lo spazio lo consente', 'Apri il modulo per preparare un contributo')
     text = text.replace('Riparti dalla Griglia', 'Riparti dalla panoramica')
     text = text.replace('Torna al campo', 'Torna al lavoro')
+    text = replace_one(text, '<html lang="it">', '<html lang="' + locale + '">')
+    catalog_path = ROOT / 'src/ui/locales/public-workspace.json'
+    if locale == 'en':
+        localized = subprocess.run(['node', str(ROOT / 'tools/localize_public_griglia.mjs'),
+                                    str(catalog_path)], input=text, capture_output=True,
+                                   text=True, encoding='utf-8', check=True)
+        text = localized.stdout
+    locale_link = ('it/' if locale == 'en' else '../')
+    locale_label = ('Italiano' if locale == 'en' else 'English')
+    text = replace_one(text, '<body data-skin="atlas" data-start="home"',
+                       '<body data-ui-locale="' + locale + '" data-skin="atlas" data-start="home"')
+    # The native artifact has a relative alternative. A recognised same-origin
+    # product page follows its companion so page and frame keep the same locale.
+    language_control = '<a class="kux-locale-link" href="' + locale_link + '" hreflang="' + ('it' if locale == 'en' else 'en') + '" lang="' + ('it' if locale == 'en' else 'en') + '">' + locale_label + '</a>'
+    text = replace_one(text, '<button class="toolbar-icon" id="btnHelp"', language_control + '<button class="toolbar-icon" id="btnHelp"')
+    companion_page = ('/k-ux-ai-it.html' if locale == 'en' else '/k-ux-ai.html') if profile['id'] == 'k-ux-ai' else ('/kernel-nautico.html' if locale == 'en' else '/kernel-nautico-en.html')
+    text = replace_one(text, '</body>', '<script>document.querySelector(".kux-locale-link").addEventListener("click",event=>{if(parent===window)return;try{if(parent.location.origin===location.origin&&' + script_data([profile['pagePath'], companion_page]) + '.includes(parent.location.pathname)){event.preventDefault();parent.location.href=' + script_data(companion_page + '#kernel-guide') + ';}}catch{}});</script></body>')
     output.mkdir(parents=True, exist_ok=True)
     (output / 'index.html').write_text(text, encoding='utf-8', newline='\n')
     manifest = {'schema': 'kux.public-griglia-build.v1', 'profile_id': profile['id'], 'semantic_owner': profile['semanticOwner'], 'reference_sha256': REFERENCE_SHA256, 'profile_sha256': hashlib.sha256(profile_bytes).hexdigest(), 'runtime_sha256': hashlib.sha256(runtime.encode()).hexdigest(), 'html_sha256': hashlib.sha256(text.encode()).hexdigest(), 'means': {'ui': 'GPT Griglia v5.12 derived public incarnation', 'dialogs': 'explicit MAIOS public assistant requests when host configured', 'company_integrations': False}}
+    manifest.update(locale=locale, default_locale='en', supported_locales=['en', 'it'],
+                    locale_catalog_sha256=hashlib.sha256(catalog_path.read_bytes()).hexdigest(),
+                    tour_catalog_sha256=hashlib.sha256((ROOT / 'src/ui/locales/public-tours.json').read_bytes()).hexdigest())
     (output / 'BUILD.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return manifest
 
@@ -306,5 +295,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--profile', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--locale', choices=('en', 'it'), default='en')
     args = parser.parse_args()
-    print(json.dumps(build(args.profile, args.output), ensure_ascii=False))
+    print(json.dumps(build(args.profile, args.output, args.locale), ensure_ascii=False))

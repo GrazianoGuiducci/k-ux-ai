@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-function receiver(fetch) {
-  const profile=JSON.parse(fs.readFileSync(new URL('../examples/public-griglia/PROFILE.json',import.meta.url),'utf8'));
+function receiver(fetch,locale='en') {
+  const profile=JSON.parse(fs.readFileSync(new URL(`../examples/public-griglia/PROFILE${locale==='it'?'.it':''}.json`,import.meta.url),'utf8'));
   const window={__UXAI_CONFIG__:{profile}},listeners={},wire=[];
   const document={addEventListener(){},dispatchEvent(){},getElementById(){return {};}};
   const parent={postMessage:data=>wire.push(data)};
@@ -27,7 +27,7 @@ test('explicit questions use their own public context and history and omit other
   assert.equal(payloads[0].history.length,0);
   assert.deepEqual(payloads[1].history,[{role:'user',content:'First question'},{role:'assistant',content:'A public answer'}]);
   assert.equal(payloads[2].history.length,0);
-  assert.equal(payloads[2].context.active_label,'Composizione · capire');
+  assert.equal(payloads[2].context.active_label,'Composition · Understand');
   assert.equal(JSON.stringify(payloads).includes('PRIVATE-DRAFT-DO-NOT-SEND'),false);
   assert.deepEqual(payloads[0].allowed_action_kinds,['focus_section']);
   assert.notEqual(payloads[0].request_id,payloads[1].request_id);
@@ -47,12 +47,24 @@ test('a failed connection creates no learning proposal; a later reply retains it
   await new Promise(resolve=>setImmediate(resolve));
   const proposal=discussions.propose('card-b');
   assert.equal(proposal.owner,'card-b');
-  assert.equal(proposal.context,'Composizione');
+  assert.equal(proposal.context,'Composition');
   assert.equal(proposal.status,'proposed_not_applied');
   const exported=discussions.exportPacket('card-b');
   assert.equal(exported.assimilated,false);
   assert.equal(exported.authority,'proposal_only');
   assert.equal(discussions.getMessages('card-a').length,2);
+});
+
+test('explicit UI locale chooses its own public route and readable context, with English default',async()=>{
+  for(const locale of ['en','it']) {
+    let payload;
+    const r=receiver(async(_url,request)=>{payload=JSON.parse(request.body);return {ok:true,json:async()=>({message:'Answer'})};},locale);
+    await r.api.askShared({text:'A question',context:'poppa'});
+    assert.equal(payload.locale,locale);
+    assert.equal(payload.context.path,locale==='en'?'/k-ux-ai.html':'/k-ux-ai-it.html');
+    assert.equal(payload.context.active_label,locale==='en'?'Introduction · Understand':'Presentazione · Capire');
+    assert.equal(payload.history.length,0);
+  }
 });
 
 test('only the matching same-origin parent can select a known target and receive confirmation',()=>{

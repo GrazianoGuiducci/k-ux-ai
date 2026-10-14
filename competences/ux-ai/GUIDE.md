@@ -415,3 +415,15 @@ comporre il gesto con i limiti disponibili. Un limite utile alla forma
 iniziale non deve annullare un intervento esplicito. Il nuovo ingombro
 conserva contenuto, bozza e funzione della scheda; i cambi di disposizione
 mantengono la dimensione scelta dove pertinente.
+
+## Language as part of interaction — 14 October 2026
+
+The reader's selected language must reach the interface shell, context labels,
+activity headings, tools, tours, accessible names and dialogue knowledge together.
+Translating the page header alone leaves the interaction inconsistent. A shared
+semantic-key catalogue keeps reusable controls coherent; the hosting profile
+owns domain terminology. Localise the immutable reference during compilation,
+using actual JavaScript syntax, so expressions keep their identity and quotes
+remain valid. Keep user-authored drafts and model replies in their own language.
+Exercise states produced after opening cards and modals, where static Home checks
+cannot reveal mixed copy. A new locale artifact has its own source/runtime proof.

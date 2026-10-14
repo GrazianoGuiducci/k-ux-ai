@@ -1,58 +1,56 @@
-# Conoscere K-UX-AI e usare le schede
+# Discover K-UX-AI and use the cards
 
-K-UX-AI porta all’assistente AI il sapere per comprendere il lavoro,
-costruire interfacce e imparare dal loro uso. La presentazione interattiva
-permette di conoscere queste funzioni e provare attività diverse intorno
-allo stesso argomento.
+K-UX-AI gives an AI assistant the knowledge to understand work, build interfaces
+and learn from their use. The interactive presentation introduces these
+functions and offers different activities around the same subject.
 
-## Preparare lo spazio di lavoro
+English is the default interface and guide language. [Italiano](public-griglia.it.md)
+is available as a supported version. A page, its embedded UI and submitted
+dialogues use the selected language; your drafts keep the words you entered.
 
-La panoramica propone cinque argomenti: Presentazione, Composizione,
-Strumenti, Interazione e Apprendimento. Scegliendo un argomento si può preparare
-un insieme di attività, poi aprire il lavoro in corso. Le schede si possono affiancare
-o portare al centro; il cambio di vista conserva il focus e le bozze.
+## Prepare the workspace
 
-Nelle tessere iniziali, icona e titolo identificano insieme l’attività;
-la descrizione chiarisce il suo uso. Da Strumenti puoi scegliere Libero
-e trascinare l’angolo inferiore destro di una scheda per ridimensionarla,
-anche nel formato compatto. Sullo stesso controllo puoi usare le frecce
-della tastiera; Maiusc permette variazioni più ampie. Contenuti e bozze
-restano collegati alla scheda.
+Overview offers five topics: Introduction, Composition, Tools, Interaction and
+Learning. Select a topic, prepare a set of activities and open Work in progress.
+Cards can sit beside each other or move into focus; changing the view retains
+focus and drafts.
 
-## Comprendere, contribuire e confrontare
+Initial tiles identify each activity through an icon and title, with a
+description of its use. In Tools, choose Free and drag the bottom-right corner
+to resize a card, including compact cards. The same handle supports arrow keys;
+Shift makes larger adjustments. Content and drafts remain attached to the card.
 
-Presentare e Capire spiegano scopo, contesto e metodo. Esplorare mostra le
-relazioni; Progettare e Sperimentare permettono di esaminare possibilità.
-Fare raccoglie un contributo, Controllare tiene visibili riscontri e punti
-aperti, Confrontare mostra termini condivisi e differenze fra due testi.
-Organizzare e Comunicare preparano il seguito; Monitorare permette di
-esaminare variazioni illustrative. Riprendere ritrova i contributi della
-sessione. Le attività si scelgono secondo ciò che serve comprendere o fare.
+## Understand, contribute and compare
 
-## Chiedere alla guida AI
+Present and Understand explain purpose, context and method. Explore reveals
+relationships; Design and Experiment examine possibilities. Do receives a
+contribution; Check keeps observations and open points visible; Compare shows
+shared terms and differences between two texts. Organise and Communicate
+prepare continuation; Monitor examines illustrative changes; Resume retrieves
+session contributions. Choose activities according to what needs to be understood
+or done.
 
-Il dialogo della scheda mantiene il proprio argomento. La chat generale
-permette di chiedere come orientarsi e offre anche un modulo per preparare
-un contributo. Con Invia, la domanda e la sua conversazione raggiungono
-MAIOS AI nel sito configurato, insieme al contesto pubblico della scheda.
-Le bozze delle altre schede restano locali. Se il collegamento non è
-disponibile, la scheda lo indica e conserva il punto di lavoro.
+## Ask the AI guide
 
-## Far continuare un contributo
+Each card dialogue keeps its own subject. The general assistant helps with
+orientation and offers a contribution form. Send delivers the question and its
+conversation to MAIOS AI on a configured site, with the card's public context.
+Drafts in other cards remain local. If the connection is unavailable, the
+card reports it and retains the point of work.
 
-Note e proposte restano nella sessione finché vengono esportate o trasferite.
-Nel proprio ambiente, l’assistente può comprenderle insieme alle fonti del
-progetto e usare ciò che il lavoro insegna per migliorare la competenza
-pertinente. Una nota salvata conserva un contributo; la sua integrazione
-nel metodo avviene nel kernel che continua il lavoro.
+## Carry a contribution forward
 
-## Integrare K-UX-AI nel proprio ambiente
+Notes and proposals remain in the session until exported or transferred. In
+the adopting environment, the assistant can understand them alongside project
+sources and use what the work teaches to improve the relevant competence.
+A saved note retains a contribution; integration into the method happens in
+the kernel that continues the work.
 
-La [guida di avvio](../BOOT.md) collega kernel, competenza, fonti e strumenti
-disponibili. Il progetto mantiene dati, documenti e azioni propri. La
-[guida di costruzione](../competences/ux-ai/GUIDE.md) approfondisce come
-realizzare interfacce e conservare il sapere che la loro costruzione e il
-loro uso fanno emergere.
+## Integrate K-UX-AI in your environment
 
-Per sviluppare o distribuire l’interfaccia, la [documentazione delle sorgenti](source-and-evolution.md)
-conserva composizione, attribuzione e istruzioni di build.
+The [entry guide](../BOOT.md) connects the kernel, competence, sources and
+available tools. The project keeps its own data, documents and actions.
+The [construction guide](../competences/ux-ai/GUIDE.md) explains how to build
+interfaces and retain knowledge from their construction and use.
+[Source documentation](source-and-evolution.md) provides composition,
+attribution and build instructions.

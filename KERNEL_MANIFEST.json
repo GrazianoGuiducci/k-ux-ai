@@ -40,7 +40,22 @@
       "builder": "tools/build_public_griglia.py",
       "adapter": "src/ui/public-griglia.js",
       "guide": "docs/public-griglia.md",
-      "reference": "examples/griglia/index.html"
+      "reference": "examples/griglia/index.html",
+      "default_locale": "en",
+      "supported_locales": [
+        "en",
+        "it"
+      ],
+      "profiles": {
+        "en": "examples/public-griglia/PROFILE.json",
+        "it": "examples/public-griglia/PROFILE.it.json"
+      },
+      "presentations": {
+        "en": "examples/public-griglia/demo/index.html",
+        "it": "examples/public-griglia/demo/it/index.html"
+      },
+      "copy_catalogue": "src/ui/locales/public-workspace.json",
+      "tour_catalogue": "src/ui/locales/public-tours.json"
     }
   },
   "formation": "Il produttore trasferisce aggiornamenti selezionati; il metodo pubblico è raggiungibile senza sorgenti private di formazione."

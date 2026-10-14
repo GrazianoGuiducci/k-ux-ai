@@ -1,0 +1,3026 @@
+{
+  "schema": "kux.public-workspace-copy.v1",
+  "default_locale": "en",
+  "supported_locales": [
+    "en",
+    "it"
+  ],
+  "binding": "Compile-time compatibility bindings for the selected source; semantic keys remain stable when wording changes. Runtime drafts and model replies are never translated by this compiler.",
+  "entries": [
+    {
+      "key": "common.copy",
+      "it": "Copia",
+      "en": "Copy"
+    },
+    {
+      "key": "common.open",
+      "it": "Apri",
+      "en": "Open"
+    },
+    {
+      "key": "common.bring",
+      "it": "Porta",
+      "en": "Bring"
+    },
+    {
+      "key": "home.back_overview",
+      "it": "Torna alla panoramica",
+      "en": "Back to overview"
+    },
+    {
+      "key": "home.overview_title",
+      "it": "Panoramica",
+      "en": "Overview"
+    },
+    {
+      "key": "work.in_progress_title",
+      "it": "Lavoro in corso",
+      "en": "Work in progress"
+    },
+    {
+      "key": "work.workspace_upper",
+      "it": "SPAZIO DI LAVORO",
+      "en": "WORKSPACE"
+    },
+    {
+      "key": "help.service_guide_upper",
+      "it": "GUIDA DEL SERVIZIO",
+      "en": "SERVICE GUIDE"
+    },
+    {
+      "key": "source.kernel_case_upper",
+      "it": "KERNEL NAUTICO · CASO ILLUSTRATIVO",
+      "en": "KERNEL NAUTICO · ILLUSTRATIVE CASE"
+    },
+    {
+      "key": "home.ready_singular",
+      "it": "pronta",
+      "en": "ready"
+    },
+    {
+      "key": "home.ready_plural",
+      "it": "pronte",
+      "en": "ready"
+    },
+    {
+      "key": "home.selected_lower",
+      "it": "selezionata",
+      "en": "selected"
+    },
+    {
+      "key": "work.current_question",
+      "it": "Questione presente",
+      "en": "Current question"
+    },
+    {
+      "key": "intent.understand",
+      "it": "Capire",
+      "en": "Understand"
+    },
+    {
+      "key": "intent.do",
+      "it": "Fare",
+      "en": "Do"
+    },
+    {
+      "key": "intent.check",
+      "it": "Controllare",
+      "en": "Check"
+    },
+    {
+      "key": "intent.explore",
+      "it": "Esplorare",
+      "en": "Explore"
+    },
+    {
+      "key": "intent.design",
+      "it": "Progettare",
+      "en": "Design"
+    },
+    {
+      "key": "intent.organise",
+      "it": "Organizzare",
+      "en": "Organise"
+    },
+    {
+      "key": "intent.communicate",
+      "it": "Comunicare",
+      "en": "Communicate"
+    },
+    {
+      "key": "intent.present",
+      "it": "Presentare",
+      "en": "Present"
+    },
+    {
+      "key": "intent.resume",
+      "it": "Riprendere",
+      "en": "Resume"
+    },
+    {
+      "key": "intent.experiment",
+      "it": "Sperimentare",
+      "en": "Experiment"
+    },
+    {
+      "key": "intent.monitor",
+      "it": "Monitorare",
+      "en": "Monitor"
+    },
+    {
+      "key": "intent.compare",
+      "it": "Confrontare",
+      "en": "Compare"
+    },
+    {
+      "key": "common.info",
+      "it": "Informazioni",
+      "en": "Information"
+    },
+    {
+      "key": "common.back",
+      "it": "Indietro",
+      "en": "Back"
+    },
+    {
+      "key": "common.scope",
+      "it": "Ambito",
+      "en": "Scope"
+    },
+    {
+      "key": "common.when_needed",
+      "it": "Quando serve",
+      "en": "When it helps"
+    },
+    {
+      "key": "common.what_you_can_do",
+      "it": "Cosa puoi fare",
+      "en": "What you can do"
+    },
+    {
+      "key": "common.consequence",
+      "it": "Conseguenza",
+      "en": "Consequence"
+    },
+    {
+      "key": "common.later",
+      "it": "Più tardi",
+      "en": "Later"
+    },
+    {
+      "key": "common.layout",
+      "it": "Disposizione",
+      "en": "Layout"
+    },
+    {
+      "key": "common.free",
+      "it": "Libero",
+      "en": "Free"
+    },
+    {
+      "key": "common.tools",
+      "it": "Strumenti",
+      "en": "Tools"
+    },
+    {
+      "key": "common.log",
+      "it": "Registro",
+      "en": "Log"
+    },
+    {
+      "key": "common.columns",
+      "it": "colonne",
+      "en": "columns"
+    },
+    {
+      "key": "home.prepare_work_upper",
+      "it": "PREPARA IL LAVORO",
+      "en": "PREPARE THE WORK"
+    },
+    {
+      "key": "home.where_work",
+      "it": "Dove lavoriamo?",
+      "en": "Where are we working?"
+    },
+    {
+      "key": "home.choose_topic_intro",
+      "it": "Scegli un ambiente o argomento. Le attività si possono preparare qui oppure aggiungere dopo.",
+      "en": "Choose an environment or topic. Prepare activities here or add them later."
+    },
+    {
+      "key": "home.preparation_tour_start",
+      "it": "Avvia il tour guidato della preparazione",
+      "en": "Start the guided preparation tour"
+    },
+    {
+      "key": "home.guided_tour",
+      "it": "Tour guidato",
+      "en": "Guided tour"
+    },
+    {
+      "key": "home.available_contexts_upper",
+      "it": "AMBIENTI DISPONIBILI",
+      "en": "AVAILABLE CONTEXTS"
+    },
+    {
+      "key": "home.illustrative_environments",
+      "it": "Ambienti di lavoro dimostrativi",
+      "en": "Illustrative work environments"
+    },
+    {
+      "key": "home.prepared_activities_upper",
+      "it": "ATTIVITÀ PREPARATE",
+      "en": "PREPARED ACTIVITIES"
+    },
+    {
+      "key": "home.choose_activities_overview",
+      "it": "Scegli una o più attività dalla griglia.",
+      "en": "Choose one or more activities in Overview."
+    },
+    {
+      "key": "home.open_work",
+      "it": "Apri il lavoro",
+      "en": "Open work"
+    },
+    {
+      "key": "home.prepare_activity_strip",
+      "it": "PREPARA LE ATTIVITÀ · SCEGLI, TRASCINA O ENTRA PER ESPLORARE",
+      "en": "PREPARE ACTIVITIES · SELECT, DRAG OR OPEN TO EXPLORE"
+    },
+    {
+      "key": "home.arrange_by_use",
+      "it": "Disponi per uso",
+      "en": "Arrange by use"
+    },
+    {
+      "key": "home.restore_order",
+      "it": "Ripristina ordine",
+      "en": "Restore order"
+    },
+    {
+      "key": "home.initial_activity_options",
+      "it": "Voci iniziali delle attività",
+      "en": "Initial activity options"
+    },
+    {
+      "key": "home.compose_workspace",
+      "it": "Componi il tuo campo",
+      "en": "Compose your workspace"
+    },
+    {
+      "key": "home.drag_include_swap",
+      "it": "Trascina qui una tessera per includerla; trascina sulle altre per scambiarne la forma.",
+      "en": "Drag a tile here to include it; drag onto another to swap its form."
+    },
+    {
+      "key": "work.illustrative_workspace_boundary",
+      "it": "Spazio di lavoro illustrativo · contributi locali · domande inviate a MAIOS AI dove collegata.",
+      "en": "Illustrative workspace · local contributions · questions sent to MAIOS AI where connected."
+    },
+    {
+      "key": "rail.activity_access",
+      "it": "Accessi alle attività",
+      "en": "Activity access"
+    },
+    {
+      "key": "rail.resize_activity_bar",
+      "it": "Ridimensiona la barra delle attività",
+      "en": "Resize the activity bar"
+    },
+    {
+      "key": "rail.adjust_width",
+      "it": "Trascina oppure usa le frecce per regolare la larghezza",
+      "en": "Drag or use the arrows to adjust width"
+    },
+    {
+      "key": "home.open_overview_lower",
+      "it": "Apri panoramica",
+      "en": "Open overview"
+    },
+    {
+      "key": "work.forms_change_state",
+      "it": "Le forme cambiano, lo stato della demo resta riconoscibile.",
+      "en": "Forms change; the demo state remains recognisable."
+    },
+    {
+      "key": "tools.workspace_commands",
+      "it": "Strumenti e comandi del campo",
+      "en": "Workspace tools and controls"
+    },
+    {
+      "key": "tools.composition_focus",
+      "it": "Composizione e focus",
+      "en": "Composition and focus"
+    },
+    {
+      "key": "tools.recompose_without_loss",
+      "it": "Ridisegna il campo senza perdere attività o focus",
+      "en": "Recompose the workspace without losing activities or focus"
+    },
+    {
+      "key": "tools.recompose_workspace",
+      "it": "Ricomponi il campo",
+      "en": "Recompose the workspace"
+    },
+    {
+      "key": "tools.recompose",
+      "it": "Ricomponi",
+      "en": "Recompose"
+    },
+    {
+      "key": "tools.keep_main_focus",
+      "it": "Mantieni il focus principale quando aggiungi altre attività",
+      "en": "Retain primary focus when adding activities"
+    },
+    {
+      "key": "tools.keep_focus",
+      "it": "Mantieni focus",
+      "en": "Keep focus"
+    },
+    {
+      "key": "tools.add_context_activity",
+      "it": "Aggiungi attività al contesto",
+      "en": "Add an activity to the context"
+    },
+    {
+      "key": "tools.organize_workspace",
+      "it": "Strumenti per organizzare il campo",
+      "en": "Tools for organising the workspace"
+    },
+    {
+      "key": "tools.workspace_upper",
+      "it": "STRUMENTI DEL CAMPO",
+      "en": "WORKSPACE TOOLS"
+    },
+    {
+      "key": "tools.organize_view",
+      "it": "Organizza la vista",
+      "en": "Organise the view"
+    },
+    {
+      "key": "tools.view_changes_sources_preserved",
+      "it": "I controlli modificano il modo di vedere il lavoro, conservando le fonti del kernel ospitante.",
+      "en": "Controls change how you view the work while retaining the hosting kernel’s sources."
+    },
+    {
+      "key": "tools.close",
+      "it": "Chiudi strumenti",
+      "en": "Close tools"
+    },
+    {
+      "key": "layout.card_layout",
+      "it": "Disposizione delle schede",
+      "en": "Card layout"
+    },
+    {
+      "key": "layout.how_cards_fill",
+      "it": "Come occupano lo spazio le schede.",
+      "en": "How cards use the space."
+    },
+    {
+      "key": "layout.focal_workspace",
+      "it": "Campo focale",
+      "en": "Focused workspace"
+    },
+    {
+      "key": "layout.secondaries_alongside_fit",
+      "it": "Affianca due secondarie quando lo spazio lo consente",
+      "en": "Place two secondary cards alongside when space allows"
+    },
+    {
+      "key": "layout.medium_auto",
+      "it": "Medie · auto",
+      "en": "Medium · auto"
+    },
+    {
+      "key": "tools.keep_focus_heading",
+      "it": "Conservazione del focus",
+      "en": "Focus preservation"
+    },
+    {
+      "key": "tools.reorganize_retain",
+      "it": "Riorganizza e mantieni",
+      "en": "Reorganise and retain"
+    },
+    {
+      "key": "tools.recalculate_keep_drafts",
+      "it": "Ricalcola la vista conservando attività e bozze.",
+      "en": "Recalculate the view while retaining activities and drafts."
+    },
+    {
+      "key": "tools.understand_act_scope",
+      "it": "Approfondimento e intervento",
+      "en": "Understanding and action"
+    },
+    {
+      "key": "tools.understand_act",
+      "it": "Comprendi e intervieni",
+      "en": "Understand and act"
+    },
+    {
+      "key": "tools.read_logic_add_activity",
+      "it": "Leggi la logica o aggiungi una nuova attività.",
+      "en": "Read the logic or add an activity."
+    },
+    {
+      "key": "tools.read_event_context_ui",
+      "it": "Leggi la relazione fra evento, contesto e UI",
+      "en": "Read the relationship between event, context and UI"
+    },
+    {
+      "key": "tools.why_here",
+      "it": "Perché qui?",
+      "en": "Why here?"
+    },
+    {
+      "key": "work.active_context",
+      "it": "Contesto attivo",
+      "en": "Active context"
+    },
+    {
+      "key": "work.composable_panels",
+      "it": "Pannelli di lavoro componibili",
+      "en": "Composable work panels"
+    },
+    {
+      "key": "work.ready",
+      "it": "Lo spazio di lavoro è pronto.",
+      "en": "The workspace is ready."
+    },
+    {
+      "key": "work.choose_activity_layout_begin",
+      "it": "Seleziona un'attività o scegli una disposizione per iniziare.",
+      "en": "Select an activity or choose a layout to begin."
+    },
+    {
+      "key": "work.no_external_local_state",
+      "it": "Nessuna azione esterna · stato locale",
+      "en": "No external action · local state"
+    },
+    {
+      "key": "events.simulate_change",
+      "it": "Simula variazione",
+      "en": "Simulate change"
+    },
+    {
+      "key": "source.interactive_intro_upper",
+      "it": "PRESENTAZIONE INTERATTIVA",
+      "en": "INTERACTIVE INTRODUCTION"
+    },
+    {
+      "key": "source.local_state_lower",
+      "it": "stato locale",
+      "en": "local state"
+    },
+    {
+      "key": "projection.open_comparison",
+      "it": "Apri confronto",
+      "en": "Open comparison"
+    },
+    {
+      "key": "dialogue.open_demo_assistant",
+      "it": "Apri assistente demo",
+      "en": "Open demo assistant"
+    },
+    {
+      "key": "dialogue.contextual_assistant",
+      "it": "Assistente contestuale",
+      "en": "Contextual assistant"
+    },
+    {
+      "key": "events.from_workspace_upper",
+      "it": "DAL CAMPO · EVENTO DEMO",
+      "en": "FROM THE WORKSPACE · DEMO EVENT"
+    },
+    {
+      "key": "work.examine",
+      "it": "Esamina",
+      "en": "Examine"
+    },
+    {
+      "key": "layout.compose_two_cards",
+      "it": "Componi 2 schede",
+      "en": "Compose 2 cards"
+    },
+    {
+      "key": "help.prepare_workspace",
+      "it": "Prepara il campo",
+      "en": "Prepare the workspace"
+    },
+    {
+      "key": "help.close_tour",
+      "it": "Chiudi tour",
+      "en": "Close tour"
+    },
+    {
+      "key": "help.local_observability_upper",
+      "it": "OSSERVABILITÀ LOCALE",
+      "en": "LOCAL OBSERVABILITY"
+    },
+    {
+      "key": "tools.why_workspace_layout",
+      "it": "Perché il campo è così?",
+      "en": "Why is the workspace arranged this way?"
+    },
+    {
+      "key": "help.close_explanation",
+      "it": "Chiudi spiegazione",
+      "en": "Close explanation"
+    },
+    {
+      "key": "tools.deterministic_observation",
+      "it": "Questa è una lettura deterministica degli stati della demo. Osservazione, interpretazione e potere d'azione restano distinti.",
+      "en": "This is a deterministic readout of demo states. Observation, interpretation and authority to act remain distinct."
+    },
+    {
+      "key": "help.how_use_workspace",
+      "it": "Come usare questo spazio",
+      "en": "How to use this workspace"
+    },
+    {
+      "key": "help.cards_functions",
+      "it": "Le schede hanno funzioni diverse: guida, contributo, confronto, monitoraggio, ripresa e dialogo. Si possono comporre intorno allo stesso lavoro conservando il focus e le bozze.",
+      "en": "Cards have different functions: guidance, contribution, comparison, monitoring, resumption and dialogue. Compose them around the same work while retaining focus and drafts."
+    },
+    {
+      "key": "help.restart_overview",
+      "it": "Riparti dalla panoramica",
+      "en": "Restart from Overview"
+    },
+    {
+      "key": "help.return_work",
+      "it": "Torna al lavoro",
+      "en": "Return to work"
+    },
+    {
+      "key": "help.assistant_intro_boundary",
+      "it": "La guida usa le fonti del kernel; le domande inviate esplicitamente possono raggiungere MAIOS AI nel sito configurato.",
+      "en": "The guide uses the kernel’s sources; explicitly submitted questions can reach MAIOS AI on the configured site."
+    },
+    {
+      "key": "dialogue.assistant_of",
+      "it": "Assistente di",
+      "en": "Assistant for"
+    },
+    {
+      "key": "dialogue.system",
+      "it": "Sistema",
+      "en": "System"
+    },
+    {
+      "key": "dialogue.dialogue_contributions",
+      "it": "Dialogo e contributi",
+      "en": "Dialogue and contributions"
+    },
+    {
+      "key": "dialogue.send_boundary",
+      "it": "Con Invia, il testo della domanda raggiunge MAIOS AI; le bozze nelle altre schede restano locali.",
+      "en": "Send delivers the question text to MAIOS AI; drafts in other cards stay local."
+    },
+    {
+      "key": "dialogue.open_form",
+      "it": "Apri modulo",
+      "en": "Open form"
+    },
+    {
+      "key": "dialogue.current_context",
+      "it": "Contesto corrente",
+      "en": "Current context"
+    },
+    {
+      "key": "dialogue.ask_here",
+      "it": "Cosa possiamo fare qui?",
+      "en": "What can we do here?"
+    },
+    {
+      "key": "dialogue.active_environments",
+      "it": "Quali ambienti sono attivi?",
+      "en": "Which environments are active?"
+    },
+    {
+      "key": "dialogue.what_missing",
+      "it": "Che cosa manca?",
+      "en": "What is missing?"
+    },
+    {
+      "key": "dialogue.show_source",
+      "it": "Mostra la fonte",
+      "en": "Show the source"
+    },
+    {
+      "key": "dialogue.local_session_reset",
+      "it": "Sessione locale azzerata. Puoi riprendere la guida o inviare una domanda a MAIOS AI.",
+      "en": "Local session reset. Resume the guide or send a question to MAIOS AI."
+    },
+    {
+      "key": "form.retain_contribution",
+      "it": "Conserva contributo",
+      "en": "Retain contribution"
+    },
+    {
+      "key": "form.retaining_contribution",
+      "it": "Conservo il contributo…",
+      "en": "Retaining the contribution…"
+    },
+    {
+      "key": "form.contribution_stays_local",
+      "it": "Il contributo resta in questo spazio. La domanda si invia nella chat.",
+      "en": "The contribution stays in this workspace. Send questions through the chat."
+    },
+    {
+      "key": "form.describe_observation",
+      "it": "Descrivi il tuo riscontro e conserva il contributo insieme al suo contesto.",
+      "en": "Describe the observation and retain the contribution with its context."
+    },
+    {
+      "key": "form.not_retained_draft_available",
+      "it": "Il contributo non è stato conservato. La bozza resta disponibile.",
+      "en": "The contribution was not retained. The draft remains available."
+    },
+    {
+      "key": "form.open_prepare",
+      "it": "Apri il modulo per preparare un contributo",
+      "en": "Open the form to prepare a contribution"
+    },
+    {
+      "key": "intent.understand_hint",
+      "it": "Vedi quello che conta",
+      "en": "See what matters"
+    },
+    {
+      "key": "intent.do_hint",
+      "it": "Prosegui un’attività concreta",
+      "en": "Continue a concrete activity"
+    },
+    {
+      "key": "intent.check_hint",
+      "it": "Stato, evidenze e punti aperti",
+      "en": "State, evidence and open points"
+    },
+    {
+      "key": "intent.explore_hint",
+      "it": "Oggetti e relazioni",
+      "en": "Subjects and relationships"
+    },
+    {
+      "key": "intent.design_hint",
+      "it": "Alternative e conseguenze",
+      "en": "Alternatives and consequences"
+    },
+    {
+      "key": "intent.organise_hint",
+      "it": "Compiti, persone e priorità",
+      "en": "Tasks, people and priorities"
+    },
+    {
+      "key": "intent.communicate_hint",
+      "it": "Domande e contributi",
+      "en": "Questions and contributions"
+    },
+    {
+      "key": "intent.present_hint",
+      "it": "Un percorso per comprendere",
+      "en": "A path to understanding"
+    },
+    {
+      "key": "intent.resume_hint",
+      "it": "Ritrova ciò che era aperto",
+      "en": "Retrieve what was open"
+    },
+    {
+      "key": "intent.experiment_hint",
+      "it": "Proietta una possibilità",
+      "en": "Project a possibility"
+    },
+    {
+      "key": "intent.monitor_hint",
+      "it": "Segnali e variazioni",
+      "en": "Signals and changes"
+    },
+    {
+      "key": "intent.compare_hint",
+      "it": "Fonti, differenze e corrispondenze",
+      "en": "Sources, differences and matches"
+    },
+    {
+      "key": "common.source",
+      "it": "Fonte",
+      "en": "Source"
+    },
+    {
+      "key": "common.sources",
+      "it": "Fonti",
+      "en": "Sources"
+    },
+    {
+      "key": "common.action",
+      "it": "Azione",
+      "en": "Action"
+    },
+    {
+      "key": "common.close",
+      "it": "Chiudi",
+      "en": "Close"
+    },
+    {
+      "key": "common.large",
+      "it": "Grande",
+      "en": "Large"
+    },
+    {
+      "key": "common.overview",
+      "it": "Quadro",
+      "en": "Overview"
+    },
+    {
+      "key": "common.minimize",
+      "it": "Riduci",
+      "en": "Minimize"
+    },
+    {
+      "key": "common.card",
+      "it": "Scheda",
+      "en": "Card"
+    },
+    {
+      "key": "common.question",
+      "it": "Domanda",
+      "en": "Question"
+    },
+    {
+      "key": "common.explore",
+      "it": "Esplora",
+      "en": "Explore"
+    },
+    {
+      "key": "common.export",
+      "it": "Esporta",
+      "en": "Export"
+    },
+    {
+      "key": "common.send",
+      "it": "Invia",
+      "en": "Send"
+    },
+    {
+      "key": "common.none",
+      "it": "Nessuno",
+      "en": "None"
+    },
+    {
+      "key": "common.subject",
+      "it": "Oggetto",
+      "en": "Subject"
+    },
+    {
+      "key": "common.person",
+      "it": "Persona",
+      "en": "Person"
+    },
+    {
+      "key": "common.clear",
+      "it": "Pulisci",
+      "en": "Clear"
+    },
+    {
+      "key": "common.common_upper",
+      "it": "COMUNI",
+      "en": "COMMON"
+    },
+    {
+      "key": "common.only_a",
+      "it": "SOLO A",
+      "en": "ONLY A"
+    },
+    {
+      "key": "common.only_b",
+      "it": "SOLO B",
+      "en": "ONLY B"
+    },
+    {
+      "key": "common.test",
+      "it": "Testo",
+      "en": "Text"
+    },
+    {
+      "key": "work.activities_upper",
+      "it": "ATTIVITÀ",
+      "en": "ACTIVITIES"
+    },
+    {
+      "key": "work.side_by_side",
+      "it": "Affianca",
+      "en": "Place alongside"
+    },
+    {
+      "key": "work.environment",
+      "it": "Ambiente",
+      "en": "Environment"
+    },
+    {
+      "key": "work.activity",
+      "it": "Attività",
+      "en": "Activity"
+    },
+    {
+      "key": "common.next",
+      "it": "Avanti",
+      "en": "Next"
+    },
+    {
+      "key": "common.context_upper",
+      "it": "CONTESTO",
+      "en": "CONTEXT"
+    },
+    {
+      "key": "common.finish",
+      "it": "Concludi",
+      "en": "Finish"
+    },
+    {
+      "key": "common.proposal",
+      "it": "Proposta",
+      "en": "Proposal"
+    },
+    {
+      "key": "common.preview",
+      "it": "Anteprima",
+      "en": "Preview"
+    },
+    {
+      "key": "common.candidate",
+      "it": "Candidato",
+      "en": "Candidate"
+    },
+    {
+      "key": "common.context",
+      "it": "Contesto",
+      "en": "Context"
+    },
+    {
+      "key": "common.hypothesis_a",
+      "it": "Ipotesi A",
+      "en": "Hypothesis A"
+    },
+    {
+      "key": "common.hypothesis_b",
+      "it": "Ipotesi B",
+      "en": "Hypothesis B"
+    },
+    {
+      "key": "common.operator",
+      "it": "Operatore",
+      "en": "Operator"
+    },
+    {
+      "key": "common.place",
+      "it": "Posiziona",
+      "en": "Position"
+    },
+    {
+      "key": "common.observation",
+      "it": "Riscontro",
+      "en": "Observation"
+    },
+    {
+      "key": "common.section",
+      "it": "Sezione",
+      "en": "Section"
+    },
+    {
+      "key": "common.assistant",
+      "it": "Assistente",
+      "en": "Assistant"
+    },
+    {
+      "key": "common.condition",
+      "it": "Condizione",
+      "en": "Condition"
+    },
+    {
+      "key": "common.continue",
+      "it": "Continua",
+      "en": "Continue"
+    },
+    {
+      "key": "common.contribution",
+      "it": "Contributo",
+      "en": "Contribution"
+    },
+    {
+      "key": "home.overview_upper",
+      "it": "PANORAMICA",
+      "en": "OVERVIEW"
+    },
+    {
+      "key": "work.primary",
+      "it": "Principale",
+      "en": "Primary"
+    },
+    {
+      "key": "common.situation",
+      "it": "Situazione",
+      "en": "Situation"
+    },
+    {
+      "key": "common.possibility",
+      "it": "Possibilità",
+      "en": "Possibility"
+    },
+    {
+      "key": "common.interface",
+      "it": "Interfaccia",
+      "en": "Interface"
+    },
+    {
+      "key": "common.step_upper",
+      "it": "PASSO",
+      "en": "STEP"
+    },
+    {
+      "key": "common.involve",
+      "it": "Coinvolgi",
+      "en": "Involve"
+    },
+    {
+      "key": "common.check",
+      "it": "Controlla",
+      "en": "Check"
+    },
+    {
+      "key": "common.inspect",
+      "it": "ESAME",
+      "en": "REVIEW"
+    },
+    {
+      "key": "common.facts",
+      "it": "FATTI",
+      "en": "FACTS"
+    },
+    {
+      "key": "work.dialogue_with",
+      "it": "DIALOGO CON",
+      "en": "DIALOGUE WITH"
+    },
+    {
+      "key": "events.demo_event",
+      "it": "Evento demo",
+      "en": "Demo event"
+    },
+    {
+      "key": "home.in_home",
+      "it": "Nella Home:",
+      "en": "On the home screen:"
+    },
+    {
+      "key": "common.download_markdown",
+      "it": "Scarica .md",
+      "en": "Download .md"
+    },
+    {
+      "key": "home.select",
+      "it": "Seleziona +",
+      "en": "Select +"
+    },
+    {
+      "key": "work.open_case",
+      "it": "Apri il caso",
+      "en": "Open the case"
+    },
+    {
+      "key": "work.internal_areas",
+      "it": "Aree interne",
+      "en": "Internal areas"
+    },
+    {
+      "key": "work.activities_for",
+      "it": "Attività per",
+      "en": "Activities for"
+    },
+    {
+      "key": "work.close_map",
+      "it": "Chiudi mappa",
+      "en": "Close map"
+    },
+    {
+      "key": "work.connections",
+      "it": "Collegamenti",
+      "en": "Connections"
+    },
+    {
+      "key": "work.connection",
+      "it": "Collegamento",
+      "en": "Connection"
+    },
+    {
+      "key": "work.choose_pending",
+      "it": "Da scegliere",
+      "en": "To choose"
+    },
+    {
+      "key": "work.from_context",
+      "it": "Dal contesto",
+      "en": "From the context"
+    },
+    {
+      "key": "work.in_context",
+      "it": "Nel contesto",
+      "en": "In the context"
+    },
+    {
+      "key": "work.open_point",
+      "it": "Punto aperto",
+      "en": "Open point"
+    },
+    {
+      "key": "layout.quick_two",
+      "it": "Veloce · due",
+      "en": "Quick · two"
+    },
+    {
+      "key": "work.active_views",
+      "it": "Viste attive",
+      "en": "Active views"
+    },
+    {
+      "key": "events.to_review",
+      "it": "da esaminare",
+      "en": "to review"
+    },
+    {
+      "key": "work.in_context_lower",
+      "it": "nel contesto",
+      "en": "in the context"
+    },
+    {
+      "key": "work.in_field_lower",
+      "it": "nel campo",
+      "en": "in the workspace"
+    },
+    {
+      "key": "work.alongside_do",
+      "it": "Affianca Fare",
+      "en": "Open Do alongside"
+    },
+    {
+      "key": "work.open_context",
+      "it": "Apri contesto",
+      "en": "Open context"
+    },
+    {
+      "key": "form.open",
+      "it": "Apri modulo",
+      "en": "Open form"
+    },
+    {
+      "key": "form.close",
+      "it": "Chiudi modulo",
+      "en": "Close form"
+    },
+    {
+      "key": "work.demo_context",
+      "it": "Contesto demo",
+      "en": "Demo context"
+    },
+    {
+      "key": "work.continuation",
+      "it": "Continuazione",
+      "en": "Continuation"
+    },
+    {
+      "key": "dialogue.conversation",
+      "it": "Conversazione",
+      "en": "Conversation"
+    },
+    {
+      "key": "source.demo_upper",
+      "it": "SORGENTE DEMO",
+      "en": "DEMO SOURCE"
+    },
+    {
+      "key": "home.selected",
+      "it": "Selezionata",
+      "en": "Selected"
+    },
+    {
+      "key": "work.for_work_lower",
+      "it": "per il lavoro",
+      "en": "for work"
+    },
+    {
+      "key": "work.how_continue",
+      "it": "Come continuo?",
+      "en": "How do I continue?"
+    },
+    {
+      "key": "dialogue.confirm_reset",
+      "it": "Conferma reset",
+      "en": "Confirm reset"
+    },
+    {
+      "key": "work.what_open",
+      "it": "Cosa è aperto?",
+      "en": "What is open?"
+    },
+    {
+      "key": "source.needs_assessment",
+      "it": "Da qualificare",
+      "en": "Needs assessment"
+    },
+    {
+      "key": "work.expand_card",
+      "it": "Espandi card",
+      "en": "Expand card"
+    },
+    {
+      "key": "work.local_trace",
+      "it": "Traccia locale",
+      "en": "Local trace"
+    },
+    {
+      "key": "events.latest_signal",
+      "it": "Ultimo segnale",
+      "en": "Latest signal"
+    },
+    {
+      "key": "work.still_open",
+      "it": "rimane aperto:",
+      "en": "still open:"
+    },
+    {
+      "key": "work.open_cards_lower",
+      "it": "schede aperte,",
+      "en": "open cards,"
+    },
+    {
+      "key": "home.open_overview",
+      "it": "Apri Panoramica",
+      "en": "Open Overview"
+    },
+    {
+      "key": "work.open_activities",
+      "it": "Attività aperte",
+      "en": "Open activities"
+    },
+    {
+      "key": "work.close_panel",
+      "it": "Chiudi pannello",
+      "en": "Close panel"
+    },
+    {
+      "key": "work.moving_element",
+      "it": "Elemento mobile",
+      "en": "Moving element"
+    },
+    {
+      "key": "layout.free_windows",
+      "it": "Finestre libere",
+      "en": "Free windows"
+    },
+    {
+      "key": "dialogue.processing",
+      "it": "In elaborazione",
+      "en": "Processing"
+    },
+    {
+      "key": "work.selected_intent",
+      "it": "Intento scelto:",
+      "en": "Selected intent:"
+    },
+    {
+      "key": "dialogue.send_question",
+      "it": "Invia domanda",
+      "en": "Send question"
+    },
+    {
+      "key": "work.in_progress_upper",
+      "it": "LAVORO IN CORSO",
+      "en": "WORK IN PROGRESS"
+    },
+    {
+      "key": "work.current_work",
+      "it": "Lavoro presente",
+      "en": "Current work"
+    },
+    {
+      "key": "source.show_sources",
+      "it": "Mostra le fonti",
+      "en": "Show sources"
+    },
+    {
+      "key": "work.current_subject_upper",
+      "it": "OGGETTO ATTUALE",
+      "en": "CURRENT SUBJECT"
+    },
+    {
+      "key": "layout.full_page",
+      "it": "Pagina intera",
+      "en": "Full page"
+    },
+    {
+      "key": "work.what_missing",
+      "it": "Vedi cosa manca",
+      "en": "See what is missing"
+    },
+    {
+      "key": "work.takes_role",
+      "it": "assume il ruolo",
+      "en": "takes the role"
+    },
+    {
+      "key": "home.activity_ready",
+      "it": "attività pronta",
+      "en": "activity ready"
+    },
+    {
+      "key": "home.activities_ready",
+      "it": "attività pronte",
+      "en": "activities ready"
+    },
+    {
+      "key": "home.activity_selected",
+      "it": "attività scelta",
+      "en": "selected activity"
+    },
+    {
+      "key": "home.activities_selected",
+      "it": "attività scelte",
+      "en": "selected activities"
+    },
+    {
+      "key": "home.not_selected",
+      "it": "non selezionata",
+      "en": "not selected"
+    },
+    {
+      "key": "nautical.stern_access",
+      "it": "Accesso di poppa",
+      "en": "Stern access"
+    },
+    {
+      "key": "preview.close",
+      "it": "Chiudi anteprima",
+      "en": "Close preview"
+    },
+    {
+      "key": "work.what_known",
+      "it": "Ciò che sappiamo",
+      "en": "What we know"
+    },
+    {
+      "key": "work.retain_draft",
+      "it": "Conserva bozza",
+      "en": "Retain draft"
+    },
+    {
+      "key": "work.current_question_upper",
+      "it": "DOMANDA PRESENTE",
+      "en": "CURRENT QUESTION"
+    },
+    {
+      "key": "dialogue.card_dialogue",
+      "it": "Dialogo scheda",
+      "en": "Card dialogue"
+    },
+    {
+      "key": "events.current_event",
+      "it": "Evento presente:",
+      "en": "Current event:"
+    },
+    {
+      "key": "source.source_limits",
+      "it": "Fonte e limiti",
+      "en": "Source and limits"
+    },
+    {
+      "key": "layout.medium_side_by_side",
+      "it": "Medie affiancate",
+      "en": "Medium cards alongside"
+    },
+    {
+      "key": "work.current_subject",
+      "it": "Oggetto presente",
+      "en": "Current subject"
+    },
+    {
+      "key": "nautical.project_stern",
+      "it": "Progetto / Poppa",
+      "en": "Project / Stern"
+    },
+    {
+      "key": "work.workspace",
+      "it": "Spazio di lavoro",
+      "en": "Workspace"
+    },
+    {
+      "key": "work.work_views",
+      "it": "Viste del lavoro",
+      "en": "Work views"
+    },
+    {
+      "key": "work.opened_in_workspace",
+      "it": "aperto nel campo",
+      "en": "opened in the workspace"
+    },
+    {
+      "key": "layout.dock_undock",
+      "it": "Aggancia o libera",
+      "en": "Dock or undock"
+    },
+    {
+      "key": "preview.local_preview",
+      "it": "Anteprima locale:",
+      "en": "Local preview:"
+    },
+    {
+      "key": "work.open_condition_upper",
+      "it": "CONDIZIONE APERTA",
+      "en": "OPEN CONDITION"
+    },
+    {
+      "key": "source.compare_sources",
+      "it": "Confronta fonti",
+      "en": "Compare sources"
+    },
+    {
+      "key": "proposal.retain",
+      "it": "Conserva proposta",
+      "en": "Retain proposal"
+    },
+    {
+      "key": "work.bring_to_focus",
+      "it": "Porta al centro",
+      "en": "Bring into focus"
+    },
+    {
+      "key": "work.back_to_card",
+      "it": "Torna alla scheda",
+      "en": "Back to card"
+    },
+    {
+      "key": "work.latest_differences_upper",
+      "it": "ULTIME DIFFERENZE",
+      "en": "LATEST DIFFERENCES"
+    },
+    {
+      "key": "work.latest_contributions_upper",
+      "it": "ULTIMI CONTRIBUTI",
+      "en": "LATEST CONTRIBUTIONS"
+    },
+    {
+      "key": "layout.quick_stacked",
+      "it": "Veloce · impilate",
+      "en": "Quick · stacked"
+    },
+    {
+      "key": "work.visible_cards",
+      "it": "schede visibili",
+      "en": "visible cards"
+    },
+    {
+      "key": "work.environment_upper",
+      "it": "AMBIENTE DI LAVORO",
+      "en": "WORK ENVIRONMENT"
+    },
+    {
+      "key": "work.alongside_explore",
+      "it": "Affianca Esplorare",
+      "en": "Open Explore alongside"
+    },
+    {
+      "key": "form.export_contributions",
+      "it": "Esporta contributi",
+      "en": "Export contributions"
+    },
+    {
+      "key": "home.prepared_work",
+      "it": "Lavoro preparato",
+      "en": "Prepared work"
+    },
+    {
+      "key": "form.contextual_form",
+      "it": "Modulo contestuale",
+      "en": "Contextual form"
+    },
+    {
+      "key": "form.optional_name",
+      "it": "Nome (facoltativo)",
+      "en": "Name (optional)"
+    },
+    {
+      "key": "nautical.continuous_transition",
+      "it": "Passaggio continuo",
+      "en": "Continuous transition"
+    },
+    {
+      "key": "form.prepare_contribution",
+      "it": "Prepara contributo",
+      "en": "Prepare contribution"
+    },
+    {
+      "key": "work.current_selection_upper",
+      "it": "SELEZIONE CORRENTE",
+      "en": "CURRENT SELECTION"
+    },
+    {
+      "key": "work.choose_activity",
+      "it": "Scegli un’attività",
+      "en": "Choose an activity"
+    },
+    {
+      "key": "home.drag_swap",
+      "it": "TRASCINA · SCAMBIA",
+      "en": "DRAG · SWAP"
+    },
+    {
+      "key": "home.prepared_activities_lower",
+      "it": "attività preparate",
+      "en": "prepared activities"
+    },
+    {
+      "key": "work.context_action_upper",
+      "it": "AZIONE NEL CONTESTO",
+      "en": "ACTION IN CONTEXT"
+    },
+    {
+      "key": "work.section_environment",
+      "it": "Ambiente di sezione",
+      "en": "Section environment"
+    },
+    {
+      "key": "work.operating_environment",
+      "it": "Ambiente operativo:",
+      "en": "Operating environment:"
+    },
+    {
+      "key": "work.card_action",
+      "it": "Azione nella scheda",
+      "en": "Action in the card"
+    },
+    {
+      "key": "source.compare_terms",
+      "it": "Confronta termini",
+      "en": "Compare terms"
+    },
+    {
+      "key": "work.work_context",
+      "it": "Contesto del lavoro",
+      "en": "Work context"
+    },
+    {
+      "key": "source.illustrative_data_upper",
+      "it": "DATI DIMOSTRATIVI",
+      "en": "ILLUSTRATIVE DATA"
+    },
+    {
+      "key": "source.data_to_assess",
+      "it": "Dato da qualificare",
+      "en": "Data to assess"
+    },
+    {
+      "key": "layout.two_side_by_side",
+      "it": "Due aree affiancate",
+      "en": "Two areas side by side"
+    },
+    {
+      "key": "form.optional_email",
+      "it": "Email (facoltativa)",
+      "en": "Email (optional)"
+    },
+    {
+      "key": "work.review_criteria",
+      "it": "Esamina i criteri",
+      "en": "Review the criteria"
+    },
+    {
+      "key": "projection.explore",
+      "it": "Esplora lo scenario",
+      "en": "Explore the scenario"
+    },
+    {
+      "key": "work.explore_relationships",
+      "it": "Esplora relazioni",
+      "en": "Explore relationships"
+    },
+    {
+      "key": "source.illustrative_source",
+      "it": "Fonte illustrativa:",
+      "en": "Illustrative source:"
+    },
+    {
+      "key": "dialogue.messages",
+      "it": "Messaggi della chat",
+      "en": "Chat messages"
+    },
+    {
+      "key": "events.no_new_event",
+      "it": "Nessun nuovo evento",
+      "en": "No new event"
+    },
+    {
+      "key": "work.subject_relationships_upper",
+      "it": "OGGETTI E RELAZIONI",
+      "en": "SUBJECTS AND RELATIONSHIPS"
+    },
+    {
+      "key": "layout.why_form",
+      "it": "Perché questa forma",
+      "en": "Why this form"
+    },
+    {
+      "key": "work.observation_criteria_upper",
+      "it": "RISCONTRO E CRITERI",
+      "en": "OBSERVATION AND CRITERIA"
+    },
+    {
+      "key": "events.needs_attention",
+      "it": "Richiede attenzione",
+      "en": "Needs attention"
+    },
+    {
+      "key": "layout.restore_window",
+      "it": "Ripristina finestra",
+      "en": "Restore window"
+    },
+    {
+      "key": "home.swap_done",
+      "it": "Scambio effettuato:",
+      "en": "Swap completed:"
+    },
+    {
+      "key": "layout.card_docked_to",
+      "it": "Scheda agganciata a",
+      "en": "Card docked to"
+    },
+    {
+      "key": "dialogue.write_question",
+      "it": "Scrivi una domanda…",
+      "en": "Write a question…"
+    },
+    {
+      "key": "layout.secondaries_stacked",
+      "it": "Secondarie impilate",
+      "en": "Secondary cards stacked"
+    },
+    {
+      "key": "work.no_active_focus",
+      "it": "nessun focus attivo",
+      "en": "no active focus"
+    },
+    {
+      "key": "work.available_activity_upper",
+      "it": "ATTIVITÀ DISPONIBILE",
+      "en": "AVAILABLE ACTIVITY"
+    },
+    {
+      "key": "work.alongside_check",
+      "it": "Affianca Controllare",
+      "en": "Open Check alongside"
+    },
+    {
+      "key": "work.open_in_progress",
+      "it": "Apri Lavoro in corso",
+      "en": "Open Work in progress"
+    },
+    {
+      "key": "layout.open_full_page",
+      "it": "Apri a pagina intera",
+      "en": "Open full page"
+    },
+    {
+      "key": "work.how_use_card_upper",
+      "it": "COME USARE LA SCHEDA",
+      "en": "HOW TO USE THE CARD"
+    },
+    {
+      "key": "work.contribution_upper",
+      "it": "CONTRIBUTO AL LAVORO",
+      "en": "CONTRIBUTION TO THE WORK"
+    },
+    {
+      "key": "work.what_observed",
+      "it": "Che cosa è osservato",
+      "en": "What is observed"
+    },
+    {
+      "key": "dialogue.card_dialogue_long",
+      "it": "Dialogo della scheda",
+      "en": "Card dialogue"
+    },
+    {
+      "key": "dialogue.question_for_ai",
+      "it": "Domanda per MAIOS AI",
+      "en": "Question for MAIOS AI"
+    },
+    {
+      "key": "work.review_observation",
+      "it": "Esamina il riscontro",
+      "en": "Review the observation"
+    },
+    {
+      "key": "work.explore_relationships_long",
+      "it": "Esplora le relazioni",
+      "en": "Explore the relationships"
+    },
+    {
+      "key": "source.demo_source",
+      "it": "Fonte dimostrativa",
+      "en": "Illustrative source"
+    },
+    {
+      "key": "work.section_work_upper",
+      "it": "LAVORO DELLA SEZIONE",
+      "en": "SECTION WORK"
+    },
+    {
+      "key": "form.local_cleared",
+      "it": "Modulo locale pulito",
+      "en": "Local form cleared"
+    },
+    {
+      "key": "work.organize_next",
+      "it": "Organizza il seguito",
+      "en": "Organise the next step"
+    },
+    {
+      "key": "work.press_icon_again",
+      "it": "Premi ancora l’icona",
+      "en": "Press the icon again"
+    },
+    {
+      "key": "proposal.retained_count",
+      "it": "Proposte conservate:",
+      "en": "Retained proposals:"
+    },
+    {
+      "key": "work.next_step",
+      "it": "Prossimo passaggio",
+      "en": "Next step"
+    },
+    {
+      "key": "work.point_to_understand",
+      "it": "Punto da comprendere",
+      "en": "Point to understand"
+    },
+    {
+      "key": "projection.illustrative_scenarios_upper",
+      "it": "SCENARI ILLUSTRATIVI",
+      "en": "ILLUSTRATIVE SCENARIOS"
+    },
+    {
+      "key": "layout.card_operating_view",
+      "it": "Vista card/operativa",
+      "en": "Card/work view"
+    },
+    {
+      "key": "layout.in_primary_place",
+      "it": "nel posto principale",
+      "en": "in the primary position"
+    },
+    {
+      "key": "source.demo_source_lower",
+      "it": "fonte dimostrativa",
+      "en": "illustrative source"
+    },
+    {
+      "key": "source.illustrative_context_upper",
+      "it": "AMBITO DIMOSTRATIVO",
+      "en": "ILLUSTRATIVE CONTEXT"
+    },
+    {
+      "key": "work.effect_boundary",
+      "it": "Confine degli effetti",
+      "en": "Effect boundary"
+    },
+    {
+      "key": "work.continue_work",
+      "it": "Continua a lavorare",
+      "en": "Continue working"
+    },
+    {
+      "key": "work.registered_contributions",
+      "it": "Contributi registrati",
+      "en": "Recorded contributions"
+    },
+    {
+      "key": "dialogue.copied",
+      "it": "Conversazione copiata",
+      "en": "Conversation copied"
+    },
+    {
+      "key": "work.available_dynamics_upper",
+      "it": "DINAMICHE DISPONIBILI",
+      "en": "AVAILABLE DYNAMICS"
+    },
+    {
+      "key": "events.to_review_upper",
+      "it": "EVENTO DA ESAMINARE",
+      "en": "EVENT TO REVIEW"
+    },
+    {
+      "key": "work.current_exploration",
+      "it": "Esplorazione corrente",
+      "en": "Current exploration"
+    },
+    {
+      "key": "help.interface_guide",
+      "it": "Guida all’interfaccia",
+      "en": "Interface guide"
+    },
+    {
+      "key": "work.prepare_a_contribution",
+      "it": "Prepara un contributo",
+      "en": "Prepare a contribution"
+    },
+    {
+      "key": "work.point_to_assess",
+      "it": "Punto da qualificare:",
+      "en": "Point to assess:"
+    },
+    {
+      "key": "projection.illustrative_scenario",
+      "it": "Scenario illustrativo",
+      "en": "Illustrative scenario"
+    },
+    {
+      "key": "layout.complementary_area",
+      "it": "Settore complementare",
+      "en": "Complementary area"
+    },
+    {
+      "key": "work.latest_local_trace",
+      "it": "Ultima traccia locale",
+      "en": "Latest local trace"
+    },
+    {
+      "key": "help.see_operation",
+      "it": "Vedi il funzionamento",
+      "en": "See how it works"
+    },
+    {
+      "key": "layout.full_page_view",
+      "it": "Vista a pagina intera",
+      "en": "Full-page view"
+    },
+    {
+      "key": "events.events_to_review_lower",
+      "it": "eventi da esaminare",
+      "en": "events to review"
+    },
+    {
+      "key": "work.relevant_to_focus",
+      "it": "pertinenti al focus:",
+      "en": "relevant to the focus:"
+    },
+    {
+      "key": "work.complementary_activities",
+      "it": "Attività complementari",
+      "en": "Complementary activities"
+    },
+    {
+      "key": "source.illustrative_context",
+      "it": "Contesto illustrativo:",
+      "en": "Illustrative context:"
+    },
+    {
+      "key": "work.continue_contribution",
+      "it": "Continua il contributo",
+      "en": "Continue the contribution"
+    },
+    {
+      "key": "work.review_consequences",
+      "it": "Esamina le conseguenze",
+      "en": "Review consequences"
+    },
+    {
+      "key": "events.pending_demo_events",
+      "it": "Eventi demo in attesa:",
+      "en": "Pending demo events:"
+    },
+    {
+      "key": "events.received_demo",
+      "it": "Eventi ricevuti (demo)",
+      "en": "Received events (demo)"
+    },
+    {
+      "key": "source.not_assessed",
+      "it": "Non ancora qualificato",
+      "en": "Not yet assessed"
+    },
+    {
+      "key": "work.reach_relationships",
+      "it": "Raggiungi le relazioni",
+      "en": "Reach the relationships"
+    },
+    {
+      "key": "preview.resize",
+      "it": "Ridimensiona anteprima",
+      "en": "Resize preview"
+    },
+    {
+      "key": "work.resize_card",
+      "it": "Ridimensiona la scheda",
+      "en": "Resize the card"
+    },
+    {
+      "key": "work.without_opening",
+      "it": "senza aprire la scheda",
+      "en": "without opening the card"
+    },
+    {
+      "key": "work.work_composition_upper",
+      "it": "COMPOSIZIONE DEL LAVORO",
+      "en": "WORK COMPOSITION"
+    },
+    {
+      "key": "work.contribution_comparison_upper",
+      "it": "CONFRONTO DI CONTRIBUTI",
+      "en": "CONTRIBUTION COMPARISON"
+    },
+    {
+      "key": "work.context_contributions_upper",
+      "it": "CONTRIBUTI DEL CONTESTO",
+      "en": "CONTEXT CONTRIBUTIONS"
+    },
+    {
+      "key": "projection.what_if",
+      "it": "Che cosa accadrebbe se…",
+      "en": "What would happen if…"
+    },
+    {
+      "key": "work.what_to_check",
+      "it": "Che cosa va verificato?",
+      "en": "What needs checking?"
+    },
+    {
+      "key": "dialogue.downloaded",
+      "it": "Conversazione scaricata",
+      "en": "Conversation downloaded"
+    },
+    {
+      "key": "work.open_direction_upper",
+      "it": "DIREZIONE ANCORA APERTA",
+      "en": "DIRECTION STILL OPEN"
+    },
+    {
+      "key": "dialogue.send_local_reply",
+      "it": "Invia a risposta locale",
+      "en": "Send for a local reply"
+    },
+    {
+      "key": "source.method_documentation",
+      "it": "Metodo e documentazione",
+      "en": "Method and documentation"
+    },
+    {
+      "key": "form.no_file",
+      "it": "Nessun file selezionato",
+      "en": "No file selected"
+    },
+    {
+      "key": "layout.four_areas",
+      "it": "Quattro aree simultanee",
+      "en": "Four simultaneous areas"
+    },
+    {
+      "key": "work.minimize_activity",
+      "it": "Riduci a icona attività",
+      "en": "Minimise activity"
+    },
+    {
+      "key": "help.presentation_guide_upper",
+      "it": "PRESENTAZIONE E GUIDA",
+      "en": "INTRODUCTION AND GUIDE"
+    },
+    {
+      "key": "preview.read_only_upper",
+      "it": "ANTEPRIMA · SOLA LETTURA",
+      "en": "PREVIEW · READ ONLY"
+    },
+    {
+      "key": "form.add_text_first",
+      "it": "Aggiungi prima un testo.",
+      "en": "Add some text first."
+    },
+    {
+      "key": "work.available_for",
+      "it": "Attività disponibili per",
+      "en": "Activities available for"
+    },
+    {
+      "key": "work.next_composition_upper",
+      "it": "COMPOSIZIONE DEL SEGUITO",
+      "en": "COMPOSING THE NEXT STEP"
+    },
+    {
+      "key": "work.condition_still_open_upper",
+      "it": "CONDIZIONE ANCORA APERTA",
+      "en": "CONDITION STILL OPEN"
+    },
+    {
+      "key": "work.compare_contributions",
+      "it": "Confronta due contributi",
+      "en": "Compare two contributions"
+    },
+    {
+      "key": "dialogue.discuss_context",
+      "it": "Dialoga con il contesto.",
+      "en": "Discuss the context."
+    },
+    {
+      "key": "dialogue.this_card_dialogue",
+      "it": "Dialogo di questa scheda",
+      "en": "Dialogue for this card"
+    },
+    {
+      "key": "layout.enlarge_restore",
+      "it": "Ingrandisci o ripristina",
+      "en": "Enlarge or restore"
+    },
+    {
+      "key": "events.no_new_change",
+      "it": "Nessuna nuova variazione",
+      "en": "No new change"
+    },
+    {
+      "key": "projection.possibilities_upper",
+      "it": "POSSIBILITÀ DA ESPLORARE",
+      "en": "POSSIBILITIES TO EXPLORE"
+    },
+    {
+      "key": "work.question_to_assess",
+      "it": "Questione da qualificare",
+      "en": "Question to assess"
+    },
+    {
+      "key": "work.record_read_case",
+      "it": "Registra e leggi il caso",
+      "en": "Record and read the case"
+    },
+    {
+      "key": "work.relationship_to_understand",
+      "it": "Relazione da comprendere",
+      "en": "Relationship to understand"
+    },
+    {
+      "key": "work.card_to_avatar",
+      "it": "Scheda ridotta ad avatar",
+      "en": "Card minimised to an icon"
+    },
+    {
+      "key": "work.mark_reviewed",
+      "it": "Conserva come esaminato",
+      "en": "Retain as reviewed"
+    },
+    {
+      "key": "work.no_contribution_yet",
+      "it": "Ancora nessun contributo.",
+      "en": "No contribution yet."
+    },
+    {
+      "key": "work.workspace_connections_upper",
+      "it": "COLLEGAMENTI CON IL CAMPO",
+      "en": "WORKSPACE CONNECTIONS"
+    },
+    {
+      "key": "proposal.session_candidates",
+      "it": "Candidate della sessione:",
+      "en": "Session candidates:"
+    },
+    {
+      "key": "work.collapse_expand_card",
+      "it": "Comprimi o espandi scheda",
+      "en": "Collapse or expand card"
+    },
+    {
+      "key": "work.retain_session",
+      "it": "Conserva nella sessione",
+      "en": "Retain in the session"
+    },
+    {
+      "key": "projection.nonbinding_upper",
+      "it": "PROIEZIONE NON VINCOLANTE",
+      "en": "NON-BINDING PROJECTION"
+    },
+    {
+      "key": "work.press_again_close",
+      "it": "Premi ancora per chiudere",
+      "en": "Press again to close"
+    },
+    {
+      "key": "work.record_session",
+      "it": "Registra nella sessione",
+      "en": "Record in the session"
+    },
+    {
+      "key": "work.session_contributions",
+      "it": "Contributi della sessione",
+      "en": "Session contributions"
+    },
+    {
+      "key": "work.resume_real_point",
+      "it": "Riprendi dal punto reale.",
+      "en": "Resume from the actual point."
+    },
+    {
+      "key": "source.source_state_upper",
+      "it": "STATO DI UNA FONTE · DEMO",
+      "en": "SOURCE STATE · DEMO"
+    },
+    {
+      "key": "work.write_trace_first",
+      "it": "Scrivi prima una traccia.",
+      "en": "Write a note first."
+    },
+    {
+      "key": "layout.manual_positions",
+      "it": "posizionate manualmente:",
+      "en": "manually positioned:"
+    },
+    {
+      "key": "dialogue.export_dialogue_proposals",
+      "it": "Esporta dialogo e proposte",
+      "en": "Export dialogue and proposals"
+    },
+    {
+      "key": "projection.hypotheses_upper",
+      "it": "IPOTESI · NON APPROVAZIONI",
+      "en": "HYPOTHESES · NOT APPROVALS"
+    },
+    {
+      "key": "work.order_relationships",
+      "it": "Ordina le relazioni utili.",
+      "en": "Order the useful relationships."
+    },
+    {
+      "key": "work.bring_something",
+      "it": "Porta una cosa nel lavoro.",
+      "en": "Bring something into the work."
+    },
+    {
+      "key": "work.formed_request",
+      "it": "Una richiesta ben formata.",
+      "en": "A well-formed request."
+    },
+    {
+      "key": "home.no_prepared_activity",
+      "it": "nessuna attività preparata",
+      "en": "no prepared activities"
+    },
+    {
+      "key": "home.occupies_swapped_place",
+      "it": "occupa il posto scambiato.",
+      "en": "takes the swapped position."
+    },
+    {
+      "key": "home.choose_another",
+      "it": "scegli un’altra attività",
+      "en": "choose another activity"
+    },
+    {
+      "key": "dialogue.question_for_card",
+      "it": "Domanda per questa scheda",
+      "en": "Question for this card"
+    },
+    {
+      "key": "work.contribution_for_next_upper",
+      "it": "CONTRIBUTO PER CHI CONTINUA",
+      "en": "CONTRIBUTION FOR THE NEXT PERSON"
+    },
+    {
+      "key": "source.part_demo_case",
+      "it": "Parte del caso dimostrativo",
+      "en": "Part of the illustrative case"
+    },
+    {
+      "key": "work.added_demo_capability_upper",
+      "it": "CAPACITÀ INSERITA NELLA DEMO",
+      "en": "CAPABILITY ADDED TO THE DEMO"
+    },
+    {
+      "key": "work.local_continuity_upper",
+      "it": "CONTINUITÀ DEL LAVORO LOCALE",
+      "en": "LOCAL WORK CONTINUITY"
+    },
+    {
+      "key": "work.remaining_assessment",
+      "it": "Ciò che resta da qualificare",
+      "en": "What still needs assessment"
+    },
+    {
+      "key": "source.simple_text_compare",
+      "it": "Confronto semplice di testi.",
+      "en": "Simple text comparison."
+    },
+    {
+      "key": "form.describe_first",
+      "it": "Descrivi prima il contenuto.",
+      "en": "Describe the content first."
+    },
+    {
+      "key": "rail.collapse_icons",
+      "it": "Riduci la sidebar alle icone",
+      "en": "Collapse sidebar to icons"
+    },
+    {
+      "key": "home.choose_environment",
+      "it": "Scegli un ambiente di lavoro",
+      "en": "Choose a work environment"
+    },
+    {
+      "key": "dialogue.write_local_question",
+      "it": "Scrivi una domanda locale...",
+      "en": "Write a local question…"
+    },
+    {
+      "key": "work.mark_reviewed_action",
+      "it": "Contrassegna come esaminato",
+      "en": "Mark as reviewed"
+    },
+    {
+      "key": "projection.detail_level",
+      "it": "Quanto dettaglio esplorare?",
+      "en": "How much detail should we explore?"
+    },
+    {
+      "key": "form.private_draft_upper",
+      "it": "COMUNICAZIONE / BOZZA PRIVATA",
+      "en": "COMMUNICATION / PRIVATE DRAFT"
+    },
+    {
+      "key": "work.original_contribution_upper",
+      "it": "CONTRIBUTO ORIGINALE · LOCALE",
+      "en": "ORIGINAL CONTRIBUTION · LOCAL"
+    },
+    {
+      "key": "work.person_choice",
+      "it": "Che cosa ha scelto la persona",
+      "en": "What the person chose"
+    },
+    {
+      "key": "work.explore_continue",
+      "it": "Esplora o continua il lavoro.",
+      "en": "Explore or continue the work."
+    },
+    {
+      "key": "events.illustrative_reviewed",
+      "it": "Eventi illustrativi esaminati",
+      "en": "Illustrative events reviewed"
+    },
+    {
+      "key": "rail.pin_icons",
+      "it": "Fissa le icone delle attività",
+      "en": "Pin activity icons"
+    },
+    {
+      "key": "work.generate_demo_view",
+      "it": "Genera una vista dimostrativa",
+      "en": "Generate an illustrative view"
+    },
+    {
+      "key": "dialogue.demo_assistant_message",
+      "it": "Messaggio per assistente demo",
+      "en": "Message for the demo assistant"
+    },
+    {
+      "key": "rail.hide_activity_bar",
+      "it": "Nascondi barra delle attività",
+      "en": "Hide activity bar"
+    },
+    {
+      "key": "proposal.none_selected",
+      "it": "Nessuna proposta selezionata.",
+      "en": "No proposal selected."
+    },
+    {
+      "key": "work.return_operating_card",
+      "it": "Ritorno alla scheda operativa",
+      "en": "Return to the work card"
+    },
+    {
+      "key": "projection.one_question_two",
+      "it": "Una domanda, due possibilità.",
+      "en": "One question, two possibilities."
+    },
+    {
+      "key": "work.change_topic_activity",
+      "it": "cambia argomento e attività",
+      "en": "changes topic and activity"
+    },
+    {
+      "key": "layout.dock_undock_side",
+      "it": "Aggancia o libera lateralmente",
+      "en": "Dock or undock at the side"
+    },
+    {
+      "key": "work.section_internal_environment",
+      "it": "Ambiente interno della sezione",
+      "en": "Internal section environment"
+    },
+    {
+      "key": "work.session_continuity_upper",
+      "it": "CONTINUITÀ / SESSIONE CORRENTE",
+      "en": "CONTINUITY / CURRENT SESSION"
+    },
+    {
+      "key": "work.illustrative_continuation_for",
+      "it": "Continuazione illustrativa per",
+      "en": "Illustrative continuation for"
+    },
+    {
+      "key": "rail.controls",
+      "it": "Controlli della barra Attività",
+      "en": "Activity bar controls"
+    },
+    {
+      "key": "work.full_functions_restored",
+      "it": "Funzioni complete ripristinate",
+      "en": "Full functions restored"
+    },
+    {
+      "key": "form.no_external_send",
+      "it": "Nessun invio esterno eseguito.",
+      "en": "No external submission made."
+    },
+    {
+      "key": "layout.card_docked_side",
+      "it": "Scheda agganciata lateralmente",
+      "en": "Card docked at the side"
+    },
+    {
+      "key": "work.quick_card_activity",
+      "it": "Attività in formato card rapido",
+      "en": "Activity in quick card format"
+    },
+    {
+      "key": "source.attributed_illustrative_upper",
+      "it": "FONTE ATTRIBUITA / ILLUSTRATIVA",
+      "en": "ATTRIBUTED / ILLUSTRATIVE SOURCE"
+    },
+    {
+      "key": "source.context_demo_source",
+      "it": "Fonte dimostrativa del contesto",
+      "en": "Illustrative context source"
+    },
+    {
+      "key": "form.closed_draft_kept",
+      "it": "Modulo chiuso; bozza conservata",
+      "en": "Form closed; draft retained"
+    },
+    {
+      "key": "work.useful_to_observe",
+      "it": "Potrebbe essere utile osservare",
+      "en": "It may be useful to observe"
+    },
+    {
+      "key": "work.case_observations_upper",
+      "it": "RISCONTRI DEL CASO ILLUSTRATIVO",
+      "en": "ILLUSTRATIVE CASE OBSERVATIONS"
+    },
+    {
+      "key": "layout.adjust_column_boundary",
+      "it": "Regola il confine della colonna",
+      "en": "Adjust the column boundary"
+    },
+    {
+      "key": "work.card_moved_keyboard",
+      "it": "Scheda spostata con la tastiera",
+      "en": "Card moved with the keyboard"
+    },
+    {
+      "key": "layout.position_updated",
+      "it": "posizione aggiornata nel campo",
+      "en": "position updated in the workspace"
+    },
+    {
+      "key": "proposal.prepare_competence",
+      "it": "Prepara candidato di competenza",
+      "en": "Prepare a competence candidate"
+    },
+    {
+      "key": "form.attach_local_file",
+      "it": "Allega file (solo elenco locale)",
+      "en": "Attach file (local list only)"
+    },
+    {
+      "key": "work.open_internal_section",
+      "it": "Apri ambiente interno di sezione",
+      "en": "Open internal section environment"
+    },
+    {
+      "key": "help.kernel_ui_ai_relation",
+      "it": "Come partecipano Kernel, UI e AI",
+      "en": "How the kernel, UI and AI take part"
+    },
+    {
+      "key": "events.illustrative_monitor_upper",
+      "it": "MONITORAGGIO · CASO ILLUSTRATIVO",
+      "en": "MONITORING · ILLUSTRATIVE CASE"
+    },
+    {
+      "key": "rail.hide_bar",
+      "it": "Nascondi la barra delle attività",
+      "en": "Hide the activity bar"
+    },
+    {
+      "key": "rail.show_bar",
+      "it": "Richiama la barra delle attività",
+      "en": "Show the activity bar"
+    },
+    {
+      "key": "layout.free_position_restored",
+      "it": "Ripristinata la posizione libera",
+      "en": "Free position restored"
+    },
+    {
+      "key": "dialogue.write_context_message",
+      "it": "Scrivi un messaggio contestuale.",
+      "en": "Write a contextual message."
+    },
+    {
+      "key": "help.start_work_tour",
+      "it": "Avvia il tour del lavoro in corso",
+      "en": "Start the work tour"
+    },
+    {
+      "key": "work.available_actions",
+      "it": "Azioni effettivamente disponibili",
+      "en": "Actually available actions"
+    },
+    {
+      "key": "layout.two_scrolling_columns",
+      "it": "Due colonne, con righe scorrevoli",
+      "en": "Two columns with scrolling rows"
+    },
+    {
+      "key": "source.no_comparison_yet",
+      "it": "Nessun confronto ancora eseguito.",
+      "en": "No comparison performed yet."
+    },
+    {
+      "key": "rail.hide_or_pin",
+      "it": "Nascondi o fissa la barra Attività",
+      "en": "Hide or pin the Activity bar"
+    },
+    {
+      "key": "work.collect_change",
+      "it": "Raccogli ciò che cambia il lavoro.",
+      "en": "Collect what changes the work."
+    },
+    {
+      "key": "work.activity_to_centre",
+      "it": "Attività portata nel campo centrale",
+      "en": "Activity brought into the centre"
+    },
+    {
+      "key": "work.quick_activity_focused",
+      "it": "Attività rapida portata in evidenza",
+      "en": "Quick activity brought into focus"
+    },
+    {
+      "key": "rail.expand_previews",
+      "it": "Espandi la sidebar con le anteprime",
+      "en": "Expand sidebar with previews"
+    },
+    {
+      "key": "work.same_subject_perspectives",
+      "it": "Lo stesso oggetto, più prospettive.",
+      "en": "The same subject, several perspectives."
+    },
+    {
+      "key": "work.find_resume_point",
+      "it": "Ritrova il punto da cui continuare.",
+      "en": "Find the point to continue from."
+    },
+    {
+      "key": "work.local_session_upper",
+      "it": "SESSIONE LOCALE · CASO ILLUSTRATIVO",
+      "en": "LOCAL SESSION · ILLUSTRATIVE CASE"
+    },
+    {
+      "key": "dialogue.downloaded_not_sent",
+      "it": "Testo locale scaricato, non inviato",
+      "en": "Local text downloaded, not submitted"
+    },
+    {
+      "key": "form.section_question_contribution",
+      "it": "Domanda o contributo della sezione",
+      "en": "Section question or contribution"
+    },
+    {
+      "key": "form.local_no_send_upper",
+      "it": "MODULO LOCALE · NESSUN INVIO ESTERNO",
+      "en": "LOCAL FORM · NO EXTERNAL SUBMISSION"
+    },
+    {
+      "key": "form.alongside_conversation",
+      "it": "Modulo affiancato alla conversazione",
+      "en": "Form placed alongside the conversation"
+    },
+    {
+      "key": "work.no_recorded_contribution",
+      "it": "Nessun contributo ancora registrato.",
+      "en": "No contribution recorded yet."
+    },
+    {
+      "key": "layout.return_previous",
+      "it": "Ritorno alla disposizione precedente",
+      "en": "Return to the previous arrangement"
+    },
+    {
+      "key": "projection.case_projection",
+      "it": "La vista è una proiezione del caso.",
+      "en": "The view is a projection of the case."
+    },
+    {
+      "key": "dialogue.linked_to",
+      "it": "Domanda e risposta restano collegate a",
+      "en": "Question and answer stay linked to"
+    },
+    {
+      "key": "work.one_subject_relations_time",
+      "it": "Un oggetto, molte relazioni nel tempo.",
+      "en": "One subject, many relationships over time."
+    },
+    {
+      "key": "tools.open_layout",
+      "it": "Apri strumenti e disposizioni del campo",
+      "en": "Open workspace tools and layouts"
+    },
+    {
+      "key": "work.await_intent_demo",
+      "it": "In attesa di un intento · dimostrazione",
+      "en": "Awaiting an intent · demonstration"
+    },
+    {
+      "key": "work.new_demo_capability",
+      "it": "Nuova capacità dimostrativa disponibile",
+      "en": "New illustrative capability available"
+    },
+    {
+      "key": "events.new_demo_event_review",
+      "it": "Nuovo evento dimostrativo da valutare",
+      "en": "New illustrative event to review"
+    },
+    {
+      "key": "work.subject_representation",
+      "it": "Rappresentazione dell'oggetto di lavoro",
+      "en": "Representation of the work subject"
+    },
+    {
+      "key": "layout.adjust_medium_columns",
+      "it": "Regola le due colonne del settore medie",
+      "en": "Adjust the two medium-card columns"
+    },
+    {
+      "key": "nautical.stern_diagram_upper",
+      "it": "KN · ACCESSO DI POPPA / VISTA SCHEMATICA",
+      "en": "KN · STERN ACCESS / SCHEMATIC VIEW"
+    },
+    {
+      "key": "layout.three_columns_fit",
+      "it": "Tre colonne quando lo spazio lo consente",
+      "en": "Three columns when space allows"
+    },
+    {
+      "key": "dialogue.copy_unavailable",
+      "it": "Copia non disponibile in questo contesto.",
+      "en": "Copy is unavailable in this context."
+    },
+    {
+      "key": "work.switch_views",
+      "it": "Spostati fra Panoramica e Lavoro in corso",
+      "en": "Switch between Overview and Work in progress"
+    },
+    {
+      "key": "work.select_activities",
+      "it": "Seleziona una o più attività dalle tessere.",
+      "en": "Select one or more activities from the tiles."
+    },
+    {
+      "key": "form.participant_question",
+      "it": "Cosa deve sapere o chiarire chi partecipa?",
+      "en": "What should a participant know or clarify?"
+    },
+    {
+      "key": "work.no_session_contributions",
+      "it": "Ancora nessun contributo in questa sessione.",
+      "en": "No contributions in this session yet."
+    },
+    {
+      "key": "help.work_medium_feedback",
+      "it": "Dal lavoro al mezzo, dal riscontro al metodo",
+      "en": "From work to the medium, from observation to the method"
+    },
+    {
+      "key": "proposal.not_assimilated",
+      "it": "conservato: non è una competenza assimilata.",
+      "en": "retained: it is not an assimilated competence."
+    },
+    {
+      "key": "work.activity_reached",
+      "it": "Attività raggiunta nella disposizione attuale",
+      "en": "Activity reached in the current arrangement"
+    },
+    {
+      "key": "layout.free_positions_kept",
+      "it": "Finestre libere: posizioni manuali preservate",
+      "en": "Free windows: manual positions preserved"
+    },
+    {
+      "key": "work.keep_focus_complementary",
+      "it": "Focus mantenuto: nuove attività complementari",
+      "en": "Focus retained: new complementary activities"
+    },
+    {
+      "key": "layout.four_areas_visible",
+      "it": "Quattro aree, senza nascondere altre attività",
+      "en": "Four areas without hiding other activities"
+    },
+    {
+      "key": "work.kept_elsewhere_no_company",
+      "it": "conservate altrove · nessuna azione aziendale",
+      "en": "retained elsewhere · no company action"
+    },
+    {
+      "key": "work.no_previous_activity",
+      "it": "Nessuna attività precedente in questa sessione.",
+      "en": "No previous activity in this session."
+    },
+    {
+      "key": "work.resize_keyboard",
+      "it": "Trascina per ridimensionare; frecce da tastiera",
+      "en": "Drag to resize; use keyboard arrows"
+    },
+    {
+      "key": "work.change_retain_question",
+      "it": "Che cosa cambia o merita di essere conservato?",
+      "en": "What changes or is worth retaining?"
+    },
+    {
+      "key": "form.change_retain_propose",
+      "it": "Che cosa vuoi cambiare, conservare o proporre?",
+      "en": "What would you like to change, retain or propose?"
+    },
+    {
+      "key": "home.roles_restored",
+      "it": "Ruoli e ordine iniziali della Home ripristinati.",
+      "en": "Initial home roles and order restored."
+    },
+    {
+      "key": "work.read_case_first",
+      "it": "Serve prima una lettura del caso da qualificare.",
+      "en": "Read the case before assessing it."
+    },
+    {
+      "key": "work.close_expiry",
+      "it": "per chiudere la scheda; scade tra pochi secondi.",
+      "en": "to close the card; expires in a few seconds."
+    },
+    {
+      "key": "work.resume_knowledge_question",
+      "it": "Che cosa deve sapere chi riprende questo punto?",
+      "en": "What should the next person know to resume here?"
+    },
+    {
+      "key": "work.context_several_competences",
+      "it": "Lo stesso contesto può richiedere più competenze.",
+      "en": "The same context can need several competences."
+    },
+    {
+      "key": "dialogue.busy",
+      "it": "L’assistente è occupato. Puoi riprovare fra poco.",
+      "en": "The assistant is busy. Please try again shortly."
+    },
+    {
+      "key": "work.card_restored_layout",
+      "it": "Scheda ripristinata nella disposizione del campo.",
+      "en": "Card restored in the workspace layout."
+    },
+    {
+      "key": "events.no_recent_event",
+      "it": "Nessun evento di prova recente per questa attività",
+      "en": "No recent test event for this activity"
+    },
+    {
+      "key": "layout.secondaries_side_by_side",
+      "it": "Secondarie affiancate quando lo spazio lo consente",
+      "en": "Secondary cards side by side when space allows"
+    },
+    {
+      "key": "home.interaction_hint",
+      "it": "principale · Hover: anteprima · Trascina: riordina",
+      "en": "primary · Hover: preview · Drag: reorder"
+    },
+    {
+      "key": "layout.complementary_space",
+      "it": "dello spazio operativo per attività complementari",
+      "en": "of the workspace for complementary activities"
+    },
+    {
+      "key": "proposal.explicit_transfer",
+      "it": "Il trasferimento al kernel di lavoro è esplicito.",
+      "en": "Transfer to the working kernel is explicit."
+    },
+    {
+      "key": "work.local_check_note",
+      "it": "Appunto di verifica aggiornato solo nella sessione.",
+      "en": "Check note updated only in the session."
+    },
+    {
+      "key": "work.no_open_activity",
+      "it": "Nessuna attività aperta. Usa + per aggiungerne una.",
+      "en": "No open activity. Use + to add one."
+    },
+    {
+      "key": "dialogue.explicit_question_note",
+      "it": "domanda esplicita a MAIOS AI nel sito configurato",
+      "en": "explicit question to MAIOS AI on the configured site"
+    },
+    {
+      "key": "source.local_word_comparison",
+      "it": "Confronto locale di parole, non valutazione tecnica.",
+      "en": "Local word comparison, not a technical assessment."
+    },
+    {
+      "key": "home.local_reorder",
+      "it": "Il riordino organizza questa vista locale del lavoro.",
+      "en": "Reordering organises this local view of the work."
+    },
+    {
+      "key": "work.manual_activity_focus_layout",
+      "it": "Scegliere manualmente attività, focus e disposizione.",
+      "en": "Choose activities, focus and layout manually."
+    },
+    {
+      "key": "work.keep_focus_toggle",
+      "it": "Attiva per preservare il focus quando aggiungi attività",
+      "en": "Enable to preserve focus when adding activities"
+    },
+    {
+      "key": "work.local_check_not_domain",
+      "it": "Controllo locale aggiornato (non qualifica il dominio).",
+      "en": "Local check updated (does not assess the domain)."
+    },
+    {
+      "key": "dialogue.public_context_question",
+      "it": "La domanda porta il contesto pubblico di questa scheda.",
+      "en": "The question carries this card’s public context."
+    },
+    {
+      "key": "home.drag_tile_select",
+      "it": "Trascina qui una tessera o selezionala dalla panoramica",
+      "en": "Drag a tile here or select it in Overview"
+    },
+    {
+      "key": "home.drag_swap_roles",
+      "it": "Trascina sopra un’altra tessera per scambiare i ruoli.",
+      "en": "Drag onto another tile to swap roles."
+    },
+    {
+      "key": "dialogue.reset_messages_only",
+      "it": "Premi Conferma reset per cancellare soltanto i messaggi.",
+      "en": "Press Confirm reset to clear only the messages."
+    },
+    {
+      "key": "layout.adjust_primary_complementary",
+      "it": "Regola il rapporto fra scheda principale e complementari",
+      "en": "Adjust the balance between primary and complementary cards"
+    },
+    {
+      "key": "work.drag_full_page",
+      "it": "Trascina in alto per pagina intera, oppure usa i comandi",
+      "en": "Drag up for full page, or use the controls"
+    },
+    {
+      "key": "work.remove_card_no_domain_delete",
+      "it": "Scheda rimossa dal medium, nessun dato dominio cancellato",
+      "en": "Card removed from the medium; no domain data deleted"
+    },
+    {
+      "key": "work.session_reset_no_sources",
+      "it": "Sessione demo azzerata. Nessuna fonte esterna modificata.",
+      "en": "Demo session reset. No external source changed."
+    },
+    {
+      "key": "layout.adaptive_all_visible",
+      "it": "Disposizione adattiva: tutte le attività restano nel campo",
+      "en": "Adaptive layout: all activities stay in the workspace"
+    },
+    {
+      "key": "work.resize_keyboard_long",
+      "it": "Trascina per ridimensionare; usa le frecce con la tastiera",
+      "en": "Drag to resize; use the keyboard arrows"
+    },
+    {
+      "key": "work.closed_sources_unchanged",
+      "it": "chiusa dal campo; dati e fonti del contesto non modificati.",
+      "en": "closed from the workspace; context data and sources unchanged."
+    },
+    {
+      "key": "dialogue.tied_to_activity_source",
+      "it": "La conversazione resta legata a questa attività e alla fonte",
+      "en": "The conversation stays tied to this activity and its source"
+    },
+    {
+      "key": "home.reordered_on_request",
+      "it": "Ruoli della Home riorganizzati per uso locale, su richiesta.",
+      "en": "Home roles reordered for local use, on request."
+    },
+    {
+      "key": "proposal.continue_kernel",
+      "it": "Una proposta può continuare nel kernel che lavora sul caso.",
+      "en": "A proposal can continue in the kernel working on the case."
+    },
+    {
+      "key": "work.free_focus_new_primary",
+      "it": "Focus libero: le nuove attività possono diventare principali.",
+      "en": "Free focus: new activities can become primary."
+    },
+    {
+      "key": "work.keep_focus_new_complementary",
+      "it": "Focus mantenuto: le nuove attività entrano come complementari.",
+      "en": "Focus retained: new activities are added as complementary cards."
+    },
+    {
+      "key": "dialogue.connection_unavailable",
+      "it": "Il collegamento MAIOS AI non è disponibile in questo ambiente.",
+      "en": "The MAIOS AI connection is unavailable in this environment."
+    },
+    {
+      "key": "events.keep_event_without_focus",
+      "it": "L’evento resta nel registro, senza imporre un cambio di focus.",
+      "en": "The event stays in the log without forcing a focus change."
+    },
+    {
+      "key": "work.context_activity_sources",
+      "it": "cambia argomento e attività conservando le fonti delle schede",
+      "en": "changes topic and activities while retaining the card sources"
+    },
+    {
+      "key": "nautical.three_d_intro",
+      "it": "Presentazione tridimensionale",
+      "en": "3D presentation"
+    },
+    {
+      "key": "work.open_do_organize",
+      "it": "Apri Fare o Organizzare se vuoi lasciare un contributo locale.",
+      "en": "Open Do or Organise to leave a local contribution."
+    },
+    {
+      "key": "work.tools_without_case_change",
+      "it": "Affiancare, spostare o ridurre strumenti senza cambiare il caso.",
+      "en": "Place tools alongside, move or minimise them without changing the case."
+    },
+    {
+      "key": "layout.recomposed_drafts_kept",
+      "it": "Campo ricomposto: attività conservate, focus e bozze preservati.",
+      "en": "Workspace recomposed: activities retained, focus and drafts preserved."
+    },
+    {
+      "key": "events.reviewed_not_approved",
+      "it": "Evento esaminato localmente, nessuna verifica tecnica approvata.",
+      "en": "Event reviewed locally; no technical check approved."
+    },
+    {
+      "key": "dialogue.ask_how_use_kernel",
+      "it": "Si può chiedere come usare il kernel in questo punto del lavoro.",
+      "en": "You can ask how to use the kernel at this point in the work."
+    },
+    {
+      "key": "work.drag_down_restore",
+      "it": "Trascina verso il basso per tornare alla disposizione precedente",
+      "en": "Drag down to return to the previous arrangement"
+    },
+    {
+      "key": "work.illustrative_contribution_local",
+      "it": "Il caso è illustrativo; il contributo resta in questa sessione.",
+      "en": "The case is illustrative; the contribution stays in this session."
+    },
+    {
+      "key": "dialogue.question_sent_public_context",
+      "it": "Domanda inviata a MAIOS AI con il contesto pubblico della scheda.",
+      "en": "Question sent to MAIOS AI with the card’s public context."
+    },
+    {
+      "key": "work.activities_retain_identity",
+      "it": "Ogni attività conserva la sua identità attraverso i cambi di forma.",
+      "en": "Each activity retains its identity as its form changes."
+    },
+    {
+      "key": "work.first_contribution",
+      "it": "Il primo contributo può essere un’esigenza, una fonte o un riscontro.",
+      "en": "The first contribution can be a requirement, a source or an observation."
+    },
+    {
+      "key": "work.full_page_drag_back",
+      "it": "Pagina intera. Trascina l’intestazione in basso per tornare al campo.",
+      "en": "Full page. Drag the header down to return to the workspace."
+    },
+    {
+      "key": "work.primary_included",
+      "it": "attività principale già inclusa; trascina per cambiare la principale",
+      "en": "primary activity already included; drag to change the primary activity"
+    },
+    {
+      "key": "layout.proposal_accepted_event_not",
+      "it": "Disposizione proposta accettata: attività vicine, evento non approvato.",
+      "en": "Proposed layout accepted: activities nearby, event not approved."
+    },
+    {
+      "key": "work.full_page_lower",
+      "it": "a pagina intera. Trascina l’intestazione in basso per tornare al campo.",
+      "en": "full page. Drag the header down to return to the workspace."
+    },
+    {
+      "key": "projection.explicit_scenarios",
+      "it": "Le alternative mostrate sono scenari espliciti, non previsioni statistiche.",
+      "en": "The alternatives shown are explicit scenarios, not statistical predictions."
+    },
+    {
+      "key": "dialogue.write_contextual_message",
+      "it": "Scrivi un messaggio contestuale...",
+      "en": "Write a contextual message…"
+    },
+    {
+      "key": "form.describe_question_contribution",
+      "it": "Descrivi una domanda o un contributo...",
+      "en": "Describe a question or contribution…"
+    },
+    {
+      "key": "form.subject_observation_question",
+      "it": "Situazione, oggetto, riscontro e domanda…",
+      "en": "Situation, subject, observation and question…"
+    },
+    {
+      "key": "work.contexts_retained",
+      "it": "campo e avatar richiamati; le attività degli altri ambienti restano conservate.",
+      "en": "workspace and icons recalled; activities in other environments remain retained."
+    },
+    {
+      "key": "work.draft_local_questions_dialogue",
+      "it": "La bozza rimane locale. Le domande per MAIOS AI si inviano nel dialogo della scheda.",
+      "en": "The draft stays local. Send questions for MAIOS AI through the card dialogue."
+    },
+    {
+      "key": "work.note_requirement_observation",
+      "it": "Annota un'esigenza, un riscontro o una proposta…",
+      "en": "Note a requirement, observation or proposal…"
+    },
+    {
+      "key": "home.keyboard_drag_hint",
+      "it": "Invio per scegliere, trascina per scambiare la forma. Alt più freccia per riordinare.",
+      "en": "Enter to select, drag to swap the form. Alt plus arrow to reorder."
+    },
+    {
+      "key": "home.reorder_not_priority",
+      "it": "Il riordino riguarda la disposizione locale, non la priorità reale di un’organizzazione.",
+      "en": "Reordering affects the local layout, not an organisation’s actual priorities."
+    },
+    {
+      "key": "dialogue.connection_draft_retained",
+      "it": "Il collegamento MAIOS AI non è disponibile in questo ambiente. La bozza resta nella scheda.",
+      "en": "The MAIOS AI connection is unavailable in this environment. The draft stays in the card."
+    },
+    {
+      "key": "work.check_notes_not_company",
+      "it": "Le spunte sono soltanto note di controllo di questa demo; non qualificano uno stato aziendale.",
+      "en": "Check marks are notes for this demo; they do not establish a company state."
+    },
+    {
+      "key": "source.lexical_not_compatibility",
+      "it": "Questa funzione confronta parole presenti in due testi locali. Non interpreta la compatibilità nautica.",
+      "en": "This function compares words in two local texts. It does not assess marine compatibility."
+    },
+    {
+      "key": "form.describe_source_difference",
+      "it": "Descrivi una fonte, una richiesta o una differenza osservata...",
+      "en": "Describe a source, request or observed difference…"
+    },
+    {
+      "key": "preview.illustrative_no_actions",
+      "it": "I dati sono illustrativi. Questa anteprima non apre una finestra, non sposta il focus e non approva eventi.",
+      "en": "Data is illustrative. This preview does not open a window, move focus or approve events."
+    },
+    {
+      "key": "events.no_event_layout_sufficient",
+      "it": "Non è arrivato alcun nuovo evento. La disposizione corrente può essere sufficiente: non è necessario animarla.",
+      "en": "No new event has arrived. The current layout may be sufficient; no animation is required."
+    },
+    {
+      "key": "home.primary_already_in_plan",
+      "it": "è l’attività principale ed è già inclusa nel piano. Trascina un’altra attività al suo posto per cambiare la principale.",
+      "en": "is the primary activity and is already included in the plan. Drag another activity into its place to change the primary."
+    },
+    {
+      "key": "work.local_note_continuation",
+      "it": "Questa annotazione resta nella sessione del browser. Il dialogo della scheda permette di chiedere come farla continuare.",
+      "en": "This note stays in the browser session. The card dialogue lets you ask how to carry it forward."
+    },
+    {
+      "key": "work.not_company_document",
+      "it": "Non costituisce un documento tecnico aziendale. Il lavoro in azienda collega documenti, persone e strumenti del suo contesto.",
+      "en": "This is not a company technical document. Company work connects the documents, people and tools of its context."
+    },
+    {
+      "key": "source.word_comparison_meaning",
+      "it": "Il confronto locale rende visibili parole condivise e differenze. Il dialogo della scheda permette di discuterne il significato.",
+      "en": "Local comparison reveals shared words and differences. The card dialogue lets you discuss their meaning."
+    },
+    {
+      "key": "work.relevant_activity_attribution",
+      "it": "Raggiungi attività pertinenti conservando il lavoro principale. Un contributo da un altro ambito rimane attribuito alla sua fonte.",
+      "en": "Reach relevant activities while retaining the main work. A contribution from another context remains attributed to its source."
+    },
+    {
+      "key": "dialogue.processing_boundary",
+      "it": "La domanda inviata raggiunge MAIOS AI. Le bozze nelle altre schede restano locali. Il servizio AI elabora i messaggi inviati; usa esempi senza dati riservati.",
+      "en": "The submitted question reaches MAIOS AI. Drafts in other cards stay local. The AI service processes submitted messages; use examples without confidential data."
+    },
+    {
+      "key": "dialogue.card_processing_boundary",
+      "it": "Con Invia, la domanda raggiunge MAIOS AI insieme al contesto pubblico della scheda. Le bozze nelle altre schede restano locali. Il servizio AI elabora i messaggi inviati; usa esempi senza dati riservati.",
+      "en": "Send delivers the question to MAIOS AI with the card’s public context. Drafts in other cards stay local. The AI service processes submitted messages; use examples without confidential data."
+    },
+    {
+      "key": "work.sources_local_transfer_boundary",
+      "it": "Le schede usano le fonti del kernel presentato. I casi sono illustrativi; contributi e proposte restano locali finché vengono trasferiti al kernel che continua il lavoro. Le domande inviate a MAIOS AI sono distinte da quelle bozze.",
+      "en": "The cards use the presented kernel’s sources. Cases are illustrative; contributions and proposals stay local until transferred to the kernel continuing the work. Questions sent to MAIOS AI are distinct from those drafts."
+    },
+    {
+      "key": "card.title_contribute",
+      "it": "Porta un contributo",
+      "en": "Bring a contribution"
+    },
+    {
+      "key": "card.title_check",
+      "it": "Riscontri e criteri",
+      "en": "Observations and criteria"
+    },
+    {
+      "key": "card.title_organise",
+      "it": "Relazioni di lavoro",
+      "en": "Work relationships"
+    },
+    {
+      "key": "card.title_present",
+      "it": "Percorso nel tempo",
+      "en": "A path through time"
+    },
+    {
+      "key": "card.title_resume",
+      "it": "Punto di continuazione",
+      "en": "Point of continuation"
+    },
+    {
+      "key": "card.title_experiment",
+      "it": "Nuove possibilità",
+      "en": "New possibilities"
+    },
+    {
+      "key": "card.title_monitor",
+      "it": "Fonti in relazione",
+      "en": "Related sources"
+    },
+    {
+      "key": "activity.dialogue_local",
+      "it": "Dialogo locale di prova",
+      "en": "Illustrative dialogue"
+    },
+    {
+      "key": "activity.monitor_description",
+      "it": "Più fonti, un solo campo",
+      "en": "Several sources, one workspace"
+    },
+    {
+      "key": "activity.compare_description",
+      "it": "Differenze, criteri e fonti",
+      "en": "Differences, criteria and sources"
+    },
+    {
+      "key": "activity.select_title",
+      "it": "Quale attività serve?",
+      "en": "Which activity is useful?"
+    },
+    {
+      "key": "activity.composition",
+      "it": "COMPOSIZIONE DEL CAMPO",
+      "en": "WORKSPACE COMPOSITION"
+    },
+    {
+      "key": "activity.options_meaning",
+      "it": "Le voci indicano modi di lavorare, non funzioni già eseguite dal Kernel.",
+      "en": "These options offer ways of working; they do not report functions already performed by the kernel."
+    },
+    {
+      "key": "card.title_compare",
+      "it": "Confronto contestuale",
+      "en": "Contextual comparison"
+    },
+    {
+      "key": "compare.initial_state",
+      "it": "Il confronto partirà dai testi presenti.",
+      "en": "Comparison will use the current texts."
+    }
+  ]
+}

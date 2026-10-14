@@ -1,75 +1,75 @@
 # K-UX-AI
 
-**Una competenza che un LLM usa per rendere il lavoro percepibile e operabile,
-costruirne il codice e imparare attraverso il suo uso.**
+**A competence that an LLM uses to make work understandable and actionable,
+build its interface code and learn through its use.**
 
-K-UX-AI è un kernel pubblico di competenza componibile con sistemi agentici
-e kernel di dominio. Il suo sapere collega intento, fonti, accadimenti,
-focus, espressione e intervento umano. Può formare siti, mappe concettuali,
-ambienti interattivi e pannelli di lavoro attraverso i mezzi del ricevente.
+K-UX-AI is a public competence kernel that can be composed with agentic systems
+and domain kernels. Its knowledge connects intent, sources, events, focus,
+expression and human intervention. It can form websites, concept maps,
+interactive environments and work panels through the receiving system's means.
 
-Il [Manifesto del Web vivente](MANIFESTO.md) custodisce l'orizzonte:
-**dal Web che consultiamo al Web che abitiamo**. Il [Kernel](KERNEL.md)
-porta la relazione operativa, la [competenza](competences/ux-ai/COMPETENCE.md)
-il metodo e la [guida](competences/ux-ai/GUIDE.md) le ragioni e il saper fare.
-Kernel Nautico applica questa competenza al lavoro nel cantiere navale.
+The [Living Web Manifesto](MANIFESTO.md) preserves its horizon: **from the Web
+we consult to the Web we inhabit**. The [kernel](KERNEL.md) carries the operating
+relation, the [competence](competences/ux-ai/COMPETENCE.md) its method and the
+[guide](competences/ux-ai/GUIDE.md) its reasons and practical knowledge.
+Kernel Nautico applies this competence to work in a shipyard.
 
-## Usarlo nel proprio sistema
+[Italiano](README.it.md) · [English workspace](examples/public-griglia/demo/)
+· [Interfaccia italiana](examples/public-griglia/demo/it/)
 
-Rendi raggiungibile il repository o allega i corpi pertinenti al modello.
-Parti da [BOOT.md](BOOT.md) e dal [raccordo LLM](adapters/llm/ENTRY.md),
-insieme alla fonte del lavoro. Un core come MPK può comporre K-UX-AI
-tra le proprie competenze; un altro harness usa gli stessi metodi con
-i suoi strumenti e controller.
+## Use it in your system
 
-La competenza comprende cosa deve diventare possibile, compone le capacità
-utili e costruisce una forma originale. Movimento, testo, spazio, immagine
-e altri canali partecipano secondo il lavoro. La resa e le conseguenze
-possono cambiare la comprensione e il codice. La guida conserva quanto
-cambia il prossimo fare.
+Make the repository accessible or provide the relevant documents to the model.
+Start with [BOOT.md](BOOT.md) and the [LLM entry](adapters/llm/ENTRY.md), together
+with the sources of the work. A core such as MPK can compose K-UX-AI among its
+competences; another harness can use the same methods with its own tools and
+controllers.
 
-Il [raccordo all'ambiente](docs/receiving-environment.md) collega metodo
-e mezzi effettivi. Il dominio custodisce dati, fonti e significato degli
-effetti; il ricevente mantiene contesto e learning propri.
+The competence understands what needs to become possible, composes useful
+capabilities and constructs an original form. Movement, text, space, images
+and other channels participate as the work requires. Their expression and
+consequences can change understanding and code. The guide retains what changes
+the next use.
 
-## Presentazione e primo uso
+The [receiving-environment guide](docs/receiving-environment.md) connects method
+with available means. The domain retains its data, sources and the meaning of
+effects; the receiving system keeps its own context and learning.
 
-Lo [spazio di lavoro](examples/public-griglia/demo/) permette di conoscere
-K-UX-AI e provare le sue funzioni. Presentazione, Composizione, Strumenti,
-Interazione e Apprendimento sono gli argomenti del servizio. La Panoramica
-prepara le attività; Lavoro in corso apre schede complementari e conserva
-focus e bozze mentre cambia ciò che serve vedere.
+## Presentation and first use
 
-Le schede hanno funzioni diverse: presentare e guidare, ricevere un contributo,
-controllare, esplorare, progettare, organizzare, comunicare, riprendere,
-sperimentare, monitorare eventi illustrativi, confrontare testi e dialogare.
-Il kernel ospitante fornisce significati e fonti attraverso il proprio profilo.
-Nel cantiere, le schede di Kernel Nautico collegano esigenze dell’armatore,
-progettazione, costruzione e vita dell’imbarcazione nel lessico del settore.
+The [workspace](examples/public-griglia/demo/) introduces K-UX-AI and lets you
+try its functions. Introduction, Composition, Tools, Interaction and Learning
+are its service topics. Overview prepares activities; Work in progress opens
+complementary cards and preserves focus and drafts as what needs to be seen changes.
 
-Servi il repository con un server statico:
+Cards can present and guide, receive a contribution, check, explore, design,
+organise, communicate, resume, experiment, monitor illustrative events, compare
+texts and support dialogue. The hosting kernel supplies meaning and sources
+through its profile. Kernel Nautico connects owner requirements, design,
+construction and vessel life using the sector's terminology.
+
+Serve the repository with a static server:
 
 ```sh
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
-Apri `http://127.0.0.1:8080/examples/public-griglia/demo/`.
-Il campo e le schede funzionano localmente. Le domande inviate esplicitamente
-usano il servizio pubblico MAIOS del sito configurato; il server statico
-semplice non fornisce quel servizio e la UI mostra il collegamento indisponibile.
-Le altre bozze restano locali. Dialoghi e proposte si esportano su richiesta;
-il trasferimento al kernel ricevente continua il lavoro e il suo apprendimento.
+Open `http://127.0.0.1:8080/examples/public-griglia/demo/`. English is the default;
+use the Italiano link for the Italian version. The workspace and cards work
+locally. Explicitly submitted questions use the public MAIOS service on a
+configured site; a simple static server does not provide that service, and the
+UI reports the unavailable connection. Other drafts remain local. Dialogues
+and proposals can be exported on request; transfer to the receiving kernel
+continues the work and its learning.
 
-La [guida all’uso delle schede](docs/public-griglia.md) spiega preparazione,
-attività, dialogo e continuazione dei contributi. La [documentazione delle
-sorgenti](docs/source-and-evolution.md) conserva attribuzioni, costruzione
-e riferimenti per chi sviluppa o integra il codice.
+The [card guide](docs/public-griglia.md) explains preparation, activities,
+dialogue and continuation. [Source documentation](docs/source-and-evolution.md)
+retains attribution, construction and references for developers and integrators.
+The `0.2.0-alpha.3` source distribution includes the competence kernel,
+JavaScript modules and this public interface. The competence can construct
+other forms for other situations.
 
-La versione `0.2.0-alpha.3` comprende il kernel di competenza, i moduli
-JavaScript e questa interfaccia pubblica.
-La competenza può costruire altre forme per altre situazioni.
-
-## Collegare il runtime
+## Connect the runtime
 
 ```js
 import { createMedium } from './src/medium.js';
@@ -85,17 +85,16 @@ ui.dispatch({ type: 'compare', objectId: 'your-object' });
 ui.observe(record => yourDevelopmentObserver(record));
 ```
 
-Il controller decide il risultato del gesto e restituisce lo stato.
-Schema di dominio, renderer e trasporto si compongono secondo il ricevente.
-Per il contratto eseguibile: `npm test`, Node.js 20+.
+The controller determines the result of the gesture and returns state. Domain
+schema, renderer and transport are composed for the receiving environment.
+Run `npm test` with Node.js 20+ for the executable contract.
 
-- [Interfaccia JavaScript](docs/interface.md)
-- [Adattamento e MessagePort](docs/receiving-environment.md)
-- [Continuità e apprendimento](docs/continuity.md)
-- [Distribuzione](docs/distribution.md)
-- [Sorgenti ed evoluzione](docs/source-and-evolution.md)
+- [JavaScript interface](docs/interface.md)
+- [Adaptation and MessagePort](docs/receiving-environment.md)
+- [Continuity and learning](docs/continuity.md)
+- [Distribution](docs/distribution.md)
+- [Sources and evolution](docs/source-and-evolution.md)
 
-Il produttore continua la formazione nella propria sorgente e trasferisce
-aggiornamenti selezionati a questo prodotto. Il sapere pubblico permette
-di comprendere, costruire e continuare nel proprio ambiente.
-Versione sorgente: **0.2.0-alpha.3**.
+The producer continues formation in its own source and transfers selected
+updates to this product. Public knowledge supports understanding, construction
+and continuation in the adopting environment. Source version: **0.2.0-alpha.3**.

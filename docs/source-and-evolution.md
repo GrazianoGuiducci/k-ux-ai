@@ -72,3 +72,22 @@ i loro nomi e significati appartengono al profilo ospitante.
 
 Queste informazioni servono alla costruzione e all’integrazione tecnica.
 La [guida all’uso](public-griglia.md) conduce l’incontro con il prodotto.
+
+## English and Italian builds
+
+English is the default public UI. `PROFILE.json` and `demo/` carry English;
+`PROFILE.it.json` and `demo/it/` support Italian. Install pinned build dependencies
+with `npm ci --ignore-scripts`. The compiler uses `tools/localize_public_griglia.mjs`
+and the semantic-key `src/ui/locales/public-workspace.json` catalogue. The tours
+use `src/ui/locales/public-tours.json`. Source-reference bytes remain unchanged;
+JavaScript literals and template chunks are localised during build, preserving
+code expressions. Visitor drafts and model replies are not translated.
+
+```sh
+npm ci --ignore-scripts
+python tools/build_public_griglia.py --profile examples/public-griglia/PROFILE.json --output examples/public-griglia/demo
+python tools/build_public_griglia.py --profile examples/public-griglia/PROFILE.json --output examples/public-griglia/demo/it --locale it
+```
+
+Both builds record locale and source identities. A hosting page must select the
+artifact matching its locale and pass that locale to the conversation endpoint.
