@@ -12,7 +12,7 @@ Il [Manifesto del Web vivente](MANIFESTO.md) custodisce l'orizzonte:
 **dal Web che consultiamo al Web che abitiamo**. Il [Kernel](KERNEL.md)
 porta la relazione operativa, la [competenza](competences/ux-ai/COMPETENCE.md)
 il metodo e la [guida](competences/ux-ai/GUIDE.md) le ragioni e il saper fare.
-Kernel Nautico è riferimento e primo dominio operativo.
+Kernel Nautico applica questa competenza al lavoro nel cantiere navale.
 
 ## Usarlo nel proprio sistema
 
@@ -34,17 +34,18 @@ effetti; il ricevente mantiene contesto e learning propri.
 
 ## Presentazione e primo uso
 
-La [Griglia pubblica](examples/public-griglia/demo/) usa il medium costruito
-con GPT per presentare K-UX-AI stesso. È neutra: Presentazione, Composizione,
-Mezzi e strumenti, Interazione, Ripresa e apprendimento sono contesti del
-suo servizio. Home prepara un campo di schede complementari; il campo
-conserva focus e bozze mentre il lavoro si ricompone.
+Lo [spazio di lavoro](examples/public-griglia/demo/) permette di conoscere
+K-UX-AI e provare le sue funzioni. Presentazione, Composizione, Strumenti,
+Interazione e Apprendimento sono gli argomenti del servizio. La Panoramica
+prepara le attività; Lavoro in corso apre schede complementari e conserva
+focus e bozze mentre cambia ciò che serve vedere.
 
 Le schede hanno funzioni diverse: presentare e guidare, ricevere un contributo,
 controllare, esplorare, progettare, organizzare, comunicare, riprendere,
 sperimentare, monitorare eventi illustrativi, confrontare testi e dialogare.
 Il kernel ospitante fornisce significati e fonti attraverso il proprio profilo.
-Kernel Nautico usa questa stessa base con il suo profilo di dominio.
+Nel cantiere, le schede di Kernel Nautico collegano esigenze dell’armatore,
+progettazione, costruzione e vita dell’imbarcazione nel lessico del settore.
 
 Servi il repository con un server statico:
 
@@ -59,14 +60,13 @@ semplice non fornisce quel servizio e la UI mostra il collegamento indisponibile
 Le altre bozze restano locali. Dialoghi e proposte si esportano su richiesta;
 il trasferimento al kernel ricevente continua il lavoro e il suo apprendimento.
 
-La [guida del mezzo pubblico](docs/public-griglia.md) spiega profilo,
-ricostruzione, collegamenti e uso. Il [riferimento GPT originale](examples/griglia/README.md)
-resta invariato e raggiungibile separatamente, con il suo caso nautico e le
-risposte sintetiche. I precedenti [esercizi MessagePort](examples/workspace/README.md)
-e [kernel-mirror](examples/kernel-mirror/) conservano il proprio compito tecnico.
+La [guida all’uso delle schede](docs/public-griglia.md) spiega preparazione,
+attività, dialogo e continuazione dei contributi. La [documentazione delle
+sorgenti](docs/source-and-evolution.md) conserva attribuzioni, costruzione
+e riferimenti per chi sviluppa o integra il codice.
 
 La versione `0.2.0-alpha.3` comprende il kernel di competenza, i moduli
-JavaScript e questa incarnazione pubblica derivata dalla Griglia GPT.
+JavaScript e questa interfaccia pubblica.
 La competenza può costruire altre forme per altre situazioni.
 
 ## Collegare il runtime
