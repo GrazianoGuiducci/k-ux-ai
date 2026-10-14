@@ -87,3 +87,13 @@ reference remains attributed in source documentation. Node contracts and
 derivative syntax/build identities qualify the implementation; they do not
 measure visitor understanding. The current browser renders at 1280 × 721;
 the attempted viewport override did not provide new breakpoint evidence.
+
+## Home and free-card resize — 14 October 2026
+
+Activity tiles place icon and title on one row, with description and controls
+grouped separately. Their desktop minimum heights follow this composition.
+The free compact-card resize now begins at displayed stage-relative bounds;
+explicit user sizing overrides the initial 350 × 235 compact cap and retains
+the card content. Keyboard and pointer resize preserve the user's geometry.
+The shared executable regression fails on the previous derivative and passes
+on this one. The selected original remains unchanged and attributed.

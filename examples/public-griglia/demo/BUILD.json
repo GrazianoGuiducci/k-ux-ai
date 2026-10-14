@@ -5,7 +5,7 @@
   "reference_sha256": "1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b",
   "profile_sha256": "4d63b106b8997f2e0eb637d2d5baa076015ce06ed9c071a93749fb875991ee1f",
   "runtime_sha256": "cf7ca0ea6425e371decaffee801197476e47bdf9f4ef7ad69ccc6545d0de37a4",
-  "html_sha256": "9698470117db9eb7171e3534e61a4237167c7d8f313871925445a95449788ea8",
+  "html_sha256": "c7ec4ed22f2a4a131840d711bc477af2ce188540f46f76b29acc809495622219",
   "means": {
     "ui": "GPT Griglia v5.12 derived public incarnation",
     "dialogs": "explicit MAIOS public assistant requests when host configured",

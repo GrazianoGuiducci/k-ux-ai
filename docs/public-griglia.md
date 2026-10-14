@@ -12,6 +12,13 @@ Strumenti, Interazione e Apprendimento. Scegliendo un argomento si può preparar
 un insieme di attività, poi aprire il lavoro in corso. Le schede si possono affiancare
 o portare al centro; il cambio di vista conserva il focus e le bozze.
 
+Nelle tessere iniziali, icona e titolo identificano insieme l’attività;
+la descrizione chiarisce il suo uso. Da Strumenti puoi scegliere Libero
+e trascinare l’angolo inferiore destro di una scheda per ridimensionarla,
+anche nel formato compatto. Sullo stesso controllo puoi usare le frecce
+della tastiera; Maiusc permette variazioni più ampie. Contenuti e bozze
+restano collegati alla scheda.
+
 ## Comprendere, contribuire e confrontare
 
 Presentare e Capire spiegano scopo, contesto e metodo. Esplorare mostra le

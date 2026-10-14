@@ -94,6 +94,64 @@ def public_tours(profile: dict) -> tuple[list[dict], list[dict]]:
     return home, work
 
 
+def compose_card_layout(text: str) -> str:
+    text = replace_one(text,
+        '<div class="tile-head"><span class="tile-icon" aria-hidden="true">${esc(intent.icon)}</span><span class="tile-sequence">${String(index+1).padStart(2,\'0\')} / 10</span></div><div class="tile-center"><h3>${esc(intent.verb)}</h3>',
+        '<div class="tile-head"><div class="tile-heading"><span class="tile-icon" aria-hidden="true">${esc(intent.icon)}</span><h3>${esc(intent.verb)}</h3></div><span class="tile-sequence">${String(index+1).padStart(2,\'0\')} / 10</span></div><div class="tile-center">')
+    text = replace_one(text, 'function moduleElement(p){', '''function preparePanelResize(p){
+ const el=p.el;el.getAnimations().forEach(animation=>animation.cancel());
+ const stage=shell.stage.getBoundingClientRect(),box=el.getBoundingClientRect();
+ const scaleX=stage.width/shell.stage.clientWidth||1,scaleY=stage.height/shell.stage.clientHeight||1;
+ Object.assign(p,screenRect({x:(box.left-stage.left)/scaleX,y:(box.top-stage.top)/scaleY,w:box.width/scaleX,h:box.height/scaleY}));
+ p.userSized=true;
+ return {scaleX,scaleY};
+}
+function moduleElement(p){''')
+    text = replace_one(text,
+        'const initial={x:e.clientX,y:e.clientY,w:p.w,h:p.h};',
+        'const scale=preparePanelResize(p);\n   const initial={x:e.clientX,y:e.clientY,w:p.w,h:p.h,...scale};')
+    text = replace_one(text,
+        'const size=screenRect({...p,w:initial.w+ev.clientX-initial.x,h:initial.h+ev.clientY-initial.y});\n     p.w=size.w;p.h=size.h;moduleStyles(p,screenRect(p));',
+        'const size=screenRect({...p,w:initial.w+(ev.clientX-initial.x)/initial.scaleX,h:initial.h+(ev.clientY-initial.y)/initial.scaleY});\n     Object.assign(p,size);moduleStyles(p,screenRect(p));')
+    text = replace_one(text,
+        'focusPanel(p,{force:true});p.dock=null;p.maximized=false;p.manualPosition=true;\n   const step=e.shiftKey?40:15;',
+        'focusPanel(p,{force:true});p.dock=null;p.maximized=false;p.manualPosition=true;\n   preparePanelResize(p);\n   const step=e.shiftKey?40:15;')
+    text = replace_one(text,
+        "if(p.compact&&!p.maximized&&!p.dock&&state.layout==='free'){",
+        "if(p.compact&&!p.userSized&&!p.maximized&&!p.dock&&state.layout==='free'){")
+    text = replace_one(text,
+        'p.compact=!p.compact; p.maximized=false; p.dock=null;',
+        'p.compact=!p.compact; p.userSized=false; p.maximized=false; p.dock=null;')
+    return replace_one(text, '</head>', '''<style id="kux-public-card-layout">
+.intent-grid .intent-tile{container-type:inline-size;border-radius:10px!important;padding:10px!important;gap:6px!important;justify-content:flex-start}
+.intent-grid .tile-head{align-items:center;gap:10px;flex:none}
+.intent-grid .tile-heading{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.intent-grid .tile-heading .tile-icon{flex:none;font-size:23px;line-height:1}
+.intent-grid.kux-home-packed>.intent-tile .tile-heading h3{margin:0!important;line-height:1.12;font-size:clamp(17px,1.45vw,25px);letter-spacing:-.035em;overflow-wrap:normal}
+.intent-grid.kux-home-packed>.intent-tile[data-home-role='principal'] .tile-heading h3{font-size:clamp(25px,2.2vw,36px)}
+.intent-grid .tile-sequence{flex:none;font-size:10px;letter-spacing:.07em}
+.intent-grid .tile-center{padding:0!important;margin:0 0 auto}
+.intent-grid .tile-desc{max-width:none;line-height:1.35}
+.intent-grid .tile-foot{flex:none;gap:8px;margin-top:4px}
+.intent-grid .tile-drag{font-size:9px;letter-spacing:.04em}
+.intent-grid .intent-tile[data-selected=true]{box-shadow:inset 0 0 0 1px #13886d,0 0 0 1px #13886d20!important}
+.intent-grid .intent-tile[data-selected=true]::after{display:none}
+@container(max-width:260px){.tile-head .tile-sequence{display:none}.tile-heading{gap:7px!important}.tile-heading h3{font-size:17px!important}.tile-heading .tile-icon{font-size:20px!important}}
+@media(min-width:781px){
+ .intent-grid.kux-home-packed{grid-auto-rows:minmax(108px,auto)}
+ .intent-grid.kux-home-packed>.intent-tile{min-height:108px}
+ .intent-grid.kux-home-packed>.intent-tile[data-featured='true']{min-height:224px}
+ body[data-kux-screen='home'] .home-screen[data-fit='false'] .intent-grid.kux-home-packed{grid-auto-rows:minmax(108px,auto)!important}
+ body[data-kux-screen='home'] .home-screen[data-fit='false'] .intent-grid.kux-home-packed>.intent-tile{min-height:108px!important}
+ body[data-kux-screen='home'] .home-screen[data-fit='false'] .intent-grid.kux-home-packed>.intent-tile[data-featured='true']{min-height:224px!important}
+}
+@media(min-width:1051px) and (min-height:680px){
+ body[data-kux-screen='home'] .home-screen[data-fit='true'] .intent-grid{grid-template-rows:repeat(var(--kux-home-rows,3),minmax(108px,1fr));grid-auto-rows:minmax(108px,1fr)}
+ body[data-kux-screen='home'] .home-screen[data-fit='true'] .intent-grid>.intent-tile{gap:6px}
+}
+</style></head>''')
+
+
 def build(profile_path: Path, output: Path) -> dict:
     source = REFERENCE.read_bytes()
     if hashlib.sha256(source).hexdigest() != REFERENCE_SHA256:
@@ -110,6 +168,7 @@ def build(profile_path: Path, output: Path) -> dict:
                 raise ValueError(f'Missing carrier field: {field}')
     runtime = (ROOT / 'src/ui/public-griglia.js').read_text(encoding='utf-8')
     text = source.decode('utf-8')
+    text = compose_card_layout(text)
     home_tour, work_tour = public_tours(profile)
     text = compose_tour(text, 'tourSteps', home_tour)
     text = compose_tour(text, 'workTourSteps', work_tour)

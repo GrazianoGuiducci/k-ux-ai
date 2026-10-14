@@ -399,3 +399,19 @@ aperte. Un pannello di controllo rende pertinenti stato e interventi sui
 sistemi collegati; il dominio può formare nomi propri dalle sue attività.
 La stessa relazione continua nei pulsanti, nelle istruzioni accessibili,
 nei tour e nella guida AI.
+
+## Tessere compatte e geometria del gesto
+
+Una tessera può riunire icona e titolo sulla stessa riga, collegare subito
+la descrizione e tenere separati i comandi. Il risparmio di una riga cambia
+lo spazio disponibile quando anche i minimi del layout ricevono la nuova
+composizione. Conservare gerarchia, nomi leggibili, selezione esplicita e
+raggiungibilità delle attività nel contesto effettivo di larghezza e altezza.
+
+Il ridimensionamento parte dalla forma che la persona vede. La geometria
+memorizzata può differire durante una vista compatta o una trasformazione:
+misurare il rettangolo reso, rapportarlo alle coordinate dello spazio e
+comporre il gesto con i limiti disponibili. Un limite utile alla forma
+iniziale non deve annullare un intervento esplicito. Il nuovo ingombro
+conserva contenuto, bozza e funzione della scheda; i cambi di disposizione
+mantengono la dimensione scelta dove pertinente.
