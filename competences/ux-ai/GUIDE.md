@@ -427,3 +427,18 @@ using actual JavaScript syntax, so expressions keep their identity and quotes
 remain valid. Keep user-authored drafts and model replies in their own language.
 Exercise states produced after opening cards and modals, where static Home checks
 cannot reveal mixed copy. A new locale artifact has its own source/runtime proof.
+
+## Reciprocal interaction and the perceptual horizon — 14 October 2026
+
+Form the interface from both sides of the same work: what the operator can
+understand and do, and what the system needs to make perceptible. They can
+participate at the same time; a change or reply must retain the subject and
+the operator’s ongoing contribution. Do not reduce this relation to alternating
+chat turns or to a control panel that only receives commands.
+
+Describe the relation through a recognisable case. New devices can extend its
+perceptual field without defining the whole competence. Glasses and interactive
+real-time visual output are a development horizon in this public presentation;
+the current artifact exercises cards, tools and dialogue. Keep that status in
+the profile, page, guide and assistant knowledge. The [shared-interaction guide](../../docs/shared-interaction.md)
+connects the public explanation to construction and receiving means.

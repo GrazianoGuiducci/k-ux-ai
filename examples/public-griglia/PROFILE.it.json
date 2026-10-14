@@ -18,13 +18,13 @@
     "eyebrow": "",
     "title": "K-UX-AI",
     "subtitle": "Comprendere il lavoro, costruire l’interfaccia.",
-    "intro": "Persone e assistenti AI lavorano con documenti, strumenti e decisioni. K-UX-AI dà all’AI il sapere per rendere visibile ciò che conta e costruire i modi per intervenire.",
-    "method": "Il kernel conserva conoscenze, competenze e metodo. Compone testo, spazio, movimento e strumenti secondo il contesto; l’esperienza può migliorare le competenze pertinenti.",
+    "intro": "L’operatore e il sistema condividono questo spazio. Tu lo usi per comprendere il lavoro, orientare l’AI e intervenire; il sistema lo usa per mostrare informazioni, cambiamenti e proposte.",
+    "method": "Le due attività possono svolgersi contemporaneamente, sullo stesso oggetto. K-UX-AI dà all’AI il sapere e il metodo per comporre testo, immagini, movimento e strumenti per questo scambio, e imparare attraverso l’uso.",
     "use": "Qui si può conoscere K-UX-AI e provare modi diversi di lavorare. Scegli un argomento ed apri il lavoro: puoi affiancare schede, portarne una al centro e riprendere una bozza.",
     "scope": "Le schede usano esempi del servizio K-UX-AI. Con Invia puoi porre una domanda a MAIOS AI nel sito configurato; contributi e bozze delle altre schede restano in questa sessione."
   },
   "presentationTitle": "Il lavoro prende forma nell’interfaccia.",
-  "presentationMeaning": "K-UX-AI costruisce il modo in cui persone e assistenti AI possono comprendere e svolgere il lavoro. Documenti, strumenti e azioni appartengono al progetto che lo usa.",
+  "presentationMeaning": "K-UX-AI forma un’interfaccia condivisa per l’intervento dell’operatore e la comunicazione del sistema. Puoi orientare, agire e correggere mentre il sistema rende visibili informazioni, cambiamenti e proposte nello stesso contesto di lavoro. Il progetto fornisce documenti, strumenti e azioni autorizzate.",
   "exploreTitle": "Un mezzo, più modi di partecipare.",
   "exploreMeaning": "Guida, strumenti, intervento e ripresa mantengono riconoscibile il lavoro mentre cambia la disposizione delle schede.",
   "phases": [
@@ -38,7 +38,7 @@
     },
     {
       "title": "Usare",
-      "text": "Il gesto, il focus e il contributo continuano mentre cambia il campo. Una scheda può guidare, ricevere lavoro o aprire un dialogo."
+      "text": "Intervento della persona e comunicazione del sistema possono svolgersi nello stesso momento, conservando oggetto, focus e contributo mentre il campo cambia."
     },
     {
       "title": "Imparare",
@@ -91,8 +91,8 @@
       "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/competences/ux-ai/COMPETENCE.md"
     },
     {
-      "label": "Metodo per costruire interfacce",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/competences/ux-ai/GUIDE.md"
+      "label": "Interazione tra operatore e sistema",
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/docs/shared-interaction.it.md"
     },
     {
       "label": "Guida all’uso delle schede",
@@ -544,5 +544,18 @@
   "supported_locales": [
     "en",
     "it"
-  ]
+  ],
+  "interaction": {
+    "nature": "bidirectional_and_simultaneous",
+    "operator": "Comprendere il lavoro, orientare l’AI, intervenire e correggere.",
+    "system": "Rendere comprensibili informazioni, cambiamenti e proposte attraverso testo, immagini, movimento e strumenti.",
+    "timing": "Le due attività possono svolgersi contemporaneamente, mantenendo lo stesso contesto di lavoro."
+  },
+  "horizon": {
+    "title": "Nuove superfici, la stessa interazione",
+    "body": "Con occhiali capaci di mostrare video interattivo in tempo reale, informazioni, rappresentazioni e strumenti potrebbero accompagnare ciò che la persona osserva e fa. L’esperienza visiva potrebbe cambiare con lo sguardo, la voce o i gesti, rendendo più percepibili dettagli, relazioni e variazioni utili al lavoro. È una direzione di sviluppo del mezzo.",
+    "current_demo": "La demo attuale usa schede, strumenti e dialoghi.",
+    "status": "development_direction",
+    "demo_has_ar_surface": false
+  }
 }

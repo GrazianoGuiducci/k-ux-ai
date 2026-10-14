@@ -101,3 +101,7 @@ Il produttore continua la formazione nella propria sorgente e trasferisce
 aggiornamenti selezionati a questo prodotto. Il sapere pubblico permette
 di comprendere, costruire e continuare nel proprio ambiente.
 Versione sorgente: **0.2.0-alpha.3**.
+
+## Interazione condivisa
+
+Intervento dell’operatore e comunicazione del sistema possono svolgersi contemporaneamente nello stesso contesto. La [guida dell’interazione condivisa](docs/shared-interaction.it.md) spiega la relazione e la possibile estensione a un’esperienza visiva aumentata.

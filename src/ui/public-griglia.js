@@ -104,6 +104,9 @@
       case 'chat':{const msgs=thread('chat-'+id);body=`<div class="mini-caps">DIALOGO CON ${esc(pr.name)}</div><h3>${esc(c.aiTitle)}</h3><p>${esc(c.aiMeaning)}</p><div class="chat-log" role="log">${msgs.map(m=>`<div class="message ${esc(m.role)}">${esc(m.text)}${actionButtons(m.proposedActions)}</div>`).join('')||'<p>La domanda porta il contesto pubblico di questa scheda.</p>'}</div><div class="quick-prompts"><button data-action="quick-chat" data-message="${esc(c.aiPrompt)}">${esc(c.aiPrompt)}</button></div><div class="chat-compose"><input class="chat-editor" aria-label="Domanda per MAIOS AI" placeholder="Scrivi una domanda…"><button data-action="send-chat">Invia ↗</button></div><p class="kux-ai-note" data-disclosure-id="maios-ai-processing-footer-v1">La domanda inviata raggiunge MAIOS AI. Le bozze nelle altre schede restano locali. Il servizio AI elabora i messaggi inviati; usa esempi senza dati riservati.</p>`;break;}
       default:return null;
     }
+    if(p.intent==='presentare'&&pr.horizon) {
+      body+=`<details class="kux-public-source" data-public-horizon="${esc(pr.horizon.status)}"><summary>${esc(pr.horizon.title)}</summary><p>${esc(pr.horizon.body)}</p><p>${esc(pr.horizon.current_demo)}</p></details>`;
+    }
     return body+source(c);
   }
 

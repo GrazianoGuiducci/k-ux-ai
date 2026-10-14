@@ -56,3 +56,7 @@ loro uso fanno emergere.
 
 Per sviluppare o distribuire l’interfaccia, la [documentazione delle sorgenti](source-and-evolution.md)
 conserva composizione, attribuzione e istruzioni di build.
+
+## Partecipare alla stessa interfaccia
+
+Puoi comprendere, orientare e intervenire mentre il sistema rende visibili informazioni, cambiamenti e proposte pertinenti. Le schede possono mantenere la tua bozza accanto a una risposta AI o a un riscontro. La presentazione offre un approfondimento apribile sull’orizzonte visivo; la demo attuale usa schede, strumenti e dialoghi. [Approfondisci la relazione condivisa](shared-interaction.it.md).

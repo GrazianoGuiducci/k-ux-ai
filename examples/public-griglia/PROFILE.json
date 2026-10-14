@@ -18,13 +18,13 @@
     "eyebrow": "",
     "title": "K-UX-AI",
     "subtitle": "Understand the work, build the interface.",
-    "intro": "People and AI assistants work with documents, tools and decisions. K-UX-AI gives AI the knowledge to make what matters visible and build ways to act.",
-    "method": "The kernel retains knowledge, competences and a method. It composes text, space, movement and tools for the context; experience can improve the relevant competences.",
+    "intro": "The operator and the system share this workspace. You use it to understand the work, guide the AI and act; the system uses it to show information, changes and proposals.",
+    "method": "Both can take part at the same time, working on the same subject. K-UX-AI gives the AI the knowledge and method to shape text, images, motion and tools for that exchange, and to learn through use.",
     "use": "Here you can discover K-UX-AI and try different ways of working. Choose a topic and open the workspace: arrange cards side by side, bring one into focus and resume a draft.",
     "scope": "The cards use examples of the K-UX-AI service. Send lets you ask MAIOS AI a question on a configured site; contributions and drafts in other cards stay in this session."
   },
   "presentationTitle": "Work takes shape through the interface.",
-  "presentationMeaning": "K-UX-AI builds the ways people and AI assistants can understand and carry out work. Documents, tools and actions belong to the project using it.",
+  "presentationMeaning": "K-UX-AI forms a shared interface for operator actions and system communication. You can guide, act and correct while the system makes information, changes and proposals visible in the same work context. The project provides its documents, tools and authorised actions.",
   "exploreTitle": "One medium, several ways to take part.",
   "exploreMeaning": "Guidance, tools, action and resumption keep the work recognisable as the arrangement of cards changes.",
   "phases": [
@@ -38,7 +38,7 @@
     },
     {
       "title": "Use",
-      "text": "A gesture, focus and contribution continue as the workspace changes. A card can guide, receive work or open a dialogue."
+      "text": "Human actions and system communication can take place at the same time, preserving the subject, focus and contribution as the workspace changes."
     },
     {
       "title": "Learn",
@@ -91,8 +91,8 @@
       "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/competences/ux-ai/COMPETENCE.md"
     },
     {
-      "label": "Method for building interfaces",
-      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/competences/ux-ai/GUIDE.md"
+      "label": "Operator and system interaction",
+      "href": "https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/public-kernel-consolidation-20261012/docs/shared-interaction.md"
     },
     {
       "label": "Guide to using the cards",
@@ -544,5 +544,18 @@
     "monitorare": "Monitor",
     "confrontare": "Compare",
     "chat": "AI dialogue"
+  },
+  "interaction": {
+    "nature": "bidirectional_and_simultaneous",
+    "operator": "Understand the work, guide the AI, act and correct.",
+    "system": "Make information, changes and proposals understandable through text, images, motion and tools.",
+    "timing": "Both can take part at the same time while retaining the same work context."
+  },
+  "horizon": {
+    "title": "New surfaces, the same interaction",
+    "body": "With glasses that display interactive video in real time, information, diagrams and tools could accompany what a person sees and does. The visual experience could change with their gaze, voice or gestures, making useful details, relationships and changes easier to perceive during work. This is a development direction for the medium.",
+    "current_demo": "The current demo uses cards, tools and dialogue.",
+    "status": "development_direction",
+    "demo_has_ar_surface": false
   }
 }

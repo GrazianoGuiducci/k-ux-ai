@@ -31,6 +31,15 @@ mantenendo riconoscibile la relazione con quanto c'era prima. Il riflesso
 locale segue il gesto con i mezzi disponibili; il LLM partecipa quando
 comprensione, composizione o costruzione devono cambiare.
 
+## Interfaccia reciproca e simultanea
+
+Operatore e sistema partecipano allo stesso lavoro attraverso l’interfaccia.
+L’operatore comprende, orienta, interviene e corregge; il sistema rende
+percepibili informazioni, cambiamenti, relazioni e proposte. Le due attività
+possono coesistere nello stesso momento, conservando oggetto e contesto.
+La [relazione condivisa](docs/shared-interaction.md), disponibile anche
+[in italiano](docs/shared-interaction.it.md), ne spiega uso e orizzonte percettivo.
+
 ## Un owner semantico, incarnazioni nel ricevente
 
 Questo prodotto custodisce il sapere operativo pubblico K-UX-AI.

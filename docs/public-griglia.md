@@ -54,3 +54,7 @@ The [construction guide](../competences/ux-ai/GUIDE.md) explains how to build
 interfaces and retain knowledge from their construction and use.
 [Source documentation](source-and-evolution.md) provides composition,
 attribution and build instructions.
+
+## Work together in the same interface
+
+You can understand, guide and act while the system makes relevant information, changes and proposals visible. Cards can keep your draft alongside an AI reply or observation. Presentation includes an optional visual-horizon passage; the current demo uses cards, tools and dialogue. [Read about shared interaction](shared-interaction.md).

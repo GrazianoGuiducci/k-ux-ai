@@ -11,7 +11,8 @@
     "competence": "competences/ux-ai/COMPETENCE.md",
     "guide": "competences/ux-ai/GUIDE.md",
     "current_state": "CURRENT_STATE.md",
-    "horizon": "MANIFESTO.md"
+    "horizon": "MANIFESTO.md",
+    "shared_interaction": "docs/shared-interaction.md"
   },
   "receiver": {
     "entry": "adapters/llm/ENTRY.md",

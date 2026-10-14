@@ -3,9 +3,9 @@
   "profile_id": "k-ux-ai",
   "semantic_owner": "GrazianoGuiducci/k-ux-ai",
   "reference_sha256": "1879dbe0d2ccba4c7db4701fe067c05ad1d20761aa2a6cf053f90b478118430b",
-  "profile_sha256": "bcfc2760a325722cf385c1ecdea05d5de2e5f5a969e22b8e9868768b77fe3652",
-  "runtime_sha256": "d51a2add015e829dc764dbc8aa0cc7e5139055366639007d27a05b65da644b11",
-  "html_sha256": "52e1e9786b950855959d7c16d0e31e8889706b588bf1d8da3acb74fc9d1be512",
+  "profile_sha256": "e8b70fddc4af8de1700bf0d0bca371dbfb0b6628ec686fa9c53080e555e1030c",
+  "runtime_sha256": "45869fd3175e616df51adefaffa38be27ff5c1025d9cb307154661ac7781ca19",
+  "html_sha256": "d484f749d7415f8d95f1dd48b010fc76210571dc3e8f251d539dfaa94a1f09ae",
   "means": {
     "ui": "GPT Griglia v5.12 derived public incarnation",
     "dialogs": "explicit MAIOS public assistant requests when host configured",

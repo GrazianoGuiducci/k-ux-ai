@@ -132,6 +132,18 @@ Se il sapere c'era già, fai partecipare il suo raccordo. Se la differenza
 forma una capacità distinta e ricorrente, rendila raggiungibile nel campo
 della competenza.
 
+## Formare la relazione reciproca
+
+La forma sostiene intervento umano e comunicazione del sistema nello stesso
+contesto, anche simultaneamente. Conserva il lavoro della persona quando un
+evento o una risposta rendono pertinente una nuova rappresentazione. Rendi
+leggibili cambiamenti e proposte mentre la persona continua a partecipare;
+l’espressione restituisce i suoi gesti al controller pertinente.
+
+Nuove superfici, compresi occhiali e rappresentazioni visive interattive,
+possono ampliare questa relazione quando i mezzi del ricevente lo consentono.
+Conserva la differenza fra direzione di sviluppo e superficie esercitata.
+
 ## Imparare e continuare
 
 Successo, difficoltà, nuova possibilità e riscontro umano possono cambiare

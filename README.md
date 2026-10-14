@@ -98,3 +98,7 @@ Run `npm test` with Node.js 20+ for the executable contract.
 The producer continues formation in its own source and transfers selected
 updates to this product. Public knowledge supports understanding, construction
 and continuation in the adopting environment. Source version: **0.2.0-alpha.3**.
+
+## Shared interaction
+
+Operator actions and system communication can take place at the same time in the same work context. The [shared-interaction guide](docs/shared-interaction.md) explains this relation and its possible extension to augmented visual experience.

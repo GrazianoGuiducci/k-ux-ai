@@ -21,7 +21,8 @@
     "competences/ux-ai/COMPETENCE.md",
     "competences/ux-ai/GUIDE.md",
     "docs/receiving-environment.md",
-    "docs/continuity.md"
+    "docs/continuity.md",
+    "docs/shared-interaction.md"
   ],
   "runtime": [
     "src/medium.js",
@@ -55,7 +56,20 @@
     "profile": "examples/public-griglia/PROFILE.json",
     "builder": "tools/build_public_griglia.py",
     "guide": "docs/public-griglia.md",
-    "role": "Neutral presentation and guide of K-UX-AI through the selected GPT engine; a domain supplies its own profile.",
+    "role": "Shared interface for operator actions and system communication, including simultaneous participation in the same work context. Domain sources and actions belong to the hosting environment.",
     "assistant": "Explicit MAIOS public assistant requests on a configured host; other drafts remain local."
+  },
+  "interaction": {
+    "nature": "bidirectional_and_simultaneous",
+    "operator": "Understand the work, guide the AI, act and correct.",
+    "system": "Make information, changes and proposals understandable through text, images, motion and tools.",
+    "timing": "Both can take part at the same time while retaining the same work context."
+  },
+  "perceptual_horizon": {
+    "title": "New surfaces, the same interaction",
+    "body": "With glasses that display interactive video in real time, information, diagrams and tools could accompany what a person sees and does. The visual experience could change with their gaze, voice or gestures, making useful details, relationships and changes easier to perceive during work. This is a development direction for the medium.",
+    "current_demo": "The current demo uses cards, tools and dialogue.",
+    "status": "development_direction",
+    "demo_has_ar_surface": false
   }
 }

@@ -62,6 +62,19 @@ Una rappresentazione è una prospettiva sul campo. Nuovi eventi, osservazioni e 
 
 La qualità di questa relazione cresce quando una persona riesce a ritrovare il punto, capire che cosa è cambiato e agire a partire da quella comprensione.
 
+### Un’interfaccia condivisa nello stesso momento
+
+L’operatore può comprendere, orientare e intervenire mentre il sistema rende
+visibili informazioni, cambiamenti e proposte. La partecipazione è reciproca
+e può essere simultanea: le due direzioni conservano lo stesso oggetto e il
+contesto di lavoro mentre la forma evolve.
+
+Questa relazione può raggiungere occhiali e altre superfici percettive.
+Video interattivo in tempo reale e rappresentazioni spaziali potrebbero
+accompagnare ciò che la persona osserva e fa, rendendo più percepibili dettagli
+e relazioni pertinenti. È un orizzonte aperto del mezzo, da formare attraverso
+competenze, fonti e capacità effettive dell’ambiente ricevente.
+
 ### Le presenze possono cambiare forma
 
 Un assistente può apparire come voce, avatar, segno, strumento, campo di relazioni o ambiente. Può diventare più discreto quando la persona ha chiarezza e più espressivo quando un cambiamento merita attenzione.
