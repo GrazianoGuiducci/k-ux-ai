@@ -82,6 +82,12 @@ o proporresti al prossimo caso. Mantieni questa consapevolezza strutturale
 nella competenza: un indice di file o un elenco di successi conserva una
 traccia, mentre il metodo conservato rende utilizzabile la differenza.
 
+**Riferimento esterno per valutare una UI generativa attiva — 16 ottobre 2026.** [Li et al., *When Interfaces Speak: Data-Aware Generative UI Harness for Active Interaction*, arXiv:2610.11123, presentato l'8 ottobre 2026](https://arxiv.org/abs/2610.11123) osserva un particolare insieme di task con azioni verificabili su database. Il meccanismo utile non è il nome del framework: fonti e record sono prima acquisiti in lettura; una UI situata espone scelte già fondate e questioni ancora indeterminate; l'azione conclusiva torna all'owner/controller e viene distinta dalla semplice interazione. Il lavoro riporta inoltre un ambiente di esecuzione isolata delle interfacce (*Dynamic UX*) e un correttore dei criteri di ricompensa (*Reward Auditor*) alimentato da esiti reali anziché soltanto dal giudizio del modello. I risultati benchmark e la riduzione dei turni sono **misure dichiarate dagli autori sui loro compiti e sui loro baseline**, non misure di K-UX-AI né dimostrazione di superiorità generale delle UI generate.
+
+**Conseguenza per il prossimo caso pertinente.** Quando un operatore deve intervenire su dati già raggiungibili ma con vincoli o scelte non risolti, K-UX-AI può costruire una prova di confronto fra canale testuale e una superficie nata dal focus: identità della fonte presente vicino all'elemento; opzioni fondate su dati realmente letti; campi soltanto dove una scelta manca; invio come richiesta al controller; ricevuta e nuova situazione distinte dal gesto. Osservare non solo il render, ma anche se il destinatario comprende il bersaglio, se la bozza persiste, se la scelta è attribuibile e se l'effetto reale è corretto. Un esito diverso può insegnare quale forma rende possibile il lavoro successivo.
+
+Non importare il benchmark, i modelli, la pipeline di agenti o i punteggi dell'articolo come topologia obbligatoria di K-UX-AI. Il nostro campo comprende anche scenari, esplorazione, simultaneità umano/AI, visuali non transazionali e lavoro senza database. **Stato:** fonte primaria letta e metodo comparativo reso raggiungibile; nessuna prova K-UX-AI svolta, nessuna dipendenza software installata, nessun risultato di performance attribuito.
+
 ## Comporre il codice già presente
 
 Il [medium](../../docs/interface.md) riceve snapshot dal controller e gli
