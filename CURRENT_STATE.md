@@ -17,6 +17,10 @@ It appears only when the selected context has no non-minimized cards, retaining
 the existing hint and native icon fallback. Nautico supplies original vector
 line art; the reusable renderer contains no domain artwork.
 
+The optional `exitDemo` profile setting supplies a visible, localized exit in
+both workspace modes. It returns to the profile's product page at top level,
+including when the workspace is embedded in that page.
+
 ## Reciprocal and simultaneous interaction — 14 October 2026
 
 Operator actions and system communication share the same work context and can

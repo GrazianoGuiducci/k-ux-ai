@@ -487,3 +487,10 @@ the selected context, rather than the existence of card DOM nodes: minimized
 cards and work retained elsewhere do not fill the current workspace. Decorative
 art remains subordinate to the next action, disappears when work opens and
 retains the native hint when unavailable or in forced colours.
+
+A full-page demonstration also needs an explicit return to its product.
+The logo may navigate inside the workspace; browser history may be absent or
+lead elsewhere. An optional `exitDemo` link uses the hosting profile's product
+page and `_top`, so it works both standalone and inside the product frame.
+Keep the exit reachable from Overview and work, with a compact mobile label
+and its complete accessible name. The link does not run a session reset.

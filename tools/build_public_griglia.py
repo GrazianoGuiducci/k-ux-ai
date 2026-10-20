@@ -316,7 +316,24 @@ body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
     # The native artifact has a relative alternative. A recognised same-origin
     # product page follows its companion so page and frame keep the same locale.
     language_control = '<a class="kux-locale-link" href="' + locale_link + '" hreflang="' + ('it' if locale == 'en' else 'en') + '" lang="' + ('it' if locale == 'en' else 'en') + '">' + locale_label + '</a>'
-    text = replace_one(text, '<button class="toolbar-icon" id="btnHelp"', language_control + '<button class="toolbar-icon" id="btnHelp"')
+    exit_control = ''
+    if profile.get('exitDemo'):
+        label = 'Esci dalla demo' if locale == 'it' else 'Exit demo'
+        short = 'Esci' if locale == 'it' else 'Exit'
+        title = ('Torna a ' if locale == 'it' else 'Return to ') + profile['name']
+        exit_control = '<a class="text-button kux-exit-link" href="' + html.escape(profile['pagePath'], quote=True) + '" target="_top" aria-label="' + label + '" title="' + html.escape(title, quote=True) + '"><span aria-hidden="true">←</span><span class="kux-exit-full" aria-hidden="true">' + label + '</span><span class="kux-exit-short" aria-hidden="true">' + short + '</span></a>'
+        text = replace_one(text, '</head>', '''<style id="kux-demo-exit">
+.top-actions .kux-exit-link{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;text-decoration:none;white-space:nowrap;background:var(--surface);flex:none}
+.kux-exit-link:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.kux-exit-short{display:none}
+@media(max-width:780px){
+ .kux-exit-full{display:none}.kux-exit-short{display:inline}
+ .top-actions:has(.kux-exit-link){flex-wrap:wrap;justify-content:flex-end;min-width:0;gap:4px}
+ .top-actions .kux-exit-link{padding:6px;font-size:11px;min-height:32px}
+ body[data-kux-screen='home'] .topbar:has(.kux-exit-link){height:auto!important;min-height:58px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px;gap:5px}
+}
+</style></head>''')
+    text = replace_one(text, '<button class="toolbar-icon" id="btnHelp"', language_control + exit_control + '<button class="toolbar-icon" id="btnHelp"')
     companion_page = ('/k-ux-ai-it.html' if locale == 'en' else '/k-ux-ai.html') if profile['id'] == 'k-ux-ai' else ('/kernel-nautico.html' if locale == 'en' else '/kernel-nautico-en.html')
     text = replace_one(text, '</body>', '<script>document.querySelector(".kux-locale-link").addEventListener("click",event=>{if(parent===window)return;try{if(parent.location.origin===location.origin&&' + script_data([profile['pagePath'], companion_page]) + '.includes(parent.location.pathname)){event.preventDefault();parent.location.href=' + script_data(companion_page + '#kernel-guide') + ';}}catch{}});</script></body>')
     output.mkdir(parents=True, exist_ok=True)
