@@ -2,8 +2,8 @@
 
 Operator-selected outcome: enrich the existing activity grid, canvas rail and
 card headers using one activity identity, independent nautical images and
-state read from the real interface. This is a development candidate for human
-review, with no deployment selected. The subsequent operator correction asks
+state read from the real interface. The development candidate was accepted by
+the operator, who selected publication on 20 October. The earlier correction asks
 for more distinguishable colours where the current hues are too similar.
 
 K-UX-AI owns reusable profile-driven rendering. Kernel Nautico owns its
@@ -41,9 +41,9 @@ Their canonical Git blobs and narrow LF attributes preserve the build identity
 without changing the reference. Animation settlement is necessary before
 measuring card geometry, as preserved in the construction guide.
 
-Preview and selected source commits are the delivery. Production publication
-awaits explicit approval after operator review. The pending input is that
-review; a new material difference can change the candidate.
+The preview and source commits received operator review. The subsequent
+instruction “Va Va bene pubblica” selects publication of that result.
+The site owner retains the exact source and live verification for this effect.
 
 The operator subsequently accepted the soft chromatic base and selected an
 elegant, essential decoration for the empty canvas. The follow-up adds an

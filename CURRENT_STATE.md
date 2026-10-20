@@ -1,6 +1,6 @@
 # K-UX-AI current state
 
-## Activity visual identity candidate — 20 October 2026
+## Activity visual identity — 20 October 2026
 
 The optional hosting-profile field `activityVisuals` connects activity identity
 across Overview, rail and card headers. Domain colours and independent images
@@ -9,7 +9,8 @@ events drive distinct non-colour state markers. Text protection, image failure,
 forced colours and reduced motion preserve operation. The original GPT reference
 and neutral receiver remain unchanged. The [construction guide](competences/ux-ai/GUIDE.md)
 and [candidate guide](docs/nautico-visual-field-20261020.md) carry the learning.
-This branch is a source candidate; no product deployment is selected.
+The operator approved the visual result and selected publication on 20 October.
+The hosting domain and site retain their own publication identities and proof.
 
 The accepted soft palette also accompanies an optional `emptyCanvas` image.
 It appears only when the selected context has no non-minimized cards, retaining
