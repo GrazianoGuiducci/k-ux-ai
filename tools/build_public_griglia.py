@@ -133,6 +133,14 @@ def activity_visual_assets(profile: dict, profile_path: Path) -> dict[str, Path]
         if not source.is_relative_to(profile_path.parent.resolve()) or not source.is_file():
             raise ValueError(f'Missing domain visual asset: {image}')
         assets[image] = source
+    empty_image = profile.get('emptyCanvas', {}).get('image')
+    if empty_image is not None:
+        if not re.fullmatch(r'assets/[a-zA-Z0-9_/-]+\.(svg|webp|png|jpg|jpeg)', empty_image) or '..' in empty_image:
+            raise ValueError('Empty canvas images must be local assets')
+        source = (profile_path.parent / empty_image).resolve()
+        if not source.is_relative_to(profile_path.parent.resolve()) or not source.is_file():
+            raise ValueError(f'Missing domain visual asset: {empty_image}')
+        assets[empty_image] = source
     return assets
 
 
@@ -158,8 +166,9 @@ def build(profile_path: Path, output: Path, locale: str = 'en') -> dict:
             if field not in context:
                 raise ValueError(f'Missing carrier field: {field}')
     runtime = (ROOT / 'src/ui/public-griglia.js').read_text(encoding='utf-8')
-    visual_runtime = (ROOT / 'src/ui/activity-visuals.js').read_text(encoding='utf-8') if profile.get('activityVisuals') else ''
-    visual_css = (ROOT / 'src/ui/activity-visuals.css').read_text(encoding='utf-8') if profile.get('activityVisuals') else ''
+    has_visuals = profile.get('activityVisuals') or profile.get('emptyCanvas')
+    visual_runtime = (ROOT / 'src/ui/activity-visuals.js').read_text(encoding='utf-8') if has_visuals else ''
+    visual_css = (ROOT / 'src/ui/activity-visuals.css').read_text(encoding='utf-8') if has_visuals else ''
     text = source.decode('utf-8')
     text = compose_card_layout(text)
     home_tour, work_tour = public_tours(profile)

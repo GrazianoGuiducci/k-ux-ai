@@ -11,6 +11,11 @@ and neutral receiver remain unchanged. The [construction guide](competences/ux-a
 and [candidate guide](docs/nautico-visual-field-20261020.md) carry the learning.
 This branch is a source candidate; no product deployment is selected.
 
+The accepted soft palette also accompanies an optional `emptyCanvas` image.
+It appears only when the selected context has no non-minimized cards, retaining
+the existing hint and native icon fallback. Nautico supplies original vector
+line art; the reusable renderer contains no domain artwork.
+
 ## Reciprocal and simultaneous interaction — 14 October 2026
 
 Operator actions and system communication share the same work context and can

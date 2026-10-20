@@ -31,6 +31,19 @@ class ActivityAssets(unittest.TestCase):
             with self.subTest(image=image), self.assertRaisesRegex(ValueError, 'local assets'):
                 builder.activity_visual_assets({'activityVisuals': {'fare': {'color': '#639241', 'image': image}}}, Path('PROFILE.json'))
 
+    def test_empty_canvas_vector_is_optional_local_and_portable(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            image = root / 'assets/canvas-empty.svg'
+            image.parent.mkdir()
+            image.write_text('<svg xmlns="http://www.w3.org/2000/svg"/>', encoding='utf-8')
+            profile = {'emptyCanvas': {'image': 'assets/canvas-empty.svg'}}
+            self.assertEqual(builder.activity_visual_assets(profile, root / 'PROFILE.json'),
+                             {'assets/canvas-empty.svg': image.resolve()})
+        for image in ['https://example.com/empty.svg', '../empty.svg', 'assets/../../empty.svg']:
+            with self.subTest(image=image), self.assertRaisesRegex(ValueError, 'local assets'):
+                builder.activity_visual_assets({'emptyCanvas': {'image': image}}, Path('PROFILE.json'))
+
 
 if __name__ == '__main__':
     unittest.main()

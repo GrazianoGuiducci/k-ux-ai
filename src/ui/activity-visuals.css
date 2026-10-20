@@ -95,6 +95,17 @@
 .module[data-activity-visual][data-focused="true"] {outline:2px solid #17343b;outline-offset:-2px}
 [data-activity-visual] button:focus-visible,
 .intent-tile[data-activity-visual]:focus-visible {outline:3px solid #17343b !important;outline-offset:2px}
+/* A domain may supply a quiet illustration for the genuinely empty workspace. */
+.workspace-stage[data-empty-canvas] .empty-state {
+  top:46%;width:min(640px,calc(100% - 44px));gap:10px;
+}
+.workspace-stage[data-empty-canvas][data-workspace-empty="true"] .empty-state {display:flex}
+.workspace-stage[data-empty-canvas][data-workspace-empty="false"] .empty-state {display:none}
+.workspace-stage[data-empty-canvas] .empty-state>span {max-width:300px}
+.workspace-stage[data-empty-canvas] .empty-icon[data-illustration-ready="true"] {
+  width:100%;height:clamp(100px,24vh,220px);font-size:0;
+  background:var(--empty-canvas-image) center/contain no-repeat;
+}
 @media(prefers-reduced-motion:reduce) {
   .intent-tile[data-activity-visual]::before,.avatar-entry[data-activity-visual] .avatar-button {transition:none}
 }
@@ -109,4 +120,7 @@
   .module[data-activity-visual]>.module-head .module-heading-copy * {color:CanvasText !important}
   .avatar-entry[data-activity-presence="focused"] .avatar-button {outline:3px solid Highlight}
   .avatar-entry[data-activity-notification="true"]::after {forced-color-adjust:none}
+  .workspace-stage[data-empty-canvas] .empty-icon[data-illustration-ready="true"] {
+    width:auto;height:auto;background:none;font-size:57px;
+  }
 }

@@ -116,3 +116,10 @@ their current rendering.
 Photographs are decorative CSS backgrounds. Protected text, colour-only
 fallback, reduced-motion handling and forced-colour rendering preserve the
 interface when an image is unavailable or unsuitable. Work content stays plain.
+
+An optional `emptyCanvas: {"image":"assets/canvas-empty.svg"}` supplies a
+decorative local SVG or raster image above the existing empty-workspace hint.
+The renderer uses current-context, non-minimized panels to determine emptiness;
+retained DOM nodes from another context do not suppress that hint. The original
+icon survives loading failure and forced colours. The image is hidden from
+assistive technology, has no motion and adds no controls or state claims.

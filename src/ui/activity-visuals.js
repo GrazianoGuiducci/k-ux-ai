@@ -16,10 +16,18 @@
       notification: state.events.some(event => event.intent === intent && event.context === context && event.status === 'pending')
     };
   }
+  function workspaceEmpty(state) {
+    return !state.panels.some(panel => panel.context === state.activeContext && !panel.minimized);
+  }
   function install({state}) {
-    const visuals = root.__UXAI_CONFIG__?.profile?.activityVisuals;
-    if (!visuals || !Object.keys(visuals).length) return null;
+    const profile = root.__UXAI_CONFIG__?.profile;
+    const visuals = profile?.activityVisuals || {}, emptyCanvas = profile?.emptyCanvas;
+    if (!Object.keys(visuals).length && !emptyCanvas) return null;
     const doc = root.document, applied = new WeakMap(), images = new Map();
+    const stage = doc.getElementById('workspaceStage');
+    const emptyIcon = emptyCanvas && stage?.querySelector('.empty-icon');
+    if (emptyCanvas && stage) stage.dataset.emptyCanvas = 'true';
+    if (emptyIcon) emptyIcon.setAttribute('aria-hidden', 'true');
     let scheduled = false;
     function decorate(element, intent, current) {
       const visual = visuals[intent];
@@ -38,6 +46,7 @@
     }
     function sync() {
       scheduled = false;
+      if (emptyCanvas && stage) stage.dataset.workspaceEmpty = String(workspaceEmpty(state));
       for (const tile of doc.querySelectorAll('.intent-tile[data-intent]')) {
         decorate(tile, tile.dataset.intent, activityState(state, tile.dataset.intent));
       }
@@ -84,8 +93,17 @@
       image.onerror = () => {images.get(intent).ready = false; schedule();};
       image.decoding = 'async'; image.src = visual.image;
     }
+    if (emptyCanvas?.image && emptyIcon) {
+      const image = new root.Image();
+      image.onload = () => {
+        emptyIcon.style.setProperty('--empty-canvas-image', `url("${emptyCanvas.image}")`);
+        emptyIcon.dataset.illustrationReady = 'true';
+      };
+      image.onerror = () => {delete emptyIcon.dataset.illustrationReady;};
+      image.decoding = 'async'; image.src = emptyCanvas.image;
+    }
     sync();
     return {sync, destroy:() => observer.disconnect()};
   }
-  root.KUXActivityVisuals = Object.freeze({activityState, tint, install});
+  root.KUXActivityVisuals = Object.freeze({activityState, workspaceEmpty, tint, install});
 })(typeof window === 'undefined' ? globalThis : window);

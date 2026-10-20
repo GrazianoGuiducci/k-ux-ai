@@ -5,7 +5,7 @@ import vm from 'node:vm';
 
 const scope = {};
 vm.runInNewContext(fs.readFileSync(new URL('../src/ui/activity-visuals.js', import.meta.url), 'utf8'), scope);
-const {activityState, install} = scope.KUXActivityVisuals;
+const {activityState, workspaceEmpty, install} = scope.KUXActivityVisuals;
 
 test('presence follows the selected context, actual focus, minimization and removal', () => {
   const state = {activeContext:'yard', focused:'other', events:[], panels:[
@@ -36,4 +36,17 @@ test('notification is independent of presence and retires when examined', () => 
 
 test('receivers without a visual profile retain their native rendering', () => {
   assert.equal(install({state:{}}), null);
+});
+
+test('empty canvas follows visible work, not retained or minimized cards', () => {
+  const state = {activeContext:'yard', panels:[
+    {context:'boat', minimized:false}, {context:'yard', minimized:true}
+  ]};
+  assert.equal(workspaceEmpty(state), true);
+  state.panels[1].minimized = false;
+  assert.equal(workspaceEmpty(state), false);
+  state.activeContext = 'suppliers';
+  assert.equal(workspaceEmpty(state), true);
+  state.panels = [];
+  assert.equal(workspaceEmpty(state), true);
 });

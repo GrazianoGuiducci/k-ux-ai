@@ -478,3 +478,12 @@ real-time visual output are a development horizon in this public presentation;
 the current artifact exercises cards, tools and dialogue. Keep that status in
 the profile, page, guide and assistant knowledge. The [shared-interaction guide](../../docs/shared-interaction.md)
 connects the public explanation to construction and receiving means.
+
+## Empty workspaces retain their identity — 20 October 2026
+
+A quiet domain illustration can make an unused workspace recognisable while
+the existing hint explains how to begin. Its presence follows visible work in
+the selected context, rather than the existence of card DOM nodes: minimized
+cards and work retained elsewhere do not fill the current workspace. Decorative
+art remains subordinate to the next action, disappears when work opens and
+retains the native hint when unavailable or in forced colours.

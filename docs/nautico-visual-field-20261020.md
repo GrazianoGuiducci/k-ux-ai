@@ -44,3 +44,16 @@ measuring card geometry, as preserved in the construction guide.
 Preview and selected source commits are the delivery. Production publication
 awaits explicit approval after operator review. The pending input is that
 review; a new material difference can change the candidate.
+
+The operator subsequently accepted the soft chromatic base and selected an
+elegant, essential decoration for the empty canvas. The follow-up adds an
+optional domain-owned SVG hull/waterline drawing above the original hint.
+True emptiness follows current-context visible cards, including when all cards
+are minimized or other contexts retain work. No additional saturation change,
+new controls, animation or production publication is selected.
+
+Follow-up verification: 30 shared Node contracts and four builder asset tests
+pass. Browser checks exercise empty/reopened/closed/minimized states, other
+contexts retaining open work, Italian and English, 390px viewport containment,
+forced-colour fallback and failed SVG loading. The decoration remains hidden
+from assistive technology and adds no animation.
