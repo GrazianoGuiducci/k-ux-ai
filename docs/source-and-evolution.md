@@ -91,3 +91,28 @@ python tools/build_public_griglia.py --profile examples/public-griglia/PROFILE.j
 
 Both builds record locale and source identities. A hosting page must select the
 artifact matching its locale and pass that locale to the conversation endpoint.
+
+## Optional activity identity across surfaces
+
+The hosting profile can supply `activityVisuals`, keyed by stable activity ID:
+
+```json
+{"fare":{"color":"#65943E","image":"assets/activities/fare.webp","position":"center"}}
+```
+
+The colour is required when an entry is supplied; an image is optional. Assets
+are relative to the profile, copied beside each language build and hashed in
+`BUILD.json.activity_visuals`. The builder accepts local PNG, JPEG and WebP.
+Imagery, provenance and palette remain with the hosting domain; no nautical
+assets or colours are embedded in the shared renderer.
+
+`activity-visuals.js` projects actual context, panels, focus and pending events
+onto the Home tile, rail entry and panel header. Its observer follows native
+repaint signals without changing geometry, storage, drafts or event handlers.
+Open, minimized, focused and closed are distinct; notifications have a separate
+marker and accessible description. Receivers without this optional field keep
+their current rendering.
+
+Photographs are decorative CSS backgrounds. Protected text, colour-only
+fallback, reduced-motion handling and forced-colour rendering preserve the
+interface when an image is unavailable or unsuitable. Work content stays plain.

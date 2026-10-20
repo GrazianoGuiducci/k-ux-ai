@@ -4,6 +4,36 @@ Questa guida rende raggiungibile il sapere operativo pubblico.
 Il ricevente può approfondirla ed evolverla attraverso il lavoro, usando
 la [competenza](COMPETENCE.md). Il significato del dominio resta alle sue fonti.
 
+## Identità dell'attività attraverso più superfici — 20 ottobre 2026
+
+Un'attività può comparire come scelta nella panoramica, icona nella barra e
+scheda aperta. Conservare il suo ID e una sola identità percettiva rende
+riconoscibile lo stesso lavoro mentre cambia superficie. La palette e le
+immagini appartengono al profilo ospitante; il renderer comune trasporta la
+relazione senza incorporare il dominio nel motore.
+
+Separare ruolo, presenza e attenzione: il colore riconosce l'attività;
+apertura, riduzione e focus derivano dai pannelli del contesto corrente;
+una notifica resta un segnale locale dell'evento pertinente. Un evento di un
+altro contesto non accende questa barra. Bordo, icona, etichetta e descrizione
+accessibile permettono di leggere gli stati anche senza distinguere le tinte.
+
+Una fotografia utile all'orientamento resta subordinata al testo. Proteggere
+il fondo sotto i caratteri, non soltanto il contrasto medio dell'immagine:
+un ritaglio mobile può mettere una zona scura sotto una parola. Contenuto di
+lavoro piano, fallback a colore e resa ad alto contrasto conservano la funzione.
+
+Nella prova di costruzione una misura presa durante l'animazione di passaggio
+fra layout non rappresentava la geometria finale. Il readback pertinente
+attende le animazioni finite, poi esercita il ridimensionamento dalla maniglia
+visibile. Non disabilitare le animazioni per far passare la prova e non
+correggere il prodotto per compensare un'osservazione anticipata.
+
+La candidata Nautico esercita questa relazione attraverso griglia, barra e
+toolbar, usando dieci asset indipendenti. Il riferimento originale resta
+invariato. La costruzione rende disponibile il metodo; adozione e riscontro
+del destinatario mantengono il proprio seguito.
+
 ## Derivare una costruzione
 
 Parti dal movimento operativo: oggetto, intento, persone, fonti, stato,

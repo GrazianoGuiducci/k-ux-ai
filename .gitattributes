@@ -1,0 +1,4 @@
+# Byte-bound inputs must survive Windows checkouts with the same build identity.
+examples/griglia/index.html text eol=lf
+src/ui/locales/public-workspace.json text eol=lf
+src/ui/locales/public-tours.json text eol=lf

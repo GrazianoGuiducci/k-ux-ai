@@ -7,6 +7,7 @@ import html
 import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -113,6 +114,28 @@ function moduleElement(p){''')
 </style></head>''')
 
 
+def activity_visual_assets(profile: dict, profile_path: Path) -> dict[str, Path]:
+    """Only domain-owned local images and explicit colours enter the derivative."""
+    assets = {}
+    for intent, visual in profile.get('activityVisuals', {}).items():
+        if not re.fullmatch(r'[a-z][a-z0-9-]*', intent):
+            raise ValueError('Invalid activity visual ID')
+        if not re.fullmatch(r'#[0-9a-fA-F]{6}', visual.get('color', '')):
+            raise ValueError(f'Invalid activity colour: {intent}')
+        if visual.get('position', 'center') not in {'center', 'left', 'right', 'center top', 'center bottom'}:
+            raise ValueError(f'Invalid image position: {intent}')
+        image = visual.get('image')
+        if image is None:
+            continue
+        if not re.fullmatch(r'assets/[a-zA-Z0-9_/-]+\.(webp|png|jpg|jpeg)', image) or '..' in image:
+            raise ValueError(f'Activity images must be local assets: {intent}')
+        source = (profile_path.parent / image).resolve()
+        if not source.is_relative_to(profile_path.parent.resolve()) or not source.is_file():
+            raise ValueError(f'Missing domain visual asset: {image}')
+        assets[image] = source
+    return assets
+
+
 def build(profile_path: Path, output: Path, locale: str = 'en') -> dict:
     if locale not in {'en', 'it'}:
         raise ValueError('Unsupported public UI locale')
@@ -123,6 +146,7 @@ def build(profile_path: Path, output: Path, locale: str = 'en') -> dict:
         raise ValueError('The selected GPT reference changed; assimilate it before rebuilding.')
     profile_bytes = profile_path.read_bytes()
     profile = json.loads(profile_bytes)
+    visual_assets = activity_visual_assets(profile, profile_path)
     if profile.get('locale') != locale:
         raise ValueError('Profile and public UI locale differ')
     if profile.get('schema') != 'kux.hosting-kernel-profile.v1':
@@ -134,12 +158,14 @@ def build(profile_path: Path, output: Path, locale: str = 'en') -> dict:
             if field not in context:
                 raise ValueError(f'Missing carrier field: {field}')
     runtime = (ROOT / 'src/ui/public-griglia.js').read_text(encoding='utf-8')
+    visual_runtime = (ROOT / 'src/ui/activity-visuals.js').read_text(encoding='utf-8') if profile.get('activityVisuals') else ''
+    visual_css = (ROOT / 'src/ui/activity-visuals.css').read_text(encoding='utf-8') if profile.get('activityVisuals') else ''
     text = source.decode('utf-8')
     text = compose_card_layout(text)
     home_tour, work_tour = public_tours(profile)
     text = compose_tour(text, 'tourSteps', home_tour)
     text = compose_tour(text, 'workTourSteps', work_tour)
-    prelude = '<script>window.__UXAI_CONFIG__=' + script_data({'skin': 'atlas', 'start': 'home', 'profile': profile}) + ';\n' + runtime + '\n</script>'
+    prelude = '<script>window.__UXAI_CONFIG__=' + script_data({'skin': 'atlas', 'start': 'home', 'profile': profile}) + ';\n' + runtime + '\n' + visual_runtime + '\n</script>'
     text = replace_one(text, "window.__UXAI_CONFIG__ = {skin:'atlas',start:'home'};", "// Hosting-kernel configuration is provided by the public source profile.")
     text = replace_one(text, '<body data-skin="atlas" data-start="home">', '<body data-skin="atlas" data-start="home" data-kux-product="' + html.escape(profile['id'], quote=True) + '">' + prelude)
     text = replace_pattern(text, r'const contexts=\{.*?\n\};?\s*const scenarios=', 'const contexts=' + script_data(profile['contexts']) + ';\nconst scenarios=')
@@ -194,6 +220,9 @@ def build(profile_path: Path, output: Path, locale: str = 'en') -> dict:
     text = replace_one(text, "version:'lab-2026-10-11-r5.12',liveAI:false", "version:'public-griglia-v1',referenceLiveAI:false,assistantBinding:'maios-public-assistant'")
     anchor = '// Safe, read-only debug readback for the standalone demo (not an AI interface).'
     integration = '''window.KUXHostedGriglia.install({state,contexts,openPanel,activateScreen,switchWorkspaceContext,renderModule,renderSection,refreshModules,getFocused,updateHeader,getAssistant:()=>sharedAssistantSurface?{...sharedAssistantSurface.snapshot(),visible:!!sharedAssistantSurface.element.getClientRects().length,focused:sharedAssistantSurface.element.contains(document.activeElement)}:null});\n'''
+    if visual_runtime:
+        integration += 'window.KUXActivityVisuals.install({state});\n'
+        text = replace_one(text, '</head>', '<style id="kux-activity-visuals">' + visual_css + '</style></head>')
     text = replace_one(text, anchor, integration + anchor)
     text = text.replace("provider:'none',authority:'local-demo-only'", "provider:'maios-public-assistant',authority:'public-presentation-only'")
     text = text.replace('Superficie composta K-UX-AI / Nautico sintetico. Non è un SK installato: nessuna AI, sincronizzazione tra kernel, autorizzazione o apprendimento autonomo viene esercitata.', 'Le schede usano le fonti del kernel presentato. I casi sono illustrativi; contributi e proposte restano locali finché vengono trasferiti al ricevente pertinente. Le domande inviate a MAIOS AI sono distinte da quelle bozze.')
@@ -282,12 +311,22 @@ body[data-kux-product="k-ux-ai"] .kux-home-setup{align-self:start}
     companion_page = ('/k-ux-ai-it.html' if locale == 'en' else '/k-ux-ai.html') if profile['id'] == 'k-ux-ai' else ('/kernel-nautico.html' if locale == 'en' else '/kernel-nautico-en.html')
     text = replace_one(text, '</body>', '<script>document.querySelector(".kux-locale-link").addEventListener("click",event=>{if(parent===window)return;try{if(parent.location.origin===location.origin&&' + script_data([profile['pagePath'], companion_page]) + '.includes(parent.location.pathname)){event.preventDefault();parent.location.href=' + script_data(companion_page + '#kernel-guide') + ';}}catch{}});</script></body>')
     output.mkdir(parents=True, exist_ok=True)
+    for image, source_path in visual_assets.items():
+        destination = output / image
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        if source_path.resolve() != destination.resolve():
+            shutil.copyfile(source_path, destination)
     (output / 'index.html').write_text(text, encoding='utf-8', newline='\n')
     manifest = {'schema': 'kux.public-griglia-build.v1', 'profile_id': profile['id'], 'semantic_owner': profile['semanticOwner'], 'reference_sha256': REFERENCE_SHA256, 'profile_sha256': hashlib.sha256(profile_bytes).hexdigest(), 'runtime_sha256': hashlib.sha256(runtime.encode()).hexdigest(), 'html_sha256': hashlib.sha256(text.encode()).hexdigest(), 'means': {'ui': 'GPT Griglia v5.12 derived public incarnation', 'dialogs': 'explicit MAIOS public assistant requests when host configured', 'company_integrations': False}}
     manifest.update(locale=locale, default_locale='en', supported_locales=['en', 'it'],
                     locale_catalog_sha256=hashlib.sha256(catalog_path.read_bytes()).hexdigest(),
                     tour_catalog_sha256=hashlib.sha256((ROOT / 'src/ui/locales/public-tours.json').read_bytes()).hexdigest())
-    (output / 'BUILD.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    if visual_runtime:
+        manifest['activity_visuals'] = {
+            'runtime_sha256': hashlib.sha256(visual_runtime.encode()).hexdigest(),
+            'css_sha256': hashlib.sha256(visual_css.encode()).hexdigest(),
+            'assets': {path: hashlib.sha256(source.read_bytes()).hexdigest() for path, source in visual_assets.items()}}
+    (output / 'BUILD.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     return manifest
 
 

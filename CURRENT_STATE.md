@@ -1,5 +1,16 @@
 # K-UX-AI current state
 
+## Activity visual identity candidate — 20 October 2026
+
+The optional hosting-profile field `activityVisuals` connects activity identity
+across Overview, rail and card headers. Domain colours and independent images
+stay in the receiving profile. Actual context, focus, presence and pending
+events drive distinct non-colour state markers. Text protection, image failure,
+forced colours and reduced motion preserve operation. The original GPT reference
+and neutral receiver remain unchanged. The [construction guide](competences/ux-ai/GUIDE.md)
+and [candidate guide](docs/nautico-visual-field-20261020.md) carry the learning.
+This branch is a source candidate; no product deployment is selected.
+
 ## Reciprocal and simultaneous interaction — 14 October 2026
 
 Operator actions and system communication share the same work context and can
