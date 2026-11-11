@@ -5,6 +5,14 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 11 novembre — Studio 04: UI coerente e mini editor riposizionabili
+
+**Artefatto locale:** `MAIOS_Comunicazione_Collaborativa_Studio04.html`, 101.419 byte, SHA-256 `579c7f2ee7891b34eb60b7ef3e749ebe8cd373a71d3b76acbda70014f3c25a32`. Tema diffuso nell'area esterna, toolbar, controlli, pannelli, dialoghi e mini editor per tutti e quattro i preset. Mini editor spostabile dalla testata, ridimensionabile dall'angolo, con geometria salvata nel file, riuso e comando «↩ Vicino». Il pulsante Copia pubblica continua a eliminare note e libreria; ciò non cifra il file né verifica i contenuti condivisi.
+
+**Esercizio:** nuova suite browser Chromium `set_content` su palette, spostamento, resize, riuso, reset, save/reopen e privato/pubblico; 16/16 test di regressione Studio 03 verdi; zero errori JS osservati. Apertura diretta `file://` bloccata dal runner, controllo sul desktop/touch dell'operatore non eseguito. [Guida](GUIDE.md#11-novembre-2026--studio-04-mini-editor-mobili-e-tema-sullintero-ambiente) aggiornata con metodo e confini della prova.
+
+**Stato:** LOCAL_STUDIO04_BUILT / CROSS_THEME_UI_VERIFIED / MINI_EDITOR_DRAG_RESIZE_VERIFIED / HTML_ROUNDTRIP_VERIFIED / REGRESSION_16_OF_16 / PUBLIC_RUNTIME_UNCHANGED / USER_BROWSER_EXERCISE_OPEN.
+
 ## 11 novembre — Studio 03, HTML avanzato locale e apprendimento
 
 **Risultante:** `MAIOS_Comunicazione_Collaborativa_Studio03.html` costruito come file autonomo di 92.537 byte (SHA-256 `f00442c79ada3433a05f417c046af5d0f4fbfbdc81bed15298037416f869ebd6`). Estende Studio 02 con snap magnetico e guide, frecce su punti medi dei lati e maniglia centrale, mini editor vicino a riquadro/freccia/scheda, strumenti solo su comando (dock destra, sinistra, sopra, sotto, flottante), note mobili private, forme circle/oval/pill, collasso con segnaposto numerato, approfondimento live e pagina separata nel PDF, layout nelle sezioni, esportazione di una copia pubblica che pulisce **sia il JSON sia il DOM proiettato**.
