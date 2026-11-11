@@ -5,6 +5,17 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 11 novembre — Studio 02, secondo esercizio locale
+
+L'operatore ha scelto come risultante una pagina che rimanga visivamente il lavoro stesso, con editor contestuali richiamati su clic e strumenti dalla rotellina a destra; triplo clic per il livello sottostante quando vi è sovrapposizione, oppure per le proprietà visive, più alternativa esplicita dall'elenco Livelli. Ha chiesto frecce con estremi trascinabili, proprietà specifiche, quattro temi, preset e layout/sezioni drag-and-drop, mantenendo l'HTML entro circa 2 MB.
+
+**Artefatto locale esercitato:** `MAIOS_Comunicazione_Collaborativa_Studio02.html`, SHA-256 `1023ca424ead3b10d49541d895ee2ba6af006e32ba27aa8781cf914970fa085c`, 66.438 byte. Modello `ccm.document.v1` compatibile con il precedente; nuova superficie HTML/CSS/JS autonoma. 11/11 scenari Playwright + prove specifiche su trascinamento di sezione con contenuto, immagine importata/compressa e riaperta, fogli di stampa preparati. La [guida](GUIDE.md#11-novembre-2026--studio-02-superficie-libera-strumenti-situati-e-diagrammi-manipolabili) conserva differenze e meccanismi.
+
+**Correzioni riusabili nello stesso movimento:** mantenere il DOM del referente attraverso il triplo clic; evitare duplicazione degli handler su canvas persistente; renderizzare sopra ai nodi gli handle della freccia solo quando selezionata; verificare gli stili SVG computed e non solo i loro attributi. Le sezioni trasportano i membri tramite `containerId`; le estremità non collegate della freccia restano punti liberi reali. Il sapere di progetto rimane in questa competenza; i metodi generali di Interaction Quality e Code Medium Construction restano owner complementari senza copia obbligatoria.
+
+**Stato:** LOCAL_STUDIO02_BUILT / BROWSER_EXERCISE_11_OF_11 / HTML_EXPORT_REOPEN_OBSERVED / PUBLIC_KERNEL_RUNTIME_UNCHANGED / OPERATOR_TRIAL_AWAITED / DIRECT_FILE_URL_AND_TOUCH_NOT_VERIFIED / CROSS_CONTEXT_ASSIMILATION_UNKNOWN.
+
+
 ## 11 novembre — esercizio locale del medium neutro
 
 È stato costruito e verificato nel ricevente ChatGPT un HTML autonomo, con modello dati incorporato, tre schede iniziali, editing strutturale/testuale, collegamenti etichettati, drag/resize, libreria, immagini, note, presentazione, export HTML/JSON, copia pubblica e preparazione dei fogli per la stampa. La prova Playwright ha coperto andata/ritorno dell'HTML e alcuni gesti reali sul DOM. File locale: `MAIOS_Comunicazione_Collaborativa_Prototipo.html`; SHA-256 `f7d7761ef5876c85a47309b882b593c1a91c7cc4c37c1893d20e8c4df49b59c7`, 42.639 byte. **Non è un file pubblicato o installato in questo repository.**

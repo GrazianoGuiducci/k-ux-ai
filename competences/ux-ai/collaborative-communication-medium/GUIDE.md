@@ -4,6 +4,31 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 11 novembre 2026 — Studio 02: superficie libera, strumenti situati e diagrammi manipolabili
+
+**Movimento selezionato dall'operatore:** fare del risultato visibile la superficie primaria. Il pannello con elementi, layout, temi, schede e libreria emerge dalla rotellina a destra; le proprietà dell'elemento emergono dalla sua selezione. Il primo HTML tecnico è stato quindi affinato nel file locale `MAIOS_Comunicazione_Collaborativa_Studio02.html` (66.438 byte; SHA-256 `1023ca424ead3b10d49541d895ee2ba6af006e32ba27aa8781cf914970fa085c`). È un artefatto consegnato nella conversazione, non un file installato nel repository o una release del prodotto.
+
+**Semantica dei gesti da preservare:**
+- clic: riconoscere il referente e raggiungerne l'editor contestuale;
+- doppio clic: modificare il testo e raggiungere il relativo font;
+- triplo clic: se nello stesso punto vi è una sovrapposizione, selezionare il livello sottostante; altrimenti raggiungere le proprietà visive, per esempio il colore di sfondo;
+- un elenco Livelli richiamabile fornisce una via esplicita equivalente per chi non usa i clic multipli, in particolare su touch e tastiera.
+
+**Distinzione tecnica appresa:** il triplo clic non è un evento universale o un solo significato. Il doppio clic può già avere avviato un edit `contenteditable`. La sequenza deve conservare ID dell'oggetto, luogo e intervallo dei gesti, senza ricreare il nodo fra secondo e terzo clic; se compare un terzo clic su elementi sovrapposti deve uscire dall'editing del primo e selezionare quello sottostante. Quando un oggetto è soltanto selezionato, il DOM deve restare lo stesso: re-renderarlo ad ogni rilascio interrompe la sequenza. I contesti e i controlli alternativi restano pertinenti; un numero di clic non sostituisce la selezione esplicita di un livello.
+
+**Diagrammi:** la freccia è un elemento con identità propria, significato, spessore, colore, tratto, curva e orientamento. Gli estremi possono riferirsi a due nodi o a coordinate libere. Il trascinamento di un estremo produce un nuovo riferimento a un nodo solo se il rilascio ha realmente individuato quel nodo; il tratto nello spazio resta libero, senza inventare una relazione. Selezione, editor della freccia, estremi trascinabili e scelta numerica/testuale delle destinazioni sono due mezzi per modificare lo stesso stato. Un collegamento visivo non certifica un rapporto causale; il campo semantico resta nel dato `label`.
+
+**Qualità del gesto e del livello:** i piccoli handle degli estremi erano sotto i riquadri a causa del livello grafico. Il livello SVG deve andare in primo piano *solo durante la modifica di una freccia selezionata*, senza coprire gli oggetti quando la freccia non è attiva. Nella prima revisione della nuova superficie, il canvas persistente riceveva più `addEventListener` ad ogni redraw, generando duplicati nei drop da catalogo. La correzione utilizza handler sostituibili (`onpointerdown`, `ondragover`, `ondrop`) e li elimina in vista Presenta; il conteggio del drop torna esattamente a uno per gesto. Per la resa SVG occorre verificare anche lo stile **computed**, perché una regola CSS può prevalere sugli attributi SVG di spessore e colore.
+
+**Layout e temi:** le sezioni hanno una propria identità e possono essere riordinate, trascinate e ridimensionate. Un elemento dentro una sezione conserva `containerId`; quando la sezione si sposta, i suoi elementi si spostano con essa mentre l'ordine e le relazioni restano leggibili. Due temi chiari e due scuri cambiano la proiezione; il default di testo e freccia va compensato in scuro per non perdere contrasto, senza riscrivere il valore semantico dell'oggetto per ogni cambio di tema. Una palette rapida e preset di layout possono accelerare la costruzione senza delimitare le nuove forme.
+
+**Portabilità e dimensione:** file HTML unico, nessuna dipendenza esterna, stato JSON incorporato. Immagini importate vengono ridotte e codificate nel file; import ed export stimano un budget inferiore a 2 MB e rifiutano un aumento che lo oltrepasserebbe. Il limite è una scelta di consegna per questo prototipo, non una regola generale di K-UX-AI. Restano distinti copia salvata, copia pubblica senza note/libreria, rappresentazione presentata, esportazione JSON per un LLM e presenza di un reale servizio AI.
+
+**Evidenza locale:** 11/11 scenari Playwright in Chromium per pannelli, clic singolo/doppio/triplo, selezione del livello sottostante, frecce collegate e libere, proprietà, layout drag-and-drop, temi, salvataggio e riapertura HTML, copia pubblica, Presenta e viewport da 390 px. Verifiche aggiuntive: una sezione che sposta effettivamente il suo contenuto, immagine compressa incorporata e ripristinata, tre fogli preparati per la stampa, zero errori pagina nei percorsi osservati. Browser tramite `set_content` del documento; apertura diretta `file://` non esercitata per restrizioni del ricevente, PDF finale e uso umano touch/desktop non ancora verificati. I test appartengono a questo HTML locale e non si trasferiscono al runtime K-UX-AI.
+
+**Ritorno al sapere operativo:** la percezione dell'operatore e la struttura del documento sono due proiezioni dello stesso oggetto; i pannelli sono richiami situati e non il contenuto del lavoro. L'identità del referente deve continuare tra selezione, edit, sovrapposizione, relazione diagrammatica, disposizione, presentazione ed export. Il prossimo caso deve prima osservare se questi gesti permettono realmente all'operatore di comunicare meglio, non solo se i test passano.
+
+
 ## 11 novembre 2026 — primo esercizio del medium HTML neutro
 
 **Fonte dell'oggetto:** richiesta dell'operatore di provare che cosa si possa fare con una pagina HTML dopo la formazione della competenza. È stato costruito nella chat un prototipo locale autonomo `MAIOS_Comunicazione_Collaborativa_Prototipo.html`, senza contenuti Schnell e senza dipendenze esterne (SHA-256 `f7d7761ef5876c85a47309b882b593c1a91c7cc4c37c1893d20e8c4df49b59c7`; 42.639 byte). Non è stato aggiunto al repository o distribuito nel runtime.
