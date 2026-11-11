@@ -10,6 +10,8 @@ usare un checkout, strumenti di lettura del repository o allegati alla chat.
 Un semplice URL localizza la sorgente: la lettura effettiva dipende dai
 mezzi disponibili al modello. Fornisci anche la fonte del lavoro selezionato.
 
+Se il task riguarda un HTML collaborativo modificabile o un altro artefatto per comunicare idee e relazioni fra operatore, AI e interlocutori, leggi anche la [specializzazione Collaborative Communication Medium](../../competences/ux-ai/collaborative-communication-medium/SKILL.md), la sua [guida](../../competences/ux-ai/collaborative-communication-medium/GUIDE.md) e lo [stato](../../competences/ux-ai/collaborative-communication-medium/CURRENT.md). L'artefatto originale dell'operatore rimane fonte situata; il raccordo non lo carica né integra automaticamente.
+
 Puoi usare questa istruzione nel tuo harness:
 
 > Fai partecipare K-UX-AI come competenza per rendere percepibile e operabile

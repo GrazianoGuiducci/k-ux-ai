@@ -12,6 +12,8 @@ ambienti interattivi e pannelli operativi. Il ricevente forma l'incarnazione
 situata attraverso persone, lavoro, mezzi e conseguenze. Kernel Nautico è
 il riferimento e primo dominio operativo.
 
+Una nuova specializzazione candidata, [Collaborative Communication Medium](competences/ux-ai/collaborative-communication-medium/SKILL.md), forma l'artefatto modificabile come terreno di comprensione e comunicazione condivisa fra operatore, AI e interlocutori. Parte dall'HTML autonomo come primo mezzo e può evolvere verso contenuti web, progetto e sistemi complessi. La [guida](competences/ux-ai/collaborative-communication-medium/GUIDE.md) conserva il sapere specifico; il runtime dell'editor generalizzato non è ancora implementato.
+
 ## Relazione operativa
 
 Intento, oggetto, fonti e ciò che sta accadendo fanno comprendere quale

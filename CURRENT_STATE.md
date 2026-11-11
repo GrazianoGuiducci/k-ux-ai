@@ -1,5 +1,11 @@
 # K-UX-AI current state
 
+## 11 November 2026 — collaborative communication medium (source candidate)
+
+The operator's editable single-file MAIOS × Schnell HTML yielded a distinct reusable capability: a communication artifact can be edited by the person, shared back with an AI system for situated comprehension and revision, and presented to external interlocutors, while preserving object and relationships across forms. The [Collaborative Communication Medium](competences/ux-ai/collaborative-communication-medium/SKILL.md), [guide](competences/ux-ai/collaborative-communication-medium/GUIDE.md) and [current](competences/ux-ai/collaborative-communication-medium/CURRENT.md) now carry this specialization inside K-UX-AI. Presentations are the initial case; web content, product design and complex-system communication are possible receivers.
+
+The operator-supplied Schnell HTML remains private and unchanged. This is source competence formation and routing, not a generalized HTML editor, a new renderer, a product release, a deployment or verified assimilation. Existing public demo, package version and runtime remain unchanged.
+
 ## Activity visual identity — 20 October 2026
 
 The optional hosting-profile field `activityVisuals` connects activity identity

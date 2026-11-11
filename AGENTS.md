@@ -12,6 +12,8 @@ use. Let the knowledge, reasons and experience in
 [its guide](competences/ux-ai/GUIDE.md) shape the question, composition,
 implementation and correction. Runtime modules are available means.
 
+For editable, portable artifacts used to exchange and refine ideas, diagrams or working relations between a person, AI and other interlocutors, reach the [Collaborative Communication Medium](competences/ux-ai/collaborative-communication-medium/SKILL.md) and its [living guide](competences/ux-ai/collaborative-communication-medium/GUIDE.md) as a situated specialization. Its first HTML is evidence from an operator presentation, not a public product implementation.
+
 The [Manifesto](MANIFESTO.md) carries the open horizon. Preserve emergent
 determinations and let a material difference change the method, code and
 dependent projections. A component or example is a situated incarnation;

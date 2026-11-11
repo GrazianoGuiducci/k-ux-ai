@@ -11,6 +11,8 @@ guida del movimento prima di espandere le sorgenti. Preparati attraverso
 il metodo pertinente e integra ciò che emerge negli owner esistenti.
 Il rientro conserva anche ragioni e capacità ancora necessarie alla costruzione.
 
+Quando il lavoro riguarda un artefatto HTML editabile, trasferibile e presentabile che fa comunicare idee e relazioni fra persona, AI e interlocutori, raggiungi la specializzazione [Collaborative Communication Medium](competences/ux-ai/collaborative-communication-medium/SKILL.md) e il suo [CURRENT](competences/ux-ai/collaborative-communication-medium/CURRENT.md). La competenza continua nel kernel, non sostituisce il metodo generale né implica un editor già installato.
+
 ## Formare il movimento
 
 Il presente dell'operatore e del progetto seleziona oggetto, fonti, persone,

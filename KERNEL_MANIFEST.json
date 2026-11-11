@@ -12,7 +12,15 @@
     "guide": "competences/ux-ai/GUIDE.md",
     "current_state": "CURRENT_STATE.md",
     "horizon": "MANIFESTO.md",
-    "shared_interaction": "docs/shared-interaction.md"
+    "shared_interaction": "docs/shared-interaction.md",
+    "specializations": {
+      "collaborative_communication_medium": {
+        "competence": "competences/ux-ai/collaborative-communication-medium/SKILL.md",
+        "guide": "competences/ux-ai/collaborative-communication-medium/GUIDE.md",
+        "current": "competences/ux-ai/collaborative-communication-medium/CURRENT.md",
+        "status": "source_candidate_not_runtime"
+      }
+    }
   },
   "receiver": {
     "entry": "adapters/llm/ENTRY.md",
