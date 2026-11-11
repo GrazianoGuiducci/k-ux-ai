@@ -3,7 +3,7 @@ name: collaborative-communication-medium
 description: Form, use and evolve portable editable communication artifacts through which a person and an AI system can understand and refine ideas, relationships, working dynamics and products, then make them intelligible to other people. Use for presentations, web content, product design, AI-builder collaboration and complex-system communication when the artifact itself is a shared working medium.
 owner: GrazianoGuiducci/k-ux-ai
 version: 0.1.0-candidate
-status: source_formed_first_html_exercise_pending
+status: source_formed_local_exercise_observed_runtime_not_integrated
 ---
 
 # Collaborative Communication Medium — competenza K-UX-AI
@@ -52,6 +52,8 @@ La presentazione MAIOS × Schnell, modificata dall'operatore e disponibile come 
 L'operatore ha riferito che questa portabilità ha consentito modifiche anche a pochi minuti da una presentazione e condivisione fra dispositivi. È prova d'uso riferita per quel caso, non prova di un editor generalizzato.
 
 **Direzione selezionata, non già eseguita:** portare la capacità dentro K-UX-AI come mezzo collaborativo riusabile; poter aggiungere, riordinare, spostare, ridimensionare, collegare e salvare elementi, diagrammi e composizioni senza perdere facilità d'uso, contenuto o qualità del dialogo. Collegamenti a MAIOS o ad altri sistemi sono possibilità accessorie e hanno propri mezzi, controller e condizioni.
+
+Il primo esercizio HTML neutro è stato svolto localmente e la [guida](GUIDE.md#11-novembre-2026--primo-esercizio-del-medium-html-neutro) ne conserva prova e correzione del gesto; non è una release né un editor installato nel kernel.
 
 Non copiare nel repository pubblico i contenuti e gli appunti aziendali dell'HTML Schnell. La generalizzazione parte dalle sue capacità e conseguenze osservate, non dall'appropriazione del caso come template pubblico.
 

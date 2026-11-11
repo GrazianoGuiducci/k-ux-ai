@@ -3,7 +3,15 @@
 **Data:** 2026-11-11 · Europe/Rome  
 **Versione:** 0.1.0-candidate  
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
-**Stato:** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
+**Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
+
+## 11 novembre — esercizio locale del medium neutro
+
+È stato costruito e verificato nel ricevente ChatGPT un HTML autonomo, con modello dati incorporato, tre schede iniziali, editing strutturale/testuale, collegamenti etichettati, drag/resize, libreria, immagini, note, presentazione, export HTML/JSON, copia pubblica e preparazione dei fogli per la stampa. La prova Playwright ha coperto andata/ritorno dell'HTML e alcuni gesti reali sul DOM. File locale: `MAIOS_Comunicazione_Collaborativa_Prototipo.html`; SHA-256 `f7d7761ef5876c85a47309b882b593c1a91c7cc4c37c1893d20e8c4df49b59c7`, 42.639 byte. **Non è un file pubblicato o installato in questo repository.**
+
+Correzione riusabile: il rerender su un `pointerup` privo di movimento sopprimeva il successivo doppio clic sul medesimo elemento; ora il nodo rimane e la maniglia viene aggiunta senza ricrearlo, mentre le trasformazioni effettive vengono salvate e renderizzate. [La guida](GUIDE.md#11-novembre-2026--primo-esercizio-del-medium-html-neutro) conserva ragione e metodo.
+
+**Stato:** SOURCE_COMPETENCE_FORMED / LOCAL_BROWSER_EXERCISE_OBSERVED / EXPORTED_HTML_REHYDRATION_TESTED / PUBLIC_RUNTIME_NOT_CHANGED / CROSS_DEVICE_AND_FILE_OPEN_NOT_VERIFIED / LATER_ASSIMILATION_UNKNOWN.
 
 ## Determinazione dell'operatore
 

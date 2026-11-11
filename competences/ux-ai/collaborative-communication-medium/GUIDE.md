@@ -4,6 +4,18 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 11 novembre 2026 — primo esercizio del medium HTML neutro
+
+**Fonte dell'oggetto:** richiesta dell'operatore di provare che cosa si possa fare con una pagina HTML dopo la formazione della competenza. È stato costruito nella chat un prototipo locale autonomo `MAIOS_Comunicazione_Collaborativa_Prototipo.html`, senza contenuti Schnell e senza dipendenze esterne (SHA-256 `f7d7761ef5876c85a47309b882b593c1a91c7cc4c37c1893d20e8c4df49b59c7`; 42.639 byte). Non è stato aggiunto al repository o distribuito nel runtime.
+
+**Esercizio osservato in Chromium tramite Playwright con contenuto caricato direttamente nel test harness**: tre schede con dati JSON incorporati e IDs stabili; modifica testuale nell'ispettore e direttamente nell'oggetto; aggiunta e duplicazione di nodi e relazioni etichettate; trascinamento e ridimensionamento; undo della geometria; aggiunta/duplicazione/eliminazione di schede; immagini incorporate e salvate nella libreria; export HTML con riapertura e recupero di oggetti, note, libreria e immagini; esportazione di una copia con note e libreria eliminate; modalità Presenta e navigazione da tastiera; struttura e strumenti raggiungibili con viewport mobile; composizione di tre fogli per la stampa; export dati JSON. Tre suite locali sono passate senza errori JavaScript di pagina nei percorsi osservati. I test non provano comprensione umana, comportamento diretto su `file://` in tutti i browser, stampa PDF finale, touch reale, sincronizzazione o connessione LLM.
+
+**Apprendimento riusabile emerso da un difetto nella prima costruzione:** il click per selezionare un oggetto e il doppio clic per editarlo partecipano allo **stesso gesto in continuità**. Se il componente viene ricreato a ogni `pointerup`, anche quando non vi è stato movimento, il secondo click non raggiunge lo stesso nodo DOM: il doppio clic smette di funzionare. La correzione locale mantiene vivo l'oggetto quando l'interazione è una semplice selezione; il resize handle viene aggiunto allo stesso nodo; solo una trasformazione effettiva conclude il gesto in stato persistito e render. Questo cambia il prossimo editor in cui selezione, trascinamento ed editing coesistono; non si risolve con un pulsante supplementare o con un ritardo artificiale.
+
+**Rilettura semantica:** il file esportato conserva un modello JSON strutturato oltre all'apparenza delle schede. L'HTML è un carrier autoportante; il modello documentale è il canale con cui un altro LLM può comprendere ID, testi e relazioni dopo il trasferimento. Il trasferimento del file non attiva un agente, non trasferisce autorità e non equivale all'assimilazione della competenza. Per un destinatario esterno una proiezione pubblica può eliminare le note e gli elementi della libreria senza eliminare i contenuti visibili delle schede: il campo *inserito nella presentazione* richiede comunque controllo dell'operatore.
+
+**Stato del learning:** risultato esercitato nel ricevente ChatGPT in modo locale e attribuito, conoscenza conservata nell'owner K-UX-AI; assimilazione nel successivo caso non identico ancora da osservare. La sorgente pubblica non contiene il prototipo e la versione del prodotto non cambia.
+
 ## Sapere acquisito dal primo HTML
 
 Il file MAIOS_Schnell_Presentazione_modificata(1).html, fornito dall'operatore nella conversazione dell'11 novembre, rende già possibile:
