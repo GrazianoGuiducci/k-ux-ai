@@ -5,6 +5,16 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 11 novembre — Studio 03, HTML avanzato locale e apprendimento
+
+**Risultante:** `MAIOS_Comunicazione_Collaborativa_Studio03.html` costruito come file autonomo di 92.537 byte (SHA-256 `f00442c79ada3433a05f417c046af5d0f4fbfbdc81bed15298037416f869ebd6`). Estende Studio 02 con snap magnetico e guide, frecce su punti medi dei lati e maniglia centrale, mini editor vicino a riquadro/freccia/scheda, strumenti solo su comando (dock destra, sinistra, sopra, sotto, flottante), note mobili private, forme circle/oval/pill, collasso con segnaposto numerato, approfondimento live e pagina separata nel PDF, layout nelle sezioni, esportazione di una copia pubblica che pulisce **sia il JSON sia il DOM proiettato**.
+
+**Esercizio locale:** 16/16 controlli funzionali + 6/6 approfondimenti Playwright/Chromium via `set_content`. Risultati verificati: selezione non apre automaticamente inspector; doppio clic apre mini editor; triplo clic attraversa i livelli; magnetismo osservato; freccia agganciata a metà lato e spostabile dal centro; note escluse in Presenta e nell'HTML pubblico; approfondimento produce foglio aggiuntivo nella preparazione della stampa; export HTML e riapertura preservano forma, testo e note; interfaccia e mini editor raggiungibili a 390 px. Zero errori JavaScript pagina osservati nel test principale. **Non verificati** apertura diretta `file://`, touch su dispositivi fisici, PDF finale e comprensione reale dell'interlocutore.
+
+La [guida](GUIDE.md#11-novembre-2026--studio-03-mini-editor-magnetismo-e-continuità-tra-dom-e-documento) conserva i meccanismi. Il sorgente del prototipo è un artefatto della chat, non un file del repository pubblico. Nessun aggiornamento di `src/`, demo, release o sito derivato da questo commit.
+
+**Stato:** STUDIO03_LOCAL_HTML_BUILT / CHROMIUM_TESTS_22_OF_22 / PRIVATE_PUBLIC_EXPORT_SEPARATED / COMPETENCE_SOURCE_LEARNING_RETURNED / RUNTIME_NOT_INTEGRATED / USER_BROWSER_TRIAL_PENDING / CROSS_CASE_ASSIMILATION_UNKNOWN.
+
 ## 11 novembre — Studio 02, secondo esercizio locale
 
 L'operatore ha scelto come risultante una pagina che rimanga visivamente il lavoro stesso, con editor contestuali richiamati su clic e strumenti dalla rotellina a destra; triplo clic per il livello sottostante quando vi è sovrapposizione, oppure per le proprietà visive, più alternativa esplicita dall'elenco Livelli. Ha chiesto frecce con estremi trascinabili, proprietà specifiche, quattro temi, preset e layout/sezioni drag-and-drop, mantenendo l'HTML entro circa 2 MB.
