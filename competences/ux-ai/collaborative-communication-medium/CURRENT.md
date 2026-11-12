@@ -5,6 +5,17 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 12 novembre — Studio 06, frecce semantiche e percorso adattivo
+
+**Fonte:** screenshot reale dell'operatore su Studio 05 in Chrome locale e correzione «La logica delle frecce va rafforzata». Il problema riscontrato riguarda riquadri sfalsati, curvatura, ancore ed etichette non sempre leggibili.
+
+**Risultante locale:** `MAIOS_Comunicazione_Collaborativa_Studio06.html`, 126.062 byte, SHA-256 `602d1358382f93faf89a95c2747dbb71e8b0fe817c0d582eab582ae306bb5567`, più ZIP alternativo byte-identico e screenshot di verifica. Partendo da Studio 05, conserva `ccm.document.v1` e le funzioni di lavoro ed esportazione. Auto-routing confronta lati, ostacoli, percorso, etichette e spazio; badge etichette indipendenti, trascinabili e a capo; centro freccia per modificare curva mantenendo i nodi collegati; modalità auto/dritto/angoli/curva e ripristino automatico. Screenshot di partenza resta prova dell'uso dell'operatore della versione precedente, non prova del nuovo risultato.
+
+**Prova:** JavaScript sintatticamente valido, sei configurazioni geometriche su dodici frecce senza attraversamento delle forme e senza badge sopra le forme nei casi esercitati, drag/reopen di percorso e label, selettore/ripristino, Grafite e privacy export, scena sintetica 40 relazioni renderizzata senza errore. [Guida](GUIDE.md#12-novembre-2026--studio-06-relazione-percorso-ed-etichetta-non-coincidono) aggiornata con meccanismo e limiti.
+
+**Stato:** LOCAL_STUDIO06_BUILT / AUTO_ROUTING_AND_LABEL_UX_BROWSER_CHECKED / SAVE_REOPEN_CONFIRMED_IN_HARNESS / PUBLIC_RUNTIME_UNCHANGED / OPERATOR_REVIEW_PENDING / FILE_URL_AND_TOUCH_NOT_VERIFIED / CROSS_CASE_ASSIMILATION_UNKNOWN.
+
+
 ## 12 novembre — Studio 05: intervento UX sull'HTML locale
 
 **File consegnabile:** `MAIOS_Comunicazione_Collaborativa_Studio05.html`, 114.556 byte, SHA-256 `5e496e0031de67670fdedc308781847c3a8503b90890b369f805be405e4082c4`; ZIP di ripiego locale con HTML identico. Il download nell'interfaccia dell'operatore non è verificato. Non installato in runtime K-UX-AI.

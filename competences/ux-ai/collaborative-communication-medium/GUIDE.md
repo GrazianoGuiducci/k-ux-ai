@@ -4,6 +4,33 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 12 novembre 2026 — Studio 06: relazione, percorso ed etichetta non coincidono
+
+**Evento sorgente:** il feedback dell'operatore sulla resa reale di Studio 05 in Chrome/Windows, con screenshot della scheda «Un'idea diventa condivisibile», segnala che «la logica delle frecce va rafforzata». L'immagine mostra tre riquadri sfalsati e una relazione che si incurva nell'interstizio fino a perdere leggibilità dell'etichetta. Il problema non è semplicemente il colore del tratto: **associazione semantica dei nodi, calcolo del tragitto e leggibilità dell'etichetta** sono tre oggetti differenti, con mutazioni e prove proprie. La modifica grafica non può attribuire un significato diverso a `from`, `to` o `label`.
+
+**Prima implementazione esercitata nel ricevente ChatGPT:** `MAIOS_Comunicazione_Collaborativa_Studio06.html`, file HTML/JS/SVG autonomo di 126.062 byte (SHA-256 `602d1358382f93faf89a95c2747dbb71e8b0fe817c0d582eab582ae306bb5567`), con ZIP alternativo byte-identico. È disponibile come artefatto locale della conversazione, **non** installato nel runtime pubblico.
+
+### Capacità esercitate e sapere da riutilizzare
+
+1. **Collegamento tipizzato, resa derivata.** `from` e `to` conservano gli ID dei nodi; `fromAnchor`, `toAnchor` conservano eventuali lati scelti esplicitamente; la geometria automatica è calcolata dal presente degli oggetti e può cambiare senza mutarne i significati. `label` è predicato testuale attribuito al collegamento, distinto sia dal tratto sia dalla posizione del badge. Un oggetto cancellato lascia punti estremi liberi con coordinate reali, secondo il comportamento già esistente.
+
+2. **Calcolo delle ancore e del percorso in modo situato.** Per un collegamento automatico il renderer confronta lati candidati, segmenti diretti ed elbow/percorsi ortogonali con angoli arrotondati, qualificando lunghezza, numero di svolte, uscita/ingresso sul lato giusto, attraversamento delle forme, disposizione dell'etichetta e limite del canvas. Una forma che si avvicina a un'altra può rendere sensato passare da `right→left` a `right→top` senza cambiare i nodi collegati. Questo è un piccolo selettore di percorsi, **non** un motore universale di graph-layout: relazioni sovrapposte o scene molto dense possono richiedere azione esplicita.
+
+3. **Etichetta percepibile e indipendente.** Il testo è posto in un badge SVG contrastato che cerca un'area esterna alle forme, può avvolgere un testo lungo su più righe e può essere trascinato indipendentemente: gli offset restano dati `labelDx`/`labelDy`, conservati nel file. Un'etichetta che finisce dietro un riquadro non è riparata da `z-index` indiscriminato: prima cambia la scelta del posto rispetto alla relazione.
+
+4. **Drag dal centro con effetti distinti.** Con entrambi gli estremi liberi, muove insieme i punti; con uno solo libero, muove quel punto; con entrambi agganciati, modifica un percorso di curva manuale mediante `control` conservando `from`/`to`. Il drag dell'estremità cambia il nodo di attacco o lascia un punto libero. L'interfaccia espone le modalità `Automatico`, `Dritto`, `Ad angoli morbidi`, `Curva manuale`, e un `Ripristina percorso` che libera le preferenze visive senza cancellare gli ID dei referenti.
+
+5. **Continuità del gesto e del file.** Il target percettivo della linea selezionata mantiene l'hit path, il centro e due endpoint indipendenti; il badge resta una superficie di intervento distinta. Le modifiche di label e percorso sono atomiche per undo; il formato documentale resta `ccm.document.v1`, aggiungendo proprietà opzionali alla relazione e lasciando leggibili le forme precedenti. Una curva salvata precedentemente conserva la sua identità visiva salvo ripristino esplicito.
+
+### Prove e limiti
+
+Controllo sintattico JavaScript con Node, Playwright/Chromium via `set_content`: sei configurazioni spaziali (allineata, sfalsata, ostacolo aggiuntivo, verticale, invertita, quasi a contatto), dodici frecce in totale senza attraversare l'interno dei riquadri e senza collisioni fra badge ed elementi nelle configurazioni scelte; drag dal centro e salvataggio/riapertura con `from/to` immutati e `control` disponibile; drag etichetta con offset conservati; scelta e ripristino di percorso; testo lungo a più righe; contrasto di badge nel tema Grafite; esportazione pubblica senza gli appunti privati. Una scena sintetica con venti riquadri e quaranta collegamenti ha renderizzato senza errori JavaScript nel test di carico iniziale; questo non dimostra framerate o scala illimitata.
+
+**Limiti del giudizio:** lo screenshot è un'osservazione dell'operatore sulla vecchia versione; non prova che abbia utilizzato Studio 06. I test browser sono headless e non attestano apertura `file://` in Chrome/Edge dell'operatore, gesto touch reale, comprensione dell'interlocutore, PDF finale, pubblicazione, installazione o assimilazione in un caso non identico. La nuova UI contiene ancora il file esempio neutro, non le modifiche locali dell'utente allo Studio 05 sul suo computer.
+
+**Apprendimento per il seguito:** in un diagramma collaborativo il significato sopravvive alla trasformazione della geometria. Rafforzare la freccia significa permettere di correggere separatamente referente/relazione, ancoraggio/percorso e posizione della descrizione; ricalcolare l'espressione dove il contesto cambia senza inventare un nuovo significato. La differenza torna a questa competenza K-UX-AI; Design/Source-Grounded Infographic e Interaction Quality restano i metodi complementari per grammatica spaziale, focus e comprensione, senza duplicare le rispettive fonti.
+
+
 ## 12 novembre 2026 — Studio 05: lo spazio di lavoro non è lo schermo del pannello
 
 **Selezione dell'operatore:** prima di rigenerare Studio 04 dopo un download non riuscito, è stata richiesta una revisione UX fondata sul file e su viewport reali. La revisione ha esposto perdita di leggibilità su telefono, sovrapposizione del dock con contenuti e appunti, finestre contestuali troppo alte e un'etichetta di salvataggio che attribuiva un esito non osservato. L'operatore ha autorizzato di procedere con la correzione e di richiamarlo quando serva la sua valutazione.
