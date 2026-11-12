@@ -5,6 +5,17 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 12 novembre — Studio 12, rail delle schede e catalogo responsive
+
+**Mandato:** proseguire il miglioramento UX dopo Studio 11, aggiungendo i comportamenti utili senza appesantire il medium.
+
+**Artefatti autonomi nel ricevente ChatGPT:** `MAIOS_CCM_Studio12_Editor_Guida.html` (185.345 byte, SHA-256 `e0f9ae538cf3808f1d59fae06a49b3a3f917fe06d2cd9bd024d677c2fb0f954d`), `MAIOS_CCM_Studio12_Presentazione_Preconfigurata.html` (199.880 byte, SHA-256 `c7f11faf37ea9827899c76a11c5b7adbc981b5ecbce62d4fe24372a0343e09c2`), ZIP (107.278 byte) con i due HTML. Colonna sinistra elenco/miniature, selezione e riordino ancora attraverso i comandi preesistenti, bordo di resize; pannello strumenti a destra ridimensionabile con sette gruppi richiudibili, ricerca, catalogo in 2/3/4 colonne secondo larghezza, docking esistente. Stato UI incorporato nell'HTML e riutilizzabile.
+
+**Prova:** entrambe le copie in Chromium/Playwright `set_content`, senza errori JS nei percorsi di test: toggle/lista/miniature, allargamento con pulsanti, drag left rail e tool rail, aperture top/bottom/right, ricerca e sezioni, save/reopen con preferenze, modalità Presenta, mobile 390 px senza lettura compressa. In corso d'opera corretto `<details>` che attribuiva modifiche non richieste all'apertura, gesto resize durante transition e adattamento viewport che clobberava width desktop. [GUIDE](GUIDE.md#12-novembre-2026--studio-12--due-superfici-laterali-con-geometria-propria) conserva causalità e metodo.
+
+**Stato:** LOCAL_STUDIO12_CREATED / SIDE_RAIL_AND_TOOL_LAYOUT_TESTED / HTML_ROUNDTRIP_OBSERVED / MOBILE_READABLE_IN_HEADLESS_BROWSER / UX_OPERATOR_REVIEW_OPEN / KUX_PUBLIC_RUNTIME_UNCHANGED / DIRECT_FILE_OPEN_AND_TOUCH_UNVERIFIED.
+
+
 ## 12 novembre — Studio 09, guida e prova di preconfigurazione da fonte reale
 
 **Mandato:** spiegare in una breve guida incorporata che l'HTML è un mezzo di interazione con LLM e con interlocutori umani; provare la capacità della stessa AI di ricevere il file e trasformarlo in una presentazione organizzata secondo le competenze, senza impedire che l'operatore la corregga.
