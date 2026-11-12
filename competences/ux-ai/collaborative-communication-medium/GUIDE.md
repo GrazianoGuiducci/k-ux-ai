@@ -4,6 +4,37 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 12 novembre 2026 — Studio 08 — template agentici come ipotesi modificabili
+
+**Fonte:** dopo il rafforzamento del motore delle frecce, l'operatore propone di creare template perché K-UX-AI ha ormai capacità sufficienti per rappresentare e organizzare le logiche di sistemi agentici. Non chiede di definire l'unica ontologia dei sistemi agentici. Il lavoro è stato formato con Collaborative Communication Medium, K-UX-AI, MPK / Competence Formation e Meta_Skill, lasciando ai singoli owner i fatti del loro dominio.
+
+**Risultante locale esercitata nel ricevente ChatGPT:**
+- `MAIOS_Comunicazione_Collaborativa_Studio08.html` (145.276 byte, SHA-256 `279014c28f060f1eddc07ed561b1e753fa5866bb136919e44cf458e03972bc91`): editor autonomo con nuova sezione «Template · Sistemi agentici», cinque modelli preconfigurati e un comando per aggiungerli tutti.
+- `MAIOS_Template_Sistemi_Agentici.html` (153.266 byte, SHA-256 `6e775f94929f17943ecc21f2ceb18bf575e8ffc5b360c81afdbbf26440d4a1cb`): presentazione autonoma già composta dalle cinque schede.
+- `MAIOS_Template_Sistemi_Agentici.json` (18.802 byte, SHA-256 `27b47078465e2d1a6ec6e89b25656936a057fd63fbb20925e9f1c92c2c99166b`): modello dati della presentazione per lettura/revisione da parte di un ricevente AI.
+- `MAIOS_Studio08_Template_Agentici.zip` (90.915 byte, SHA-256 `4cab7f38b3af33416935379e800da678dc65039af3aa0e1b367866cc61807925`), contenente i tre file identici ai singoli artefatti.
+Sono artefatti della conversazione; **non** una nuova release, integrazione nel runtime K-UX-AI, deploy sul sito o adozione presso altri kernel.
+
+### Contenuto e funzione dei cinque template
+
+1. **Dall'intento alla competenza**: contesto/fonti, competenza, lavoro/risultante e apprendimento. È una relazione aperta: formazione della capacità e ritorno dall'esperienza non sono sempre una sequenza lineare né equivalgono a un automatismo.
+2. **Lavoro reciproco umano–AI**: persona, oggetto condiviso, sistema AI e interlocutore. Una freccia in entrambe le direzioni rappresenta scambio possibile, non accesso completo o sincronizzazione già esercitata.
+3. **Cooperazione fra agenti**: Agente A, contesto di progetto, Agente B e risultante esposta. «Contesto di progetto» non diventa per questo un supervisore autoritario, memoria perfettamente condivisa o controller della realtà esterna.
+4. **Dalla proposta all'effetto**: sorgente, proposta, decisione, effetto/ricevuta. Il disegno preserva la differenza fra proposta, autorizzazione ed esito verificato; anche una «ricevuta» può riferirsi alla richiesta e non all'effetto.
+5. **Continuità dopo un evento**: evento, presente esposto, seguito e ritorno al metodo. Stato precedente ed evidenza nuova partecipano senza riscrivere retroattivamente il passato.
+
+### Metodo e insegnamento
+
+**Template come ipotesi modificabile, non topologia imposta.** Un diagramma preconfigurato può abbreviare il lavoro quando la sua grammatica aiuta a esporre una relazione reale. Non prova che gli agenti, le fonti, i controller, i permessi o gli effetti esistano nel sistema del destinatario. Ogni nodo ha un riferimento testuale, ogni freccia ha soggetti e predicato e, quando utile, due ancoraggi iniziali scelti per la leggibilità. Queste connessioni restano modificabili. Non promuovere le parole e le frecce del template a fatti operativi senza sorgente e conseguenza.
+
+**Inserzione non distruttiva e continuità.** La scelta di un template aggiunge una scheda dopo quella attiva, senza cancellare le esistenti; aggiungerne cinque produce cinque schede nuove. La funzione forma nuovi ID stabili per nodi e relazioni, conservando `templateSource:{id,revision,kind:'illustrative'}`, e usa il medesimo `ccm.document.v1` del mezzo. La presentazione precompilata usa le stesse schede come documento autonomo, riproducibile da file. Il catalogo è disponibile soltanto come codice dentro questo HTML locale, non come funzione già presente nei consumer pubblici.
+
+**Percepibilità del diagramma.** La prima prova visuale mostrava un collegamento orizzontale agganciato al bordo inferiore, sebbene i nodi fossero affiancati. La correzione ha fornito ai modelli lati iniziali espliciti per i collegamenti ordinati (`right→left`, `bottom→top` ecc.), lasciando al motore Studio 07 la modifica del tragitto quando le forme vengono spostate. L'insegnamento è che un buon preset non deve lasciare al router il compito di dedurre ciò che la forma iniziale del template già determina; quel preset resta però una proiezione, non un vincolo sul significato o un percorso obbligatorio.
+
+**Prova qualificata:** JavaScript sintatticamente valido; Chromium/Playwright via `set_content`: cinque inserimenti singoli, inserimento dell'intero insieme, documento salvato e riaperto con ID unici e link a nodi esistenti, tema Grafite, copia pubblica e modalità Presenta, nessun errore JavaScript osservato. Cinque template e sedici collegamenti esaminati nella disposizione iniziale: nessuna freccia campionata attraversa il corpo dei nodi nella prova. HTML pack salvato/riaperto con cinque scene, ZIP verificato byte-per-byte. Non è stata esercitata l'apertura `file://` sull'host dell'operatore, comprensione reale di interlocutori, touch o assimilazione della libreria in un altro ricevente. Ogni eventuale caso cliente conserva la propria conoscenza e non entra per default nel catalogo pubblico.
+
+**Seguito:** provare la personalizzazione di un template su un sistema concreto, distinguere graficamente osservato/proposto/unknown, e far ritornare alla competenza la grammatica che aiuta davvero la comunicazione dopo l'uso.
+
 ## 12 novembre 2026 — Studio 07: il gancio è un oggetto percettivo, non un nuovo referente
 
 **Ingresso dell'operatore:** dopo il caso-limite di Studio 06 con due riquadri orizzontalmente a contatto, viene selezionato un motore di percorso che aggiri l'unione delle sagome senza strisciare sui lati. Il nuovo contributo chiede punte attivabili **all'inizio, alla fine, a entrambi gli estremi** (e facoltà di disattivarle), estremi e ganci sempre visibili davanti ai riquadri, e **quattro ingressi standard per lato** perché più relazioni possano convergere sulla stessa scheda senza coincidere nello stesso punto.

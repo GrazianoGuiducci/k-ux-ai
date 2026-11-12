@@ -5,6 +5,16 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 12 novembre — Studio 08, libreria di template agentici
+
+**Mandato:** creare template per comunicare possibili organizzazioni della logica di sistemi agentici, a partire dal medium già esercitato. Nessuna architettura universale imposta.
+
+**Artefatti locali verificati:** editor Studio 08 con cinque template non distruttivi (145.276 byte); HTML già composto con cinque schede (153.266 byte); JSON corrispondente (18.802 byte); ZIP completo (90.915 byte). I temi sono: intento/competenza, reciprocità umano–AI, cooperazione fra agenti, proposta/decisione/effetto, continuità dopo evento. Schede con nodi/relazioni modificabili, sorgente `templateSource.kind=illustrative`, nuovi ID quando inserite. [Guida](GUIDE.md#12-novembre-2026--studio-08--template-agentici-come-ipotesi-modificabili) conserva le ragioni e i confini dei modelli.
+
+**Esercizio:** JavaScript valido; inserzione delle cinque schede singole e dell'intero set, salvataggio e riapertura, scena connessa da referenti esistenti, copia pubblica e tema scuro, presentazione, ZIP integro. Le 16 frecce iniziali dei cinque modelli non attraversano l'interno dei riquadri nelle posizioni verificate. La prima verifica visiva ha portato a fissare gli ancoraggi iniziali dei template orizzontali e verticali. Il file HTML locale è un esempio esercitato, non una capability installata nel runtime pubblico.
+
+**Stato:** LOCAL_STUDIO08_TEMPLATE_LIBRARY_BUILT / FIVE_EDITABLE_EXAMPLES_AND_JSON_PRODUCED / SAVE_REOPEN_BROWSER_CHECKED / OPERATOR_FEEDBACK_OPEN / PUBLIC_RUNTIME_UNCHANGED / CROSS_CASE_ASSIMILATION_UNKNOWN.
+
 ## 12 novembre — Studio 07, aggiramento e quattro ingressi per lato
 
 **Mandato:** rafforzare l'aggiramento quando i riquadri si toccano o si sovrappongono; punte di freccia solo inizio, solo fine, entrambe o nessuna; ganci/punte visibili davanti alle schede; quattro ingressi standard per lato e distribuzione quando più frecce convergono.
