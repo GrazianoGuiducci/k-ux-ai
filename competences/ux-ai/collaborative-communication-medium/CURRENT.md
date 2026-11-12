@@ -5,6 +5,19 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 12 novembre — Studio 09, guida e prova di preconfigurazione da fonte reale
+
+**Mandato:** spiegare in una breve guida incorporata che l'HTML è un mezzo di interazione con LLM e con interlocutori umani; provare la capacità della stessa AI di ricevere il file e trasformarlo in una presentazione organizzata secondo le competenze, senza impedire che l'operatore la corregga.
+
+**Esercizio locale:** letti Studio 08 HTML/JSON e fonti owner-native MPK, Meta_Skill e K-UX-AI. Creati (1) editor HTML con `? Guida`, tre passaggi e richiesta copiabile; (2) un nuovo documento HTML di sette schede con note private, fonti `sourceRefs`, nodi/relazioni e catalogo preesistente modificabili; (3) JSON strutturato e ZIP. La guida non pretende un LLM già collegato nel file. La presentazione è una proposta interpretativa, non la prova che le capacità di tutti gli agenti rappresentati siano installate.
+
+**File:** editor `MAIOS_CCM_Studio09_Editor_Guida.html`, 151.399 byte; presentazione `MAIOS_CCM_Studio09_Presentazione_Preconfigurata.html`, 165.934 byte, SHA-256 `61b7a327bf9e220f6556ea345c18a3e757dfb3872628ab4bbf84bd34ca7d5caf`; JSON 28.977 byte; ZIP byte-verificato. File locali della conversazione, non artefatti inclusi nel repository o installati nel runtime.
+
+**Prova:** 8 scenari principali Chromium/Playwright, ciascuno con assert su UI, documento e/o roundtrip, zero JS page errors; sette schede controllate senza troncamenti, note private invisibili in Presenta e assenti dalla copia pubblica, 390px in vista Leggi. [GUIDE](GUIDE.md#12-novembre-2026--studio-09--il-file-modificabile-è-una-fonte-di-lavoro-per-lllm) conserva metodo e differenze.
+
+**Stato:** LOCAL_STUDIO09_GUIDED_EDITOR_AND_CONFIGURED_STORY_BUILT / JSON_READ_TO_HTML_AUTHORING_EXERCISED / HTML_EXPORT_REOPEN_VERIFIED / PROVIDER_CONNECTION_NOT_PRESENT / OPERATOR_USAGE_AND_NEXT_CASE_OPEN / KUX_PUBLIC_RUNTIME_UNCHANGED.
+
+
 ## 12 novembre — Studio 08, libreria di template agentici
 
 **Mandato:** creare template per comunicare possibili organizzazioni della logica di sistemi agentici, a partire dal medium già esercitato. Nessuna architettura universale imposta.
