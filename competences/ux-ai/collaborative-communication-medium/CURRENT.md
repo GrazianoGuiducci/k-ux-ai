@@ -5,6 +5,16 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 12 novembre — Studio 07, aggiramento e quattro ingressi per lato
+
+**Mandato:** rafforzare l'aggiramento quando i riquadri si toccano o si sovrappongono; punte di freccia solo inizio, solo fine, entrambe o nessuna; ganci/punte visibili davanti alle schede; quattro ingressi standard per lato e distribuzione quando più frecce convergono.
+
+**Artefatto locale prodotto:** `MAIOS_Comunicazione_Collaborativa_Studio07.html`, 135.511 byte, SHA-256 `d56564923d767f09119e75984ec54a885a64f5ad2aaac6eeae2da8a7b591a7c8`, ZIP di 39.948 byte con HTML identico. Unico file offline con schema `ccm.document.v1`. [Guida](GUIDE.md#12-novembre-2026--studio-07-il-gancio-è-un-oggetto-percettivo-non-un-nuovo-referente) esplicita meccanismi e limiti.
+
+**Esercizio:** sette situazioni geometriche × due relazioni, senza attraversamento degli interni o collisione con riquadri dei badge nei casi campionati; quattro ingressi distinti sullo stesso lato (20/40/60/80%); quattro modalità di punta SVG; click sul gancio, scelta della porta, export/reopen e punte bidirezionali attraverso mini editor; copia pubblica priva del testo di appunto privato; ZIP verificato; prova iniziale con 24 collegamenti/12 nodi senza JS error. Test Chromium Playwright su HTML caricato nel harness, non uso umano di `file://`.
+
+**Stato:** STUDIO07_HTML_LOCAL_BUILT / CONTACT_BYPASS_AND_PORTS_CHECKED / BIDIRECTIONAL_HEADS_AND_REOPEN_CHECKED / PUBLIC_COPY_PRIVACY_CHECKED / USER_REVIEW_PENDING / KUX_PUBLIC_RUNTIME_UNCHANGED / CROSS_CASE_ASSIMILATION_UNKNOWN.
+
 ## 12 novembre — Studio 06, frecce semantiche e percorso adattivo
 
 **Fonte:** screenshot reale dell'operatore su Studio 05 in Chrome locale e correzione «La logica delle frecce va rafforzata». Il problema riscontrato riguarda riquadri sfalsati, curvatura, ancore ed etichette non sempre leggibili.
