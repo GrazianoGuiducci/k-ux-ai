@@ -4,6 +4,32 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 12 novembre 2026 — Studio 05: lo spazio di lavoro non è lo schermo del pannello
+
+**Selezione dell'operatore:** prima di rigenerare Studio 04 dopo un download non riuscito, è stata richiesta una revisione UX fondata sul file e su viewport reali. La revisione ha esposto perdita di leggibilità su telefono, sovrapposizione del dock con contenuti e appunti, finestre contestuali troppo alte e un'etichetta di salvataggio che attribuiva un esito non osservato. L'operatore ha autorizzato di procedere con la correzione e di richiamarlo quando serva la sua valutazione.
+
+**Risultante locale nel ricevente ChatGPT:** `MAIOS_Comunicazione_Collaborativa_Studio05.html` (114.556 byte, SHA-256 `5e496e0031de67670fdedc308781847c3a8503b90890b369f805be405e4082c4`), più archivio ZIP alternativo verificato byte-per-byte. Non sono stati modificati `src/`, pubblicazione, release o installazione K-UX-AI.
+
+### Sapere che deve cambiare il prossimo editor
+
+**Occlusione reale e adattamento:** un pannello fisso a destra può lasciare il canvas sotto di sé anche quando il pannello è dichiarato «laterale». Il calcolo CSS dell'inset deve risolversi in uno scope che dispone davvero della variabile `--dock-width`: un alias definito prematuramente in `:root` con `var(--dock-width)` inesistente nel suo scope ha prodotto valore non valido e padding computato di `0px`. Spostare l'alias su `body` ha reso operante la riserva. Verificare nel render **rect del canvas e rect del pannello**, non solamente il nome della classe. Dock destro/sinistro su desktop non copre più il documento; sopra/sotto riserva un campo; mobile usa un pannello esplicito a piena larghezza con ritorno/focus e backdrop, senza tentare di conservare contemporaneamente due spazi illeggibili.
+
+**Stesso documento, due proiezioni raggiungibili:** su schermi stretti la vista spaziale 16:9 comprime testo e note sotto soglia leggibile. Lo stesso modello `ccm.document.v1` forma allora una vista di lettura a 17px su 390px, con contenuti, relazioni etichettate e possibilità di richiamare il mini editor del referente; una vista spaziale rimane disponibile con scroll/zoom, non un secondo documento. La vista lineare conserva i nodi anche quando geometria e ruolo visivo cambiano. Un pannello/modalità non trasferisce significato o stato aziendale.
+
+**Mini editor contestuale:** la finestra già mobile e ridimensionabile diventa compatta soltanto se i campi di uso meno frequente sono subordinati a una disclosure (stile, forma, colore, approfondimento). Togliere il solo `height:480px` non bastava: l'altezza naturale superava ancora 490px. Con proprietà secondarie collassate l'editor osservato è alto circa 386px e mantiene le sue funzioni. La geometria manuale resta una scelta dell'operatore e il comando di ritorno vicino al referente rimane disponibile.
+
+**Perdita nella copia pubblica:** eliminare note e libreria dal JSON non è sufficiente se il renderer ha anche creato una **seconda proiezione testuale** (`#readingView`). La prima esportazione Studio 05 manteneva lì gli appunti privati come HTML statico: il test di ricerca del testo sensibile nel file esportato l'ha rilevato. Il nuovo export svuota anche quella regione, come gli altri output runtime, prima di serializzare e riapre la copia in lettura senza strumenti né note. Il metodo generale è `private domain data != every DOM projection`: ogni nuova proiezione modifica la copertura del controllo di condivisione. Non chiamare una copia pubblica protetta: il codice HTML resta ispezionabile.
+
+**Salvataggio osservabile:** `a.click()` su un Blob richiede un download al browser; non fornisce ricevuta del salvataggio a disco. Non scrivere «copia salvata» né azzerare lo stato modificato su quel solo gesto. Esporre «download richiesto» e invitare alla verifica del file; nel test harness Playwright è stato ricevuto un file via `expect_download` e riaperto con i dati modificati. Questa prova non dimostra consegna del collegamento sandbox nell'interfaccia dell'operatore.
+
+**Troncamento testuale:** un avviso vicino al nodo segnala `scrollHeight > clientHeight`; non abbassare i font fino a nascondere il problema. La vista di lettura rende disponibili i testi completi, e l'operatore può ridimensionare o correggere il riquadro. La nota iniziale dell'esempio è stata spostata e ampliata nel canvas perché il testo era effettivamente tagliato. La vista PDF può avere altre necessità e rimane prova separata.
+
+### Osservazioni tecniche e limiti
+
+**45/45 controlli Playwright/Chromium locali**: 35 su dock non occlusivi, lettura, zoom, mini editor, data roundtrip, privacy e modalità pubblica/mobile; 10 su temi, frecce trascinabili dal centro, preparazione print senza note, avviso overflow, editing nella vista mobile e assenza di errori pagina. Le prime quattro anomalie della suite principale sono state corrette e riprovate: padding dock non risolto, altezza editor naturale, seconda proiezione privata non eliminata. L'HTML non carica librerie esterne e resta ampiamente sotto il budget dei 2 MB.
+
+**Non esercitati:** apertura tramite `file://` nel browser dell'operatore (il runner Chromium restituisce `ERR_BLOCKED_BY_ADMINISTRATOR`), touch su dispositivo fisico, qualità del PDF finale, riuscita del download via interfaccia ChatGPT, esperienza comunicativa di una persona reale, assimilazione in un altro dominio. Il primo riscontro del destinatario cambia il successivo lavoro senza riscrivere le prove già svolte.
+
 ## 11 novembre 2026 — Studio 04: mini editor mobili e tema sull'intero ambiente
 
 **Fonte:** l'operatore distingue il salvataggio completo dalla «Copia pubblica» e seleziona due cambiamenti del mezzo: gli editor contestuali devono essere riposizionabili e ridimensionabili, in analogia alle finestre chat già conosciute, senza caricare un framework esterno; la scelta di uno dei quattro temi deve interessare anche l'interfaccia esterna alla scheda.

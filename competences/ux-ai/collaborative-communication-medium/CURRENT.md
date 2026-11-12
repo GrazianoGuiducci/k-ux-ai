@@ -5,6 +5,16 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 12 novembre — Studio 05: intervento UX sull'HTML locale
+
+**File consegnabile:** `MAIOS_Comunicazione_Collaborativa_Studio05.html`, 114.556 byte, SHA-256 `5e496e0031de67670fdedc308781847c3a8503b90890b369f805be405e4082c4`; ZIP di ripiego locale con HTML identico. Il download nell'interfaccia dell'operatore non è verificato. Non installato in runtime K-UX-AI.
+
+**Differenze implementate:** pannelli che non occludono il canvas sul desktop; vista di lettura lineare e modificabile su mobile senza duplicare il modello; canvas con zoom/scroll disponibile; mini editor ridotti grazie a proprietà secondarie collassabili; segnalazione dell'overflow di testo e nota iniziale più leggibile; stato «download richiesto» anziché falsa conferma; copia pubblica di sola lettura senza note in JSON **né** nella proiezione DOM; pannello mobile esplicito; rispetto del focus/inert quando chiuso.
+
+**Prova:** 35/35 test principali + 10/10 regressioni mirate Playwright/Chromium `set_content`, incluse frecce, quattro temi, stampa preparata, HTML scaricato e ricaricato, privacy pubblica e mobile. Errori iniziali corretti e riesercitati. Source HTML autonomo e ZIP creati nel container; nessun deploy, release, merge, test file://, dispositivo fisico o PDF effettivo. [Guida](GUIDE.md#12-novembre-2026--studio-05-lo-spazio-di-lavoro-non-è-lo-schermo-del-pannello) custodisce il metodo e la distinzione sulle proiezioni private.
+
+**Stato:** LOCAL_STUDIO05_BUILT / 45_OF_45_BROWSER_CHECKS_PASS / PUBLIC_DOM_PRIVACY_REGRESSION_FIXED / USER_DOWNLOAD_AND_UX_TRIAL_PENDING / KUX_PUBLIC_RUNTIME_UNCHANGED / CROSS_CASE_ASSIMILATION_UNKNOWN.
+
 ## 11 novembre — Studio 04: UI coerente e mini editor riposizionabili
 
 **Artefatto locale:** `MAIOS_Comunicazione_Collaborativa_Studio04.html`, 101.419 byte, SHA-256 `579c7f2ee7891b34eb60b7ef3e749ebe8cd373a71d3b76acbda70014f3c25a32`. Tema diffuso nell'area esterna, toolbar, controlli, pannelli, dialoghi e mini editor per tutti e quattro i preset. Mini editor spostabile dalla testata, ridimensionabile dall'angolo, con geometria salvata nel file, riuso e comando «↩ Vicino». Il pulsante Copia pubblica continua a eliminare note e libreria; ciò non cifra il file né verifica i contenuti condivisi.
