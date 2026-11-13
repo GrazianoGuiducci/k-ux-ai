@@ -5,6 +5,12 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 13 novembre — MetaCanvas 0.1.1: ritorno di JSON/HTML dell’AI nel documento
+
+**Nuova possibilità esercitata:** oltre a consegnare HTML/JSON a un modello, l'operatore può reimportare il risultato in un editor già aperto. Il tool importa solo il JSON `ccm.document.v1` e non esegue script/CSS di HTML ricevuti; controlla integrità referenziale, chiede conferma, permette Undo e mantiene l'avviso MPL. Non è un merge di versioni né una sincronizzazione in background. È ancora un HTML autonomo.
+
+**Verifiche locali:** JSON→HTML, HTML→modello, annulla/ripristina, file incompatibile, link a referente assente, rifiuto conferma, copia pubblica senza marker di note private/libreria, 390px, zero eccezioni osservate; script validati con `node --check`. Identità di rilascio del tool: preview MetaCanvas 0.1.1, senza nuova release generale K-UX-AI. Prova reale file:// e browser diversi non ancora attestata. [Metodo e causalità](GUIDE.md#13-novembre-2026--metacanvas-dal-passaggio-al-ritorno-strutturato).
+
 ## 13 novembre — prima sorgente pubblica dello strumento e licenza MPL-2.0
 
 **Mandato esplicito dell'operatore:** pubblicare l'HTML e la documentazione sul prodotto pubblico K-UX-AI e nella lane privata del produttore, mentre Codex si occupa autonomamente della pagina su MAIOS.it. Licenza selezionata successivamente: tutti possono usare, modificare e commercializzare il tool; il copyright sul codice originale rimane al titolare.

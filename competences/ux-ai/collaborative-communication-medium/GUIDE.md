@@ -4,6 +4,16 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 13 novembre 2026 — MetaCanvas: dal passaggio al ritorno strutturato
+
+**Evento:** nel primo tool pubblico l'operatore può esportare dati JSON per una AI, ma un LLM che restituisce quel JSON modificato non ha un gesto di rientro equivalente nel documento già aperto. Il mezzo unidirezionale rende difficile continuare l'oggetto senza rimaneggiare l'intero HTML. Il valore del medium non è semplicemente offrire un pulsante d'importazione: **stessa identità semantica attraverso rappresentazione umana, file, AI, file di ritorno e nuova rappresentazione umana**.
+
+**Risultante in 0.1.1:** importazione di `ccm.document.v1` da JSON o HTML che contiene `#ccm-data`, leggendo solo dati, senza valutare HTML o script ricevuti. Prima del gesto verificare schema, ID e collegamenti, conservare l'attuale stato per Undo, mostrare titolo e numero di schede e chiedere conferma perché il documento viene sostituito, non fuso. Le chiavi UI sono preferenze; la versione pubblica di un documento importato può tornare in modalità editabile come copia di lavoro, senza inventare appunti privati rimossi. La UI e il copyright originario rimangono quelli dell'applicazione locale, non vengono sostituiti dal contenuto del file importato.
+
+**Prova:** test Chromium locale su JSON→HTML, undo/redo, import HTML con script marcatore non eseguito, rifiuto di frecce con target assente, annullamento della conferma, rientro da copia pubblica, viewport mobile 390px e assenza di errori JavaScript nei percorsi; test di esportazione pubblica con indicatori privati in note e libreria, nessun indicatore nel documento prodotto. Node `--check` per gli script incorporati. Limite: non sono una certificazione di sicurezza su tutte le strutture ostili o sulla compatibilità reale con ogni browser. Non fare della validazione un contenuto o una verità semantica; essa controlla soltanto l'integrità minima del carrier.
+
+**Ritorno di metodo:** quando si costruisce un mezzo di scambio con un altro ricevente, verificare che il **risultato ritorni in uno stato ancora modificabile dall'operatore**, distinguendo un documento restituito da un effetto esterno eseguito. La funzione appartiene alla competenza CCM e al Code Medium; la pagina del sito resta all'owner Codex/MAIOS.it.
+
 ## 13 novembre 2026 — ingresso pubblico neutro, contenuto distribuibile e prodotto controllato
 
 **Sorgente e mandato:** dopo dodici iterazioni locali del medium HTML, l'operatore chiede come farlo usare immediatamente da chi non conosce MAIOS o le sue metalogiche, e propone una risorsa pubblica con controllo commerciale del prodotto UX-AI: apertura del sapere fondativo non implica pubblicazione dei tool sotto licenza MIT; tutti devono poter usare lo strumento, ma la sua rivendita/white-label come prodotto UX-AI richiederebbe una concessione distinta. La proposta di licenza è una **direzione autoriale da qualificare**, non un testo di concessione giuridicamente definito né pubblicazione già esercitata.

@@ -7,3 +7,7 @@ This public tool was derived from the **neutral Studio 12** artifact developed t
 **License scope:** `MPL-2.0` applies to the files in **this directory** (HTML application, documentation, example source), not automatically the rest of K-UX-AI. Copyright on the original tool source: **2026 Graziano Guiducci**. Contributors retain copyrights on their own additions, subject to the MPL terms for covered files. Trademarks and logos are not licensed.
 
 **Verified in local Chromium:** embedded JS syntax, startup and four example scenes, guide access, HTML title edit/download/reopen preserving document JSON and license notice, 390 px viewport without horizontal overflow, no observed JavaScript errors in these pathways. This is not a comprehensive security, accessibility or compatibility certification. Direct `file://` in real user browsers, third-party presentation reception and actual PDF output remain distinct tests.
+
+## MetaCanvas 0.1.1 — continuation evidence (13 November 2026)
+
+Added a bounded round-trip import of `ccm.document.v1` from JSON or a self-contained HTML export, without executing received HTML. Tests exercised JSON/HTML import, undo/redo, rejection of dangling relations and cancelled confirmations, public-copy exclusion of private notes/library markers, retention of the MPL notice, 390px layout and no page errors. This does not claim a full security audit, production site integration or real human comprehension. The standalone file remains the product; MAIOS.it's resources page is owned by a distinct Codex/TM9 workflow.

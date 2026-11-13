@@ -14,7 +14,7 @@
 <meta name="copyright" content="Copyright (c) 2026 Graziano Guiducci">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Collaboration Studio | Anteprima</title>
+<title>AI Collaboration Studio | MetaCanvas 0.1.1</title>
 <style>
 :root{--ink:#183146;--muted:#5d7281;--line:#d8e2e6;--bg:#eaf0f2;--paper:#fff;--accent:#087b70;--accent-soft:#e7f5f0;--focus:#e3a04c;--shadow:0 12px 38px #19334a17}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
@@ -472,8 +472,8 @@ body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-fi
     <div class="lib-list" id="libraryList"></div><p class="helper" id="libraryHint">Seleziona un elemento e usa “Salva tra i miei elementi” per riutilizzarlo.</p>
     </div></details><details class="tool-section" data-section="layers" ><summary>Livelli della scheda</summary><div class="tool-section-body"><div id="layersList" class="layer-list"></div>
     </div></details><details class="tool-section" data-section="export" ><summary>Salva ed esporta</summary><div class="tool-section-body">
-    <div class="tool-grid"><button id="undoBtn" title="Annulla (Ctrl+Z)">↶ Annulla</button><button id="redoBtn" title="Ripristina (Ctrl+Y)">↷ Ripristina</button><button id="exportData">Dati / AI</button><button id="printBtn">PDF / Stampa</button><button id="publicBtn">Copia pubblica</button></div>
-    <div class="notice" style="margin-top:12px">Il file funziona offline. <strong>Salva lavoro</strong> chiede al browser di scaricare una copia: controlla la cartella Download e riapri il file. Non modifica automaticamente l’originale. Limite consigliato: 2 MB.</div>
+    <div class="tool-grid"><button id="undoBtn" title="Annulla (Ctrl+Z)">↶ Annulla</button><button id="redoBtn" title="Ripristina (Ctrl+Y)">↷ Ripristina</button><button id="exportData">↓ Dati per AI</button><button id="importData" type="button" title="Riprendi da un file JSON o HTML creato o modificato con un'AI">↑ Importa JSON / HTML</button><input id="importDataFile" type="file" accept=".json,.html,.htm,application/json,text/html" hidden aria-label="Seleziona un documento JSON o HTML MetaCanvas da importare"><button id="printBtn">PDF / Stampa</button><button id="publicBtn">Copia pubblica</button></div>
+    <div class="notice" style="margin-top:12px"><strong>Ritorno dall'AI:</strong> esporta “Dati per AI”, allegali a un LLM, quindi importa il JSON aggiornato. Puoi anche importare un HTML MetaCanvas: viene letto soltanto il modello del documento, senza eseguirne il codice. Il documento attuale resta recuperabile con Annulla.</div><div class="notice" style="margin-top:12px">Il file funziona offline. <strong>Salva lavoro</strong> chiede al browser di scaricare una copia: controlla la cartella Download e riapri il file. Non modifica automaticamente l’originale. Limite consigliato: 2 MB.</div>
   </div></details></div></aside>
   <main class="work" aria-label="Area di lavoro">
     <div class="work-inner">
@@ -511,7 +511,7 @@ body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-fi
  </div>
  <details class="guide-more"><summary>Altri modi per usarlo</summary><p>Progettare un prodotto, spiegare un sistema complesso, confrontare alternative, strutturare contenuti web, preparare un incontro o raccogliere correzioni successive. Lo stesso oggetto può cambiare rappresentazione senza perdere le relazioni.</p></details>
  <div class="guide-prompt"><label for="ccmGuidePrompt"><strong>Messaggio da copiare quando alleghi questo HTML a un assistente AI</strong></label><textarea readonly id="ccmGuidePrompt" rows="4">Questo HTML è il mio documento di lavoro. Leggi le schede, i testi e i collegamenti contenuti nel modello JSON del file (script id=&quot;ccm-data&quot;). Prima riassumi ciò che hai compreso e segnala eventuali ambiguità; poi proponi una struttura più chiara per spiegare [INSERISCI IL TUO OBIETTIVO] a [INSERISCI IL DESTINATARIO]. Conserva i miei concetti e distingui le tue proposte. Restituisci un nuovo HTML modificabile e indica le differenze. Non eliminare gli appunti privati nella copia di lavoro.</textarea><button type="button" id="ccmGuideCopy" class="tiny">Copia la richiesta</button><span id="ccmGuideCopyStatus" class="guide-status" role="status" aria-live="polite"></span></div>
- <p class="guide-foot">Il file funziona offline e non contiene un assistente AI incorporato. Il modello partecipa soltanto quando gli alleghi il documento. Salva una copia di lavoro prima di inviarlo e controlla gli appunti: un file HTML può essere ispezionato da chi lo riceve.</p><p class="guide-foot"><strong>Licenza del software: MPL 2.0.</strong> Puoi usarlo, modificarlo, condividerlo e commercializzarlo rispettando la licenza e i crediti degli autori. Il copyright sul codice originale resta di Graziano Guiducci. <a href="https://mozilla.org/MPL/2.0/" rel="noopener noreferrer" target="_blank">Testo della licenza</a>. I marchi non sono concessi in licenza.</p>
+ <p class="guide-foot"><strong>Ritorno dall'AI:</strong> apri Strumenti → Salva ed esporta → <em>Dati per AI</em>. Invia il JSON al modello e chiedigli di restituire un JSON con lo stesso schema. Poi usa <em>Importa JSON / HTML</em> per rientrare nel lavoro. Puoi anche ricevere un intero HTML MetaCanvas: l'importatore recupera soltanto i dati e non esegue codice del file ricevuto. Controlla sempre le modifiche proposte.</p><p class="guide-foot">Il file funziona offline e non contiene un assistente AI incorporato. Il modello partecipa soltanto quando gli alleghi il documento. Salva una copia di lavoro prima di inviarlo e controlla gli appunti: un file HTML può essere ispezionato da chi lo riceve.</p><p class="guide-foot"><strong>Licenza del software: MPL 2.0.</strong> Puoi usarlo, modificarlo, condividerlo e commercializzarlo rispettando la licenza e i crediti degli autori. Il copyright sul codice originale resta di Graziano Guiducci. <a href="https://mozilla.org/MPL/2.0/" rel="noopener noreferrer" target="_blank">Testo della licenza</a>. I marchi non sono concessi in licenza.</p>
 </dialog>
 <nav id="presentNav" aria-label="Navigazione presentazione"><button id="presentPrev">←</button><span class="count" id="presentCount">1 / 3</span><button id="presentNext">→</button><button class="exit" id="presentExit">✕ Esci</button></nav>
 <div id="quickEditor" class="quick-editor" role="region" aria-label="Mini editor contestuale" hidden></div>
@@ -1171,6 +1171,63 @@ function exportHTML(publicCopy=false){if(editingId)cancelDirectEdit();closeQuick
  let markup='<!doctype html>\n'+doc.outerHTML,bytes=new Blob([markup]).size;
  if(bytes>MAX_HTML_BYTES){toast('Questo file supera il limite di ~2 MB ('+Math.round(bytes/1000)+' KB). Riduci le immagini prima di salvare.');return}
  download(safeName(state.title)+(publicCopy?'_pubblica':'')+'.html',markup,'text/html;charset=utf-8');if(!publicCopy){$('#status').textContent='Download richiesto · verifica il file';$('#status').title='Il browser ha ricevuto la richiesta. La pagina non può verificare che il download sia completato.'}toast(publicCopy?'Download della copia pubblica richiesto, '+Math.round(bytes/1000)+' KB.':'Download HTML richiesto, '+Math.round(bytes/1000)+' KB. Controlla la cartella Download e riapri il file.');}
+// Studio 13 — Portable semantic handback from AI to human. Never execute imported HTML.
+function readPortableModel(raw){
+ const source=String(raw||'');
+ if(source.trimStart().startsWith('{'))return JSON.parse(source);
+ // Read the structural script's TEXT only. No DOMParser, iframe, injected HTML or eval.
+ const hit=source.match(/<script\b(?=[^>]*\bid\s*=\s*["']ccm-data["'])[^>]*>([\s\S]*?)<\/script\s*>/i);
+ if(!hit)throw new Error('Il file non contiene i dati MetaCanvas (ccm-data).');
+ return JSON.parse(hit[1]);
+}
+function validatePortableModel(doc){
+ if(!doc||typeof doc!=='object'||Array.isArray(doc)||doc.schema!=='ccm.document.v1')throw new Error('Formato non compatibile: richiesto ccm.document.v1.');
+ if(!Array.isArray(doc.scenes)||doc.scenes.length<1||doc.scenes.length>100)throw new Error('Il documento deve contenere da 1 a 100 schede.');
+ if(typeof doc.title!=='string'||doc.title.length>300)throw new Error('Titolo del documento non valido.');
+ const seenScenes=new Set(),types=new Set(['text','card','tag','section','note','circle','oval','pill','image']);
+ let total=0;
+ for(const sc of doc.scenes){
+  if(!sc||typeof sc.id!=='string'||!sc.id||seenScenes.has(sc.id)||typeof sc.title!=='string')throw new Error('Scheda senza ID unico o titolo valido.');
+  seenScenes.add(sc.id);
+  if(!Array.isArray(sc.elements)||!Array.isArray(sc.links))throw new Error('Scheda senza elenchi di elementi e collegamenti.');
+  total+=sc.elements.length+sc.links.length;
+  if(sc.elements.length>500||sc.links.length>700||total>3000)throw new Error('Il file è troppo grande per un’importazione sicura.');
+  const nodes=new Set(),links=new Set();
+  for(const el of sc.elements){
+   if(!el||typeof el.id!=='string'||!el.id||nodes.has(el.id)||!types.has(el.type)|| (el.text!==undefined&&typeof el.text!=='string'))throw new Error('Elemento duplicato o non supportato nella scheda '+sc.title+'.');
+   nodes.add(el.id);
+  }
+  for(const link of sc.links){
+   if(!link||typeof link.id!=='string'||!link.id||links.has(link.id))throw new Error('Freccia senza ID unico.');
+   if((link.from&&!nodes.has(link.from))||(link.to&&!nodes.has(link.to)))throw new Error('Una freccia punta a un elemento inesistente nella scheda '+sc.title+'.');
+   links.add(link.id);
+  }
+ }
+ return doc;
+}
+async function importPortableFile(file){
+ if(!file||publicMode)return;
+ try{
+  if(file.size>MAX_HTML_BYTES)throw new Error('File oltre il limite di circa 2 MB.');
+  const raw=await file.text();
+  const incoming=validatePortableModel(readPortableModel(raw));
+  if(!confirm('Importare “'+incoming.title+'” ('+incoming.scenes.length+' schede)? Il documento attuale sarà sostituito, ma puoi usare Annulla per recuperarlo.'))return;
+  if(editingId)cancelDirectEdit();
+  closeQuick();openPanel(null);
+  checkpoint();
+  const localUI=state.ui;
+  state=safeClone(incoming);
+  state.theme=['light','pearl','dark','graphite'].includes(state.theme)?state.theme:'light';
+  state.library=Array.isArray(state.library)?state.library:[];
+  state.ui={...localUI,...(state.ui&&typeof state.ui==='object'&&!Array.isArray(state.ui)?state.ui:{}),publicCopy:false};
+  state.activeSceneId=state.scenes.some(s=>s.id===state.activeSceneId)?state.activeSceneId:state.scenes[0].id;
+  state.ui.toolSections=state.ui.toolSections||{slides:true,elements:true,templates:false,appearance:true,library:false,layers:false,export:true};
+  selectedId=null;selectedLinkId=null;textTx=null;presenting=false;
+  snapOn=state.ui.snap!==false;readingMode=state.ui.viewMode==='read';zoom=clampZoom(state.ui.zoom||1);
+  noteChange();render();
+  toast('Documento importato: '+state.scenes.length+' schede. Puoi annullare l’importazione con ↶ Annulla.');
+ }catch(error){toast('Importazione non riuscita: '+String(error.message||error).slice(0,180));}
+}
 function exportJSON(){download(safeName(state.title)+'.json',JSON.stringify(state,null,2),'application/json;charset=utf-8');toast('Dati JSON esportati. Puoi allegarli a una conversazione AI.')}
 function printSlides(){const root=$('#printRoot');root.replaceChildren();state.scenes.forEach(sc=>{let sheet=el('section','print-sheet'),canvas=el('div','canvas');drawCanvas(canvas,sc,'print');sheet.append(canvas);root.append(sheet);
  if(state.ui.printDetails!==false){sc.elements.filter(n=>n.type!=='note'&&n.details).forEach(n=>{let detailSheet=el('section','print-sheet detail-sheet'),inner=el('article','detail-page'),h=el('h1',null,sc.title),sub=el('h2',null,(n.text||'Approfondimento').split('\n')[0]),p=el('p',null,n.details);inner.append(h,sub,p);detailSheet.append(inner);root.append(detailSheet)})}
@@ -1308,7 +1365,7 @@ $('#addImage').onclick=()=>$('#imageInput').click();$('#imageInput').onchange=as
  }catch(err){toast('Immagine non leggibile nel browser: '+String(err.message||err).slice(0,90))}
 };
 $('#undoBtn').onclick=undo;$('#redoBtn').onclick=redo;
-$('#saveBtn').onclick=()=>exportHTML(false);$('#publicBtn').onclick=()=>exportHTML(true);$('#exportData').onclick=exportJSON;$('#printBtn').onclick=printSlides;
+$('#saveBtn').onclick=()=>exportHTML(false);$('#publicBtn').onclick=()=>exportHTML(true);$('#exportData').onclick=exportJSON;$('#importData').onclick=()=>$('#importDataFile').click();$('#importDataFile').onchange=async e=>{const file=e.target.files?.[0];e.target.value='';await importPortableFile(file)};$('#printBtn').onclick=printSlides;
 $('#presentBtn').onclick=()=>present(true);$('#presentExit').onclick=()=>present(false);$('#presentPrev').onclick=()=>navigate(-1);$('#presentNext').onclick=()=>navigate(1);$('#prevBtn').onclick=()=>navigate(-1);$('#nextBtn').onclick=()=>navigate(1);
 document.addEventListener('keydown',e=>{const editable=e.target.closest('input,textarea,select,[contenteditable="true"]');if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();exportHTML(false);return}if((e.ctrlKey||e.metaKey)&&!editable&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();return}if((e.ctrlKey||e.metaKey)&&!editable&&e.key.toLowerCase()==='y'){e.preventDefault();redo();return}if(e.key==='Escape'&&!$('#detailOverlay').hidden){closeDetails();return}if(e.key==='Escape'&&!$('#quickEditor').hidden){closeQuick();return}if(e.key==='Escape'&&presenting){present(false);return}if(e.key==='Escape'){if(editingId)cancelDirectEdit(false);openPanel(null);return}if(editable)return;if(presenting){if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();navigate(1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();navigate(-1)}}});
 
