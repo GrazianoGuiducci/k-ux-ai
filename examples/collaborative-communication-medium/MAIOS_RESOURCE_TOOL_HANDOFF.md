@@ -1,4 +1,20 @@
-# MetaCanvas Studio 20 — consegna per Risorse → Tool su MAIOS.it
+# MetaCanvas — consegna per Risorse → Tool su MAIOS.it
+
+## Studio 21 — due demo distinte per le pagine italiane e inglesi (13 novembre 2026)
+
+**Decisione dell'operatore:** MAIOS.it avrà una pagina italiana e una pagina inglese nella categoria **Risorse → Tool**; ciascuna rimanderà alla **propria versione HTML autonoma pubblicata in K-UX-AI**. Il selettore interno EN/IT non è il modello di distribuzione. La coppia è stata pubblicata, mentre **le due pagine del sito restano da realizzare con Codex**.
+
+- **Pagina Risorse IT → Demo IT:** [MetaCanvas Studio 21 · Consulenza IT](MetaCanvas_Studio21_Consulenza_IT.html), file GitHub [IT](https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/examples/collaborative-communication-medium/MetaCanvas_Studio21_Consulenza_IT.html). Commit pubblicazione `e33424be5b1230816a7e262187075cd99c0764b8`, 293.797 byte, SHA-256 `abbdbd9e749453434fddb140505c0586ce594990739742c8106f37ab542165df`.
+- **Pagina Resources EN → Demo EN:** [MetaCanvas Studio 21 · Consulting EN](MetaCanvas_Studio21_Consulenza_EN.html), file GitHub [EN](https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/examples/collaborative-communication-medium/MetaCanvas_Studio21_Consulenza_EN.html). Commit pubblicazione `ce227936bda32e0e507352f1974e0737b66c9dfb`, 314.444 byte, SHA-256 `066f604c62ef761d9ee6a2db2d6cdcd7e8c6f79423fa6b5039f3126fb185faab`.
+
+Entrambe le versioni contengono la reinterpretazione presentabile in **sette schede** della [pagina Consulenza AI fornita dall'operatore il 13 novembre](https://maios.it/consulting-ai.html) (sorgente allegata: `MAIOS_Consulenza_AI_hero_revisione.html`, **non** prova che la pagina sia già online). La demo non replica il layout del sito: conserva le relazioni da mostrare e resta modificabile. Controlli **Demo MAIOS / Show demo** e **Canvas vuoto / Blank canvas** sono annullabili; Presenta, navigazione, template e salvataggio HTML restano disponibili. La versione inglese ha anche l'interfaccia principale, la guida e i template incorporati in inglese.
+
+**Contratto del sito per Codex:** leggere le regole e le pagine native di `maios_it`, progettare le due schede IT/EN secondo la sezione Tool effettiva, con URL linguistici reciproci e collegamenti ai due file specifici. Distinguere **tool generale** ([MetaCanvas Studio 20](AI_Collaboration_Studio.html)) dalla **demo Consulenza AI Studio 21**. La pagina può presentare il tool e usarne questa demo, senza pretendere che la pagina Consulenze diventi un editor o che l'AI sia incorporata. Non copiare due volte il codice nella repository del sito; se serve distribuire download da maios.it, verificare la sincronizzazione e gli hash delle copie. Nessun deploy è autorizzato da questo handoff.
+
+**Prove delimitate:** controlli di sintassi Node, sette schede senza clipping, avvio demo/Presenta, nuovo canvas, conferme, salvataggio e riapertura, adattamento mobile 390 px, nessun page error Chromium nei flussi verificati; readback GitHub esatto per entrambi i file. Restano da verificare apertura `file://` su Chrome Windows dell'operatore, storage locale reale, accessibilità completa e prova di ricezione da terzi.
+
+---
+
 
 Stato al 13 novembre 2026: **file pubblico disponibile; pagina MAIOS.it non creata; Codex non attivato**.
 Questo documento è un passaggio di conoscenza, non un ordine a un controller.
