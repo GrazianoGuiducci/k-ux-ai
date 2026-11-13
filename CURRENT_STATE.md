@@ -1,5 +1,10 @@
 # K-UX-AI current state
 
+## 13 November 2026 — MetaCanvas Studio 20 public tool
+
+The operator selected public download of the locally exercised Studio 20, with a later MAIOS.it resources-page task delegated to Codex only when separately activated. The canonical standalone editor now lives at [examples/collaborative-communication-medium/AI_Collaboration_Studio.html](examples/collaborative-communication-medium/AI_Collaboration_Studio.html) on `main` (published commit `0be329ae723110c62aa67d89756397683505319b`; SHA-256 `c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19`). Repository readback matched the supplied file exactly. The K-UX-AI / Collaborative Communication Medium [current](competences/ux-ai/collaborative-communication-medium/CURRENT.md) and [guide](competences/ux-ai/collaborative-communication-medium/GUIDE.md) own source/evidence and the reusable relation: progressive disclosure around consequential edits and AI exchange, while preserving private local material through selective revision integration. [Site resource handoff](examples/collaborative-communication-medium/MAIOS_RESOURCE_TOOL_HANDOFF.md) remains a non-executing future brief; the public tool does not install into the shared npm runtime or deploy to MAIOS.it. D-ND Design Kernel has a method reference, not a duplicated application.
+
+
 ## 11 November 2026 — collaborative communication medium (source candidate)
 
 The operator's editable single-file MAIOS × Schnell HTML yielded a distinct reusable capability: a communication artifact can be edited by the person, shared back with an AI system for situated comprehension and revision, and presented to external interlocutors, while preserving object and relationships across forms. The [Collaborative Communication Medium](competences/ux-ai/collaborative-communication-medium/SKILL.md), [guide](competences/ux-ai/collaborative-communication-medium/GUIDE.md) and [current](competences/ux-ai/collaborative-communication-medium/CURRENT.md) now carry this specialization inside K-UX-AI. Presentations are the initial case; web content, product design and complex-system communication are possible receivers.
