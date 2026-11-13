@@ -1,5 +1,15 @@
 # Collaborative Communication Medium — guida viva
 
+## 13 novembre 2026 — distribuzione localizzata e demo derivata da sorgente
+
+**Differenza emersa:** dopo la prima demo inglese con selettore, l'operatore ha determinato la topologia di pubblicazione: una pagina italiana e una inglese di MAIOS.it, ognuna riferita a un HTML della propria lingua ospitato in K-UX-AI. Una possibilità tecnicamente presente (toggle EN/IT dentro il singolo file) **non equivale** al percorso scelto per i riceventi; il mezzo deve incarnare la relazione di distribuzione, non aggiungere opzioni visibili per inerzia.
+
+**Metodo:** formare la demo in scene modificabili partendo da una sorgente autoriale corrente; conservare distinte fonte di pagina, traduzione, rappresentazione da presentare, documento dell'utente e sito futuro. Produrre due file HTML coerenti ma indipendenti, con collegamenti e contenuti linguistici propri; verificare non solo la lingua delle scene, ma anche l'involucro usato per comprenderle e modificarle (toolbar, guida, template). Conservare ID/link e reversibilità di Demo/Canvas vuoto. Il tool generale resta un'identità distinta, non eliminata dalla demo.
+
+**Prova:** pubblicati entrambi in `examples/collaborative-communication-medium`; Node syntax, sette scene senza overflow dei contenuti, Open/Present, conferma della nuova demo, blank e save/reopen in Chromium, viewport 390 px senza overflow della pagina. Nessun test su touch fisico, Chrome Windows file://, storage reale o deployment del sito. I riferimenti per il sito stanno nel [handoff](../../../../examples/collaborative-communication-medium/MAIOS_RESOURCE_TOOL_HANDOFF.md); Codex non si attiva per la sola esistenza di una fonte.
+
+
+
 ## 13 novembre 2026 — Studio 20: complessità percettiva minima e continuità dell'oggetto
 
 **Fonte del lavoro:** l'operatore ha richiesto di mantenere bassa la complessità visiva, far partecipare D-ND Design al flusso delle idee, controllare gli aspetti verificabili e continuare oltre il solo perfezionamento geometrico. Il medium è stato portato dalla versione Studio 19 a Studio 20 e poi pubblicato in K-UX-AI dopo il controllo del carrier reale.
