@@ -1,5 +1,16 @@
 # Collaborative Communication Medium — CURRENT
 
+## 13 novembre — Studio 20 pubblico, continuità selettiva e consegna al sito
+
+**Mandato:** rendere scaricabile per tutti l'artefatto finora locale e preparare il successivo ingresso MAIOS.it nella categoria **Risorse → Tool**, mantenendo l'incarnazione coerente con D-ND Design e K-UX-AI. Codex e il sito sono un effetto successivo, non attivati da questa pubblicazione.
+
+**Risultante:** `examples/collaborative-communication-medium/AI_Collaboration_Studio.html` è stato aggiornato a **MetaCanvas Studio 20** sulla `main` pubblica (commit `0be329ae723110c62aa67d89756397683505319b`; 272.490 byte; SHA-256 `c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19`). Readback GitHub byte-identico. Quattro scene neutre, HTML offline e MPL-2.0; nessuna pubblicazione MAIOS.it o nuova release npm. Le note precedenti su Studio 15 restano genealogia e non descrivono il runtime corrente.
+
+**Capacità:** layout responsive e strumenti contestuali, esportazione AI con ambito selezionabile e dati privati esclusi per difetto; confronto prima dell'importazione; integrazione selettiva annullabile con preservazione degli appunti privati locali; recupero locale facoltativo, non sincronizzato; miniature con geometria più fedele. La competenza proprietaria mantiene il saper fare in [GUIDE](GUIDE.md#13-novembre-2026--studio-20-complessita-percettiva-minima-e-continuita-delloggetto); il mezzo tecnico e la documentazione in `examples/collaborative-communication-medium`.
+
+**Prova e confini:** Node syntax verificato, esercizi Chromium locali riportati in `SOURCE_AND_SCOPE.md`, readback GitHub, nessuna libreria personale nel JSON iniziale. Da verificare `file://` su Chrome Windows, storage reale, touch, screen reader, comprensione di terzi. È collegato al Design Kernel come caso e metodo, non copiato in due runtime concorrenti. Il brief per Codex è `MAIOS_RESOURCE_TOOL_HANDOFF.md` nella cartella dell'artefatto.
+
+
 **Data:** 2026-11-11 · Europe/Rome  
 **Versione:** 0.1.0-candidate  
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
