@@ -1,5 +1,18 @@
 # Collaborative Communication Medium — guida viva
 
+## 13 novembre 2026 — Studio 20: complessità percettiva minima e continuità dell'oggetto
+
+**Fonte del lavoro:** l'operatore ha richiesto di mantenere bassa la complessità visiva, far partecipare D-ND Design al flusso delle idee, controllare gli aspetti verificabili e continuare oltre il solo perfezionamento geometrico. Il medium è stato portato dalla versione Studio 19 a Studio 20 e poi pubblicato in K-UX-AI dopo il controllo del carrier reale.
+
+**Meccanismo riusabile:** un artefatto insieme *documento, editor e mezzo di cooperazione* non conserva la continuità soltanto salvando `state`. Il passaggio effettivo è: **quale parte consegno → cosa cambia nel ricevente → quali differenze tornano → cosa mantengo privato/localmente → quale gesto integra la modifica**. L'interfaccia ordinaria resta semplice mentre l'utente accede a scelte contestuali di export, confronto e recupero. Non usare più pannelli permanenti per ogni nuova possibilità. Conservare identità scena/nodi/links e un solo storico; integrare selettivamente senza annullare gli appunti privati locali omessi dal trasferimento.
+
+**Incarnazione verificata:** export documento/scheda, privacy opt-in, confronto strutturale nuove/modificate/mancanti, selezione/Undo, recupero locale disattivato per difetto (testato con storage simulato), miniature più fedeli, blocco di URL remoti nelle immagini importate. HTML autonomo `examples/collaborative-communication-medium/AI_Collaboration_Studio.html` su GitHub K-UX-AI main al commit `0be329ae723110c62aa67d89756397683505319b`, con readback byte-identico. Sintassi Node corretta, esercizi Chromium circoscritti; nessuna prova di storage reale file://, touch, totale sicurezza o apprendimento del destinatario.
+
+**Relazione con Design:** Interaction Quality conserva adattamento a larghezza/altezza, focus, orientamento e recupero; Perceptual Composition conserva gerarchia e spazio percettivo. K-UX-AI/CCM mantiene documento, stato, schema, comportamento di scambio e artefatto. D-ND Design ha un riferimento owner-native a questo caso; non spostare il codice in Design per darne conto, né fare della UI attuale una grammatica obbligatoria.
+
+**Prossima conseguenza distinta:** futura pagina MAIOS.it in Risorse → Tool, tramite Codex e il vero owner del sito, con contenuti orientati a chi incontra lo strumento per la prima volta, seguendo le regole già presenti del sito. Un link/brief non è un'attivazione Codex né un deploy. [Passaggio sito](../../../../examples/collaborative-communication-medium/MAIOS_RESOURCE_TOOL_HANDOFF.md).
+
+
 **Owner:** K-UX-AI / collaborative-communication-medium.  
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
