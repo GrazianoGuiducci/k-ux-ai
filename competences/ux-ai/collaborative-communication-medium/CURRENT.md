@@ -1,5 +1,15 @@
 # Collaborative Communication Medium — CURRENT
 
+## 13 novembre 2026 — Studio 21 come demo multilingua a due artefatti
+
+**Precisazione dell'operatore:** non un selettore bilingue come strategia di distribuzione, ma due pagine **MAIOS.it Risorse → Tool** ciascuna collegata alla propria versione autonomamente scaricabile in K-UX-AI. La conversione usa come fonte la nuova pagina Consulenza AI allegata, senza trattare la pagina o il vecchio sito come testo da replicare parola per parola.
+
+**Risultante pubblicata:** `examples/collaborative-communication-medium/MetaCanvas_Studio21_Consulenza_IT.html` e `MetaCanvas_Studio21_Consulenza_EN.html`, entrambe con sette schede. Le interazioni, identità dei nodi e modelli sono coerenti, mentre testi, help, comandi principali e template della versione inglese sono localizzati. Entrambi i file sono pubblici, MPL-2.0 nel perimetro della directory, e leggibili su GitHub (readback esatto). Non sostituiscono l'editor generico Studio 20 e non costituiscono ancora la pagina MAIOS.it.
+
+**Confini e prove:** test Node e Chromium su rendering dei sette diagrammi, Presenta, sostituzione annullabile, salvataggio/riapertura HTML, nessun pageerror nei flussi e viewport 390 px; apertura diretta file:// sul PC dell'operatore, screen reader e live site non attestati. Saper fare riusabile in [GUIDE](GUIDE.md#13-novembre-2026--distribuzione-localizzata-e-demo-derivata-da-sorgente); pagina/URL/site owner nel [handoff](../../../../examples/collaborative-communication-medium/MAIOS_RESOURCE_TOOL_HANDOFF.md).
+
+
+
 ## 13 novembre — Studio 20 pubblico, continuità selettiva e consegna al sito
 
 **Mandato:** rendere scaricabile per tutti l'artefatto finora locale e preparare il successivo ingresso MAIOS.it nella categoria **Risorse → Tool**, mantenendo l'incarnazione coerente con D-ND Design e K-UX-AI. Codex e il sito sono un effetto successivo, non attivati da questa pubblicazione.
