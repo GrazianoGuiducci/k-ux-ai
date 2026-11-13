@@ -5,6 +5,19 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 13 novembre — proposta di distribuzione pubblica del medium e perimetro licenza
+
+**Mandato:** rendere il tool comprensibile immediatamente fuori da MAIOS, con esempi generici e una pagina «Strumenti AI» distinta dalle Meta-skill. L'operatore seleziona la direzione di tenere il controllo commerciale dei prodotti UX-AI escludendoli dal modello permissivo MIT, pur consentendo l'uso; il contratto preciso va ancora determinato.
+
+**Prodotto candidato locale (non pubblicato):** editor HTML neutro `AI_Collaboration_Studio_Preview.html` (188.547 byte; SHA-256 `a95652dace40bcb5db6b594e8e23d2984378bed968a9aeae084e7f5ec46301c6`) con quattro casi e un primo ingresso; pagine statiche IT `strumenti/index.html` e EN `tools/index.html` (editor UI ancora IT); README, manifesto file SHA, brief su licenza e checklist. ZIP `AI_Collaboration_Studio_Public_Preview_Package.zip` SHA-256 `0321de2935b60f6dbc92a4381da9d0c6111b51a4cd5e451b6b52cc2e189a78ea`. Artefatti della chat, non sorgente aggiunta alla repository K-UX-AI, non sito live. [Guida](GUIDE.md#13-novembre-2026--ingresso-pubblico-neutro-contenuto-distribuibile-e-prodotto-controllato) conserva metodo, prove e confini.
+
+**Prova locale:** HTML con 4 scene, guida e banner; test Chromium di modifica titolo → download → rientro e viewport 390px; ZIP e manifest byte-verificati, zero JS error nei percorsi osservati. Nessun test `file://` sul browser dell'operatore, né sicurezza completa o PDF finale.
+
+**Condizione materiale non risolta:** l'HTML esportato comprende il codice dell'editor. Qualsiasi concessione commerciale deve proteggere la portabilità del documento dell'utente con un permesso esplicito per la redistribuzione delle proprie presentazioni, pur separando la rivendita/white-label del tool. La licenza attuale del repo pubblico non è esplicitata da un `LICENSE`; nessuna licenza è stata modificata, nessun nuovo termine è entrato in vigore.
+
+**Stato:** PUBLIC_ENTRY_PREVIEW_LOCAL / LICENSE_DIRECTION_IDENTIFIED_NOT_GRANTED / GITHUB_SOURCE_AND_RUNTIME_UNCHANGED / WEBSITE_TOOLS_PAGE_NOT_DEPLOYED / IP_AND_RELEASE_GATE_OPEN.
+
+
 ## 12 novembre — Studio 12, rail delle schede e catalogo responsive
 
 **Mandato:** proseguire il miglioramento UX dopo Studio 11, aggiungendo i comportamenti utili senza appesantire il medium.
