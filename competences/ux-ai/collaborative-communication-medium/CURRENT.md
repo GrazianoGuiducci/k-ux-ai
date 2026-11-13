@@ -5,6 +5,14 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 13 novembre — MetaCanvas Studio 14: correzioni UX richieste, sorgente pubblico e privato
+
+**Mandato:** verificare e correggere quattro differenze in Studio 13: resize Strumenti in finestra mobile, Presenta vuota, area orizzontale non sfruttata, uscita dalla modifica macchinosa. Studio 14 ripristina geometria del canvas in Presenta, bordi di trascinamento mobili e persistenti nelle copie esportate, opzione Flat con lettura a due colonne su desktop e menu OK/Indietro/Avanti in modifica senza checkpoint ridondanti. Il prodotto conserva MPL 2.0 solo nella propria directory e i quattro esempi neutri.
+
+**Prove locali:** Chromium/Playwright su Presenta di 4 scene, 390px mobile, Flat e standard, drag dei pannelli float/right/top/bottom, quick edit + undo/redo, download/riapertura HTML con controlli e stato conservati; export pubblico senza i marker di contenuto privato di prova; Node `--check`. Non sono provati touch fisici o PDF finale. [Guida causale](GUIDE.md#13-novembre-2026--studio-14-presenta-spazio-e-gesto-di-modifica).
+
+**Owner:** K-UX-AI tool e Code Medium Construction / tm7 privata. Codex/TM9 mantiene separatamente pagina MAIOS.it e PR #33, non modificata da questa revisione.
+
 ## 13 novembre — MetaCanvas 0.1.1: ritorno di JSON/HTML dell’AI nel documento
 
 **Nuova possibilità esercitata:** oltre a consegnare HTML/JSON a un modello, l'operatore può reimportare il risultato in un editor già aperto. Il tool importa solo il JSON `ccm.document.v1` e non esegue script/CSS di HTML ricevuti; controlla integrità referenziale, chiede conferma, permette Undo e mantiene l'avviso MPL. Non è un merge di versioni né una sincronizzazione in background. È ancora un HTML autonomo.

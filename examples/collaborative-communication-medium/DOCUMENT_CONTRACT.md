@@ -16,6 +16,14 @@ Import uses the *data only*. It never evaluates imported script or replaces the 
 
 The imported source is a new proposed model, **not verified truth**. Do not reuse private notes or secret data unless the operator intends them to remain in the working HTML. Public export removes private notes and library data, while keeping the MPL source notice. Source/content, preview, file download and actual recipient understanding/effects remain distinct.
 
+## Studio 14 — interaction and saved UI state
+
+The document's geometry and semantic references are unchanged by Flat mode. It is a **view preference**, retained in the embedded `state.ui.flatLayout` property; the normal reading area has a narrower maximum width, while Flat may span the available viewport and use two columns on desktop. Presentation mode uses a block canvas shell rather than an editor grid with a hidden rail; it preserves the slide's 16:9 scene.
+
+Tools panel size is a persistent interface setting. Edge and corner resize handles must remain reachable even when the tool catalog scrolls. Save/export preserves these handles inside the exported source; they are moved to the document body at runtime for stable fixed positioning.
+
+The compact editing toolbar applies to contextual editing and advanced properties. **OK** confirms pending text changes and closes; **Indietro/Avanti** navigate the existing undo/redo history rather than adding redundant checkpoints. Saved HTML keeps the toolbar dormant until editing is active. This is an interaction contract, not semantic validation of a user's edits.
+
 **Suggested LLM request:** “Read the JSON document model rather than relying only on a screenshot. Summarize the relation between nodes and links, identify uncertainty, then propose a clearer structure for [audience/objective]. Preserve my original concepts and private notes in the working copy, distinguish your changes, return a complete editable HTML and summarize the differences.”
 
 Do not break `from`/`to` IDs when reorganizing. The HTML carries the editor source and its MPL notice when exported; keep the license/copyright notice. Do not mistake downloaded/previewed files for verified external effects. No AI service is embedded in this file.

@@ -17,6 +17,17 @@ The AI workflow now has a **return path without hand-editing the HTML applicatio
 
 Only the structural JSON is imported; scripts/styles from a received HTML file are **not executed**. Incompatible schema, duplicate IDs, dangling links and oversized files are rejected. Import **replaces the current document after confirmation**, rather than merging two histories. Human verification of AI-proposed content remains necessary.
 
+## Studio 14 — Present, Flat layout, tools and editing
+
+Four interaction fixes are now in the standalone HTML:
+
+1. **Presenta** shows the diagram canvas instead of an empty slide when editor panels are hidden.
+2. The **Strumenti** panel can be resized with the edge handle across docking modes; in floating mode drag its lower-right corner to change width and height.
+3. **Flat** in the header and Tools panel reduces framing/margins and widens the reading view; large screens can use a two-column reading layout. Diagram coordinates are unchanged.
+4. During editing, a compact **OK · Indietro · Avanti** control appears. OK confirms/exits editing; the other actions undo/redo document steps.
+
+Preferences and controls are retained in saved standalone HTML. The application interface is currently in Italian. This remains an offline browser editor without embedded AI or server functions.
+
 ## License and ownership
 
 **Mozilla Public License 2.0 (MPL-2.0)**, scoped to the files **in this tool directory only**. Everyone may use, modify, distribute and commercialize the tool under the MPL. Distributed modifications of covered files must make their source available under the MPL. Original software contributions remain **Copyright (c) 2026 Graziano Guiducci**; contributors retain rights in their own additions. The license does not grant trademark or logo rights.

@@ -22,6 +22,17 @@ La stessa sorgente può tornare da un LLM come **JSON modificato**, senza sostit
 
 L'importazione legge **solo il modello JSON**: non importa JavaScript, CSS o altri elementi attivi dall'HTML ricevuto. Rifiuta schema incompatibile, ID duplicati, collegamenti verso elementi inesistenti e file troppo grandi. Non unisce automaticamente due lavori: **sostituisce il documento corrente dopo conferma**. Il contenuto prodotto dall'AI va comunque controllato; non rappresenta una convalida dei fatti.
 
+## Studio 14 — Presenta, Flat, Strumenti e modifica
+
+Questa versione incorpora quattro correzioni richieste dall'operatore:
+
+1. **Presenta**: ripristinato il canvas visibile in modalità a schermo intero; il problema derivava dalla griglia editor con sidebar nascosta che azzerava la colonna del canvas.
+2. **Strumenti**: ridimensionamento dei pannelli anche con il loro contenuto scorrevole; nella posizione Finestra mobile l'angolo in basso a destra modifica larghezza e altezza. Restano i comandi +/- e i dock laterali/superiore/inferiore.
+3. **Flat**: un pulsante in testata (e in Strumenti) cambia modalità di lavoro, allarga l'area di lettura e riduce cornici e margini. Su schermi ampi la lettura può usare due colonne; il canvas grafico conserva le coordinate.
+4. **Modifica**: quando un testo o il mini editor è attivo appare un menu compatto **OK · Indietro · Avanti**. OK conferma ed esce; Indietro e Avanti gestiscono i passi della cronologia. ESC continua a chiudere la modifica.
+
+**Uso:** apri l'HTML, usa **Flat** per passare al layout più ampio, **Presenta** per verificare le schede, **Strumenti** per ridimensionare il pannello; fai doppio clic su un testo per il mini editor. I controlli e le preferenze permangono nel file HTML salvato. Non è previsto un server o un LLM incorporato.
+
 ## Licenza e proprietà
 
 **Mozilla Public License 2.0 (MPL-2.0)**, *soltanto per i file di questo strumento*. Chiunque può usare, modificare, distribuire e commercializzare il software nel rispetto della licenza. Chi distribuisce modifiche ai file coperti deve rendere disponibile il relativo sorgente secondo la MPL. Il copyright sul codice originale resta a **Graziano Guiducci (2026)**; i nuovi autori conservano i diritti sulle proprie modifiche. Nomi commerciali, marchi e loghi non sono concessi dalla MPL.

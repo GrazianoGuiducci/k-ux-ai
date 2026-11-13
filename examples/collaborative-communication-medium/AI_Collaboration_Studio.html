@@ -14,7 +14,7 @@
 <meta name="copyright" content="Copyright (c) 2026 Graziano Guiducci">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Collaboration Studio | MetaCanvas 0.1.1</title>
+<title>MetaCanvas · Studio 14 | AI Collaboration Studio</title>
 <style>
 :root{--ink:#183146;--muted:#5d7281;--line:#d8e2e6;--bg:#eaf0f2;--paper:#fff;--accent:#087b70;--accent-soft:#e7f5f0;--focus:#e3a04c;--shadow:0 12px 38px #19334a17}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
@@ -412,6 +412,63 @@ body.presenting .public-first-use,body.public-copy .public-first-use{display:non
 body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-first-use{background:#233b43;color:#e6f5f1}
 @media(max-width:760px){.public-first-use{align-items:flex-start;flex-direction:column;padding:10px 12px}.public-first-use .public-first-actions{align-self:flex-end}}
 
+
+\n/* Studio 14 — canvas non nullo in Presenta, densità Flat, bordi strumenti, uscita dalla modifica */
+body.presenting .work{height:100dvh!important;min-height:0!important;align-items:center!important;justify-content:center!important;padding:8px!important}
+body.presenting .work-inner{width:min(calc(100vw - 28px),calc((100dvh - 104px)*16/9))!important;min-width:0;max-width:none!important}
+body.presenting .editor-shell{display:block!important;width:100%!important;grid-template-columns:none!important}
+body.presenting .editor-main{display:block!important;width:100%!important;min-width:0!important}
+body.presenting #canvasViewport{width:100%!important;max-width:100%!important;min-width:0!important;overflow:visible!important}
+body.presenting #canvasViewport .canvas-wrap,body.presenting #canvas{width:100%!important;min-width:0!important}
+body.presenting #canvas{aspect-ratio:16/9!important;min-height:1px!important}
+/* Flat removes wasted framing without changing the 1200 × 675 semantic coordinates. */
+body.flat-layout .work{padding:8px 9px 12px!important;max-width:none}
+body.flat-layout .work-inner{width:100%;max-width:none}
+body.flat-layout .editor-shell{gap:9px}
+body.flat-layout .slide-rail{padding:10px;box-shadow:none;border-radius:8px}
+body.flat-layout .canvas{box-shadow:none;border:1px solid var(--line)}
+body.flat-layout .canvas-viewport{border-radius:3px;scrollbar-gutter:auto}
+body.flat-layout .slide-caption{margin-top:5px}
+body.flat-layout .reading-view{max-width:none;width:100%;margin:0;box-shadow:none;border-radius:6px;padding:18px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;align-content:start}
+body.flat-layout.reading-mode #readingView{display:grid!important}
+body.flat-layout .reading-view[hidden]{display:none!important}
+body.flat-layout .reading-view>h1,body.flat-layout .reading-view>.read-links,body.flat-layout .reading-view>.read-note,body.flat-layout .reading-view>button.read-edit{grid-column:1/-1}
+body.flat-layout .reading-view>.read-entry{min-width:0;border:1px solid var(--line);border-radius:8px;padding:11px 13px;display:flex;gap:6px;justify-content:space-between}
+body.flat-layout #flatLayoutBtn[aria-pressed="true"],body.flat-layout #toolFlatToggle[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+#flatLayoutBtn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+@media(max-width:1020px){body.flat-layout .reading-view{grid-template-columns:1fr}}
+@media(max-width:700px){body.flat-layout .work{padding:6px!important}body.flat-layout .reading-view{padding:12px}body.flat-layout .editor-shell{display:block!important}}
+/* Floating panel: CSS resize:both was overridden by the explicit !important width. A dedicated grip now handles both axes. */
+#toolCornerResize{display:none}
+#toolCornerResize[hidden]{display:none!important}
+body[data-dock='float'] #toolPanel{resize:none!important;right:clamp(24px,11vw,180px)}
+body[data-dock='float'] #toolCornerResize:not([hidden]){display:block;position:fixed;width:28px;height:28px;z-index:100;cursor:nwse-resize;touch-action:none;border:0;border-radius:0 0 12px 0;background:linear-gradient(135deg,transparent 35%,var(--accent-soft) 35%)}
+body[data-dock='float'] #toolCornerResize::after{content:'';position:absolute;right:5px;bottom:5px;width:12px;height:12px;border-right:3px solid var(--accent);border-bottom:3px solid var(--accent);border-radius:1px}
+#toolPanel .tool-resize-handle{z-index:12}
+body[data-dock='float'] #toolPanel .tool-resize-handle{height:calc(100% - 30px)}
+body[data-dock='float'] #toolPanel.resizing{user-select:none}
+/* A single easy-to-find action bar stays visible during inline, mini-editor and advanced property edits. */
+.edit-action-bar{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:7px;padding:7px 9px;background:var(--ui-panel,var(--paper));color:var(--ink);border:1px solid var(--line);box-shadow:0 12px 42px #10263c58;border-radius:14px;z-index:185;max-width:calc(100vw - 12px)}
+.edit-action-bar[hidden]{display:none!important}
+.edit-action-bar button{min-height:37px;padding:7px 11px;font-size:13px}
+.edit-action-bar #editOk{background:var(--accent);color:var(--ui-button-ink,#fff);border-color:var(--accent);font-weight:850;min-width:62px}
+.edit-action-bar .edit-action-label{font-size:11px;font-weight:800;color:var(--muted);padding:0 3px;white-space:nowrap}
+body.presenting .edit-action-bar,body.public-copy .edit-action-bar{display:none!important}
+@media(max-width:630px){.edit-action-bar{bottom:8px;gap:4px;padding:5px}.edit-action-bar .edit-action-label{display:none}.edit-action-bar button{font-size:12px;padding:7px 8px}}
+@media print{.edit-action-bar{display:none!important}}
+
+.edit-action-bar{left:auto;right:16px;transform:none}
+body:has(#propertyPanel.drawer-open) .edit-action-bar{right:calc(var(--property-panel-width,360px) + 16px)}
+@media(max-width:830px){.edit-action-bar,body:has(#propertyPanel.drawer-open) .edit-action-bar{left:50%;right:auto;transform:translateX(-50%)}}
+
+/* Border handles are fixed to visible dock borders, so scrolling tools never moves them off-screen. */
+#toolResizeHandle{position:fixed!important;z-index:102;width:11px;height:100px;cursor:ew-resize;touch-action:none;background:linear-gradient(90deg,#7daea651,transparent)}
+#toolResizeHandle[hidden]{display:none!important}
+#toolResizeHandle::before{content:'';position:absolute;left:3px;top:50%;width:3px;height:56px;transform:translateY(-50%);border-radius:7px;background:#80aea9}
+body[data-dock='left'] #toolResizeHandle{transform:scaleX(-1)}
+body[data-dock='top'] #toolResizeHandle,body[data-dock='bottom'] #toolResizeHandle{cursor:ns-resize;background:linear-gradient(0deg,#7daea651,transparent);transform:none}
+body[data-dock='top'] #toolResizeHandle::before,body[data-dock='bottom'] #toolResizeHandle::before{top:4px;left:50%;width:56px;height:3px;transform:translateX(-50%)}
+body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
 </style>
 </head>
 <body>
@@ -422,6 +479,7 @@ body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-fi
     <button id="saveBtn" class="strong" title="Richiede il download del documento HTML completo, da verificare nella cartella Download">↓ Salva lavoro</button>
     <button id="viewBtn" title="Passa dalla composizione spaziale alla lettura accessibile" aria-pressed="false">☷ Leggi</button>
     <button id="presentBtn">▶ Presenta</button>
+    <button id="flatLayoutBtn" type="button" aria-pressed="false" title="Riduci cornici e margini, allarga l’area di lettura e di lavoro">▱ Flat</button>
     <button id="toggleSlideRail" aria-pressed="true" title="Mostra o nascondi le schede sul lato sinistro">☰ <span>Schede</span></button>
     <button id="ccmGuideBtn" title="Che cos’è e come usare questo documento con un LLM">? Guida</button>
     <button id="toggleTools" class="gear" aria-expanded="false" aria-controls="toolPanel" title="Apri gli strumenti">⚙ <span>Strumenti</span></button>
@@ -433,7 +491,7 @@ body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-fi
 <div class="workspace">
   <aside class="rail" id="toolPanel" aria-label="Strumenti, layout e schede" aria-hidden="true">
 <div class="drawer-head"><strong>Strumenti e componenti</strong><div class="resize-tools"><button id="toolNarrow" type="button" class="tiny" title="Riduci larghezza pannello">−</button><button id="toolWide" type="button" class="tiny" title="Allarga pannello">+</button><button id="closeTools" class="tiny" title="Chiudi strumenti" aria-label="Chiudi strumenti">✕</button></div></div>
-<div class="tool-resize-handle" id="toolResizeHandle" title="Trascina per ridimensionare il pannello" role="separator" aria-label="Ridimensiona pannello strumenti"></div>
+<div class="tool-resize-handle" id="toolResizeHandle" title="Trascina per ridimensionare il pannello" role="separator" aria-label="Ridimensiona pannello strumenti"></div><div class="tool-corner-resize" id="toolCornerResize" role="separator" aria-label="Ridimensiona larghezza e altezza della finestra strumenti" title="Trascina questo angolo per allargare la finestra in entrambe le direzioni"></div>
 <input id="toolSearch" class="tool-search" type="search" placeholder="Cerca strumenti e funzioni…" aria-label="Cerca negli strumenti"><div class="tool-sections"><details class="tool-section" data-section="slides" open><summary>Schede e ordine</summary><div class="tool-section-body">
     
     <p class="mini">Trascina un elemento sulla scheda oppure fai clic per aggiungerlo.</p>
@@ -461,6 +519,7 @@ body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-fi
     <div class="pane-title">Palette rapida</div><div class="swatches" id="themePalette"></div>
     <div class="field"><label><input type="checkbox" id="gridToggle"> Mostra griglia durante la modifica</label></div>
     <div class="field"><label><input type="checkbox" id="snapToggle" checked> Allineamenti magnetici</label></div>
+    <div class="tool-grid"><button type="button" id="toolFlatToggle" aria-pressed="false" title="Usa tutta la larghezza disponibile">▱ Layout Flat</button></div>
     <div class="pane-title">Posizione degli strumenti</div><div class="dock-options" id="dockOptions">
       <button class="tiny" data-dock="right">Destra</button><button class="tiny" data-dock="left">Sinistra</button>
       <button class="tiny" data-dock="top">Alto</button><button class="tiny" data-dock="bottom">Basso</button><button class="tiny" data-dock="float">Finestra mobile</button>
@@ -500,6 +559,7 @@ body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-fi
     <div class="drawer-head"><strong id="inspectorHeading">Proprietà</strong><div class="form-actions"><button id="propertyNarrow" class="tiny" type="button" title="Riduci larghezza">−</button><button id="propertyWide" class="tiny" type="button" title="Allarga sidebar">+</button><button id="closeProperties" class="tiny" aria-label="Chiudi proprietà">✕</button></div></div><div class="panel-resize-handle" id="propertyResizeHandle" title="Trascina per allargare o ridurre"></div><p class="mini panel-hint"><strong>Sidebar adattiva</strong>Allarga il pannello: i controlli interni si ridispongono automaticamente per mostrarti più elementi insieme.</p><div id="inspectorContent"></div>
   </aside>
 </div>
+<div class="edit-action-bar" id="editActionBar" role="toolbar" aria-label="Comandi rapidi della modifica" hidden><span class="edit-action-label">In modifica</span><button id="editBack" type="button" title="Annulla l’ultimo passo">↶ Indietro</button><button id="editForward" type="button" title="Ripristina l’ultimo passo">↷ Avanti</button><button id="editOk" type="button" title="Conferma e esci dalla modalità modifica">✓ OK</button></div>
 
 <dialog id="ccmGuide" class="ccm-guide" aria-labelledby="ccmGuideTitle" aria-describedby="ccmGuideIntro">
  <div class="guide-head"><div><span class="guide-eyebrow">AI Collaboration Studio</span><h2 id="ccmGuideTitle">Come usare questo artefatto</h2></div><div class="modal-actions"><button type="button" class="tiny" id="ccmGuideExpand" aria-pressed="false" aria-label="Espandi la guida">⤢ Espandi</button><button type="button" class="tiny" id="ccmGuideClose" aria-label="Chiudi la guida">✕</button></div></div>
@@ -508,6 +568,7 @@ body[data-theme="graphite"] .public-first-use,body[data-theme="dark"] .public-fi
   <section><strong>1 · Parti da un'idea</strong><p>Scrivi o modifica riquadri, relazioni, note e schede. I template sono punti di partenza, non regole.</p></section>
   <section><strong>2 · Continua con un assistente AI</strong><p>Salva l'HTML e allegalo a ChatGPT o a un altro assistente AI. Chiedi una revisione dei testi, una nuova organizzazione o un diagramma più chiaro. Puoi sempre correggere il risultato.</p></section>
   <section><strong>3 · Presenta e condividi</strong><p>Usa <em>Presenta</em> con gli interlocutori. <em>Salva lavoro</em> mantiene note e strumenti; <em>Copia pubblica</em> esclude note e libreria. Verifica il file ricevuto prima di inviarlo.</p></section>
+  <section><strong>4 · Layout e modifica</strong><p>Premi <em>Flat</em> per sfruttare tutta la larghezza disponibile e disporre la lettura su due colonne nei monitor ampi. Apri <em>Strumenti</em> e trascina il bordo per ridimensionare; in <em>Finestra mobile</em> usa l’angolo in basso a destra. Quando modifichi un elemento compare il menu <em>OK / Indietro / Avanti</em>: OK conserva la modifica ed esce dall’editor.</p></section>
  </div>
  <details class="guide-more"><summary>Altri modi per usarlo</summary><p>Progettare un prodotto, spiegare un sistema complesso, confrontare alternative, strutturare contenuti web, preparare un incontro o raccogliere correzioni successive. Lo stesso oggetto può cambiare rappresentazione senza perdere le relazioni.</p></details>
  <div class="guide-prompt"><label for="ccmGuidePrompt"><strong>Messaggio da copiare quando alleghi questo HTML a un assistente AI</strong></label><textarea readonly id="ccmGuidePrompt" rows="4">Questo HTML è il mio documento di lavoro. Leggi le schede, i testi e i collegamenti contenuti nel modello JSON del file (script id=&quot;ccm-data&quot;). Prima riassumi ciò che hai compreso e segnala eventuali ambiguità; poi proponi una struttura più chiara per spiegare [INSERISCI IL TUO OBIETTIVO] a [INSERISCI IL DESTINATARIO]. Conserva i miei concetti e distingui le tue proposte. Restituisci un nuovo HTML modificabile e indica le differenze. Non eliminare gli appunti privati nella copia di lavoro.</textarea><button type="button" id="ccmGuideCopy" class="tiny">Copia la richiesta</button><span id="ccmGuideCopyStatus" class="guide-status" role="status" aria-live="polite"></span></div>
@@ -540,6 +601,7 @@ state.ui.slideView=state.ui.slideView==='thumbs'?'thumbs':'list';
 state.ui.slideRailWidth=+state.ui.slideRailWidth||264;
 state.ui.toolWidth=+state.ui.toolWidth||360;
 state.ui.toolHeight=+state.ui.toolHeight||400;
+state.ui.flatLayout=state.ui.flatLayout===true;
 state.ui.toolSections=state.ui.toolSections||{slides:true,elements:true,templates:false,appearance:true,library:false,layers:false,export:false};
 state.ui.quickWindow=state.ui.quickWindow||{manual:false};
 let past=[],future=[],selectedId=null,selectedLinkId=null,editingId=null,gesture=null,textTx=null,dirty=false,presenting=false,grid=false,snapOn=state.ui.snap!==false,quickTarget=null,quickTimer=null,quickBeforeFocus=null,detailOpenId=null;
@@ -557,7 +619,9 @@ function propertyWidth(){return Math.max(280,Math.min(820,+state.ui.propertyWidt
 function setPropertyWidth(value,persist=false){const max=Math.max(300,Math.min(820,window.innerWidth-24));const width=Math.max(280,Math.min(max,+value||360));state.ui.propertyWidth=width;document.documentElement.style.setProperty('--property-panel-width',width+'px');if(persist)noteChange()}
 function noteChange(){dirty=true;$('#status').textContent='Modifiche non esportate';$('#status').title='Il documento modificato è nella pagina corrente. Salva lavoro richiede il download di una nuova copia.'}
 function checkpoint(){past.push(JSON.stringify(state));if(past.length>70)past.shift();future=[];textTx=null;updateHistory()}
-function updateHistory(){$('#undoBtn').disabled=!past.length;$('#redoBtn').disabled=!future.length}
+function editActive(){return !presenting&&!publicMode&&(!$('#quickEditor').hidden||!!editingId||$('#propertyPanel').classList.contains('drawer-open'))}
+function syncEditBar(){const bar=$('#editActionBar');if(!bar)return;bar.hidden=!editActive();$('#editBack').disabled=!past.length&&!editingId;$('#editForward').disabled=!future.length}
+function updateHistory(){$('#undoBtn').disabled=!past.length;$('#redoBtn').disabled=!future.length;syncEditBar()}
 function commit(fn,rerender=true){checkpoint();fn();noteChange();if(rerender)render()}
 function undo(){if(!past.length)return;future.push(JSON.stringify(state));state=JSON.parse(past.pop());selectedId=null;selectedLinkId=null;textTx=null;noteChange();render()}
 function redo(){if(!future.length)return;past.push(JSON.stringify(state));state=JSON.parse(future.pop());selectedId=null;selectedLinkId=null;textTx=null;noteChange();render()}
@@ -565,7 +629,7 @@ function toast(msg){const box=$('#toast');box.textContent=msg;box.classList.add(
 function el(tag,cls,txt){let a=document.createElement(tag);if(cls)a.className=cls;if(txt!==undefined)a.textContent=txt;return a}
 
 
-function closeQuick(){if(quickTimer){clearTimeout(quickTimer);quickTimer=null}const q=$('#quickEditor');q.hidden=true;q.classList.remove('expanded');q.dataset.expanded='false';q.replaceChildren();quickTarget=null;const back=quickBeforeFocus;quickBeforeFocus=null;if(back&&typeof back.focus==='function')setTimeout(()=>{try{back.focus({preventScroll:true})}catch(err){}},0)}
+function closeQuick(){if(quickTimer){clearTimeout(quickTimer);quickTimer=null}const q=$('#quickEditor');q.hidden=true;q.classList.remove('expanded');q.dataset.expanded='false';q.replaceChildren();quickTarget=null;syncEditBar();const back=quickBeforeFocus;quickBeforeFocus=null;if(back&&typeof back.focus==='function')setTimeout(()=>{try{back.focus({preventScroll:true})}catch(err){}},0)}
 function quickWindow(){return state.ui.quickWindow||(state.ui.quickWindow={manual:false,expanded:false})}
 function setQuickExpanded(expanded){const q=$('#quickEditor');const w=quickWindow();w.expanded=!!expanded;if(expanded){w.manual=false;q.classList.add('expanded');q.dataset.expanded='true';q.style.left='';q.style.top='';q.style.width='';q.style.height='';}else{q.classList.remove('expanded');q.dataset.expanded='false';if(!w.manual){q.style.left='';q.style.top='';q.style.width='';q.style.height='';positionQuick()}}noteChange()}
 function toggleQuickExpanded(){setQuickExpanded(!$('#quickEditor').classList.contains('expanded'))}
@@ -579,7 +643,7 @@ function keepQuickInViewport(){const q=$('#quickEditor');const w=quickWindow();i
 function toolButton(text,fn,cls='tiny'){const b=el('button',cls,text);b.type='button';b.onclick=fn;return b}
 function quickColor(root,title,value,fn){let f=el('div','field');let label=el('label',null,title);const input=el('input');input.type='color';input.value=/^#[0-9a-fA-F]{6}$/.test(value||'')?value:'#ffffff';input.onchange=()=>fn(input.value);f.append(label,input);root.append(f)}
 function quickNumber(root,title,value,min,max,fn){let f=el('div','field'),lab=el('label',null,title),input=el('input');input.type='number';input.min=min;input.max=max;input.value=String(value);input.onchange=()=>fn(clamp(+input.value,min,max));f.append(lab,input);root.append(f)}
-function quickText(root,title,value,fn,multi=true){const f=el('div','field'),lab=el('label',null,title),input=el(multi?'textarea':'input');if(!multi)input.type='text';input.value=value||'';input.onchange=()=>fn(input.value);f.append(lab,input);root.append(f);return input}
+function quickText(root,title,value,fn,multi=true){const f=el('div','field'),lab=el('label',null,title),input=el(multi?'textarea':'input');if(!multi)input.type='text';input.value=value||'';let last=input.value;input.onchange=()=>{if(input.value===last)return;last=input.value;fn(last)};f.append(lab,input);root.append(f);return input}
 function quickSelect(root,title,choices,value,fn){const f=el('div','field'),lab=el('label',null,title),select=el('select');choices.forEach(([v,t])=>{const o=el('option',null,t);o.value=v;select.append(o)});select.value=value;select.onchange=()=>fn(select.value);f.append(lab,select);root.append(f)}
 function quickDisclosure(parent){const d=el('details','quick-extra'),sum=el('summary',null,'Stile e proprietà');d.append(sum);parent.append(d);return d}
 function qCommit(fn){commit(fn);const id=quickTarget?.id;const kind=quickTarget?.kind;if(id&&kind==='node'&&!current().elements.some(n=>n.id===id))closeQuick();else positionQuick()}
@@ -599,7 +663,7 @@ function openQuick(kind,id,anchor){closeQuick();const q=$('#quickEditor');let ta
  const nearby=toolButton('↩ Vicino',resetQuickWindow);nearby.title='Riposiziona vicino all’oggetto';nearby.setAttribute('aria-label','Riposiziona editor vicino all’oggetto');
  const expand=toolButton('⤢',()=>{},'tiny');expand.innerHTML='<span class="head-expand-label-collapsed">⤢ Espandi</span><span class="head-expand-label-expanded">🗗 Riduci</span>';expand.title='Espandi o riduci l’editor';expand.setAttribute('aria-label','Espandi o riduci l’editor');expand.setAttribute('aria-pressed',String(quickWindow().expanded===true));expand.onclick=()=>{toggleQuickExpanded();expand.setAttribute('aria-pressed',String($('#quickEditor').classList.contains('expanded')))};
  const close=toolButton('✕ Chiudi',closeQuick,'tiny quick-close-text');close.title='Chiudi la modalità di modifica';close.setAttribute('aria-label','Chiudi la modalità di modifica');
- quickHeadButtons.append(undoBtn,redoBtn,nearby,expand,close);head.append(quickHeadButtons);q.append(head);
+ quickHeadButtons.append(nearby,expand,close);head.append(quickHeadButtons);q.append(head);
  const hint=el('p','quick-edit-hint','Trascina questa barra per spostare · usa ↶ e ↷ per annullare o ripristinare · ⤢ per espandere · ✕ Chiudi per uscire dalla modifica');q.append(hint);
  if(kind==='scene'){
   quickText(q,'Titolo scheda',target.title,v=>qCommit(()=>target.title=v),false);
@@ -625,20 +689,13 @@ function openQuick(kind,id,anchor){closeQuick();const q=$('#quickEditor');let ta
   if(node.type!=='note')quickText(extra,'Approfondimento (icona ↗)',node.details||'',v=>qCommit(()=>node.details=v));
   const actions=el('div','quick-actions');actions.append(toolButton('Duplica',()=>{selectedId=id;duplicateNode();closeQuick()}));actions.append(toolButton(node.collapsed?'Mostra':'Nascondi',()=>{qCommit(()=>node.collapsed=!node.collapsed);closeQuick()}));actions.append(toolButton('Elimina',()=>{deleteNode(id);closeQuick()},'tiny danger'));q.append(actions);
  }
- const footer=el('div','quick-footer');
- const left=el('div','form-actions');
- const back=toolButton('↶ Indietro',()=>{undo();reopen()});back.title='Annulla ultima modifica';
- const forward=toolButton('↷ Avanti',()=>{redo();reopen()});forward.title='Ripristina ultima modifica';
- left.append(back,forward);
- const closeBottom=toolButton('✕ Chiudi modifica',closeQuick,'tiny quick-close-text');closeBottom.title='Chiudi la modalità di modifica';
- footer.append(left,closeBottom);q.append(footer);
- q.hidden=false;if(!quickWindow().manual&&!quickWindow().expanded){q.style.width='';q.style.height=''}positionQuick(anchor);const editable=q.querySelector('textarea,input');if(editable)editable.focus({preventScroll:true});
+ q.hidden=false;syncEditBar();if(!quickWindow().manual&&!quickWindow().expanded){q.style.width='';q.style.height=''}positionQuick(anchor);const editable=q.querySelector('textarea,input');if(editable)editable.focus({preventScroll:true});
 }
 function laterQuick(kind,id,anchor){if(quickTimer)clearTimeout(quickTimer);quickTimer=setTimeout(()=>{quickTimer=null;openQuick(kind,id,anchor)},310)}
 function applyDock(dock){if(!['right','left','top','bottom','float'].includes(dock))return;state.ui.dock=dock;document.body.dataset.dock=dock;
  $$('#dockOptions [data-dock]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dock===dock)));
  for(const panel of [$('#toolPanel'),$('#propertyPanel')]){panel.style.left='';panel.style.right='';panel.style.top='';panel.style.bottom='';panel.style.height=''}
- noteChange();}
+ requestAnimationFrame(updateFloatGrip);setTimeout(updateFloatGrip,230);noteChange();}
 function openDetails(id){const n=current().elements.find(x=>x.id===id);if(!n||!n.details)return;detailOpenId=id;$('#detailTitle').textContent=(n.text||'Approfondimento').split('\n')[0].slice(0,90);$('#detailBody').textContent=n.details;$('#detailOverlay').hidden=false;$('#detailDialog').classList.remove('expanded');$('#expandDetail').setAttribute('aria-pressed','false');$('#expandDetail').textContent='⤢ Espandi';$('#closeDetail').focus()}
 function closeDetails(){$('#detailOverlay').hidden=true;$('#detailDialog').classList.remove('expanded');$('#expandDetail').setAttribute('aria-pressed','false');$('#expandDetail').textContent='⤢ Espandi';detailOpenId=null}
 function applySectionLayout(section){const children=current().elements.filter(n=>n.containerId===section.id&&!n.collapsed);if(!children.length||section.layout==='free')return;const padding=24,top=48;let left=section.x+padding,yy=section.y+top,spaceX=Math.max(90,section.w-2*padding),spaceY=Math.max(70,section.h-top-padding),count=children.length;
@@ -666,7 +723,7 @@ function openPanel(which,focusSelector){
  document.body.classList.toggle('panel-open',!!which);$('#panelScrim').hidden=!which||window.innerWidth>1000;
  const tool=$('#toolPanel'),property=$('#propertyPanel'),focusBefore=document.activeElement;
  for(const [part,what] of [[tool,'tools'],[property,'properties']]){const on=which===what;part.classList.toggle('drawer-open',on);part.setAttribute('aria-hidden',on?'false':'true');part.inert=!on;}
- $('#toggleTools').setAttribute('aria-expanded',which==='tools'?'true':'false');
+ $('#toggleTools').setAttribute('aria-expanded',which==='tools'?'true':'false');syncEditBar();requestAnimationFrame(updateFloatGrip);setTimeout(updateFloatGrip,230);
  if(focusSelector){const target=$(focusSelector);if(target)requestAnimationFrame(()=>target.focus({preventScroll:true}));}
  else if(focusBefore&&((tool.contains(focusBefore)&&which!=='tools')||(property.contains(focusBefore)&&which!=='properties'))){
   const target=which==='properties'&&selectedId?$('#canvas .node[data-id="'+CSS.escape(selectedId)+'"]'):$('#toggleTools');
@@ -683,7 +740,7 @@ function selectLink(id,show=true){editingId=null;selectedId=null;selectedLinkId=
 function cancelDirectEdit(commitText=true){
  if(!editingId)return;const id=editingId;
  const n=current().elements.find(x=>x.id===id),d=$('#canvas .node[data-id="'+CSS.escape(id)+'"] .node-text');
- if(!n||!d){editingId=null;return}const value=d.innerText.replace(/\r/g,'');editingId=null;d.contentEditable='false';d.classList.remove('node-edit');
+ if(!n||!d){editingId=null;syncEditBar();return}const value=d.innerText.replace(/\r/g,'');editingId=null;syncEditBar();d.contentEditable='false';d.classList.remove('node-edit');
  if(commitText&&value!==n.text)commit(()=>n.text=value);else{d.textContent=n.text;}
 }
 function clickNode(e,n){if(presenting)return;const now=performance.now(),pt=canvasPoint(e),close=clickTrack.id===n.id&&now-clickTrack.when<570&&Math.hypot(pt.x-clickTrack.x,pt.y-clickTrack.y)<13;
@@ -950,7 +1007,7 @@ function markTextOverflow(){if(readingMode||presenting||publicMode)return;const 
  if(tooLong&&!box.querySelector('.node-overflow')){const btn=el('button','node-overflow','!');btn.type='button';btn.title='Contenuto non interamente visibile: apri per modificarlo o consulta la vista Leggi';btn.setAttribute('aria-label',btn.title);btn.onclick=e=>{e.stopPropagation();openQuick('node',n.id)};btn.onpointerdown=e=>e.stopPropagation();box.append(btn)}
 }}
 
-function render(){document.body.dataset.theme=state.theme;document.documentElement.style.setProperty('--slide-rail-width',state.ui.slideRailWidth+'px');applyToolPanelSize(state.ui.toolWidth,state.ui.toolHeight,false);selectedId=hasNode()?selectedId:null;if(selectedLinkId&&!linkSelected())selectedLinkId=null;document.body.classList.toggle('hide-slide-rail',!isSlideRailVisible());setPropertyWidth(propertyWidth(),false);renderSlides();renderCanvas();renderReading();renderInspector();renderLibrary();renderLayers();renderThemePalette();$('#docTitle').value=state.title;$('#theme').value=state.theme;document.body.dataset.dock=state.ui.dock||'right';$('#snapToggle').checked=snapOn;$('#pdfDetails').checked=state.ui.printDetails!==false;$$('#dockOptions [data-dock]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dock===(state.ui.dock||'right'))));$('#slideTitle').textContent=current().title;let ix=state.scenes.findIndex(s=>s.id===current().id);$('#slideNum').textContent=' '+String(ix+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');$('#presentCount').textContent=(ix+1)+' / '+state.scenes.length;$('#prevBtn').disabled=ix===0;$('#nextBtn').disabled=ix===state.scenes.length-1;$('#presentPrev').disabled=ix===0;$('#presentNext').disabled=ix===state.scenes.length-1;$('#upSlide').disabled=ix===0;$('#downSlide').disabled=ix===state.scenes.length-1;$('#deleteSlide').disabled=state.scenes.length===1;const railToggle=$('#toggleSlideRail');if(railToggle){railToggle.setAttribute('aria-pressed',String(isSlideRailVisible()));railToggle.title=isSlideRailVisible()?'Nascondi le schede sul lato sinistro':'Mostra le schede sul lato sinistro'}updateHistory();updateView();requestAnimationFrame(markTextOverflow)}
+function render(){document.body.dataset.theme=state.theme;document.body.classList.toggle('flat-layout',state.ui.flatLayout===true);for(const id of ['flatLayoutBtn','toolFlatToggle']){const b=$('#'+id);if(b){b.setAttribute('aria-pressed',String(state.ui.flatLayout===true));b.title=state.ui.flatLayout?'Torna al layout standard':'Allarga lo spazio di lavoro e riduci i margini'}}document.documentElement.style.setProperty('--slide-rail-width',state.ui.slideRailWidth+'px');applyToolPanelSize(state.ui.toolWidth,state.ui.toolHeight,false);selectedId=hasNode()?selectedId:null;if(selectedLinkId&&!linkSelected())selectedLinkId=null;document.body.classList.toggle('hide-slide-rail',!isSlideRailVisible());setPropertyWidth(propertyWidth(),false);renderSlides();renderCanvas();renderReading();renderInspector();renderLibrary();renderLayers();renderThemePalette();$('#docTitle').value=state.title;$('#theme').value=state.theme;document.body.dataset.dock=state.ui.dock||'right';$('#snapToggle').checked=snapOn;$('#pdfDetails').checked=state.ui.printDetails!==false;$$('#dockOptions [data-dock]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dock===(state.ui.dock||'right'))));$('#slideTitle').textContent=current().title;let ix=state.scenes.findIndex(s=>s.id===current().id);$('#slideNum').textContent=' '+String(ix+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');$('#presentCount').textContent=(ix+1)+' / '+state.scenes.length;$('#prevBtn').disabled=ix===0;$('#nextBtn').disabled=ix===state.scenes.length-1;$('#presentPrev').disabled=ix===0;$('#presentNext').disabled=ix===state.scenes.length-1;$('#upSlide').disabled=ix===0;$('#downSlide').disabled=ix===state.scenes.length-1;$('#deleteSlide').disabled=state.scenes.length===1;const railToggle=$('#toggleSlideRail');if(railToggle){railToggle.setAttribute('aria-pressed',String(isSlideRailVisible()));railToggle.title=isSlideRailVisible()?'Nascondi le schede sul lato sinistro':'Mostra le schede sul lato sinistro'}updateHistory();updateView();syncEditBar();requestAnimationFrame(markTextOverflow)}
 
 function makeSlideThumb(scene){
  const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 1200 675');svg.setAttribute('role','img');svg.setAttribute('aria-label','Miniatura di '+(scene.title||'Scheda'));
@@ -994,13 +1051,37 @@ function applyToolPanelSize(width,height,record=false,live=false){
  const w=Math.max(315,Math.min(maxW,+width||360)),h=Math.max(220,Math.min(maxH,+height||400));
  // A responsive projection must not overwrite the operator's saved desktop geometry.
  if(record||live){state.ui.toolWidth=w;state.ui.toolHeight=h}
- document.documentElement.style.setProperty('--tool-panel-width',w+'px');document.documentElement.style.setProperty('--tool-panel-height',h+'px');
+ document.documentElement.style.setProperty('--tool-panel-width',w+'px');document.documentElement.style.setProperty('--tool-panel-height',h+'px');requestAnimationFrame(updateFloatGrip);
  if(record)noteChange();
 }
+function updateFloatGrip(){const grip=$('#toolCornerResize'),panel=$('#toolPanel');if(!grip||!panel)return;
+ const enabled=(state.ui.dock||'right')==='float'&&window.innerWidth>=700&&panel.classList.contains('drawer-open');
+ const edge=$('#toolResizeHandle');const edgeEnabled=window.innerWidth>=700&&panel.classList.contains('drawer-open');edge.hidden=!edgeEnabled;
+ const r=panel.getBoundingClientRect();if(edgeEnabled){const dock=state.ui.dock||'right',vertical=['left','right','float'].includes(dock);edge.style.width=(vertical?11:r.width)+'px';edge.style.height=(vertical?r.height:11)+'px';edge.style.left=(dock==='right'||dock==='float'?r.left:dock==='left'?r.right-11:r.left)+'px';edge.style.top=(dock==='bottom'?r.top:vertical?r.top:r.bottom-11)+'px';}
+ grip.hidden=!enabled;if(!enabled)return;
+ grip.style.left=Math.max(0,r.right-28)+'px';grip.style.top=Math.max(0,r.bottom-28)+'px';}
 function initStudio12Controls(){
+ document.body.appendChild($('#toolCornerResize'));document.body.appendChild($('#toolResizeHandle'));updateFloatGrip();
  $('#slideRailViewList').onclick=()=>{state.ui.slideView='list';noteChange();renderSlideList()};
  $('#slideRailViewThumbs').onclick=()=>{state.ui.slideView='thumbs';noteChange();renderSlideList()};
  $('#toolNarrow').onclick=()=>applyToolPanelSize(toolPanelSize()-100,state.ui.toolHeight,true);
+ $('#toolCornerResize').addEventListener('pointerdown',e=>{
+  if(e.button!==0||(state.ui.dock||'right')!=='float'||window.innerWidth<700)return;
+  const panel=$('#toolPanel'),r=panel.getBoundingClientRect(),handle=e.currentTarget;
+  e.preventDefault();e.stopPropagation();panel.classList.add('resizing');
+  panel.style.left=r.left+'px';panel.style.right='auto';panel.style.top=r.top+'px';
+  const x=e.clientX,y=e.clientY,w=r.width,h=r.height,pid=e.pointerId;
+  try{handle.setPointerCapture(pid)}catch(_){}
+  let changed=false;
+  const move=ev=>{if(ev.pointerId!==pid)return;
+    const maxW=Math.max(315,Math.min(820,window.innerWidth-r.left-12));
+    const maxH=Math.max(220,Math.min(710,window.innerHeight-r.top-10));
+    const nextW=Math.max(315,Math.min(maxW,w+ev.clientX-x));
+    const nextH=Math.max(220,Math.min(maxH,h+ev.clientY-y));
+    applyToolPanelSize(nextW,nextH,false,true);changed=true;};
+  const finish=ev=>{if(ev.pointerId!==pid)return;handle.removeEventListener('pointermove',move);handle.removeEventListener('pointerup',finish);handle.removeEventListener('pointercancel',finish);panel.classList.remove('resizing');try{handle.releasePointerCapture(pid)}catch(_){}if(changed)noteChange()};
+  handle.addEventListener('pointermove',move);handle.addEventListener('pointerup',finish);handle.addEventListener('pointercancel',finish);
+ });
  $('#toolWide').onclick=()=>applyToolPanelSize(toolPanelSize()+100,state.ui.toolHeight,true);
  const h=$('#toolResizeHandle');h.addEventListener('pointerdown',e=>{
   if(e.button!==0||window.innerWidth<700)return;
@@ -1082,10 +1163,10 @@ function setGeom(dom,n){dom.style.left=(n.x/WIDTH*100)+'%';dom.style.top=(n.y/HE
 function updateLinkPositions(){const svg=$('#canvas .link-layer');if(!svg)return;const t=document.createElement('div');drawArrowLayer(t,current(),presenting?'present':'edit');svg.replaceWith(t.firstChild)}
 function drawLinksOnly(container,scene){drawArrowLayer(container,scene,'print')}
 function renderCanvas(){drawCanvas($('#canvas'),current(),(presenting||publicMode)?'present':'edit');requestAnimationFrame(markTextOverflow)}
-function startDirectEdit(id){let n=current().elements.find(x=>x.id===id);if(!n||n.type==='image')return;if(editingId&&editingId!==id)cancelDirectEdit();selectNode(id);let d=$('#canvas .node-layer .node[data-id="'+CSS.escape(id)+'"] .node-text');if(!d)return;editingId=id;d.contentEditable='true';d.classList.add('node-edit');d.focus({preventScroll:true});
+function startDirectEdit(id){let n=current().elements.find(x=>x.id===id);if(!n||n.type==='image')return;if(editingId&&editingId!==id)cancelDirectEdit();selectNode(id);let d=$('#canvas .node-layer .node[data-id="'+CSS.escape(id)+'"] .node-text');if(!d)return;editingId=id;syncEditBar();d.contentEditable='true';d.classList.add('node-edit');d.focus({preventScroll:true});
  d.addEventListener('pointerdown',e=>e.stopPropagation());let before=n.text;
- d.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();editingId=null;d.contentEditable='false';d.textContent=before;render()}e.stopPropagation()});
- d.addEventListener('blur',()=>{if(editingId!==id)return;const v=d.innerText.replace(/\r/g,'');editingId=null;if(v!==before)commit(()=>n.text=v);else{d.contentEditable='false';d.classList.remove('node-edit')}},{once:true});
+ d.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();editingId=null;syncEditBar();d.contentEditable='false';d.textContent=before;render()}e.stopPropagation()});
+ d.addEventListener('blur',()=>{if(editingId!==id)return;const v=d.innerText.replace(/\r/g,'');editingId=null;syncEditBar();if(v!==before)commit(()=>n.text=v);else{d.contentEditable='false';d.classList.remove('node-edit')}},{once:true});
 }
 function clamp(n,min,max){return Math.round(Math.min(max,Math.max(min,n)))}
 function activeIndex(){return state.scenes.findIndex(s=>s.id===current().id)}
@@ -1157,17 +1238,17 @@ function addScene(){let sc={id:uid('sc'),title:'Nuova scheda',notes:'',elements:
 function duplicateScene(){let copy=safeClone(current()),mapping=new Map();copy.id=uid('sc');copy.title+=' (copia)';copy.elements.forEach(n=>{let old=n.id;n.id=uid('el');mapping.set(old,n.id)});copy.links.forEach(l=>{l.id=uid('link');l.from=mapping.get(l.from);l.to=mapping.get(l.to)});commit(()=>{state.scenes.splice(activeIndex()+1,0,copy);state.activeSceneId=copy.id;selectedId=null})}
 function moveScene(delta){let from=activeIndex(),to=from+delta;if(to<0||to>=state.scenes.length)return;commit(()=>{let scene=state.scenes.splice(from,1)[0];state.scenes.splice(to,0,scene)})}
 function deleteScene(){if(state.scenes.length===1)return;if(!confirm('Eliminare questa scheda? Puoi usare Annulla per recuperarla.'))return;let ix=activeIndex();commit(()=>{state.scenes.splice(ix,1);state.activeSceneId=state.scenes[Math.min(ix,state.scenes.length-1)].id;selectedId=null})}
-function present(on){closeQuick();openPanel(null);presenting=on;document.body.classList.toggle('presenting',on);if(on){selectedId=null;window.__ccmPresentationHidden=new Map(current().elements.map(n=>[n.id,!!n.collapsed]));render();document.activeElement?.blur()}else{if(window.__ccmPresentationHidden){for(const sc of state.scenes)for(const n of sc.elements)if(window.__ccmPresentationHidden.has(n.id))n.collapsed=window.__ccmPresentationHidden.get(n.id);window.__ccmPresentationHidden=null}render()}}
+function present(on){if(editingId)cancelDirectEdit(true);closeQuick();openPanel(null);presenting=on;document.body.classList.toggle('presenting',on);if(on){selectedId=null;window.__ccmPresentationHidden=new Map(current().elements.map(n=>[n.id,!!n.collapsed]));render();document.activeElement?.blur()}else{if(window.__ccmPresentationHidden){for(const sc of state.scenes)for(const n of sc.elements)if(window.__ccmPresentationHidden.has(n.id))n.collapsed=window.__ccmPresentationHidden.get(n.id);window.__ccmPresentationHidden=null}render()}}
 function safeData(x){return JSON.stringify(x).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029')}
 function safeName(s){return (s||'presentazione').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9_-]+/gi,'_').slice(0,50)||'presentazione'}
 function download(name,content,mime){let a=document.createElement('a'),blob=new Blob([content],{type:mime});a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),15000)}
 function exportHTML(publicCopy=false){if(editingId)cancelDirectEdit();closeQuick();if(publicCopy&&!confirm('La copia pubblica elimina appunti e libreria, ma mantiene i contenuti delle schede e gli approfondimenti. Il sorgente HTML è ispezionabile. Controlla che non vi siano dati riservati. Proseguire?'))return;
  let copyData=safeClone(state);copyData.revision=(copyData.revision||0)+1;if(publicCopy){copyData.scenes.forEach(s=>{s.notes='';s.elements=s.elements.filter(n=>n.type!=='note'&&n.private!==true);s.links=s.links.filter(l=>(!l.from||s.elements.some(n=>n.id===l.from))&&(!l.to||s.elements.some(n=>n.id===l.to)))});copyData.library=[];copyData.ui=copyData.ui||{};copyData.ui.publicCopy=true;copyData.ui.viewMode='read'}
- let doc=document.documentElement.cloneNode(true);doc.querySelector('#ccm-data').textContent=safeData(copyData);doc.querySelector('#docTitle').setAttribute('value',copyData.title);
+ let doc=document.documentElement.cloneNode(true);const grip=doc.querySelector('#toolCornerResize'),tools=doc.querySelector('#toolPanel');if(grip&&tools){grip.removeAttribute('style');grip.hidden=true;tools.insertBefore(grip,tools.querySelector('#toolSearch'))}const edge=doc.querySelector('#toolResizeHandle');if(edge&&tools){edge.removeAttribute('style');edge.hidden=false;tools.insertBefore(edge,tools.querySelector('#toolSearch'))}doc.querySelector('#ccm-data').textContent=safeData(copyData);doc.querySelector('#docTitle').setAttribute('value',copyData.title);
  // Non serializzare il DOM runtime: potrebbe contenere appunti, libreria e stato privato anche dopo la pulizia del JSON.
  for(const sel of ['#canvas','#inspectorContent','#slideList','#libraryList','#layersList','#themePalette','#quickEditor','#readingView','#detailBody','#printRoot'])doc.querySelector(sel)?.replaceChildren();
  doc.querySelector('#detailTitle').textContent='Approfondimento';doc.querySelector('#toast').textContent='';
- doc.querySelectorAll('.drawer-open').forEach(x=>x.classList.remove('drawer-open'));doc.querySelector('#quickEditor')?.setAttribute('hidden','');doc.querySelector('#detailOverlay')?.setAttribute('hidden','');doc.querySelectorAll('[aria-hidden="false"][id$="Panel"]').forEach(x=>x.setAttribute('aria-hidden','true'));
+ doc.querySelectorAll('.drawer-open').forEach(x=>x.classList.remove('drawer-open'));doc.querySelector('#quickEditor')?.setAttribute('hidden','');doc.querySelector('#editActionBar')?.setAttribute('hidden','');doc.querySelector('#detailOverlay')?.setAttribute('hidden','');doc.querySelectorAll('[aria-hidden="false"][id$="Panel"]').forEach(x=>x.setAttribute('aria-hidden','true'));
  let markup='<!doctype html>\n'+doc.outerHTML,bytes=new Blob([markup]).size;
  if(bytes>MAX_HTML_BYTES){toast('Questo file supera il limite di ~2 MB ('+Math.round(bytes/1000)+' KB). Riduci le immagini prima di salvare.');return}
  download(safeName(state.title)+(publicCopy?'_pubblica':'')+'.html',markup,'text/html;charset=utf-8');if(!publicCopy){$('#status').textContent='Download richiesto · verifica il file';$('#status').title='Il browser ha ricevuto la richiesta. La pagina non può verificare che il download sia completato.'}toast(publicCopy?'Download della copia pubblica richiesto, '+Math.round(bytes/1000)+' KB.':'Download HTML richiesto, '+Math.round(bytes/1000)+' KB. Controlla la cartella Download e riapri il file.');}
@@ -1341,6 +1422,22 @@ $('#addLink').onclick=addConnection;
 $('#panelScrim').onclick=()=>openPanel(null);$('#viewBtn').onclick=()=>changeView(!readingMode);$('#zoomOut').onclick=()=>changeZoom(-.25);$('#zoomIn').onclick=()=>changeZoom(.25);$('#zoomFit').onclick=()=>{zoom=1;state.ui.zoom=1;updateView();noteChange()};
 $('#toggleTools').onclick=()=>{let opened=$('#toolPanel').classList.contains('drawer-open');openPanel(opened?null:'tools')};
 $('#toggleSlideRail').onclick=()=>toggleSlideRail();
+ const toggleFlat=()=>{state.ui.flatLayout=!state.ui.flatLayout;noteChange();render()};
+ $('#flatLayoutBtn').onclick=toggleFlat;$('#toolFlatToggle').onclick=toggleFlat;
+ const bar=$('#editActionBar');bar.addEventListener('pointerdown',e=>e.preventDefault());
+ $('#quickEditor').addEventListener('input',e=>{if(e.target.matches('input,textarea,select'))e.target.dataset.pending='true'});
+ $('#quickEditor').addEventListener('change',e=>{if(e.target.matches('input,textarea,select'))e.target.dataset.pending='false'},true);
+ const flushQuick=()=>{if($('#quickEditor').hidden)return;const el=document.activeElement;
+   if(el&&$('#quickEditor').contains(el)&&el.dataset.pending==='true'&&['INPUT','TEXTAREA','SELECT'].includes(el.tagName))el.dispatchEvent(new Event('change',{bubbles:true}));};
+ const editDone=()=>{flushQuick();if(editingId)cancelDirectEdit(true);if(!$('#quickEditor').hidden)closeQuick();if($('#propertyPanel').classList.contains('drawer-open'))openPanel(null);syncEditBar()};
+ const editStep=(direction)=>{flushQuick();const active=quickTarget?{kind:quickTarget.kind,id:quickTarget.id}:null;
+   if(editingId)cancelDirectEdit(true);
+   if(direction<0)undo();else redo();
+   if(active){const exists=active.kind==='scene'||(active.kind==='node'&&current().elements.some(n=>n.id===active.id))||(active.kind==='link'&&current().links.some(l=>l.id===active.id));
+     if(exists)openQuick(active.kind,active.id);else closeQuick();}
+   syncEditBar();};
+ $('#editOk').onclick=editDone;$('#editBack').onclick=()=>editStep(-1);$('#editForward').onclick=()=>editStep(1);
+
 $('#closeSlideRail').onclick=()=>toggleSlideRail();
 $('#addSlideRail').onclick=()=>addScene();
 $('#closeTools').onclick=()=>openPanel(null);$('#closeProperties').onclick=()=>openPanel(null);
@@ -1370,7 +1467,7 @@ $('#presentBtn').onclick=()=>present(true);$('#presentExit').onclick=()=>present
 document.addEventListener('keydown',e=>{const editable=e.target.closest('input,textarea,select,[contenteditable="true"]');if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();exportHTML(false);return}if((e.ctrlKey||e.metaKey)&&!editable&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();return}if((e.ctrlKey||e.metaKey)&&!editable&&e.key.toLowerCase()==='y'){e.preventDefault();redo();return}if(e.key==='Escape'&&!$('#detailOverlay').hidden){closeDetails();return}if(e.key==='Escape'&&!$('#quickEditor').hidden){closeQuick();return}if(e.key==='Escape'&&presenting){present(false);return}if(e.key==='Escape'){if(editingId)cancelDirectEdit(false);openPanel(null);return}if(editable)return;if(presenting){if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();navigate(1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();navigate(-1)}}});
 
 for(const panel of [$('#toolPanel'),$('#propertyPanel')]){
- panel.querySelector('.drawer-head').addEventListener('pointerdown',e=>{if(state.ui.dock!=='float'||e.target.closest('button,input,select'))return;if(e.button!==0)return;e.preventDefault();let rect=panel.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;const move=ev=>{panel.style.left=clamp(ev.clientX-x,8,window.innerWidth-rect.width-8)+'px';panel.style.right='auto';panel.style.top=clamp(ev.clientY-y,8,window.innerHeight-rect.height-8)+'px'};const stop=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',stop)};window.addEventListener('pointermove',move);window.addEventListener('pointerup',stop)});
+ panel.querySelector('.drawer-head').addEventListener('pointerdown',e=>{if(state.ui.dock!=='float'||e.target.closest('button,input,select'))return;if(e.button!==0)return;e.preventDefault();let rect=panel.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;const move=ev=>{panel.style.left=clamp(ev.clientX-x,8,window.innerWidth-rect.width-8)+'px';panel.style.right='auto';panel.style.top=clamp(ev.clientY-y,8,window.innerHeight-rect.height-8)+'px';updateFloatGrip()};const stop=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',stop)};window.addEventListener('pointermove',move);window.addEventListener('pointerup',stop)});
 }
 // Spostamento con pointer events: nessuna libreria né continui re-render della scheda.
 const quickBox=$('#quickEditor');
@@ -1397,8 +1494,8 @@ quickBox.addEventListener('pointerdown',e=>{
  bar.addEventListener('pointermove',move);bar.addEventListener('pointerup',finish);bar.addEventListener('pointercancel',finish);
 });
 let quickObserveTimer=null;const quickResizeObserver=new ResizeObserver(()=>{if(quickBox.hidden||!quickWindow().manual)return;clearTimeout(quickObserveTimer);quickObserveTimer=setTimeout(()=>{if(quickBox.hidden||!quickWindow().manual)return;rememberQuickWindow()},90)});quickResizeObserver.observe(quickBox);
-window.addEventListener('resize',()=>{if(!$('#quickEditor').hidden)positionQuick();if(state.ui.viewMode!=='read'&&state.ui.viewMode!=='compose'&&!publicMode){const next=window.innerWidth<700;if(readingMode!==next){readingMode=next;render()}}if($('#toolPanel').classList.contains('drawer-open')||$('#propertyPanel').classList.contains('drawer-open'))$('#panelScrim').hidden=window.innerWidth>1000});
-document.addEventListener('pointerdown',e=>{if(!$('#quickEditor').hidden&&!e.target.closest('#quickEditor')&&!e.target.closest('.node')&&!e.target.closest('.edge-hit')&&!e.target.closest('.edge-label')&&!e.target.closest('.edge-middle'))closeQuick()},true);
+window.addEventListener('resize',()=>{if(!$('#quickEditor').hidden)positionQuick();if(state.ui.viewMode!=='read'&&state.ui.viewMode!=='compose'&&!publicMode){const next=window.innerWidth<700;if(readingMode!==next){readingMode=next;render()}}if($('#toolPanel').classList.contains('drawer-open')||$('#propertyPanel').classList.contains('drawer-open'))$('#panelScrim').hidden=window.innerWidth>1000;updateFloatGrip()});
+document.addEventListener('pointerdown',e=>{if(!$('#quickEditor').hidden&&!e.target.closest('#quickEditor')&&!e.target.closest('#editActionBar')&&!e.target.closest('.node')&&!e.target.closest('.edge-hit')&&!e.target.closest('.edge-label')&&!e.target.closest('.edge-middle'))closeQuick()},true);
 document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#quickEditor').hidden){e.preventDefault();closeQuick();return}if(!$('#detailOverlay').hidden){e.preventDefault();closeDetails();return}});
 
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});

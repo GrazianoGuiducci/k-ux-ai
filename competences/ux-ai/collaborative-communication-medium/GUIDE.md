@@ -4,6 +4,16 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 13 novembre 2026 — Studio 14: Presenta, spazio e gesto di modifica
+
+**Fonte:** l'operatore riporta quattro difetti/incomodità del medium: ridimensionamento del modale Strumenti, Presenta vuota, spazio orizzontale sprecato e difficoltà di uscire da modifica. Il gesto corretto nasce dal documento concreto, non dalla pretesa di imporre un nuovo workflow: recuperare canvas visibile, controllo percettivo dello spazio, e azioni temporali chiare mentre il testo viene cambiato.
+
+**Meccanismo del difetto e risultante:** l'editor aveva una grid a due colonne e nascondeva la sidebar in `body.presenting`, ma non la geometria della grid; la colonna canvas collassava a 0 px. Modalità Presenta adesso cambia composizione della shell a blocco prima di ridimensionare il canvas. Il pannello Strumenti in modalità mobile era governato da CSS `!important` e un resize/grip dentro un contenuto scrollabile: ora i grip sono overlay fissi riposizionati sui bordi reali, e un angolo di presa modifica entrambe le dimensioni in modalità floating. L'export ricolloca i grip dentro il DOM prima dell'esecuzione del codice nel nuovo file: senza questo passaggio, il documento esportato poteva perdere le maniglie di resize.
+
+**Nuova possibilità senza perdita del referente:** Flat allarga la superficie di lettura e riduce margini/cornici, passando a due colonne a desktop e a una su mobile. Lo stato è preferenza `state.ui.flatLayout`, non cambiamento dei concetti, frecce o coordinate. Quando si entra in modifica, un piccolo menu persistente OK/Indietro/Avanti rende visibile la possibilità di concludere o rivedere i passi; l'input quick editor evita checkpoint ripetuti quando un evento change non contiene nuova informazione. Si conserva un unico storico, non una seconda storia della UI.
+
+**Prove e limiti:** prove Playwright reali sui quattro canvas in Presenta, dock laterale/top/bottom/floating, trascinamento a larghezza/altezza, cambi Flat/standard, mini editor/toolbar, Undo/Redo e salvataggio-riapertura. Copia pubblica con marcatori privati in note/libreria, assenti nel risultato; MPL preservata. Node `--check`, viewport 390px senza overflow. I test non attestano touch fisico o tutte le tecnologie assistive. Codex/TM9 mantiene la pagina MAIOS.it; questo movimento modifica soltanto il tool pubblico K-UX-AI e la sua fonte privata tm7.
+
 ## 13 novembre 2026 — MetaCanvas: dal passaggio al ritorno strutturato
 
 **Evento:** nel primo tool pubblico l'operatore può esportare dati JSON per una AI, ma un LLM che restituisce quel JSON modificato non ha un gesto di rientro equivalente nel documento già aperto. Il mezzo unidirezionale rende difficile continuare l'oggetto senza rimaneggiare l'intero HTML. Il valore del medium non è semplicemente offrire un pulsante d'importazione: **stessa identità semantica attraverso rappresentazione umana, file, AI, file di ritorno e nuova rappresentazione umana**.
