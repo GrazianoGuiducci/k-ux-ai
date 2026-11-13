@@ -4,6 +4,18 @@
 **Stato:** 0.1.0 candidate, 11 novembre 2026.  
 **Ingresso:** [SKILL](SKILL.md) → [CURRENT](CURRENT.md) → la sorgente del lavoro e la differenza reale da costruire.
 
+## 13 novembre 2026 — Studio 15: il template come modello personale e azione reversibile
+
+**Fonte operativa:** l'operatore vede la gallery e domanda «se aggiungo un template posso annullare l'operazione?»; propone inoltre di salvare i template modificati per riutilizzarli e sostituire il generico «Inserisci» con tre relazioni esplicite alla scheda corrente: **Sostituisci, Sopra, Sotto**. È un cambiamento del mezzo di comprensione, non un'aggiunta cosmetica. «Inserire» lasciava al software la scelta del rapporto con il documento esistente.
+
+**Saper fare corretto:** l'interazione di una raccolta di template deve conservare due cose: (1) **autorità dell'operatore sul punto d'inserimento**, rendendo esplicito se una composizione sostituisce, precede o segue; (2) **reversibilità dell'effetto**, con lo stesso storico che porta le modifiche al documento. Le azioni bulk (5 template) sono una sola intenzione e un solo checkpoint; l'operatore può annullarle in un gesto. La sostituzione è distruttiva solo nella vista corrente e richiede conferma; Undo recupera la scena precedente senza falsare la storia.
+
+**Riutilizzo senza perdita di referente:** un template salvato non è la stessa scheda viva: è un modello che conserva contenuto/relazioni, ma la sua istanziazione deve ricevere nuovi ID per scena, elementi e link, compresi riferimenti `containerId`, evitando collisioni. I template personali vivono nel documento di lavoro e possono migrare con `metacanvas.templates.v1`; non richiedono server o persistenza automatica esterna. `Esporta raccolta`/ `Importa raccolta` portano materiale fra documenti ma non equivalgono a sincronizzazione.
+
+**Privacy dal livello giusto:** poiché l'HTML è sia sorgente dati sia editor con DOM già renderizzato, una copia pubblica che cancellasse `savedTemplates[]` nel solo JSON lascerebbe i nomi personali nelle card già presenti nel DOM clonato. È stato necessario ripulire **anche** il DOM di `#savedTemplateList` e normalizzare il contatore. Il template estratto esclude note ed elementi `private:true`, ma non può dedurre segreti contenuti in testi non marcati: l'export espone questo limite e richiede revisione umana. L'importazione JSON con riferimenti invalidi o immagini remote viene rifiutata prima del commit.
+
+**Prova locale:** test di inserimento sopra/sotto, sostituzione annullata/confermata, Undo/Redo, bulk 5 in un passo, template salvato, trasferimento ad altro file, preservazione di frecce, riapertura HTML, copia pubblica senza dati personali, stripping di note private, rifiuto `image.src` remoti e nessun pageerror osservato. La competenza futura deve ricordare che **l'HTML è insieme carrier dati e superficie interattiva clonabile**: il contratto di privacy attraversa entrambi.
+
 ## 13 novembre 2026 — Studio 14: Presenta, spazio e gesto di modifica
 
 **Fonte:** l'operatore riporta quattro difetti/incomodità del medium: ridimensionamento del modale Strumenti, Presenta vuota, spazio orizzontale sprecato e difficoltà di uscire da modifica. Il gesto corretto nasce dal documento concreto, non dalla pretesa di imporre un nuovo workflow: recuperare canvas visibile, controllo percettivo dello spazio, e azioni temporali chiare mentre il testo viene cambiato.

@@ -18,3 +18,9 @@ Operator-reported issues: floating Tools resize non-functional, Presenta blank, 
 
 **Local evidence:** Chromium/Playwright tests on four example slides showing nonzero canvas in Presenta and correct navigation/Escape; floating corner drag 574×400→628×494, top/bottom dock height drags; Flat reading 900→1333 px at desktop with two-column CSS and mobile single column; edit toolbar with undo/redo single-step behavior; exported HTML reopened with saved preferences, presentable content and controls intact; public export excludes test private notes/library entries; mobile viewport 390 px without horizontal overflow. JavaScript syntax checked with Node. These are bounded local tests, not physical touch/browser-file-open, full accessibility or security certification. No MAIOS.it deployment or K-UX-AI runtime integration is implied.
 
+
+## MetaCanvas Studio 15 — reusable template semantics (13 November 2026)
+
+Operator's direct differences: insertion of built-in templates must be undoable and offer explicit replace/above/below; edited templates should be reusable in the same document and portable to others.
+
+**Local test evidence:** Chromium/Playwright 31 browser assertions on built-in template placement, confirmed/cancelled replace, undo/redo, five-slide batch as one undo, named custom saved templates, export/import into a second editor, reference integrity, working HTML save/reopen, public-copy exclusion of personal template data and DOM, and MPL preservation. A second test exercised private-note sanitization and rejection of external image URLs in imported packs. Embedded JavaScript passed Node syntax check. These are not physical touch/browser compatibility, comprehensive security or multi-user collaboration certification. The site deployment remains a separate Codex/TM9 owner.

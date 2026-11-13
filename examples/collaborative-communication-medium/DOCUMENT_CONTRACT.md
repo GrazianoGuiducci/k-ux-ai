@@ -8,6 +8,14 @@ The document is a **single editable HTML file**. Its canonical state is JSON und
 - `ui`: operator preferences, **not** assertions about external reality.
 - Notes/private elements: usable in the working document but to be excluded from the public copy and checked before sharing.
 
+## Studio 15 — personal reusable templates
+
+The working model may include `savedTemplates[]`, a set of user-saved slide patterns with stable collection IDs and transferable scene content. A template instantiation creates a **new scene identity**, remaps element/link IDs and section container references, and inserts one of three ways: replace, above or below the active slide. Each is undoable as one operation. Saving/deleting/importing personal templates are also undoable.
+
+Template packs are JSON under `metacanvas.templates.v1`. They may be exported and imported into another standalone HTML document. **Public export removes both the template collection from the JSON and the rendered personal-template list from the DOM**; ordinary private working HTML preserves the collection. Notes and explicitly private elements are excluded when saving templates, but remaining text/detail fields must be checked by the user.
+
+[Full template contract](TEMPLATE_COLLECTION.md).
+
 ## Round-trip import contract (MetaCanvas 0.1.1)
 
 The editor exports its own `ccm.document.v1` state as JSON for an LLM. A later import accepts either a JSON document or an HTML MetaCanvas document containing a `<script id="ccm-data" type="application/json">` payload.

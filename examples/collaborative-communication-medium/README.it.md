@@ -33,6 +33,21 @@ Questa versione incorpora quattro correzioni richieste dall'operatore:
 
 **Uso:** apri l'HTML, usa **Flat** per passare al layout più ampio, **Presenta** per verificare le schede, **Strumenti** per ridimensionare il pannello; fai doppio clic su un testo per il mini editor. I controlli e le preferenze permangono nel file HTML salvato. Non è previsto un server o un LLM incorporato.
 
+## Studio 15 — Template personali, posizionamento e Annulla
+
+In **Strumenti → Template agentici**, ogni modello ha tre comandi:
+- **Sostituisci** rimpiazza la scheda attiva, dopo conferma; l’originale si recupera con **↶ Annulla**.
+- **↑ Sopra** aggiunge una scheda immediatamente prima della corrente.
+- **↓ Sotto** aggiunge una scheda immediatamente dopo la corrente.
+
+Il percorso completo da cinque schede usa gli stessi tre comandi e costituisce un’unica azione annullabile. La sezione include **Annulla** e **Ripristina**.
+
+**I miei template:** dopo aver personalizzato una scheda seleziona **☆ Salva questa scheda come template**, assegnale un nome e riutilizzala con gli stessi tre comandi. I template personali vengono inclusi nel file di lavoro quando premi **Salva lavoro**. Per portarli in un altro progetto usa **↓ Esporta raccolta JSON** e, nell’altro documento MetaCanvas, **↑ Importa raccolta JSON**. L'importazione aggiunge i template, non sostituisce le schede e può essere annullata.
+
+I template salvati escludono appunti del relatore ed elementi marcati come privati; **controlla comunque il testo dei riquadri e gli approfondimenti** prima di condividere una raccolta. La **Copia pubblica** non contiene i template personali né le rappresentazioni HTML generate della loro lista.
+
+[Formato della raccolta](TEMPLATE_COLLECTION.md) · [Contratto del documento](DOCUMENT_CONTRACT.md).
+
 ## Licenza e proprietà
 
 **Mozilla Public License 2.0 (MPL-2.0)**, *soltanto per i file di questo strumento*. Chiunque può usare, modificare, distribuire e commercializzare il software nel rispetto della licenza. Chi distribuisce modifiche ai file coperti deve rendere disponibile il relativo sorgente secondo la MPL. Il copyright sul codice originale resta a **Graziano Guiducci (2026)**; i nuovi autori conservano i diritti sulle proprie modifiche. Nomi commerciali, marchi e loghi non sono concessi dalla MPL.

@@ -14,7 +14,7 @@
 <meta name="copyright" content="Copyright (c) 2026 Graziano Guiducci">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MetaCanvas · Studio 14 | AI Collaboration Studio</title>
+<title>MetaCanvas · Studio 15 | AI Collaboration Studio</title>
 <style>
 :root{--ink:#183146;--muted:#5d7281;--line:#d8e2e6;--bg:#eaf0f2;--paper:#fff;--accent:#087b70;--accent-soft:#e7f5f0;--focus:#e3a04c;--shadow:0 12px 38px #19334a17}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
@@ -221,6 +221,20 @@ body.presenting .panel-scrim{display:none!important}
 .template-preview .mini-node{min-width:0;flex:1;border:1px solid var(--line);border-radius:6px;background:var(--accent-soft,#e7f5f0);padding:7px 3px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:9px;font-weight:650;color:var(--text,#183146)}
 .template-preview .mini-arrow{font-size:14px;color:var(--accent,#087b70);flex:none}
 .template-all{width:100%;font-weight:700;min-height:40px}
+.template-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.template-actions button{white-space:normal;min-width:0;line-height:1.2;padding:7px 4px;min-height:41px}
+.template-actions button[data-template-action="replace"]{background:#fff8ee;border-color:#dbbd93}
+.template-saved-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:12px 0 7px}
+.template-saved-head strong{font-size:13px}
+.template-saved-head .mini{font-size:11px}
+.template-utilities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:10px 0}
+.template-utilities button{white-space:normal;font-size:12px;min-height:38px}
+.template-card .template-delete{font-size:11px;padding:5px 7px;min-height:28px}
+.template-help{border-left:3px solid #4e9e91;padding-left:10px;margin-bottom:9px}
+.template-stack-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.template-stack-actions button{font-size:11px;white-space:normal;min-height:42px;padding:6px 4px}
+@media(max-width:650px){.template-utilities{grid-template-columns:1fr 1fr}.template-actions button{font-size:11px}}
+
 @media(max-width:700px){.template-card button{min-height:44px}}
 
 /* Studio 09 — guida compatta, non parte della superficie di lavoro */
@@ -509,9 +523,18 @@ body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
     </div>
     </div></details><details class="tool-section" data-section="templates" ><summary>Template agentici</summary><div class="tool-section-body">
     
-    <p class="helper">Schemi di partenza da modificare. Ogni modello aggiunge una scheda nuova senza sostituire il tuo lavoro. Le frecce rappresentano relazioni da verificare, non funzioni già installate.</p>
+    <p class="helper template-help">Per ogni modello scegli: <strong>Sostituisci</strong> la scheda corrente, <strong>↑ Sopra</strong> oppure <strong>↓ Sotto</strong>. Ogni gesto è annullabile. Sostituire chiede conferma.</p>
+    <div class="template-utilities"><button type="button" id="undoTemplateBtn" title="Annulla l’ultima azione, incluso l’inserimento di un template">↶ Annulla</button><button type="button" id="redoTemplateBtn" title="Ripristina l’ultima azione annullata">↷ Ripristina</button></div>
     <div class="template-list" id="agentTemplateList" aria-label="Modelli di logiche agentiche"></div>
-    <button type="button" id="addAllTemplates" class="template-all" title="Aggiungi cinque schede esemplificative, senza cancellare le esistenti">+ Inserisci l'intero percorso (5 schede)</button>
+    <p class="mini">Percorso dimostrativo completo · 5 schede, un solo gesto annullabile.</p>
+    <div class="template-stack-actions"><button type="button" data-all-template-position="replace">Sostituisci (5)</button><button type="button" data-all-template-position="above">↑ Sopra (5)</button><button type="button" data-all-template-position="below">↓ Sotto (5)</button></div>
+    <hr class="sep"><div class="template-saved-head"><strong>I miei template</strong><span class="mini" id="savedTemplateCount">0 salvati</span></div>
+    <p class="mini">Modifica una scheda e salvala come modello. I template si conservano nell’HTML di lavoro; puoi esportarli e importarli anche in un altro progetto. Appunti e elementi privati vengono esclusi.</p>
+    <button type="button" id="saveSceneTemplate" class="template-all">☆ Salva questa scheda come template</button>
+    <div class="template-list" id="savedTemplateList" aria-label="Template personalizzati salvati"></div>
+    <div class="template-utilities"><button type="button" id="exportTemplates">↓ Esporta raccolta JSON</button><button type="button" id="importTemplates">↑ Importa raccolta JSON</button></div>
+    <input id="importTemplatesFile" type="file" accept=".json,application/json" hidden aria-label="Importa una raccolta di template MetaCanvas">
+    <p class="mini" id="savedTemplateHint">Nessun template personale salvato. Puoi annullare anche il salvataggio o l’eliminazione di un template.</p>
     </div></details><details class="tool-section" data-section="appearance" open><summary>Layout, temi e pannelli</summary><div class="tool-section-body">
     <div class="pane-title">Layout rapidi</div>
     <div class="tool-grid"><button data-layout="two">▥ Due aree</button><button data-layout="three">▤ Tre aree</button><button data-layout="grid">▦ Griglia 2 × 2</button></div>
@@ -572,7 +595,7 @@ body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
  </div>
  <details class="guide-more"><summary>Altri modi per usarlo</summary><p>Progettare un prodotto, spiegare un sistema complesso, confrontare alternative, strutturare contenuti web, preparare un incontro o raccogliere correzioni successive. Lo stesso oggetto può cambiare rappresentazione senza perdere le relazioni.</p></details>
  <div class="guide-prompt"><label for="ccmGuidePrompt"><strong>Messaggio da copiare quando alleghi questo HTML a un assistente AI</strong></label><textarea readonly id="ccmGuidePrompt" rows="4">Questo HTML è il mio documento di lavoro. Leggi le schede, i testi e i collegamenti contenuti nel modello JSON del file (script id=&quot;ccm-data&quot;). Prima riassumi ciò che hai compreso e segnala eventuali ambiguità; poi proponi una struttura più chiara per spiegare [INSERISCI IL TUO OBIETTIVO] a [INSERISCI IL DESTINATARIO]. Conserva i miei concetti e distingui le tue proposte. Restituisci un nuovo HTML modificabile e indica le differenze. Non eliminare gli appunti privati nella copia di lavoro.</textarea><button type="button" id="ccmGuideCopy" class="tiny">Copia la richiesta</button><span id="ccmGuideCopyStatus" class="guide-status" role="status" aria-live="polite"></span></div>
- <p class="guide-foot"><strong>Ritorno dall'AI:</strong> apri Strumenti → Salva ed esporta → <em>Dati per AI</em>. Invia il JSON al modello e chiedigli di restituire un JSON con lo stesso schema. Poi usa <em>Importa JSON / HTML</em> per rientrare nel lavoro. Puoi anche ricevere un intero HTML MetaCanvas: l'importatore recupera soltanto i dati e non esegue codice del file ricevuto. Controlla sempre le modifiche proposte.</p><p class="guide-foot">Il file funziona offline e non contiene un assistente AI incorporato. Il modello partecipa soltanto quando gli alleghi il documento. Salva una copia di lavoro prima di inviarlo e controlla gli appunti: un file HTML può essere ispezionato da chi lo riceve.</p><p class="guide-foot"><strong>Licenza del software: MPL 2.0.</strong> Puoi usarlo, modificarlo, condividerlo e commercializzarlo rispettando la licenza e i crediti degli autori. Il copyright sul codice originale resta di Graziano Guiducci. <a href="https://mozilla.org/MPL/2.0/" rel="noopener noreferrer" target="_blank">Testo della licenza</a>. I marchi non sono concessi in licenza.</p>
+ <p class="guide-foot"><strong>Template riutilizzabili:</strong> in Strumenti → Template agentici scegli Sostituisci, Sopra o Sotto. Le azioni sono annullabili. Puoi salvare la scheda modificata come template personale e trasferire la raccolta a un altro documento con Esporta / Importa raccolta JSON. I template personali non sono inclusi nella Copia pubblica.</p><p class="guide-foot"><strong>Ritorno dall'AI:</strong> apri Strumenti → Salva ed esporta → <em>Dati per AI</em>. Invia il JSON al modello e chiedigli di restituire un JSON con lo stesso schema. Poi usa <em>Importa JSON / HTML</em> per rientrare nel lavoro. Puoi anche ricevere un intero HTML MetaCanvas: l'importatore recupera soltanto i dati e non esegue codice del file ricevuto. Controlla sempre le modifiche proposte.</p><p class="guide-foot">Il file funziona offline e non contiene un assistente AI incorporato. Il modello partecipa soltanto quando gli alleghi il documento. Salva una copia di lavoro prima di inviarlo e controlla gli appunti: un file HTML può essere ispezionato da chi lo riceve.</p><p class="guide-foot"><strong>Licenza del software: MPL 2.0.</strong> Puoi usarlo, modificarlo, condividerlo e commercializzarlo rispettando la licenza e i crediti degli autori. Il copyright sul codice originale resta di Graziano Guiducci. <a href="https://mozilla.org/MPL/2.0/" rel="noopener noreferrer" target="_blank">Testo della licenza</a>. I marchi non sono concessi in licenza.</p>
 </dialog>
 <nav id="presentNav" aria-label="Navigazione presentazione"><button id="presentPrev">←</button><span class="count" id="presentCount">1 / 3</span><button id="presentNext">→</button><button class="exit" id="presentExit">✕ Esci</button></nav>
 <div id="quickEditor" class="quick-editor" role="region" aria-label="Mini editor contestuale" hidden></div>
@@ -594,6 +617,7 @@ if(state.theme==='warm')state.theme='pearl';
 for(const sc of state.scenes){if(!Array.isArray(sc.elements))sc.elements=[];if(!Array.isArray(sc.links))sc.links=[];
  if(sc.notes && !sc.elements.some(n=>n.type==='note'))sc.elements.push({id:uid('note'),type:'note',x:780,y:495,w:360,h:165,text:sc.notes,fontSize:16,color:'#624d2f',fill:'#fff1ce',align:'left',private:true});
  if(sc.notes)sc.notes='';}
+state.savedTemplates=Array.isArray(state.savedTemplates)?state.savedTemplates:[];
 state.ui=state.ui||{dock:'right',snap:true,printDetails:true,slideRail:true,propertyWidth:360};
 if(state.ui.slideRail===undefined)state.ui.slideRail=true;
 state.ui.propertyWidth=Math.max(280,Math.min(820,+state.ui.propertyWidth||360));
@@ -621,7 +645,7 @@ function noteChange(){dirty=true;$('#status').textContent='Modifiche non esporta
 function checkpoint(){past.push(JSON.stringify(state));if(past.length>70)past.shift();future=[];textTx=null;updateHistory()}
 function editActive(){return !presenting&&!publicMode&&(!$('#quickEditor').hidden||!!editingId||$('#propertyPanel').classList.contains('drawer-open'))}
 function syncEditBar(){const bar=$('#editActionBar');if(!bar)return;bar.hidden=!editActive();$('#editBack').disabled=!past.length&&!editingId;$('#editForward').disabled=!future.length}
-function updateHistory(){$('#undoBtn').disabled=!past.length;$('#redoBtn').disabled=!future.length;syncEditBar()}
+function updateHistory(){$('#undoBtn').disabled=!past.length;$('#redoBtn').disabled=!future.length;for(const id of ['undoTemplateBtn']){const b=$('#'+id);if(b)b.disabled=!past.length}for(const id of ['redoTemplateBtn']){const b=$('#'+id);if(b)b.disabled=!future.length}syncEditBar()}
 function commit(fn,rerender=true){checkpoint();fn();noteChange();if(rerender)render()}
 function undo(){if(!past.length)return;future.push(JSON.stringify(state));state=JSON.parse(past.pop());selectedId=null;selectedLinkId=null;textTx=null;noteChange();render()}
 function redo(){if(!future.length)return;past.push(JSON.stringify(state));state=JSON.parse(future.pop());selectedId=null;selectedLinkId=null;textTx=null;noteChange();render()}
@@ -1007,7 +1031,7 @@ function markTextOverflow(){if(readingMode||presenting||publicMode)return;const 
  if(tooLong&&!box.querySelector('.node-overflow')){const btn=el('button','node-overflow','!');btn.type='button';btn.title='Contenuto non interamente visibile: apri per modificarlo o consulta la vista Leggi';btn.setAttribute('aria-label',btn.title);btn.onclick=e=>{e.stopPropagation();openQuick('node',n.id)};btn.onpointerdown=e=>e.stopPropagation();box.append(btn)}
 }}
 
-function render(){document.body.dataset.theme=state.theme;document.body.classList.toggle('flat-layout',state.ui.flatLayout===true);for(const id of ['flatLayoutBtn','toolFlatToggle']){const b=$('#'+id);if(b){b.setAttribute('aria-pressed',String(state.ui.flatLayout===true));b.title=state.ui.flatLayout?'Torna al layout standard':'Allarga lo spazio di lavoro e riduci i margini'}}document.documentElement.style.setProperty('--slide-rail-width',state.ui.slideRailWidth+'px');applyToolPanelSize(state.ui.toolWidth,state.ui.toolHeight,false);selectedId=hasNode()?selectedId:null;if(selectedLinkId&&!linkSelected())selectedLinkId=null;document.body.classList.toggle('hide-slide-rail',!isSlideRailVisible());setPropertyWidth(propertyWidth(),false);renderSlides();renderCanvas();renderReading();renderInspector();renderLibrary();renderLayers();renderThemePalette();$('#docTitle').value=state.title;$('#theme').value=state.theme;document.body.dataset.dock=state.ui.dock||'right';$('#snapToggle').checked=snapOn;$('#pdfDetails').checked=state.ui.printDetails!==false;$$('#dockOptions [data-dock]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dock===(state.ui.dock||'right'))));$('#slideTitle').textContent=current().title;let ix=state.scenes.findIndex(s=>s.id===current().id);$('#slideNum').textContent=' '+String(ix+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');$('#presentCount').textContent=(ix+1)+' / '+state.scenes.length;$('#prevBtn').disabled=ix===0;$('#nextBtn').disabled=ix===state.scenes.length-1;$('#presentPrev').disabled=ix===0;$('#presentNext').disabled=ix===state.scenes.length-1;$('#upSlide').disabled=ix===0;$('#downSlide').disabled=ix===state.scenes.length-1;$('#deleteSlide').disabled=state.scenes.length===1;const railToggle=$('#toggleSlideRail');if(railToggle){railToggle.setAttribute('aria-pressed',String(isSlideRailVisible()));railToggle.title=isSlideRailVisible()?'Nascondi le schede sul lato sinistro':'Mostra le schede sul lato sinistro'}updateHistory();updateView();syncEditBar();requestAnimationFrame(markTextOverflow)}
+function render(){document.body.dataset.theme=state.theme;document.body.classList.toggle('flat-layout',state.ui.flatLayout===true);for(const id of ['flatLayoutBtn','toolFlatToggle']){const b=$('#'+id);if(b){b.setAttribute('aria-pressed',String(state.ui.flatLayout===true));b.title=state.ui.flatLayout?'Torna al layout standard':'Allarga lo spazio di lavoro e riduci i margini'}}document.documentElement.style.setProperty('--slide-rail-width',state.ui.slideRailWidth+'px');applyToolPanelSize(state.ui.toolWidth,state.ui.toolHeight,false);selectedId=hasNode()?selectedId:null;if(selectedLinkId&&!linkSelected())selectedLinkId=null;document.body.classList.toggle('hide-slide-rail',!isSlideRailVisible());setPropertyWidth(propertyWidth(),false);renderSlides();renderCanvas();renderReading();renderInspector();renderLibrary();renderSavedTemplates();renderLayers();renderThemePalette();$('#docTitle').value=state.title;$('#theme').value=state.theme;document.body.dataset.dock=state.ui.dock||'right';$('#snapToggle').checked=snapOn;$('#pdfDetails').checked=state.ui.printDetails!==false;$$('#dockOptions [data-dock]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dock===(state.ui.dock||'right'))));$('#slideTitle').textContent=current().title;let ix=state.scenes.findIndex(s=>s.id===current().id);$('#slideNum').textContent=' '+String(ix+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');$('#presentCount').textContent=(ix+1)+' / '+state.scenes.length;$('#prevBtn').disabled=ix===0;$('#nextBtn').disabled=ix===state.scenes.length-1;$('#presentPrev').disabled=ix===0;$('#presentNext').disabled=ix===state.scenes.length-1;$('#upSlide').disabled=ix===0;$('#downSlide').disabled=ix===state.scenes.length-1;$('#deleteSlide').disabled=state.scenes.length===1;const railToggle=$('#toggleSlideRail');if(railToggle){railToggle.setAttribute('aria-pressed',String(isSlideRailVisible()));railToggle.title=isSlideRailVisible()?'Nascondi le schede sul lato sinistro':'Mostra le schede sul lato sinistro'}updateHistory();updateView();syncEditBar();requestAnimationFrame(markTextOverflow)}
 
 function makeSlideThumb(scene){
  const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 1200 675');svg.setAttribute('role','img');svg.setAttribute('aria-label','Miniatura di '+(scene.title||'Scheda'));
@@ -1243,10 +1267,11 @@ function safeData(x){return JSON.stringify(x).replace(/</g,'\\u003c').replace(/>
 function safeName(s){return (s||'presentazione').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9_-]+/gi,'_').slice(0,50)||'presentazione'}
 function download(name,content,mime){let a=document.createElement('a'),blob=new Blob([content],{type:mime});a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),15000)}
 function exportHTML(publicCopy=false){if(editingId)cancelDirectEdit();closeQuick();if(publicCopy&&!confirm('La copia pubblica elimina appunti e libreria, ma mantiene i contenuti delle schede e gli approfondimenti. Il sorgente HTML è ispezionabile. Controlla che non vi siano dati riservati. Proseguire?'))return;
- let copyData=safeClone(state);copyData.revision=(copyData.revision||0)+1;if(publicCopy){copyData.scenes.forEach(s=>{s.notes='';s.elements=s.elements.filter(n=>n.type!=='note'&&n.private!==true);s.links=s.links.filter(l=>(!l.from||s.elements.some(n=>n.id===l.from))&&(!l.to||s.elements.some(n=>n.id===l.to)))});copyData.library=[];copyData.ui=copyData.ui||{};copyData.ui.publicCopy=true;copyData.ui.viewMode='read'}
+ let copyData=safeClone(state);copyData.revision=(copyData.revision||0)+1;if(publicCopy){copyData.scenes.forEach(s=>{s.notes='';s.elements=s.elements.filter(n=>n.type!=='note'&&n.private!==true);s.links=s.links.filter(l=>(!l.from||s.elements.some(n=>n.id===l.from))&&(!l.to||s.elements.some(n=>n.id===l.to)))});copyData.library=[];copyData.savedTemplates=[];copyData.ui=copyData.ui||{};copyData.ui.publicCopy=true;copyData.ui.viewMode='read'}
  let doc=document.documentElement.cloneNode(true);const grip=doc.querySelector('#toolCornerResize'),tools=doc.querySelector('#toolPanel');if(grip&&tools){grip.removeAttribute('style');grip.hidden=true;tools.insertBefore(grip,tools.querySelector('#toolSearch'))}const edge=doc.querySelector('#toolResizeHandle');if(edge&&tools){edge.removeAttribute('style');edge.hidden=false;tools.insertBefore(edge,tools.querySelector('#toolSearch'))}doc.querySelector('#ccm-data').textContent=safeData(copyData);doc.querySelector('#docTitle').setAttribute('value',copyData.title);
  // Non serializzare il DOM runtime: potrebbe contenere appunti, libreria e stato privato anche dopo la pulizia del JSON.
- for(const sel of ['#canvas','#inspectorContent','#slideList','#libraryList','#layersList','#themePalette','#quickEditor','#readingView','#detailBody','#printRoot'])doc.querySelector(sel)?.replaceChildren();
+ for(const sel of ['#canvas','#inspectorContent','#slideList','#libraryList','#layersList','#themePalette','#quickEditor','#readingView','#detailBody','#printRoot','#savedTemplateList'])doc.querySelector(sel)?.replaceChildren();
+ const savedCounter=doc.querySelector('#savedTemplateCount');if(savedCounter)savedCounter.textContent='0 salvati';
  doc.querySelector('#detailTitle').textContent='Approfondimento';doc.querySelector('#toast').textContent='';
  doc.querySelectorAll('.drawer-open').forEach(x=>x.classList.remove('drawer-open'));doc.querySelector('#quickEditor')?.setAttribute('hidden','');doc.querySelector('#editActionBar')?.setAttribute('hidden','');doc.querySelector('#detailOverlay')?.setAttribute('hidden','');doc.querySelectorAll('[aria-hidden="false"][id$="Panel"]').forEach(x=>x.setAttribute('aria-hidden','true'));
  let markup='<!doctype html>\n'+doc.outerHTML,bytes=new Blob([markup]).size;
@@ -1284,6 +1309,7 @@ function validatePortableModel(doc){
    links.add(link.id);
   }
  }
+ if(doc.savedTemplates!==undefined && (!Array.isArray(doc.savedTemplates) || (doc.savedTemplates.length && validateTemplatePack({schema:'metacanvas.templates.v1',templates:doc.savedTemplates}).length!==doc.savedTemplates.length)))throw new Error('Raccolta template incorporata non valida.');
  return doc;
 }
 async function importPortableFile(file){
@@ -1300,6 +1326,7 @@ async function importPortableFile(file){
   state=safeClone(incoming);
   state.theme=['light','pearl','dark','graphite'].includes(state.theme)?state.theme:'light';
   state.library=Array.isArray(state.library)?state.library:[];
+  state.savedTemplates=Array.isArray(state.savedTemplates)?state.savedTemplates:[];
   state.ui={...localUI,...(state.ui&&typeof state.ui==='object'&&!Array.isArray(state.ui)?state.ui:{}),publicCopy:false};
   state.activeSceneId=state.scenes.some(s=>s.id===state.activeSceneId)?state.activeSceneId:state.scenes[0].id;
   state.ui.toolSections=state.ui.toolSections||{slides:true,elements:true,templates:false,appearance:true,library:false,layers:false,export:true};
@@ -1390,30 +1417,138 @@ function templateScene(def){
  const links=def.links.map(([from,to,label,heads,fromAnchor,toAnchor])=>({id:uid('link'),from:keyToId.get(from),to:keyToId.get(to),label,heads:heads||'end',fromAnchor,toAnchor,routeMode:'auto',width:3,color:'#087b70',lineStyle:'solid'}));
  return {id:uid('sc'),title:def.title,templateSource:{id:def.key,revision:1,kind:'illustrative'},notes:'',elements,links};
 }
-function insertTemplate(id,all=false){
- const templates=all?AGENT_TEMPLATES:[AGENT_TEMPLATES.find(t=>t.key===id)].filter(Boolean);
- if(!templates.length||publicMode)return;
- const inserted=templates.map(templateScene);
- commit(()=>{state.scenes.splice(activeIndex()+1,0,...inserted);state.activeSceneId=inserted[0].id;selectedId=null;selectedLinkId=null});
- openPanel(null);
- toast(inserted.length===1?'Nuova scheda dal template. Personalizza nodi e relazioni.':inserted.length+' schede aggiunte senza sostituire le altre.');
+// Studio 15 — One reversible action per inserted batch, explicit relative position.
+function reidentifyTemplateScene(source, origin='saved'){
+ const sc=safeClone(source),map=new Map();
+ sc.id=uid('sc');sc.notes='';
+ sc.elements=sc.elements.filter(n=>n.type!=='note'&&n.private!==true);
+ for(const node of sc.elements){const old=node.id;node.id=uid('el');map.set(old,node.id)}
+ for(const node of sc.elements){if(node.containerId)node.containerId=map.get(node.containerId)||null}
+ sc.links=sc.links.filter(l=>(!l.from||map.has(l.from))&&(!l.to||map.has(l.to)));
+ for(const link of sc.links){link.id=uid('link');if(link.from)link.from=map.get(link.from);if(link.to)link.to=map.get(link.to)}
+ sc.templateSource={id:origin,revision:1,kind:'reused'};
+ return sc;
+}
+function cleanTemplateScene(source){
+ const sc=safeClone(source);sc.notes='';sc.elements=(sc.elements||[]).filter(n=>n.type!=='note'&&n.private!==true);
+ const ids=new Set(sc.elements.map(n=>n.id));
+ sc.elements.forEach(n=>{if(n.containerId&&!ids.has(n.containerId))n.containerId=null});
+ sc.links=(sc.links||[]).filter(l=>(!l.from||ids.has(l.from))&&(!l.to||ids.has(l.to)));
+ return sc;
+}
+function templatesFit(trial){return new Blob([JSON.stringify(trial)]).size<1100000}
+function insertSceneTemplates(source,position){
+ if(publicMode||presenting||!['replace','above','below'].includes(position)||!source?.length)return;
+ if(state.scenes.length+source.length-(position==='replace'?1:0)>100){toast('Limite di 100 schede: non posso aggiungere questo percorso.');return}
+ const models=source.map(x=>reidentifyTemplateScene(x.scene||templateScene(x),x.id||x.key));
+ if(position==='replace'){
+  const suffix=models.length===1?'questa scheda':'questa scheda con '+models.length+' nuove schede';
+  if(!confirm('Sostituire '+suffix+'? Il contenuto attuale potrà essere recuperato con Annulla.'))return;
+ }
+ const index=activeIndex();
+ commit(()=>{
+  state.scenes.splice(index+(position==='below'?1:0),position==='replace'?1:0,...models);
+  state.activeSceneId=models[0].id;selectedId=null;selectedLinkId=null;
+ });
+ toast((position==='replace'?'Scheda sostituita':models.length+' scheda/e aggiunte')+' · usa ↶ Annulla per tornare indietro.');
+}
+function addTemplateActionButtons(card,callback){
+ const actions=el('div','template-actions');
+ for(const [position,label,tip] of [
+  ['replace','Sostituisci','Sostituisci la scheda corrente; chiede conferma e puoi annullare'],
+  ['above','↑ Sopra','Aggiungi subito prima della scheda corrente'],
+  ['below','↓ Sotto','Aggiungi subito dopo la scheda corrente']
+ ]){
+  const button=toolButton(label,()=>callback(position));button.dataset.templateAction=position;button.title=tip;
+  actions.append(button);
+ }card.append(actions);
 }
 function renderAgentTemplates(){
  const root=$('#agentTemplateList');if(!root)return;root.replaceChildren();
  for(const item of AGENT_TEMPLATES){
-   const card=el('div','template-card');
-   const head=el('div','template-card-head');
-   head.append(el('strong',null,item.title));card.append(head);
-   card.append(el('p',null,item.description));
-   const preview=el('div','template-preview');preview.setAttribute('aria-hidden','true');
-   item.preview.forEach((word,i)=>{if(i)preview.append(el('span','mini-arrow','→'));preview.append(el('span','mini-node',word))});
-   card.append(preview);
-   const button=el('button','tiny','+ Inserisci scheda');button.type='button';button.title='Aggiungi '+item.title+' dopo la scheda corrente';button.onclick=()=>insertTemplate(item.key);
-   card.append(button);root.append(card);
+  const card=el('div','template-card');card.dataset.templateId=item.key;
+  const head=el('div','template-card-head');head.append(el('strong',null,item.title));card.append(head);
+  card.append(el('p',null,item.description));
+  const preview=el('div','template-preview');preview.setAttribute('aria-hidden','true');
+  item.preview.forEach((word,i)=>{if(i)preview.append(el('span','mini-arrow','→'));preview.append(el('span','mini-node',word))});
+  card.append(preview);addTemplateActionButtons(card,pos=>insertSceneTemplates([item],pos));root.append(card);
+ }
+}
+function saveSceneAsTemplate(){
+ if(publicMode||presenting)return;
+ if(state.savedTemplates.length>=30&&!state.savedTemplates.some(t=>t.name.toLocaleLowerCase()===(current().title||'').toLocaleLowerCase())){toast('Limite di 30 template personali. Esporta la raccolta prima di eliminare i vecchi.');return}
+ const suggestion=current().title||'Il mio template';let name=prompt('Nome del template da salvare',suggestion);
+ if(name===null)return;name=name.trim().slice(0,90);if(!name){toast('Serve un nome per il template.');return}
+ const sc=cleanTemplateScene(current());
+ if(!sc.elements.length){toast('La scheda non ha elementi pubblicabili.');return}
+ const matching=state.savedTemplates.find(t=>t.name.toLocaleLowerCase()===name.toLocaleLowerCase());
+ if(matching&&!confirm('Esiste già un template con questo nome. Sostituire la sua versione salvata?'))return;
+ const proposed={id:matching?.id||uid('tpl'),name,scene:sc};
+ const trial=safeClone(state);trial.savedTemplates=matching?trial.savedTemplates.map(t=>t.id===matching.id?proposed:t):[...trial.savedTemplates,proposed];
+ if(!templatesFit(trial)){toast('Documento troppo grande: riduci le immagini prima di salvare il template.');return}
+ commit(()=>state.savedTemplates=trial.savedTemplates);
+ toast('Template «'+name+'» salvato nel documento. Usa Salva lavoro per conservarlo.');
+}
+function validateTemplatePack(pack){
+ if(!pack||pack.schema!=='metacanvas.templates.v1'||!Array.isArray(pack.templates)||pack.templates.length>30||!pack.templates.length)throw new Error('Raccolta template non valida (metacanvas.templates.v1).');
+ const seen=new Set();
+ const result=[];
+ for(const t of pack.templates){
+  if(!t||typeof t.id!=='string'||!t.id||seen.has(t.id)||typeof t.name!=='string'||!t.name.trim()||t.name.length>90)throw new Error('Identificativo o nome template non valido.');
+  seen.add(t.id);
+  if(!t.scene||!Array.isArray(t.scene.elements)||!Array.isArray(t.scene.links)||t.scene.elements.length>220||t.scene.links.length>240)throw new Error('Template troppo complesso o incompleto.');
+  validatePortableModel({schema:'ccm.document.v1',title:t.name,scenes:[t.scene]});
+  for(const n of t.scene.elements){if(n.type==='image'&&n.src&&!/^data:image\/(?:png|jpeg|webp);base64,/i.test(n.src))throw new Error('Immagine esterna non supportata in un template.');}
+  result.push({id:t.id,name:t.name.trim(),scene:cleanTemplateScene(t.scene)});
+ }
+ return result;
+}
+async function importTemplatePack(file){
+ if(!file||publicMode)return;
+ try{
+  if(file.size>900000)throw new Error('Il file dei template supera 900 KB.');
+  const list=validateTemplatePack(JSON.parse(await file.text()));
+  if(state.savedTemplates.length+list.length>30)throw new Error('Superato il limite di 30 template.');
+  if(!confirm('Importare '+list.length+' template? Verranno aggiunti alla raccolta personale, senza cambiare le schede. Puoi annullare.'))return;
+  const existing=new Set(state.savedTemplates.map(t=>t.id));
+  const added=list.map(t=>({id:existing.has(t.id)?uid('tpl'):t.id,name:t.name,scene:t.scene}));
+  const trial=safeClone(state);trial.savedTemplates.push(...added);
+  if(!templatesFit(trial))throw new Error('Documento troppo grande dopo l’importazione.');
+  commit(()=>state.savedTemplates=trial.savedTemplates);
+  toast('Importati '+added.length+' template. Salva lavoro per conservarli.');
+ }catch(error){toast('Importazione template non riuscita: '+String(error.message||error).slice(0,125));}
+}
+function exportTemplatePack(){
+ if(!state.savedTemplates.length){toast('Nessun template da esportare.');return}
+ if(!confirm('La raccolta contiene i testi dei template salvati. Controlla che non includano dati riservati. Esportarla come JSON?'))return;
+ const pack={schema:'metacanvas.templates.v1',version:1,templates:state.savedTemplates.map(t=>({id:t.id,name:t.name,scene:cleanTemplateScene(t.scene)}))};
+ download('metacanvas_template_'+safeName(state.title)+'.json',JSON.stringify(pack,null,2),'application/json;charset=utf-8');
+ toast('Raccolta di template scaricata. Puoi importarla in altri documenti.');
+}
+function renderSavedTemplates(){
+ const list=$('#savedTemplateList');if(!list)return;
+ list.replaceChildren();
+ const items=Array.isArray(state.savedTemplates)?state.savedTemplates:[];
+ $('#savedTemplateCount').textContent=items.length+' salvati';$('#savedTemplateHint').hidden=!!items.length;
+ $('#exportTemplates').disabled=!items.length;
+ for(const item of items){
+  const card=el('div','template-card');card.dataset.savedTemplateId=item.id;
+  const head=el('div','template-card-head'),title=el('strong',null,item.name);
+  const del=toolButton('Elimina',()=>{
+   if(confirm('Eliminare il template «'+item.name+'»? Puoi annullare.'))commit(()=>state.savedTemplates=state.savedTemplates.filter(t=>t.id!==item.id));
+  },'tiny template-delete');del.title='Elimina questo template dalla raccolta';
+  head.append(title,del);card.append(head);
+  card.append(el('p',null,(item.scene.elements?.length||0)+' elementi, '+(item.scene.links?.length||0)+' collegamenti · modello modificabile'));
+  addTemplateActionButtons(card,pos=>insertSceneTemplates([item],pos));list.append(card);
  }
 }
 renderAgentTemplates();
-$('#addAllTemplates').onclick=()=>insertTemplate(null,true);
+$$('[data-all-template-position]').forEach(b=>b.onclick=()=>insertSceneTemplates(AGENT_TEMPLATES,b.dataset.allTemplatePosition));
+$('#undoTemplateBtn').onclick=undo;$('#redoTemplateBtn').onclick=redo;
+$('#saveSceneTemplate').onclick=saveSceneAsTemplate;
+$('#exportTemplates').onclick=exportTemplatePack;
+$('#importTemplates').onclick=()=>$('#importTemplatesFile').click();
+$('#importTemplatesFile').onchange=async e=>{const file=e.target.files?.[0];e.target.value='';await importTemplatePack(file)};
 
 $('#addSlide').onclick=addScene;$('#copySlide').onclick=duplicateScene;$('#upSlide').onclick=()=>moveScene(-1);$('#downSlide').onclick=()=>moveScene(1);$('#deleteSlide').onclick=deleteScene;
 $$('[data-add]').forEach(btn=>{btn.addEventListener('click',()=>addNode(btn.dataset.add));btn.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/x-ccm-add',btn.dataset.add);e.dataTransfer.effectAllowed='copy'})});

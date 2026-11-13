@@ -5,6 +5,14 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 13 novembre — Studio 15: operazioni template reversibili e raccolta personale portabile
+
+**Mandato dell'operatore:** i template inseriti devono poter essere annullati, una scheda personalizzata deve diventare template riutilizzabile, e la scelta di posizionamento deve essere esplicita: **Sostituisci, Aggiungi sopra, Aggiungi sotto**.
+
+**Risultante esercitata:** i cinque template incorporati e quelli personali mostrano tre comandi; ogni inserimento, anche quello del percorso completo, forma un solo checkpoint. La sostituzione chiede conferma. La scheda modificata si salva come template personale dentro il documento di lavoro; la raccolta è esportabile/importabile via JSON `metacanvas.templates.v1` in altri file, con controllo di schema/identità/collegamenti. La copia pubblica rimuove il dato `savedTemplates` **e la lista già renderizzata nel DOM**, perché ripulire soltanto lo script JSON avrebbe lasciato testo personale nel sorgente HTML condiviso. Note ed elementi esplicitamente privati sono esclusi anche dalla raccolta esportata. L'editor resta MPL-2.0 nella propria directory.
+
+**Prova:** Node `--check` sugli script; 31 controlli Chromium/Playwright in un editor e in un secondo editor, salvataggio/riapertura, undo/redo e copia pubblica; test ulteriore su note marcate e rifiuto di immagini esterne. Non attestati touch fisico, interoperabilità universale, sicurezza completa. [GUIDE](GUIDE.md#13-novembre-2026--studio-15-il-template-come-modello-personale-e-azione-reversibile) e [formato](../../../../examples/collaborative-communication-medium/TEMPLATE_COLLECTION.md).
+
 ## 13 novembre — MetaCanvas Studio 14: correzioni UX richieste, sorgente pubblico e privato
 
 **Mandato:** verificare e correggere quattro differenze in Studio 13: resize Strumenti in finestra mobile, Presenta vuota, area orizzontale non sfruttata, uscita dalla modifica macchinosa. Studio 14 ripristina geometria del canvas in Presenta, bordi di trascinamento mobili e persistenti nelle copie esportate, opzione Flat con lettura a due colonne su desktop e menu OK/Indietro/Avanti in modifica senza checkpoint ridondanti. Il prodotto conserva MPL 2.0 solo nella propria directory e i quattro esempi neutri.

@@ -28,6 +28,16 @@ Four interaction fixes are now in the standalone HTML:
 
 Preferences and controls are retained in saved standalone HTML. The application interface is currently in Italian. This remains an offline browser editor without embedded AI or server functions.
 
+## Studio 15 — Reusable templates and placement
+
+Under **Strumenti → Template agentici** (Italian UI), each built-in or user-saved template has **Sostituisci** (replace current slide, after confirmation), **↑ Sopra** (insert before) and **↓ Sotto** (insert after). Each insertion, including the five-slide example route, is a single **Undo/Redo** operation.
+
+Use **☆ Salva questa scheda come template** to save the current edited slide as a named reusable model. Personal templates persist in the **saved working HTML**. Use **↓ Esporta raccolta JSON** to transfer them to another MetaCanvas document and **↑ Importa raccolta JSON** to import without changing the slides. Imported templates are undoable.
+
+Speaker notes and private elements are excluded from saved templates, but review other text and details before sharing. **Public copy** strips the personal template collection and its rendered list from the exported HTML.
+
+[Template collection contract](TEMPLATE_COLLECTION.md) · [Document contract](DOCUMENT_CONTRACT.md).
+
 ## License and ownership
 
 **Mozilla Public License 2.0 (MPL-2.0)**, scoped to the files **in this tool directory only**. Everyone may use, modify, distribute and commercialize the tool under the MPL. Distributed modifications of covered files must make their source available under the MPL. Original software contributions remain **Copyright (c) 2026 Graziano Guiducci**; contributors retain rights in their own additions. The license does not grant trademark or logo rights.
