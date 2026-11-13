@@ -14,7 +14,7 @@
 <meta name="copyright" content="Copyright (c) 2026 Graziano Guiducci">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MetaCanvas · Studio 15 | AI Collaboration Studio</title>
+<title>MetaCanvas · Studio 20 | AI Collaboration Studio</title>
 <style>
 :root{--ink:#183146;--muted:#5d7281;--line:#d8e2e6;--bg:#eaf0f2;--paper:#fff;--accent:#087b70;--accent-soft:#e7f5f0;--focus:#e3a04c;--shadow:0 12px 38px #19334a17}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
@@ -334,6 +334,10 @@ body.hide-slide-rail .editor-shell{grid-template-columns:minmax(0,1fr)}
 #propertyPanel .field{margin:0}
 #propertyPanel .row2{grid-template-columns:1fr;gap:9px}
 #propertyPanel .form-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+#propertyPanel .drawer-head{display:flex;align-items:center;gap:10px;justify-content:space-between}
+#propertyPanel .drawer-head #inspectorHeading{min-width:0;flex:1;overflow-wrap:anywhere}
+#propertyPanel .drawer-head>.form-actions{display:flex!important;flex:0 0 auto;flex-wrap:nowrap!important;gap:5px;align-items:center;width:auto!important}
+#propertyPanel .drawer-head>.form-actions button{width:35px!important;min-width:35px;min-height:35px;padding:5px!important;text-align:center}
 #propertyPanel .form-actions button{width:100%}
 #propertyPanel .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(34px,1fr));gap:8px}
 #propertyPanel .swatch{width:100%;min-width:0}
@@ -472,17 +476,354 @@ body.presenting .edit-action-bar,body.public-copy .edit-action-bar{display:none!
 @media print{.edit-action-bar{display:none!important}}
 
 .edit-action-bar{left:auto;right:16px;transform:none}
-body:has(#propertyPanel.drawer-open) .edit-action-bar{right:calc(var(--property-panel-width,360px) + 16px)}
-@media(max-width:830px){.edit-action-bar,body:has(#propertyPanel.drawer-open) .edit-action-bar{left:50%;right:auto;transform:translateX(-50%)}}
+body[data-dock='right']:has(#propertyPanel.drawer-open) .edit-action-bar{right:calc(var(--property-panel-width,360px) + 18px)}
+body[data-dock='right']:has(#toolPanel.drawer-open) .edit-action-bar{right:calc(var(--tool-panel-width,360px) + 18px)}
+body[data-dock='bottom']:has(#toolPanel.drawer-open) .edit-action-bar{bottom:calc(var(--tool-panel-height,400px) + 16px)}
+body[data-dock='float']:has(#toolPanel.drawer-open) .edit-action-bar{left:16px;right:auto;transform:none}
+.edit-action-bar #editSave{font-weight:770}
+.edit-action-bar #editOk:disabled{opacity:.5}
+@media(max-width:830px){
+ .edit-action-bar,body:has(#propertyPanel.drawer-open) .edit-action-bar,body:has(#toolPanel.drawer-open) .edit-action-bar{left:50%;right:auto;transform:translateX(-50%);max-width:calc(100vw - 14px)}
+}
+@media(max-width:700px){.edit-action-bar{bottom:8px!important;gap:4px}.edit-action-bar button{padding:7px 8px;font-size:12px}}
+
 
 /* Border handles are fixed to visible dock borders, so scrolling tools never moves them off-screen. */
 #toolResizeHandle{position:fixed!important;z-index:102;width:11px;height:100px;cursor:ew-resize;touch-action:none;background:linear-gradient(90deg,#7daea651,transparent)}
 #toolResizeHandle[hidden]{display:none!important}
+/* Bottom-center height grip of a floating tools window. */
+#toolHeightResize{display:none;position:fixed;z-index:103;width:84px;height:13px;touch-action:none;cursor:ns-resize;background:transparent;border:0}
+#toolHeightResize[hidden]{display:none!important}
+body[data-dock='float'] #toolHeightResize:not([hidden]){display:block}
+#toolHeightResize::before{content:'';position:absolute;left:50%;bottom:3px;transform:translateX(-50%);width:53px;height:4px;border-radius:99px;background:var(--accent);box-shadow:0 0 0 3px var(--ui-panel,#fff),0 2px 8px #10263c5a}
+@media(max-width:700px){#toolHeightResize{display:none!important}}
+/* The reorder affordances belong to the slide, not to a separate inspector. */
+.slide-rail-row{display:flex;align-items:stretch;gap:5px;min-width:0;position:relative}
+.slide-rail-row .slide-rail-chip{min-width:0;flex:1;margin:0}
+.slide-rail-actions{display:flex;flex:0 0 auto;flex-direction:column;justify-content:center;gap:3px}
+.slide-rail-actions button{min-height:26px;min-width:29px;width:29px;padding:2px 4px;font-size:13px;line-height:1.1}
+.slide-rail-actions .slide-rail-drag{cursor:grab;user-select:none;touch-action:manipulation}
+.slide-rail-actions .slide-rail-drag:active{cursor:grabbing}
+.slide-rail-row.dragged{opacity:.5}
+.slide-rail-row.drop-target{outline:2px dashed var(--accent);outline-offset:2px;border-radius:9px}
+.slide-rail-row.drop-target::before{content:'';position:absolute;left:0;right:0;top:-4px;height:3px;border-radius:2px;background:var(--accent)}
+.slide-rail-row.drop-target.drop-after::before{top:auto;bottom:-4px}
+.slide-rail-list[data-view='thumbs'] .slide-rail-row{align-items:stretch}
+@media(max-width:570px){.slide-rail-actions button{min-height:32px;width:32px}}
+
 #toolResizeHandle::before{content:'';position:absolute;left:3px;top:50%;width:3px;height:56px;transform:translateY(-50%);border-radius:7px;background:#80aea9}
 body[data-dock='left'] #toolResizeHandle{transform:scaleX(-1)}
 body[data-dock='top'] #toolResizeHandle,body[data-dock='bottom'] #toolResizeHandle{cursor:ns-resize;background:linear-gradient(0deg,#7daea651,transparent);transform:none}
 body[data-dock='top'] #toolResizeHandle::before,body[data-dock='bottom'] #toolResizeHandle::before{top:4px;left:50%;width:56px;height:3px;transform:translateX(-50%)}
 body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
+
+/* Studio 17 — D-ND Design / Interaction Quality: responsive layout INSIDE Strumenti.
+   The panel owns its viewport; each tool card owns its own content density.
+   This layout is a reusable internal template, not a presentation template. */
+#toolPanel{
+  display:flex!important;
+  flex-direction:column;
+  overflow:hidden!important;
+  padding:0!important;
+  overscroll-behavior:contain;
+}
+#toolPanel .drawer-head{
+  flex:0 0 auto;min-height:62px;position:relative;top:auto!important;
+  margin:0!important;padding:12px 15px!important;
+  display:flex;align-items:center;gap:8px;z-index:7;
+  background:var(--ui-panel,var(--paper));border-bottom:1px solid var(--line);
+}
+#toolPanel .tool-panel-title{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+#toolPanel .tool-panel-title strong{font-size:14px;line-height:1.25;overflow-wrap:anywhere}
+#toolPanel .tool-layout-state{font-size:11px;color:var(--muted);font-weight:600;line-height:1.2}
+#toolPanel .resize-tools{flex:0 0 auto;align-items:center;gap:4px}
+#toolPanel .resize-tools button{min-width:31px;min-height:32px;padding:4px 6px}
+#toolPanel .tool-workspace{
+  flex:1 1 auto;min-height:0;min-width:0;
+  display:flex;flex-direction:column;gap:0;
+  overflow:hidden;padding:12px 12px 0;
+}
+#toolPanel .tool-search{display:block;flex:0 0 auto;width:100%;margin:0 0 10px;min-width:0}
+#toolPanel .tool-sections{
+  flex:1 1 auto;min-width:0;min-height:0;
+  overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;scrollbar-gutter:stable;
+  padding:0 3px 14px 0;
+  display:grid;grid-template-columns:minmax(0,1fr);
+  grid-auto-flow:row;grid-auto-rows:max-content;align-content:start;align-items:start;
+  gap:11px;
+}
+#toolPanel .tool-section{min-width:0;max-width:100%;overflow:hidden}
+#toolPanel .tool-section[hidden]{display:none!important}
+#toolPanel .tool-section>.tool-section-body{
+  min-width:0;container-type:inline-size;container-name:toolBody;
+}
+/* Default width is measured against the actual tool card, not the outer panel. */
+#toolPanel .tool-section .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+#toolPanel .tool-section .template-list,
+#toolPanel .tool-section .slide-list{grid-template-columns:1fr!important}
+#toolPanel .tool-section .template-list{display:grid;gap:9px}
+#toolPanel .tool-section .field{min-width:0}
+#toolPanel .tool-section .field input:not([type='checkbox']),
+#toolPanel .tool-section .field select{min-width:0;max-width:100%}
+#toolPanel .field label:has(input[type='checkbox']){
+  display:flex;align-items:flex-start;gap:9px;min-width:0;
+  line-height:1.45;cursor:pointer;font-weight:600;
+}
+#toolPanel .field input[type='checkbox']{
+  appearance:auto;flex:0 0 16px;width:16px!important;height:16px!important;
+  min-width:16px;margin:2px 0 0;padding:0;accent-color:var(--accent);
+}
+/* Section template: one column, two columns, three columns depending on the
+   usable width of Strumenti. A short viewport compacts spacing, not content. */
+@container toolPanel (min-width:650px){
+  #toolPanel .tool-sections{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+}
+@container toolPanel (min-width:1000px){
+  #toolPanel .tool-sections{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+}
+@container toolBody (min-width:395px){
+  #toolPanel .tool-section .tool-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  #toolPanel .tool-section .template-list,
+  #toolPanel .tool-section .slide-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@container toolBody (min-width:600px){
+  #toolPanel .tool-section .tool-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  #toolPanel .tool-section .template-list,
+  #toolPanel .tool-section .slide-list{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+#toolPanel[data-vertical='short'] .drawer-head{min-height:48px;padding:7px 12px!important}
+#toolPanel[data-vertical='short'] .tool-workspace{padding-top:7px}
+#toolPanel[data-vertical='short'] .tool-search{min-height:32px;margin-bottom:7px;padding:5px 9px}
+#toolPanel[data-vertical='short'] .tool-sections{gap:7px;padding-bottom:8px}
+#toolPanel[data-vertical='short'] .tool-section>summary{padding:8px 11px}
+#toolPanel[data-vertical='short'] .tool-section>.tool-section-body{padding:9px}
+#toolPanel[data-vertical='tight'] .tool-panel-title strong{font-size:12px}
+#toolPanel[data-vertical='tight'] .tool-panel-title .tool-layout-state{font-size:10px}
+/* Allow growing the floating palette to form multi-column tool canvases. */
+body[data-dock='float'] #toolPanel{max-width:calc(100vw - 24px)!important}
+body[data-dock='left'] #toolPanel,body[data-dock='right'] #toolPanel{max-width:min(780px,75vw)}
+body[data-dock='top'] #toolPanel,body[data-dock='bottom'] #toolPanel{padding:0!important}
+@media(max-width:700px){
+  body[data-dock] #toolPanel{max-width:none!important;min-width:0!important;padding:0!important}
+  #toolPanel .drawer-head{padding:10px 12px!important;min-height:55px}
+  #toolPanel .tool-workspace{padding:9px 10px 0}
+  #toolPanel .tool-sections{scrollbar-gutter:auto}
+  body.panel-open:has(#toolPanel.drawer-open) #toolPanel .tool-workspace{padding-bottom:61px}
+  #toolPanel .resize-tools #toolNarrow,#toolPanel .resize-tools #toolWide{display:none!important}
+}
+@media(min-width:871px) and (max-width:1190px){
+  /* The status line is supplemental; preserve the action buttons without page overflow. */
+  .toolbar .status{display:none!important}
+}
+@media print{#toolPanel{display:none!important}}
+
+
+/* Studio 18: D-ND Interaction Quality + Collaborative Communication Medium.
+   User work is the primary surface; controls make space for it. */
+.quick-editor:not(.expanded){max-height:calc(100dvh - 16px)!important;min-height:148px;resize:both;}
+.quick-editor.expanded{top:8px!important;left:8px!important;width:calc(100vw - 16px)!important;height:calc(100dvh - 16px)!important;max-height:none!important;max-width:calc(100vw - 16px)!important;}
+.quick-editor .drawer-head{min-width:0}
+.quick-editor .drawer-head .head-cluster{min-width:0;flex:1}
+.quick-editor .drawer-head .form-actions{flex:0 1 auto;justify-content:flex-end;align-items:center}
+@media(max-width:700px){.quick-editor:not(.expanded){max-height:calc(100dvh - 12px)!important}.quick-editor.expanded{top:6px!important;left:6px!important;width:calc(100vw - 12px)!important;height:calc(100dvh - 12px)!important;}}
+/* A docked inspector may be detached directly by dragging its header. */
+@media(min-width:701px){
+  #toolPanel .drawer-head,#propertyPanel .drawer-head{cursor:grab!important;touch-action:none;user-select:none}
+  #toolPanel .drawer-head:active,#propertyPanel .drawer-head:active{cursor:grabbing!important}
+  #toolPanel .drawer-head button,#propertyPanel .drawer-head button{cursor:pointer!important}
+}
+/* Flat: one navigation/zoom/editing strip, not three stacked toolbars. */
+.flat-slide-name{display:none}
+body.flat-layout:not(.reading-mode):not(.presenting) .work{padding:5px 7px!important;min-height:0}
+body.flat-layout:not(.reading-mode):not(.presenting) .editor-main{display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"stage stage stage" "nav zoom actions";grid-template-rows:auto auto;column-gap:12px;row-gap:6px;align-items:center;min-width:0}
+body.flat-layout:not(.reading-mode):not(.presenting) #canvasViewport{grid-area:stage;max-height:var(--flat-stage-height, 76dvh);min-width:0;overflow:auto;display:flex;justify-content:center;align-items:flex-start}
+body.flat-layout:not(.reading-mode):not(.presenting) #canvasViewport .canvas-wrap{width:min(calc(100% * var(--ccm-zoom,1)),calc(var(--flat-fit-width, 1200px) * var(--ccm-zoom,1)))!important;min-width:0;max-width:none;flex:0 0 auto;}
+body.flat-layout:not(.reading-mode):not(.presenting) .viewport-controls{grid-area:zoom;justify-content:center;flex-wrap:nowrap;gap:5px;padding:0;white-space:nowrap;min-width:0}
+body.flat-layout:not(.reading-mode):not(.presenting) .viewport-controls .view-hint{display:none}
+body.flat-layout:not(.reading-mode):not(.presenting) .viewport-controls .view-label{margin-right:4px}
+body.flat-layout:not(.reading-mode):not(.presenting) .slide-caption{display:none!important}
+body.flat-layout:not(.reading-mode):not(.presenting) .bottom{grid-area:nav;display:flex;justify-content:flex-start;gap:5px;padding:0;white-space:nowrap;min-width:0}
+body.flat-layout:not(.reading-mode):not(.presenting) .bottom .shortcuts{display:none}
+body.flat-layout:not(.reading-mode):not(.presenting) .bottom .flat-slide-name{display:block;max-width:180px;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:var(--muted);font-weight:700;align-self:center;white-space:nowrap}
+body.flat-layout:not(.reading-mode):not(.presenting) .bottom button,body.flat-layout:not(.reading-mode):not(.presenting) .viewport-controls button{padding:6px 8px;min-height:32px;font-size:12px}
+body.flat-layout:not(.reading-mode):not(.presenting) #editActionBar{grid-area:actions;position:static!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;max-width:none;margin:0;box-shadow:none;padding:3px 4px;gap:4px;border-radius:10px;justify-self:end;white-space:nowrap}
+body.flat-layout:not(.reading-mode):not(.presenting) #editActionBar .edit-action-label{display:none}
+body.flat-layout:not(.reading-mode):not(.presenting) #editActionBar button{min-height:32px;padding:5px 8px;font-size:12px}
+@media(max-width:1280px){body.flat-layout:not(.reading-mode):not(.presenting) .bottom .flat-slide-name{display:none}}
+@media(max-width:1050px){
+ body.flat-layout:not(.reading-mode):not(.presenting) .editor-main{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"stage stage" "nav zoom" "actions actions";row-gap:5px}
+ body.flat-layout:not(.reading-mode):not(.presenting) #editActionBar{justify-self:end}
+}
+@media(max-width:600px){
+ body.flat-layout:not(.reading-mode):not(.presenting) .editor-main{grid-template-columns:minmax(0,1fr);grid-template-areas:"stage" "nav" "zoom" "actions"}
+ body.flat-layout:not(.reading-mode):not(.presenting) #canvasViewport{justify-content:flex-start}
+ body.flat-layout:not(.reading-mode):not(.presenting) #canvasViewport .canvas-wrap{min-width:900px!important}
+ body.flat-layout:not(.reading-mode):not(.presenting) .bottom{justify-content:center}
+ body.flat-layout:not(.reading-mode):not(.presenting) #editActionBar{justify-self:center;max-width:100%;gap:3px}
+ body.flat-layout:not(.reading-mode):not(.presenting) #editActionBar button{padding:5px 7px}
+}
+@media print{.flat-slide-name{display:none!important}}
+
+
+/* Studio 18 viewport completion: bypass the inherited 1140px stacked rail in Flat.
+   The rail remains available at the side; the canvas is no longer pushed below it. */
+body.flat-layout:not(.presenting) .workspace{min-height:0!important}
+@media(min-width:701px){
+ body.flat-layout:not(.presenting) .editor-shell{display:grid!important;grid-template-columns:var(--slide-rail-width,264px) minmax(0,1fr)!important;align-items:start}
+ body.flat-layout:not(.presenting) .slide-rail{position:sticky!important;top:70px!important;width:var(--slide-rail-width,264px)!important;min-width:190px;max-width:min(340px,34vw);max-height:calc(100dvh - 84px);overflow:auto}
+ body.flat-layout.hide-slide-rail:not(.presenting) .editor-shell{display:block!important}
+}
+@media(max-width:700px){
+ body.flat-layout:not(.presenting) .slide-rail{max-height:126px!important;overflow:auto!important;padding:6px 8px!important}
+ body.flat-layout:not(.presenting) .slide-rail .mini{display:none}
+ body.flat-layout:not(.presenting) .slide-rail-list{display:flex;flex-direction:row;gap:6px;overflow-x:auto;scrollbar-width:thin}
+ body.flat-layout:not(.presenting) .slide-rail-chip{min-width:135px!important;padding:6px!important}
+ body.flat-layout:not(.presenting) .slide-rail .slide-view-picker{margin:2px 0!important}
+}
+
+/* Studio 19 · Compattezza dei comandi anche nella modalità standard.
+   La modalità Flat mantiene il proprio layout; la standard conserva margini e cornice. */
+body.flat-layout:not(.reading-mode):not(.presenting) .workspace-dock{display:contents}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .editor-main{min-width:0}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) #canvasViewport{
+ max-height:var(--flat-stage-height, 82dvh); display:flex;justify-content:center;align-items:flex-start;
+ overflow:auto;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) #canvasViewport .canvas-wrap{
+ width:min(calc(100% * var(--ccm-zoom,1)),calc(var(--flat-fit-width,1200px) * var(--ccm-zoom,1)))!important;
+ min-width:0;max-width:none;flex:0 0 auto;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .slide-caption{display:none!important}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock{
+ display:flex; align-items:center; justify-content:space-between;
+ gap:6px 10px; flex-wrap:wrap; min-width:0;
+ padding:7px 2px 1px; margin:0;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .bottom{
+ display:flex;align-items:center;justify-content:flex-start;gap:5px;
+ padding:0; min-width:0; flex:0 1 auto;white-space:nowrap;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .flat-slide-name{
+ display:block;max-width:180px;overflow:hidden;text-overflow:ellipsis;
+ font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .shortcuts,
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .view-hint{display:none}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .viewport-controls{
+ display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;
+ gap:5px;padding:0;margin:0;min-width:0;white-space:nowrap;flex:0 0 auto;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .view-label{margin-right:4px}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock button{
+ padding:6px 8px;min-height:32px;font-size:12px;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar{
+ position:static!important;top:auto!important;bottom:auto!important;
+ left:auto!important;right:auto!important;transform:none!important;
+ display:flex;align-items:center;justify-content:flex-end;
+ margin:0 0 0 auto;padding:2px 3px;gap:4px;
+ min-width:0;max-width:100%;white-space:nowrap; flex:0 1 auto;
+ box-shadow:none;border-radius:9px;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar[hidden]{display:none!important}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar .edit-action-label{display:none}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar button{
+ min-height:32px;padding:5px 8px;font-size:12px;
+}
+/* Compact labels first; keep controls visible when the inspector or slide rail narrows the canvas. */
+@media(max-width:1420px){
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .flat-slide-name{max-width:120px}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .view-label{display:none}
+}
+@media(max-width:800px){
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock{
+  justify-content:center;gap:5px 8px;padding-top:6px;
+ }
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .flat-slide-name{display:none}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar{margin-left:0}
+}
+@media(max-width:510px){
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) #canvasViewport{justify-content:flex-start}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) #canvasViewport .canvas-wrap{min-width:900px!important}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock{gap:5px 4px;padding-left:0;padding-right:0}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .bottom{justify-content:center}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock button{padding:5px 7px;font-size:11px}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar{max-width:100%;gap:3px}
+ body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar button{padding:5px 7px;font-size:11px}
+}
+
+/* Standard compact mode keeps the slide rail lateral at tablet/medium sizes,
+   preventing it from pushing the canvas below the viewport. */
+@media(min-width:701px) and (max-width:1140px){
+ body:not(.flat-layout):not(.presenting):not(.reading-mode) .editor-shell{
+   display:grid!important;grid-template-columns:clamp(190px,23vw,238px) minmax(0,1fr)!important;align-items:start;gap:12px;
+ }
+ body:not(.flat-layout):not(.presenting):not(.reading-mode) .slide-rail{
+   position:sticky!important;top:76px!important;width:100%!important;min-width:0!important;
+   max-width:none!important;max-height:calc(100dvh - 92px)!important;overflow:auto;
+ }
+}
+/* On phones, a short horizontal slide ribbon preserves room for the canvas. */
+@media(max-width:700px){
+ body:not(.flat-layout):not(.presenting):not(.reading-mode) .slide-rail{
+   max-height:128px!important;overflow:auto!important;padding:6px 8px!important;
+ }
+ body:not(.flat-layout):not(.presenting):not(.reading-mode) .slide-rail .mini{display:none}
+ body:not(.flat-layout):not(.presenting):not(.reading-mode) .slide-rail-list{
+   display:flex;flex-direction:row;gap:6px;overflow-x:auto;scrollbar-width:thin;
+ }
+ body:not(.flat-layout):not(.presenting):not(.reading-mode) .slide-rail-chip{
+   min-width:135px!important;padding:6px!important;
+ }
+}
+
+/* Public read-only and Presenta keep their own controls and geometry. */
+body.presenting .workspace-dock{display:none!important}
+@media print{.workspace-dock{display:none!important}}
+
+/* Studio 20 — deeper capabilities without additional permanent chrome. */
+.ccm-work-dialog{width:min(680px,calc(100vw - 24px));max-width:calc(100vw - 16px);max-height:min(88dvh,790px);padding:0;border:1px solid var(--line);border-radius:15px;box-shadow:0 20px 65px #10243566;color:var(--ink);background:var(--ui-panel,#fff);overflow:hidden}
+.ccm-work-dialog::backdrop{background:#0d1d2c99}
+.ccm-dialog-shell{display:flex;flex-direction:column;max-height:min(88dvh,790px);min-height:0}
+.ccm-dialog-head{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 19px;border-bottom:1px solid var(--line)}
+.ccm-dialog-head h2{font-size:17px;margin:0;line-height:1.25}
+.ccm-dialog-body{min-height:0;overflow:auto;overscroll-behavior:contain;padding:15px 19px;display:grid;gap:13px;align-content:start}
+.ccm-dialog-body p{margin:0;line-height:1.5}
+.ccm-dialog-body .helper{font-size:12px}
+.ccm-dialog-foot{flex:none;display:flex;gap:7px;align-items:center;justify-content:flex-end;flex-wrap:wrap;padding:12px 19px;border-top:1px solid var(--line);background:var(--ui-panel,#fff)}
+.ccm-dialog-foot button{white-space:normal}
+.ccm-option-list{display:grid;gap:7px;border:0;padding:0;margin:0;min-width:0}
+.ccm-option-list legend{font-weight:750;margin-bottom:7px}
+.ccm-option-list label,.ccm-review-line{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--ui-subtle,#f7fafb);font-weight:600;line-height:1.35;cursor:pointer}
+.ccm-option-list label:has(input:checked),.ccm-review-line:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.ccm-option-list input,.ccm-review-line input{flex:none;align-self:center;accent-color:var(--accent)}
+.ccm-dialog-extra{border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.ccm-dialog-extra summary{cursor:pointer;font-weight:700}
+.ccm-dialog-extra label{display:flex;gap:8px;align-items:flex-start;margin-top:9px;line-height:1.4}
+.ccm-review-list{display:grid;gap:7px}
+.ccm-review-item{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ccm-review-item .ccm-review-line{border:0;border-radius:0;background:transparent}
+.ccm-review-item:has(input:checked){border-color:var(--accent)}
+.ccm-review-line .ccm-review-copy{min-width:0;flex:1;display:grid;gap:3px}
+.ccm-review-line .ccm-review-copy span{font-weight:500;font-size:12px;color:var(--muted)}
+.ccm-review-item details{padding:0 12px 10px;font-size:12px;color:var(--muted)}
+.ccm-review-item details summary{cursor:pointer}
+.ccm-review-item details p{margin:7px 0 0;overflow-wrap:anywhere}
+.ccm-review-item.missing{border-style:dashed}
+.ccm-quiet-note{font-size:12px;color:var(--muted)}
+.ccm-recovery-prompt{position:fixed;z-index:155;top:clamp(70px,12vh,115px);left:50%;transform:translateX(-50%);width:min(520px,calc(100vw - 20px));display:flex;flex-wrap:wrap;align-items:center;gap:9px;background:var(--ui-panel,#fff);color:var(--ink);padding:12px 14px;border:1px solid var(--accent);border-radius:12px;box-shadow:0 13px 44px #10243544}
+.ccm-recovery-prompt[hidden]{display:none!important}
+.ccm-recovery-prompt .ccm-recovery-text{flex:1 1 215px;min-width:0;font-size:12px}
+.ccm-recovery-prompt .ccm-recovery-text strong{display:block;font-size:13px}
+.ccm-recovery-buttons{display:flex;gap:5px;flex-wrap:wrap}
+.ccm-recovery-buttons button{padding:7px 9px;font-size:12px}
+.ccm-recovery-setting{border:1px solid var(--line);padding:9px 11px;border-radius:10px}
+.ccm-recovery-setting summary{cursor:pointer;font-weight:700;font-size:12px}
+.ccm-recovery-setting label{display:flex;gap:7px;align-items:flex-start;margin:11px 0 5px;font-size:12px}
+.ccm-recovery-setting p{margin:5px 0;font-size:11px;color:var(--muted)}
+@media(max-width:560px){.ccm-dialog-head{padding:12px}.ccm-dialog-body{padding:12px}.ccm-dialog-foot{padding:10px 12px}.ccm-dialog-foot button{flex:1 1 auto;min-height:42px}.ccm-recovery-prompt{top:65px}}
+@media print{.ccm-work-dialog,.ccm-recovery-prompt{display:none!important}}
 </style>
 </head>
 <body>
@@ -504,9 +845,9 @@ body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
 <div id="panelScrim" class="panel-scrim" hidden></div>
 <div class="workspace">
   <aside class="rail" id="toolPanel" aria-label="Strumenti, layout e schede" aria-hidden="true">
-<div class="drawer-head"><strong>Strumenti e componenti</strong><div class="resize-tools"><button id="toolNarrow" type="button" class="tiny" title="Riduci larghezza pannello">−</button><button id="toolWide" type="button" class="tiny" title="Allarga pannello">+</button><button id="closeTools" class="tiny" title="Chiudi strumenti" aria-label="Chiudi strumenti">✕</button></div></div>
-<div class="tool-resize-handle" id="toolResizeHandle" title="Trascina per ridimensionare il pannello" role="separator" aria-label="Ridimensiona pannello strumenti"></div><div class="tool-corner-resize" id="toolCornerResize" role="separator" aria-label="Ridimensiona larghezza e altezza della finestra strumenti" title="Trascina questo angolo per allargare la finestra in entrambe le direzioni"></div>
-<input id="toolSearch" class="tool-search" type="search" placeholder="Cerca strumenti e funzioni…" aria-label="Cerca negli strumenti"><div class="tool-sections"><details class="tool-section" data-section="slides" open><summary>Schede e ordine</summary><div class="tool-section-body">
+<div class="drawer-head"><div class="tool-panel-title"><strong>Strumenti e componenti</strong><span id="toolLayoutState" class="tool-layout-state" aria-live="off">Adattamento automatico</span></div><div class="resize-tools"><button id="toolNarrow" type="button" class="tiny" title="Riduci larghezza pannello">−</button><button id="toolWide" type="button" class="tiny" title="Allarga pannello">+</button><button id="closeTools" class="tiny" title="Chiudi strumenti" aria-label="Chiudi strumenti">✕</button></div></div>
+<div class="tool-height-resize" id="toolHeightResize" hidden role="separator" aria-label="Ridimensiona altezza della finestra strumenti" title="Trascina per aumentare o diminuire l’altezza"></div><div class="tool-resize-handle" id="toolResizeHandle" title="Trascina per ridimensionare il pannello" role="separator" aria-label="Ridimensiona pannello strumenti"></div><div class="tool-corner-resize" id="toolCornerResize" role="separator" aria-label="Ridimensiona larghezza e altezza della finestra strumenti" title="Trascina questo angolo per allargare la finestra in entrambe le direzioni"></div>
+<div class="tool-workspace" id="toolWorkspace"><input id="toolSearch" class="tool-search" type="search" placeholder="Cerca strumenti e funzioni…" aria-label="Cerca negli strumenti"><div class="tool-sections"><details class="tool-section" data-section="slides" open><summary>Schede e ordine</summary><div class="tool-section-body">
     
     <p class="mini">Trascina un elemento sulla scheda oppure fai clic per aggiungerlo.</p>
     <div class="pane-title">Schede <button class="tiny" id="addSlide">+ Nuova</button></div>
@@ -554,9 +895,15 @@ body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
     <div class="lib-list" id="libraryList"></div><p class="helper" id="libraryHint">Seleziona un elemento e usa “Salva tra i miei elementi” per riutilizzarlo.</p>
     </div></details><details class="tool-section" data-section="layers" ><summary>Livelli della scheda</summary><div class="tool-section-body"><div id="layersList" class="layer-list"></div>
     </div></details><details class="tool-section" data-section="export" ><summary>Salva ed esporta</summary><div class="tool-section-body">
-    <div class="tool-grid"><button id="undoBtn" title="Annulla (Ctrl+Z)">↶ Annulla</button><button id="redoBtn" title="Ripristina (Ctrl+Y)">↷ Ripristina</button><button id="exportData">↓ Dati per AI</button><button id="importData" type="button" title="Riprendi da un file JSON o HTML creato o modificato con un'AI">↑ Importa JSON / HTML</button><input id="importDataFile" type="file" accept=".json,.html,.htm,application/json,text/html" hidden aria-label="Seleziona un documento JSON o HTML MetaCanvas da importare"><button id="printBtn">PDF / Stampa</button><button id="publicBtn">Copia pubblica</button></div>
+    <div class="tool-grid"><button id="undoBtn" title="Annulla (Ctrl+Z)">↶ Annulla</button><button id="redoBtn" title="Ripristina (Ctrl+Y)">↷ Ripristina</button><button id="exportData" type="button" title="Scegli cosa consegnare all’AI">↓ Dati per AI</button><button id="importData" type="button" title="Riprendi da un file JSON o HTML creato o modificato con un'AI">↑ Importa JSON / HTML</button><input id="importDataFile" type="file" accept=".json,.html,.htm,application/json,text/html" hidden aria-label="Seleziona un documento JSON o HTML MetaCanvas da importare"><button id="printBtn">PDF / Stampa</button><button id="publicBtn">Copia pubblica</button></div>
     <div class="notice" style="margin-top:12px"><strong>Ritorno dall'AI:</strong> esporta “Dati per AI”, allegali a un LLM, quindi importa il JSON aggiornato. Puoi anche importare un HTML MetaCanvas: viene letto soltanto il modello del documento, senza eseguirne il codice. Il documento attuale resta recuperabile con Annulla.</div><div class="notice" style="margin-top:12px">Il file funziona offline. <strong>Salva lavoro</strong> chiede al browser di scaricare una copia: controlla la cartella Download e riapri il file. Non modifica automaticamente l’originale. Limite consigliato: 2 MB.</div>
-  </div></details></div></aside>
+  <details class="ccm-recovery-setting" id="recoverySettings"><summary>Recupero locale (facoltativo)</summary>
+    <label><input type="checkbox" id="recoveryEnabled"> Conserva una copia locale in questo browser</label>
+    <p>Solo per questo file e profilo del browser, se l’archiviazione locale è disponibile. Non è un salvataggio dell’HTML né una sincronizzazione.</p>
+    <p id="recoveryState" aria-live="polite"></p>
+    <button type="button" class="tiny" id="recoveryDiscard" hidden>Elimina copia locale</button>
+  </details>
+  </div></details></div></div></aside>
   <main class="work" aria-label="Area di lavoro">
     <div class="work-inner">
       <div class="editor-shell">
@@ -571,9 +918,11 @@ body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
             <div class="canvas-wrap"><div class="canvas" id="canvas" aria-label="Scheda modificabile"><div class="canvas-guides"></div><svg class="link-layer" id="links" viewBox="0 0 1200 675" preserveAspectRatio="none" aria-hidden="true"></svg><div id="nodes"></div></div></div>
           </div>
           <section id="readingView" class="reading-view" aria-label="Lettura e revisione dei contenuti" hidden></section>
-          <div class="viewport-controls" id="viewportControls"><span class="view-label">Vista spaziale</span><button type="button" id="zoomOut" title="Riduci ingrandimento">−</button><span id="zoomValue">100%</span><button type="button" id="zoomIn" title="Aumenta ingrandimento">+</button><button type="button" id="zoomFit">Adatta</button><span class="view-hint">Sul telefono trascina per esplorare il diagramma.</span></div>
           <div class="slide-caption"><div><strong id="slideTitle"></strong> <span id="slideNum" class="mini"></span></div><div class="tip">Doppio clic: modifica · Trascina: sposta · Strumenti: opzioni avanzate</div></div>
-          <div class="bottom"><button id="prevBtn">← Precedente</button><button id="nextBtn">Successiva →</button><span class="shortcuts">Esc esce dalla presentazione · frecce per cambiare scheda</span></div>
+          <div class="workspace-dock" aria-label="Navigazione e comandi del documento">
+          <div class="bottom"><span id="flatSlideTitle" class="flat-slide-name" aria-live="off"></span><button id="prevBtn">← Precedente</button><button id="nextBtn">Successiva →</button><span class="shortcuts">Esc esce dalla presentazione · frecce per cambiare scheda</span></div>
+          <div class="viewport-controls" id="viewportControls"><span class="view-label">Vista spaziale</span><button type="button" id="zoomOut" title="Riduci ingrandimento">−</button><span id="zoomValue">100%</span><button type="button" id="zoomIn" title="Aumenta ingrandimento">+</button><button type="button" id="zoomFit">Adatta</button><span class="view-hint">Sul telefono trascina per esplorare il diagramma.</span></div>
+          <div class="edit-action-bar" id="editActionBar" role="toolbar" aria-label="Comandi sempre disponibili del documento" hidden><span class="edit-action-label" id="editActionLabel">Comandi</span><button id="editBack" type="button" title="Annulla l’ultimo passo">↶ Indietro</button><button id="editForward" type="button" title="Ripristina l’ultimo passo">↷ Avanti</button><button id="editOk" type="button" title="Conferma ed esci dall’editor aperto">✓ OK</button><button id="editSave" type="button" title="Scarica una nuova copia HTML completa">↓ Salva</button></div>          </div>
         </div>
       </div>
     </div>
@@ -582,7 +931,7 @@ body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
     <div class="drawer-head"><strong id="inspectorHeading">Proprietà</strong><div class="form-actions"><button id="propertyNarrow" class="tiny" type="button" title="Riduci larghezza">−</button><button id="propertyWide" class="tiny" type="button" title="Allarga sidebar">+</button><button id="closeProperties" class="tiny" aria-label="Chiudi proprietà">✕</button></div></div><div class="panel-resize-handle" id="propertyResizeHandle" title="Trascina per allargare o ridurre"></div><p class="mini panel-hint"><strong>Sidebar adattiva</strong>Allarga il pannello: i controlli interni si ridispongono automaticamente per mostrarti più elementi insieme.</p><div id="inspectorContent"></div>
   </aside>
 </div>
-<div class="edit-action-bar" id="editActionBar" role="toolbar" aria-label="Comandi rapidi della modifica" hidden><span class="edit-action-label">In modifica</span><button id="editBack" type="button" title="Annulla l’ultimo passo">↶ Indietro</button><button id="editForward" type="button" title="Ripristina l’ultimo passo">↷ Avanti</button><button id="editOk" type="button" title="Conferma e esci dalla modalità modifica">✓ OK</button></div>
+
 
 <dialog id="ccmGuide" class="ccm-guide" aria-labelledby="ccmGuideTitle" aria-describedby="ccmGuideIntro">
  <div class="guide-head"><div><span class="guide-eyebrow">AI Collaboration Studio</span><h2 id="ccmGuideTitle">Come usare questo artefatto</h2></div><div class="modal-actions"><button type="button" class="tiny" id="ccmGuideExpand" aria-pressed="false" aria-label="Espandi la guida">⤢ Espandi</button><button type="button" class="tiny" id="ccmGuideClose" aria-label="Chiudi la guida">✕</button></div></div>
@@ -591,13 +940,36 @@ body[data-dock='bottom'] #toolResizeHandle{transform:scaleY(-1)}
   <section><strong>1 · Parti da un'idea</strong><p>Scrivi o modifica riquadri, relazioni, note e schede. I template sono punti di partenza, non regole.</p></section>
   <section><strong>2 · Continua con un assistente AI</strong><p>Salva l'HTML e allegalo a ChatGPT o a un altro assistente AI. Chiedi una revisione dei testi, una nuova organizzazione o un diagramma più chiaro. Puoi sempre correggere il risultato.</p></section>
   <section><strong>3 · Presenta e condividi</strong><p>Usa <em>Presenta</em> con gli interlocutori. <em>Salva lavoro</em> mantiene note e strumenti; <em>Copia pubblica</em> esclude note e libreria. Verifica il file ricevuto prima di inviarlo.</p></section>
-  <section><strong>4 · Layout e modifica</strong><p>Premi <em>Flat</em> per sfruttare tutta la larghezza disponibile e disporre la lettura su due colonne nei monitor ampi. Apri <em>Strumenti</em> e trascina il bordo per ridimensionare; in <em>Finestra mobile</em> usa l’angolo in basso a destra. Quando modifichi un elemento compare il menu <em>OK / Indietro / Avanti</em>: OK conserva la modifica ed esce dall’editor.</p></section>
+  <section><strong>4 · Layout e modifica</strong><p>Premi <em>Flat</em> per sfruttare tutta la larghezza disponibile e disporre la lettura su due colonne nei monitor ampi. Apri <em>Strumenti</em> e trascina il bordo per ridimensionare; in <em>Finestra mobile</em> trascina il lato sinistro per la larghezza, il bordo inferiore per l’altezza o l’angolo per entrambe. Riordina le schede direttamente nella colonna sinistra con ↑/↓ oppure trascinando ☷. I comandi <em>Indietro / Avanti / OK / Salva</em> restano disponibili in basso a destra: OK chiude l’editor aperto, Salva scarica una nuova copia HTML.</p></section>
  </div>
  <details class="guide-more"><summary>Altri modi per usarlo</summary><p>Progettare un prodotto, spiegare un sistema complesso, confrontare alternative, strutturare contenuti web, preparare un incontro o raccogliere correzioni successive. Lo stesso oggetto può cambiare rappresentazione senza perdere le relazioni.</p></details>
  <div class="guide-prompt"><label for="ccmGuidePrompt"><strong>Messaggio da copiare quando alleghi questo HTML a un assistente AI</strong></label><textarea readonly id="ccmGuidePrompt" rows="4">Questo HTML è il mio documento di lavoro. Leggi le schede, i testi e i collegamenti contenuti nel modello JSON del file (script id=&quot;ccm-data&quot;). Prima riassumi ciò che hai compreso e segnala eventuali ambiguità; poi proponi una struttura più chiara per spiegare [INSERISCI IL TUO OBIETTIVO] a [INSERISCI IL DESTINATARIO]. Conserva i miei concetti e distingui le tue proposte. Restituisci un nuovo HTML modificabile e indica le differenze. Non eliminare gli appunti privati nella copia di lavoro.</textarea><button type="button" id="ccmGuideCopy" class="tiny">Copia la richiesta</button><span id="ccmGuideCopyStatus" class="guide-status" role="status" aria-live="polite"></span></div>
- <p class="guide-foot"><strong>Template riutilizzabili:</strong> in Strumenti → Template agentici scegli Sostituisci, Sopra o Sotto. Le azioni sono annullabili. Puoi salvare la scheda modificata come template personale e trasferire la raccolta a un altro documento con Esporta / Importa raccolta JSON. I template personali non sono inclusi nella Copia pubblica.</p><p class="guide-foot"><strong>Ritorno dall'AI:</strong> apri Strumenti → Salva ed esporta → <em>Dati per AI</em>. Invia il JSON al modello e chiedigli di restituire un JSON con lo stesso schema. Poi usa <em>Importa JSON / HTML</em> per rientrare nel lavoro. Puoi anche ricevere un intero HTML MetaCanvas: l'importatore recupera soltanto i dati e non esegue codice del file ricevuto. Controlla sempre le modifiche proposte.</p><p class="guide-foot">Il file funziona offline e non contiene un assistente AI incorporato. Il modello partecipa soltanto quando gli alleghi il documento. Salva una copia di lavoro prima di inviarlo e controlla gli appunti: un file HTML può essere ispezionato da chi lo riceve.</p><p class="guide-foot"><strong>Licenza del software: MPL 2.0.</strong> Puoi usarlo, modificarlo, condividerlo e commercializzarlo rispettando la licenza e i crediti degli autori. Il copyright sul codice originale resta di Graziano Guiducci. <a href="https://mozilla.org/MPL/2.0/" rel="noopener noreferrer" target="_blank">Testo della licenza</a>. I marchi non sono concessi in licenza.</p>
+ <p class="guide-foot"><strong>Template riutilizzabili:</strong> in Strumenti → Template agentici scegli Sostituisci, Sopra o Sotto. Le azioni sono annullabili. Puoi salvare la scheda modificata come template personale e trasferire la raccolta a un altro documento con Esporta / Importa raccolta JSON. I template personali non sono inclusi nella Copia pubblica. Per modificare i punti di una freccia, apri il suo mini editor e scegli <em>Scegli agganci</em>: i punti scompaiono dopo la scelta o alla chiusura dell’editor.</p><p class="guide-foot"><strong>Ritorno dall'AI:</strong> apri Strumenti → Salva ed esporta → <em>Dati per AI</em>. Invia il JSON al modello e chiedigli di restituire un JSON con lo stesso schema. Poi usa <em>Importa JSON / HTML</em> per rientrare nel lavoro. Puoi anche ricevere un intero HTML MetaCanvas: l'importatore recupera soltanto i dati e non esegue codice del file ricevuto. Controlla sempre le modifiche proposte.</p><p class="guide-foot">Il file funziona offline e non contiene un assistente AI incorporato. Il modello partecipa soltanto quando gli alleghi il documento. Salva una copia di lavoro prima di inviarlo e controlla gli appunti: un file HTML può essere ispezionato da chi lo riceve.</p><p class="guide-foot"><strong>Licenza del software: MPL 2.0.</strong> Puoi usarlo, modificarlo, condividerlo e commercializzarlo rispettando la licenza e i crediti degli autori. Il copyright sul codice originale resta di Graziano Guiducci. <a href="https://mozilla.org/MPL/2.0/" rel="noopener noreferrer" target="_blank">Testo della licenza</a>. I marchi non sono concessi in licenza.</p>
 </dialog>
 <nav id="presentNav" aria-label="Navigazione presentazione"><button id="presentPrev">←</button><span class="count" id="presentCount">1 / 3</span><button id="presentNext">→</button><button class="exit" id="presentExit">✕ Esci</button></nav>
+
+<dialog id="aiShareDialog" class="ccm-work-dialog" aria-labelledby="aiShareTitle" aria-describedby="aiShareLead">
+ <div class="ccm-dialog-shell"><div class="ccm-dialog-head"><h2 id="aiShareTitle">Consegna dati all’AI</h2><button type="button" id="aiShareClose" aria-label="Chiudi">✕</button></div>
+ <div class="ccm-dialog-body"><p id="aiShareLead">Scegli il contenuto necessario. Gli appunti e le raccolte personali non vengono inclusi, salvo tua scelta esplicita.</p>
+ <fieldset class="ccm-option-list"><legend>Quale parte del lavoro?</legend>
+ <label><input type="radio" name="aiShareScope" value="document" checked><span>Documento completo</span></label>
+ <label><input type="radio" name="aiShareScope" value="scene"><span>Solo scheda corrente</span></label></fieldset>
+ <details class="ccm-dialog-extra"><summary>Altre informazioni da includere</summary>
+ <label><input type="checkbox" id="aiSharePrivate"><span>Includi appunti privati, libreria e template personali</span></label>
+ <p class="ccm-quiet-note">Anche i testi non contrassegnati come privati potrebbero contenere dati riservati: controlla il JSON prima di condividerlo.</p></details>
+ <p class="ccm-quiet-note" id="aiSharePreview" aria-live="polite"></p></div>
+ <div class="ccm-dialog-foot"><button type="button" id="aiShareCancel">Annulla</button><button type="button" id="aiShareConfirm" class="strong">Esporta JSON</button></div></div>
+</dialog>
+<dialog id="aiReviewDialog" class="ccm-work-dialog" aria-labelledby="aiReviewTitle" aria-describedby="aiReviewIntro">
+ <div class="ccm-dialog-shell"><div class="ccm-dialog-head"><h2 id="aiReviewTitle">Rivedi il documento ricevuto</h2><button type="button" id="aiReviewClose" aria-label="Chiudi">✕</button></div>
+ <div class="ccm-dialog-body"><p id="aiReviewIntro"></p><div class="ccm-review-list" id="aiReviewList"></div>
+ <p class="ccm-quiet-note" id="aiReviewCaution"></p></div>
+ <div class="ccm-dialog-foot"><button type="button" id="aiReviewCancel">Annulla</button><button type="button" id="aiReviewReplace">Sostituisci tutto</button><button type="button" id="aiReviewMerge" class="strong">Integra selezionate</button></div></div>
+</dialog>
+<div id="recoveryPrompt" class="ccm-recovery-prompt" role="region" aria-label="Ripristino delle modifiche locali" hidden>
+ <div class="ccm-recovery-text"><strong>Modifiche locali recuperabili</strong><span id="recoveryPromptDetail">Una copia di lavoro è disponibile in questo browser.</span></div>
+ <div class="ccm-recovery-buttons"><button id="recoveryRestore" type="button" class="strong">Ripristina</button><button id="recoveryIgnore" type="button">Ignora</button></div>
+</div>
 <div id="quickEditor" class="quick-editor" role="region" aria-label="Mini editor contestuale" hidden></div>
 <div id="detailOverlay" class="detail-overlay" hidden><div class="detail-dialog" id="detailDialog" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><div class="drawer-head"><strong id="detailTitle">Approfondimento</strong><div class="modal-actions"><button id="expandDetail" class="tiny" type="button" aria-pressed="false" aria-label="Espandi approfondimento">⤢ Espandi</button><button id="closeDetail" type="button" aria-label="Chiudi approfondimento">✕</button></div></div><div id="detailBody" class="detail-body"></div></div></div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div><div id="printRoot" class="print-root"></div>
@@ -628,7 +1000,8 @@ state.ui.toolHeight=+state.ui.toolHeight||400;
 state.ui.flatLayout=state.ui.flatLayout===true;
 state.ui.toolSections=state.ui.toolSections||{slides:true,elements:true,templates:false,appearance:true,library:false,layers:false,export:false};
 state.ui.quickWindow=state.ui.quickWindow||{manual:false};
-let past=[],future=[],selectedId=null,selectedLinkId=null,editingId=null,gesture=null,textTx=null,dirty=false,presenting=false,grid=false,snapOn=state.ui.snap!==false,quickTarget=null,quickTimer=null,quickBeforeFocus=null,detailOpenId=null;
+state.ui.recoveryEnabled=state.ui.recoveryEnabled===true;
+let past=[],future=[],selectedId=null,selectedLinkId=null,portPickerLinkId=null,editingId=null,gesture=null,textTx=null,dirty=false,presenting=false,grid=false,snapOn=state.ui.snap!==false,quickTarget=null,quickTimer=null,quickBeforeFocus=null,detailOpenId=null;
 const publicMode=state.ui.publicCopy===true;let readingMode=publicMode||state.ui.viewMode==='read'||(state.ui.viewMode!=='compose'&&window.innerWidth<700);let zoom=clampZoom(state.ui.zoom||1);
 function clampZoom(x){return Math.max(.75,Math.min(2.5,Math.round((+x||1)*4)/4))}
 const MAX_HTML_BYTES=1950000,PALETTE=['#087b70','#56baa9','#203a52','#3f566d','#e7f5f0','#edf1f9','#fff0df','#f5c675','#a85850','#ffffff','#20242c','#9e8aee'];
@@ -641,10 +1014,10 @@ function setSlideRailVisible(next,persist=true){state.ui.slideRail=!!next;if(per
 function toggleSlideRail(){setSlideRailVisible(!isSlideRailVisible());render()}
 function propertyWidth(){return Math.max(280,Math.min(820,+state.ui.propertyWidth||360))}
 function setPropertyWidth(value,persist=false){const max=Math.max(300,Math.min(820,window.innerWidth-24));const width=Math.max(280,Math.min(max,+value||360));state.ui.propertyWidth=width;document.documentElement.style.setProperty('--property-panel-width',width+'px');if(persist)noteChange()}
-function noteChange(){dirty=true;$('#status').textContent='Modifiche non esportate';$('#status').title='Il documento modificato è nella pagina corrente. Salva lavoro richiede il download di una nuova copia.'}
+function noteChange(){dirty=true;$('#status').textContent='Modifiche non esportate';$('#status').title='Il documento modificato è nella pagina corrente. Salva lavoro richiede il download di una nuova copia.';scheduleRecoveryDraft()}
 function checkpoint(){past.push(JSON.stringify(state));if(past.length>70)past.shift();future=[];textTx=null;updateHistory()}
 function editActive(){return !presenting&&!publicMode&&(!$('#quickEditor').hidden||!!editingId||$('#propertyPanel').classList.contains('drawer-open'))}
-function syncEditBar(){const bar=$('#editActionBar');if(!bar)return;bar.hidden=!editActive();$('#editBack').disabled=!past.length&&!editingId;$('#editForward').disabled=!future.length}
+function syncEditBar(){const bar=$('#editActionBar');if(!bar)return;const editing=editActive();bar.hidden=presenting||publicMode;$('#editActionLabel').textContent=editing?'In modifica':'Comandi';$('#editBack').disabled=!past.length&&!editingId;$('#editForward').disabled=!future.length;$('#editOk').disabled=!editing}
 function updateHistory(){$('#undoBtn').disabled=!past.length;$('#redoBtn').disabled=!future.length;for(const id of ['undoTemplateBtn']){const b=$('#'+id);if(b)b.disabled=!past.length}for(const id of ['redoTemplateBtn']){const b=$('#'+id);if(b)b.disabled=!future.length}syncEditBar()}
 function commit(fn,rerender=true){checkpoint();fn();noteChange();if(rerender)render()}
 function undo(){if(!past.length)return;future.push(JSON.stringify(state));state=JSON.parse(past.pop());selectedId=null;selectedLinkId=null;textTx=null;noteChange();render()}
@@ -653,7 +1026,7 @@ function toast(msg){const box=$('#toast');box.textContent=msg;box.classList.add(
 function el(tag,cls,txt){let a=document.createElement(tag);if(cls)a.className=cls;if(txt!==undefined)a.textContent=txt;return a}
 
 
-function closeQuick(){if(quickTimer){clearTimeout(quickTimer);quickTimer=null}const q=$('#quickEditor');q.hidden=true;q.classList.remove('expanded');q.dataset.expanded='false';q.replaceChildren();quickTarget=null;syncEditBar();const back=quickBeforeFocus;quickBeforeFocus=null;if(back&&typeof back.focus==='function')setTimeout(()=>{try{back.focus({preventScroll:true})}catch(err){}},0)}
+function closeQuick(){if(portPickerLinkId){portPickerLinkId=null;updateLinkPositions()}if(quickTimer){clearTimeout(quickTimer);quickTimer=null}const q=$('#quickEditor');q.hidden=true;q.classList.remove('expanded');q.dataset.expanded='false';q.replaceChildren();quickTarget=null;syncEditBar();const back=quickBeforeFocus;quickBeforeFocus=null;if(back&&typeof back.focus==='function')setTimeout(()=>{try{back.focus({preventScroll:true})}catch(err){}},0)}
 function quickWindow(){return state.ui.quickWindow||(state.ui.quickWindow={manual:false,expanded:false})}
 function setQuickExpanded(expanded){const q=$('#quickEditor');const w=quickWindow();w.expanded=!!expanded;if(expanded){w.manual=false;q.classList.add('expanded');q.dataset.expanded='true';q.style.left='';q.style.top='';q.style.width='';q.style.height='';}else{q.classList.remove('expanded');q.dataset.expanded='false';if(!w.manual){q.style.left='';q.style.top='';q.style.width='';q.style.height='';positionQuick()}}noteChange()}
 function toggleQuickExpanded(){setQuickExpanded(!$('#quickEditor').classList.contains('expanded'))}
@@ -700,7 +1073,17 @@ function openQuick(kind,id,anchor){closeQuick();const q=$('#quickEditor');let ta
   const extra=quickDisclosure(q);quickNumber(extra,'Spessore',target.width||3,1,16,v=>qCommit(()=>target.width=v));
   quickColor(extra,'Colore freccia',target.color||'#087b70',v=>qCommit(()=>target.color=v));
   quickSelect(extra,'Percorso', [['smart','Automatico · evita i riquadri'],['straight','Dritto'],['orthogonal','Ad angoli morbidi'],['curve','Curva manuale']],routeMode(target),v=>qCommit(()=>{target.routeMode=v;target.curve=v==='curve';delete target.control;delete target.bend}));
-  const actions=el('div','quick-actions');actions.append(toolButton('↻ Sistema freccia',()=>qCommit(()=>{target.routeMode='smart';target.curve=false;delete target.bend;delete target.control;delete target.labelDx;delete target.labelDy;target.fromAnchor='auto';target.toAnchor='auto';delete target.fromPort;delete target.toPort})));actions.append(toolButton('Elimina',()=>{commit(()=>{current().links=current().links.filter(l=>l.id!==id);selectedLinkId=null});closeQuick()},'tiny danger'));q.append(actions);
+  const portPicker=toolButton('◎ Scegli agganci',()=>{
+    const opening=portPickerLinkId!==id;
+    selectedLinkId=id;selectedId=null;portPickerLinkId=opening?id:null;
+    portPicker.setAttribute('aria-pressed',String(opening));
+    portPicker.textContent=opening?'✓ Termina agganci':'◎ Scegli agganci';
+    updateLinkPositions();
+   },'tiny');
+  portPicker.id='portPickerToggle';
+  portPicker.title='Mostra i punti solo mentre scegli dove agganciare la freccia';
+  portPicker.setAttribute('aria-pressed',String(portPickerLinkId===id));
+  const actions=el('div','quick-actions');actions.append(portPicker);actions.append(toolButton('↻ Sistema freccia',()=>qCommit(()=>{target.routeMode='smart';target.curve=false;delete target.bend;delete target.control;delete target.labelDx;delete target.labelDy;target.fromAnchor='auto';target.toAnchor='auto';delete target.fromPort;delete target.toPort})));actions.append(toolButton('Elimina',()=>{commit(()=>{current().links=current().links.filter(l=>l.id!==id);selectedLinkId=null});closeQuick()},'tiny danger'));q.append(actions);
  }else{
   const node=target;
   if(node.type!=='image')quickText(q,node.type==='note'?'Appunto':'Testo',node.text,v=>qCommit(()=>node.text=v));
@@ -754,11 +1137,11 @@ function openPanel(which,focusSelector){
   if(target)requestAnimationFrame(()=>target.focus({preventScroll:true}));
  }
 }
-function selectNode(id,show=true){selectedLinkId=null;selectedId=id;editingId=null;$$('#canvas .node').forEach(d=>d.classList.toggle('is-selected',d.dataset.id===id));
+function selectNode(id,show=true){selectedLinkId=null;portPickerLinkId=null;selectedId=id;editingId=null;$$('#canvas .node').forEach(d=>d.classList.toggle('is-selected',d.dataset.id===id));
  for(const d of $$('#canvas .node')){d.querySelector('.resize-handle')?.remove();if(d.dataset.id===id){const n=selected();if(n)addHandle(d,n)}}
  renderLayers(); // La selezione non apre automaticamente l’editor generale.
 }
-function selectLink(id,show=true){editingId=null;selectedId=null;selectedLinkId=id;
+function selectLink(id,show=true){editingId=null;selectedId=null;selectedLinkId=id;portPickerLinkId=null;
  $$(' #canvas .node'.trim()).forEach(d=>{d.classList.remove('is-selected');d.querySelector('.resize-handle')?.remove()});
  updateLinkPositions();renderLayers();}
 function cancelDirectEdit(commitText=true){
@@ -795,7 +1178,7 @@ function changeOrder(delta){let n=selected();if(!n)return;let a=current().elemen
 function createLayout(kind){const layouts={two:[{x:70,y:228,w:515,h:335},{x:615,y:228,w:515,h:335}],three:[{x:58,y:228,w:342,h:335},{x:428,y:228,w:342,h:335},{x:798,y:228,w:342,h:335}],grid:[{x:58,y:205,w:540,h:183},{x:617,y:205,w:540,h:183},{x:58,y:403,w:540,h:183},{x:617,y:403,w:540,h:183}]};
  if(!layouts[kind])return;commit(()=>{for(let i=0;i<layouts[kind].length;i++)current().elements.unshift({id:uid('el'),type:'section',...layouts[kind][i],text:'Sezione '+(i+1),fontSize:18,color:'#4a7180',fill:state.theme==='dark'||state.theme==='graphite'?'#2e4558':'#f1f6f6',align:'left'})});toast('Sezioni layout aggiunte. Puoi trascinarle e inserire elementi al loro interno.');}
 function addConnection(){const s=current(),candidates=s.elements.filter(n=>['card','tag'].includes(n.type)&&!n.collapsed),from=selected()||candidates[0]||s.elements.find(n=>n.type!=='section'&&n.type!=='note'),to=candidates.find(n=>n.id!==from?.id)||s.elements.find(n=>n.id!==from?.id&&n.type!=='section'&&n.type!=='note');let l={id:uid('link'),from:from?.id||null,to:to?.id||null,label:'relazione',width:3,color:'#087b70',lineStyle:'solid',arrow:true,heads:'end',fromPoint:{x:220,y:370},toPoint:{x:850,y:370}};commit(()=>{s.links.push(l);selectedId=null;selectedLinkId=l.id});}
-function beginLinkEndpoint(e,id,side){if(presenting||e.button!==0)return;e.preventDefault();e.stopPropagation();selectedLinkId=id;selectedId=null;const l=linkSelected();if(!l)return;const before=safeClone(l);let changed=false;
+function beginLinkEndpoint(e,id,side){if(presenting||e.button!==0)return;e.preventDefault();e.stopPropagation();portPickerLinkId=null;selectedLinkId=id;selectedId=null;const l=linkSelected();if(!l)return;const before=safeClone(l);let changed=false;
  const move=ev=>{if(ev.pointerId!==e.pointerId)return;const p=canvasPoint(ev);if(!changed&&Math.hypot(p.x-canvasPoint(e).x,p.y-canvasPoint(e).y)<2)return;changed=true;l[side]=null;l[side+'Point']={x:Math.round(p.x),y:Math.round(p.y)};updateLinkPositions()};
  const done=ev=>{if(ev.pointerId!==e.pointerId)return;window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',done);window.removeEventListener('pointercancel',done);if(!changed){selectLink(id,false);return}let p=canvasPoint(ev),node=itemAt(p.x,p.y,null);const target=closestPortAt(current(),p.x,p.y,l[side==='from'?'to':'from']);
  const after={...safeClone(l)};if(target){after[side]=target.node.id;after[side+'Anchor']=target.side;after[side+'Port']=target.slot;delete after[side+'Point']}
@@ -913,11 +1296,36 @@ function routeScore(points,fromSide,toSide,boxes,source,target,label){
  const facing=(fromSide!=='free'&&out<.25?2100:0)+(toSide!=='free'&&into<.25?2100:0);
  const labels=labelCandidates(points,label,boxes);const outside=points.reduce((v,p)=>v+Math.max(0,-p.x)+Math.max(0,p.x-WIDTH)+Math.max(0,-p.y)+Math.max(0,p.y-HEIGHT),0);
  // A line shorter than the arrowhead(s) is never a legible relation.
- const tiny=length<62?(62-length)*75:0;
+ const tiny=length<24?(24-length)*5:0;
  let tight=0;for(let i=1;i<points.length-2;i++){let a=points[i],b=points[i+1];if(Math.hypot(a.x-b.x,a.y-b.y)<12)tight+=25}
  return {score:length+turns*18+violations*3900+facing+outside*12+labels.penalty+tiny+tight,labelPos:labels.pos,violations};
 }
+function nearFacingRoute(scene,l,orthogonalOnly){
+ const a=scene.elements.find(n=>n.id===l.from),b=scene.elements.find(n=>n.id===l.to);
+ if(!a||!b||a.id===b.id||a.collapsed||b.collapsed)return null;
+ const fx=l.fromAnchor||'auto',tx=l.toAnchor||'auto',ax=a.x+a.w/2,ay=a.y+a.h/2,bx=b.x+b.w/2,by=b.y+b.h/2;
+ const horizontalOverlap=Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y);
+ const verticalOverlap=Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x);
+ const horizontalGap=bx>ax?b.x-(a.x+a.w):a.x-(b.x+b.w);
+ const verticalGap=by>ay?b.y-(a.y+a.h):a.y-(b.y+b.h);
+ const horizontal=horizontalGap>=0&&horizontalGap<=120&&horizontalOverlap>12;
+ const vertical=verticalGap>=0&&verticalGap<=120&&verticalOverlap>12;
+ if(!horizontal&&!vertical)return null;
+ const preferredHorizontal=horizontal&&(!vertical||Math.abs(bx-ax)>=Math.abs(by-ay));
+ const fromSide=preferredHorizontal?(bx>ax?'right':'left'):(by>ay?'bottom':'top');
+ const toSide=({right:'left',left:'right',top:'bottom',bottom:'top'})[fromSide];
+ if(!['auto',fromSide].includes(fx)||!['auto',toSide].includes(tx))return null;
+ const start=routeOptions(scene,l,'from',a,fromSide)[0].point,end=routeOptions(scene,l,'to',b,toSide)[0].point;
+ const gap=preferredHorizontal?horizontalGap:verticalGap;
+ const mid=preferredHorizontal?(start.x+end.x)/2:(start.y+end.y)/2;
+ let pts=orthogonalOnly?(preferredHorizontal?[start,{x:mid,y:start.y},{x:mid,y:end.y},end]:[start,{x:start.x,y:mid},{x:end.x,y:mid},end]):[start,end];
+ pts=simplifyPath(pts);
+ const d=polyPath(pts,Math.min(12,Math.max(2,gap/5)));
+ const labelBase=labelCandidates(pts,l.label,nodeRouteBoxes(scene)).pos;
+ return{start,end,points:pts,d,labelBase,kind:orthogonalOnly?'orthogonal':'direct',fromSide,toSide,fromSlot:null,toSlot:null,violations:0};
+}
 function bestAutoRoute(scene,l,orthogonalOnly=false){
+ const closeRoute=nearFacingRoute(scene,l,orthogonalOnly);if(closeRoute)return closeRoute;
  const a=scene.elements.find(n=>n.id===l.from),b=scene.elements.find(n=>n.id===l.to);
  const starts=routeOptions(scene,l,'from',a,l.fromAnchor,l.fromPoint||{x:220,y:370});
  const ends=routeOptions(scene,l,'to',b,l.toAnchor,l.toPoint||{x:850,y:370});
@@ -965,7 +1373,7 @@ function drawAvailablePorts(svg,scene,l,make){if(!l)return;
    const p=portPoint(n,side,index),dot=make('circle','port-choice');
    dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);dot.setAttribute('r',index===chosenPort&&side===chosenSide?'6.5':'4.2');dot.style.stroke=l.color||'#087b70';dot.style.fill='#fff';
    dot.setAttribute('aria-label',(role==='from'?'Origine':'Destinazione')+' · '+({right:'destra',left:'sinistra',top:'alto',bottom:'basso'})[side]+' · aggancio '+(index+1));dot.setAttribute('tabindex','0');
-   const set=()=>{commit(()=>{l[role+'Anchor']=side;l[role+'Port']=index});selectLink(l.id,false)};
+   const set=()=>{portPickerLinkId=null;const picker=$('#portPickerToggle');if(picker){picker.textContent='◎ Scegli agganci';picker.setAttribute('aria-pressed','false')}commit(()=>{l[role+'Anchor']=side;l[role+'Port']=index});selectLink(l.id,false)};
    dot.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();set()});
    dot.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();set()}});
    svg.append(dot)
@@ -993,7 +1401,7 @@ function drawArrowLayer(container,scene,mode){const ns='http://www.w3.org/2000/s
   for(const[side,p]of fromEnd){const h=make('circle','edge-handle');h.setAttribute('cx',p.x);h.setAttribute('cy',p.y);h.setAttribute('r','10');h.style.stroke=color;h.setAttribute('tabindex','0');h.setAttribute('aria-label',side==='from'?'Sposta origine della freccia':'Sposta destinazione della freccia');h.addEventListener('pointerdown',e=>beginLinkEndpoint(e,l.id,side));svg.append(h)}
   const middle=make('circle','edge-middle');middle.setAttribute('cx',mid.x);middle.setAttribute('cy',mid.y);middle.setAttribute('r','10');middle.setAttribute('tabindex','0');middle.setAttribute('aria-label','Trascina il centro per modellare il percorso');middle.addEventListener('pointerdown',e=>beginLinkMiddle(e,l.id));middle.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();openQuick('link',l.id)}});svg.append(middle)}
  }
- if(mode==='edit'&&selectedLinkId){const active=scene.links.find(l=>l.id===selectedLinkId);if(active)drawAvailablePorts(svg,scene,active,make)}
+ if(mode==='edit'&&portPickerLinkId&&portPickerLinkId===selectedLinkId){const active=scene.links.find(l=>l.id===portPickerLinkId);if(active)drawAvailablePorts(svg,scene,active,make)}
  container.append(svg)
 }
 function beginLinkLabel(e,id){if(presenting||e.button!==0)return;e.preventDefault();e.stopPropagation();closeQuick();const l=current().links.find(n=>n.id===id);if(!l)return;selectedLinkId=id;selectedId=null;const original={dx:+l.labelDx||0,dy:+l.labelDy||0},at=canvasPoint(e);let moved=false;
@@ -1002,13 +1410,33 @@ function beginLinkLabel(e,id){if(presenting||e.button!==0)return;e.preventDefaul
   if(moved){const after={dx:l.labelDx,dy:l.labelDy};l.labelDx=original.dx;l.labelDy=original.dy;checkpoint();l.labelDx=after.dx;l.labelDy=after.dy;noteChange();render()}
   else{clickArrow(ev,id)}};window.addEventListener('pointermove',move);window.addEventListener('pointerup',done);window.addEventListener('pointercancel',done)}
 
+
+// Studio 18: fit the flat work stage to the visible viewport, not the page width alone.
+let flatFitFrame=0;
+function scheduleFlatFit(){if(flatFitFrame)cancelAnimationFrame(flatFitFrame);flatFitFrame=requestAnimationFrame(()=>{flatFitFrame=0;fitFlatStage()})}
+function fitFlatStage(){
+ const stage=$('#canvasViewport');
+ if(!stage)return;
+ if(readingMode||presenting){stage.style.removeProperty('--flat-stage-height');stage.style.removeProperty('--flat-fit-width');return}
+ const stageRect=stage.getBoundingClientRect();
+ const dock=$('#editActionBar');
+ const controls=[$('#viewportControls'),document.querySelector('.editor-main .bottom'),dock].filter(Boolean);
+ // The distance between the stage and the last control is independent of stage height.
+ const last=Math.max(...controls.map(x=>x.getBoundingClientRect().bottom));
+ const below=Math.max(0,last-stageRect.bottom);
+ const available=Math.max(140,Math.floor(window.innerHeight-stageRect.top-below-8));
+ const fitWidth=Math.max(240,Math.floor(available*16/9));
+ stage.style.setProperty('--flat-stage-height',available+'px');
+ stage.style.setProperty('--flat-fit-width',fitWidth+'px');
+}
+
 function updateView(){
  document.body.classList.toggle('reading-mode',readingMode&&!presenting);
  document.body.classList.toggle('public-copy',publicMode);
  const reader=$('#readingView'),viewport=$('#canvasViewport'),vc=$('#viewportControls');
  reader.hidden=!readingMode||presenting;viewport.hidden=readingMode&&!presenting;vc.hidden=readingMode||presenting;
  const b=$('#viewBtn');b.textContent=readingMode?'▦ Componi':'☷ Leggi';b.setAttribute('aria-pressed',String(readingMode));
- $('#zoomValue').textContent=Math.round(zoom*100)+'%';$('#canvasViewport').style.setProperty('--ccm-zoom',String(zoom));
+ $('#zoomValue').textContent=Math.round(zoom*100)+'%';$('#canvasViewport').style.setProperty('--ccm-zoom',String(zoom));scheduleFlatFit();
  if(publicMode){$('#docTitle').readOnly=true;$('#docTitle').title='Titolo della versione pubblica';$('#status').textContent='Versione da condividere'}
 }
 function changeView(read){if(publicMode)return;readingMode=read;state.ui.viewMode=read?'read':'compose';closeQuick();openPanel(null);noteChange();render();}
@@ -1031,7 +1459,7 @@ function markTextOverflow(){if(readingMode||presenting||publicMode)return;const 
  if(tooLong&&!box.querySelector('.node-overflow')){const btn=el('button','node-overflow','!');btn.type='button';btn.title='Contenuto non interamente visibile: apri per modificarlo o consulta la vista Leggi';btn.setAttribute('aria-label',btn.title);btn.onclick=e=>{e.stopPropagation();openQuick('node',n.id)};btn.onpointerdown=e=>e.stopPropagation();box.append(btn)}
 }}
 
-function render(){document.body.dataset.theme=state.theme;document.body.classList.toggle('flat-layout',state.ui.flatLayout===true);for(const id of ['flatLayoutBtn','toolFlatToggle']){const b=$('#'+id);if(b){b.setAttribute('aria-pressed',String(state.ui.flatLayout===true));b.title=state.ui.flatLayout?'Torna al layout standard':'Allarga lo spazio di lavoro e riduci i margini'}}document.documentElement.style.setProperty('--slide-rail-width',state.ui.slideRailWidth+'px');applyToolPanelSize(state.ui.toolWidth,state.ui.toolHeight,false);selectedId=hasNode()?selectedId:null;if(selectedLinkId&&!linkSelected())selectedLinkId=null;document.body.classList.toggle('hide-slide-rail',!isSlideRailVisible());setPropertyWidth(propertyWidth(),false);renderSlides();renderCanvas();renderReading();renderInspector();renderLibrary();renderSavedTemplates();renderLayers();renderThemePalette();$('#docTitle').value=state.title;$('#theme').value=state.theme;document.body.dataset.dock=state.ui.dock||'right';$('#snapToggle').checked=snapOn;$('#pdfDetails').checked=state.ui.printDetails!==false;$$('#dockOptions [data-dock]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dock===(state.ui.dock||'right'))));$('#slideTitle').textContent=current().title;let ix=state.scenes.findIndex(s=>s.id===current().id);$('#slideNum').textContent=' '+String(ix+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');$('#presentCount').textContent=(ix+1)+' / '+state.scenes.length;$('#prevBtn').disabled=ix===0;$('#nextBtn').disabled=ix===state.scenes.length-1;$('#presentPrev').disabled=ix===0;$('#presentNext').disabled=ix===state.scenes.length-1;$('#upSlide').disabled=ix===0;$('#downSlide').disabled=ix===state.scenes.length-1;$('#deleteSlide').disabled=state.scenes.length===1;const railToggle=$('#toggleSlideRail');if(railToggle){railToggle.setAttribute('aria-pressed',String(isSlideRailVisible()));railToggle.title=isSlideRailVisible()?'Nascondi le schede sul lato sinistro':'Mostra le schede sul lato sinistro'}updateHistory();updateView();syncEditBar();requestAnimationFrame(markTextOverflow)}
+function render(){document.body.dataset.theme=state.theme;document.body.classList.toggle('flat-layout',state.ui.flatLayout===true);for(const id of ['flatLayoutBtn','toolFlatToggle']){const b=$('#'+id);if(b){b.setAttribute('aria-pressed',String(state.ui.flatLayout===true));b.title=state.ui.flatLayout?'Torna al layout standard':'Allarga lo spazio di lavoro e riduci i margini'}}document.documentElement.style.setProperty('--slide-rail-width',state.ui.slideRailWidth+'px');applyToolPanelSize(state.ui.toolWidth,state.ui.toolHeight,false);selectedId=hasNode()?selectedId:null;if(selectedLinkId&&!linkSelected())selectedLinkId=null;document.body.classList.toggle('hide-slide-rail',!isSlideRailVisible());setPropertyWidth(propertyWidth(),false);renderSlides();renderCanvas();renderReading();renderInspector();renderLibrary();renderSavedTemplates();renderLayers();renderThemePalette();$('#docTitle').value=state.title;$('#theme').value=state.theme;document.body.dataset.dock=state.ui.dock||'right';$('#snapToggle').checked=snapOn;$('#pdfDetails').checked=state.ui.printDetails!==false;$$('#dockOptions [data-dock]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dock===(state.ui.dock||'right'))));$('#slideTitle').textContent=current().title;let ix=state.scenes.findIndex(s=>s.id===current().id);$('#slideNum').textContent=' '+String(ix+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');$('#flatSlideTitle').textContent=current().title+' · '+String(ix+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');$('#presentCount').textContent=(ix+1)+' / '+state.scenes.length;$('#prevBtn').disabled=ix===0;$('#nextBtn').disabled=ix===state.scenes.length-1;$('#presentPrev').disabled=ix===0;$('#presentNext').disabled=ix===state.scenes.length-1;$('#upSlide').disabled=ix===0;$('#downSlide').disabled=ix===state.scenes.length-1;$('#deleteSlide').disabled=state.scenes.length===1;const railToggle=$('#toggleSlideRail');if(railToggle){railToggle.setAttribute('aria-pressed',String(isSlideRailVisible()));railToggle.title=isSlideRailVisible()?'Nascondi le schede sul lato sinistro':'Mostra le schede sul lato sinistro'}updateHistory();updateView();syncEditBar();scheduleFlatFit();requestAnimationFrame(markTextOverflow)}
 
 function makeSlideThumb(scene){
  const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 1200 675');svg.setAttribute('role','img');svg.setAttribute('aria-label','Miniatura di '+(scene.title||'Scheda'));
@@ -1041,13 +1469,16 @@ function makeSlideThumb(scene){
  const byId=new Map(elems.map(e=>[e.id,e]));
  for(let l of (scene.links||[])){
   let a=byId.get(l.from),b=byId.get(l.to);if(!a||!b)continue;
-  let x1=a.x+a.w/2,y1=a.y+a.h/2,x2=b.x+b.w/2,y2=b.y+b.h/2;
-  svg.append(make('path',{d:`M${x1} ${y1} L${x2} ${y2}`,fill:'none',stroke:l.color||'#087b70','stroke-width':5,opacity:.8}));
+  const route=computeRoute(scene,l);
+  svg.append(make('path',{d:route.d,fill:'none',stroke:l.color||'#087b70','stroke-width':Math.max(3,+l.width||3),opacity:.85}));
  }
  for(let n of elems){
   const w=Math.max(14,n.w||60),h=Math.max(12,n.h||36),x=n.x||0,y=n.y||0;
   if(n.type!=='text')svg.append(make('rect',{x,y,width:w,height:h,rx:(n.shape==='circle'||n.shape==='oval')?Math.min(w,h)/2:14,fill:n.fill&&n.fill!=='transparent'?n.fill:'#e8f3f1',stroke:'#b8cbd2','stroke-width':2}));
-  if(n.type==='image')continue;
+  if(n.type==='image'){
+   if(typeof n.src==='string'&&/^data:image\/(?:png|jpeg|webp);base64,/i.test(n.src))svg.append(make('image',{x,y,width:w,height:h,href:n.src,preserveAspectRatio:'xMidYMid meet'}));
+   continue;
+  }
   const lines=String(n.text||'').split('\n').slice(0,2);for(let i=0;i<lines.length;i++){
    const t=make('text',{x:x+Math.min(w-5,14),y:y+Math.min(h-8,32)+i*23,fill:n.color||'#183146','font-size':Math.min(26,Math.max(14,n.fontSize||22)),'font-family':'system-ui,Arial'});
    t.textContent=lines[i].slice(0,44);svg.append(t);
@@ -1061,17 +1492,33 @@ function renderSlideList(){
   const go=()=>{state.activeSceneId=s.id;selectedId=null;selectedLinkId=null;render()};
   let row=el('div','slide-chip'+(s.id===state.activeSceneId?' active':''));let btn=el('button','sel'),no=el('span','idx',String(i+1).padStart(2,'0')),title=el('span','label',s.title||'Scheda senza titolo');btn.append(no,title);btn.title='Vai alla scheda';btn.onclick=go;row.append(btn);list.append(row);
   if(!rail)return;
+  const wrapper=el('div','slide-rail-row');wrapper.dataset.sceneId=s.id;
   let chip=el('button','slide-rail-chip'+(s.id===state.activeSceneId?' active':''));chip.type='button';chip.title='Vai alla scheda';chip.setAttribute('aria-current',s.id===state.activeSceneId?'page':'false');
   if(state.ui.slideView==='thumbs'){let mini=el('span','slide-rail-thumb');mini.append(makeSlideThumb(s));chip.append(mini)}else chip.append(el('span','idx',String(i+1).padStart(2,'0')));
-  let txt=el('span','txt');txt.append(el('span','label',s.title||'Scheda senza titolo'));txt.append(el('span','meta',String((s.elements||[]).length)+' elementi'));chip.append(txt);chip.onclick=go;rail.append(chip);
+  let txt=el('span','txt');txt.append(el('span','label',s.title||'Scheda senza titolo'));txt.append(el('span','meta',String((s.elements||[]).length)+' elementi'));chip.append(txt);chip.onclick=go;wrapper.append(chip);
+  const controls=el('div','slide-rail-actions'),upper=toolButton('↑',()=>moveSceneById(s.id,-1)),lower=toolButton('↓',()=>moveSceneById(s.id,1));
+  upper.setAttribute('aria-label','Sposta sopra la scheda '+(s.title||String(i+1)));upper.title='Sposta scheda sopra';upper.disabled=i===0;
+  lower.setAttribute('aria-label','Sposta sotto la scheda '+(s.title||String(i+1)));lower.title='Sposta scheda sotto';lower.disabled=i===state.scenes.length-1;
+  const grip=toolButton('☷',()=>{},'tiny slide-rail-drag');grip.title='Trascina per riordinare la scheda';grip.setAttribute('aria-label','Trascina per riordinare '+(s.title||String(i+1)));
+  grip.draggable=true;grip.addEventListener('dragstart',e=>{if(!e.dataTransfer)return;e.dataTransfer.setData('text/x-metacanvas-scene',s.id);e.dataTransfer.effectAllowed='move';wrapper.classList.add('dragged')});
+  grip.addEventListener('dragend',()=>{$$('#slideRailList .slide-rail-row').forEach(x=>x.classList.remove('dragged','drop-target'))});
+  controls.append(upper,lower,grip);wrapper.append(controls);
+  wrapper.addEventListener('dragover',e=>{if(!e.dataTransfer?.types?.includes('text/x-metacanvas-scene'))return;e.preventDefault();e.dataTransfer.dropEffect='move';wrapper.classList.add('drop-target');wrapper.classList.toggle('drop-after',e.clientY>wrapper.getBoundingClientRect().top+wrapper.getBoundingClientRect().height/2)});
+  wrapper.addEventListener('dragleave',e=>{if(!wrapper.contains(e.relatedTarget))wrapper.classList.remove('drop-target','drop-after')});
+  wrapper.addEventListener('drop',e=>{let src=e.dataTransfer?.getData('text/x-metacanvas-scene');if(!src)return;e.preventDefault();e.stopPropagation();reorderSceneRelative(src,s.id,wrapper.classList.contains('drop-after'))});
+  rail.append(wrapper);
  });
  $('#slideRailViewList').setAttribute('aria-pressed',String(state.ui.slideView!=='thumbs'));
  $('#slideRailViewThumbs').setAttribute('aria-pressed',String(state.ui.slideView==='thumbs'));
 }
-function toolPanelSize(){return Math.max(315,Math.min(820,+state.ui.toolWidth||360))}
+function toolPanelSize(){return Math.max(315,Math.min(1240,+state.ui.toolWidth||360))}
 function applyToolPanelSize(width,height,record=false,live=false){
  const viewportWidth=window.innerWidth>0?window.innerWidth:1200,viewportHeight=window.innerHeight>0?window.innerHeight:850;
- const maxW=Math.max(315,Math.min(820,viewportWidth-26)),maxH=Math.max(220,Math.min(710,viewportHeight-90));
+ const maxW=Math.max(315,Math.min((state.ui.dock||'right')==='float'?1240:780,(state.ui.dock||'right')==='float'?viewportWidth-26:viewportWidth*0.75,viewportWidth-26));
+ const dock=state.ui.dock||'right',panel=$('#toolPanel');
+ const top=dock==='float'?(panel?.classList.contains('drawer-open')?panel.getBoundingClientRect().top:104):dock==='top'?62:0;
+ // Floating height is bounded by the ACTUAL top position, not by the old fixed 710 px cap.
+ const maxH=Math.max(220,Math.floor(viewportHeight-Math.max(0,top)-10));
  const w=Math.max(315,Math.min(maxW,+width||360)),h=Math.max(220,Math.min(maxH,+height||400));
  // A responsive projection must not overwrite the operator's saved desktop geometry.
  if(record||live){state.ui.toolWidth=w;state.ui.toolHeight=h}
@@ -1080,12 +1527,25 @@ function applyToolPanelSize(width,height,record=false,live=false){
 }
 function updateFloatGrip(){const grip=$('#toolCornerResize'),panel=$('#toolPanel');if(!grip||!panel)return;
  const enabled=(state.ui.dock||'right')==='float'&&window.innerWidth>=700&&panel.classList.contains('drawer-open');
- const edge=$('#toolResizeHandle');const edgeEnabled=window.innerWidth>=700&&panel.classList.contains('drawer-open');edge.hidden=!edgeEnabled;
+ const heightGrip=$('#toolHeightResize'),edge=$('#toolResizeHandle');const edgeEnabled=window.innerWidth>=700&&panel.classList.contains('drawer-open');edge.hidden=!edgeEnabled;heightGrip.hidden=!enabled;
  const r=panel.getBoundingClientRect();if(edgeEnabled){const dock=state.ui.dock||'right',vertical=['left','right','float'].includes(dock);edge.style.width=(vertical?11:r.width)+'px';edge.style.height=(vertical?r.height:11)+'px';edge.style.left=(dock==='right'||dock==='float'?r.left:dock==='left'?r.right-11:r.left)+'px';edge.style.top=(dock==='bottom'?r.top:vertical?r.top:r.bottom-11)+'px';}
  grip.hidden=!enabled;if(!enabled)return;
+ heightGrip.style.left=Math.max(0,r.left+(r.width-84)/2)+'px';heightGrip.style.top=Math.max(0,r.bottom-9)+'px';
  grip.style.left=Math.max(0,r.right-28)+'px';grip.style.top=Math.max(0,r.bottom-28)+'px';}
+function initResponsiveToolTemplate(){
+ const panel=$('#toolPanel'),indicator=$('#toolLayoutState');
+ if(!panel||!indicator)return;
+ const update=()=>{
+  const r=panel.getBoundingClientRect();
+  if(!r.width||!r.height)return;
+  const columns=r.width>=1000?3:r.width>=650?2:1;
+  panel.dataset.vertical=r.height<365?'tight':r.height<555?'short':'regular';
+  indicator.textContent='Layout automatico · '+columns+' '+(columns===1?'colonna':'colonne');
+ };
+ const observer=new ResizeObserver(update);observer.observe(panel);update();
+}
 function initStudio12Controls(){
- document.body.appendChild($('#toolCornerResize'));document.body.appendChild($('#toolResizeHandle'));updateFloatGrip();
+ document.body.appendChild($('#toolCornerResize'));document.body.appendChild($('#toolResizeHandle'));document.body.appendChild($('#toolHeightResize'));updateFloatGrip();
  $('#slideRailViewList').onclick=()=>{state.ui.slideView='list';noteChange();renderSlideList()};
  $('#slideRailViewThumbs').onclick=()=>{state.ui.slideView='thumbs';noteChange();renderSlideList()};
  $('#toolNarrow').onclick=()=>applyToolPanelSize(toolPanelSize()-100,state.ui.toolHeight,true);
@@ -1098,8 +1558,8 @@ function initStudio12Controls(){
   try{handle.setPointerCapture(pid)}catch(_){}
   let changed=false;
   const move=ev=>{if(ev.pointerId!==pid)return;
-    const maxW=Math.max(315,Math.min(820,window.innerWidth-r.left-12));
-    const maxH=Math.max(220,Math.min(710,window.innerHeight-r.top-10));
+    const maxW=Math.max(315,Math.min(1240,window.innerWidth-r.left-12));
+    const maxH=Math.max(220,window.innerHeight-r.top-10);
     const nextW=Math.max(315,Math.min(maxW,w+ev.clientX-x));
     const nextH=Math.max(220,Math.min(maxH,h+ev.clientY-y));
     applyToolPanelSize(nextW,nextH,false,true);changed=true;};
@@ -1109,10 +1569,25 @@ function initStudio12Controls(){
  $('#toolWide').onclick=()=>applyToolPanelSize(toolPanelSize()+100,state.ui.toolHeight,true);
  const h=$('#toolResizeHandle');h.addEventListener('pointerdown',e=>{
   if(e.button!==0||window.innerWidth<700)return;
-  e.preventDefault();e.stopPropagation();$('#toolPanel').classList.add('resizing');const startX=e.clientX,startY=e.clientY,w=toolPanelSize(),height=state.ui.toolHeight||400,dock=state.ui.dock||'right';
-  const move=ev=>{let nx=w,ny=height;if(dock==='right'||dock==='float')nx=w+(startX-ev.clientX);else if(dock==='left')nx=w+(ev.clientX-startX);else if(dock==='top')ny=height+(ev.clientY-startY);else if(dock==='bottom')ny=height+(startY-ev.clientY);applyToolPanelSize(nx,ny,false,true)};
-  const end=()=>{$('#toolPanel').classList.remove('resizing');window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',end);noteChange()};
-  window.addEventListener('pointermove',move);window.addEventListener('pointerup',end,{once:true});
+  e.preventDefault();e.stopPropagation();const panel=$('#toolPanel'),r=panel.getBoundingClientRect();panel.classList.add('resizing');
+  const startX=e.clientX,startY=e.clientY,w=r.width,height=r.height,dock=state.ui.dock||'right',fixedRight=r.right;
+  if(dock==='float'){panel.style.left=r.left+'px';panel.style.right='auto';panel.style.top=r.top+'px'}
+  let changed=false;
+  const move=ev=>{let nx=w,ny=height;if(dock==='right'||dock==='float')nx=w+(startX-ev.clientX);else if(dock==='left')nx=w+(ev.clientX-startX);else if(dock==='top')ny=height+(ev.clientY-startY);else if(dock==='bottom')ny=height+(startY-ev.clientY);
+    if(dock==='float')nx=Math.min(nx,fixedRight-9);
+    applyToolPanelSize(nx,ny,false,true);
+    if(dock==='float')panel.style.left=(fixedRight-panel.getBoundingClientRect().width)+'px';
+    changed=true;requestAnimationFrame(updateFloatGrip)};
+  const end=()=>{panel.classList.remove('resizing');window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',end);window.removeEventListener('pointercancel',end);if(changed)noteChange()};
+  window.addEventListener('pointermove',move);window.addEventListener('pointerup',end);window.addEventListener('pointercancel',end);
+ });
+ $('#toolHeightResize').addEventListener('pointerdown',e=>{
+  if(e.button!==0||(state.ui.dock||'right')!=='float'||window.innerWidth<700)return;
+  e.preventDefault();e.stopPropagation();const panel=$('#toolPanel'),r=panel.getBoundingClientRect(),startY=e.clientY,startH=r.height;
+  panel.classList.add('resizing');let changed=false;
+  const move=ev=>{applyToolPanelSize(panel.getBoundingClientRect().width,startH+ev.clientY-startY,false,true);changed=true};
+  const end=()=>{panel.classList.remove('resizing');window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',end);window.removeEventListener('pointercancel',end);if(changed)noteChange()};
+  window.addEventListener('pointermove',move);window.addEventListener('pointerup',end);window.addEventListener('pointercancel',end);
  }); const filter=$('#toolSearch');filter.addEventListener('input',()=>{
   const q=filter.value.trim().toLocaleLowerCase('it');
   $$('#toolPanel .tool-section').forEach(section=>{
@@ -1260,17 +1735,25 @@ function makeField(label,type,value,fn,live=false){let wrapper=el('div','field')
 function renderLibrary(){let list=$('#libraryList');list.replaceChildren();$('#libraryHint').hidden=state.library.length>0;state.library.forEach(entry=>{let row=el('div','lib-row'),use=el('button','tiny',entry.name||'Elemento'),remove=el('button','tiny danger','×');use.title='Inserisci elemento nella scheda';use.onclick=()=>addNode(entry.item.type,entry.item);use.draggable=true;use.ondragstart=e=>e.dataTransfer.setData('text/x-ccm-lib',entry.id);remove.title='Rimuovi dalla libreria';remove.onclick=()=>commit(()=>state.library=state.library.filter(e=>e.id!==entry.id));row.append(use,remove);list.append(row)})}
 function addScene(){let sc={id:uid('sc'),title:'Nuova scheda',notes:'',elements:[{id:uid('el'),type:'text',x:70,y:80,w:1050,h:100,text:'Nuova scheda',fontSize:44,color:'#183146',fill:'transparent',align:'left'}],links:[]};commit(()=>{state.scenes.splice(activeIndex()+1,0,sc);state.activeSceneId=sc.id;selectedId=null})}
 function duplicateScene(){let copy=safeClone(current()),mapping=new Map();copy.id=uid('sc');copy.title+=' (copia)';copy.elements.forEach(n=>{let old=n.id;n.id=uid('el');mapping.set(old,n.id)});copy.links.forEach(l=>{l.id=uid('link');l.from=mapping.get(l.from);l.to=mapping.get(l.to)});commit(()=>{state.scenes.splice(activeIndex()+1,0,copy);state.activeSceneId=copy.id;selectedId=null})}
-function moveScene(delta){let from=activeIndex(),to=from+delta;if(to<0||to>=state.scenes.length)return;commit(()=>{let scene=state.scenes.splice(from,1)[0];state.scenes.splice(to,0,scene)})}
+function reorderSceneTo(id,targetIndex){const from=state.scenes.findIndex(s=>s.id===id);if(from<0||targetIndex<0||targetIndex>=state.scenes.length||from===targetIndex)return false;
+ commit(()=>{const scene=state.scenes.splice(from,1)[0];state.scenes.splice(targetIndex,0,scene)});return true}
+function moveSceneById(id,delta){const from=state.scenes.findIndex(s=>s.id===id);return reorderSceneTo(id,from+delta)}
+function reorderSceneRelative(fromId,targetId,after){const from=state.scenes.findIndex(s=>s.id===fromId),target=state.scenes.findIndex(s=>s.id===targetId);if(from<0||target<0||from===target)return false;const raw=target+(after?1:0);return reorderSceneTo(fromId,raw-(from<raw?1:0))}
+function moveScene(delta){return moveSceneById(current().id,delta)}
 function deleteScene(){if(state.scenes.length===1)return;if(!confirm('Eliminare questa scheda? Puoi usare Annulla per recuperarla.'))return;let ix=activeIndex();commit(()=>{state.scenes.splice(ix,1);state.activeSceneId=state.scenes[Math.min(ix,state.scenes.length-1)].id;selectedId=null})}
 function present(on){if(editingId)cancelDirectEdit(true);closeQuick();openPanel(null);presenting=on;document.body.classList.toggle('presenting',on);if(on){selectedId=null;window.__ccmPresentationHidden=new Map(current().elements.map(n=>[n.id,!!n.collapsed]));render();document.activeElement?.blur()}else{if(window.__ccmPresentationHidden){for(const sc of state.scenes)for(const n of sc.elements)if(window.__ccmPresentationHidden.has(n.id))n.collapsed=window.__ccmPresentationHidden.get(n.id);window.__ccmPresentationHidden=null}render()}}
 function safeData(x){return JSON.stringify(x).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029')}
 function safeName(s){return (s||'presentazione').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9_-]+/gi,'_').slice(0,50)||'presentazione'}
 function download(name,content,mime){let a=document.createElement('a'),blob=new Blob([content],{type:mime});a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),15000)}
-function exportHTML(publicCopy=false){if(editingId)cancelDirectEdit();closeQuick();if(publicCopy&&!confirm('La copia pubblica elimina appunti e libreria, ma mantiene i contenuti delle schede e gli approfondimenti. Il sorgente HTML è ispezionabile. Controlla che non vi siano dati riservati. Proseguire?'))return;
- let copyData=safeClone(state);copyData.revision=(copyData.revision||0)+1;if(publicCopy){copyData.scenes.forEach(s=>{s.notes='';s.elements=s.elements.filter(n=>n.type!=='note'&&n.private!==true);s.links=s.links.filter(l=>(!l.from||s.elements.some(n=>n.id===l.from))&&(!l.to||s.elements.some(n=>n.id===l.to)))});copyData.library=[];copyData.savedTemplates=[];copyData.ui=copyData.ui||{};copyData.ui.publicCopy=true;copyData.ui.viewMode='read'}
- let doc=document.documentElement.cloneNode(true);const grip=doc.querySelector('#toolCornerResize'),tools=doc.querySelector('#toolPanel');if(grip&&tools){grip.removeAttribute('style');grip.hidden=true;tools.insertBefore(grip,tools.querySelector('#toolSearch'))}const edge=doc.querySelector('#toolResizeHandle');if(edge&&tools){edge.removeAttribute('style');edge.hidden=false;tools.insertBefore(edge,tools.querySelector('#toolSearch'))}doc.querySelector('#ccm-data').textContent=safeData(copyData);doc.querySelector('#docTitle').setAttribute('value',copyData.title);
+function exportHTML(publicCopy=false){flushQuick();if(editingId)cancelDirectEdit();closeQuick();if(publicCopy&&!confirm('La copia pubblica elimina appunti e libreria, ma mantiene i contenuti delle schede e gli approfondimenti. Il sorgente HTML è ispezionabile. Controlla che non vi siano dati riservati. Proseguire?'))return;
+ let copyData=safeClone(state);copyData.revision=(copyData.revision||0)+1;if(publicCopy){copyData.scenes.forEach(s=>{s.notes='';s.elements=s.elements.filter(n=>n.type!=='note'&&n.private!==true);s.links=s.links.filter(l=>(!l.from||s.elements.some(n=>n.id===l.from))&&(!l.to||s.elements.some(n=>n.id===l.to)))});copyData.library=[];copyData.savedTemplates=[];copyData.ui=copyData.ui||{};copyData.ui.publicCopy=true;copyData.ui.viewMode='read';copyData.ui.recoveryEnabled=false}
+ let doc=document.documentElement.cloneNode(true);const grip=doc.querySelector('#toolCornerResize'),tools=doc.querySelector('#toolPanel');if(grip&&tools){grip.removeAttribute('style');grip.hidden=true;tools.insertBefore(grip,tools.querySelector('.tool-workspace'))}const edge=doc.querySelector('#toolResizeHandle');if(edge&&tools){edge.removeAttribute('style');edge.hidden=false;tools.insertBefore(edge,tools.querySelector('.tool-workspace'))}const heightGrip=doc.querySelector('#toolHeightResize');if(heightGrip&&tools){heightGrip.removeAttribute('style');heightGrip.hidden=true;tools.insertBefore(heightGrip,tools.querySelector('.tool-workspace'))}doc.querySelector('#ccm-data').textContent=safeData(copyData);doc.querySelector('#docTitle').setAttribute('value',copyData.title);
  // Non serializzare il DOM runtime: potrebbe contenere appunti, libreria e stato privato anche dopo la pulizia del JSON.
- for(const sel of ['#canvas','#inspectorContent','#slideList','#libraryList','#layersList','#themePalette','#quickEditor','#readingView','#detailBody','#printRoot','#savedTemplateList'])doc.querySelector(sel)?.replaceChildren();
+ if(tools){tools.style.removeProperty('left');tools.style.removeProperty('right');tools.style.removeProperty('top');tools.style.removeProperty('bottom');tools.style.removeProperty('height')}
+ for(const sel of ['#canvas','#inspectorContent','#slideList','#libraryList','#layersList','#themePalette','#quickEditor','#readingView','#detailBody','#printRoot','#savedTemplateList','#aiReviewList'])doc.querySelector(sel)?.replaceChildren();
+ for(const sel of ['#aiShareDialog','#aiReviewDialog'])doc.querySelector(sel)?.removeAttribute('open');
+ const recoveryPromptCopy=doc.querySelector('#recoveryPrompt');if(recoveryPromptCopy){recoveryPromptCopy.hidden=true;recoveryPromptCopy.querySelector('#recoveryPromptDetail').textContent='Una copia di lavoro è disponibile in questo browser.'}
+ doc.querySelector('#aiReviewIntro').textContent='';doc.querySelector('#aiReviewCaution').textContent='';
  const savedCounter=doc.querySelector('#savedTemplateCount');if(savedCounter)savedCounter.textContent='0 salvati';
  doc.querySelector('#detailTitle').textContent='Approfondimento';doc.querySelector('#toast').textContent='';
  doc.querySelectorAll('.drawer-open').forEach(x=>x.classList.remove('drawer-open'));doc.querySelector('#quickEditor')?.setAttribute('hidden','');doc.querySelector('#editActionBar')?.setAttribute('hidden','');doc.querySelector('#detailOverlay')?.setAttribute('hidden','');doc.querySelectorAll('[aria-hidden="false"][id$="Panel"]').forEach(x=>x.setAttribute('aria-hidden','true'));
@@ -1301,6 +1784,10 @@ function validatePortableModel(doc){
   const nodes=new Set(),links=new Set();
   for(const el of sc.elements){
    if(!el||typeof el.id!=='string'||!el.id||nodes.has(el.id)||!types.has(el.type)|| (el.text!==undefined&&typeof el.text!=='string'))throw new Error('Elemento duplicato o non supportato nella scheda '+sc.title+'.');
+   // Un file JSON/HTML restituito da terzi non deve avviare richieste di immagini remote.
+   // Le immagini create dall’editor sono incorporate (data URL raster).
+   if(el.type==='image' && (typeof el.src!=='string' || !/^data:image\/(?:png|jpeg|webp);base64,[a-z0-9+/=]+$/i.test(el.src)))
+    throw new Error('Immagine non incorporata o formato non consentito nella scheda '+sc.title+'.');
    nodes.add(el.id);
   }
   for(const link of sc.links){
@@ -1318,25 +1805,143 @@ async function importPortableFile(file){
   if(file.size>MAX_HTML_BYTES)throw new Error('File oltre il limite di circa 2 MB.');
   const raw=await file.text();
   const incoming=validatePortableModel(readPortableModel(raw));
-  if(!confirm('Importare “'+incoming.title+'” ('+incoming.scenes.length+' schede)? Il documento attuale sarà sostituito, ma puoi usare Annulla per recuperarlo.'))return;
-  if(editingId)cancelDirectEdit();
-  closeQuick();openPanel(null);
-  checkpoint();
-  const localUI=state.ui;
-  state=safeClone(incoming);
-  state.theme=['light','pearl','dark','graphite'].includes(state.theme)?state.theme:'light';
-  state.library=Array.isArray(state.library)?state.library:[];
-  state.savedTemplates=Array.isArray(state.savedTemplates)?state.savedTemplates:[];
-  state.ui={...localUI,...(state.ui&&typeof state.ui==='object'&&!Array.isArray(state.ui)?state.ui:{}),publicCopy:false};
-  state.activeSceneId=state.scenes.some(s=>s.id===state.activeSceneId)?state.activeSceneId:state.scenes[0].id;
-  state.ui.toolSections=state.ui.toolSections||{slides:true,elements:true,templates:false,appearance:true,library:false,layers:false,export:true};
-  selectedId=null;selectedLinkId=null;textTx=null;presenting=false;
-  snapOn=state.ui.snap!==false;readingMode=state.ui.viewMode==='read';zoom=clampZoom(state.ui.zoom||1);
-  noteChange();render();
-  toast('Documento importato: '+state.scenes.length+' schede. Puoi annullare l’importazione con ↶ Annulla.');
+  openReviewIncoming(incoming);
  }catch(error){toast('Importazione non riuscita: '+String(error.message||error).slice(0,180));}
 }
-function exportJSON(){download(safeName(state.title)+'.json',JSON.stringify(state,null,2),'application/json;charset=utf-8');toast('Dati JSON esportati. Puoi allegarli a una conversazione AI.')}
+function exportJSON(){openAIShare()}
+
+// Studio 20 — progressively disclosed exchange and revision review.
+let reviewedIncoming=null;
+function shareModel(scope,includePrivate){
+ const out={schema:'ccm.document.v1',id:state.id||uid('doc'),revision:state.revision||1,title:state.title,theme:state.theme,activeSceneId:state.activeSceneId,
+  scenes:safeClone(scope==='scene'?[current()]:state.scenes),library:includePrivate?safeClone(state.library||[]):[],savedTemplates:includePrivate?safeClone(state.savedTemplates||[]):[],ui:{viewMode:'compose'}};
+ if(!includePrivate){for(const sc of out.scenes){sc.notes='';sc.elements=sc.elements.filter(n=>n.type!=='note'&&n.private!==true);const ids=new Set(sc.elements.map(n=>n.id));sc.links=sc.links.filter(l=>(!l.from||ids.has(l.from))&&(!l.to||ids.has(l.to)))}}
+ return out;
+}
+function openAIShare(){if(publicMode)return;const dialog=$('#aiShareDialog');dialog.querySelector('input[name="aiShareScope"][value="document"]').checked=true;$('#aiSharePrivate').checked=false;updateAISharePreview();dialog.showModal()}
+function updateAISharePreview(){const scope=$('input[name="aiShareScope"]:checked')?.value||'document',priv=$('#aiSharePrivate').checked;
+ const doc=shareModel(scope,priv),count=doc.scenes.reduce((a,s)=>a+s.elements.length,0);
+ $('#aiSharePreview').textContent=doc.scenes.length+' schede · '+count+' elementi'+(priv?' · include appunti e raccolte personali':' · senza appunti e raccolte personali')+'.';}
+function confirmAIShare(){const scope=$('input[name="aiShareScope"]:checked')?.value||'document',priv=$('#aiSharePrivate').checked;
+ const doc=shareModel(scope,priv),str=JSON.stringify(doc,null,2);if(new Blob([str]).size>MAX_HTML_BYTES){toast('Dati troppo grandi: riduci immagini o scegli una scheda.');return}
+ $('#aiShareDialog').close();download(safeName(state.title)+(scope==='scene'?'_scheda':'')+'_per_AI.json',str,'application/json;charset=utf-8');toast('Esportazione JSON richiesta. Controlla il file prima di condividerlo.');}
+function publicSceneForComparison(scene){
+ const privateIds=new Set((scene.elements||[]).filter(n=>n.type==='note'||n.private===true).map(n=>n.id));
+ return {...scene,notes:'',elements:(scene.elements||[]).filter(n=>!privateIds.has(n.id)),
+  links:(scene.links||[]).filter(l=>l.private!==true&&!privateIds.has(l.from)&&!privateIds.has(l.to))};
+}
+function mergeScenePreservingPrivate(local,incoming){
+ const next=safeClone(incoming),privateElements=local.elements.filter(n=>n.type==='note'||n.private===true),ids=new Set(privateElements.map(n=>n.id));
+ // Private local material remains authoritative during selective integration.
+ next.elements=next.elements.filter(n=>!ids.has(n.id)).concat(safeClone(privateElements));
+ const valid=new Set(next.elements.map(n=>n.id));const privateLinks=local.links.filter(l=>l.private===true||ids.has(l.from)||ids.has(l.to));
+ const protectedIds=new Set(privateLinks.map(l=>l.id));
+ next.links=next.links.filter(l=>!protectedIds.has(l.id));
+ for(const l of privateLinks)if((!l.from||valid.has(l.from))&&(!l.to||valid.has(l.to)))next.links.push(safeClone(l));
+ if(local.notes)next.notes=local.notes;
+ return next;
+}
+function semanticDiffCounts(oldSc,newSc){
+ oldSc=publicSceneForComparison(oldSc);newSc=publicSceneForComparison(newSc);
+ const counts=(name)=>{const a=new Map((oldSc?.[name]||[]).map(x=>[x.id,x])),b=new Map((newSc?.[name]||[]).map(x=>[x.id,x]));
+  let added=0,removed=0,changed=0;for(const [id,item] of b)if(!a.has(id))added++;else if(JSON.stringify(item)!==JSON.stringify(a.get(id)))changed++;
+  for(const id of a.keys())if(!b.has(id))removed++;return{added,removed,changed}};
+ return{elements:counts('elements'),links:counts('links')};
+}
+function openReviewIncoming(incoming){
+ reviewedIncoming=incoming;const oldBy=new Map(state.scenes.map(s=>[s.id,s]));const newBy=new Map(incoming.scenes.map(s=>[s.id,s]));
+ const changes=incoming.scenes.map(s=>({s,old:oldBy.get(s.id),kind:!oldBy.has(s.id)?'new':JSON.stringify(publicSceneForComparison(oldBy.get(s.id)))===JSON.stringify(publicSceneForComparison(s))?'same':'changed'}));
+ const missing=state.scenes.filter(s=>!newBy.has(s.id));const changed=changes.filter(c=>c.kind==='changed').length,added=changes.filter(c=>c.kind==='new').length;
+ const orderChanged=state.scenes.map(s=>s.id).join('|')!==incoming.scenes.map(s=>s.id).join('|');
+ const settingsChanged=(incoming.title!==state.title||incoming.theme!==state.theme);
+ const dialog=$('#aiReviewDialog'),list=$('#aiReviewList');list.replaceChildren();
+ $('#aiReviewIntro').textContent='File: '+incoming.title+' · '+incoming.scenes.length+' schede. '+changed+' '+(changed===1?'modificata':'modificate')+', '+added+' '+(added===1?'nuova':'nuove')+', '+missing.length+' assenti nel file.';
+ for(const item of changes.filter(x=>x.kind!=='same')){
+  const row=el('div','ccm-review-item');const label=el('label','ccm-review-line'),check=el('input');check.type='checkbox';check.dataset.sceneId=item.s.id;check.checked=true;
+  const text=el('span','ccm-review-copy');text.append(el('strong',null,item.s.title||'Scheda senza titolo'));
+  const diff=item.old?semanticDiffCounts(item.old,item.s):null;
+  const desc=item.kind==='new'?'Nuova scheda — aggiungi alla fine del documento':'Scheda modificata — conserva gli appunti privati locali';
+  text.append(el('span',null,desc));label.append(check,text);row.append(label);
+  if(diff){const details=el('details'),sum=el('summary',null,'Dettagli delle differenze'),p=el('p');
+   const fmt=x=>'+'+x.added+' aggiunti · '+x.changed+' modificati · −'+x.removed+' rimossi';
+   p.textContent='Elementi: '+fmt(diff.elements)+'; frecce: '+fmt(diff.links)+(item.old.title!==item.s.title?'; titolo modificato':'')+'.';
+   details.append(sum,p);row.append(details)}list.append(row);
+ }
+ if(!changes.some(x=>x.kind!=='same'))list.append(el('p','ccm-quiet-note','Nessuna scheda nuova o modificata da integrare.'));
+ if(missing.length){const row=el('div','ccm-review-item missing'),line=el('div','ccm-review-line'),copy=el('span','ccm-review-copy');copy.append(el('strong',null,missing.length+' schede assenti dal file'),el('span',null,missing.map(s=>s.title).join(', ').slice(0,250)));line.append(copy);row.append(line);list.append(row)}
+ $('#aiReviewCaution').textContent='Integra selezionate conserva le altre schede, gli appunti privati locali e le preferenze. Non elimina schede assenti né cambia tema/titolo/ordine generale.'+(settingsChanged||orderChanged?' Per applicare anche tema, titolo e ordine del file, scegli Sostituisci tutto.':'')+' Una sola azione annullabile.';
+ const update=()=>{$('#aiReviewMerge').disabled=!list.querySelector('input[type="checkbox"]:checked')};list.querySelectorAll('input').forEach(x=>x.addEventListener('change',update));update();dialog.showModal();
+}
+function prepareImportEffect(){if(editingId)cancelDirectEdit(true);closeQuick();openPanel(null);checkpoint()}
+function finishImportEffect(){selectedId=null;selectedLinkId=null;textTx=null;presenting=false;snapOn=state.ui.snap!==false;readingMode=state.ui.viewMode==='read';zoom=clampZoom(state.ui.zoom||1);noteChange();render();$('#aiReviewDialog').close();reviewedIncoming=null;toast('Modifiche applicate. Puoi annullare tutto con ↶ Annulla.')}
+function mergeReviewed(){if(!reviewedIncoming)return;const ids=new Set($$('#aiReviewList input:checked').map(c=>c.dataset.sceneId));if(!ids.size)return;
+ prepareImportEffect();const incoming=reviewedIncoming;const byId=new Map(incoming.scenes.map(s=>[s.id,s]));
+ state.scenes=state.scenes.map(s=>ids.has(s.id)&&byId.has(s.id)?mergeScenePreservingPrivate(s,byId.get(s.id)):s);
+ const seen=new Set(state.scenes.map(s=>s.id));for(const sc of incoming.scenes)if(ids.has(sc.id)&&!seen.has(sc.id)){state.scenes.push(safeClone(sc));seen.add(sc.id)}
+ finishImportEffect();
+}
+function replaceReviewed(){if(!reviewedIncoming)return;
+ if(!confirm('Sostituire tutto? I dati locali assenti dal file ricevuto (anche appunti privati e raccolte personali) andranno persi nel documento corrente. Puoi usare Annulla. Proseguire?'))return;
+ prepareImportEffect();const incoming=reviewedIncoming,localUI=state.ui;
+ state=safeClone(incoming);state.theme=['light','pearl','dark','graphite'].includes(state.theme)?state.theme:'light';state.library=Array.isArray(state.library)?state.library:[];state.savedTemplates=Array.isArray(state.savedTemplates)?state.savedTemplates:[];
+ state.ui={...localUI,...(state.ui&&typeof state.ui==='object'&&!Array.isArray(state.ui)?state.ui:{}),publicCopy:false,recoveryEnabled:localUI.recoveryEnabled===true};
+ state.activeSceneId=state.scenes.some(s=>s.id===state.activeSceneId)?state.activeSceneId:state.scenes[0].id;
+ state.ui.toolSections=state.ui.toolSections||{slides:false,elements:true,templates:false,appearance:false,library:false,layers:false,export:true};
+ finishImportEffect();
+}
+
+// Opt-in local recovery. A browser copy is not the downloaded document.
+let recoveryTimer=null;
+const recoveryKey='metacanvas.draft.v1.'+String(location.pathname).split('').reduce((h,c)=>((h*31+c.charCodeAt(0))>>>0),5381).toString(36);
+function recoveryStore(){try{return window.localStorage}catch(e){return null}}
+function recoveryRecord(){try{const s=recoveryStore()?.getItem(recoveryKey);const rec=s?JSON.parse(s):null;
+ if(!rec||rec.schema!=='metacanvas.draft.v1'||!rec.document)return null;
+ validatePortableModel(rec.document);return rec}catch(e){return null}}
+function documentFingerprint(doc){return JSON.stringify([doc.title,doc.theme,doc.scenes,doc.library||[],doc.savedTemplates||[]])}
+function scheduleRecoveryDraft(){if(publicMode||!state.ui.recoveryEnabled)return;clearTimeout(recoveryTimer);recoveryTimer=setTimeout(writeRecoveryDraft,500)}
+function writeRecoveryDraft(){if(publicMode||!state.ui.recoveryEnabled)return;clearTimeout(recoveryTimer);
+ const store=recoveryStore();if(!store)return;
+ try{const payload=JSON.stringify({schema:'metacanvas.draft.v1',time:Date.now(),document:state});
+  if(payload.length>1400000)throw new Error('bozza troppo grande');store.setItem(recoveryKey,payload);
+  const msg=$('#recoveryState');if(msg)msg.textContent='Copia locale aggiornata in questo browser.';
+ }catch(e){const msg=$('#recoveryState');if(msg)msg.textContent='Recupero non disponibile ('+String(e.message||e).slice(0,60)+'). Salva l’HTML.'}}
+function syncRecoveryUI(){const rec=recoveryRecord();$('#recoveryEnabled').checked=state.ui.recoveryEnabled===true;
+ $('#recoveryDiscard').hidden=!rec;
+ if(!rec||documentFingerprint(rec.document)===documentFingerprint(state)){$('#recoveryPrompt').hidden=true;return}
+ $('#recoveryPromptDetail').textContent='Copia del '+new Date(rec.time).toLocaleString('it-IT')+' per questo file. Decidi se recuperarla.';
+ $('#recoveryPrompt').hidden=false;
+}
+function restoreRecovery(){const rec=recoveryRecord();if(!rec)return;
+ if(!confirm('Ripristinare la copia locale? Il documento attuale potrà essere recuperato con Annulla.'))return;
+ if(editingId)cancelDirectEdit(true);closeQuick();checkpoint();
+ const localUI=state.ui;state=safeClone(rec.document);state.ui={...localUI,...(state.ui||{}),publicCopy:false,recoveryEnabled:true};
+ selectedId=null;selectedLinkId=null;textTx=null;snapOn=state.ui.snap!==false;readingMode=state.ui.viewMode==='read';zoom=clampZoom(state.ui.zoom||1);
+ noteChange();render();$('#recoveryPrompt').hidden=true;syncRecoveryUI();toast('Bozza locale recuperata. Puoi annullare il ripristino.');
+}
+function initRecovery(){if(publicMode)return;const store=recoveryStore();
+ if(!store&&state.ui.recoveryEnabled){state.ui.recoveryEnabled=false;$('#recoveryState').textContent='Archiviazione locale non disponibile: usa Salva lavoro.'}
+ $('#recoveryEnabled').addEventListener('change',e=>{const desired=e.target.checked;
+  if(desired&&!recoveryStore()){e.target.checked=false;toast('Il browser non consente il recupero locale per questo file.');return}
+  state.ui.recoveryEnabled=desired;noteChange();if(desired){writeRecoveryDraft();toast('Recupero locale attivo per questo file.')}else{try{recoveryStore()?.removeItem(recoveryKey)}catch(err){};$('#recoveryState').textContent='Recupero locale disattivato.'}
+  syncRecoveryUI();
+ });
+ $('#recoveryRestore').onclick=restoreRecovery;
+ $('#recoveryIgnore').onclick=()=>{try{recoveryStore()?.removeItem(recoveryKey)}catch(err){};$('#recoveryPrompt').hidden=true;syncRecoveryUI()};
+ $('#recoveryDiscard').onclick=()=>{try{recoveryStore()?.removeItem(recoveryKey)}catch(err){};syncRecoveryUI();toast('Copia locale eliminata. Il documento aperto non cambia.')};
+ if(state.ui.recoveryEnabled&&!recoveryRecord())writeRecoveryDraft();syncRecoveryUI();
+ window.addEventListener('pagehide',()=>{if(recoveryTimer)writeRecoveryDraft()});
+}
+function initStudio20(){
+ const share=$('#aiShareDialog'),review=$('#aiReviewDialog');
+ for(const id of ['aiShareClose','aiShareCancel'])$('#'+id).onclick=()=>share.close();
+ $$('input[name="aiShareScope"]').forEach(x=>x.onchange=updateAISharePreview);$('#aiSharePrivate').onchange=updateAISharePreview;
+ $('#aiShareConfirm').onclick=confirmAIShare;
+ for(const id of ['aiReviewClose','aiReviewCancel'])$('#'+id).onclick=()=>{review.close();reviewedIncoming=null};
+ $('#aiReviewMerge').onclick=mergeReviewed;$('#aiReviewReplace').onclick=replaceReviewed;
+ review.addEventListener('close',()=>{reviewedIncoming=null;$('#aiReviewList').replaceChildren()});
+ initRecovery();
+}
+
 function printSlides(){const root=$('#printRoot');root.replaceChildren();state.scenes.forEach(sc=>{let sheet=el('section','print-sheet'),canvas=el('div','canvas');drawCanvas(canvas,sc,'print');sheet.append(canvas);root.append(sheet);
  if(state.ui.printDetails!==false){sc.elements.filter(n=>n.type!=='note'&&n.details).forEach(n=>{let detailSheet=el('section','print-sheet detail-sheet'),inner=el('article','detail-page'),h=el('h1',null,sc.title),sub=el('h2',null,(n.text||'Approfondimento').split('\n')[0]),p=el('p',null,n.details);inner.append(h,sub,p);detailSheet.append(inner);root.append(detailSheet)})}
  });window.print()}
@@ -1571,7 +2176,7 @@ $('#toggleSlideRail').onclick=()=>toggleSlideRail();
    if(active){const exists=active.kind==='scene'||(active.kind==='node'&&current().elements.some(n=>n.id===active.id))||(active.kind==='link'&&current().links.some(l=>l.id===active.id));
      if(exists)openQuick(active.kind,active.id);else closeQuick();}
    syncEditBar();};
- $('#editOk').onclick=editDone;$('#editBack').onclick=()=>editStep(-1);$('#editForward').onclick=()=>editStep(1);
+ $('#editOk').onclick=editDone;$('#editBack').onclick=()=>editStep(-1);$('#editForward').onclick=()=>editStep(1);$('#editSave').onclick=()=>{flushQuick();exportHTML(false);syncEditBar()};
 
 $('#closeSlideRail').onclick=()=>toggleSlideRail();
 $('#addSlideRail').onclick=()=>addScene();
@@ -1601,8 +2206,41 @@ $('#saveBtn').onclick=()=>exportHTML(false);$('#publicBtn').onclick=()=>exportHT
 $('#presentBtn').onclick=()=>present(true);$('#presentExit').onclick=()=>present(false);$('#presentPrev').onclick=()=>navigate(-1);$('#presentNext').onclick=()=>navigate(1);$('#prevBtn').onclick=()=>navigate(-1);$('#nextBtn').onclick=()=>navigate(1);
 document.addEventListener('keydown',e=>{const editable=e.target.closest('input,textarea,select,[contenteditable="true"]');if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();exportHTML(false);return}if((e.ctrlKey||e.metaKey)&&!editable&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();return}if((e.ctrlKey||e.metaKey)&&!editable&&e.key.toLowerCase()==='y'){e.preventDefault();redo();return}if(e.key==='Escape'&&!$('#detailOverlay').hidden){closeDetails();return}if(e.key==='Escape'&&!$('#quickEditor').hidden){closeQuick();return}if(e.key==='Escape'&&presenting){present(false);return}if(e.key==='Escape'){if(editingId)cancelDirectEdit(false);openPanel(null);return}if(editable)return;if(presenting){if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();navigate(1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();navigate(-1)}}});
 
+// Studio 18: take the panel by its title bar; detach only after a deliberate drag.
 for(const panel of [$('#toolPanel'),$('#propertyPanel')]){
- panel.querySelector('.drawer-head').addEventListener('pointerdown',e=>{if(state.ui.dock!=='float'||e.target.closest('button,input,select'))return;if(e.button!==0)return;e.preventDefault();let rect=panel.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;const move=ev=>{panel.style.left=clamp(ev.clientX-x,8,window.innerWidth-rect.width-8)+'px';panel.style.right='auto';panel.style.top=clamp(ev.clientY-y,8,window.innerHeight-rect.height-8)+'px';updateFloatGrip()};const stop=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',stop)};window.addEventListener('pointermove',move);window.addEventListener('pointerup',stop)});
+ const header=panel.querySelector('.drawer-head');
+ header.addEventListener('pointerdown',e=>{
+  if(window.innerWidth<=700||!panel.classList.contains('drawer-open')||e.button!==0||e.target.closest('button,input,select,a,summary'))return;
+  const start={x:e.clientX,y:e.clientY,rect:panel.getBoundingClientRect(),dock:state.ui.dock||'right'};
+  let active=false,offsetX=0,offsetY=0;
+  const begin=ev=>{
+   active=true;
+   const w=Math.min(start.rect.width,Math.max(330,Math.min(850,window.innerWidth-24)));
+   const h=Math.min(start.rect.height,Math.max(220,window.innerHeight-24));
+   const scaleX=w/start.rect.width;
+   offsetX=Math.max(18,Math.min(w-18,(start.x-start.rect.left)*scaleX));
+   offsetY=Math.max(12,Math.min(52,start.y-start.rect.top));
+   if(start.dock!=='float')applyDock('float');
+   if(panel.id==='toolPanel')applyToolPanelSize(w,h,true);else setPropertyWidth(w,true);
+   panel.style.right='auto';panel.style.bottom='auto';
+   const left=clamp(ev.clientX-offsetX,8,Math.max(8,window.innerWidth-w-8));
+   const top=clamp(ev.clientY-offsetY,8,Math.max(8,window.innerHeight-h-8));
+   panel.style.left=left+'px';panel.style.top=top+'px';
+   // Re-clamp the floating tools palette against its actual new top.
+   if(panel.id==='toolPanel')applyToolPanelSize(w,Math.min(h,window.innerHeight-top-8),true);
+   updateFloatGrip();
+  };
+  const move=ev=>{
+   if(ev.pointerId!==e.pointerId)return;
+   if(!active){if(Math.hypot(ev.clientX-start.x,ev.clientY-start.y)<7)return;begin(ev)}
+   const r=panel.getBoundingClientRect();
+   panel.style.left=clamp(ev.clientX-offsetX,8,Math.max(8,window.innerWidth-r.width-8))+'px';
+   panel.style.top=clamp(ev.clientY-offsetY,8,Math.max(8,window.innerHeight-r.height-8))+'px';
+   updateFloatGrip();
+  };
+  const stop=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',stop);window.removeEventListener('pointercancel',stop);if(active){updateFloatGrip();noteChange()}};
+  window.addEventListener('pointermove',move);window.addEventListener('pointerup',stop,{once:true});window.addEventListener('pointercancel',stop,{once:true});
+ });
 }
 // Spostamento con pointer events: nessuna libreria né continui re-render della scheda.
 const quickBox=$('#quickEditor');
@@ -1629,13 +2267,14 @@ quickBox.addEventListener('pointerdown',e=>{
  bar.addEventListener('pointermove',move);bar.addEventListener('pointerup',finish);bar.addEventListener('pointercancel',finish);
 });
 let quickObserveTimer=null;const quickResizeObserver=new ResizeObserver(()=>{if(quickBox.hidden||!quickWindow().manual)return;clearTimeout(quickObserveTimer);quickObserveTimer=setTimeout(()=>{if(quickBox.hidden||!quickWindow().manual)return;rememberQuickWindow()},90)});quickResizeObserver.observe(quickBox);
-window.addEventListener('resize',()=>{if(!$('#quickEditor').hidden)positionQuick();if(state.ui.viewMode!=='read'&&state.ui.viewMode!=='compose'&&!publicMode){const next=window.innerWidth<700;if(readingMode!==next){readingMode=next;render()}}if($('#toolPanel').classList.contains('drawer-open')||$('#propertyPanel').classList.contains('drawer-open'))$('#panelScrim').hidden=window.innerWidth>1000;updateFloatGrip()});
-document.addEventListener('pointerdown',e=>{if(!$('#quickEditor').hidden&&!e.target.closest('#quickEditor')&&!e.target.closest('#editActionBar')&&!e.target.closest('.node')&&!e.target.closest('.edge-hit')&&!e.target.closest('.edge-label')&&!e.target.closest('.edge-middle'))closeQuick()},true);
+window.addEventListener('resize',()=>{scheduleFlatFit();if(!$('#quickEditor').hidden)positionQuick();if(state.ui.viewMode!=='read'&&state.ui.viewMode!=='compose'&&!publicMode){const next=window.innerWidth<700;if(readingMode!==next){readingMode=next;render()}}if($('#toolPanel').classList.contains('drawer-open')||$('#propertyPanel').classList.contains('drawer-open'))$('#panelScrim').hidden=window.innerWidth>1000;updateFloatGrip()});
+document.addEventListener('pointerdown',e=>{if(!$('#quickEditor').hidden&&!e.target.closest('#quickEditor')&&!e.target.closest('#editActionBar')&&!e.target.closest('.node')&&!e.target.closest('.edge-hit')&&!e.target.closest('.edge-label')&&!e.target.closest('.edge-middle')&&!e.target.closest('.edge-handle')&&!e.target.closest('.port-choice')&&!e.target.closest('#saveBtn')&&!e.target.closest('#publicBtn'))closeQuick()},true);
 document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#quickEditor').hidden){e.preventDefault();closeQuick();return}if(!$('#detailOverlay').hidden){e.preventDefault();closeDetails();return}});
 
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
 window.addEventListener('afterprint',()=>{$('#printRoot').replaceChildren()});
-initStudio12Controls();render();if(!publicMode)$('#status').textContent='Documento locale';
+initStudio12Controls();initResponsiveToolTemplate();render();initStudio20();
+const flatLayoutObserver=new ResizeObserver(scheduleFlatFit);flatLayoutObserver.observe(document.querySelector('.toolbar'));flatLayoutObserver.observe(document.querySelector('.editor-main'));flatLayoutObserver.observe(document.querySelector('.public-first-use'));if(!publicMode)$('#status').textContent='Documento locale';
 })();
 </script>
 <script>
