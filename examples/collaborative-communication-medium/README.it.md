@@ -1,5 +1,16 @@
 # AI Collaboration Studio — anteprima pubblica
 
+## Demo Consulenza AI — Studio 21 IT/EN
+
+Oltre al tool generale Studio 20, la repository distribuisce **due demo autonome** costruite a partire dalla pagina Consulenza AI aggiornata fornita dall'operatore:
+
+- [**Scarica la demo italiana — Studio 21 IT**](MetaCanvas_Studio21_Consulenza_IT.html)
+- [**Download the English demo — Studio 21 EN**](MetaCanvas_Studio21_Consulenza_EN.html)
+
+Ognuna contiene sette schede modificabili e i comandi **Demo** e **Canvas vuoto**. L'italiano apre contenuti e strumenti in italiano, l'inglese in inglese (compresi la guida e i template iniziali). Non è un servizio AI integrato: il file si salva e si passa a un modello esterno. La [consegna per MAIOS.it](MAIOS_RESOURCE_TOOL_HANDOFF.md) dispone una pagina Risorse → Tool in italiano collegata al file IT e una in inglese collegata al file EN; il sito non è ancora modificato. Studio 20 resta il tool generico e non è stato sostituito.
+
+
+
 ## Download attuale — MetaCanvas Studio 20 (13 novembre 2026)
 
 **[Scarica l'editor autonomo](AI_Collaboration_Studio.html)** · [Visualizza il file su GitHub](https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/examples/collaborative-communication-medium/AI_Collaboration_Studio.html) · 272.490 byte · SHA-256 `c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19`.
