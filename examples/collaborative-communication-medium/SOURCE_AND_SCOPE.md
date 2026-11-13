@@ -1,5 +1,16 @@
 # Source, scope and exercise
 
+## Studio 20 — public tool release (13 November 2026)
+
+The canonical public file `AI_Collaboration_Studio.html` now contains MetaCanvas Studio 20, directly published in K-UX-AI at commit `0be329ae723110c62aa67d89756397683505319b`. Source file: 272,490 bytes, SHA-256 `c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19`. GitHub readback matched the supplied source. The prior Studio 15 remains retrievable in commit history; this is not a package/npm release or MAIOS.it deployment.
+
+The operator requested a visually quiet, dynamically adaptable medium. Reusable result: reveal transfer/recovery/revision controls **in the context of their actual action**, rather than adding permanent toolbar clutter. Distinguish the state shared with AI, the incoming differences and the private material still locally owned. Selective merges preserve local private notes; replacing the whole document remains a separately confirmed operation.
+
+**Evidence:** embedded JS checked with Node; previous local Chromium exercises covered AI scope/private filtering, comparison and selective Undo, sample HTML round-trip, rejected remote-image URLs, public export, Flat/Standard/Presenta, 390–1680 px layout and a recovery test with simulated storage. This published edit was also checked for four neutral scenes, empty personal collections and no remote `src` assets. No fresh physical mouse/touch, screen reader, Chrome-on-Windows `file://`, real storage-recovery, security penetration or end-user comprehension test is claimed.
+
+The downloadable source, license, product competence and MAIOS.it page are separate owners/effects. The site page is **not yet created**, reserved for a later Codex/site-owner workflow. [Handoff](MAIOS_RESOURCE_TOOL_HANDOFF.md).
+
+
 This public tool was derived from the **neutral Studio 12** artifact developed through operator/AI collaboration and the AI Collaboration Studio preview, 13 November 2026. It contains only synthetic examples, not customer documents or the operator's internal research/project data. It is an autonomous browser medium, not a change to K-UX-AI's runtime API.
 
 **Owners:** product and public competence: `GrazianoGuiducci/k-ux-ai`, `competences/ux-ai/collaborative-communication-medium/`. Private construction and learning: `GrazianoGuiducci/tm7` on the `gpt/ux-ai-code-competence` work lane. The public source is sufficient to use the tool without private access.
