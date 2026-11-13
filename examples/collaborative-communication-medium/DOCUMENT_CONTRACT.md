@@ -1,5 +1,14 @@
 # Portable document and AI collaboration
 
+## Studio 20 — selective AI round-trip (current behavior)
+
+The present editor continues to use `ccm.document.v1` and the same standalone HTML carrier. **Dati per AI** exposes an explicit whole-document/current-scene choice; notes, private-marked nodes, personal library and `savedTemplates` are excluded by default. An operator can opt to include them knowingly. Ordinary unmarked text may still contain sensitive content, so review before transfer.
+
+An incoming JSON/HTML model is validated and **compared before commitment**. The comparison distinguishes changed, new and absent scenes; it does not infer semantic truth. The operator can integrate selected scenes (preserving unrelated local scenes and local private notes) or replace the entire document with a separate confirmation. Both are undoable as one history checkpoint. Incoming HTML scripts and styles are never executed, and remote `image.src` URLs are rejected.
+
+A separate optional browser-local recovery snapshot is initially disabled and is not included in public copies. Storage capability and persistence vary by browser/origin, including `file://`; it cannot substitute for a saved HTML. Current UI/layout preferences do not change semantic object identity. The older 'replacement-only' contract below documents the historical 0.1.1 behavior, not the current Studio 20 workflow.
+
+
 The document is a **single editable HTML file**. Its canonical state is JSON under `<script id="ccm-data" type="application/json">`, schema `ccm.document.v1`; rendered SVG/cards are views, not separate sources of truth.
 
 - `scenes[]`: ordered editable slides/workspaces with stable IDs and titles.
