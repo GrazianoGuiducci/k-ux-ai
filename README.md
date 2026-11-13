@@ -39,7 +39,7 @@ effects; the receiving system keeps its own context and learning.
 
 [Open/download tool](examples/collaborative-communication-medium/AI_Collaboration_Studio.html) · [Quick start](examples/collaborative-communication-medium/README.md) · [MPL-2.0 license](examples/collaborative-communication-medium/LICENSE)
 
-A self-contained medium for editing diagrams and presentations and transferring the same working HTML between people and LLMs. Public preview, not runtime integration. **This tool alone** is MPL-2.0; licensing of other repository areas remains unchanged.
+**Current download: MetaCanvas Studio 20 (13 November 2026).** A self-contained medium for editing diagrams and presentations, sharing a selected document/slide with an external LLM, comparing incoming revisions and integrating chosen changes with Undo. It offers optional local recovery and keeps the normal canvas UI visually restrained. Public standalone tool, **not integrated into the K-UX-AI npm runtime or MAIOS.it**. **This tool alone** is MPL-2.0; licensing of other repository areas remains unchanged.
 
 ## Presentation and first use
 
