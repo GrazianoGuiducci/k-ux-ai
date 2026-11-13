@@ -38,7 +38,7 @@ effetti; il ricevente mantiene contesto e learning propri.
 
 [Apri o scarica il tool](examples/collaborative-communication-medium/AI_Collaboration_Studio.html) · [Guida rapida](examples/collaborative-communication-medium/README.it.md) · [Licenza MPL-2.0](examples/collaborative-communication-medium/LICENSE)
 
-Un mezzo autonomo per lavorare su diagrammi e presentazioni modificabili e trasferire lo stesso HTML fra persone e LLM. Anteprima pubblica, non integrazione nel runtime. Il codice di questo **singolo tool** è MPL-2.0; non cambia la licenza delle altre parti del repository.
+**Versione pubblica attuale: MetaCanvas Studio 20 (13 novembre 2026).** Editor HTML autonomo per diagrammi e presentazioni, consegna selettiva di contenuti a un modello AI esterno, confronto delle revisioni e integrazione annullabile. Il recupero locale è facoltativo; l'interfaccia mantiene basso l'ingombro dei controlli. **Tool pubblico autonomo, non ancora integrato nel runtime npm K-UX-AI né pubblicato su MAIOS.it.** Il codice di questo **singolo tool** è MPL-2.0; non cambia la licenza delle altre parti del repository.
 
 ## Presentazione e primo uso
 
