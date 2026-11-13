@@ -1,5 +1,20 @@
 # AI Collaboration Studio — public preview
 
+## Current download — MetaCanvas Studio 20 (13 November 2026)
+
+**[Download the standalone editor](AI_Collaboration_Studio.html)** · [Open the source on GitHub](https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/examples/collaborative-communication-medium/AI_Collaboration_Studio.html) · 272,490 bytes · SHA-256 `c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19`.
+
+MetaCanvas is a single-file, offline-capable tool for arranging, editing and presenting diagrams, ideas and slide sequences. It has four neutral starter slides; no AI account or embedded AI service is required. The UI remains Italian. Open the HTML locally in a modern browser, work on your content, then use **Salva lavoro** to download an independent working copy (not a save-over of the original).
+
+**Studio 20 changes:** compact responsive Standard/Flat workspaces, movable editors and tool panels, slide reordering, labelled arrows, reversible reusable templates and a restrained AI exchange flow. **Dati per AI** prompts for whole-document versus selected-slide export; private notes and personal collections are excluded by default. On return, **Importa JSON / HTML** previews new/modified/missing slides and permits selective, undoable integration or a confirmed full replacement, preserving local private notes in selective merges. An optional local browser recovery copy is OFF by default and is not a cloud backup. Thumbnail links follow the diagram routing more closely.
+
+**Sharing:** review all visible text and inserted assets before handing the file to anyone. Data labelled private is filtered by the dedicated public/export actions, but secrets inside ordinary text are not detectable automatically. Import reads structural data only, refuses remote image URLs, and does not execute imported scripts. This is not a full security audit or multiuser/live AI collaboration. The recovery feature was tested with simulated storage; actual `file://` browser storage is subject to the user's browser.
+
+**Historical release notes** below describe the behavior of earlier editions; their older replacement-only workflow does not describe Studio 20.
+
+[Italian instructions](README.it.md) · [document contract](DOCUMENT_CONTRACT.md) · [site resource handoff](MAIOS_RESOURCE_TOOL_HANDOFF.md).
+
+
 An **editable standalone HTML** for organizing ideas, diagrams and presentations, exchanging the same working file with an LLM, and presenting results to people.
 
 **Quick start:** open `AI_Collaboration_Studio.html` in an up-to-date browser, edit one of four starter scenes or start blank, save HTML, attach the saved file to your AI chat and ask for a structured revision, then reopen the revised HTML. Use **Presenta** for human presentations. The editor UI is currently Italian. It includes no embedded AI service, server or live synchronization.
