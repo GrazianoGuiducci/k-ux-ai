@@ -5,6 +5,16 @@
 **Owner:** K-UX-AI / competences/ux-ai/collaborative-communication-medium  
 **Stato iniziale (prima dell'esercizio locale):** SOURCE_COMPETENCE_FORMED / RUNTIME_NOT_YET_BUILT / GENERALIZATION_PENDING
 
+## 13 novembre — prima sorgente pubblica dello strumento e licenza MPL-2.0
+
+**Mandato esplicito dell'operatore:** pubblicare l'HTML e la documentazione sul prodotto pubblico K-UX-AI e nella lane privata del produttore, mentre Codex si occupa autonomamente della pagina su MAIOS.it. Licenza selezionata successivamente: tutti possono usare, modificare e commercializzare il tool; il copyright sul codice originale rimane al titolare.
+
+**Risultante di pubblicazione:** `examples/collaborative-communication-medium/AI_Collaboration_Studio.html`, con quattro scene generiche e nessuna dipendenza esterna, accompagnato da README IT/EN, `DOCUMENT_CONTRACT.md`, `SOURCE_AND_SCOPE.md`, `NOTICE.md` e dal testo ufficiale `LICENSE` MPL 2.0. L'HTML include l'avviso SPDX/copyright nell'head e la guida espone il regime d'uso; il normale salvataggio conserva l'avviso. Questa concessione è **circoscritta** ai file della directory, non alle competenze, altri esempi, runtime o loghi. Il copyright sul lavoro originale resta a Graziano Guiducci; gli altri autori non cedono automaticamente i diritti sui propri contributi. MPL significa software open source con copyleft per file, non divieto di rivendita.
+
+**Prove prima della pubblicazione:** controllo sintattico degli script incorporati; Chromium su quattro scene e guida; modifica del titolo, scaricamento e lettura del JSON con avvisi di licenza preservati; viewport 390 px senza overflow orizzontale; zero errori pagina osservati. Non sono stati verificati file:// nel browser dell'operatore, sicurezza completa, tutti i gesture/touch, PDF finale o comprensione di terzi. Nessuna pubblicazione su MAIOS.it né modifica al runtime.
+
+**Separazione owner:** K-UX-AI possiede l'esempio/tool pubblico; la sorgente privata dei processi e degli apprendimenti resta nella lane tm7 e non viene automaticamente esposta; Codex opera sulla PR del sito. Non attribuire al pubblico capacità o disponibilità online non provate.
+
 ## 13 novembre — proposta di distribuzione pubblica del medium e perimetro licenza
 
 **Mandato:** rendere il tool comprensibile immediatamente fuori da MAIOS, con esempi generici e una pagina «Strumenti AI» distinta dalle Meta-skill. L'operatore seleziona la direzione di tenere il controllo commerciale dei prodotti UX-AI escludendoli dal modello permissivo MIT, pur consentendo l'uso; il contratto preciso va ancora determinato.

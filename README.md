@@ -35,6 +35,12 @@ The [receiving-environment guide](docs/receiving-environment.md) connects method
 with available means. The domain retains its data, sources and the meaning of
 effects; the receiving system keeps its own context and learning.
 
+## AI Collaboration Studio — portable HTML
+
+[Open/download tool](examples/collaborative-communication-medium/AI_Collaboration_Studio.html) · [Quick start](examples/collaborative-communication-medium/README.md) · [MPL-2.0 license](examples/collaborative-communication-medium/LICENSE)
+
+A self-contained medium for editing diagrams and presentations and transferring the same working HTML between people and LLMs. Public preview, not runtime integration. **This tool alone** is MPL-2.0; licensing of other repository areas remains unchanged.
+
 ## Presentation and first use
 
 The [workspace](examples/public-griglia/demo/) introduces K-UX-AI and lets you

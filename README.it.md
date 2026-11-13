@@ -34,6 +34,12 @@ Il [raccordo all'ambiente](docs/receiving-environment.md) collega metodo
 e mezzi effettivi. Il dominio custodisce dati, fonti e significato degli
 effetti; il ricevente mantiene contesto e learning propri.
 
+## AI Collaboration Studio — HTML portabile
+
+[Apri o scarica il tool](examples/collaborative-communication-medium/AI_Collaboration_Studio.html) · [Guida rapida](examples/collaborative-communication-medium/README.it.md) · [Licenza MPL-2.0](examples/collaborative-communication-medium/LICENSE)
+
+Un mezzo autonomo per lavorare su diagrammi e presentazioni modificabili e trasferire lo stesso HTML fra persone e LLM. Anteprima pubblica, non integrazione nel runtime. Il codice di questo **singolo tool** è MPL-2.0; non cambia la licenza delle altre parti del repository.
+
 ## Presentazione e primo uso
 
 Lo [spazio di lavoro](examples/public-griglia/demo/it/) permette di conoscere
