@@ -1,5 +1,20 @@
 # AI Collaboration Studio — anteprima pubblica
 
+## Download attuale — MetaCanvas Studio 20 (13 novembre 2026)
+
+**[Scarica l'editor autonomo](AI_Collaboration_Studio.html)** · [Visualizza il file su GitHub](https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/examples/collaborative-communication-medium/AI_Collaboration_Studio.html) · 272.490 byte · SHA-256 `c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19`.
+
+MetaCanvas è uno **strumento HTML autonomo** per costruire e modificare diagrammi, schede, presentazioni e idee condivise con persone o sistemi AI. Contiene quattro esempi neutri e non richiede installazione, server o servizio AI incorporato. Apri l'HTML in un browser moderno, lavora nel documento e usa **Salva lavoro** per scaricare una nuova copia; non sovrascrive automaticamente il file originale.
+
+**Novità Studio 20:** superfici Standard/Flat più compatte e responsive; editor e strumenti spostabili; riordino delle schede; frecce con etichette; template salvabili e inserimento annullabile. **Dati per AI** permette di scegliere documento o singola scheda, con appunti privati e raccolte personali esclusi per impostazione predefinita. **Importa JSON / HTML** mostra le schede nuove, cambiate e mancanti prima di integrare selettivamente (con Annulla) oppure sostituire l'intero documento dopo conferma; l'integrazione selettiva conserva le note private locali. **Recupero locale** è una funzione facoltativa, inizialmente disattivata: non è sincronizzazione né backup nel cloud. Le miniature rappresentano meglio i percorsi delle frecce.
+
+**Da sapere:** verifica i testi e gli asset prima di condividere. Il filtro non può riconoscere automaticamente informazioni riservate scritte nel testo comune. L'importazione legge soltanto il modello dati, non esegue codice ricevuto e rifiuta immagini remote; non equivale a una certificazione di sicurezza. Il recupero è stato provato con archiviazione simulata, non è garantito su tutte le aperture `file://`.
+
+Le sezioni **storiche** sottostanti descrivono le prime versioni e non sostituiscono il funzionamento attuale di Studio 20.
+
+[Contratto del documento](DOCUMENT_CONTRACT.md) · [Consegna alla futura pagina MAIOS.it](MAIOS_RESOURCE_TOOL_HANDOFF.md).
+
+
 **Uno strumento HTML autonomo per collaborare con l’AI e presentare le proprie idee.**
 
 1. Apri `AI_Collaboration_Studio.html` in un browser aggiornato.
