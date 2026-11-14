@@ -60,6 +60,35 @@ confronto delle schede prima dell'integrazione. Vedi il
 
 ## Traccia della demo modificabile
 
+### Prima anteprima giocabile
+
+La guida è il documento iniziale. Le istruzioni sono testo nelle schede
+e si possono riscrivere con lo stesso editor. Il comando **Mostra dove**
+porta l'attenzione sul riquadro o sul comando reale, su richiesta.
+Su schermi stretti il primo aiuto indica come passare da Leggi a Componi.
+Il ritorno simulato usa la stessa finestra di confronto dell'importazione.
+
+**Rimuovi guida** toglie in un passaggio annullabile le schede marcate
+per l'esercizio. Le altre schede restano. Se c'erano soltanto le schede
+guida, resta un canvas vuoto. Chi vuole conservare una scheda guida come
+lavoro proprio può duplicarla prima della rimozione.
+
+Una proposta AI può riscrivere le schede usando il modello dati, creare
+nuove guide o lasciare il documento com'è. Nell'anteprima i nuovi aiuti
+possono usare i quattro richiami predefiniti per modifica, spostamento,
+consegna e salvataggio. I richiami appartengono al documento come dati
+(`guideCue`). La loro interpretazione appartiene all'editor. Aggiungere
+un nuovo richiamo richiede una nuova capacità dell'editor.
+
+La generazione dei due HTML autonomi è in
+[`build_playground.py`](../../../examples/collaborative-communication-medium/build_playground.py).
+Il controllo di **500.000 byte** si applica al file base generato, prima
+di immagini o contenuti aggiunti dall'utente. Le schede didattiche sono
+nel documento una sola volta. Il controllo misura i byte UTF-8 del file
+effettivo e segnala una regressione sopra soglia.
+
+### Estensioni del percorso
+
 Il primo incontro propone una sola azione: cambiare una parola o una
 relazione. Le altre istruzioni compaiono quando serve quel gesto.
 
@@ -72,7 +101,7 @@ relazione. Le altre istruzioni compaiono quando serve quel gesto.
 | **Scegli cosa integrare** | Una proposta fittizia rende esplicito un prerequisito per la prova. | Importa il JSON d'esercizio, confronta e integra la scheda proposta. Prova Annulla. |
 | **Salva e riprendi** | Copia di lavoro, copia pubblica e riapertura. | Salva l'HTML, riaprilo e verifica di ritrovare la modifica. |
 
-Il JSON di ritorno va preparato come materiale del caso e dichiarato
+Il ritorno si prepara come materiale del caso e si dichiara
 esempio, così il giro si può esercitare anche offline. Un invio reale a
 un assistente resta esercitabile con il proprio ambiente AI. Il confronto
 strutturale aiuta a trovare i cambiamenti, mentre le persone giudicano

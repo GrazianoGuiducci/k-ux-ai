@@ -8,8 +8,20 @@ attuata sulla rappresentazione può proseguire nel lavoro di chi la
 riceve. La [proposta per la nuova demo](METACANVAS_SELF_DEMO.md) lega
 ogni capacità a un esito pratico, forma il caso da esercitare nell'editor
 e distingue la condivisione di una scheda già supportata dall'estrazione
-di un sottoinsieme di nodi da esplorare. Il seguito è comporre la demo
-nativa IT/EN e la revisione modificabile della pagina MAIOS.it.
+di un sottoinsieme di nodi da esplorare.
+
+La prima anteprima IT/EN usa le schede modificabili come guida,
+esercizio e materiale di scambio. I richiami indicano i controlli
+reali. La rimozione della guida è annullabile e lascia le altre
+schede nel documento. L'anteprima si genera da Studio 21 con
+`python examples/collaborative-communication-medium/build_playground.py <cartella>`.
+Il generatore limita l'HTML base a 500.000 byte. Le due copie iniziali
+misurano 278.627 byte (IT) e 299.509 byte (EN). In Chrome su Windows,
+apertura locale, modifica del testo, spostamento da tastiera, annulla,
+export JSON della scheda, integrazione simulata, salvataggio e riapertura
+dopo rimozione passano in entrambe le lingue. A 390 px resta raggiungibile
+il richiamo alla vista Componi. Segue la revisione autoriale del percorso
+prima di aggiornare la presentazione su MAIOS.it.
 
 ## 13 novembre 2026 — distribuzione localizzata e demo derivata da sorgente
 
