@@ -128,6 +128,67 @@ fonti e perimetro della proposta. Partire da pochi casi verificabili
 permette di vedere dove questa base comune basta e dove serve una forma
 diversa.
 
+## Temi, template, ambienti di lavoro ed estensioni
+
+Un mestiere può chiedere una forma espositiva, un insieme di strumenti
+oppure entrambe le cose. Si può partire dall'operazione che la persona
+vuole compiere e dal materiale che deve poter consegnare e riprendere.
+
+- **Tema.** Cambia il modo di vedere e attraversare lo stesso contenuto:
+  tipografia, colori, disposizione, ritmo, transizioni. Il parallax può
+  aiutare a separare piani con un rapporto spaziale, ad esempio una
+  panoramica di una nave e il dettaglio di una zona. Prevedere una vista
+  statica equivalente per movimento ridotto, stampa o lettura. Un
+  effetto appartiene alla vista e lascia intatti riferimenti e contenuti.
+- **Template.** Dà un punto di partenza modificabile: una scheda, un
+  diagramma o un percorso di presentazione. Una presentazione industriale
+  può alternare panoramica, esploso, processo e decisione. Un portfolio
+  può usare tavole a tutta larghezza e confronti. Un template può
+  combinarsi con temi diversi nella misura in cui la gerarchia resta
+  leggibile. I template personali già salvabili e trasferibili offrono
+  il primo appoggio per sperimentare. Il formato attuale trasporta
+  schede in JSON e il motore può comporre percorsi precaricati.
+- **Ambiente di lavoro.** Adatta navigazione, tipi di contenuto, strumenti
+  a portata di mano e consegne. Si può distribuire come un HTML
+  preconfigurato per un caso o farlo scegliere all'apertura. Una vista a
+  più pagine può presentare le schede come sezioni collegate di uno stesso
+  dossier. La scelta tra i due ingressi dipende da come le persone
+  ricevono e riprendono il lavoro.
+- **Estensione.** Aggiunge un gesto che richiede una capacità specifica,
+  ad esempio importare un'annotazione da un disegno tecnico, confrontare
+  due versioni di un'immagine o raccogliere riscontri su un testo. Un
+  collegamento a un servizio esterno partecipa solo dove si vuole
+  raggiungere quell'effetto. Ogni proposta di estensione deve rendere
+  leggibile ciò che produce anche a chi riceve solo il documento.
+
+| Contesto | Forma utile | Cosa si può fare e condividere |
+| --- | --- | --- |
+| **Presentazione** | Percorso lineare, navigazione per capitoli o racconto a scorrimento. | Cambiare ritmo e profondità per pubblico e occasione. Usare un layout a strati per un dettaglio, una sequenza per l'evoluzione di un processo o un confronto per una scelta. Consegnare anche una lettura statica. |
+| **Ingegneria, caso nautico illustrativo** | Dossier con indice, viste della nave, requisiti, alternative, decisioni e verifiche. | Annotare un disegno, collegare una scelta al requisito e alla revisione di origine, seguire effetti sulle aree coinvolte. Dare all'AI una parte del dossier per far emergere dipendenze o domande. CAD, calcoli e verifiche tecniche conservano i propri strumenti e fonti. |
+| **Grafica** | Tavola visiva o sequenza di revisioni con brief, riferimenti e varianti. | Confrontare varianti, annotare una zona, associare una proposta a un vincolo di composizione e portare al cliente una selezione. Ritaglio e gestione delle risorse sono possibili funzioni aggiuntive se il caso le richiede. |
+| **Marketing e copy** | Percorso da obiettivo e destinatario a messaggi, prove e adattamenti per canale. | Correggere il testo nel punto in cui verrà letto, confrontare varianti, collegare una promessa alla sua evidenza. Chiedere all'AI proposte per una sezione o un canale e conservare la revisione scelta. |
+
+**Una combinazione da provare.** Da un dossier nautico di esempio si
+ricava una scheda tecnica per il gruppo di progetto e una presentazione
+breve per spiegare le alternative. La revisione fatta sulla tavola
+tecnica deve rimanere attribuibile anche quando si usa un'altra vista.
+La stessa differenza ricompare fra una tavola grafica e un portfolio, o
+fra una scheda copy e un'anteprima web. Si può mantenere un riferimento
+comune al materiale sorgente e lasciare a ogni destinatario la forma che
+gli serve. Una copia salvata è una revisione trasferibile; l'allineamento
+automatico di più copie richiederebbe un meccanismo distinto.
+
+**Prima prova per la demo.** Sul caso sintetico già proposto, affiancare
+una vista di lavoro a una vista espositiva e lasciare adattare una
+scheda a un destinatario diverso. Poi provare un solo ambiente
+verticale, ad esempio il dossier nautico con una decisione tracciabile,
+per capire quali dati e comandi richiede davvero. Le dotazioni possono
+poi incrociarsi: una tavola annotabile serve a grafica e ingegneria, un
+confronto di varianti serve a design e copy. Le edizioni autonome possono
+portare combinazioni verificate, mantenendo riconoscibili le azioni di
+salvataggio, consegna e ritorno. Una capacità assente nel ricevente
+dovrebbe lasciare consultabile il risultato con i contenuti essenziali.
+
 ## Passaggio a MAIOS.it
 
 Nella scheda Strumenti, proposta di primo incontro: «Crea, modifica e
