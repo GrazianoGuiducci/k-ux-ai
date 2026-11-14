@@ -382,3 +382,18 @@ L'oggetto e il dominio determinano forma, destinatario ed effetti. Non assumere 
 Partire dall'HTML Schnell come evidenza privata, formare un **artefatto neutro autosufficiente** che conservi funzionanti editing, salvataggio e presentazione e introduca almeno un tipo di elemento/relazione realmente modificabile. Verificare in browser il percorso completo: modifica → export → riapertura → stessa struttura → navigazione/presentazione; recupero da tastiera e su viewport stretto. Solo dopo osservare se pannelli, drag, libreria o collegamento AI aprono nuove possibilità senza appesantire l'uso.
 
 La prova deve riguardare il file esatto e il ricevente usato. Conservare nella guida i meccanismi riusabili, nel CURRENT l'evidenza e il seguito, nella competenza generale K-UX-AI soltanto ciò che cambia più casi.
+
+## 14 novembre 2026 — Ritorno dal progetto al MetaCanvas comune
+
+La guida interattiva r4 ha reso il bordo del canvas distinguibile dalla
+barra dei comandi e ha legato ogni istruzione al comando che esegue.
+Nell'editor ordinario si riusano il contorno e il margine, mantenendo
+le schede e i comandi del documento in vista. Le istruzioni di un caso
+indicano il gesto disponibile e l'esito effettivo del comando.
+
+Quando applichi un miglioramento a un documento esistente, conserva il
+modello dati dell'ultima copia restituita e prova un giro di modifica,
+salvataggio e riapertura. Se la funzione serve a più progetti, portala nel
+[MetaCanvas neutro](../../../examples/collaborative-communication-medium/AI_Collaboration_Studio.html)
+e aggiorna il sapere comune a partire dall'uso. Il caso può continuare
+nel proprio repository con le sue schede e correzioni autoriali.

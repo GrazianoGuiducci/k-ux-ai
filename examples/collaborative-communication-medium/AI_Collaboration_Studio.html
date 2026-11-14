@@ -824,6 +824,19 @@ body.presenting .workspace-dock{display:none!important}
 .ccm-recovery-setting p{margin:5px 0;font-size:11px;color:var(--muted)}
 @media(max-width:560px){.ccm-dialog-head{padding:12px}.ccm-dialog-body{padding:12px}.ccm-dialog-foot{padding:10px 12px}.ccm-dialog-foot button{flex:1 1 auto;min-height:42px}.ccm-recovery-prompt{top:65px}}
 @media print{.ccm-work-dialog,.ccm-recovery-prompt{display:none!important}}
+/* Canvas edge and control spacing, adapted from the MetaCanvas r4 guide. */
+body:not(.reading-mode):not(.presenting) #canvasViewport {
+  box-sizing: border-box;
+  padding: 8px 8px 12px;
+}
+body:not(.reading-mode):not(.presenting) #canvasViewport #canvas {
+  outline: 1px solid var(--muted, #607984);
+  outline-offset: 1px;
+  border-radius: 6px;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock :is(.bottom, #editActionBar) {
+  flex-wrap: wrap;
+}
 </style>
 </head>
 <body>
@@ -1425,7 +1438,9 @@ function fitFlatStage(){
  const last=Math.max(...controls.map(x=>x.getBoundingClientRect().bottom));
  const below=Math.max(0,last-stageRect.bottom);
  const available=Math.max(140,Math.floor(window.innerHeight-stageRect.top-below-8));
- const fitWidth=Math.max(240,Math.floor(available*16/9));
+ const style=getComputedStyle(stage);
+ const verticalPadding=parseFloat(style.paddingTop)+parseFloat(style.paddingBottom);
+ const fitWidth=Math.max(240,Math.floor((available-verticalPadding)*16/9));
  stage.style.setProperty('--flat-stage-height',available+'px');
  stage.style.setProperty('--flat-fit-width',fitWidth+'px');
 }

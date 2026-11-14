@@ -47,6 +47,15 @@ Comporre soltanto i contributi che cambiano l'oggetto presente. Non creare un se
 
 ## Prima incarnazione e direzione
 
+Quando un progetto usa MetaCanvas, parti dall'ultimo documento restituito,
+confronta il suo modello dati con la revisione precedente e usa la sorgente
+comune di K-UX-AI per il comportamento dell'editor. Se dal caso emerge
+una funzione utile altrove, esercitala anche sul canvas neutro e portala
+nella sorgente comune con la ragione e il gesto che cambia. Le altre
+incarnazioni possono così riceverla mantenendo le schede, le relazioni e
+le modifiche di chi le usa. Conserva questo sapere nella guida comune
+in modo che sia utilizzabile anche con un documento nuovo.
+
 La presentazione MAIOS × Schnell, modificata dall'operatore e disponibile come file HTML fornito in conversazione l'11 novembre 2026, è il **primo esercizio documentato del mezzo**: testo editabile nel DOM, schede navigabili, vista Presenta, note per il relatore, stampa/PDF e download di una copia HTML che trasporta le modifiche.
 
 L'operatore ha riferito che questa portabilità ha consentito modifiche anche a pochi minuti da una presentazione e condivisione fra dispositivi. È prova d'uso riferita per quel caso, non prova di un editor generalizzato.
