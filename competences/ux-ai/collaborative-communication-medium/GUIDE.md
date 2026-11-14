@@ -397,3 +397,14 @@ salvataggio e riapertura. Se la funzione serve a più progetti, portala nel
 [MetaCanvas neutro](../../../examples/collaborative-communication-medium/AI_Collaboration_Studio.html)
 e aggiorna il sapere comune a partire dall'uso. Il caso può continuare
 nel proprio repository con le sue schede e correzioni autoriali.
+
+## Pagina che evolve con la competenza
+
+Quando una pagina rende percepibile la logica di una competenza, mantieni
+i blocchi e i loro identificativi presso la sorgente del progetto. Da
+quella base genera l'HTML della pagina da valutare. MetaCanvas può rendere
+modificabili le relazioni del progetto e accompagnare la revisione
+autoriale. Al ritorno dell'HTML o del documento, confronta i cambiamenti
+con la base e porta il loro significato nella competenza, nel contenuto
+o nell'impaginazione pertinente. Rigenera la candidata quando cambia
+la fonte. La pubblicazione usa la revisione HTML valutata dall'operatore.
