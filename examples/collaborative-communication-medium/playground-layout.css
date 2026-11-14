@@ -1,0 +1,251 @@
+/* Keep management controls inside the space available to each panel. */
+.quick-editor .drawer-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+.quick-editor .drawer-head .head-cluster {
+  overflow-wrap: anywhere;
+}
+.quick-editor .drawer-head .form-actions {
+  justify-content: flex-start;
+  margin: 0;
+}
+.quick-editor .drawer-head button {
+  white-space: normal;
+}
+.quick-editor .drawer-head .quick-done {
+  background: var(--accent);
+  color: var(--ui-button-ink, #fff);
+  border-color: var(--accent);
+}
+.quick-editor.expanded .drawer-head {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.slide-rail {
+  overflow-x: hidden;
+}
+.slide-rail-head,
+.slide-rail-head .form-actions {
+  flex-wrap: wrap;
+}
+.slide-rail-head .form-actions {
+  margin: 0;
+}
+.project-shortcuts {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 122px), 1fr));
+}
+.project-shortcuts button {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.slide-rail-chip .label {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+body:not(.presenting):not(.reading-mode) .work-inner {
+  max-width: none;
+  width: 100%;
+}
+body:not(.presenting):not(.reading-mode) #canvasViewport {
+  width: 100%;
+}
+body:not(.presenting):not(.reading-mode):not(.flat-layout):not(:has(.drawer-open)) .work {
+  padding-block: clamp(6px, 1.2dvh, 14px);
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock .bottom,
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock #editActionBar {
+  flex-wrap: wrap;
+}
+body:not(.flat-layout):not(.reading-mode):not(.presenting) .workspace-dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 4;
+  background: var(--ui-subtle, #e8eff0);
+  padding-bottom: max(3px, env(safe-area-inset-bottom));
+}
+.workspace-dock .flat-slide-name {
+  min-width: 0;
+}
+@media (max-width: 700px) {
+  body:not(.presenting) .slide-rail {
+    max-height: none !important;
+  }
+  body:not(.presenting) .slide-rail > .mini {
+    display: none;
+  }
+  body:not(.presenting) .slide-rail .slide-view-picker {
+    margin-block: 4px;
+  }
+  body:not(.presenting) .slide-rail-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  body:not(.presenting) .slide-rail-row {
+    flex: 0 0 clamp(152px, 51vw, 220px);
+  }
+  .slide-rail-list[data-view='thumbs'] .slide-rail-chip {
+    min-width: 0 !important;
+  }
+  .slide-rail-thumb {
+    max-height: 74px;
+  }
+  .public-first-use {
+    gap: 5px;
+    padding-block: 5px;
+  }
+}
+@media (max-width: 510px) {
+  body:not(.reading-mode):not(.presenting) #canvasViewport .canvas-wrap {
+    min-width: 640px !important;
+  }
+}
+
+#publicFirstUse {
+  align-items: flex-start;
+  gap: 8px;
+  flex-direction: column;
+  padding: 8px clamp(12px, 2vw, 24px);
+}
+.guide-copy {
+  min-width: 0;
+}
+.guide-step {
+  color: var(--muted);
+  font-weight: 750;
+}
+.guide-copy p, .guide-copy h1 {
+  margin: 0;
+}
+.guide-copy h1 {
+  font-size: clamp(17px, 2.2vw, 25px);
+  line-height: 1.2;
+}
+#guideInstruction {
+  margin-top: 3px;
+  max-width: 78ch;
+}
+#publicFirstUse .public-first-actions {
+  align-self: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 1;
+}
+#guideNext {
+  order: 1;
+  background: var(--accent);
+  color: var(--ui-button-ink, white);
+}
+#guideOptions {
+  order: 2;
+  position: relative;
+  z-index: 5;
+}
+#guideOptions summary {
+  cursor: pointer;
+  padding: 5px;
+}
+#guideOptions[open] {
+  display: flex;
+}
+#guideOptions[open] button {
+  margin-inline-end: 4px;
+}
+.guided-playground .toolbar :is(.brand,.doc-name,.status,#presentBtn,#flatLayoutBtn,#toggleSlideRail,#ccmGuideBtn,#toggleTools),
+.guided-playground:not(:has(#publicFirstUse[data-cue="save"])) #saveBtn,
+.guided-playground .work .slide-rail,
+.guided-playground .work .slide-caption,
+.guided-playground .workspace-dock :is(.bottom,#viewportControls) {
+  display: none !important;
+}
+.guided-playground .toolbar {
+  min-height: 0;
+  padding-block: 3px;
+  justify-content: flex-end;
+  box-shadow: none;
+}
+.guided-playground .toolbar-actions button {
+  min-height: 28px;
+  padding: 3px 8px;
+}
+.guided-playground .work {
+  padding: 4px 8px 0 !important;
+}
+.guided-playground .work .editor-shell {
+  display: block !important;
+}
+.guided-playground:not(:has(.drawer-open)) {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  block-size: 100dvh;
+  overflow: hidden;
+}
+.guided-playground:not(:has(.drawer-open)) .workspace {
+  display: block !important;
+  min-height: 0;
+  overflow: auto;
+}
+.guided-playground:not(:has(.drawer-open)) :is(.work,.work-inner,.editor-shell,.editor-main) {
+  height: 100%;
+  min-height: 0;
+}
+.guided-playground:not(:has(.drawer-open)) .editor-main {
+  display: grid !important;
+  grid-template: minmax(0, 1fr) auto / minmax(0, 1fr) !important;
+}
+.guided-playground:not(:has(.drawer-open)) #canvasViewport {
+  grid-area: 1 / 1 !important;
+  container-type: size;
+  min-height: 0;
+  height: 100%;
+  max-height: none !important;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+  background: var(--ui-subtle, #e8eff0);
+}
+body.guided-playground:not(.reading-mode):not(.flat-layout):not(.presenting):not(:has(.drawer-open)) #canvasViewport .canvas-wrap,
+body.guided-playground.flat-layout:not(.reading-mode):not(.presenting):not(:has(.drawer-open)) #canvasViewport .canvas-wrap {
+  width: min(100cqw, 177.777cqh) !important;
+  min-width: 0 !important;
+  transition: none;
+  box-shadow: none;
+}
+.guided-playground:not(:has(.drawer-open)) #canvasViewport #canvas {
+  min-height: 0 !important;
+  outline: 1px solid var(--muted, #607984);
+  outline-offset: 1px;
+  border-radius: 6px;
+}
+.guided-playground:not(:has(.drawer-open)) #readingView {
+  grid-area: 1 / 1;
+  min-height: 0;
+  overflow: auto;
+}
+.guided-playground:not(:has(.drawer-open)) .workspace-dock {
+  grid-area: 2 / 1 !important;
+  display: flex !important;
+  justify-content: flex-end;
+  padding: 3px;
+  position: static;
+  border-top: 1px solid var(--line);
+}
+.guided-playground .workspace-dock #editActionBar {
+  position: static !important;
+  transform: none !important;
+  margin: 0;
+}
+.guided-playground #toolPanel.drawer-open > .drawer-head {
+  display: flex !important;
+  position: sticky;
+  top: 0;
+  z-index: 8;
+}
+.guided-playground #toolPanel.drawer-open .resize-tools,
+.guided-playground #toolPanel.drawer-open #closeTools {
+  display: inline-flex !important;
+}
