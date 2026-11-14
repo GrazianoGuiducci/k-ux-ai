@@ -1,5 +1,16 @@
 # Collaborative Communication Medium — guida viva
 
+## 14 novembre 2026 — la demo come guida modificabile
+
+I casi riferiti di revisione web con Codex e costruzione di presentazioni
+aziendali con GPT individuano la stessa relazione: una correzione
+attuata sulla rappresentazione può proseguire nel lavoro di chi la
+riceve. La [proposta per la nuova demo](METACANVAS_SELF_DEMO.md) lega
+ogni capacità a un esito pratico, forma il caso da esercitare nell'editor
+e distingue la condivisione di una scheda già supportata dall'estrazione
+di un sottoinsieme di nodi da esplorare. Il seguito è comporre la demo
+nativa IT/EN e la revisione modificabile della pagina MAIOS.it.
+
 ## 13 novembre 2026 — distribuzione localizzata e demo derivata da sorgente
 
 **Differenza emersa:** dopo la prima demo inglese con selettore, l'operatore ha determinato la topologia di pubblicazione: una pagina italiana e una inglese di MAIOS.it, ognuna riferita a un HTML della propria lingua ospitato in K-UX-AI. Una possibilità tecnicamente presente (toggle EN/IT dentro il singolo file) **non equivale** al percorso scelto per i riceventi; il mezzo deve incarnare la relazione di distribuzione, non aggiungere opzioni visibili per inerzia.
