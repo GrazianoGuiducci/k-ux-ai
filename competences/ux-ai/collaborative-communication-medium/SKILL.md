@@ -29,6 +29,10 @@ K-UX-AI possiede questa specializzazione come parte della propria competenza com
 
 Comporre soltanto i contributi che cambiano l'oggetto presente. Non creare un secondo kernel sopra K-UX-AI.
 
+## Specializzazione dedicata al motore editoriale
+
+Quando l'oggetto non è soltanto usare un documento ma **costruire o correggere il modo di modificarlo** — selezione, testo diretto, diagrammi, layout, importazione/esportazione o adattamento fra pagine e presentazioni — attiva [MetaEditor Evolution](meta-editor/SKILL.md) con [GUIDE](meta-editor/GUIDE.md) e [CURRENT](meta-editor/CURRENT.md). CCM conserva il medium condiviso; la nuova competenza possiede il saper fare dell'editor, le prove del gesto e l'apprendimento iterativo. È raggiungibile dal manifest K-UX-AI e dal Boot; non è un nuovo kernel o una nuova release.
+
 ## Metodo che deve partecipare
 
 ### Correzione dell'ingresso, 16 novembre — gesto del nodo e generalità dell'editor
