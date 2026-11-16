@@ -3,7 +3,7 @@ name: meta-editor-evolution
 description: Formare ed evolvere il MetaEditor di MetaCanvas come capacità riusabile di modifica diretta, composizione e trasformazione documentale per pagine web e presentazioni; attivare quando il gesto, l'architettura o la fedeltà dell'editing richiedono costruzione o correzione.
 owner: GrazianoGuiducci/k-ux-ai
 parent: competences/ux-ai/collaborative-communication-medium
-status: candidate-formed-2026-11-16
+status: candidate-with-neutral-lab01-observed-2026-11-16
 ---
 
 # MetaEditor Evolution — competenza di costruzione ed evoluzione
@@ -35,4 +35,4 @@ Al lavoro su editor di pagina, MetaCanvas, diagrammi, componenti, template, HTML
 Nessun commit documentale pubblica il prodotto, modifica automaticamente il sito o attiva un altro agente.
 
 ## Attuale prova iniziale
-La correzione R4 è una fonte già esercitata: una prova dell'inspector venne scambiata per prova di editing diretto, benché Studio 20 possedesse già `contentEditable` per i nodi. [GUIDE](GUIDE.md) conserva il meccanismo e il banco da verificare. [CURRENT](CURRENT.md) distingue capacità formata, prototipo costruito, test e uso reale. La prova su un nuovo banco ancora non può essere dedotta da questo testo.
+La correzione R4 è una fonte già esercitata: una prova dell'inspector venne scambiata per prova di editing diretto, benché Studio 20 possedesse già `contentEditable` per i nodi. [GUIDE](GUIDE.md) conserva il meccanismo e il banco da verificare. [CURRENT](CURRENT.md) distingue capacità formata, prototipo costruito, test e uso reale. Il [banco neutro Lab 01](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab01.html) è stato costruito e verificato con Node/Chromium per i gesti indicati nel [CURRENT](CURRENT.md). Restano non osservati uso reale dell'operatore, fedeltà su pagine HTML di terzi e assimilazione in un futuro caso non identico.
