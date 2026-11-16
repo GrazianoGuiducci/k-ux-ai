@@ -1,5 +1,12 @@
 # Collaborative Communication Medium — CURRENT
 
+## 16 novembre 2026 — correzione dell'operatore: fermata l'estensione incrementale R4
+
+**Fatto osservato:** dopo avere aperto il file R4 in Chrome Windows, l'operatore dice «Faccio fatica a usarlo», «non posso neanche editare il testo nel diagramma» e porta tre screenshot (R4 + due riferimenti Canva). Il test Chromium precedente dimostrava certe azioni in inspector, **non** l'editing locale della label; la qualità d'uso non era comprovata. [Studio 20 ha già una capacità di testo diretto](../../../../examples/collaborative-communication-medium/AI_Collaboration_Studio.html), che non era stata riusata nella R4.
+
+**Nuova risultante di metodo:** [reset dell'architettura editoriale con sorgenti e esperimento discriminante](references/metacanvas-editor-architecture-reset-20261116.md). La competenza non farà evolvere R4 per inerzia; separa nucleo di gesto, adapter pagina, adapter presentazione e contenuto interno del diagramma, confrontando prima sorgenti esistenti e licenze. La domanda prossima è quale motore consenta davvero il doppio clic sulla label e una trasformazione non distruttiva dell'HTML del sito. **Nessuna nuova app, codice R5, installazione Codex, modifica maios_it o pubblicazione è stata eseguita.**
+
+
 ## 16 novembre 2026 — R4 contestuale: prototipo esercitato, non distribuito
 
 **Nuova selezione:** dopo apertura e screenshot R3 in Chrome Windows, l'operatore vuole menu laterale per struttura e layout e strumenti direttamente sugli elementi, con doppio clic nel vuoto per inserire e quattro template di sezioni. Risultato: HTML autonomo R4 e handoff Codex preparati nella conversazione, non caricati in questa repository né in MAIOS.it.
