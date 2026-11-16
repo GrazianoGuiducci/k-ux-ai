@@ -1,5 +1,12 @@
 # Collaborative Communication Medium — CURRENT
 
+## 16 novembre 2026 — ponte locale MetaCanvas R3 per pagine web
+
+**Movimento selezionato:** unificare progressivamente le capacità di modifica diretta delle pagine MAIOS con le possibilità di diagrammi/layout/presentazione di Studio 20/21, mantenendo meno passaggi e la possibilità di duplica/posiziona e inserimento contestuale di immagini. Il [metodo e le prove R3 sono nella competenza](references/page-editor-metacanvas-bridge-20261116.md). Un HTML R3 è stato prodotto nell'ambiente di conversazione a partire dall'allegato `MAIOS_Consulenza_MetaCanvas_IT_R2(1).html`; non è stato inserito nella repo K-UX-AI né pubblicato in MAIOS.it. Verifiche Node e Chromium hanno coperto SVG, edit nodi, Undo, posizionamento fra sezioni, inline nel paragrafo, upload immagine, export/riapertura e viewport 390 px; non equivalgono a test di integrazione Codex, Windows file://, touch o prestazioni su documenti arbitrari.
+
+**Differenza tecnica e cognitiva:** due collisioni di composizione reali (click intercettati fuori dal pannello originario; controllo JS senza nodo DOM corrispondente) sono state riconosciute e corrette nello stesso lavoro. La competenza conserva il metodo di verificare l'interazione completa, non solo componenti isolati. Il prossimo ciclo è confronto situato con l'operatore e trasferimento selettivo del codice verso il prodotto comune, preservando proprietà del sito, dataset di presentazione e privacy delle copie. Nessuna sostituzione di Studio 20/21 o deployment è autorizzata da questo stato.
+
+
 ## 13 novembre 2026 — Studio 21 come demo multilingua a due artefatti
 
 **Precisazione dell'operatore:** non un selettore bilingue come strategia di distribuzione, ma due pagine **MAIOS.it Risorse → Tool** ciascuna collegata alla propria versione autonomamente scaricabile in K-UX-AI. La conversione usa come fonte la nuova pagina Consulenza AI allegata, senza trattare la pagina o il vecchio sito come testo da replicare parola per parola.
