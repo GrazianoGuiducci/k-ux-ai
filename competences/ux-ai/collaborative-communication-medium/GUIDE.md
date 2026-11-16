@@ -1,5 +1,12 @@
 # Collaborative Communication Medium — guida viva
 
+## 16 novembre 2026 — l'ancora è il punto della pagina in cui serve intervenire
+
+L'operatore ha scelto la convergenza fra l'editor DOM delle pagine MAIOS e MetaCanvas Studio 20/21: non aggiungere per inerzia tutte le funzioni al pannello, ma **far emergere diagramma, immagine, duplicazione e disposizione nel luogo in cui servono**. Nel [primo esercizio R3, con evidenze e limiti](references/page-editor-metacanvas-bridge-20261116.md), la copia si colloca cliccando la destinazione, il visual può vivere nel paragrafo e un editor contestuale porta nodi/collegamenti o prompt/upload dell'immagine. Tutto usa la storia unica della pagina; il modello dati del diagramma rimane distinto dal DOM del sito e dal `ccm.document.v1` dello studio a scene.
+
+**Apprendimento costruttivo osservato:** i comandi del nuovo dialog risultavano bloccati dall'intercettore click preesistente; un ulteriore controllo definito in JavaScript ma non materializzato nel DOM fermava il bootstrap. La competenza deve quindi provare **l'intero gesto dal carrier al controllo e al ritorno nel documento**, non solo la sintassi di un modulo: punti di ingresso, contesti di evento, DOM esportato, ripristino, Undo e adattamento responsive formano insieme la capacità. Il prototipo è locale e non è un merge del motore Studio 20/21 né una release K-UX-AI. Verifica futura non-identica e supervisione dell'operatore ancora necessarie.
+
+
 ## 13 novembre 2026 — distribuzione localizzata e demo derivata da sorgente
 
 **Differenza emersa:** dopo la prima demo inglese con selettore, l'operatore ha determinato la topologia di pubblicazione: una pagina italiana e una inglese di MAIOS.it, ognuna riferita a un HTML della propria lingua ospitato in K-UX-AI. Una possibilità tecnicamente presente (toggle EN/IT dentro il singolo file) **non equivale** al percorso scelto per i riceventi; il mezzo deve incarnare la relazione di distribuzione, non aggiungere opzioni visibili per inerzia.
