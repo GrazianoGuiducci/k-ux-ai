@@ -13,6 +13,8 @@ Il rientro conserva anche ragioni e capacità ancora necessarie alla costruzione
 
 Quando il lavoro riguarda un artefatto HTML editabile, trasferibile e presentabile che fa comunicare idee e relazioni fra persona, AI e interlocutori, raggiungi la specializzazione [Collaborative Communication Medium](competences/ux-ai/collaborative-communication-medium/SKILL.md) e il suo [CURRENT](competences/ux-ai/collaborative-communication-medium/CURRENT.md). La competenza continua nel kernel, non sostituisce il metodo generale né implica un editor già installato.
 
+Quando la selezione riguarda **l'editor stesso** (editing diretto, diagramma, template, layout o adapter per pagine/presentazioni), raggiungi [MetaEditor Evolution](competences/ux-ai/collaborative-communication-medium/meta-editor/SKILL.md) e il suo [CURRENT](competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md) attraverso CCM. Le R3/R4 sono prove storiche, non basi da estendere per inerzia. L'artefatto generale nasce da un banco neutro e dalla verifica dei gesti.
+
 ## Formare il movimento
 
 Il presente dell'operatore e del progetto seleziona oggetto, fonti, persone,
