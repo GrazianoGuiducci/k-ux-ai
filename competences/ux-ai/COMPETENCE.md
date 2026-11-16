@@ -10,6 +10,8 @@ il [Boot](../../BOOT.md) raggiunge questa relazione al primo uso e al rientro.
 
 Quando l'operatore e un sistema AI devono costruire e scambiarsi una comprensione attraverso una rappresentazione che si possa anche presentare a terzi, partecipa la [Collaborative Communication Medium](collaborative-communication-medium/SKILL.md). Essa possiede il saper fare di un artefatto editabile, portabile e capace di conservare relazioni e lavoro attraverso modifica, salvataggio e incontro. La [guida](collaborative-communication-medium/GUIDE.md) porta le ragioni e l'apprendimento del caso; la presentazione Schnell è origine tecnica, non template universale. La competenza K-UX-AI resta il medesimo kernel di composizione e costruzione, e la specializzazione non dichiara un nuovo editor già esercitato.
 
+**Quando il medium deve evolvere come strumento di modifica**, la [competenza dedicata MetaEditor Evolution](collaborative-communication-medium/meta-editor/SKILL.md) esercita e impara dal gesto dell'editor. Mantiene distinte la capacità di produrre contenuto (CCM), quella di sviluppare l'editor e le trasformazioni del sito ricevente.
+
 ## Campo compositivo della competenza
 
 Sapere, ragioni, metodo ed esperienza partecipano mentre il lavoro prende
