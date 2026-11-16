@@ -1,5 +1,16 @@
 # Collaborative Communication Medium — guida viva
 
+## 16 novembre 2026 — il medium come luogo condiviso di comprensione e lavoro
+
+**Nuova formulazione autoriale**, [sorgente originale del post «Il medium è importante»](https://github.com/GrazianoGuiducci/Editoriali/blob/main/sources/deposits/GRAZIANO_MAIOS_MEDIUM_CAMPO_METACANVAS_COPY_2026-11-16.md): lavorare con l'AI richiede un «posto» fisico o concettuale, preferibilmente entrambi, in cui contesto e intento siano visibili in condivisione; una chat da sola può imporre trasferimenti/copia-incolla incapaci di rappresentare il rapporto vivo fra idea, intervento e risultato. Il Medium può ridurre i passaggi e la latenza percepita fra proposta dell'AI e scelta della persona. Il post collega il primo lavoro sulle presentazioni, la modifica al volo delle pagine Consulenza/Collaborazioni, e ulteriori forme di cooperazione e ritorno del sapere. È anche fonte di una domanda aperta sul copy, **non** un ordine di cambiare immediatamente il prodotto.
+
+**Identità della capacità CCM:** il valore non consiste nel trasportare più testo o un'infrastruttura standard, ma nel mantenere **lo stesso oggetto di comprensione e modifica** attraverso parola, rappresentazione visiva, partecipazione dell'operatore, file, modello, Codex e successivo lavoro. La persona deve poter scegliere direttamente le parole o relazioni nel documento finito; l'AI deve poter ricevere quella differenza e continuare dal medesimo riferimento, quando l'ambiente offre realmente il ritorno. La memoria del contenitore da sola non esercita quel passaggio.
+
+**Conseguenza dell'esercizio reale R4:** la fonte già presente in Studio 20 rendeva possibile editing diretto dei nodi; il prototipo R4 lo ha perso nonostante prove sintattiche e Chromium che coprivano altri gesti. Questa **regressione dimostrata** fa del caso un esempio di come il medium debba imparare dal rapporto vivo, non dalla sola espansione di feature. Il nuovo studio architetturale già selezionato in [R4 non risolve il gesto](#16-novembre-2026--r4-non-risolve-il-gesto-ritorno-alla-capacità-già-presente) resta l'owner del prossimo lavoro tecnico; la nuova nota non avvia un altro R5 o una fusione automatica dei runtime.
+
+**Raccordo al significato:** KA/FDLA intervengono quando una presunta cautela tecnica o una valutazione di mercato cambia l'oggetto concettuale dell'autore. Qui la costruzione del medium è proprietà K-UX-AI, l'editor/sito è proprietà MAIOS.it, Editoriali la parola, Business le relazioni professionali. Non imporre le formulazioni del post come requisiti generali di UI prima di osservarne l'uso.
+
+
 ## 16 novembre 2026 — R4 non risolve il gesto: ritorno alla capacità già presente
 
 **Prova umana successiva ai test automatici:** l'operatore prova R4 in Chrome Windows e riferisce di fare fatica a usare l'editor e di non riuscire a modificare direttamente il testo nel diagramma. Le schermate Canva mostrano il gesto che ci interessa (selezione, testo in situ, toolbar contestuale, libreria e posizionamento). L'esito invalida la precedente pretesa di sufficienza d'uso; non cancella i test tecnici precedenti, che esercitavano un'altra sequenza.
