@@ -20,7 +20,14 @@
         "current": "competences/ux-ai/collaborative-communication-medium/CURRENT.md",
         "status": "source_candidate_not_runtime",
         "public_tool": "examples/collaborative-communication-medium/AI_Collaboration_Studio.html",
-        "public_tool_docs": "examples/collaborative-communication-medium/README.it.md"
+        "public_tool_docs": "examples/collaborative-communication-medium/README.it.md",
+        "meta_editor": {
+          "competence": "competences/ux-ai/collaborative-communication-medium/meta-editor/SKILL.md",
+          "guide": "competences/ux-ai/collaborative-communication-medium/meta-editor/GUIDE.md",
+          "current": "competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md",
+          "first_lab": "examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab01.html",
+          "status": "candidate_with_neutral_lab_tested"
+        }
       }
     }
   },
