@@ -46,6 +46,11 @@ Comporre soltanto i contributi che cambiano l'oggetto presente. Non creare un se
 **7. Apprendere nell'uso.** Una difficoltà, un successo, una correzione o una possibilità nuova possono cambiare come la competenza forma il prossimo artefatto. Conservare il meccanismo e la ragione nella [guida](GUIDE.md), lo stato dell'esercizio in [CURRENT](CURRENT.md), le sorgenti e i dati specifici presso i loro owner. Se il sapere già esisteva ma non è stato chiamato, correggere il raccordo; se cambia il modo generale di formare competenze, restituire a Meta_Skill.
 
 ## Prima incarnazione e direzione
+## 16 novembre — la pagina stessa è il punto di intervento
+
+Per una pagina HTML già editabile che si compone con MetaCanvas, raggiungi il [metodo di convergenza situata](references/page-editor-metacanvas-bridge-20261116.md) prima di formare nuovi strumenti. La lezione esercitata è la continuità del referente nell'interazione: inserire dentro il paragrafo, duplicare verso un punto visibile, modificare il modello del diagramma senza perdere la pagina e far attraversare **un solo Undo** e un export coerente all'azione. Il codice di uno studio a scene non si sostituisce automaticamente al DOM del sito: selezionare il ponte appropriato e verificare il gesto completo. Lo stato è di **prototipo locale**; non dichiarare fusione canonica, sito aggiornato o funzione AI incorporata.
+
+## Prima incarnazione e direzione
 
 Quando un progetto usa MetaCanvas, parti dall'ultimo documento restituito,
 confronta il suo modello dati con la revisione precedente e usa la sorgente
