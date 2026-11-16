@@ -1,5 +1,19 @@
 # Collaborative Communication Medium — guida viva
 
+## 16 novembre 2026 — R4: elemento e sezione hanno interazioni contestuali distinte
+
+**Fonte diretta, dopo la prova visiva R3 in Chrome Windows:** pannello «Modifica pagina», barra di formattazione e modal visual erano contemporaneamente visibili e dispersivi. L'operatore seleziona **un menu laterale discreto** soltanto per sezioni/layout e template, **doppio clic nel vuoto** per l'inserimento, **doppio clic sull'elemento** per testo e visual insieme ad azioni contestuali duplica, elimina, inserisci, posiziona. I template selezionati sono una, due e tre colonne, più diagramma con note a destra.
+
+**Esercizio locale R4:** il codice originale R3 resta owner di documento, storico Undo, SVG, esportazione e anteprima. R4 usa gli stessi handler attraverso un inspector contestuale; la toolbar testuale preesistente è spostata nell'inspector, non duplicata; il dialog per diagrammi e immagini diventa una finestra non modale ancorata all'oggetto. Test Node e Chromium headless: testo editabile senza aprire sidebar, doppio clic su fondo vuoto, inserimento di paragrafo, template diagramma+note, nodo 3→4, export HTML e riapertura in un browser nuovo, viewport 390 px senza overflow nel campione. Non provato su Chrome Windows con file locale.
+
+**Due nuove correzioni del metodo:**
+- Dopo duplicazione e cambio focus, un click su «+ Inserisci» poteva colpire il contenitore invece del pulsante durante pointerdown→click. La correzione preserva il focus sui comandi contestuali in pointerdown; il percorso è stato riesercitato.
+- L'HTML esportato clonava anche i controlli runtime R4; riaprendolo, l'inizializzazione li ricreava una seconda volta. Nell'export la mini-toolbar nativa viene prima ricollocata nel carrier, poi sono rimossi dal clone i controlli dinamici. Il roundtrip è stato riesercitato con una sola copia dei controlli e dati documento conservati.
+
+**Saper fare riusabile:** la struttura e l'elemento non devono competere per lo spazio. L'ancora di modifica è l'oggetto reale, e la qualità va provata lungo il gesto completo: focus, evento, visualizzazione, DOM esportato e riapertura. R3 e R4 non rappresentano una fusione già completata con lo schema ccm.document.v1 di Studio 20/21. Contenuti MAIOS restano al dominio e non diventano demo pubblica per deduzione. Evoluzione della competenza verificata in un caso locale, non in altre incarnazioni.
+
+
+
 ## 16 novembre 2026 — l'ancora è il punto della pagina in cui serve intervenire
 
 L'operatore ha scelto la convergenza fra l'editor DOM delle pagine MAIOS e MetaCanvas Studio 20/21: non aggiungere per inerzia tutte le funzioni al pannello, ma **far emergere diagramma, immagine, duplicazione e disposizione nel luogo in cui servono**. Nel [primo esercizio R3, con evidenze e limiti](references/page-editor-metacanvas-bridge-20261116.md), la copia si colloca cliccando la destinazione, il visual può vivere nel paragrafo e un editor contestuale porta nodi/collegamenti o prompt/upload dell'immagine. Tutto usa la storia unica della pagina; il modello dati del diagramma rimane distinto dal DOM del sito e dal `ccm.document.v1` dello studio a scene.
