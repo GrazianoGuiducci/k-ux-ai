@@ -31,6 +31,11 @@ Comporre soltanto i contributi che cambiano l'oggetto presente. Non creare un se
 
 ## Metodo che deve partecipare
 
+### Correzione dell'ingresso, 16 novembre — gesto del nodo e generalità dell'editor
+
+Se l'operatore chiede una versione generale di MetaCanvas per pagine web/presentazioni o segnala un'azione non naturale, consulta il [riesame post-R4, con confronto del codice già posseduto](references/metacanvas-editor-architecture-reset-20261116.md) **prima** di estendere la R4. Una fonte riutilizzabile non aveva partecipato: Studio 20 contiene già editing diretto con `contenteditable`, mentre R4 ha imposto `#mc-node-label` nel pannello, perdendo il gesto essenziale. Valuta l'esito dell'uso umano e non confondere un test dell'input dell'inspector con la possibilità di modificare in situ. Per l'adattamento a HTML esterni separa engine, adapters, document carrier e renderer: un sito dinamico non diventa convertibile per sola disponibilità tecnica. L'apprendimento corregge oggi il metodo; non dichiara una R5 realizzata.
+
+
 **1. Comprendere l'oggetto di comunicazione.** Partire dall'idea o dal lavoro che l'operatore intende rendere comprensibile. Distinguere sorgente, oggetto, relazioni, comprensione dell'operatore, rappresentazione già disponibile e interlocutore. Il modello non attribuisce automaticamente alla geometria un significato: una freccia può essere sequenza, dipendenza, contributo o altro.
 
 **2. Formare una superficie di lavoro condivisa.** Permettere alla persona di modificare direttamente testi, appunti, titoli, elementi e quando utile disposizione, stile, diagrammi e relazioni. Rendere disponibili elementi riutilizzabili e composizioni salvate senza trasformare la libreria in un limite a ciò che può essere creato. Organizzare lo strumento attorno al gesto corrente; pannelli e proprietà possono scomparire senza far perdere l'oggetto.
