@@ -1,5 +1,10 @@
 # Collaborative Communication Medium — CURRENT
 
+## 16 novembre — MetaEditor Evolution: funzione distinta e primo banco
+
+L'operatore ha selezionato una competenza dedicata al **saper formare e migliorare l'editor**. Il [suo ingresso](meta-editor/SKILL.md), [GUIDE](meta-editor/GUIDE.md) e [CURRENT](meta-editor/CURRENT.md) vivono nella specializzazione CCM, senza crearle un secondo kernel. Il [Lab 01 neutro](../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab01.html) esercita testo dei nodi modificabile direttamente, storia, geometria dei link, disposizione e HTML salvabile/riapribile. Le prove Chromium sono circoscritte al documento sintetico; R3/R4 non sono state sostituite, il sito non è stato modificato e il nuovo banco non è distribuzione di MetaCanvas Studio.
+
+
 ## 16 novembre 2026 — correzione dell'operatore: fermata l'estensione incrementale R4
 
 **Fatto osservato:** dopo avere aperto il file R4 in Chrome Windows, l'operatore dice «Faccio fatica a usarlo», «non posso neanche editare il testo nel diagramma» e porta tre screenshot (R4 + due riferimenti Canva). Il test Chromium precedente dimostrava certe azioni in inspector, **non** l'editing locale della label; la qualità d'uso non era comprovata. [Studio 20 ha già una capacità di testo diretto](../../../../examples/collaborative-communication-medium/AI_Collaboration_Studio.html), che non era stata riusata nella R4.
