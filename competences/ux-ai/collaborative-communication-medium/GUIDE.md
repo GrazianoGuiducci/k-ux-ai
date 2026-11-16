@@ -1,5 +1,14 @@
 # Collaborative Communication Medium — guida viva
 
+## 16 novembre 2026 — R4 non risolve il gesto: ritorno alla capacità già presente
+
+**Prova umana successiva ai test automatici:** l'operatore prova R4 in Chrome Windows e riferisce di fare fatica a usare l'editor e di non riuscire a modificare direttamente il testo nel diagramma. Le schermate Canva mostrano il gesto che ci interessa (selezione, testo in situ, toolbar contestuale, libreria e posizionamento). L'esito invalida la precedente pretesa di sufficienza d'uso; non cancella i test tecnici precedenti, che esercitavano un'altra sequenza.
+
+**Fonte già posseduta e ignorata nel porting:** Studio 20 aveva già `.node-edit[contenteditable]`, `clickNode` e un ciclo di fine modifica sul nodo. Nel prototipo R4 il diagramma nasce invece come SVG `mcDrawGraph` e il testo va modificato mediante `mcOpenVisual` / `#mc-node-label`. La capacità di editing diretto **non mancava nel campo**: non ha partecipato alla composizione e la R4 ha introdotto una regressione. Correzione del criterio: provare *doppio clic sulla scritta → cursore dentro la scritta → digitazione*, non limitarsi a testare un input del pannello.
+
+**Ricomposizione architetturale:** [riesame delle fonti interne/esterne e banco discriminante](references/metacanvas-editor-architecture-reset-20261116.md). L'operatore seleziona di riconsiderare il nucleo di editing per pagine web diverse e presentazioni, confrontando le soluzioni esistenti anziché estendere automaticamente R4. GrapesJS core è candidato per import/composizione pagine; Studio20 conserva editing diretto e modello a scene, Puck/Tiptap/Excalidraw sono alternative situate; tldraw necessita licenza di produzione. Ogni import da HTML e ogni output per Codex richiedono fedeltà e confini di owner verificati. Nessuna R5 o deploy prodotti da questa formazione.
+
+
 ## 16 novembre 2026 — R4: elemento e sezione hanno interazioni contestuali distinte
 
 **Fonte diretta, dopo la prova visiva R3 in Chrome Windows:** pannello «Modifica pagina», barra di formattazione e modal visual erano contemporaneamente visibili e dispersivi. L'operatore seleziona **un menu laterale discreto** soltanto per sezioni/layout e template, **doppio clic nel vuoto** per l'inserimento, **doppio clic sull'elemento** per testo e visual insieme ad azioni contestuali duplica, elimina, inserisci, posiziona. I template selezionati sono una, due e tre colonne, più diagramma con note a destra.
