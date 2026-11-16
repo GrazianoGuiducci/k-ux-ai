@@ -1,5 +1,15 @@
 # Collaborative Communication Medium — CURRENT
 
+## 16 novembre 2026 — R4 contestuale: prototipo esercitato, non distribuito
+
+**Nuova selezione:** dopo apertura e screenshot R3 in Chrome Windows, l'operatore vuole menu laterale per struttura e layout e strumenti direttamente sugli elementi, con doppio clic nel vuoto per inserire e quattro template di sezioni. Risultato: HTML autonomo R4 e handoff Codex preparati nella conversazione, non caricati in questa repository né in MAIOS.it.
+
+**Prove:** Node syntax; Chromium headless su doppio clic testo senza aprire pannello generale, inserimento dal vuoto, template diagramma+note, nodo aggiunto, visual inspector non modale, export e riapertura in nuovo contesto con una sola UI runtime, 390 px senza overflow nel campione. Due difetti risolti (cambio focus nei pulsanti e clonazione di UI dinamica durante export) e relativo metodo sono in [GUIDE R4](GUIDE.md#16-novembre-2026--r4-elemento-e-sezione-hanno-interazioni-contestuali-distinte). Prova reale Windows file locale non attestata.
+
+**Confine:** proprietà del sito, artefatti di presentazione Studio 20/21, formato ccm.document.v1, release pubblica e ricevente Codex mantengono identità distinte. Questa competenza si alimenta della prova, ma la prova locale non certifica assimilazione futura o deploy.
+
+
+
 ## 16 novembre 2026 — ponte locale MetaCanvas R3 per pagine web
 
 **Movimento selezionato:** unificare progressivamente le capacità di modifica diretta delle pagine MAIOS con le possibilità di diagrammi/layout/presentazione di Studio 20/21, mantenendo meno passaggi e la possibilità di duplica/posiziona e inserimento contestuale di immagini. Il [metodo e le prove R3 sono nella competenza](references/page-editor-metacanvas-bridge-20261116.md). Un HTML R3 è stato prodotto nell'ambiente di conversazione a partire dall'allegato `MAIOS_Consulenza_MetaCanvas_IT_R2(1).html`; non è stato inserito nella repo K-UX-AI né pubblicato in MAIOS.it. Verifiche Node e Chromium hanno coperto SVG, edit nodi, Undo, posizionamento fra sezioni, inline nel paragrafo, upload immagine, export/riapertura e viewport 390 px; non equivalgono a test di integrazione Codex, Windows file://, touch o prestazioni su documenti arbitrari.
