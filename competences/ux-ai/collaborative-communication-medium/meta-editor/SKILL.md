@@ -34,5 +34,9 @@ Al lavoro su editor di pagina, MetaCanvas, diagrammi, componenti, template, HTML
 - **MAIOS.it / altri siti:** HTML, CSS, copy, rilascio e compatibilità specifica; **Codex/ricevente:** checkout, tool, autorizzazioni e applicazione di patch.
 Nessun commit documentale pubblica il prodotto, modifica automaticamente il sito o attiva un altro agente.
 
+## Tema e recupero delle capacità, 17 novembre
+
+Quando il lavoro riguarda temi o design kit, raggiungi il [metodo di tema/composizione e il Lab02 locale](references/theme-library-20261117.md) e non introdurre per inerzia una «skin». Distingui sempre `tema/token`, `espressione locale`, `composizione suggerita`, `azione`, `documento` e `UI editor`. MAIOS possiede un campo cromatico comune con espressioni, D-ND è dark-first, i preset di presentazione sono proiezioni di laboratorio. Conserva tema e sua sorgente in una raccolta JSON portabile, ma non trasferire automaticamente contenuto personale o template privati. Se un ruolo o una grammatica è già presente in K-UX-AI, D-ND Design o nel sito owner, riusala anziché rifarla e prova il gesto completo dopo il tema.
+
 ## Attuale prova iniziale
 La correzione R4 è una fonte già esercitata: una prova dell'inspector venne scambiata per prova di editing diretto, benché Studio 20 possedesse già `contentEditable` per i nodi. [GUIDE](GUIDE.md) conserva il meccanismo e il banco da verificare. [CURRENT](CURRENT.md) distingue capacità formata, prototipo costruito, test e uso reale. Il [banco neutro Lab 01](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab01.html) è stato costruito e verificato con Node/Chromium per i gesti indicati nel [CURRENT](CURRENT.md). Restano non osservati uso reale dell'operatore, fedeltà su pagine HTML di terzi e assimilazione in un futuro caso non identico.
