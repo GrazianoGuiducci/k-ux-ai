@@ -1,4 +1,24 @@
-# MetaEditor · Lab 01 — banco neutro
+# MetaEditor · laboratori autonomi
+
+## Lab 02 — temi recuperabili e composizioni suggerite (17 novembre 2026)
+
+**[Apri il laboratorio HTML](MetaEditor_Lab02_Theme_Library_IT.html)**. È un esempio sperimentale indipendente basato su Lab01, senza backend né dipendenze esterne.
+
+**Temi:** in `Temi` si applicano Carta chiara, Grafite, MAIOS Campo, D-ND Notte o Presentazione Blu. Il profilo MAIOS ha cinque **espressioni dello stesso campo**. Un tema cambia CSS roles del documento, non il testo, gli ID dei nodi o i loro link; l'interfaccia dell'editor resta distinta.
+
+**Crea tema:** il comando è in alto. Si parte dal tema visibile, si possono modificare otto ruoli cromatici, font, angoli, distanze e quali composizioni suggerire; si salva un tema personale, successivamente modificabile o cancellabile. I profili base non sono sovrascritti. Le composizioni suggerite non sono auto-inserimenti: `Imposta` seleziona il layout della sezione, mentre `Aggiungi diagramma + note` crea una sezione nuova. Undo/Redo conserva le azioni.
+
+**Recupero:** l'HTML salvato include il documento e i temi personalizzati. La raccolta può essere esportata/importata a parte come JSON `metaeditor.themes.v1`, che non include i testi del documento. Il browser tenta anche di salvare la raccolta in `localStorage`, ma `file://` può comportarsi diversamente nei browser; l'export JSON è il percorso trasferibile da verificare. Il file HTML di lavoro può contenere nomi e colori personali: controllarli prima di condividerlo.
+
+**Da HTML…** estrae colori dalla prima dichiarazione `:root` con un sottoinsieme di variabili note, senza eseguire lo script del file scelto. La pagina `Collaborazioni_professionali_e_progetti.html` fornita dall'operatore è stata usata soltanto come sorgente CSS. Questo non importa né converte la pagina.
+
+**Prove effettuate:** Node `--check`; Chromium headless via `page.set_content` su scelta dei temi, espressioni, tema personale creato e modificato, Undo/Redo, import/export JSON in altro documento, lettura CSS, testo del nodo editato sul posto dopo cambio tema, salvataggio HTML e riapertura su viewport 390px senza overflow nel documento neutro. Nessun `pageerror` osservato in quei percorsi. Screenshot controllati per MAIOS e D-ND. Il runner ha bloccato `file://` per policy amministrativa; **non è una prova Chrome Windows**. Nessun porting a Studio20/21 o a siti arbitari.
+
+Il metodo e l'apprendimento proprietario sono in [MetaEditor Evolution](../../../competences/ux-ai/collaborative-communication-medium/meta-editor/SKILL.md) e nel [riesame dei temi del 17 novembre](../../../competences/ux-ai/collaborative-communication-medium/meta-editor/references/theme-library-20261117.md). La licenza del codice è MPL-2.0 come dichiarato nell'HTML.
+
+---
+
+## Lab 01 — banco neutro (16 novembre 2026)
 
 **Stato:** esperimento tecnico verificato in Chromium headless, 16 novembre 2026; **non** è MetaCanvas Studio 22, una nuova release npm o una modifica al sito MAIOS.it.
 
