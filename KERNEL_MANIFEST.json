@@ -26,7 +26,8 @@
           "guide": "competences/ux-ai/collaborative-communication-medium/meta-editor/GUIDE.md",
           "current": "competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md",
           "first_lab": "examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab01.html",
-          "status": "candidate_with_neutral_lab_tested"
+          "status": "candidate_with_neutral_lab01_and_theme_lab02_exercised",
+          "second_lab": "examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab02_Theme_Library_IT.html"
         }
       }
     }
