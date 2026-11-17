@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 17 novembre — il tema è un kit di ruoli e possibilità, non un cambio pelle
+
+L'operatore vuole temi standard, MAIOS, D-ND e presentazione, **salvabili e recuperabili**, come un modo anche per comprendere cosa è utile inserire nell'artefatto. Ha fornito l'HTML originale Collaborazioni e schermate Canva. Il [metodo completo con sorgenti native ed evidenze del Lab02](references/theme-library-20261117.md) ha distinto: **tema (ruoli visuali)**, **espressione contestuale** (variazione nello stesso campo MAIOS), **composizione suggerita**, **azione di inserimento**, **contenuto del documento**, **controlli dell'editor**. Una libreria di temi non sostituisce il modello delle scene né il CSS del sito proprietario.
+
+**Esercizio e ritorno:** Lab02 HTML autonomo è stato costruito dalla base Lab01 e provato in Chromium via set_content. Cinque preset, editor dei ruoli, composizioni suggerite per tema, raccolta JSON e salvataggio nel documento, overlay MAIOS, import parziale dei colori `:root` dall'HTML Collaborazioni, conservazione del doppio clic sul testo del nodo, export/riapertura, viewport 390. L'iniziale disposizione rendeva «Crea tema» poco raggiungibile sotto tutta la gallery: la funzione è stata spostata verso l'ingresso. Un suggerimento `due colonne` **imposta** il layout della sezione mentre `diagramma+note` **aggiunge** una sezione: il verbo ora segue l'effetto. Il browser di test blocca file://, quindi uso reale Windows e riuso su un altro MetaCanvas non sono provati.
+
+**Prossimo sapere da esercitare:** un tema personale può avere font, spaziatura, colori e composizioni suggerite; **non** modifica per sé testi, asset o layout. L'operatore può trasferirlo con JSON anche dove il localStorage su `file://` non è affidabile. Provare poi regioni HTML editabili dichiarate e patch senza riscrivere il sito, non passare subito a un editor universale.
+
+
 ## 16 novembre — primo gesto esercitato, senza importare la pagina MAIOS
 
 La competenza è stata esercitata attraverso un [banco neutro HTML autonomo](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab01.html) (e [guida del banco](../../../../examples/collaborative-communication-medium/meta-editor-lab/README.md)). Il primo confronto è concreto: **doppio clic sulla label del nodo → il contenuto è `contenteditable` nel nodo → digitazione → Enter → Undo → Redo**. È distinto da R4, dove si editava un campo remoto dell'inspector. Il modello `metaeditor.lab.v1` con sezioni e diagrammi è un dato sintetico, non il formato Studio20 `ccm.document.v1`. L'editor consente anche muovere il nodo conservando i collegamenti, trascinare una card fra sezioni, usare layout responsive, aggiungere un template diagramma+note senza cancellare contenuto, vedere una proiezione in formato slide e scaricare/riaprire l'HTML. L'esercizio tecnico non certifica percezione o uso reale da parte dell'operatore.
