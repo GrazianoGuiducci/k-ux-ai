@@ -1,13 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-17
-status: Lab02_theme_library_locally_exercised; no_repo_runtime_port_or_site_deploy
+status: Lab02_theme_library_committed_and_locally_exercised; no_Studio_port_or_site_deploy
 
 ## 17 novembre — libreria temi e recupero di capacità dalle sorgenti
 
 **Richiesta attuale:** temi recuperabili standard/MAIOS/D-ND/presentazione, da usare anche per rendere percepibili le possibili composizioni, mantenendo semplice il MetaEditor e connessa la competenza al lavoro. [Sorgenti, metodo, prova e limiti](references/theme-library-20261117.md) ora possiedono la risultante.
 
-**Artefatto creato in conversazione:** `MetaEditor_Lab02_Theme_Library_IT.html` (successore del Lab01, ancora non presente nella repository come HTML). Esercitati: selezione fra 5 profili, overlay di espressioni MAIOS, modifica/creazione di tema personale con composizioni suggerite configurabili, salvataggio nel documento e in localStorage dove consentito, export/import JSON, lettura selettiva di CSS da HTML Collaborazioni, testo del diagramma ancora editabile in situ, Undo, export HTML e riapertura. Node/Chromium `set_content`, viewport 390 e screenshot MAIOS/D-ND verificati; apertura `file://` bloccata dal runner. La copia locale dell'HTML e la guida sono artefatti della conversazione; non attestare un file GitHub inesistente.
+**Artefatto in K-UX-AI:** [Lab 02 — Themes](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab02_Theme_Library_IT.html) pubblicato come **esempio autonomo**, readback GitHub byte-identico all'HTML del laboratorio. Non è il runtime di Studio20/21 e non modifica alcun sito.\n\n**Artefatto creato in conversazione:** `MetaEditor_Lab02_Theme_Library_IT.html` (successore del Lab01, ancora non presente nella repository come HTML). Esercitati: selezione fra 5 profili, overlay di espressioni MAIOS, modifica/creazione di tema personale con composizioni suggerite configurabili, salvataggio nel documento e in localStorage dove consentito, export/import JSON, lettura selettiva di CSS da HTML Collaborazioni, testo del diagramma ancora editabile in situ, Undo, export HTML e riapertura. Node/Chromium `set_content`, viewport 390 e screenshot MAIOS/D-ND verificati; apertura `file://` bloccata dal runner. La copia locale dell'HTML e la guida restano raggiungibili in conversazione; l'HTML di esempio è ora raggiungibile anche tramite GitHub al percorso indicato. Questo non certifica adozione in altri riceventi.
 
 **Prossimo discriminante:** esercitare un import dichiarativo e non distruttivo di regioni HTML (minimo due siti), collegare tema e patch come stati distinti, poi considerare il trasporto del motore ai vari MetaCanvas. Codex non è stato attivato e nessun sito o release è stato modificato.
 
