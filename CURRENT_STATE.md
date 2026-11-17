@@ -1,5 +1,10 @@
 # K-UX-AI current state
 
+## 17 November 2026 — MetaEditor Lab04 multi-object gesture
+
+[Lab04](examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab04_Manipolazione.html) is a separate, tested neutral HTML example, and [LAB04_README](examples/collaborative-communication-medium/meta-editor-lab/LAB04_README.md) specifies human gestures and current limits. K-UX-AI's MetaEditor Evolution [SKILL](competences/ux-ai/collaborative-communication-medium/meta-editor/SKILL.md), GUIDE and CURRENT now possess multi-selection (Shift-click), local-only copy/cut/paste, batch duplicate/delete/move, unique cloned IDs, single Undo per batch, and separated selection of document blocks from diagram nodes. The test observed UI competition from duplicate Copy/Cut controls; final design leaves clipboard actions in one compact bar. Syntax + Chromium set_content verified browser interactions, export/reopen, and 390 px viewport; direct file:// blocked by runner. No Studio replacement, production release, site adapter or live site deployment.
+
+
 ## 17 November 2026 — Lab 03: element operation before theme elaboration
 
 The operator corrected the priority: editing elements efficiently is more important than multiplying reusable themes. [Lab03](examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab03_Elementi.html) is now a committed neutral example, with [behavior/QA and limits](examples/collaborative-communication-medium/meta-editor-lab/LAB03_README.md). It retains Lab02 themes but adds section outline, contextual object inspector above the structure list, direct insertion, reorder/transfer/conversion, node/link/shape operations and key commands. A visual test found overlapping five-node layouts and caused a multi-row correction plus bounding-box checks. Chromium tests exercised functionality and export/reopen with no observed pageerror; file:// was blocked by test policy, and operator Windows usability remains unknown. [MetaEditor Evolution GUIDE](competences/ux-ai/collaborative-communication-medium/meta-editor/GUIDE.md) and CURRENT own the reusable causal learning. No runtime Studio20/21 replacement or site deployment.
