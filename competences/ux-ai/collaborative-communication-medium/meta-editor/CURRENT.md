@@ -1,6 +1,16 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-17
+status: Lab04_multi_selection_committed_and_browser_exercised; human_file_url_usability_unobserved
+
+## 17 novembre — Lab04 gesti multipli, prima della compatibilità con siti veri
+
+Il [Lab04 HTML autonomo](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab04_Manipolazione.html) è presente in K-UX-AI con [test, limiti e contratto](../../../../examples/collaborative-communication-medium/meta-editor-lab/LAB04_README.md). Il nuovo saper fare è composizione collettiva di blocchi della pagina: Maiusc+clic, copia/taglia/incolla interno all'editor, duplica/elimina/sposta insieme, shortcut e un Undo per azione. Conserva diagrammi, nodi, collegamenti e temi. Non supporta ancora grouping persistente o clipboard OS. Node/Chromium set_content: selezione, duplicazione, undo/redo, trasferimento fra sezioni, testo in nodo, roundtrip HTML, 390 px; nessun pageerror nei percorsi. È stato tolto il doppio luogo di Copia/Taglia e reso esplicito che gli appunti sono locali.
+
+**Confini:** il file è un esempio prodotto/testato, non una release Studio20/21, né un adapter per pagine reali, né un deploy MAIOS/D-ND. La qualità dell'uso in Chrome Windows resta da osservare. Prossimo discriminante: regione HTML dichiarata, patch e secondo sito differente, conservando la competenza di selezione multipla.
+
+
+updated: 2026-11-17
 status: Lab03_object_first_editor_committed_and_browser_exercised; end_user_usability_unobserved
 
 ## 17 novembre 2026 — Lab03: competenza esercitata sulla manipolazione degli elementi
