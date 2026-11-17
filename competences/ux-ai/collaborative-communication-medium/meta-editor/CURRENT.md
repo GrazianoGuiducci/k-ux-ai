@@ -1,6 +1,18 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-17
+status: Lab03_object_first_editor_committed_and_browser_exercised; end_user_usability_unobserved
+
+## 17 novembre 2026 — Lab03: competenza esercitata sulla manipolazione degli elementi
+
+**Nuova priorità operatoria:** i temi sono subordinati alla capacità di usare davvero l'editor. [Lab03 · Gestione elementi](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab03_Elementi.html) è presente in K-UX-AI come esempio HTML autonomo con [README e limiti](../../../../examples/collaborative-communication-medium/meta-editor-lab/LAB03_README.md), distinto dalle release Studio20/21 e dai siti.
+
+**Effetti esercitati:** selezione esplicita di sezioni, gestione della struttura, proprietà di oggetto collocate in alto, inserimento contestuale, conversione titolo/testo/card, riordino e spostamento con o senza drag, nodi/collegamenti/forme, layout responsive e temi conservati. Node syntax + Chromium set_content hanno coperto editing diretto, Undo/Redo, duplicazioni, trasporto fra sezioni, relazione node-link e rimozione link, cinque nodi distribuiti senza sovrapposizione dei loro rettangoli, tema, HTML export e riapertura, viewport 390 px senza overflow globale e nessun pageerror osservato. File HTML riletto da GitHub identico ai byte condivisi della versione validata. I limiti del runner bloccano file://: nessuna prova reale Chrome Windows né valutazione d'uso dell'operatore.
+
+**Apprendimento:** la sequenza originale di prova non guardava la densità dei nodi; una schermata ha reso evidente la collisione dei rettangoli. La nuova prova controlla anche geometria e non solo modello. La posizione dell'inspector rispetto all'outline cambia il costo del gesto: l'oggetto selezionato governa i controlli visibili, la sezione resta raggiungibile senza occupare lo spazio principale. Le ragioni e il metodo vivono in [GUIDE](GUIDE.md), la separazione degli owner in [SKILL](SKILL.md). Non è un adattatore universalmente affidabile per le pagine HTML.
+
+
+updated: 2026-11-17
 status: Lab02_theme_library_committed_and_locally_exercised; no_Studio_port_or_site_deploy
 
 ## 17 novembre — libreria temi e recupero di capacità dalle sorgenti
