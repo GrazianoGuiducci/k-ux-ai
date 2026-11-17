@@ -1,5 +1,16 @@
 # MetaEditor Evolution — guida viva
 
+## 17 novembre 2026 — prima la capacità di manipolare gli elementi, poi i temi
+
+**Fonte operatore:** «Prima di passare ai temi perché non rendiamo più efficiente l'editor? Mancano un sacco di possibilità per gestire gli elementi in modo efficace e facile». La scelta corregge una priorità: il Lab02 ampliava il campo visuale mentre la gestione dell'oggetto rimaneva povera. Il tema è utile, ma non può formare al posto della competenza il gesto di selezionare, inserire, muovere, collegare e modificare.
+
+**Esercizio:** [Lab03 HTML in K-UX-AI](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab03_Elementi.html), con [contratto, prove e limiti](../../../../examples/collaborative-communication-medium/meta-editor-lab/LAB03_README.md), porta selezione esplicita di sezione/oggetto/nodo, outline navigabile, menu inserimento nel punto, proprietà dell'oggetto prima della struttura nell'interfaccia, conversione titolo/testo/riquadro, riordino e spostamento senza drag, controlli nodo/link/forma/distribuzione e scorciatoie tastiera. I temi sono preservati senza guidare la vista ordinaria.
+
+**Apprendimento reale nel test:** il primo allineamento disponeva cinque nodi sulla stessa riga; funzioni e Undo risultavano corretti, ma la resa ne sovrapponeva le superfici. La correzione distribuisce i nodi su più righe e introduce una prova geometrica browser dei bounding box, in desktop/mobile. Anche l'inspector inizialmente rimaneva sotto l'outline e la gestione sezione, fuori dal primo campo visivo: è stato spostato subito sotto Inserisci e i controlli sezione si ritirano quando si seleziona un elemento. Nell'HTML esportato non devono restare visibili i controlli runtime/picker transienti. L'intero ciclo Node + Chromium set_content, export e nuova inizializzazione è stato riprovato; l'accesso file:// del test runner è bloccato dal suo ambiente.
+
+**Saper fare che deve partecipare domani:** un elemento esiste in più livelli referenziali (sezione → oggetto → nodo del diagramma). Un comando deve agire sulla relazione selezionata, non sulla categoria semanticamente vicina. Prima di aggiungere feature, provare i gesti minimi per trovare e trasformare un elemento con meno passaggi e ispezionare l'effetto visivo — non solo accertare che l'handler è invocato. Questa prova resta su modello sintetico; il prossimo caso diverso dovrà recuperare lo stesso metodo prima di importare HTML di siti reali.
+
+
 ## 17 novembre — il tema è un kit di ruoli e possibilità, non un cambio pelle
 
 L'operatore vuole temi standard, MAIOS, D-ND e presentazione, **salvabili e recuperabili**, come un modo anche per comprendere cosa è utile inserire nell'artefatto. Ha fornito l'HTML originale Collaborazioni e schermate Canva. Il [metodo completo con sorgenti native ed evidenze del Lab02](references/theme-library-20261117.md) ha distinto: **tema (ruoli visuali)**, **espressione contestuale** (variazione nello stesso campo MAIOS), **composizione suggerita**, **azione di inserimento**, **contenuto del documento**, **controlli dell'editor**. Una libreria di temi non sostituisce il modello delle scene né il CSS del sito proprietario.
