@@ -34,6 +34,10 @@ Al lavoro su editor di pagina, MetaCanvas, diagrammi, componenti, template, HTML
 - **MAIOS.it / altri siti:** HTML, CSS, copy, rilascio e compatibilità specifica; **Codex/ricevente:** checkout, tool, autorizzazioni e applicazione di patch.
 Nessun commit documentale pubblica il prodotto, modifica automaticamente il sito o attiva un altro agente.
 
+## Gestione dell'elemento prima del tema — 17 novembre
+
+Per ogni evoluzione dell'editor, la prima prova è l'azione concreta sull'oggetto pertinente: selezionare una sezione, inserire un elemento dove serve, convertire/duplicare/spostare, editare direttamente un nodo, collegarlo, annullare e riaprire senza sorprese. Raggiungere [Lab03 ed evidenza](../../../../examples/collaborative-communication-medium/meta-editor-lab/LAB03_README.md) e la [GUIDE corrente](GUIDE.md). Non fare di un nuovo catalogo di temi una risposta automatica alla difficoltà di manipolazione. La prova visiva della densità è parte del test: un allineamento su una sola riga faceva collidere i nodi dopo aver superato le asserzioni funzionali. Il nuovo metodo seleziona stato/controllo pertinente a sezione, oggetto e nodo e verifica bounding box oltre a Undo e round-trip.
+
 ## Tema e recupero delle capacità, 17 novembre
 
 Quando il lavoro riguarda temi o design kit, raggiungi il [metodo di tema/composizione e il Lab02 locale](references/theme-library-20261117.md) e non introdurre per inerzia una «skin». Distingui sempre `tema/token`, `espressione locale`, `composizione suggerita`, `azione`, `documento` e `UI editor`. MAIOS possiede un campo cromatico comune con espressioni, D-ND è dark-first, i preset di presentazione sono proiezioni di laboratorio. Conserva tema e sua sorgente in una raccolta JSON portabile, ma non trasferire automaticamente contenuto personale o template privati. Se un ruolo o una grammatica è già presente in K-UX-AI, D-ND Design o nel sito owner, riusala anziché rifarla e prova il gesto completo dopo il tema.
