@@ -1,5 +1,16 @@
 # MetaEditor Evolution — guida viva
 
+## 17 novembre — Lab04: selezione di più oggetti, un solo gesto di modifica
+
+**Intento:** dopo Lab03 l'operatore chiede «cos'altro possiamo fare?». Il controllo del codice/competenza rivela che selezione, duplicazione e riordino del singolo elemento esistono, ma non esistono multi-selezione e appunti di blocchi. La scelta immediata è un nucleo trasversale di composizione **prima** dell'import su HTML di siti arbitrari: [Lab04](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab04_Manipolazione.html) e [prove/limiti](../../../../examples/collaborative-communication-medium/meta-editor-lab/LAB04_README.md).
+
+**Esercizio:** Maiusc+clic su blocchi della pagina, anche fra sezioni; operazioni Copia/Taglia/Incolla **interne all'editor**, Duplica/Elimina/Sposta insieme, Ctrl+C/X/V/D e un solo checkpoint Undo per trasformazione collettiva. Copie di diagrammi rigenerano anche gli ID dei nodi mantenendo gli archi. Il livello di nodo resta distinto dalla selezione di blocchi; il tema modifica solo la visualizzazione. Test Node/Chromium via set_content verificano copia/incolla fra sezioni, ID unici, Undo/Redo, editing diretto della label, export/riapertura e mobile 390 px senza overflow, senza pageerrors osservati. Il test runner blocca `file://`, quindi non è prova d'uso Chrome Windows.
+
+**Correzione che cambia il metodo:** nella prima vista, appunti e inspector replicavano Copia/Taglia, alzando il costo di comprensione. Ho composto un solo luogo per gli appunti, e gli strumenti collettivi rimanenti compaiono nell'inspector solo se ci sono più oggetti. Il fine non è aumentare la conta delle azioni, ma fare sì che **una selezione continui a riferirsi allo stesso insieme di elementi quando cambia il mezzo di azione**. Il banco non rappresenta gruppi persistenti e non usa gli appunti del sistema operativo: non promettere quelle proprietà.
+
+**Prossima differenza:** esercitare la stessa capacità su regioni editabili dichiarate di un HTML MAIOS e di uno non MAIOS, producendo una patch selettiva per Codex. Prima della generalizzazione, verificare che il carrier esterno non venga riscritto insieme al modello interno. Non portare Lab04 nello Studio20/21 automaticamente.
+
+
 ## 17 novembre 2026 — prima la capacità di manipolare gli elementi, poi i temi
 
 **Fonte operatore:** «Prima di passare ai temi perché non rendiamo più efficiente l'editor? Mancano un sacco di possibilità per gestire gli elementi in modo efficace e facile». La scelta corregge una priorità: il Lab02 ampliava il campo visuale mentre la gestione dell'oggetto rimaneva povera. Il tema è utile, ma non può formare al posto della competenza il gesto di selezionare, inserire, muovere, collegare e modificare.
