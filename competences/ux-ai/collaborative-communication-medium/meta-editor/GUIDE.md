@@ -1,5 +1,16 @@
 # MetaEditor Evolution — guida viva
 
+## 19 novembre — Bridge06 esercita un gesto comune senza perdere i due documenti
+
+Dopo l'inventario completo di MetaCanvas pubblico e Codex, è stato selezionato un primo esperimento minimo: [Bridge06](references/BRIDGE06_COMMON_GESTURE_20261119.md). Due varianti sono state generate dalle sorgenti esatte (Codex SHA256 `f227b61...`, Studio21 IT SHA256 `abbdbd...`), con una sola modifica mirata al gestore del doppio clic per ciascuna. Codex entra nella formattazione testuale senza imporre l'inspector; Studio21 entra nel testo del nodo invece di aprire sempre il pannello, mantenendo `ccm.document.v1` e il resto delle funzioni.
+
+**Apprendimento causale:** il primo test Studio21 dichiarava il nodo selezionato ma non in modifica, anche se la patch trovava `.node-text`. La causa visibile da event log: `pointerdown` bersaglia il testo e `pointerup`, dopo `setPointerCapture`, bersaglia il wrapper. Identificare la posizione con `document.elementFromPoint` ha sbloccato il gesto. Inoltre il test Bold su H1 già bold ha correttamente tolto il grassetto: il banco è stato corretto su Italic senza attribuire errore all'editor. **Non** trasformare il passato in un test già superato.
+
+**Regressioni realmente verificate:** rich text in Codex, range con corsivo ed export HTML che conserva quattro sezioni; Studio21 node text edit → export → reopen con sette ID di scena, collegamenti, notes e savedTemplates conservati; prova pubblica con dati privati sintetici esclude note/nodo/template personali; mobile 390px senza overflow globale osservato; zero pageerrors nei percorsi. La prova `file://` su Chrome Windows resta non esercitata. [Builder](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge06_build.py) rifiuta sorgenti con SHA diverso e conserva intatti gli originali.
+
+**Conseguenza:** non trattare un rich text DOM come stringa del nodo Studio. Il prossimo banco riguarda un contratto di comando e recupero di selezione/storico sui due carrier, senza R6 pubblica e senza patch al sito.
+
+
 ## 19 novembre — riacquisire il prodotto pubblico e il testo ricco Codex prima di continuare
 
 **Correzione dell'operatore:** avevamo trattato Lab05 e una R5 derivata da una vecchia pagina come se descrivessero tutto MetaCanvas, ma il progetto **è già pubblico in MAIOS.it**, distribuito come Playground r4, editor Studio20 e demo Studio21, ed è incompleto. La nuova bozza Codex `MAIOS_Consulenza_AI_revisionata(1).html` possiede davvero un editor di **testo ricco** (caret/selection, toolbar H1–H6, formattazione, dimensioni, colori), gestione delle sezioni, preview, storia e recovery. Non l'avevamo letto/assimilato prima della R5. [Inventario completo, prova e confini](references/SOURCE_FIELD_PUBLIC_TOOL_CODEX_DRAFTS_20261119.md).
