@@ -1,5 +1,12 @@
 # K-UX-AI current state
 
+## 19 November 2026 — reconciliation of public MetaCanvas and Codex rich-text editor
+
+The operator corrected the field: MetaCanvas is **already a public MAIOS tool** distributed through the site as Playground r4, general Studio20 and separate Studio21 IT/EN demos, while the Codex-managed review HTML of the Consulenza page includes valuable **rich-text editing** and DOM-local site control absent from the Lab05 synthetic editor. The [owner-native source ledger](competences/ux-ai/collaborative-communication-medium/meta-editor/references/SOURCE_FIELD_PUBLIC_TOOL_CODEX_DRAFTS_20261119.md) reconciles the public distribution, `ccm.document.v1`, personal templates and private/public AI merge, Codex page editor, Labs01–05, the older R4→R5 experiment, and D-ND Design / Siteman. MetaEditor Evolution's SKILL/GUIDE/CURRENT now route this knowledge at entry instead of extending labs in isolation.
+
+Uploaded Codex HTML read: SHA-256 f227b61b0a813ad7312f805dcec63def03b87201d5d5fb6ae0ae729d2541f190; Node syntax and a bounded Chromium `set_content` gesture verified on-page H1 `contenteditable` and rich toolbar, with the large inspector simultaneously visible. User-reported usability still requires real use; local file:// blocked in runner. **No new runtime, public tool update, Codex patch or website deploy.**
+
+
 ## 19 November 2026 — MAIOS R4 page prototype R5, source-bound adapter exercise
 
 The user selected the last previously tested MAIOS MetaCanvas page, identified as an attached **Consulenza MetaCanvas R4** file, not necessarily the latest live `maios_it/consulting-ai.html`. A separate R5 HTML experiment was created and tested in the conversation; its code **was not uploaded to K-UX-AI or deployed to the website**. The [MetaEditor Evolution case](competences/ux-ai/collaborative-communication-medium/meta-editor/references/first-real-page-r5-20261119.md) records four declared page regions, direct text/node edits, contextual insertion, a discrete structure menu, project/static HTML exports, and review-only region-level JSON patch.
