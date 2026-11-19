@@ -14,7 +14,12 @@ Questa competenza è il **saper formare, esercitare e migliorare l'editor** con 
 Il gesto umano è il referente operativo: seleziono un oggetto, modifico **sul posto** la parola, sposto, duplico, compongo e salvo; il sistema conserva identità, relazioni, differenza e possibilità di tornare indietro. Le capacità di pagina e di presentazione possono condividere interazione, storia, componenti e conoscenza, senza supporre che DOM responsive e scene 16:9 siano lo stesso documento.
 
 ## Ingresso situato
-## 19 novembre — entrata MetaCanvas pubblico + editor Codex: nessuna capacità valida deve sparire
+## 19 novembre — entrata MetaCanvas pubblico + editor Codex
+## Bridge06 — conservare il gesto attraverso due carrier, 19 novembre
+
+Quando la costruzione del MetaEditor riguarda lo **stesso gesto su pagina e scena**, leggere la [prova su due sorgenti native](references/BRIDGE06_COMMON_GESTURE_20261119.md) prima di scegliere un nuovo runtime. Il doppio clic sul testo del sito conserva `Range`/caret/markup ricco; il doppio clic sulla label del nodo conserva la stringa in `ccm.document.v1`, ID/links/notes, template personali e copia pubblica. Sono due adapter, non una sostituzione di schema. Il wrapper del nodo può catturare `pointerup`: `event.target` non rappresenta necessariamente il bersaglio visivo; testare `elementFromPoint` quando il gesto non scatta pur avendo superato i test di sintassi. I controlli avanzati restano disponibili senza essere imposti durante la digitazione. Per i successivi esperimenti usa il [builder deterministico](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge06_build.py) con hash delle sorgenti, non copiare una vecchia variante come nuovo canonico.
+
+: nessuna capacità valida deve sparire
 
 Quando l'operatore parla di **MetaCanvas completo**, non assumere che il Lab05 o la R5 page-specific siano il prodotto generale. Apri prima l'[inventario riconciliato delle sorgenti](references/SOURCE_FIELD_PUBLIC_TOOL_CODEX_DRAFTS_20261119.md) e raggiungi i suoi owner: tool pubblico Studio20/21 e Playground r4 in K-UX-AI, distribuzione in MAIOS.it, bozza HTML Codex ricca di formattazione, laboratori MetaEditor e metodo D-ND Design. La competenza deve individuare **che cosa esiste ed è esercitato in ogni carrier** prima di decidere la modifica: testo ricco/caret, diagrammi/scene, privacy e AI roundtrip, template, sezioni/CSS del sito, versioni scaricabili, patch, scene presentabili. L'uso umano che segnala difficoltà non annulla le capacità esistenti: ne corregge il modo di accesso. Non fondere i runtime o riscrivere il formato dei documenti senza una prova di preservazione. La correzione è nell'ingresso/metodo della competenza, non crea una seconda skill né autorizza una release.
 
