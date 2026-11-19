@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 19 novembre — Bridge07: due adattatori, un solo contratto di azione
+
+La prosecuzione di Bridge06 ha prodotto un contratto `MetaEditorCommands` con `begin / setText / commit / cancel / undo / redo / status`, disponibile in **due HTML autonomi sperimentali**. Non fonde HTML ricco della bozza Codex e `ccm.document.v1` della scena Studio21: delega l'effetto a ciascuna competenza di documento. [Sorgenti hash, risultati e limiti](references/BRIDGE07_NATIVE_COMMAND_CONTRACT_20261119.md) e [builder Python](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge07_build.py) conservano il metodo riproducibile.
+
+**Due differenze che hanno migliorato la competenza:** (1) una Escape dopo blur poteva ancora riferirsi alla sessione precedente; l'adattatore ora invalida il referente chiuso. (2) dopo Undo Codex ripristina il caret e il campo diventa `contenteditable`; Ctrl+Y era lasciato al browser invece che allo storico strutturale. La navigazione della cronologia è ora riconosciuta finché un nuovo `beforeinput` non riattiva l'editing nativo. **Un test passato sul tasto Annulla non dimostrava ancora Ripristina nella sequenza reale**: questa è una correzione del criterio di prova e del codice.
+
+**Effetti provati:** cancel senza checkpoint fittizio, F2/Ctrl+Invio, rich markup confinato fuori da Range, Ctrl+Z/Y da tastiera, salvataggio/riapertura su entrambi i carrier, sette scene e ID Studio21, copia pubblica con note/nodo/template privati sintetici esclusi, mobile 390px e zero pageerrors nei percorsi. Il builder genera byte-identici due volte. Le prove sono Chromium set_content e Node v22; niente Chrome Windows file:// fisico, deploy, conversione universale o editing ricco delle stringhe Studio21. Gli strumenti originali rimangono raggiungibili senza creare un'altra toolbar.
+
+
 ## 19 novembre — Bridge06 esercita un gesto comune senza perdere i due documenti
 
 Dopo l'inventario completo di MetaCanvas pubblico e Codex, è stato selezionato un primo esperimento minimo: [Bridge06](references/BRIDGE06_COMMON_GESTURE_20261119.md). Due varianti sono state generate dalle sorgenti esatte (Codex SHA256 `f227b61...`, Studio21 IT SHA256 `abbdbd...`), con una sola modifica mirata al gestore del doppio clic per ciascuna. Codex entra nella formattazione testuale senza imporre l'inspector; Studio21 entra nel testo del nodo invece di aprire sempre il pannello, mantenendo `ccm.document.v1` e il resto delle funzioni.
