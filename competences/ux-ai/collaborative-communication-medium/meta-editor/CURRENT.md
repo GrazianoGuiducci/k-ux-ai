@@ -1,6 +1,18 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-19
+status: bridge07_native_shared_commands_exercised; builder_committed; public_product_unchanged
+
+## 19 novembre — Bridge07: contratto di editing condiviso, esecuzione nativa
+
+I due HTML `MetaEditor_Bridge07_Bozza_Codex_IT.html` e `MetaEditor_Bridge07_Studio21_IT.html` sono artefatti **di conversazione** derivati dagli HTML Bridge06 già verificati, non nuovi file canonici distribuiti in MAIOS.it. Il [builder](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge07_build.py) è in K-UX-AI con readback identico. [Contratto/esperienza/prove](references/BRIDGE07_NATIVE_COMMAND_CONTRACT_20261119.md) distingue rich text del Codex editor dalla label stringa Studio21; in entrambi F2/Ctrl+Invio/Esc e Undo/Redo agiscono via metodi nativi.
+
+**Risultati tecnici osservati:** testo parziale con markup esterno preservato; Esc recupera `innerHTML` e history originali; Ctrl+Z/Y funzionano dopo che Undo riporta il caret in `contenteditable`; scena Studio21 resta `ccm.document.v1` con sette scene e public copy che filtra note, nodi privati e template sintetici; export/riapertura dei due HTML conserva il Bridge07; mobile 390px senza overflow globale nel campione. I difetti di sessione stale dopo blur e redo perso col focus sono tornati alla GUIDE e al builder.
+
+**Limiti:** non prova Chrome Windows file://, accessibilità completa, siti HTML arbitrari, editing rich text nelle label Studio o sostituzione di MetaCanvas Studio20/21 pubblico. Nessun deploy, nessuna modifica al checkout di Codex o alla pagina MAIOS. Prossimo discrimine: esperienza reale dell'operatore sul gesto e region adapter con patch selettiva su due pagine.
+
+
+updated: 2026-11-19
 status: bridge06_two_source_gesture_tested_in_Chromium; source_bound_builder_committed; no_public_release
 
 ## 19 novembre — primo ponte reale Codex / Studio21, senza unificazione dei modelli
