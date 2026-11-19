@@ -16,6 +16,11 @@ Il gesto umano è il referente operativo: seleziono un oggetto, modifico **sul p
 ## Ingresso situato
 ## 19 novembre — entrata MetaCanvas pubblico + editor Codex
 ## Bridge06 — conservare il gesto attraverso due carrier, 19 novembre
+## Bridge07 — il comando comune richiama la competenza del portatore
+
+Quando l'operatore chiede che la modifica funzioni allo stesso modo su documento HTML e scena, raggiungi il [contratto Bridge07 esercitato](references/BRIDGE07_NATIVE_COMMAND_CONTRACT_20261119.md) e il [builder riproducibile](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge07_build.py), non un nuovo stato documento. I gesti `F2 / Ctrl+Invio / Esc / Ctrl+Z / Ctrl+Y` partecipano a `begin, setText, commit, cancel, undo, redo`, ma ogni adapter delega alle funzioni native. `setText` nella pagina sostituisce **solo il Range** di rich text, mentre nella scena sostituisce una stringa nella label. Conferma e cancellazione preservano markup, ID, link, note, template e filtri per copia pubblica. La sessione non può continuare dopo blur e `Ctrl+Y` deve recuperare il redo del documento anche dopo che Undo ha restituito il caret al campo. Un `beforeinput` successivo riconsegna l'undo al testo. Le prove e le eccezioni restano nel documento owner-native; non assimilare come universale la sola prova Chromium.
+
+
 
 Quando la costruzione del MetaEditor riguarda lo **stesso gesto su pagina e scena**, leggere la [prova su due sorgenti native](references/BRIDGE06_COMMON_GESTURE_20261119.md) prima di scegliere un nuovo runtime. Il doppio clic sul testo del sito conserva `Range`/caret/markup ricco; il doppio clic sulla label del nodo conserva la stringa in `ccm.document.v1`, ID/links/notes, template personali e copia pubblica. Sono due adapter, non una sostituzione di schema. Il wrapper del nodo può catturare `pointerup`: `event.target` non rappresenta necessariamente il bersaglio visivo; testare `elementFromPoint` quando il gesto non scatta pur avendo superato i test di sintassi. I controlli avanzati restano disponibili senza essere imposti durante la digitazione. Per i successivi esperimenti usa il [builder deterministico](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge06_build.py) con hash delle sorgenti, non copiare una vecchia variante come nuovo canonico.
 
