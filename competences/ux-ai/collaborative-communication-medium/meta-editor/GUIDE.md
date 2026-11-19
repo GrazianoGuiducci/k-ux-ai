@@ -1,5 +1,12 @@
 # MetaEditor Evolution — guida viva
 
+## 19 novembre — Bridge08: ricercare possibilità, non imporre un altro pannello
+
+Dopo Bridge07 l'operatore seleziona il miglioramento delle funzioni disponibili e dell'intuitività della UI. [Bridge08](references/BRIDGE08_UX_ACTIONS_FOCUS_20261119.md) riusa le due sorgenti native: ricerca azioni Ctrl+Maiusc+P, dock della selezione e Focus; in Codex formatta progressivamente e mantiene inspector su richiesta, nello Studio raggiunge scene e strumenti secondari senza affollare la barra superiore. Penpot/Figma/GrapesJS sono stati studiati come contributi di UX, senza spostare la direzione del progetto. CSS, JS e builder sono stati committati in K-UX-AI come elementi riusabili separati dalla bozza Codex.
+
+**Apprendimento tecnico e percettivo nello stesso movimento:** il primo salvataggio serializzava i controlli aggiunti; alla riapertura comparivano due UI. L'inizializzazione ora attende DOMContentLoaded, elimina i nodi runtime residui e ricostruisce una sola UI. L'esportazione pubblica Studio21 rimuove controlli, script e CSS UX08 *prima del download*, non solo visivamente. Il primo Focus nascondeva la rail ma lasciava il grid a due colonne: il canvas diventava più stretto. Il layout in Focus ora usa una colonna e nel test cresce da 1019px a 1150px. Le prove includono due roundtrip HTML, copia pubblica pulita, navigazione 7 schede, 16/24 azioni ricercabili, inserimento di testo Studio, toolbar Codex progressiva e 390px senza overflow nei casi osservati. Non confondere queste prove Chromium con usabilità Chrome Windows dell'operatore.
+
+
 ## 19 novembre — Bridge07: due adattatori, un solo contratto di azione
 
 La prosecuzione di Bridge06 ha prodotto un contratto `MetaEditorCommands` con `begin / setText / commit / cancel / undo / redo / status`, disponibile in **due HTML autonomi sperimentali**. Non fonde HTML ricco della bozza Codex e `ccm.document.v1` della scena Studio21: delega l'effetto a ciascuna competenza di documento. [Sorgenti hash, risultati e limiti](references/BRIDGE07_NATIVE_COMMAND_CONTRACT_20261119.md) e [builder Python](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge07_build.py) conservano il metodo riproducibile.
