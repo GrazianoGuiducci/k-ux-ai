@@ -1,6 +1,18 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-19
+status: bridge08_ux_layer_committed_two_adapters_browser_tested; no_public_release
+
+## 19 novembre — Bridge08 rende raggiungibili capacità esistenti
+
+L'operatore ha scelto di affinare le funzioni e l'intuitività, dopo il contratto di comando Bridge07. [Bridge08 / apprendimento owner-native](references/BRIDGE08_UX_ACTIONS_FOCUS_20261119.md) e i file `bridge08_ui.js`, `bridge08_ui.css`, `bridge08_build.py` nel laboratorio K-UX-AI sono stati committati. Due HTML sperimentali scaricabili in conversazione riusano i portatori esatti Bridge07 (Codex rich text e Studio21 `ccm.document.v1`), senza sostituire Studio pubblico, MAIOS.it o il checkout Codex.
+
+**Verificato in Node/Chromium:** ricerca azioni e navigazione con Ctrl+Maiusc+P, F2 nativo, focus e formattazione progressiva, navigazione fra sezioni/schede e inserimento testo Studio, export e riapertura con una sola interfaccia, Studio public copy priva di elementi/script/style UX08, mobile 390px senza overflow orizzontale nel test e nessun pageerror nei percorsi. Il canvas Focus Studio nel test 1360 px cresce da circa 1019 a 1150 px. La prima doppia UI serializzata e la griglia Focus sbagliata sono state corrette; il metodo è in GUIDE.
+
+**Resta aperto:** prova manuale file:// su Windows, accessibilità/touch, confronto sui gesti dopo uso reale, adattatore di regioni HTML su un secondo sito, e messa a regime nel prodotto pubblico. Il prossimo lavoro non è scelto da CURRENT; la competenza è disponibile quando serve.
+
+
+updated: 2026-11-19
 status: bridge07_native_shared_commands_exercised; builder_committed; public_product_unchanged
 
 ## 19 novembre — Bridge07: contratto di editing condiviso, esecuzione nativa
