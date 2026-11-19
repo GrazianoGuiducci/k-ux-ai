@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 19 novembre — riacquisire il prodotto pubblico e il testo ricco Codex prima di continuare
+
+**Correzione dell'operatore:** avevamo trattato Lab05 e una R5 derivata da una vecchia pagina come se descrivessero tutto MetaCanvas, ma il progetto **è già pubblico in MAIOS.it**, distribuito come Playground r4, editor Studio20 e demo Studio21, ed è incompleto. La nuova bozza Codex `MAIOS_Consulenza_AI_revisionata(1).html` possiede davvero un editor di **testo ricco** (caret/selection, toolbar H1–H6, formattazione, dimensioni, colori), gestione delle sezioni, preview, storia e recovery. Non l'avevamo letto/assimilato prima della R5. [Inventario completo, prova e confini](references/SOURCE_FIELD_PUBLIC_TOOL_CODEX_DRAFTS_20261119.md).
+
+**Prova reale di questo turno:** 419.563 byte, SHA-256 `f227b61b0a813ad7312f805dcec63def03b87201d5d5fb6ae0ae729d2541f190`, quattro sezioni, due script inline con sintassi Node 22 corretta. Chromium `set_content`: pannello si apre, doppio clic sul titolo entra in `contenteditable` e mini-toolbar compare; non osservati pageerror nel percorso. Il pannello grande e la toolbar coesistono occupando il campo. Apertura `file://` bloccata dal runner. Al tempo stesso Studio20 conserva una capacità non presente nell'editor Codex: scene, template privati, assistenza AI per differenze selettive e copia pubblica distinta dal file di lavoro.
+
+**Apprendimento riusabile:** non sommare i migliori pulsanti di tre editor. Preservare il significato delle operazioni **all'interno dei rispettivi formati**, raggiungendo ogni owner prima di scegliere un gesto comune. L'editor di testo non va ridotto a semplice modifica della stringa né eliminato per semplificare; il modello scene non va convertito in DOM pagina per sola comodità. L'azione `setText` con caret, Undo e roundtrip su *due diversi carrier* è il prossimo piccolo discriminante; import universale e nuovo release restano non dimostrati. La pubblicazione degli asset nel sito segue versioni e SHA esplicite.
+
+
 ## 19 novembre — primo documento MAIOS R4, nuovo gesto/adapter sperimentale R5
 
 L'operatore seleziona la pagina Consulenza MetaCanvas **R4 allegata e già usata** come prima prova reale dopo Lab05. **Non** è la stessa cosa della pagina MAIOS oggi pubblicata. Il [caso esercitato R4→R5, sorgente e prove](references/first-real-page-r5-20261119.md) conserva la distinzione fra quattro regioni HTML realmente presenti, motore sintetico Lab05 e controlli editor; in conversazione è stato prodotto un R5 standalone, non pubblicato come codice generale K-UX-AI o MAIOS.it.
