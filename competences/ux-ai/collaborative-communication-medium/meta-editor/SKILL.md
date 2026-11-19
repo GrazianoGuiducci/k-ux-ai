@@ -40,6 +40,11 @@ Per ogni evoluzione dell'editor, la prima prova è l'azione concreta sull'oggett
 
 ## Gestione degli elementi, 17 novembre — selezione che sopravvive al gesto
 ## 19 novembre — selezione spaziale dentro il diagramma, non nella griglia della pagina
+## 19 novembre — pagina sorgente R4 → adapter R5: non confondere contenuto ed editor
+
+Quando il lavoro riguarda la modifica di una **pagina HTML esistente** attraverso MetaEditor, prima raggiungere il [primo esercizio MAIOS R4→R5](references/first-real-page-r5-20261119.md) e la fonte attuale dell'owner del sito. La prova discriminante non è «l'editor appare», ma: **senza gesto → patch vuota**, **doppio clic sulla label → cursore nel nodo**, **modifica in una sezione → solo quella sezione nella patch**, **progetto editabile riaperto ≠ export statico pulito**. La selezione non deve distruggere il nodo durante il doppio clic. Non trasferire un patch della R4 allegata automaticamente sulla versione produttiva MAIOS, né rilasciare il codice page-specific nel prodotto generico per sola disponibilità. Owner K-UX-AI custodisce il metodo, MAIOS.it il contenuto e la release; Codex è un ricevente candidato, non esecutore già attivato.
+
+
 
 Se il task richiede disposizione, link o modifica di più nodi, raggiungi [Lab05](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab05_Diagrammi.html) e la sua [prova owner-native](../../../../examples/collaborative-communication-medium/meta-editor-lab/LAB05_README.md) prima di proporre una nuova libreria. Il gesto di Maiusc+clic sui nodi **dello stesso diagramma** non coincide con Maiusc+clic sui blocchi della pagina. Allineamento, distribuzione, spostamento collettivo, duplica con ID/link e testo editabile sul posto appartengono al modello interno del diagramma; la pagina resta un flusso responsive e non si trasforma in un canvas assoluto. La duplicazione non dovrebbe produrre oggetti impraticabili perché sovrapposti: la verifica visiva può correggere un risultato dati formalmente valido. Quando non c'è spazio dichiararlo, conservando Undo e il modello, invece di forzare un gesto. Un'azione geometrica priva di differenza non deve alterare la cronologia. Il prossimo adattatore HTML continua distinto dal laboratorio.
 
