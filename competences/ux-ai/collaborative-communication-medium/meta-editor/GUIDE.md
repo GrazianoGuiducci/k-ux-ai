@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 19 novembre — primo documento MAIOS R4, nuovo gesto/adapter sperimentale R5
+
+L'operatore seleziona la pagina Consulenza MetaCanvas **R4 allegata e già usata** come prima prova reale dopo Lab05. **Non** è la stessa cosa della pagina MAIOS oggi pubblicata. Il [caso esercitato R4→R5, sorgente e prove](references/first-real-page-r5-20261119.md) conserva la distinzione fra quattro regioni HTML realmente presenti, motore sintetico Lab05 e controlli editor; in conversazione è stato prodotto un R5 standalone, non pubblicato come codice generale K-UX-AI o MAIOS.it.
+
+Il primo gesto **doppio clic sulla label del nodo** è fallito perché un render completo sul singolo `click` rimuoveva il nodo prima che arrivasse il secondo click. La competenza è stata corretta: aggiornare le classi di selezione senza distruggere l'identità DOM; ridisegnare solo per mutazioni reali. Anche i salvataggi hanno insegnato una differenza: `Progetto editabile` e `HTML statico pulito` devono avere carrier distinti. Il patch iniziale riportava tutte le sezioni come cambiate senza alcuna modifica: la baseline ora nasce dal DOM normalizzato **prima** delle annotazioni e deve dare zero cambiamenti quando non c'è intervento. Dopo titolo + diagramma, soltanto la `hero` risulta modificata. I sei comandi nodo nel dock sono stati ricondotti a **un pulsante contestuale** perché aumentavano la dispersione.
+
+La prova Node/Chromium include riapertura della versione editabile, statico privo di UI, patch a regioni, immagine caricata/embeddable, due colonne e mobile 390px. Non include il file:// Windows, compatibilità universale, pubblicazione o applicazione automatica al repo corrente. Quando il lavoro torna sull'editor del sito, prima verificare **quale HTML/R4 o produzione** è veramente il target: il SHA e la patch di una R4 allegata non sono autorità sul file `maios_it/main`.
+
+
 ## 19 novembre — Lab05: i nodi hanno una propria selezione, senza trasformare il layout web in coordinate
 
 **Selezione attuale dell'operatore:** migliorare ancora MetaEditor con semplicità, studiando le UI altrui quando aiutano a capire le azioni mancanti. Il Lab04 possedeva clipboard e selezione multipla dei **blocchi della pagina**, ma non del **sottoinsieme di nodi** dentro un diagramma. Figma/Penpot hanno suggerito controlli contestuali di allineamento e distribuzione, GrapesJS la distinzione fra modello a componenti e struttura. Il [Lab05 HTML](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab05_Diagrammi.html) e le sue [prove](../../../../examples/collaborative-communication-medium/meta-editor-lab/LAB05_README.md) esercitano: Maiusc+clic su nodi dello stesso grafo, strumenti sulla selezione, trascinamento e frecce sul gruppo, distribuzione per asse, griglia opzionale, duplica/elimina nodi con ID e archi corretti, doppio clic su area libera con scrittura diretta.
