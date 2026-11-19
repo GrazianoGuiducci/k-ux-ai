@@ -36,7 +36,12 @@
           "bridge_status": "tested_source_bound_non_release",
           "bridge07_exercise": "competences/ux-ai/collaborative-communication-medium/meta-editor/references/BRIDGE07_NATIVE_COMMAND_CONTRACT_20261119.md",
           "bridge07_builder": "examples/collaborative-communication-medium/meta-editor-lab/bridge07_build.py",
-          "bridge07_status": "tested_two_native_document_adapters_not_public"
+          "bridge07_status": "tested_two_native_document_adapters_not_public",
+          "bridge08_reference": "competences/ux-ai/collaborative-communication-medium/meta-editor/references/BRIDGE08_UX_ACTIONS_FOCUS_20261119.md",
+          "bridge08_builder": "examples/collaborative-communication-medium/meta-editor-lab/bridge08_build.py",
+          "bridge08_layer_js": "examples/collaborative-communication-medium/meta-editor-lab/bridge08_ui.js",
+          "bridge08_layer_css": "examples/collaborative-communication-medium/meta-editor-lab/bridge08_ui.css",
+          "bridge08_status": "source_committed_two_native_carriers_tested_not_public"
         }
       }
     }
