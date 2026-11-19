@@ -30,7 +30,10 @@
           "second_lab": "examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab02_Theme_Library_IT.html",
           "current_lab": "examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab05_Diagrammi.html",
           "current_lab_docs": "examples/collaborative-communication-medium/meta-editor-lab/LAB05_README.md",
-          "previous_lab": "examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab04_Manipolazione.html"
+          "previous_lab": "examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab04_Manipolazione.html",
+          "bridge_exercise": "competences/ux-ai/collaborative-communication-medium/meta-editor/references/BRIDGE06_COMMON_GESTURE_20261119.md",
+          "bridge_builder": "examples/collaborative-communication-medium/meta-editor-lab/bridge06_build.py",
+          "bridge_status": "tested_source_bound_non_release"
         }
       }
     }
