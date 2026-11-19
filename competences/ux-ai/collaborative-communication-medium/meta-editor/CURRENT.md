@@ -1,5 +1,17 @@
 # MetaEditor Evolution — CURRENT
 
+updated: 2026-11-19
+status: Lab05_spatial_nodes_committed_and_chromium_exercised; Chrome_Windows_human_unobserved
+
+## 19 novembre — Lab05 disponibile, strumenti spaziali dei diagrammi
+
+L'operatore ha chiesto di migliorare l'editor generale con gesti più efficaci, aiutandosi con le UI di strumenti esistenti. La nuova risultante [Lab05 HTML](../../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab05_Diagrammi.html) mantiene Lab04 e aggiunge gestione di **più nodi dello stesso diagramma**: Maiusc+clic, allineamento/distribuzione, spostamento collettivo, duplicazione con ricostruzione dei link, griglia, inserimento tramite doppio clic direttamente nell'area e modifica del testo immediata. [Il README](../../../..//examples/collaborative-communication-medium/meta-editor-lab/LAB05_README.md) registra fonte, prove e limiti. Sono state corrette due collisioni effettive (copie e nuovo nodo in uno spazio occupato), crescita del canvas e la creazione di un Undo fittizio per allineamenti senza variazione.
+
+**Prova:** Node v22 + Chromium headless Playwright `set_content`: gesti di selezione, gruppo, drag, Undo, copia, relazione di link, riapertura HTML e mobile 390px senza overflow nel caso; nessun pageerror osservato. La repository ha il codice di laboratorio, non un rilascio Studio20/21 o un editor universale installato. La pagina MAIOS.it, D-ND.com e il codice Codex rimangono invariati.
+
+**Prossimo discrimine**: utilizzo umano su Chrome Windows e, quando selezionato, un primo adapter su regioni HTML dichiarate e patch sicura, verificata su una seconda pagina diversa; questo Lab05 non ha esercitato quell'adapter.
+
+
 updated: 2026-11-17
 status: Lab04_multi_selection_committed_and_browser_exercised; human_file_url_usability_unobserved
 
