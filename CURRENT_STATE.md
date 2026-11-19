@@ -1,5 +1,10 @@
 # K-UX-AI current state
 
+## 19 November 2026 — MetaEditor Bridge07 common native command contract
+
+Following Bridge06's two native carriers, [Bridge07](competences/ux-ai/collaborative-communication-medium/meta-editor/references/BRIDGE07_NATIVE_COMMAND_CONTRACT_20261119.md) adds one small command interface (`begin/setText/commit/cancel/undo/redo`) while **preserving different text semantics**: HTML range editing on Codex page, string label on Studio21 scene. The [source-hash-guarded Python builder](examples/collaborative-communication-medium/meta-editor-lab/bridge07_build.py) is in K-UX-AI; the two generated HTMLs are conversation artifacts, not public releases. Node/Chromium regression exercised F2, Ctrl+Enter, Esc, rich markup outside selection, undo and redo through restored caret, public export filtering synthetic private content, 7-scene roundtrip and mobile 390px. No Studio20/21 distribution asset, production page or Codex checkout changed. MetaEditor Evolution SKILL/GUIDE/CURRENT now own the method, state and test limitations.
+
+
 ## 19 November 2026 — Bridge06 two-native-carrier edit gesture
 
 MetaEditor Evolution [source-bound Bridge06 experiment](competences/ux-ai/collaborative-communication-medium/meta-editor/references/BRIDGE06_COMMON_GESTURE_20261119.md) has exercised one shared human gesture on the operator's real Codex HTML draft and the exact Studio21 IT demo (source hashes validated). The [Python stdlib builder](examples/collaborative-communication-medium/meta-editor-lab/bridge06_build.py) reproduces both variants but never modifies their source documents; the Codex HTML is not committed to this product repository. Rich text selection/export in the page and `ccm.document.v1` scene/links/notes/templates/public privacy in Studio21 passed limited Chromium checks. A pointer-capture retargeting regression was discovered and repaired. SKILL/GUIDE/CURRENT carry the method. No production Studio20/21 release, distribution file change, site deployment, local Codex checkout action, universal HTML adapter or Chrome Windows file:// usability proof.
