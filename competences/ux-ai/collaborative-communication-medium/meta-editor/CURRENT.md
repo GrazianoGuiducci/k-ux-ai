@@ -1,6 +1,18 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-19
+status: first_R4_MAIOS_page_adapter_R5_conversation_artifact_tested; no_site_or_studio_deploy
+
+## 19 novembre — prima prova su pagina R4 MAIOS, R5 locale
+
+Dopo Lab05 l'operatore ha scelto «l'ultima pagina di MAIOS MetaCanvas già usata». È stata riaperta l'esatta `MAIOS_Consulenza_MetaCanvas_R4_Editor_Contestuale_IT.html`, diversa dall'attuale sorgente produttiva MAIOS. La [prova R4→R5](references/first-real-page-r5-20261119.md) ha prodotto un HTML sperimentale consegnato nella conversazione: un solo dock, modifica diretta, inserimenti dentro le quattro regioni, diagramma con testo dei nodi editabile in loco e azioni collettive contestuali. Possiede esportazione di progetto riapribile, HTML statico e patch JSON **a livello di regione** vincolata alla R4 originaria.
+
+**Prova:** Chromium/Node con patch vuota su documento invariato, una sola regione hero modificata dopo due interventi, file progetto riaperto con una UI, clean export senza editor, immagine e colonne salvate, viewport 390 senza overflow globale, nessun pageerror nei percorsi esercitati. Sono stati corretti re-render su click che impediva il doppio clic reale, serializzazione errata del progetto, false differenze causate da attributi editor e sovraccarico della toolbar. Il browser amministrato blocca `file://`; non attribuire l'uso Windows reale o un sito modificato.
+
+**Confini:** codice R5 della pagina non aggiunto a questa repository, Studio20/21 e Lab05 restano distinti, MAIOS.it non modificato, Codex non attivato. Resta aperto un secondo sito diverso e la ricognizione della pagina produttiva corrente **prima** di autorizzare l'applicazione di eventuali patch.
+
+
+updated: 2026-11-19
 status: Lab05_spatial_nodes_committed_and_chromium_exercised; Chrome_Windows_human_unobserved
 
 ## 19 novembre — Lab05 disponibile, strumenti spaziali dei diagrammi
