@@ -1,6 +1,18 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-19
+status: public_tool_and_codex_rich_editor_source_field_reconciled; no_new_product_release
+
+## 19 novembre — nuova fonte Codex e MetaCanvas pubblico restituiti alla competenza
+
+L'operatore ha corretto l'ambito: **MetaCanvas è già un tool pubblico MAIOS, incompleto**, e una sua bozza HTML attualmente usata con Codex offre editing di testo ricco e altre funzioni che i Lab/R5 non avevano conservato. Il [nuovo inventario owner-native](references/SOURCE_FIELD_PUBLIC_TOOL_CODEX_DRAFTS_20261119.md) distingue pagina pubblica, Playground IT/EN, Studio20 generale, Studio21 demo IT/EN, Codex page-editor, Lab01–05, vecchia R5 specifica e Siteman Studio. L'allegato Codex di 419.563 byte è stato letto e controllato con Node e Chromium su un percorso delimitato; non è stato importato nel prodotto, né sostituito. La difficoltà UX è coerente con la sovrapposizione effettivamente osservata fra toolbar testuale e inspector globale.
+
+**Regola operativa ora raggiungibile:** il prossimo sviluppo deve preservare contemporaneamente formattazione/selection/caret Codex, schema/note/template/pubblico/AI merge Studio20, gestione dei diagrammi Lab05 e origine/revisioni/patch del sito, senza fare coincidere i tre modelli di stato. La R5 della vecchia R4 è evidenza separata, non sorgente canonica. La ricognizione non prova l'HTML distribuito effettivamente servito dal server, browser Windows fisico o compatibilità universale.
+
+**Effetti:** aggiornati metodo e routing della competenza; nessun commit sul runtime pubblico, nessun merge, nessun asset sostituito e nessun sito pubblicato.
+
+
+updated: 2026-11-19
 status: first_R4_MAIOS_page_adapter_R5_conversation_artifact_tested; no_site_or_studio_deploy
 
 ## 19 novembre — prima prova su pagina R4 MAIOS, R5 locale
