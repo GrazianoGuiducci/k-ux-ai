@@ -1,5 +1,12 @@
 # K-UX-AI current state
 
+## 19 November 2026 — MAIOS R4 page prototype R5, source-bound adapter exercise
+
+The user selected the last previously tested MAIOS MetaCanvas page, identified as an attached **Consulenza MetaCanvas R4** file, not necessarily the latest live `maios_it/consulting-ai.html`. A separate R5 HTML experiment was created and tested in the conversation; its code **was not uploaded to K-UX-AI or deployed to the website**. The [MetaEditor Evolution case](competences/ux-ai/collaborative-communication-medium/meta-editor/references/first-real-page-r5-20261119.md) records four declared page regions, direct text/node edits, contextual insertion, a discrete structure menu, project/static HTML exports, and review-only region-level JSON patch.
+
+Key learning: do not replace the DOM node on each click, or double-click editing never fires; do not confuse clean public export with a re-openable editor project; normalize source regions before capturing a diff or an untouched page appears changed. Node/Chromium tests exercised zero-change patch, one-region change, editable project round-trip, clean output, diagram nodes, image upload, columns and mobile viewport, with no observed script errors. Real Windows file:// use is unverified. Site owner and Codex authority remain unchanged. Lab05 remains the latest **general product executable** in this repo.
+
+
 ## 19 novembre 2026 — MetaEditor Lab05: spatial diagram interaction
 
 The operator selected additional practical editing capabilities rather than more themes or panels. [MetaEditor Lab05](examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab05_Diagrammi.html) extends Lab04 with node-level multi-selection, alignment/distribution, group drag and nudge, inline insertion by double-clicking canvas, snapped movement and link-preserving clone/delete; it remains a neutral HTML experiment. [Lab05 README](examples/collaborative-communication-medium/meta-editor-lab/LAB05_README.md) distinguishes source research, Node/Chromium proofs and limitations. Two overlapping-node regressions were observed and corrected; GUIDE/SKILL/CURRENT in MetaEditor Evolution now carry the reusable method. No edits to MAIOS.it, D-ND.com, Studio 20/21, local Codex checkout or deployment.
