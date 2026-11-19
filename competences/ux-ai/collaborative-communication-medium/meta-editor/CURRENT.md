@@ -1,6 +1,18 @@
 # MetaEditor Evolution — CURRENT
 
 updated: 2026-11-19
+status: bridge06_two_source_gesture_tested_in_Chromium; source_bound_builder_committed; no_public_release
+
+## 19 novembre — primo ponte reale Codex / Studio21, senza unificazione dei modelli
+
+I due esperimenti HTML `MetaEditor_Bridge06_Bozza_Codex_IT.html` e `MetaEditor_Bridge06_Studio21_Consulenza_IT.html` sono stati costruiti in conversazione (file scaricabili), non installati nel sito. Il [builder owner-native](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge06_build.py) ricrea le varianti da sorgenti originali con SHA verificati. La [prova completa](references/BRIDGE06_COMMON_GESTURE_20261119.md) registra modifica diretta del testo rich in Codex senza inspector forzato, modifica diretta della label in Studio21, export/riapertura separati e capacità privacy/template/link preservate. Le patch sono limitate a un gesto, non a un nuovo editor generale.
+
+**Nuova differenza assimilata:** pointer capture dello Studio21 cambia l'evento target del secondo clic; il test iniziale falliva. `elementFromPoint` recupera il referente effettivo. Il test Bold su un H1 ha esercitato una disattivazione corretta, riformulata poi come selezione Italic. L'intervento non altera i sistemi di formattazione e dati rispettivi. Test Node/Chromium e viewport mobile sì; file:// Chrome Windows, accessibilità/touch e siti reali differenti non provati.
+
+**Prossimo discriminante:** comando `setText`/commit/cancel/undo su due adapter con focus e caret coerente, preservando il DOM/markup Codex e il modello scene Studio. Ancora nessun cambio delle copie `maios_it` o dei prodotti pubblici.
+
+
+updated: 2026-11-19
 status: public_tool_and_codex_rich_editor_source_field_reconciled; no_new_product_release
 
 ## 19 novembre — nuova fonte Codex e MetaCanvas pubblico restituiti alla competenza
