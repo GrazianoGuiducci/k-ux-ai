@@ -1,5 +1,10 @@
 # K-UX-AI current state
 
+## 19 novembre 2026 — MetaEditor Lab05: spatial diagram interaction
+
+The operator selected additional practical editing capabilities rather than more themes or panels. [MetaEditor Lab05](examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab05_Diagrammi.html) extends Lab04 with node-level multi-selection, alignment/distribution, group drag and nudge, inline insertion by double-clicking canvas, snapped movement and link-preserving clone/delete; it remains a neutral HTML experiment. [Lab05 README](examples/collaborative-communication-medium/meta-editor-lab/LAB05_README.md) distinguishes source research, Node/Chromium proofs and limitations. Two overlapping-node regressions were observed and corrected; GUIDE/SKILL/CURRENT in MetaEditor Evolution now carry the reusable method. No edits to MAIOS.it, D-ND.com, Studio 20/21, local Codex checkout or deployment.
+
+
 ## 17 November 2026 — MetaEditor Lab04 multi-object gesture
 
 [Lab04](examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab04_Manipolazione.html) is a separate, tested neutral HTML example, and [LAB04_README](examples/collaborative-communication-medium/meta-editor-lab/LAB04_README.md) specifies human gestures and current limits. K-UX-AI's MetaEditor Evolution [SKILL](competences/ux-ai/collaborative-communication-medium/meta-editor/SKILL.md), GUIDE and CURRENT now possess multi-selection (Shift-click), local-only copy/cut/paste, batch duplicate/delete/move, unique cloned IDs, single Undo per batch, and separated selection of document blocks from diagram nodes. The test observed UI competition from duplicate Copy/Cut controls; final design leaves clipboard actions in one compact bar. Syntax + Chromium set_content verified browser interactions, export/reopen, and 390 px viewport; direct file:// blocked by runner. No Studio replacement, production release, site adapter or live site deployment.
