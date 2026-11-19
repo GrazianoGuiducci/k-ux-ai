@@ -17,6 +17,11 @@ Il gesto umano è il referente operativo: seleziono un oggetto, modifico **sul p
 ## 19 novembre — entrata MetaCanvas pubblico + editor Codex
 ## Bridge06 — conservare il gesto attraverso due carrier, 19 novembre
 ## Bridge07 — il comando comune richiama la competenza del portatore
+## Bridge08 — le possibilità sono ricercabili senza diventare nuovi pannelli
+
+Per richieste sull'intuitività di MetaCanvas, consulta [Bridge08 UX: fonti, codice e prove](references/BRIDGE08_UX_ACTIONS_FOCUS_20261119.md) prima di aggiungere toolbar. Il **comando palette** e il dock contestuale danno ingresso ai comandi già esercitati nei due portatori: sezioni/testo/formato HTML Codex e scene/nodi/template/presentazione Studio21. Formato avanzato resta raggiungibile, non continuamente visibile; Focus agisce solo sullo spazio, non sul modello `ccm.document.v1`. Per un componente selezionato il referente deve restare percepibile mentre gli strumenti cambiano. L'esportazione è parte del gesto: progetto riaperto con una sola UI e copia pubblica **priva del codice editor UX08**. Una sidebar nascosta che restringe il canvas è un esito fallito anche se l'interfaccia appare semplice. Il builder hash-guarded e il CSS/JS generali sono nella stessa directory del laboratorio K-UX-AI; non importare il copy privato della pagina Codex nel prodotto.
+
+
 
 Quando l'operatore chiede che la modifica funzioni allo stesso modo su documento HTML e scena, raggiungi il [contratto Bridge07 esercitato](references/BRIDGE07_NATIVE_COMMAND_CONTRACT_20261119.md) e il [builder riproducibile](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge07_build.py), non un nuovo stato documento. I gesti `F2 / Ctrl+Invio / Esc / Ctrl+Z / Ctrl+Y` partecipano a `begin, setText, commit, cancel, undo, redo`, ma ogni adapter delega alle funzioni native. `setText` nella pagina sostituisce **solo il Range** di rich text, mentre nella scena sostituisce una stringa nella label. Conferma e cancellazione preservano markup, ID, link, note, template e filtri per copia pubblica. La sessione non può continuare dopo blur e `Ctrl+Y` deve recuperare il redo del documento anche dopo che Undo ha restituito il caret al campo. Un `beforeinput` successivo riconsegna l'undo al testo. Le prove e le eccezioni restano nel documento owner-native; non assimilare come universale la sola prova Chromium.
 
