@@ -1,5 +1,10 @@
 # K-UX-AI current state
 
+## 19 November 2026 — Bridge06 two-native-carrier edit gesture
+
+MetaEditor Evolution [source-bound Bridge06 experiment](competences/ux-ai/collaborative-communication-medium/meta-editor/references/BRIDGE06_COMMON_GESTURE_20261119.md) has exercised one shared human gesture on the operator's real Codex HTML draft and the exact Studio21 IT demo (source hashes validated). The [Python stdlib builder](examples/collaborative-communication-medium/meta-editor-lab/bridge06_build.py) reproduces both variants but never modifies their source documents; the Codex HTML is not committed to this product repository. Rich text selection/export in the page and `ccm.document.v1` scene/links/notes/templates/public privacy in Studio21 passed limited Chromium checks. A pointer-capture retargeting regression was discovered and repaired. SKILL/GUIDE/CURRENT carry the method. No production Studio20/21 release, distribution file change, site deployment, local Codex checkout action, universal HTML adapter or Chrome Windows file:// usability proof.
+
+
 ## 19 November 2026 — reconciliation of public MetaCanvas and Codex rich-text editor
 
 The operator corrected the field: MetaCanvas is **already a public MAIOS tool** distributed through the site as Playground r4, general Studio20 and separate Studio21 IT/EN demos, while the Codex-managed review HTML of the Consulenza page includes valuable **rich-text editing** and DOM-local site control absent from the Lab05 synthetic editor. The [owner-native source ledger](competences/ux-ai/collaborative-communication-medium/meta-editor/references/SOURCE_FIELD_PUBLIC_TOOL_CODEX_DRAFTS_20261119.md) reconciles the public distribution, `ccm.document.v1`, personal templates and private/public AI merge, Codex page editor, Labs01–05, the older R4→R5 experiment, and D-ND Design / Siteman. MetaEditor Evolution's SKILL/GUIDE/CURRENT now route this knowledge at entry instead of extending labs in isolation.
