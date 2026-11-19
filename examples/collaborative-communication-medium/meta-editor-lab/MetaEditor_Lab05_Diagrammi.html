@@ -438,8 +438,8 @@ function renderObjectPanel(){
  const rec=itemById(selected);if(!rec){panel.hidden=true;return}
  panel.hidden=false;
  const item=rec.item,node=nodeSelected?item.nodes?.find(n=>n.id===nodeSelected):null;
- const header=document.createElement('h3');header.textContent=node?'Nodo · '+node.text:(item.type==='diagram'?'Diagramma':item.type==='card'?'Riquadro':item.type==='title'?'Titolo':'Testo');panel.append(header);
  if(selectedNodes.length>1){renderNodeGroupPanel(panel,item);return;}
+ const header=document.createElement('h3');header.textContent=node?'Nodo · '+node.text:(item.type==='diagram'?'Diagramma':item.type==='card'?'Riquadro':item.type==='title'?'Titolo':'Testo');panel.append(header);
  if(node){
   newRow(panel,newButton('Modifica testo',()=>editorAction('edit')),newButton('Duplica nodo',()=>cloneSelected()),newButton('+ Nodo collegato',()=>addNodeConnected()),newButton('Elimina nodo',()=>deleteSelected(),'danger'));
   newRow(panel,newButton('Collega →',()=>startLink()),newButton('Allinea orizz.',()=>arrangeNodes('horizontal')),newButton('Allinea vert.',()=>arrangeNodes('vertical')));
