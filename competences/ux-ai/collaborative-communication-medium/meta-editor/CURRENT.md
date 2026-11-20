@@ -3,6 +3,14 @@
 updated: 2026-11-20
 status: bridge08_1_codex_selection_state_fixed_and_browser_exercised; no_site_deploy
 
+## 20 novembre — Bridge09: navigazione e focus della selezione
+
+**Sorgente:** conferma dell'operatore nel Chrome Windows reale che Bridge08.1 ora funziona, seguita dalla richiesta di scorrere automaticamente verso gli oggetti scelti e di introdurre altre facilitazioni. Lo screenshot mostra la sezione 2 scelta nel pannello mentre parte del suo contenuto resta sul bordo inferiore dello schermo.
+
+**Nuovo artefatto sperimentale:** `MetaEditor_Bridge09_Focus_Contestuale_IT.html`, derivato dall'esatto Bridge08.1 (input SHA-256 `9dbbf5b5337aa94a8252e9624fab2c75a2ded7dd555db5d9b675501d73fe8e0c`; output SHA-256 `e58ef0f889508e59027b908188a03ba153e7182081767479697feb93611ab2a3`). Introduce `revealSelection` per le scelte esplicite da sezioni, blocchi, ricerca e palette; pulsante ◎ per riportare in vista l'elemento selezionato; allineamento con il viewport e la barra inferiore; nessuno scroll in seguito a normali eventi di editing.
+
+**Esercizio osservato:** Node --check sui tre script; Chromium `set_content` desktop 1680×900 e mobile 390×844: scelte, ricentratura, singola selezione, edit rich-text e export/riapertura senza raddoppio della UI o marcatori nel documento, zero pageerrors. Ricerca elementi e palette sono state esercitate in una prova separata. La nuova versione non è ancora stata provata dall'operatore in Chrome Windows; file:// è bloccato nel runner. Nessun deploy del prodotto pubblico, modifica a MAIOS.it o Codex. [GUIDE](GUIDE.md) conserva il metodo.
+
 ## 20 novembre — Bridge08.1: evidenza umana della doppia selezione, correzione puntuale
 
 L'operatore ha provato il vero `MetaEditor_Bridge08_Bozza_Codex_IT.html` in Chrome Windows e ha documentato con screenshot un titolo selezionato strutturalmente mentre è in modifica il testo di un altro riquadro. La [competenza ha isolato e corretto la mancata sincronizzazione](references/BRIDGE08_1_SELECTION_HANDOFF_20261120.md): il ramo diretto di `dblclick` nascondeva Struttura senza `syncTools(section)`. Bridge08.1 sincronizza il referente corrente, rimuove i contorni passati e conserva il cursore del campo rich text; la barra inferiore rende percepibile quale testo è attivo.
