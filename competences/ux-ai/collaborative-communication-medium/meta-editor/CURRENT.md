@@ -3,6 +3,14 @@
 updated: 2026-11-20
 status: bridge08_1_codex_selection_state_fixed_and_browser_exercised; no_site_deploy
 
+## 20 novembre — Bridge11: posizionamento preciso degli elementi aggiunti
+
+**Sele­zione:** l'operatore chiede di continuare dal Bridge10. Il codice possiede già drag intra-gruppo e trasferimento intersezione al fondo; la differenza da sviluppare è scegliere il **punto esatto della destinazione**, preservando gli elementi nativi e il responsive.
+
+**Artefatto corrente della conversazione:** `MetaEditor_Bridge11_Posizionamento_Preciso_IT.html` SHA-256 `c0c1078db990cb658261bcc09b83cf5be92d88d825f9fa9a94a4c486d76aeecd`; input byte-identico Bridge10 SHA-256 `38612d819682af89172003399fe96eed7fc5494476a3015eecc3d2dbd08857ce`. Il comando nativo `transfer` ora sposta un blocco `data-local-block` nello stesso o in un altro contesto, con scelta di riferimento e prima/dopo/fine. Le ancore di riferimento sono blocchi aggiunti o testo in flusso della hero; i componenti nativi in griglia non sono candidati arbitrari. Anteprima e target highlight restano transitori e fuori dall'export. Gli spostamenti nulli non registrano undo né marcano sporco tramite il listener generale.
+
+**Prove reali di laboratorio:** Node --check su 3 script; Chromium set_content desktop 1680×900 e mobile 390×844: 4 sezioni originarie; titolo nativo non trasferibile; spostamento tra sezioni; riordino locale; Undo/Redo a un checkpoint; no-op e successivo Undo che torna al movimento reale; inserimento prima dell'H1 hero con ID e layout conservati; export HTML e riapertura con un'unica UI, nessun marcatore target e nessun pageerror nei percorsi provati. La verifica dell'operatore su Chrome Windows della nuova variante, altri siti, touch e Studio21 resta da compiere. **Nessun deploy e nessuna mutazione di Codex o MAIOS.it.** [GUIDE](GUIDE.md) e [SKILL](SKILL.md) custodiscono la funzione.
+
 ## 20 novembre — Bridge10: inserimento contestuale nel referente
 
 **Selezione presente:** dopo la conferma Bridge09, l'operatore domanda ulteriori migliorie. È stata esercitata una direzione già aperta, **comporre la pagina nel punto scelto** riutilizzando l'inserimento nativo della bozza Codex.
