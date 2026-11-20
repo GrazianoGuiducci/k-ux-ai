@@ -1,5 +1,15 @@
 # MetaEditor Evolution — guida viva
 
+## 20 novembre — Bridge09: la posizione visiva fa parte della selezione
+
+**Fonte umana:** dopo aver provato positivamente Bridge08.1 in Chrome Windows, l'operatore mostra la sezione 2 scelta nel pannello ma il suo primo testo vicino al bordo inferiore della finestra. Chiede che la selezione produca scrolling verso il focus e invita a migliorare l'usabilità. Il problema non riguarda più la doppia selezione: un referente correttamente selezionato può ancora essere difficile da ritrovare sullo schermo.
+
+**Capacità esercitata:** sulla copia esatta di Bridge08.1 (SHA-256 `9dbbf5b...`) il nuovo `revealSelection` colloca le sezioni dopo la testata e i blocchi in una zona centrale utile, considerando la barra contestuale soltanto quando può davvero sovrapporsi all'elemento. La selezione esplicita via menu sezione, menu blocco, ricerca nel pannello, pulsanti Mostra e palette azioni richiama il medesimo gesto. Il pulsante compatto ◎ accanto al menu blocco consente di ricentrare dopo uno scroll manuale. Il Range/caret e l'editing non sono usati come trigger di scroll; non nasce un secondo inspector, un nuovo modello documento o un cronometro di animazione. Il movimento rispetta prefers-reduced-motion.
+
+**Prove (separate dalla conferma umana):** Node --check sui tre script; Chromium via `set_content` a 1680×900 e 390×844 su cambi di sezione e blocco, ritorno con ◎, ricerca elemento, unico contorno per il referente, editing diretto e mini-barra ancora operanti; export del lavoro e riapertura con un solo pulsante ◎ e una sola UI UX08, senza marcatori di selezione nel documento; zero pageerrors osservati nei percorsi. La navigazione `file://` è stata bloccata nel test runner; la copia Bridge09 è in conversazione, **non** nel download pubblico né nel checkout Codex. L'uso reale su Windows del Bridge09 rimane da esercitare; il test non prova ogni dimensione dello schermo o tutti i casi di sovrapposizione del pannello.
+
+**Apprendimento trasferibile:** selezione logica, evidenza del referente e visibilità nel viewport sono relazioni distinte. Scorrere soltanto per una scelta di navigazione esplicita; evitare di muovere il foglio sotto il cursore mentre si scrive. Trattare come nuovo resultant sperimentale, senza trasferirvi la prova umana del precedente Bridge08.1 né pubblicare un asset per sola disponibilità.
+
 ## 20 novembre — Bridge08.1: il problema non era il colore del contorno, ma il cambio di referente
 
 **Nuova prova dell'operatore:** nel Chrome Windows reale, dopo l'esperimento Bridge08, uno screenshot mostra il titolo a sinistra ancora marcato per struttura mentre il testo del riquadro destro è in modifica rich-text. L'utente osserva che la doppia selezione può causare errori. [Sorgente, root cause, patch e test Bridge08.1](references/BRIDGE08_1_SELECTION_HANDOFF_20261120.md) custodiscono l'episodio.
