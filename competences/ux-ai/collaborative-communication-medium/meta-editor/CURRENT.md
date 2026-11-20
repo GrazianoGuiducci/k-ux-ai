@@ -3,6 +3,16 @@
 updated: 2026-11-20
 status: bridge08_1_codex_selection_state_fixed_and_browser_exercised; no_site_deploy
 
+## 20 novembre — Bridge10: inserimento contestuale nel referente
+
+**Selezione presente:** dopo la conferma Bridge09, l'operatore domanda ulteriori migliorie. È stata esercitata una direzione già aperta, **comporre la pagina nel punto scelto** riutilizzando l'inserimento nativo della bozza Codex.
+
+**Artefatto:** `MetaEditor_Bridge10_Inserimento_Contestuale_IT.html`, unico HTML offline di conversazione, SHA-256 `38612d819682af89172003399fe96eed7fc5494476a3015eecc3d2dbd08857ce`, derivato dall'esatto Bridge09 SHA `e58ef0f889508e59027b908188a03ba153e7182081767479697feb93611ab2a3`. Pulsante `+` di inserimento prima/dopo per paragrafo, sottotitolo, elenco e riquadro, ancora nativa `insertionAnchor` e `addBlock`; in spazi stretti la stessa UI va accanto al selettore elementi. Il file precedente resta byte-identico e il sito non cambia.
+
+**Esercizio tecnico:** Node `--check` dei tre script, Chromium desktop 1680×900 e mobile 390×844: scelta, menu, inserimento, Undo/Redo, export work HTML senza shell me10 serializzata e riapertura con una sola UI, zero pageerrors. Test separato su inserimento `before` accanto a H1 e chiusura Esc. La prima prova ha trovato un click soppresso dal controller `blockPageAction` quando il nuovo pulsante viveva fuori da `#local-editor`; corretto portandolo nel perimetro editoriale. La seconda ha scoperto che il pannello copriva il pulsante su 390px; corretto mediante fallback inline nella picker-row. **Prova umana Chrome Windows di Bridge10 ancora aperta**. Non estendere queste prove al MetaCanvas pubblico o a Studio21.
+
+**Continuità:** il prossimo gesto reale dell'operatore può valutare se il `+` è percettibile e il menu consente di lavorare con meno passaggi. Conservare [GUIDE](GUIDE.md) e [SKILL](SKILL.md) come owner di metodo; la creazione in conversazione non è di per sé release o installazione di un nuovo editor.
+
 ## 20 novembre — Bridge09: navigazione e focus della selezione
 
 **Sorgente:** conferma dell'operatore nel Chrome Windows reale che Bridge08.1 ora funziona, seguita dalla richiesta di scorrere automaticamente verso gli oggetti scelti e di introdurre altre facilitazioni. Lo screenshot mostra la sezione 2 scelta nel pannello mentre parte del suo contenuto resta sul bordo inferiore dello schermo.
