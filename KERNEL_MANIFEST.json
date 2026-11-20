@@ -41,7 +41,10 @@
           "bridge08_builder": "examples/collaborative-communication-medium/meta-editor-lab/bridge08_build.py",
           "bridge08_layer_js": "examples/collaborative-communication-medium/meta-editor-lab/bridge08_ui.js",
           "bridge08_layer_css": "examples/collaborative-communication-medium/meta-editor-lab/bridge08_ui.css",
-          "bridge08_status": "source_committed_two_native_carriers_tested_not_public"
+          "bridge08_status": "source_committed_two_native_carriers_tested_not_public",
+          "bridge08_1_reference": "competences/ux-ai/collaborative-communication-medium/meta-editor/references/BRIDGE08_1_SELECTION_HANDOFF_20261120.md",
+          "bridge08_1_fix": "examples/collaborative-communication-medium/meta-editor-lab/bridge08_1_selection_fix.py",
+          "bridge08_1_status": "operator_bug_reproduced_browser_fix_tested_not_public"
         }
       }
     }
