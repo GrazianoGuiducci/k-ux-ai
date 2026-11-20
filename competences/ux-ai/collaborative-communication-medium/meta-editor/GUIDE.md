@@ -1,5 +1,16 @@
 # MetaEditor Evolution — guida viva
 
+## 20 novembre — Bridge08.1: il problema non era il colore del contorno, ma il cambio di referente
+
+**Nuova prova dell'operatore:** nel Chrome Windows reale, dopo l'esperimento Bridge08, uno screenshot mostra il titolo a sinistra ancora marcato per struttura mentre il testo del riquadro destro è in modifica rich-text. L'utente osserva che la doppia selezione può causare errori. [Sorgente, root cause, patch e test Bridge08.1](references/BRIDGE08_1_SELECTION_HANDOFF_20261120.md) custodiscono l'episodio.
+
+**Riscontro nel codice:** quando il ramo `dblclick` Codex nascondeva `#local-tools` con `tools.hidden=true`, non chiamava `syncTools(section)`; gli attributi `data-local-picked` e `data-local-selected` restavano e producevano un secondo contorno. È stata corretta la **transizione fra modalità**, non occultato il problema con CSS. L'editor sincronizza il referente corrente e pulisce le vecchie selezioni mentre il pannello è nascosto; la mini-toolbar e la selezione del testo restano native. La barra inferiore ora identifica il testo effettivo invece del generico «Modifica in corso».
+
+**Prova di causalità:** Playwright Chromium ha riprodotto la coesistenza di contorno strutturale ed edit testuale nella sorgente precedente; sul nuovo file la selezione precedente scompare, Struttura riaperta punta al testo corrente, un altro doppio clic cambia referente, Esc conserva il recupero. Node --check, setText/commit, Ctrl+Z/Y, export→riapertura con una sola UI e nessun marcatore transitorio, mobile 390 px senza overflow nel caso; nessun pageerror osservato. Fonte Bridge08 originale conservata byte-identica. La versione corretta è in conversazione e il patch script nella repository, **non ancora provata nel Chrome Windows dell'operatore** e non pubblicata come prodotto.
+
+**Modifica del sapere di ingresso:** l'entry SKILL aveva accumulato le intestazioni Bridge06/07/08 senza associarle correttamente ai loro paragrafi: il routing era rappresentato ma poco leggibile. È stato riorganizzato conservando integralmente i cinque blocchi di conoscenza precedenti e aggiungendo 08.1 nel punto pertinente. La correzione non sostituisce la ricchezza funzionale del testo né la selezione multipla esplicita dei nodi; stabilisce che la selezione strutturale e l'edit del testo hanno referenti e stati distinti.
+
+
 ## 19 novembre — Bridge08: ricercare possibilità, non imporre un altro pannello
 
 Dopo Bridge07 l'operatore seleziona il miglioramento delle funzioni disponibili e dell'intuitività della UI. [Bridge08](references/BRIDGE08_UX_ACTIONS_FOCUS_20261119.md) riusa le due sorgenti native: ricerca azioni Ctrl+Maiusc+P, dock della selezione e Focus; in Codex formatta progressivamente e mantiene inspector su richiesta, nello Studio raggiunge scene e strumenti secondari senza affollare la barra superiore. Penpot/Figma/GrapesJS sono stati studiati come contributi di UX, senza spostare la direzione del progetto. CSS, JS e builder sono stati committati in K-UX-AI come elementi riusabili separati dalla bozza Codex.
