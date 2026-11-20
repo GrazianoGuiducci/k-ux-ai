@@ -1,5 +1,11 @@
 # K-UX-AI current state
 
+## 20 November 2026 — MetaEditor Bridge11 precise placement in the existing transfer command
+
+The next selected MetaEditor task after Bridge10 is **precision of placement**. Source inspection confirmed the Codex HTML already had peer drag/drop and cross-section transfer into the end of another section. The experimental Bridge11 HTML in conversation (SHA-256 `c0c1078db990cb658261bcc09b83cf5be92d88d825f9fa9a94a4c486d76aeecd`) extends the same native `transfer` operation with an optional precise target, before/after/end, including within the current section. Only inserted `data-local-block` nodes move; references are other inserted blocks or the known text flow of the hero. The user's canonical HTML content, public Studio21 model and the receiver's release remain unchanged.
+
+[MetaEditor Evolution](competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md) SKILL/GUIDE/CURRENT own implementation meaning, current status and bounded evidence. Node syntax + Chromium desktop/mobile (1680×900 and 390×844) exercised adding a block, cross-section transfer, relative ordering, one-step Undo/Redo, repeat no-op without an extra checkpoint, safe hero H1 anchor, export/reopen with exactly one editor shell, no temporary target markers or observed pageerrors. Actual human file:// Windows interaction is not yet evidenced; no MAIOS.it deploy, Studio21 replacement or Codex checkout action.
+
 ## 20 November 2026 — MetaEditor Bridge10 contextual insertion, after Bridge09
 
 The operator approved Bridge09 and asked what could be improved next. The next bounded experimental movement makes an **existing Codex-page insert action** available next to the selected element: a compact `+` chooses before/after, then paragraph, heading, list or callout. It reuses the current `addBlock`/anchor/undo/focus logic, preserving the page's own document and the distinct public Studio21 scene model. On narrow screens or where the editor panel covers the target, the *same* control sits beside the element picker.
