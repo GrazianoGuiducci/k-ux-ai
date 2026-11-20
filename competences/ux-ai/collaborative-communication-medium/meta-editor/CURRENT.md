@@ -1,5 +1,17 @@
 # MetaEditor Evolution — CURRENT
 
+updated: 2026-11-20
+status: bridge08_1_codex_selection_state_fixed_and_browser_exercised; no_site_deploy
+
+## 20 novembre — Bridge08.1: evidenza umana della doppia selezione, correzione puntuale
+
+L'operatore ha provato il vero `MetaEditor_Bridge08_Bozza_Codex_IT.html` in Chrome Windows e ha documentato con screenshot un titolo selezionato strutturalmente mentre è in modifica il testo di un altro riquadro. La [competenza ha isolato e corretto la mancata sincronizzazione](references/BRIDGE08_1_SELECTION_HANDOFF_20261120.md): il ramo diretto di `dblclick` nascondeva Struttura senza `syncTools(section)`. Bridge08.1 sincronizza il referente corrente, rimuove i contorni passati e conserva il cursore del campo rich text; la barra inferiore rende percepibile quale testo è attivo.
+
+**Stato effetti:** `MetaEditor_Bridge08_1_Selezione_Coerente_IT.html` è un file di prova nella conversazione, ricostruibile con lo [script K-UX-AI SHA-guarded](../../../../examples/collaborative-communication-medium/meta-editor-lab/bridge08_1_selection_fix.py). Test Node e Chromium: prima/dopo, riapertura Struttura, nuovo referente, Esc, setText/commit, Undo/Redo, export/reopen con una sola UI e mobile 390 px. Nessuna modifica al prodotto pubblico, a MAIOS.it o al checkout Codex. **La prova Chrome Windows dell'esito corretto resta da fare**, distinta dalla prova umana del problema.
+
+**Direzione aperta:** proseguire con inserimento e composizione degli elementi a livello pagina, preservando selezione e proprietà della scena. Non introdurre un nuovo pannello per compensare il passaggio di stato.
+
+
 updated: 2026-11-19
 status: bridge08_ux_layer_committed_two_adapters_browser_tested; no_public_release
 
