@@ -1,5 +1,12 @@
 # K-UX-AI current state
 
+## 21 November 2026 — MetaEditor Bridge09–11 executable workbench now reachable
+
+The operator observed that Bridge09, Bridge10 and Bridge11 were previously only downloadable from ChatGPT conversations, despite documented competence evolution. The exact complete HTML carriers are now stored in private `GrazianoGuiducci/maios_it` on a **non-production branch** `work/metaeditor-current`, at [`workbench/metaeditor/README.md`](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/README.md), [`CURRENT.html`](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/CURRENT.html), and separate `versions/` files. All were read back with matching Git blob SHA; current Bridge11 file SHA-256 `c0c1078db990cb658261bcc09b83cf5be92d88d825f9fa9a94a4c486d76aeecd` and Git blob `9f4f843124f8619eee02ece40a7efc1470881b07`. The workbench is private because the HTML incorporates an unpublished site-review carrier; `maios_it/main` automatically deploys to the public site and was not changed.
+
+K-UX-AI continues to own reusable MetaEditor competence, code and tests, while the `maios_it` document owner possesses the private executable carrier. [MetaEditor Evolution SKILL/GUIDE/CURRENT](competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md) now connect future experimental evolution to the workbench's stable reference and historical snapshot/commit/readback. Browser edits do not push to GitHub on their own; ChatGPT/Codex reuse requires repository access. No Studio21/public release, production deployment or autonomous sync was established.
+
+
 ## 20 November 2026 — MetaEditor Bridge11 precise placement in the existing transfer command
 
 The next selected MetaEditor task after Bridge10 is **precision of placement**. Source inspection confirmed the Codex HTML already had peer drag/drop and cross-section transfer into the end of another section. The experimental Bridge11 HTML in conversation (SHA-256 `c0c1078db990cb658261bcc09b83cf5be92d88d825f9fa9a94a4c486d76aeecd`) extends the same native `transfer` operation with an optional precise target, before/after/end, including within the current section. Only inserted `data-local-block` nodes move; references are other inserted blocks or the known text flow of the hero. The user's canonical HTML content, public Studio21 model and the receiver's release remain unchanged.
