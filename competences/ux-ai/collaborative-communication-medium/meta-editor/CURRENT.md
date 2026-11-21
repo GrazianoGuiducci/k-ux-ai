@@ -1,5 +1,16 @@
 # MetaEditor Evolution — CURRENT
 
+## 21 novembre — Bridge11 esercitato come adattamento documentale Collaborazioni
+
+**Fonte dell'operatore:** rivedere la pagina Collaborazioni usando MetaCanvas/MetaEditor prima del passaggio a Codex, partendo dalla versione più aggiornata del repository e confrontandola, se possibile, con il sito pubblico. La forma desiderata nasce da una nuova direzione di collaborazione: «Cerco collaborazioni», ricerca fuori dal Lab, sguardo esterno sul team e trasformazione dell'esperienza in capacità.
+
+**Sorgenti e owner:** la bozza canonica della pagina HTML è `GrazianoGuiducci/maios_it/main:collaborazioni.html` (blob `cbce790d2a713b2b3ef1b96c2c10bd1eeb01e39c`); il Bridge11 preesistente su `work/metaeditor-current/workbench/metaeditor/CURRENT.html` è portatore **Consulenza**, non Collaborazioni. La pagina pubblica `https://maios.it/collaborazioni.html` non è stata raggiungibile dagli strumenti nel turno, quindi uguaglianza fra live e main non verificata.
+
+**Risultante nel documento owner:** nuovo [adattamento Bridge11 per Collaborazioni](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/collaborazioni/Collab_MetaEditor_Bridge11_20261121.html), [HTML pulito candidato](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/collaborazioni/CANDIDATE_SITE.html) e [handoff](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/collaborazioni/README.md). Il documento completo preserva le quattro sezioni originarie, aggiunge una sezione ricerca/team, aggiorna la hero e il contributo reciproco nell'accordo. I CSS `site.css` e `consulting-ai.css` sono incorporati dalla sorgente repository corrente; il supporto Bridge11 resta intatto. Il README workbench rende il portatore distinto raggiungibile senza sovrascrivere il CURRENT Consulenza.
+
+**Prova effettiva:** file creati sul ramo non di produzione, readback Git blob; parsabilità sintattica dei tre script dell'editor verificata nel ricevente JS; controlli testuali su singolo main, singola shell editor, unicità titolo e nuova sezione. **Non** eseguite prove Chromium visuali, test Windows umano, export interattivo, confronto dei byte serviti dalla VPS, applicazione della patch a main o pubblicazione. La futura revisione umana del file può mutare la sorgente che Codex dovrà applicare. La trasformazione qui è riuso situato di competenza già esistente, non una nuova generalizzazione garantita dell'editor per qualunque sito.
+
+
 updated: 2026-11-21
 status: bridge11_private_workbench_source_verified; no_site_deploy
 
