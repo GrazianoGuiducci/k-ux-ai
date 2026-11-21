@@ -1,7 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
-updated: 2026-11-20
-status: bridge08_1_codex_selection_state_fixed_and_browser_exercised; no_site_deploy
+updated: 2026-11-21
+status: bridge11_private_workbench_source_verified; no_site_deploy
+
+## 21 novembre — Bridge11 disponibile nel workbench privato dell'owner documento
+
+**Risultato effettivamente consegnato:** `GrazianoGuiducci/maios_it` (privata), ramo `work/metaeditor-current`, [ingresso operativo](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/README.md), [`workbench/metaeditor/CURRENT.html`](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/CURRENT.html) = Bridge11. Conservate anche le versioni HTML integrali Bridge09, Bridge10 e Bridge11 in `workbench/metaeditor/versions/`. Le tre copie sono state create da artefatti della conversazione e verificate con i blob Git degli originali; Bridge11 SHA-256 `c0c1078db990cb658261bcc09b83cf5be92d88d825f9fa9a94a4c486d76aeecd`, blob `9f4f843124f8619eee02ece40a7efc1470881b07`. Il workbench contiene un protocollo di aggiornamento del file stabile e delle versioni.
+
+**Confini:** nessuna modifica alla pagina `maios_it/main` o deploy del sito; GitHub privato richiede l'accesso autorizzato, e un download modificato dal browser non è ancora committato. K-UX-AI rimane owner della competenza di editing, `maios_it` owner del documento e del relativo artefatto, Codex/ChatGPT riceventi potenziali. Codice riusabile Bridge09–11 non è ancora estratto dal documento per il prodotto MetaCanvas generalizzato. Il riferimento ora è **recuperabile in repo**, non più soltanto nei file della conversazione.
 
 ## 20 novembre — Bridge11: posizionamento preciso degli elementi aggiunti
 
