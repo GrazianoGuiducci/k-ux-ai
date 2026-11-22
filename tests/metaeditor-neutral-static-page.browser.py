@@ -62,6 +62,13 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
         assert result['regions'] == page.locator(selector).count()
         assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == source, (name,width,'no-op changed source')
 
+        # A keyboard/screen-reader user has an explicit text-element picker.
+        picker = page.locator('#me-neutral-element')
+        assert picker.count() == 1 and picker.locator('option').count() >= 3
+        picker.select_option(index=1)
+        assert page.locator('main [data-local-selected]').count() == 1
+        assert page.locator('[data-me-action="edit"]').is_enabled()
+
         # Select a real author paragraph; editing is opt-in and does not
         # rewrite the remaining original page.
         target = page.locator('main p').first
@@ -123,6 +130,27 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
         assert page.locator(selector).first.locator('[data-local-block]').count() == 1
         page.evaluate('() => window.metaEditorPage.redo()')
         assert page.locator(selector).nth(1).locator('[data-local-block]').count() == 1
+
+        # Added blocks can be duplicated/deleted without touching authored
+        # sections, and both actions are independent history checkpoints.
+        page.evaluate('() => window.metaEditorPage.select(document.querySelector("main [data-local-block]"))')
+        duplicated = page.evaluate('() => window.metaEditorPage.changeAddedBlock("duplicate")')
+        assert duplicated['changed'], (name, width, 'duplicate did not commit')
+        assert page.locator(selector).nth(1).locator('[data-local-block]').count() == 2
+        deleted = page.evaluate('() => window.metaEditorPage.changeAddedBlock("delete")')
+        assert deleted['changed']
+        assert page.locator(selector).nth(1).locator('[data-local-block]').count() == 1
+        assert page.evaluate('() => window.metaEditorPage.undo()')['changed']
+        assert page.locator(selector).nth(1).locator('[data-local-block]').count() == 2
+        assert page.evaluate('() => window.metaEditorPage.redo()')['changed']
+        assert page.locator(selector).nth(1).locator('[data-local-block]').count() == 1
+
+        # Original author text must never be deletable by this limited command.
+        original_before = page.evaluate('() => window.metaEditorPage.cleanHtml()')
+        page.evaluate('() => window.metaEditorPage.select(document.querySelector("main p"))')
+        rejected = page.evaluate('() => window.metaEditorPage.changeAddedBlock("delete")')
+        assert rejected['ok'] is False
+        assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == original_before
 
         clean = page.evaluate('() => window.metaEditorPage.cleanHtml()')
         verify_unmodified_outside(source, clean)
