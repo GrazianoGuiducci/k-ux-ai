@@ -1,5 +1,11 @@
 # MetaCanvas / MetaEditor — handoff per receiver implementativo
 
+## 22 novembre — Prova su documento MAIOS live acquisita: non ripeterla come incognita
+
+[CI 45045287380](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45045287380) ha quattro job verdi. Il nuovo job in sola lettura recupera la pagina `consulting-ai.html` su MAIOS.it, confronta esattamente il blob Git col contenuto autore atteso e poi esegue lo stesso test neutro con Chrome Linux 1440/390. Questo dimostra **il prodotto sul vero documento MAIOS pubblicato**, pur non sostituendo il workflow privato di sola prova (cui il connettore corrente non dà ricevuta per eventi `push`). La UI neutra ha ora picker di elementi e azioni reversibili di duplicazione/eliminazione **solo** per blocchi aggiunti. Il [confronto Bridge11](meta-editor-lab/BRIDGE11_COMPARISON_20261122.md) impedisce di confondere queste capacità circoscritte con l'editor privato più ricco.
+
+La CI allega il file autonomo **sintetico** `metaeditor-neutral-windows-preview` e [procedura di prova](meta-editor-lab/WINDOWS_ACCEPTANCE_20261122.md) per l'operatore. Il prossimo movimento richiede prova in Chrome Windows `file://`, review dell'UX/accessibilità e limiti di paste/sicurezza; il release owner rimane distinto. Nessuna modifica alla produzione.
+
 ## 22 novembre — Primo adattatore neutro presente; non ricominciare dai Bridge
 
 **Materializzazione nel prodotto:** [Neutral Static Workpage](meta-editor-lab/NEUTRAL_WORKPAGE.md) include controller HTML statico, builder esplicito per file di lavoro e test cross-topology. Non copia l'HTML della pagina Consulenza privata, non usa un importer generico, non rompe `ccm.document.v1` e non modifica il sito. [CI 45043342858](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45043342858) verde con tre job indipendenti: una topologia sintetica simile a MAIOS e una MDN reale, 1440/390, no-op/export, editing, aggiunte/trasferimenti, Undo/Redo, work save/reopen, Undo completo. L'owner MetaEditor Evolution ha acquisito la distinzione fra identità dei blocchi nel lavoro e marcatori da eliminare nell'export.
