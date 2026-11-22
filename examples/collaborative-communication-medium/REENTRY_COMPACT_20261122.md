@@ -1,5 +1,14 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Candidato Studio21: sezione + figli + immagine + link coerenti
+
+**Nuova risultante di questo movimento:** sul file Studio21 originale, il nudge da tastiera di una `section` lasciava fermi i figli: fallimento riprodotto in [CI 45037096198](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198) con runtime reale e `ccm-data` fixture. Il [builder vincolato alle sorgenti originali](../../tools/build_studio21_keyboard_section_move.py) prepara candidati IT/EN temporanei correggendo soltanto l'Arrow handler: sezione e figli si muovono nello stesso checkpoint. I download pubblici rimangono intatti.
+
+**Evidenza nuova:** [CI 45037298632](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037298632) con entrambi i job verdi. Quattro combinazioni IT/EN × 1440/390: regression suite precedente inserimento/nudge e [test strutturale](../../tests/metaeditor-studio21-relations.browser.py) con figli riquadro/immagine, `containerId`, link e geometria, esportazione HTML, Undo/Redo. Blob candidato ottenuti nella build CI: IT `698d28bf3ddbd38197ec48d776726f43d2f693bc`, EN `10294b195cb49243dc356861cf10e9061ad78e2a`. Questi blob sono **output temporanei**, non ancora artefatti versionati pubblici.
+
+**Implicazione di metodo:** non trasferire una prova su nodo isolato alla composizione di gruppi; verificare relazione e serializzazione sul modello owner-native. K-UX-AI MetaEditor GUIDE/CURRENT aggiornati, kernel evolution registra il cambio di prova. Prossimo discriminante dopo questo blocco: drag complesso, import/export/AI roundtrip e privacy, poi UX/Windows file:// e release IT/EN. PR #2 draft, nessun deploy.
+
+
 ## 22 novembre — Spostamento dei due carrier esercitato
 
 **Nuova prova:** [comando condiviso di movimento](meta-editor-lab/metaeditor-native-move.js) e [contratto](meta-editor-lab/MOVE_COMMANDS.md) nel ramo K-UX-AI: pagina HTML = posizionamento del blocco aggiunto tramite `transfer` Bridge11; scena Studio21 = un singolo nudge nativo da tastiera con ID, contenitore e storia del medium. [Test Node](../../tests/metaeditor-native-move.test.js) (6 casi, [CI verde 45035753475](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035753475)); [Studio21 reale IT/EN](../../tests/metaeditor-studio21-composition.browser.py) 1440/390, nudge + Undo/Redo, [CI verde 45035705911](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035705911). Bridge11/R3 testati localmente in Chromium 1440/390 su prima/dopo/end, no-op e Undo/Redo; test ripetibile privato `maios_it/work/metaeditor-current/workbench/metaeditor/experiments/test_move_native_bridge.py`. Corretto il falso negativo su R3 `main > article`.
