@@ -91,7 +91,17 @@ def run(browser, name: str, selector: str, width: int):
         page.locator('[data-me-action="insert-p"]').evaluate('(button)=>button.click()')
         added = page.locator('main [data-local-block]')
         assert added.count() == 1
-        assert page.locator(selector).first.locator('[data-local-block]').count() == 1
+        assert page.locator(selector).first.locator('[data-local-block]').count() == 1, (
+            name, width, selector,
+            page.evaluate("""(selector) => ({
+                sectionCount: document.querySelectorAll(selector).length,
+                sectionHits: [...document.querySelectorAll(selector)].map(
+                    s => [...s.querySelectorAll('[data-local-block]')].map(x=>x.outerHTML.slice(0,160))
+                ),
+                selection: document.querySelector('#me-neutral-section')?.value,
+                block: document.querySelector('main [data-local-block]')?.parentElement?.outerHTML.slice(0,220)
+            })""", selector)
+        )
         page.evaluate('() => window.metaEditorPage.edit()')
         added.fill('Portable added block')
         added.evaluate('(node) => node.blur()')
