@@ -14,6 +14,7 @@ on:
       - "tests/metaeditor-studio21-relations.browser.py"
       - "tests/metaeditor-studio21-pointer-relations.browser.py"
       - "tests/metaeditor-studio21-privacy.browser.py"
+      - "tests/metaeditor-studio21-ai-roundtrip.browser.py"
       - "tools/build_studio21_public_projection.py"
       - "tests/metaeditor-native-move.test.js"
       - "tests/metaeditor-composition-commands.test.js"
@@ -89,6 +90,8 @@ jobs:
         run: python tests/metaeditor-studio21-privacy.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-private-candidate"
       - name: Preserve movement behavior in private-data-safe candidate
         run: python tests/metaeditor-studio21-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Exercise real AI JSON selective import and private-preserving Undo/Redo
+        run: python tests/metaeditor-studio21-ai-roundtrip.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-private-candidate"
       - name: Evidence boundary
         run: |
           echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
