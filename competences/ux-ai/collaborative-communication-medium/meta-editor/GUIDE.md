@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 22 novembre — Contratto di export browser con sorgente immutabile
+
+**Caso e conseguenza:** R3 conservava la differenza fra HTML originale, DOM editato e file di lavoro; il suo `clean-export` era però un handler specifico del carrier MDN. La componente `static-page-source-adapter.js` nel ramo di stabilizzazione K-UX-AI è la funzione riusabile che confronta una copia del DOM senza marcatori con il `main` della sorgente originale. Se non c'è una differenza restituisce esattamente la sorgente; in caso contrario cambia solo l'interno di `main`, conservando la testata e il piè di pagina byte per byte e l'opening/closing tag originali. L'HTML con il suo editor rimane un carrier separato, non il componente.
+
+**Errori visti nel test e corretti:** una verifica ingenua con `split('</main>')` scambiava la stringa dentro uno script con il vero tag: ora la scansione discrimina commenti, script, style e attributi quotati. Un test di attributo con virgolette non chiuse ha evidenziato che il parser non falliva esplicitamente: ora rifiuta la sorgente. Il nuovo modulo esclude markup attivo nell'area editabile e attributi autore che collidano con i prefissi temporanei, ma non dichiara sicura l'esecuzione degli script **fuori** da `main`.
+
+**Relazione competente:** nel ramo K-UX-AI esiste già `tools/metaeditor_region_patch.py` per una patch server/CLI di frammento revisionato; non sostituirlo. Il modulo JS esercita la preparazione e consegna **nel browser** con DOM pulito, caret, snapshot e baseline immutabile. R3 MDN integrata con lo stesso modulo, non clonazione dell'intero editor, ha superato Node e Chromium desktop/mobile nei casi di inserimento, Undo ed export. L'owner CURRENT conserva ref e limite: non è importatore universale, test di Windows fisico o release.
+
+
 ## 22 novembre — R3: una seconda topologia, il documento originario e le modifiche
 
 **Cosa era ancora aperto:** R2 lavorava sul fixture neutro che conservava `main > section > .site-shell` e dunque non provava il passaggio oltre la topologia MAIOS. Per discriminare la portabilità è stato scelto il sorgente didattico esterno MDN (CC0-1.0), con `main > article`, sezioni annidate, barra `aside`, nav/form e CSS collegato. La prova mantiene gli owner distinti: MDN resta sorgente del documento, K-UX-AI è owner del saper editare, `maios_it/work/metaeditor-current` ospita il portatore sperimentale privato.
