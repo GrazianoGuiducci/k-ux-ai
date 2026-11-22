@@ -13,6 +13,8 @@ on:
       - "tests/metaeditor-studio21-composition.browser.py"
       - "tests/metaeditor-studio21-relations.browser.py"
       - "tests/metaeditor-studio21-pointer-relations.browser.py"
+      - "tests/metaeditor-studio21-privacy.browser.py"
+      - "tools/build_studio21_public_projection.py"
       - "tests/metaeditor-native-move.test.js"
       - "tests/metaeditor-composition-commands.test.js"
       - ".github/workflows/metacanvas-release-preflight.yml"
@@ -79,6 +81,14 @@ jobs:
         run: python tests/metaeditor-studio21-pointer-relations.browser.py --channel chrome
       - name: Verify candidate Studio21 real pointer drag relationships
         run: python tests/metaeditor-studio21-pointer-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
+      - name: Characterize original privacy projection with synthetic private edge
+        run: python tests/metaeditor-studio21-privacy.browser.py --channel chrome --expect-private-link-leak
+      - name: Build source-pinned private-data-safe Studio21 candidates
+        run: python tools/build_studio21_public_projection.py --source-root "${{ runner.temp }}/studio21-candidate" --output-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Verify private-data-safe HTML, AI export, templates, and invalid remote image rejection
+        run: python tests/metaeditor-studio21-privacy.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Preserve movement behavior in private-data-safe candidate
+        run: python tests/metaeditor-studio21-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-private-candidate"
       - name: Evidence boundary
         run: |
           echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
