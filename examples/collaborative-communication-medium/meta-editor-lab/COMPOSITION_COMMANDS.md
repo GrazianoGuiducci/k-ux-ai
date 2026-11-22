@@ -1,5 +1,12 @@
 # MetaEditor — comando compositivo comune, effetti nativi
 
+## 22 novembre — Prova successiva: intero Studio21 in browser
+
+Il precedente paragrafo «Scena: mock» descriveva correttamente la prova di allora. La lacuna è stata esercitata nel [nuovo test Chrome](../../../tests/metaeditor-studio21-composition.browser.py): caricamento dei **veri** `MetaCanvas_Studio21_Consulenza_IT.html` e `_EN.html`, prove a 1440/390, inserimento nativo `text` e `card`, un solo nuovo ID e conservazione dei nodi precedenti, `#undoBtn` e `#redoBtn` che tornano a stato e ID, e rifiuti senza mutazione di richieste pagina. [Actions run riuscito 45030544046](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046), con entrambi i job verdi.
+
+**Banco:** prima installazione Chromium fallita (run 45030431494) e test non eseguito; corretta la dipendenza usando il browser Chrome preinstallato nel runner. Il test non dimostra sicurezza di import, accessibilità, uso Windows `file://` né pubblicazione di una nuova edizione. La composizione `move` resta da formare separatamente; non duplicare il controller `addNode`.
+
+
 **Candidato non distribuito · 22 novembre 2026 · owner:** K-UX-AI / CCM / MetaEditor Evolution
 
 [Modulo](metaeditor-composition-commands.js) · [test del contratto](../../../tests/metaeditor-composition-commands.test.js) · [Gate B](../RELEASE_STABILIZATION_20261122.md)
