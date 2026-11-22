@@ -1,5 +1,10 @@
 # Collaborative Communication Medium — CURRENT
 
+## 22 novembre 2026 — confronto tecnico esterno, senza integrazione
+
+[Confronto owner-native Claude MCP Apps/Whiteboards/Advisor](references/CLAUDE_MCP_APPS_WHITEBOARDS_ADVISOR_20261122.md), fondato su documentazione Anthropic e specifica MCP Apps e sullo stato corrente del MetaEditor. Il risultato rende discernibile un possibile adapter AI-host live rispetto al portatore autonomo HTML e mette in evidenza i limiti PNG/non-app-context di Whiteboards e advisor cifrato. **Nessuna MCP App MAIOS creata o testata, nessun tenant Claude esercitato, nessuna modifica al prodotto pubblico o agli artefatti della pagina.** La sola conseguenza è fonte/criterio raggiungibile nel CCM.
+
+
 ## 16 novembre — MetaEditor Evolution: funzione distinta e primo banco
 
 L'operatore ha selezionato una competenza dedicata al **saper formare e migliorare l'editor**. Il [suo ingresso](meta-editor/SKILL.md), [GUIDE](meta-editor/GUIDE.md) e [CURRENT](meta-editor/CURRENT.md) vivono nella specializzazione CCM, senza crearle un secondo kernel. Il [Lab 01 neutro](../../../examples/collaborative-communication-medium/meta-editor-lab/MetaEditor_Lab01.html) esercita testo dei nodi modificabile direttamente, storia, geometria dei link, disposizione e HTML salvabile/riapribile. Le prove Chromium sono circoscritte al documento sintetico; R3/R4 non sono state sostituite, il sito non è stato modificato e il nuovo banco non è distribuzione di MetaCanvas Studio.
