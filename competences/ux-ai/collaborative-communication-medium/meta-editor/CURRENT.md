@@ -1,5 +1,16 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Stabilizzazione selezionata e prima prova di portabilità R2
+
+**Fonte dell'operatore:** «Finiamo di fare tutto quello che serve fare per fare bene, l'obiettivo finale è pubblicare tutto e stabilizzare il progetto metaeditor e metacanvas». Questo cambia il bersaglio dalla prosecuzione di prototipi sequenziali a un **prodotto verificabile e distribuibile** senza perdere identità, contenuto o capacità dei carrier distinti.
+
+**Riconciliazione delle sorgenti:** i cinque file pubblici MetaCanvas (editor generale, Playground IT/EN, Studio21 IT/EN) sono già distribuiti su MAIOS.it e i loro blob Git coincidono con le fonti K-UX-AI. L'editor generale canonico corrisponde alla copia site `editor-generale-aaa6702-it.bin` (Git blob `d057d68c60061dd9e8f5c2d704cfff2016ea19b1`), **non** alla precedente copia `studio-20-it.bin`; la distinzione viene corretta nei documenti di una [PR candidata K-UX-AI #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2), non ancora fusa. Il workflow di preflight ha terminato con successo una prima esecuzione; non prova un rilascio nuovo né tutte le funzioni.
+
+**Primo esperimento neutro:** il portatore privato Bridge11 è stato trasposto su un documento sintetico non MAIOS, salvato come [MetaEditor Neutral Probe R2](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/MetaEditor_Neutral_Probe_R2_20261122.html), SHA-256 `dab81b7ee10e003c2027eb0972ad0fc701dd90759c5a1979ffb5936a60fdeea4`, blob Git `cc27f5660e9cc687364a3a786a13cc273dd1423b`. Il [builder SHA-guarded](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/build_neutral_probe.py) riproduce lo stesso output dal Bridge11 esatto. Chromium desktop/mobile ha esercitato testo diretto, inserimento, movimento, Undo, salvataggio/riapertura e una pagina pulita senza runtime editor; zero pageerror nei casi. Inizialmente l'export rompeva su una nav MAIOS inesistente e poi il link del download veniva intercettato dal controller: entrambi corretti nel R2, senza cancellare la protezione.
+
+**Limite proprietario:** neutralità di **un fixture** ≠ compatibilità con siti arbitrari: permane l'assunzione `main > section > .site-shell` e residui del carrier Codex. La variante è privata e non sostituisce `CURRENT.html` Bridge11 Consulenza o Studio21/ccm.document.v1. Prossimi discriminanti effettivi: neutralizzazione degli adapter e prova su un secondo DOM reale non-MAIOS con patch/export fedele; poi regressioni dei diagrammi, import AI e privacy, UX/accessibilità, versione IT/EN e release pubblica separata. [Gate e criteri](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/RELEASE_STABILIZATION_20261122.md). Nessun push al sito né release nuova.
+
+
 ## 22 novembre — Bridge11: nessun problema segnalato nell'uso
 
 **Fonte diretta dell'operatore:** «Nella versione 11 non vedo problemi». È un riscontro favorevole sull'uso della versione 11, non una nuova prova automatica di tutti i gesti e neppure una certificazione indistinta dell'adattamento Collaborazioni su HTML aggiornato.
