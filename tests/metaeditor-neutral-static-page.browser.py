@@ -132,8 +132,11 @@ def run(browser, name: str, selector: str, width: int):
         work_saved = page.evaluate('() => window.metaEditorPage.workHtml()')
         assert 'me-neutral-original-source' in work_saved
         assert 'data-local-block' in work_saved
-        assert 'data-local-selected' not in work_saved
-        assert 'contenteditable="true"' not in work_saved
+        # The controller code legitimately contains the attribute names as
+        # strings: inspect the real document region, not the entire work file.
+        work_region = locate_main(work_saved).content(work_saved)
+        assert 'data-local-selected' not in work_region
+        assert 'contenteditable="true"' not in work_region
         assert not errors, (name,width,errors)
 
         second = browser.new_page(viewport={'width':width,'height':844},accept_downloads=True)
