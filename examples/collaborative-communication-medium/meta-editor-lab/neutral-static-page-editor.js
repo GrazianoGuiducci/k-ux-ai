@@ -244,8 +244,12 @@
       if (!point) {
         return {ok:false,reason:'layout destination ambiguous: select a text paragraph or heading in this section'};
       }
+      const sectionHeading = sections[index].querySelector('h1,h2,h3,h4,h5,h6');
+      const headingLevel = sectionHeading ?
+        Math.min(6, Number(sectionHeading.localName.slice(1)) + 1) : 3;
+      const actualTag = tag === 'h3' ? 'h' + headingLevel : 'p';
       return transact(() => {
-        const node = doc.createElement(tag);
+        const node = doc.createElement(actualTag);
         node.setAttribute('data-local-block', 'true');
         node.textContent = tag === 'p' ? 'Nuovo paragrafo' : 'Nuovo titolo';
         insertAtPoint(node, point);
