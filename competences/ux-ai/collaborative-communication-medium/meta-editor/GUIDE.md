@@ -1,5 +1,13 @@
 # MetaEditor Evolution — guida viva
 
+## 22 novembre — Pointer reale: verificare prima il bersaglio, poi l'effetto
+
+La prima esecuzione del nuovo drag test [CI 45039940356](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45039940356) non vedeva movimento della sezione a partire da una coordinata fissa nel suo rettangolo. **Non era sufficiente per diagnosticare un bug del runtime**: il test non controllava quale elemento ricevesse il pointer, e la prova successiva ha cambiato anche l'ampiezza del gesto. Non attribuire retroattivamente una causa singola al fallimento iniziale.
+
+**Metodo acquisito:** in superfici con nodi figli, port, link e layer sovrapposti, un bounding box non è prova di un punto di presa valido. Prima di un drag automatico usare `elementFromPoint` e verificare il referente reale (`closest('.node').dataset.id`); se manca un punto raggiungibile, riportare quella differenza anziché concludere che il comando di movimento è difettoso. Dopo il gesto, confrontare il `ccm.document.v1` esportato e le sue relazioni, non soltanto la geometria DOM.
+
+Nel [test pointer browser](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-pointer-relations.browser.py) con tre figli di `section` (due card e un'immagine) e due collegamenti interni/esterni, sono verificati traslazione uniforme, `containerId`, immagine intatta, link con stessi endpoint/anchor, path aggiornati e Undo/Redo. La [CI 45040063638](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040063638) ha entrambi i job verdi: sorgenti Studio21 originali e candidato Arrow, IT/EN a 1440/390. Questa evidenza è per **mouse/pointer emulato su Chrome Linux**, non touch fisico, screen reader, Windows file://, gruppi annidati o import avversi. Nessun HTML pubblico modificato.
+
 ## 22 novembre — Un gesto non copre le relazioni di un contenitore
 
 La prima prova del movimento scena aveva controllato un nodo e i suoi ID; il modello supporta però `section` con figli `containerId`, immagini incorporate e link. Confrontando i controller emerge una differenza: il pointer move propaga le coordinate ai figli, mentre l'Arrow handler original non lo faceva. Il [test negativo sul vero Studio21](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198) è prova di difetto, non un errore di browser setup.
