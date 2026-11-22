@@ -31,7 +31,7 @@ REPLACEMENTS = {
 
 
 def blob_sha(raw: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode() + bytes([0]) + raw).hexdigest()
 
 
 def build(source_root: Path, output_root: Path):
