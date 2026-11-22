@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — UI contestuale: meno controlli permanenti, stessi oggetti di lavoro
+
+Dopo il difetto di posizionamento corretto sul candidato v2, il movimento successivo ha trattato l'orientamento dell'operatore nell'editor. Il pannello neutro precedente mostrava tutte le azioni e molte disabilitate. **Non sono state aggiunte nuove capacità sul documento**: in [neutral-static-page-editor.js](meta-editor-lab/neutral-static-page-editor.js) ora la modifica appare dopo selezione, il formato soltanto in editing, e le azioni sui blocchi sotto `Gestisci blocco aggiunto` solo per elementi inseriti dall'editor. La selezione mostra referente e sezione; il pannello si riduce con un toggle. `Termina modifica` ed Escape concludono l'editing senza riaprire il campo per un blur involontario. Salvataggio lavoro, export pulito e storia nativa sono sempre accessibili.
+
+**Evidenza attuale:** [CI 45066893656](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) quattro job verdi; i test ora coprono stati di UI, toggle, keyboard Escape, editing, no-op export, file lavoro/reopen e pagina MAIOS live source-identical. Un rendering locale della pagina sintetica con browser Chromium e `set_content` ha confermato visually la maggiore compattezza e l'allineamento del titolo aggiunto; non è un test file:// Windows. L'[artefatto Windows v3](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) `metaeditor-neutral-windows-preview` ID `14771900985` include solo la fixture sintetica.
+
+**Pendenza:** per validare la UI sul PC dell'operatore aprire la v3 e verificare selezione, editing/termina, Escape, collasso, blocchi, Undo/Redo e work/reopen. Non chiamare conclusa la prova Windows; non riaprire Bridge11 o gli asset pubblici senza nuova differenza. K-UX-AI GUIDE/CURRENT e KERNEL_EVOLUTION conservano la trasformazione; PR #2 draft, nessun deploy.
+
 ## 22 novembre — Feedback Chrome Windows: nodo dentro sezione, ma fuori dal flusso
 
 **Osservazione dell'operatore:** screenshot della prova locale `file://` mostra il pannello operativo e due `Nuovo titolo` sul margine sinistro, non allineati alla colonna del documento. Quindi la verifica precedente di appartenenza alla sezione era troppo debole: il controller faceva `sections[index].append(node)`, ignorando il contenitore interno della pagina. **Accaduto:** titoli fuori flusso nel candidato v1. **Comprensione attuale:** il referente per il posizionamento va ricavato dal testo selezionato o dall'ancora autoriale del titolo, non dalla sola `<section>`. La causa è corroborata da codice e test; non si inferiscono altre azioni compiute dall'operatore nello screenshot.
