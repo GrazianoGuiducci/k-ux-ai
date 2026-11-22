@@ -53,12 +53,20 @@ Un'**interfaccia coerente** non richiede che una pagina HTML responsive e una pr
 6. **Tracciabilità e build.** Versione, sorgente, licenza MPL-2.0 e notice, SHA-256 e Git blob per ogni artefatto; documentare sorgenti e generazione dei Playground. Preservare le versioni pubblicate senza riscrivere asset cacheati. Test automatico per sorgente e copie: `python tools/verify_metacanvas_distribution.py --site <checkout-maios_it>`.
 7. **Distribuzione bilingue.** Pagina Risorse IT/EN, spiegazione del primo uso, download corrispondenti, guide, demo, link e nota che l'AI è esterna, diritti e privacy. Versionare nuovi asset; controllare URL, headers/download, sitemap/llms quando la loro relazione cambia. Source commit, commit sito e versione live restano tre prove distinte.
 
+## 22 novembre — prima prova discriminante su documento neutro
+
+Dall'esatto Bridge11 Consulenza privato (SHA-256 `c0c1078d...`) è stato ricostruito un [**fixture HTML neutro R2**](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/MetaEditor_Neutral_Probe_R2_20261122.html) con [builder source-pinned e registro delle prove](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/README.md). L'HTML R2 produce SHA-256 `dab81b7ee10e003c2027eb0972ad0fc701dd90759c5a1979ffb5936a60fdeea4` ed è stato riletto nel repo privato (Git blob `cc27f5660e9cc687364a3a786a13cc273dd1423b`).
+
+**Esercizio osservato** in Chromium `set_content` desktop/mobile: editing di testo, inserimento e trasferimento tra sezioni, Undo, export work HTML riapribile con una sola UI ed export statico pulito senza script/markup editor, preservando il paragrafo di controllo. Due errori realmente incontrati: accesso a nav MAIOS assente nel fixture e link download bloccato da protezione editor quando fuori dalla sua shell. Entrambi sono corretti nel R2, con prova della nuova sequenza. Il builder riproduce esattamente il file R2 con impronta verificata.
+
+**Non è l'adempimento del Gate B:** il fixture conserva la struttura `main > section > .site-shell`, il runtime mantiene selettori e stili ereditati dal sito, l'importazione HTML arbitraria e la fedeltà di una pagina esterna reale sono da dimostrare. Il codice è in workbench privato perché deriva dal portatore specifico MAIOS; non entra nei download pubblici. Una UI neutra provata non equivale a un editor generale stabilizzato.
+
 ## Prove e gate
 
 | Gate | Evidenza minima | Stato attuale |
 | --- | --- | --- |
 | A — baseline pubblico tracciato | Sorgenti 5 HTML ↔ copie Git del sito; pin in manifest e script di controllo | **Riconciliati** i Git blob; il nuovo script va eseguito nel checkout reale |
-| B — editor di pagina portabile | Bridge11 neutralizzato, due documenti diversi, test di fedeltà/export/undo | **Aperto** |
+| B — editor di pagina portabile | Bridge11 neutralizzato, due documenti diversi, test di fedeltà/export/undo | **Parziale**: fixture neutro R2 con export, secondo documento reale + generalizzazione ancora aperti |
 | C — scena/diagramma/immagini/template | Regressioni strutturali e privacy dal prodotto pubblico + percorso reale | **Prove storiche**, suite release ripetibile ancora aperta |
 | D — ergonomia e compatibilità | Windows Chrome file://, keyboard, mobile e revisione accessibilità | Bridge11 umano **positivo**; matrice completa **aperta** |
 | E — candidata IT/EN, codice e licenza | Artefatti versionati e documentazione coerente | **Aperto** |
