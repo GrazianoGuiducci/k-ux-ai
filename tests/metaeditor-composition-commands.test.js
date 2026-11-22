@@ -40,6 +40,13 @@ test('page: rejects invalid kind/position and disabled anchor without native mut
  assert.equal(commands.execute('insert',{type:'paragraph',position:'before'}).ok,false);
  assert.equal(state.count(),0);
 });
+test('page: unsupported relative position restores prior section selection',()=>{
+ const state=mockPage();const commands=create({carrier:'page',document:state.document});
+ const original=state.section.dispatchEvent;
+ state.section.dispatchEvent=function(){original.call(this);state.position.options.find(x=>x.value==='before').disabled=this.value==='1';};
+ const result=commands.execute('insert',{type:'paragraph',position:'before',sectionIndex:1});
+ assert.equal(result.ok,false);assert.equal(state.section.value,'0');assert.equal(state.count(),0);
+});
 test('page: unavailable panel does not pretend success',()=>{
  const state=mockPage();state.button.disabled=true;
  assert.equal(create({carrier:'page',document:state.document}).execute('insert',{type:'paragraph'}).ok,false);
