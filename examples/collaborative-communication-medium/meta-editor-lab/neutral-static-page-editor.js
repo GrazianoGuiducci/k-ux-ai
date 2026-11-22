@@ -185,7 +185,7 @@
       button('redo').disabled = future.length === 0;
       button('insert-p').disabled = sectionRoots().length === 0;
       button('insert-h').disabled = sectionRoots().length === 0;
-      const heading = active ? selected.textContent.trim().replace(/\\s+/g,' ').slice(0,48) : '';
+      const heading = active ? selected.textContent.trim().replace(/\s+/g,' ').slice(0,48) : '';
       const section = active ? sectionRoots().findIndex(item=>item.contains(selected)) : -1;
       const sectionName = section>=0 ? selector.options[section]?.textContent || '' : '';
       contextLine.textContent = isEditing ?
@@ -443,8 +443,18 @@
         leaveEditing();
       }
     });
+    main.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && editing && editing.contains(event.target)) {
+        event.preventDefault();
+        leaveEditing();
+        button('edit').focus();
+        notify('Modifica terminata. Le modifiche sono disponibili in Annulla.');
+      }
+    });
     toolbar.addEventListener('pointerdown', event => {
-      if (event.target.closest('[data-me-action="bold"],[data-me-action="italic"]')) event.preventDefault();
+      const formatControl = event.target.closest('[data-me-action="bold"],[data-me-action="italic"]');
+      const finishingEdit = editing && event.target.closest('[data-me-action="edit"]');
+      if (formatControl || finishingEdit) event.preventDefault();
     });
     toolbar.addEventListener('click', event => {
       const action = event.target.closest('[data-me-action]')?.getAttribute('data-me-action');
