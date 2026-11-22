@@ -10,6 +10,8 @@ on:
       - "tools/test_metaeditor_region_patch.py"
       - "tests/metaeditor-static-page-source.test.js"
       - "tests/metaeditor-studio21-composition.browser.py"
+      - "tests/metaeditor-native-move.test.js"
+      - "tests/metaeditor-composition-commands.test.js"
       - ".github/workflows/metacanvas-release-preflight.yml"
   workflow_dispatch:
 
