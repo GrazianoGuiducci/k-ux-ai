@@ -61,12 +61,22 @@ Dall'esatto Bridge11 Consulenza privato (SHA-256 `c0c1078d...`) è stato ricostr
 
 **Non è l'adempimento del Gate B:** il fixture conserva la struttura `main > section > .site-shell`, il runtime mantiene selettori e stili ereditati dal sito, l'importazione HTML arbitraria e la fedeltà di una pagina esterna reale sono da dimostrare. Il codice è in workbench privato perché deriva dal portatore specifico MAIOS; non entra nei download pubblici. Una UI neutra provata non equivale a un editor generale stabilizzato.
 
+## 22 novembre — R3 indipendente e primo componente pubblico di patch fedele
+
+La R2 è stata esercitata nuovamente su un documento HTML esterno reale, `mdn/learning-area/html/introduction-to-html/document_and_website_structure/index.html` (CC0-1.0, Git blob `0a2636f1c1bb30ffa6515141c831e348b9bd6150`). In questo caso la struttura è **`main > article` con sottosezioni e `aside`**, e non `main > section > .site-shell`.
+
+**Risultato R3 nel workbench privato:** [HTML MDN R3](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/MetaEditor_MDN_Independent_R3_20261122.html), SHA-256 `8af2f8b18605f25f8a0e2da9e965c46364cb2756964699c52af7ef940cf75189`, Git blob `5b1dcb244dfcfc9d90f545174ce2a58ae5eb4734`; [builder/test](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/README.md). Chromium `set_content` a 1440×844 e 390×844: selezione articolo, inserimento, Undo/Redo, export statico no-op **byte-identico** all'originale, modifica limitata a `main`, salvataggio work HTML, riapertura con un editor e riesportazione senza perdere il cambiamento. Un difetto di baseline dopo riapertura è stato trovato e corretto nello stesso esercizio. CSS MDN esterno conservato come asset; file:// bloccato nel runner. **Non** è ancora un adapter generico su due pagine eseguito con il medesimo bundle.
+
+**Capacità riusabile costituita in K-UX-AI:** [`tools/metaeditor_region_patch.py`](../../tools/metaeditor_region_patch.py) e [test negativi](../../tools/test_metaeditor_region_patch.py) rendono esplicito l'effetto di una modifica di `main` senza riscrivere il contesto non posseduto. Sono stati testati localmente su due sorgenti di differente topologia (HTML MDN e Bridge11 Consulenza) per il caso no-op byte-identico; altri cinque test assicurano regione unica, protezione da duplicati, testo di script/stylesheet non interpretato come tag e mancata esportazione di marcatori runtime. Le nuove prove di CI devono ancora avere esito verificato. Il componente **non è un sanificatore HTML**, né importa file in un browser; il caller deve fornirgli un frammento già validato.
+
+**Gate B aggiornato:** portabilità editor su un documento esterno dimostrata nel caso limitato MDN; patching source-preserving su due sorgenti supportate; ancora aperte l'estrazione di un adapter non source-pinned, la prova funzionale della stessa versione su più pagine reali, UX/ARIA/accessibilità, media e la suite completa di rilascio.
+
 ## Prove e gate
 
 | Gate | Evidenza minima | Stato attuale |
 | --- | --- | --- |
 | A — baseline pubblico tracciato | Sorgenti 5 HTML ↔ copie Git del sito; pin in manifest e script di controllo | **Riconciliati** i Git blob; il nuovo script va eseguito nel checkout reale |
-| B — editor di pagina portabile | Bridge11 neutralizzato, due documenti diversi, test di fedeltà/export/undo | **Parziale**: fixture neutro R2 con export, secondo documento reale + generalizzazione ancora aperti |
+| B — editor di pagina portabile | Bridge11 neutralizzato, due documenti diversi, test di fedeltà/export/undo | **Parziale**: R2 e R3 su HTML MDN indipendente; stesso adapter su due pagine e supporto generale ancora aperti |
 | C — scena/diagramma/immagini/template | Regressioni strutturali e privacy dal prodotto pubblico + percorso reale | **Prove storiche**, suite release ripetibile ancora aperta |
 | D — ergonomia e compatibilità | Windows Chrome file://, keyboard, mobile e revisione accessibilità | Bridge11 umano **positivo**; matrice completa **aperta** |
 | E — candidata IT/EN, codice e licenza | Artefatti versionati e documentazione coerente | **Aperto** |
