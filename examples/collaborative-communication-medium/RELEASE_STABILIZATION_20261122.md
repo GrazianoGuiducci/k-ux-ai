@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 22 novembre — Gate B: sorgente live verificato, prossimo gate umano Windows
+
+**Prova puntuale:** [CI 45045287380](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45045287380), **quattro job verdi**, include nuovo test in sola lettura sul `consulting-ai.html` pubblicato su MAIOS.it, eseguito soltanto dopo confronto byte-esatto (Git blob `0fda8ce0...`) con l'originale `maios_it`. Riusciti a 1440 e 390 pixel (Chrome Linux) editing, formattazione, picker dei testi, blocchi aggiunti duplicati/eliminati, spostamenti, Undo/Redo, esportazione pulita e riapertura del lavoro. Nessuna copia dell'HTML MAIOS pubblicata in K-UX-AI; nessun effetto sul sito. La PR #2 resta draft.
+
+**Operatore in condizione di provare:** il job `neutral-static-browser` ha allegato l'artefatto `metaeditor-neutral-windows-preview` (ID `14762989805`, solo fixture sintetica più [protocollo](meta-editor-lab/WINDOWS_ACCEPTANCE_20261122.md)). [Comparazione Bridge11](meta-editor-lab/BRIDGE11_COMPARISON_20261122.md) documenta capacità esercitate, non trasferite e rischi. Non confondere un dropdown operabile da tastiera con un'attestazione screen reader, né una pagina servita al browser Linux con `file://` Windows.
+
+**Stato gate:** prova pagina MAIOS live superata nel perimetro, release generale ancora **non** approvata. Restano verifica umana Windows, compatibilità e UX rispetto a Bridge11, ingressi incollati/HTML non fiduciato, accessibilità e la distribuzione owner `maios_it` distinta. Nessuna modifica dei download pubblici MetaCanvas.
+
 ## 22 novembre — Gate B avanzato: controller neutro reale, ancora candidato
 
 **Nuovo portatore prodotto:** [Neutral Static Workpage](meta-editor-lab/NEUTRAL_WORKPAGE.md) monta, su input HTML statico fiduciato, un controller limitato e una sola UI, riusando l'export source-preserving. Il [builder](../../tools/build_metaeditor_neutral_workpage.py) crea una copia lavoro con originale incorporato, non riscrive l'originale né usa materiale privato Bridge11. La separazione è concreta: il lavoro/storico conserva `data-local-block` per i blocchi aggiunti; la copia pubblica pulita elimina marker e UI, preserva gli altri byte e torna all'origine dopo Undo completo.
