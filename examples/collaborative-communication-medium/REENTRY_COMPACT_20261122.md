@@ -1,5 +1,12 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Spostamento dei due carrier esercitato
+
+**Nuova prova:** [comando condiviso di movimento](meta-editor-lab/metaeditor-native-move.js) e [contratto](meta-editor-lab/MOVE_COMMANDS.md) nel ramo K-UX-AI: pagina HTML = posizionamento del blocco aggiunto tramite `transfer` Bridge11; scena Studio21 = un singolo nudge nativo da tastiera con ID, contenitore e storia del medium. [Test Node](../../tests/metaeditor-native-move.test.js) (6 casi, [CI verde 45035753475](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035753475)); [Studio21 reale IT/EN](../../tests/metaeditor-studio21-composition.browser.py) 1440/390, nudge + Undo/Redo, [CI verde 45035705911](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035705911). Bridge11/R3 testati localmente in Chromium 1440/390 su prima/dopo/end, no-op e Undo/Redo; test ripetibile privato `maios_it/work/metaeditor-current/workbench/metaeditor/experiments/test_move_native_bridge.py`. Corretto il falso negativo su R3 `main > article`.
+
+**Conservare le distinzioni:** una richiesta comune non implica un effetto equivalente; non duplicare controller, history, identità, DOM o `ccm.document.v1`. L'HTML pubblicato MetaCanvas e `maios_it/main` non sono stati modificati; PR #2 resta draft. **Prossimo discriminante:** fedeltà delle relazioni fra nodi, contenitori, immagini e collegamenti durante movimenti/undo, poi privacy/import/export e test umano Windows; Gate B/C/D e rilascio aperti. Non serve un cambio istanza preventivo.
+
+
 ## 22 novembre — Chiuso il buco di prova sul vero Studio21
 
 **Risultante ultima:** il comando condiviso `insert` ora ha un [test E2E sul vero Studio21 standalone IT/EN](../../tests/metaeditor-studio21-composition.browser.py) nel ramo K-UX-AI PR #2. [CI 45030544046](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046) `verify` e `studio21-browser` verdi: Chrome Linux a 1440/390, inserimento `text`/`card`, ID distinti, integrità dei nodi esistenti, Undo/Redo e richieste non supportate senza mutazione. Il primo run 45030431494 è fallito prima del test per l'installazione di Chromium; non era un errore Studio. Nessuna modifica agli HTML sorgente o ai download.
