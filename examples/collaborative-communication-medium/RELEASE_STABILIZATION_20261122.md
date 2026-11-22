@@ -1,0 +1,80 @@
+# MetaCanvas + MetaEditor — consolidamento e rilascio
+
+**Formato:** piano di esecuzione e criteri di accettazione, 22 novembre 2026  
+**Owner prodotto e metodo:** K-UX-AI / Collaborative Communication Medium / MetaEditor Evolution  
+**Owner sito e distribuzione:** `maios_it`  
+**Stato:** release candidate **non ancora formata**; lavoro su ramo non di rilascio. Nessuna pubblicazione autorizzata da questo documento.
+
+## Direzione selezionata dall'operatore
+
+«Finiamo di fare tutto quello che serve fare per fare bene, l'obiettivo finale è pubblicare tutto e stabilizzare il progetto metaeditor e metacanvas.»
+
+La conseguenza non è continuare i Bridge all'infinito né sostituire il prodotto già distribuito con il file di una pagina MAIOS. Il lavoro deve portare a strumenti effettivamente utilizzabili, con sorgenti verificabili, uno scopo supportato e la capacità di correggersi senza perdere i dati dell'operatore.
+
+## Identità e stato di partenza verificati
+
+| Superficie | Identità e capacità | Stato del 22 novembre |
+| --- | --- | --- |
+| **MetaCanvas — medium** | HTML autonomo, scene e diagrammi `ccm.document.v1`, template `metacanvas.templates.v1`, salvataggio lavoro, copia pubblica e AI roundtrip sui dati | **Già pubblico**: editor generale, guida Playground r4 IT/EN e demo Studio21 IT/EN; cinque copie nel sito hanno lo stesso Git blob SHA delle fonti K-UX-AI |
+| **MetaEditor — competenza/editor** | Editing contestuale del testo, focus, inserimento e posizionamento su pagina HTML tramite adattatore Codex | **Bridge11 sperimentato** dall'operatore («non vedo problemi»), workbench privato, ma non distribuito come editor neutro e non dimostrato su HTML arbitrario |
+| **Pagina MAIOS.it** | Distribuzione, spiegazione e accesso in Risorse → Strumenti | Pubblicata, localizzata IT/EN; modificare `maios_it/main` innesca deploy. I file della pagina di consulenza non sono il prodotto |
+| **K-UX-AI runtime npm** | Runtime generale di interazione, `0.2.0-alpha.3` | Distinto dal standalone MetaCanvas e dalla competenza MetaEditor; nessun bump npm implicito |
+
+**Nuova precisione di identità:** l'editor generale K-UX-AI corrente (`AI_Collaboration_Studio.html`, blob `d057d68c60061dd9e8f5c2d704cfff2016ea19b1`) coincide con il download del sito `editor-generale-aaa6702-it.bin`. La copia precedente `studio-20-it.bin` (blob `dd9192515930c55fd70741b32510450440f2a8f4`) rimane storica. Alcune guide documentano ancora le dimensioni e l'hash **della vecchia copia** come se fossero quelle del file canonico corrente: correggerle prima di annunciare una versione stabilizzata. I riferimenti agli stati prima del rilascio, datati 13 novembre, sono storia, non stato corrente.
+
+[Manifesto con impronte del baseline](distribution-manifest.json) · [verifica dei download](../../tools/verify_metacanvas_distribution.py) (run in checkout, anche con `--site`).
+
+## Architettura da stabilizzare, senza falsa fusione
+
+```text
+                    MetaCanvas — medium collaborativo
+                                 |
+              MetaEditor — gesti e comandi situati
+                                 |
+                  comando + referente + effetto
+                   /             |             \
+          pagina HTML        scene Studio     diagramma
+          regioni note       ccm.document.v1  nodi/relazioni
+          DOM/CSS/ARIA       template/note     geometria/porte
+                   \             |             /
+             lavoro modificabile / copia pubblica
+                    + proposta diff verificabile
+```
+
+Un'**interfaccia coerente** non richiede che una pagina HTML responsive e una presentazione geometrica siano convertite nello stesso formato. I receiver documentali conservano autorità su mutazioni, storico, ID, privacy e serializzazione. Non sostituire `execCommand` o ricostruire il DOM selezionato per principio senza prove sul caret/undo.
+
+## Criteri di release — essenziali
+
+1. **Perimetro dichiarato.** Definire un supporto realmente provato per HTML statico con regioni editabili; dire esplicitamente che React/CMS, siti arbitrari e modifica remota non sono garantiti. MetaCanvas scene rimane `ccm.document.v1`. Riconoscere rischi di formattazione, contenuto privato, storage `file://`.
+2. **Versione neutra MetaEditor.** Estrarre i comandi e la UI validi dal Bridge11, senza pubblicare l'HTML Consulenza o Collaborazioni con contenuti del sito. Esercitare lo stesso gesto su **due pagine diverse** (MAIOS e un fixture neutro non MAIOS), preservando semantica, CSS e script non selezionati. L'export HTML pulito o patch non deve contenere strumenti transitori, chiavi di test o un secondo editor.
+3. **Nucleo delle funzioni.** Testo ricco e caret; selezione/focus; inserimento; riordino intra/intersezione; immagini/diagrammi/section template *nei carrier che li supportano*; Undo/Redo/no-op; salvataggio lavoro ed export; integrità di scene, link e template. Evitare controlli che promettono azioni non supportate su un dato adapter. Migliorie mancanti vengono esercitate nella competenza proprietaria, non aggiunte come nomi vuoti.
+4. **Privacy e sicurezza del documento.** Copia pubblica distinta da lavoro, note e template privati esclusi negli export previsti; importazione di dati strutturati senza eseguire script esterni; rifiuto di link/nodi invalidi, immagini remote e file eccessivi; niente segreti nel bundle. Test negative con modifiche reali e successivo Undo.
+5. **Esperienza e accessibilità.** Desktop e 390px; navigazione da tastiera/esc/focus; pan/zoom o scroll contestuale senza spostare il caret; pannelli che non coprono i comandi; reduced motion; provare navigazione `file://` reale, download/reopen, screen reader o audit assistivo proporzionato. Il feedback positivo su Bridge11 non equivale a tutti questi test.
+6. **Tracciabilità e build.** Versione, sorgente, licenza MPL-2.0 e notice, SHA-256 e Git blob per ogni artefatto; documentare sorgenti e generazione dei Playground. Preservare le versioni pubblicate senza riscrivere asset cacheati. Test automatico per sorgente e copie: `python tools/verify_metacanvas_distribution.py --site <checkout-maios_it>`.
+7. **Distribuzione bilingue.** Pagina Risorse IT/EN, spiegazione del primo uso, download corrispondenti, guide, demo, link e nota che l'AI è esterna, diritti e privacy. Versionare nuovi asset; controllare URL, headers/download, sitemap/llms quando la loro relazione cambia. Source commit, commit sito e versione live restano tre prove distinte.
+
+## Prove e gate
+
+| Gate | Evidenza minima | Stato attuale |
+| --- | --- | --- |
+| A — baseline pubblico tracciato | Sorgenti 5 HTML ↔ copie Git del sito; pin in manifest e script di controllo | **Riconciliati** i Git blob; il nuovo script va eseguito nel checkout reale |
+| B — editor di pagina portabile | Bridge11 neutralizzato, due documenti diversi, test di fedeltà/export/undo | **Aperto** |
+| C — scena/diagramma/immagini/template | Regressioni strutturali e privacy dal prodotto pubblico + percorso reale | **Prove storiche**, suite release ripetibile ancora aperta |
+| D — ergonomia e compatibilità | Windows Chrome file://, keyboard, mobile e revisione accessibilità | Bridge11 umano **positivo**; matrice completa **aperta** |
+| E — candidata IT/EN, codice e licenza | Artefatti versionati e documentazione coerente | **Aperto** |
+| F — rilascio e ricezione | Commit K-UX-AI, copie site versionate, push pubblicazione esplicito, readback live su IT/EN e download, rollback | **Non eseguito** |
+
+Non passare da un gate con prove parziali a una dichiarazione «stabile». **B** è il prossimo discriminante tecnico: prima la neutralità e il secondo documento, poi funzioni ulteriori solo se necessarie all'uso. Un test di prova non autorizza da solo la pubblicazione.
+
+## Relazione con gli owner e la consegna
+
+- **K-UX-AI** possiede il mezzo e il metodo; i miglioramenti riusabili tornano a CCM e MetaEditor Evolution nello stesso movimento.
+- **`maios_it`** possiede la pubblicazione e le copie dei download; il ramo privato `work/metaeditor-current` conserva i portatori Consulenza/Collaborazioni, che non sono il prodotto da distribuire.
+- **Codex** può esercitare test, build e sito con il proprio checkout quando l'effetto è selezionato; il receiver deve riferire file, diff, comando, esito e limiti. L'accesso GitHub da ChatGPT non simula né modifica la cartella locale di Codex.
+- **Operatore** valuta il gesto e il significato finale: l'assenza di problemi in Bridge11 chiude quella regressione osservata, non una garanzia generale di compatibilità.
+
+## Cosa non entra automaticamente nel rilascio
+
+Cloud sync, editing collaborativo realtime, integrazione LLM dentro il file, import di siti qualsiasi, CMS/React, PDF completo, touch e screen-reader universali, integrazioni MCP: possibilità o lavori separati finché non richiesti da un caso e provati.
+
+**Condizione di chiusura:** un utente può scaricare l'editor corretto, modificare un documento supportato, salvarlo, riaprirlo, distinguere la copia pubblica, usare l'AI esterna se vuole, senza perdere la fonte. La repository mostra versioni e test; il sito serve gli stessi byte ed è verificato dopo la pubblicazione. Questo documento non afferma che la condizione sia già raggiunta per entrambi i carrier.
