@@ -1,5 +1,11 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 22 novembre — Gate movimento pointer: nuova prova sul runtime originale e candidato
+
+[Regressione di vero trascinamento](../../tests/metaeditor-studio21-pointer-relations.browser.py) IT/EN a 1440/390 su Studio21 **originale** e sulla copia candidata Arrow: `section` con tre figli (due card, immagine incorporata), due link interni/esterni; target di presa browser verificato, coordinate relative coerenti, `containerId` e dati immagine preservati, stessi ID/estremi link, path aggiornato, export del lavoro, Undo/Redo. [CI 45040063638](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040063638) `verify` e `studio21-browser` riusciti. Il [primo test 45039940356](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45039940356) era non discriminante: un gesto da punto geometrico non qualificato non muoveva la sezione, ma non provava un bug del prodotto.
+
+**Gate C / confini:** il percorso pointer diretto testato è verde; il movimento Arrow è corretto **solo nel candidato**. Mouse a viewport 390 non certifica touch fisico. Non sono ancora provati annidamento, import/AI roundtrip, dati privati, template/scene avverse, accessibilità, Chrome Windows file:// o pubblicazione. Procedere alla prova import/export/privacy senza inferire chiusura globale da questo passaggio.
+
 ## 22 novembre — Prova delle relazioni nello spostamento, candidato ancora privato al rilascio
 
 Il vecchio test Studio21 aveva verificato il movimento di un nodo isolato. Il [nuovo test sulle relazioni](../../tests/metaeditor-studio21-relations.browser.py) ha dimostrato che il runtime Studio21 originale (IT/EN) muoveva la sola sezione su Arrow: [CI negativa 45037096198](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198). Il [builder IT/EN source-pinned](../../tools/build_studio21_keyboard_section_move.py) applica una correzione di un solo handler a copie temporanee e il [test CI positivo 45037298632](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037298632) conferma che i figli, compresa un'immagine, accompagnano la sezione, `containerId` e link restano coerenti, il percorso si aggiorna e Undo/Redo serializzati funzionano a 1440/390. La suite precedente rimane verde.
