@@ -10,6 +10,7 @@ on:
       - "tools/test_metaeditor_region_patch.py"
       - "tests/metaeditor-static-page-source.test.js"
       - "tests/metaeditor-studio21-composition.browser.py"
+      - "tests/metaeditor-studio21-relations.browser.py"
       - "tests/metaeditor-native-move.test.js"
       - "tests/metaeditor-composition-commands.test.js"
       - ".github/workflows/metacanvas-release-preflight.yml"
@@ -66,6 +67,8 @@ jobs:
           google-chrome --version
       - name: Exercise real Studio21 IT/EN with shared insertion and native history
         run: python tests/metaeditor-studio21-composition.browser.py --channel chrome
+      - name: Verify complex Studio21 section, children and linked raster movement
+        run: python tests/metaeditor-studio21-relations.browser.py --channel chrome
       - name: Evidence boundary
         run: |
           echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
