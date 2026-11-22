@@ -70,7 +70,8 @@ def main():
     if output.exists():
         parser.error('Output already exists; explicit overwrite is not supported.')
     raw = source.read_text(encoding='utf-8')
-    work = build(raw, *(LAB / module).read_text(encoding='utf-8') for module in MODULES)
+    modules = [(LAB / module).read_text(encoding='utf-8') for module in MODULES]
+    work = build(raw, *modules)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(work, encoding='utf-8')
     print('CREATED', output, 'original bytes', len(raw.encode('utf-8')),
