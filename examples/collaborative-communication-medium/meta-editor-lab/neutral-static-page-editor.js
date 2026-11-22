@@ -71,19 +71,19 @@
     const button = action => toolbar.querySelector('[data-me-action="' + action + '"]');
     const pristineSource = sourceHtml;
 
-    function cleanedRoot() {
+    function workRootSnapshot() {
       const clone = main.cloneNode(true);
       for (const element of [clone, ...clone.querySelectorAll('*')]) {
-        for (const attribute of element.getAttributeNames()) {
-          if (attribute === 'contenteditable' || attribute.startsWith(LOCAL) ||
-              attribute.startsWith('data-me0') || attribute.startsWith('data-me1')) {
-            element.removeAttribute(attribute);
-          }
-        }
+        element.removeAttribute('contenteditable');
+        element.removeAttribute('data-local-selected');
+        element.removeAttribute('data-local-editing');
       }
+      // These are work/history snapshots, NOT public HTML. An inserted block
+      // retains data-local-block across Undo/Redo and save/reopen; the source
+      // adapter removes that marker only for clean export.
       return clone;
     }
-    const snapshot = () => cleanedRoot().innerHTML;
+    const snapshot = () => workRootSnapshot().innerHTML;
     function notify(message) { status.textContent = message; }
     function refreshSections() {
       const former = selector.value;
@@ -249,12 +249,7 @@
       const copy = doc.documentElement.cloneNode(true);
       copy.querySelector('#me-neutral-toolbar')?.remove();
       copy.querySelector('#me-neutral-style')?.remove();
-      const workRoot = main.cloneNode(true);
-      for (const element of [workRoot, ...workRoot.querySelectorAll('*')]) {
-        element.removeAttribute('contenteditable');
-        element.removeAttribute('data-local-selected');
-        element.removeAttribute('data-local-editing');
-      }
+      const workRoot = workRootSnapshot();
       const target = copy.querySelector('main');
       target.replaceWith(workRoot);
       // data-local-block remains in the editable working file so that a
