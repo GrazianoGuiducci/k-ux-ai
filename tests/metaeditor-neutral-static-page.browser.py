@@ -140,6 +140,15 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
         assert 'contenteditable="true"' not in work_region
         assert not errors, (name,width,errors)
 
+        # Reversing every committed edit in the original working session must
+        # restore exact original source bytes, not merely a visual approximation.
+        for _ in range(12):
+            if not page.evaluate('() => window.metaEditorPage.status().canUndo'):
+                break
+            assert page.evaluate('() => window.metaEditorPage.undo()')['changed']
+        assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == source, (
+            name, width, 'full Undo changed original static source'
+        )
         second = browser.new_page(viewport={'width':width,'height':844},accept_downloads=True)
         errors2 = []
         second.on('pageerror', lambda error: errors2.append(str(error)))
