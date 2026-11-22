@@ -1,0 +1,38 @@
+name: MetaCanvas baseline and release preflight
+
+on:
+  pull_request:
+    paths:
+      - "examples/collaborative-communication-medium/**"
+      - "tools/verify_metacanvas_distribution.py"
+      - ".github/workflows/metacanvas-release-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout product source
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install pinned project dependencies
+        run: npm ci
+      - name: Run K-UX-AI contract tests
+        run: npm test
+      - name: Verify five public MetaCanvas source files
+        run: python tools/verify_metacanvas_distribution.py
+      - name: Explain evidence boundary
+        run: |
+          echo "This job does not check the separately owned maios_it site copies or a live deployment."
+          echo "Run the same script with --site /path/to/maios_it before selecting a public release."
