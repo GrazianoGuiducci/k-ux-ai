@@ -1,5 +1,15 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Dati privati e ritorno AI: nuovo candidato e test completi
+
+**Difetto confermato sul baseline:** se un collegamento ha `private:true` ma unisce due nodi pubblici, nell'originale Studio21 passava nella copia HTML pubblica, nel JSON AI senza dati privati e nel template. La [prova di caratterizzazione](../../tests/metaeditor-studio21-privacy.browser.py) ha riprodotto il caso con soli dati sintetici. Il codice originale sapeva già filtrare tale legame nel confronto della review, ma non in queste proiezioni.
+
+**Risultato nel candidato combinato, NON nei download pubblici:** [builder privato source-pinned](../../tools/build_studio21_public_projection.py) applica quattro esclusioni esatte al candidato Arrow IT/EN in una directory temporanea (HTML pubblico, JSON AI senza privati, pulizia e riuso di template). [CI 45040754731](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040754731) `verify` e `studio21-browser` verdi a 1440/390 IT/EN; il test privacy controlla lavoro originario, HTML pubblico, JSON AI, template, rifiuto di immagini remote e protezione dei link; la [prova handback](../../tests/metaeditor-studio21-ai-roundtrip.browser.py) esporta JSON non privato, modifica contenuto pubblico, integra via review mantenendo note e link privati locali, poi Undo/Redo. Anche la regressione di movimento del candidato composito passa.
+
+**Nuovo sapere owner-native:** [MetaEditor Evolution GUIDE](../../competences/ux-ai/collaborative-communication-medium/meta-editor/GUIDE.md) e CURRENT possiedono semantica di privacy dei legami, controllo della proiezione ed esercizio; `tm7/chatgpt/KERNEL_EVOLUTION` v3.106 distingue prova, baseline e candidato. La prima prova aveva assunto erroneamente che `scene.notes` conservasse il campo, mentre il loader può trasformarlo in `note` privata. Il test corretto verifica il contenuto e non tale forma.
+
+**Ancora aperto:** la sicurezza non è globale; il testo non marcato può contenere riservatezza. Occorrono altri import/template avversi, touch reale e contenitori annidati, accessibilità/Chrome Windows file://, candidato neutro MetaEditor su due pagine, verifica di rilascio e pubblicazione IT/EN separata. La PR #2 è draft e `maios_it/main` non è stato modificato.
+
 ## 22 novembre — Ripresa dopo limite di istanza: pointer composto provato
 
 La nuova istanza ha ripreso l'effetto pendente senza ricreare Bridge né modificare la produzione. Sul ramo K-UX-AI PR #2 è stato aggiunto [test pointer Studio21](../../tests/metaeditor-studio21-pointer-relations.browser.py) e integrato nel [workflow](../../.github/workflows/metacanvas-release-preflight.yml). La prima [CI 45039940356](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45039940356) non rilevava movimento da un punto fisso, senza verificare che fosse il bersaglio reale; dopo la correzione del test (`elementFromPoint`, target sezione e gesto più ampio) la [CI 45040063638](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040063638) è **verde in entrambi i job**.
