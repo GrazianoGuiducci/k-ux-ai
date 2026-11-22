@@ -78,10 +78,13 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
             const section = document.querySelector(selector);
             const heading = section.querySelector('h1,h2,h3,h4,h5,h6');
             const inserted = [...section.querySelectorAll('[data-local-block]')];
+            const expected = 'H' + Math.min(6, Number(heading.localName.slice(1)) + 1);
             return {ok: inserted.length === 2 && inserted.every(n =>
                 n.parentElement === heading.parentElement &&
+                n.tagName === expected &&
                 Math.abs(n.getBoundingClientRect().left - heading.getBoundingClientRect().left) <= 8
             ), parent: heading.parentElement.className,
+               levels: inserted.map(n => n.tagName), expected,
                positions: inserted.map(n => n.getBoundingClientRect().left),
                headingLeft: heading.getBoundingClientRect().left};
         }""", selector)
