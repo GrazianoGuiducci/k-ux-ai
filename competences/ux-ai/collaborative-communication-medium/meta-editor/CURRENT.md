@@ -1,5 +1,14 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Spostamento nativo distinto: pagina e scena
+
+**Risultante esercitata:** nel ramo K-UX-AI della [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) è stato aggiunto [`metaeditor-native-move.js`](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/metaeditor-native-move.js), con [contratto e limiti](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/MOVE_COMMANDS.md). Non sostituisce un controller: nella pagina delega il riordino del blocco aggiunto al `transfer` di Bridge11; nella scena emette un solo nudge nativo di 5 unità, tramite keydown del nodo renderizzato, con `commit` e history proprie di Studio21. L'omonimia di `move` non implica equivalenza fra riferimenti strutturali HTML e geometria `ccm.document.v1`.
+
+**Correzione dal secondo portatore:** il controllo di destinazione inizialmente cercava solo `main > section`, producendo un falso errore nella R3 MDN organizzata in `main > article`; ora usa l'insieme delle regioni già supportate dall'adattatore. I movimenti nulli e gli ancoraggi non validi vengono rifiutati; se lo spostamento è impossibile non viene inventato un effetto né un nuovo storico. Studio21 vieta il nudge nella modalità lettura/presentazione.
+
+**Prove:** Playwright locale su Bridge11 e R3 a 1440/390 con before, end, attraversamento di sezioni Bridge11, Undo/Redo e no-op; test privato riproducibile nel workbench `maios_it`. [Actions 45035705911](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035705911) ha esercitato Studio21 reale IT/EN a 1440/390, movimento, ID conservati, Undo/Redo e read mode; sei test Node passati, [Actions 45035753475](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035753475). **Gate B ancora parziale:** spostamenti complessi di contenitori/collegamenti, distribuzione, ergonomia e altri gate sono distinti. Nessun deploy.
+
+
 ## 22 novembre — Studio21 IT/EN reale: inserimento e history esercitati in CI
 
 **Differenza di prova:** il contratto `MetaEditorCompositionCommands.execute('insert')`, che prima aveva solo un mock per il modello di scena, è stato esercitato sui veri HTML pubblici Studio21 IT/EN attraverso [Playwright browser test](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-composition.browser.py) nel ramo candidato K-UX-AI. Il test carica gli HTML standalone originali in Chrome Linux, con origine HTTP locale simulata e richieste di rete bloccate; misura i nodi `#canvas .node[data-id]`, la nascita di un solo ID nuovo, la conservazione degli esistenti e `#undoBtn/#redoBtn` nativi. Dopo il Redo inserisce anche un `card`. Le richieste con tipo pagina e `position` pagina sono rifiutate senza effetti.
