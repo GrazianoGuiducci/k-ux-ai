@@ -32,6 +32,8 @@
     toolbar.innerHTML =
       '<strong>MetaEditor · HTML statico</strong>' +
       '<p>File di lavoro locale. Pubblica solo l’HTML pulito dopo averlo controllato.</p>' +
+      '<label for="me-neutral-element">Elemento da modificare</label>' +
+      '<select id="me-neutral-element" aria-label="Elemento da modificare"></select>' +
       '<label for="me-neutral-section">Sezione di destinazione</label>' +
       '<select id="me-neutral-section"></select>' +
       '<div class="me-neutral-actions">' +
@@ -43,6 +45,8 @@
       '<button data-me-action="up">↑ Sposta</button>' +
       '<button data-me-action="down">↓ Sposta</button>' +
       '<button data-me-action="transfer">Sposta a sezione</button>' +
+      '<button data-me-action="duplicate">Duplica blocco aggiunto</button>' +
+      '<button data-me-action="delete">Elimina blocco aggiunto</button>' +
       '<button data-me-action="undo">Annulla</button>' +
       '<button data-me-action="redo">Ripristina</button>' +
       '<button data-me-action="clean">Esporta pagina pulita</button>' +
@@ -67,6 +71,7 @@
     doc.head.append(style);
     doc.body.append(toolbar);
     const selector = toolbar.querySelector('#me-neutral-section');
+    const elementPicker = toolbar.querySelector('#me-neutral-element');
     const status = toolbar.querySelector('#me-neutral-status');
     const button = action => toolbar.querySelector('[data-me-action="' + action + '"]');
     const pristineSource = sourceHtml;
@@ -85,6 +90,25 @@
     }
     const snapshot = () => workRootSnapshot().innerHTML;
     function notify(message) { status.textContent = message; }
+    const selectableNodes = () => [...main.querySelectorAll(EDITABLE)].filter(safeNode);
+    function refreshElements() {
+      const nodes = selectableNodes();
+      elementPicker.replaceChildren();
+      const blank = doc.createElement('option');
+      blank.value = '-1';
+      blank.textContent = '— Seleziona un elemento —';
+      elementPicker.append(blank);
+      nodes.forEach((node, index) => {
+        const option = doc.createElement('option');
+        option.value = String(index);
+        const title = node.textContent.trim().replace(/\s+/g, ' ').slice(0, 62);
+        option.textContent = node.localName.toUpperCase() + ': ' + (title || 'Testo vuoto');
+        elementPicker.append(option);
+      });
+      const current = nodes.indexOf(selected);
+      elementPicker.value = String(current);
+      return nodes;
+    }
     function refreshSections() {
       const former = selector.value;
       const sections = sectionRoots();
@@ -97,6 +121,7 @@
         selector.append(option);
       });
       if (sections.length && [...selector.options].some(o => o.value === former)) selector.value = former;
+      refreshElements();
       return sections;
     }
     function record(before) {
@@ -127,6 +152,7 @@
         const section = sectionRoots().findIndex(section => section.contains(selected));
         if (section >= 0) selector.value = String(section);
       }
+      refreshElements();
       syncButtons();
       return !!selected;
     }
@@ -134,7 +160,7 @@
       const active = selected && selected.isConnected;
       for (const action of ['edit','bold','italic']) button(action).disabled = !active;
       const movable = !!active && selected.hasAttribute('data-local-block');
-      for (const action of ['up','down','transfer']) button(action).disabled = !movable;
+      for (const action of ['up','down','transfer','duplicate','delete']) button(action).disabled = !movable;
       button('undo').disabled = history.length === 0;
       button('redo').disabled = future.length === 0;
       button('insert-p').disabled = sectionRoots().length === 0;
@@ -210,6 +236,36 @@
       }
       return {ok:true,changed:false};
     }
+    function changeAddedBlock(action) {
+      if (!selected || !selected.isConnected || !selected.hasAttribute('data-local-block')) {
+        return {ok:false,reason:'only inserted blocks may be duplicated or deleted'};
+      }
+      const node = selected;
+      if (action === 'duplicate') {
+        // A clone with author IDs would break document references; decline
+        // instead of producing a second element with the same ID.
+        if (node.id || node.querySelector('[id]')) {
+          return {ok:false,reason:'cannot duplicate a block containing an ID'};
+        }
+        return transact(() => {
+          const copy = node.cloneNode(true);
+          copy.removeAttribute('data-local-selected');
+          copy.removeAttribute('data-local-editing');
+          copy.removeAttribute('contenteditable');
+          node.insertAdjacentElement('afterend', copy);
+          select(copy);
+          notify('Blocco aggiunto duplicato. La modifica è annullabile.');
+        });
+      }
+      if (action === 'delete') {
+        return transact(() => {
+          node.remove();
+          select(null);
+          notify('Blocco aggiunto eliminato. Puoi usare Annulla.');
+        });
+      }
+      return {ok:false,reason:'unsupported action'};
+    }
     function restore(html) {
       leaveEditing();
       if (selected?.isConnected) selected.removeAttribute('data-local-selected');
@@ -271,6 +327,16 @@
       notify('Download richiesto: verifica il file e riaprilo prima dell’uso.');
     }
 
+    elementPicker.addEventListener('change', () => {
+      const nodes = selectableNodes();
+      const index = Number(elementPicker.value);
+      const node = Number.isInteger(index) && index >= 0 ? nodes[index] : null;
+      select(node);
+      if (node) {
+        node.scrollIntoView({block:'center', behavior:'auto'});
+        notify('Elemento selezionato. Premi Modifica testo per lavorarci.');
+      }
+    });
     main.addEventListener('click', event => {
       const node = event.target.closest(EDITABLE);
       if (!node || !safeNode(node)) return;
@@ -298,6 +364,7 @@
         edit: edit, bold: () => format('bold'), italic: () => format('italic'),
         'insert-p': () => insert('p'), 'insert-h': () => insert('h3'),
         up: () => move('up'), down: () => move('down'), transfer: () => move('transfer'),
+        duplicate: () => changeAddedBlock('duplicate'), delete: () => changeAddedBlock('delete'),
         undo, redo,
         clean: () => download('MetaEditor_Pagina_Pulita.html', cleanHtml()),
         work: () => download('MetaEditor_Lavoro_Modificabile.html', workHtml()),
@@ -313,7 +380,7 @@
     return Object.freeze({
       status: () => Object.freeze({carrier:'static-page',regions:sectionRoots().length,dirty,
                                     canUndo:history.length>0,canRedo:future.length>0}),
-      select, edit, format, insert, move, undo, redo, cleanHtml, workHtml,
+      select, edit, format, insert, move, changeAddedBlock, undo, redo, cleanHtml, workHtml,
       toolbar, main
     });
   }
