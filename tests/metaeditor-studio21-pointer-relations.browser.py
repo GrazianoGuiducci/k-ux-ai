@@ -76,18 +76,47 @@ def observe(browser, name: str, width: int, html: str):
         section.scroll_into_view_if_needed()
         box = section.bounding_box()
         assert box and box["width"] > 0 and box["height"] > 0, (name, width, "no section box")
-        start_x = box["x"] + box["width"] * .43
-        start_y = box["y"] + box["height"] * .12
+        # Sample a genuinely reachable part of the section: child/link overlays
+        # can be above its rectangle, especially in the narrow viewport.
+        hit = page.evaluate("""(id) => {
+            const section = document.querySelector('#canvas .node[data-id="' + id + '"]');
+            const r = section.getBoundingClientRect();
+            const misses = [];
+            for (const fy of [.12, .28, .48, .72, .9]) {
+                for (const fx of [.42, .17, .8, .6, .05, .95]) {
+                    const x = r.x + r.width * fx, y = r.y + r.height * fy;
+                    if (x < 1 || y < 1 || x >= innerWidth - 1 || y >= innerHeight - 1) continue;
+                    const element = document.elementFromPoint(x, y);
+                    const node = element?.closest('.node')?.dataset.id || null;
+                    if (node === id) return {ok: true, x, y, node, tag:element.tagName};
+                    misses.push({fx, fy, node, tag:element?.tagName || null});
+                }
+            }
+            return {ok: false, rect:{x:r.x,y:r.y,w:r.width,h:r.height}, misses};
+        }""", rel.SEC)
+        assert hit["ok"], (name, width, "section has no reachable pointer target", hit)
+        start_x, start_y = hit["x"], hit["y"]
+        page.evaluate("""() => {
+            window.__dragProbe = [];
+            for (const type of ['pointerdown','pointermove','pointerup']) {
+                document.addEventListener(type, e => {
+                    if(window.__dragProbe.length < 60) {
+                        window.__dragProbe.push({type, node:e.target.closest('.node')?.dataset.id || null,
+                           buttons:e.buttons, x:e.clientX, y:e.clientY});
+                    }
+                }, true);
+            }
+        }""")
         page.mouse.move(start_x, start_y)
         page.mouse.down()
-        page.mouse.move(start_x + 24, start_y + 14, steps=10)
+        page.mouse.move(start_x + 36, start_y + 22, steps=14)
         page.mouse.up()
 
         after = rel.download_model(page)
         moved, links_after = geometry(after)
         dx = moved[rel.SEC]["x"] - before[rel.SEC]["x"]
         dy = moved[rel.SEC]["y"] - before[rel.SEC]["y"]
-        assert (dx or dy), (name, width, "pointer drag did not move section")
+        assert (dx or dy), (name, width, "pointer drag did not move section", hit, page.evaluate("window.__dragProbe"))
         for key in (rel.CHILD, rel.IMAGE, THIRD):
             assert moved[key]["x"] - before[key]["x"] == dx, (name, width, key, "x displacement")
             assert moved[key]["y"] - before[key]["y"] == dy, (name, width, key, "y displacement")
