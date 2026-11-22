@@ -1,5 +1,12 @@
 # MetaEditor Evolution — guida viva
 
+## 22 novembre — Il test sul vero Studio21 chiude l'incertezza del mock
+
+L'ultimo movimento del contratto di composizione non richiede nuovi comandi o UI: richiede soltanto **esercitare** il carrier scena vero, perché fino al precedente passaggio la sua operatività era dedotta dal codice e da un mock. La prova nella [suite Playwright K-UX-AI](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-composition.browser.py) usa le sorgenti standalone Studio21 IT/EN (non fixture), Chrome Linux a 1440 e 390, zero rete esterna, inserimento testo + riquadro attraverso `[data-add]`, unicità e conservazione degli ID, Undo/Redo nativi e rifiuto di posizioni/tipi estranei al carrier. [CI riuscita](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046).
+
+Il primo workflow non raggiungeva lo Studio perché l'installazione del browser Playwright falliva; questo è **difetto del banco di prova**, non evidenza di difetto del medium. Il test è ora eseguito dal Chrome preinstallato, con dipendenza Playwright Python. Conservare tale distinzione quando si attribuisce una prova. `MetaEditorCompositionCommands` rimane richiesta comune senza storia, ID o stato propri; la risultante non rende HTML e `ccm.document.v1` lo stesso modello. Lavori separati: altre operazioni, protezioni in modalità lettura/presentazione, privacy/AI roundtrip, ergonomia e rilascio.
+
+
 ## 22 novembre — Comando compositivo comune, esecuzione owner-native
 
 **Fonte e problema:** il successivo movimento selezionato dall'operatore parte dall'export R3 separato. Il vecchio Bridge07 espone già `MetaEditorCommands` per modifica diretta e storia nei due modelli, ma i gesti di inserimento sono ancora raggiungibili soltanto attraverso controlli distinti. Bridge11 possiede `addBlock` e spostamento preciso; Studio21 possiede `addNode`, identità dei nodi e `commit`. Non creare un terzo editor o una nuova history per far sembrare comune l'azione.
