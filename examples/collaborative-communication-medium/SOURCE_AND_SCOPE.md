@@ -1,5 +1,12 @@
 # Source, scope and exercise
 
+## 22 novembre 2026 — relazione corretta fra file canonico e distribuzione
+
+Riletto il file pubblico K-UX-AI `AI_Collaboration_Studio.html` (Git blob `d057d68c60061dd9e8f5c2d704cfff2016ea19b1`) e la copia del sito `editor-generale-aaa6702-it.bin`: i blob Git sono uguali. La copia `studio-20-it.bin` ha un blob differente (`dd9192515930c55fd70741b32510450440f2a8f4`) e conserva l'edizione Studio20 descritta storicamente qui sotto. Le due identità non vanno confuse. Le altre quattro coppie source/site attualmente distribuite hanno lo stesso blob; [manifest](distribution-manifest.json) e [gate tecnico](../../tools/verify_metacanvas_distribution.py) ne registrano le impronte. L'uguaglianza di blob non dimostra da sola i byte serviti dalla VPS né l'accessibilità e l'uso reale del sito.
+
+Il mandato di stabilizzazione MetaCanvas/MetaEditor è registrato nei [gate di rilascio](RELEASE_STABILIZATION_20261122.md). Il Bridge11 positivo per l'operatore è un test del portatore pagina in uso, non una certificazione dello Studio generale o di una fusione già rilasciata. Nessuna modifica a `maios_it/main` è compiuta da questo aggiornamento delle sorgenti K-UX-AI.
+
+
 ## Studio 20 — public tool release (13 November 2026)
 
 The canonical public file `AI_Collaboration_Studio.html` now contains MetaCanvas Studio 20, directly published in K-UX-AI at commit `0be329ae723110c62aa67d89756397683505319b`. Source file: 272,490 bytes, SHA-256 `c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19`. GitHub readback matched the supplied source. The prior Studio 15 remains retrievable in commit history; this is not a package/npm release or MAIOS.it deployment.
