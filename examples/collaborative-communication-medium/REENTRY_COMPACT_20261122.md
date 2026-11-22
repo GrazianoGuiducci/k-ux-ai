@@ -1,5 +1,12 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Inserimento nativo condiviso, provato su due portatori pagina
+
+**Nuovo punto d'appoggio:** [`metaeditor-composition-commands.js`](meta-editor-lab/metaeditor-composition-commands.js), [contratto](meta-editor-lab/COMPOSITION_COMMANDS.md) e [6 test Node](../../tests/metaeditor-composition-commands.test.js) nel ramo candidato K-UX-AI. Aggiunge soltanto `execute('insert', …)`, mappando la richiesta sul comando nativo del carrier: pagina HTML `addBlock`, scena Studio21 `addNode`. Non tocca `MetaEditorCommands` Bridge07, storia, formati o UI dei prodotti. Test Chromium 1440/390 su vero Bridge11 e R3 MDN con inserimento e Undo: superati, senza pageerror; test browser ripetibile salvato nel workbench privato `maios_it/work/metaeditor-current/workbench/metaeditor/experiments/test_composition_native_bridge.py`.
+
+**Errore e riparazione:** inserimento relativo non disponibile dopo un cambio di sezione deve ripristinare la selezione preesistente; ora controllato da test. Per le scene il contratto è provato solo con mock di pulsanti e conferma di codice Studio21, **non** test E2E del vero Studio21. **Gate B ancora parziale**, PR #2 draft, nessun deploy. Prossima unità utile: esercitare il modulo sulla scena reale, mantenendo distinto `ccm.document.v1` dall'HTML e senza aggiungere una seconda toolbar. Il rientro continua da questo risultato, senza riesaminare i precedenti Bridge.
+
+
 ## 22 novembre — Passo successivo esercitato: export browser riusabile
 
 **Ora raggiungibile:** [`static-page-source-adapter.js`](meta-editor-lab/static-page-source-adapter.js) nel ramo K-UX-AI, test Node [`tests/metaeditor-static-page-source.test.js`](../../tests/metaeditor-static-page-source.test.js); il modulo sostituisce la parte di export della R3 MDN ma **non** i suoi gesture/editor. [Versione R3 con adapter](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/MetaEditor_MDN_R3_Shared_Source_Adapter_20261122.html) e builder vincolato conservati nel ramo privato del documento, blob output `2b2a6045fe2faf56f34b4730db6310c5ed11b65e`. I test locali Node e Chromium 1440/390 su MDN e fixture diverso, più uso integrato UI R3 con insert/Undo/export, sono passati nei percorsi; errore di attributo quotato non chiuso individuato e corretto.
