@@ -62,6 +62,36 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
         assert result['regions'] == page.locator(selector).count()
         assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == source, (name,width,'no-op changed source')
 
+        # Human Windows feedback: two new titles previously landed at x≈9
+        # outside the authored .shell / .site-shell text column. Prove the
+        # actual parent and on-screen horizontal alignment, not just section
+        # membership (the older test permitted the broken layout).
+        page.locator('#me-neutral-section').select_option('0')
+        page.evaluate("""(selector) => {
+            const heading = document.querySelector(selector).querySelector('h1,h2,h3,h4,h5,h6');
+            window.metaEditorPage.select(heading);
+        }""", selector)
+        for _ in range(2):
+            action = page.evaluate('() => window.metaEditorPage.insert("h3")')
+            assert action['changed'], (name,width,'title not inserted')
+        title_positions = page.evaluate("""(selector) => {
+            const section = document.querySelector(selector);
+            const heading = section.querySelector('h1,h2,h3,h4,h5,h6');
+            const inserted = [...section.querySelectorAll('[data-local-block]')];
+            return {ok: inserted.length === 2 && inserted.every(n =>
+                n.parentElement === heading.parentElement &&
+                Math.abs(n.getBoundingClientRect().left - heading.getBoundingClientRect().left) <= 8
+            ), parent: heading.parentElement.className,
+               positions: inserted.map(n => n.getBoundingClientRect().left),
+               headingLeft: heading.getBoundingClientRect().left};
+        }""", selector)
+        assert title_positions['ok'], (name,width,'title escaped content column',title_positions)
+        assert page.evaluate('() => window.metaEditorPage.undo()')['changed']
+        assert page.evaluate('() => window.metaEditorPage.undo()')['changed']
+        assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == source, (
+            name,width,'title Undo changed original source'
+        )
+
         # A keyboard/screen-reader user has an explicit text-element picker.
         picker = page.locator('#me-neutral-element')
         assert picker.count() == 1 and picker.locator('option').count() >= 3
@@ -118,6 +148,17 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
         assert moved['changed'], (name,width,'block did not transfer')
         assert page.locator(selector).nth(1).locator('[data-local-block]').count() == 1
         assert 'Portable added block' in page.locator(selector).nth(1).inner_text()
+        moved_parent = page.evaluate("""(selector) => {
+            const second = document.querySelectorAll(selector)[1];
+            const heading = second.querySelector('h1,h2,h3,h4,h5,h6');
+            const added = second.querySelector('[data-local-block]');
+            return {sameParent: added.parentElement === heading.parentElement,
+                    deltaX: Math.abs(added.getBoundingClientRect().left -
+                                     heading.getBoundingClientRect().left)};
+        }""", selector)
+        assert moved_parent['sameParent'] and moved_parent['deltaX'] <= 8, (
+            name,width,'transfer escaped destination content column',moved_parent
+        )
 
         # Repeat the same destination: an invalid/no-op movement cannot
         # create a history checkpoint or change the document.
