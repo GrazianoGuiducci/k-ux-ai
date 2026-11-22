@@ -30,48 +30,59 @@
     toolbar.id = 'me-neutral-toolbar';
     toolbar.setAttribute('aria-label', 'MetaEditor – editor locale');
     toolbar.innerHTML =
-      '<strong>MetaEditor · HTML statico</strong>' +
-      '<p>File di lavoro locale. Pubblica solo l’HTML pulito dopo averlo controllato.</p>' +
-      '<label for="me-neutral-element">Elemento da modificare</label>' +
-      '<select id="me-neutral-element" aria-label="Elemento da modificare"></select>' +
-      '<label for="me-neutral-section">Sezione di destinazione</label>' +
-      '<select id="me-neutral-section"></select>' +
-      '<div class="me-neutral-actions">' +
-      '<button data-me-action="edit">Modifica testo</button>' +
-      '<button data-me-action="bold">Grassetto</button>' +
-      '<button data-me-action="italic">Corsivo</button>' +
-      '<button data-me-action="insert-p">+ Paragrafo</button>' +
-      '<button data-me-action="insert-h">+ Titolo</button>' +
-      '<button data-me-action="up">↑ Sposta</button>' +
-      '<button data-me-action="down">↓ Sposta</button>' +
-      '<button data-me-action="transfer">Sposta a sezione</button>' +
-      '<button data-me-action="duplicate">Duplica blocco aggiunto</button>' +
-      '<button data-me-action="delete">Elimina blocco aggiunto</button>' +
-      '<button data-me-action="undo">Annulla</button>' +
-      '<button data-me-action="redo">Ripristina</button>' +
-      '<button data-me-action="clean">Esporta pagina pulita</button>' +
-      '<button data-me-action="work">Salva lavoro modificabile</button>' +
-      '</div><p id="me-neutral-status" role="status" aria-live="polite"></p>';
+      "<div class=\"me-neutral-head\"><div><strong>MetaEditor</strong><span>Pagina HTML · copia di lavoro</span></div><button id=\"me-neutral-toggle\" type=\"button\" aria-controls=\"me-neutral-body\" aria-expanded=\"true\">Riduci</button></div>" +
+      "<div id=\"me-neutral-body\">" +
+      "<p id=\"me-neutral-context\" aria-live=\"polite\">Seleziona un testo nella pagina o nell’elenco.</p>" +
+      "<div class=\"me-neutral-group\"><label for=\"me-neutral-element\">Testo da modificare</label><select id=\"me-neutral-element\" aria-label=\"Testo da modificare\"></select>" +
+      "<div class=\"me-neutral-actions\" data-me-group=\"edit\" hidden><button data-me-action=\"edit\">Modifica testo</button></div>" +
+      "<div class=\"me-neutral-actions\" data-me-group=\"format\" hidden><button data-me-action=\"bold\">Grassetto</button><button data-me-action=\"italic\">Corsivo</button></div></div>" +
+      "<div class=\"me-neutral-group\"><label for=\"me-neutral-section\">Sezione in cui inserire</label><select id=\"me-neutral-section\"></select>" +
+      "<div class=\"me-neutral-actions\"><button data-me-action=\"insert-p\">+ Paragrafo</button><button data-me-action=\"insert-h\">+ Titolo</button></div></div>" +
+      "<details class=\"me-neutral-group\" data-me-group=\"block\" hidden><summary>Gestisci blocco aggiunto</summary>" +
+      "<p>Lo spostamento usa la sezione scelta sopra.</p>" +
+      "<div class=\"me-neutral-actions\"><button data-me-action=\"up\">↑ Sposta</button><button data-me-action=\"down\">↓ Sposta</button><button data-me-action=\"transfer\">Sposta a sezione</button><button data-me-action=\"duplicate\">Duplica</button><button data-me-action=\"delete\">Elimina blocco</button></div></details>" +
+      "<div class=\"me-neutral-group me-neutral-persistent\"><div class=\"me-neutral-actions\"><button data-me-action=\"undo\">Annulla</button><button data-me-action=\"redo\">Ripristina</button></div>" +
+      "<div class=\"me-neutral-actions\"><button data-me-action=\"work\">Salva lavoro</button><button data-me-action=\"clean\">Esporta pagina pulita</button></div></div>" +
+      "<p id=\"me-neutral-status\" role=\"status\" aria-live=\"polite\"></p></div>";
     const style = doc.createElement('style');
     style.id = 'me-neutral-style';
     style.textContent = [
-      '#me-neutral-toolbar{position:fixed;z-index:2147483000;right:12px;top:12px;width:min(350px,calc(100vw - 24px));',
-      'max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;padding:12px;background:#fff;color:#182d37;',
-      'border:1px solid #a5bcb6;border-radius:10px;box-shadow:0 5px 25px #0003;font:13px/1.4 system-ui,sans-serif}',
-      '#me-neutral-toolbar *{box-sizing:border-box}#me-neutral-toolbar strong{display:block;font-size:15px}',
-      '#me-neutral-toolbar p{margin:6px 0}#me-neutral-toolbar select{width:100%;padding:5px;margin:3px 0 8px}',
-      '#me-neutral-toolbar .me-neutral-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px}',
-      '#me-neutral-toolbar button{cursor:pointer;padding:7px 4px;background:#f1f7f5;border:1px solid #a7c6ba;border-radius:5px;color:#123128}',
-      '#me-neutral-toolbar button:disabled{opacity:.5;cursor:not-allowed}',
-      '#me-neutral-toolbar button:focus-visible{outline:2px solid #087b70;outline-offset:2px}',
-      'main [data-local-selected]{outline:2px solid #087b70;outline-offset:2px}',
-      'main [data-local-editing]{outline:2px dashed #087b70;outline-offset:2px}',
-      '@media(max-width:500px){#me-neutral-toolbar{top:auto;bottom:8px;max-height:38dvh}}',
+      "#me-neutral-toolbar{position:fixed;z-index:2147483000;right:12px;top:12px;width:min(318px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;background:#fff;color:#182d37;border:1px solid #a5bcb6;border-radius:10px;box-shadow:0 5px 25px #0003;font:13px/1.4 system-ui,sans-serif}",
+      "#me-neutral-toolbar *{box-sizing:border-box}",
+      "#me-neutral-toolbar [hidden]{display:none!important}",
+      "#me-neutral-toolbar .me-neutral-head{display:flex;align-items:center;gap:9px;justify-content:space-between;padding:10px 11px;background:#f5faf8;border-radius:10px 10px 0 0}",
+      "#me-neutral-toolbar strong{display:block;font-size:15px}",
+      "#me-neutral-toolbar .me-neutral-head span{display:block;font-size:11px;color:#536b63}",
+      "#me-neutral-body{padding:10px 11px}",
+      "#me-neutral-context{background:#eff7f4;color:#174439;border-radius:5px;padding:8px;margin:0 0 8px;line-height:1.45;overflow-wrap:anywhere}",
+      "#me-neutral-toolbar .me-neutral-group{border:0;border-top:1px solid #dce6e1;padding:9px 0 0;margin-top:9px}",
+      "#me-neutral-toolbar label{display:block;margin-bottom:4px;font-weight:650}",
+      "#me-neutral-toolbar select{width:100%;padding:6px;margin-bottom:6px;min-height:34px;background:white;color:#182d37;border:1px solid #b9c9c2;border-radius:5px}",
+      "#me-neutral-toolbar .me-neutral-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px}",
+      "#me-neutral-toolbar .me-neutral-actions>button:only-child{grid-column:span 2}",
+      "#me-neutral-toolbar button{cursor:pointer;min-height:32px;padding:7px 6px;background:#f1f7f5;border:1px solid #a7c6ba;border-radius:5px;color:#123128;font:inherit}",
+      "#me-neutral-toolbar button:disabled{opacity:.48;cursor:not-allowed}",
+      "#me-neutral-toolbar button:focus-visible,#me-neutral-toolbar select:focus-visible,#me-neutral-toolbar summary:focus-visible{outline:2px solid #087b70;outline-offset:2px}",
+      "#me-neutral-toolbar #me-neutral-toggle{flex:none;background:#fff;padding:4px 8px;min-height:29px}",
+      "#me-neutral-toolbar summary{cursor:pointer;font-weight:650;padding:2px 0;list-style:revert}",
+      "#me-neutral-toolbar details>p{margin:6px 0;color:#4d645b;font-size:12px}",
+      "#me-neutral-toolbar [data-me-action=\"work\"]{background:#dcefe8}",
+      "#me-neutral-toolbar [data-me-action=\"delete\"]{color:#79351e}",
+      "#me-neutral-status{margin:8px 0 0;font-size:12px;color:#3a5149}",
+      "main [data-local-selected]{outline:2px solid #087b70;outline-offset:2px}",
+      "main [data-local-editing]{outline:2px dashed #087b70;outline-offset:2px}",
+      "@media(max-width:500px){#me-neutral-toolbar{top:auto;bottom:8px;max-height:42dvh}}"
     ].join('');
     doc.head.append(style);
     doc.body.append(toolbar);
     const selector = toolbar.querySelector('#me-neutral-section');
     const elementPicker = toolbar.querySelector('#me-neutral-element');
+    const contextLine = toolbar.querySelector('#me-neutral-context');
+    const editGroup = toolbar.querySelector('[data-me-group="edit"]');
+    const formatGroup = toolbar.querySelector('[data-me-group="format"]');
+    const blockGroup = toolbar.querySelector('[data-me-group="block"]');
+    const toggle = toolbar.querySelector('#me-neutral-toggle');
+    const body = toolbar.querySelector('#me-neutral-body');
     const status = toolbar.querySelector('#me-neutral-status');
     const button = action => toolbar.querySelector('[data-me-action="' + action + '"]');
     const pristineSource = sourceHtml;
@@ -142,6 +153,8 @@
       current.removeAttribute('contenteditable');
       current.removeAttribute('data-local-editing');
       record(previous);
+      refreshElements();
+      syncButtons();
     }
     function select(element) {
       if (editing && editing !== element) leaveEditing();
@@ -157,25 +170,45 @@
       return !!selected;
     }
     function syncButtons() {
-      const active = selected && selected.isConnected;
+      const active = !!(selected && selected.isConnected);
+      const isEditing = !!(editing && editing.isConnected);
+      const movable = active && selected.hasAttribute('data-local-block');
+      editGroup.hidden = !active;
+      formatGroup.hidden = !isEditing;
+      blockGroup.hidden = !movable;
       for (const action of ['edit','bold','italic']) button(action).disabled = !active;
-      const movable = !!active && selected.hasAttribute('data-local-block');
+      button('bold').disabled = !isEditing;
+      button('italic').disabled = !isEditing;
+      button('edit').textContent = isEditing ? 'Termina modifica' : 'Modifica testo';
       for (const action of ['up','down','transfer','duplicate','delete']) button(action).disabled = !movable;
       button('undo').disabled = history.length === 0;
       button('redo').disabled = future.length === 0;
       button('insert-p').disabled = sectionRoots().length === 0;
       button('insert-h').disabled = sectionRoots().length === 0;
+      const heading = active ? selected.textContent.trim().replace(/\\s+/g,' ').slice(0,48) : '';
+      const section = active ? sectionRoots().findIndex(item=>item.contains(selected)) : -1;
+      const sectionName = section>=0 ? selector.options[section]?.textContent || '' : '';
+      contextLine.textContent = isEditing ?
+        'Modifica in corso: '+heading+' · termina la modifica prima di cambiare blocco.' :
+        active ? (movable?'Blocco aggiunto: ':'Testo selezionato: ')+heading+
+          (sectionName?' · '+sectionName:'') :
+          'Seleziona un testo nella pagina o dall’elenco, oppure aggiungi un blocco.';
     }
     function edit() {
       if (!selected || !selected.isConnected) return {ok:false,reason:'select text first'};
-      if (editing === selected) return {ok:true,noop:true};
+      if (editing === selected) {
+        leaveEditing();
+        notify('Modifica terminata. Annulla e Ripristina rimangono disponibili.');
+        return {ok:true};
+      }
       leaveEditing();
       beforeTyping = snapshot();
       editing = selected;
       editing.setAttribute('contenteditable','true');
       editing.setAttribute('data-local-editing','true');
       editing.focus();
-      notify('Modifica il testo; esci dal campo per registrare una modifica.');
+      syncButtons();
+      notify('Modifica il testo e premi Termina modifica oppure esci dal campo.');
       return {ok:true};
     }
     function format(command) {
@@ -376,6 +409,13 @@
       notify('Download richiesto: verifica il file e riaprilo prima dell’uso.');
     }
 
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) leaveEditing();
+      body.hidden = expanded;
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.textContent = expanded ? 'Espandi' : 'Riduci';
+    });
     elementPicker.addEventListener('change', () => {
       const nodes = selectableNodes();
       const index = Number(elementPicker.value);
@@ -425,7 +465,7 @@
     });
     refreshSections();
     syncButtons();
-    notify('Seleziona un testo per modificarlo. L’HTML originale rimane distinto.');
+    notify('Le modifiche rimangono nel file di lavoro finché non scegli Salva lavoro.');
     return Object.freeze({
       status: () => Object.freeze({carrier:'static-page',regions:sectionRoots().length,dirty,
                                     canUndo:history.length>0,canRedo:future.length>0}),
