@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — UI neutra contestuale verificata, prova Windows v3 ancora aperta
+
+**Capacità candidata:** in [neutral-static-page-editor.js](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js) il pannello ora è compatto e riducibile, con selezione e inserimento in evidenza; modifica solo con selezione, formato solo durante edit, gruppo di gestione solo sui blocchi aggiunti. Messaggio di contesto dinamico, `Termina modifica` esplicito e tasto Escape coerente con la history. `workHtml` e `cleanHtml` rimangono distinti.
+
+**Test:** [Actions 45066893656](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) quattro job verdi `verify`, `studio21-browser`, `neutral-static-browser`, `neutral-live-site-browser`. [Test UI](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-neutral-static-page.browser.py) copre visibilità contestuale, focus/edit, termina/Escape e collasso senza drift, oltre a inserimento, gerarchia, Undo/Redo, reopen e pagina MAIOS source-identical su Linux Chrome. Visualizzazione locale in Chromium `set_content` controllata, non Windows file://.
+
+**Pendenza:** [artefatto v3](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) `metaeditor-neutral-windows-preview`, ID `14771900985`, con HTML sintetico autonomo; prodotto anche un archivio v3 a root piatta per prova utente. L'operatore non ha ancora confermato v2/v3: Gate B resta **parziale**, PR #2 draft, produzione invariata. Da approfondire accessibilità, incolla da clipboard, ergonomia su vere pagine e portabilità Windows. Il metodo di disclosure contestuale è nella [GUIDE](GUIDE.md).
+
 ## 22 novembre — Feedback Windows: layout fuori colonna corretto nel candidato
 
 **Osservato direttamente:** nel file HTML locale di prova Windows il pannello MetaEditor si carica, ma due titoli aggiunti compaiono sul margine sinistro fuori dalla colonna dell'autore. Non è una conferma dell'intero gate `file://`: è una prova parziale che ha rivelato un difetto concreto. Analisi del codice: inserimento/trasferimento diretto con `section.append(node)`, mentre testo e stili sono contenuti in flussi interni. La verifica precedente controllava solo appartenenza alla sezione.
