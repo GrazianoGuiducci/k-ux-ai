@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 22 novembre — Lo spostamento è una richiesta, non un secondo motore
+
+**Metodo appreso:** interrogare la possibilità nativa prima di aggiungere un comando. Bridge11 possiede già `transfer` con destinazione, riferimento sicuro, `before/after/end`, checkpoint unico e protezione dei componenti originali. Studio21 possiede già movimento geometrico tramite tastiera/pointer, clamp e `commit` con `setContainerAfterMove`. Il contratto [MetaEditorNativeMove](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/MOVE_COMMANDS.md) espone `create({carrier,document}).execute(request)` e delega; non inventa Undo né converte `ccm.document.v1` in DOM.
+
+**Differenza materiale emersa:** il controllo del posizionamento pagina aveva ipotizzato `section`; la R3 HTML indipendente usa `article`. Correggere il discriminante del receiver, non riscrivere la struttura del documento per far passare il test. Inoltre un move relativo non disponibile deve lasciare il contenuto invariato e un no-op non deve incrementare la storia. Il nudge sulla scena è un solo passo di 5 unità (un checkpoint), non un comando per impostare coordinate arbitrarie; i controlli rifiutano modalità lettura/presentazione.
+
+**Prove:** Bridge11/R3 Playwright desktop/mobile, Studio21 IT/EN browser CI [45035705911](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035705911), Node [45035753475](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45035753475). Il nuovo JS rimane nel ramo candidato K-UX-AI, il test delle pagine nel workbench privato. Non dichiarare completati link/diagrammi complessi, touch, file:// Windows o rilascio.
+
+
 ## 22 novembre — Il test sul vero Studio21 chiude l'incertezza del mock
 
 L'ultimo movimento del contratto di composizione non richiede nuovi comandi o UI: richiede soltanto **esercitare** il carrier scena vero, perché fino al precedente passaggio la sua operatività era dedotta dal codice e da un mock. La prova nella [suite Playwright K-UX-AI](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-composition.browser.py) usa le sorgenti standalone Studio21 IT/EN (non fixture), Chrome Linux a 1440 e 390, zero rete esterna, inserimento testo + riquadro attraverso `[data-add]`, unicità e conservazione degli ID, Undo/Redo nativi e rifiuto di posizioni/tipi estranei al carrier. [CI riuscita](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046).
