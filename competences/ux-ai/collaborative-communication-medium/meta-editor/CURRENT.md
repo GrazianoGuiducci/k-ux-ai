@@ -1,5 +1,14 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Relazioni di scena: difetto dimostrato, correzione candidata verificata
+
+**Evento:** il test del nudge di un nodo isolato in Studio21 era verde, ma non copriva un contenitore e i suoi figli. Su un modello di prova iniettato nel vero Studio21 originale, con `section`, card figlia, immagine figlia e link, [Actions 45037096198](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198) fallisce perché la tastiera muove solo la sezione. Il movimento pointer aveva già la propagazione ai figli: il divario è **tra due gesti nativi**, non fra due formati.
+
+**Risultante:** [generatore candidato IT/EN](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tools/build_studio21_keyboard_section_move.py) source-pinned modifica un solo gestore Arrow nel runtime Studio21; figli traslati nello stesso `commit` del contenitore, no-op senza checkpoint. [Regressione complessa](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-relations.browser.py) verifica la serializzazione effettiva, immagine e link senza alterazioni di identità/estremi, percorso geometrico aggiornato e Undo/Redo. [CI 45037298632](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037298632) ha entrambi i job verdi IT/EN a 1440/390, comprese le precedenti prove di inserimento/nudge.
+
+**Distinzioni:** modello fixture di test ≠ contenuto autore; build candidata in directory temporanea ≠ file pubblico rilasciato; controllo strutturale sul documento esportato ≠ mera osservazione del DOM. La PR #2 rimane draft, `maios_it/main` e i 5 download pubblici intatti. Da provare separatamente: trascinamento complesso, touch, più contenitori annidati, import/AI roundtrip, privacy, accessibilità e Chrome Windows `file://`. Il Gate B/C migliora ma non è globalmente chiuso.
+
+
 ## 22 novembre — Spostamento nativo distinto: pagina e scena
 
 **Risultante esercitata:** nel ramo K-UX-AI della [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) è stato aggiunto [`metaeditor-native-move.js`](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/metaeditor-native-move.js), con [contratto e limiti](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/MOVE_COMMANDS.md). Non sostituisce un controller: nella pagina delega il riordino del blocco aggiunto al `transfer` di Bridge11; nella scena emette un solo nudge nativo di 5 unità, tramite keydown del nodo renderizzato, con `commit` e history proprie di Studio21. L'omonimia di `move` non implica equivalenza fra riferimenti strutturali HTML e geometria `ccm.document.v1`.
