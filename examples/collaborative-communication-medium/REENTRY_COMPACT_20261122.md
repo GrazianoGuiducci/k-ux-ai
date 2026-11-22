@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Pagina MAIOS reale provata; candidata Windows disponibile
+
+**Nuovo effetto verificato:** [CI 45045287380](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45045287380) **4 job verdi**: `verify`, `studio21-browser`, `neutral-static-browser`, `neutral-live-site-browser`. Il job live ha scaricato `https://maios.it/consulting-ai.html`, ne ha verificato il Git blob esatto `0fda8ce0d9c1da544999d39fe5d9c05f54bc771d` del repository MAIOS, poi ha esercitato il nuovo controller neutro su pagina MAIOS reale, non sulla fixture, a 1440/390 in Chrome Linux. Anche i test di MDN e della fixture restano verdi. L'assenza di ricevuta del workflow privato `push` non è fallimento: il connector corrente enumera solo run associati a PR. Questa prova live distinta chiude il dubbio di identità del documento, non il gate Windows.
+
+**Nuove capacità limitate:** elenco nativo di elementi selezionabili dalla toolbar (invece di dipendere dal click), selezione con scroll al referente, duplicazione/eliminazione di blocchi **aggiunti dal nostro editor soltanto**, con storia Undo/Redo e guardia su ID; nessuna trasformazione di sezioni originali. [Confronto funzionale con Bridge11](meta-editor-lab/BRIDGE11_COMPARISON_20261122.md) distingue ciò che ancora manca. [Protocollo Windows](meta-editor-lab/WINDOWS_ACCEPTANCE_20261122.md) e artefatto `metaeditor-neutral-windows-preview` ID `14762989805` sono pubblicati come output dell'[Actions 45045287380](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45045287380): **solo pagina sintetica** e guida, non contenuto MAIOS privato.
+
+**Prossimo effetto:** l'operatore può valutare la copia di lavoro in Chrome Windows `file://` con verifica di caret, layout, selezione da tastiera, undo/save/reopen/export. Accessibilità più ampia, paste/input non fidati, UX Bridge11 e packaging/release rimangono aperti. Gate B parziale; PR #2 draft, nessun commit/deploy a `maios_it/main`.
+
 ## 22 novembre — Primo MetaEditor neutro esercitato: copia lavoro distinta dall'export pulito
 
 **Risultante:** [MetaEditor Neutral Static Workpage](meta-editor-lab/NEUTRAL_WORKPAGE.md) è ora nel ramo PR #2 come candidato: [controller](meta-editor-lab/neutral-static-page-editor.js), [builder non source-pinned](../../tools/build_metaeditor_neutral_workpage.py) e [test browser](../../tests/metaeditor-neutral-static-page.browser.py). Il controller riusa l'export source-preserving; supporta una pagina HTML statica fiduciata con una sola `main` e sezioni `main > section` o `main > article > section`; non trasforma la pagina in `ccm.document.v1` né riusa Bridge11 come falso editor universale.
