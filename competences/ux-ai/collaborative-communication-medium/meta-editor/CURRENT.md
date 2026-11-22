@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Drag di sezione composto: regressione pointer verde
+
+**Prova nuova e separata da Arrow:** sul ramo [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) il [test reale pointer](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-pointer-relations.browser.py) trascina una sezione con tre figli (due card e una immagine) e due link (interno/esterno). Verifica il bersaglio reale prima del gesto e poi salva ed esamina il modello, preservando coordinate relative, `containerId`, immagine, ID/endpoint dei link, geometria del percorso, Undo/Redo.
+
+**Esito:** [CI 45040063638](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040063638), job `verify` e `studio21-browser` riusciti. Otto esercizi di drag: Studio21 originale/candidato × IT/EN × 1440/390. Il precedente [run 45039940356](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45039940356) falliva su un gesto simulato non qualificato, senza dimostrare un bug del controller. La correzione del test non altera la sorgente pubblica. Il metodo di hit-target e la distinzione delle prove sono nella [GUIDE](GUIDE.md).
+
+**Confine:** sezione con figli diretti e due link testata in Chromium Linux con mouse; touch, annidamento, import/export/AI avversi, privacy, accessibilità, Chrome Windows e release restano aperti. La correzione Arrow resta candidata, PR #2 draft; nessun merge/deploy e nessuna prova di universalità.
+
 ## 22 novembre — Relazioni di scena: difetto dimostrato, correzione candidata verificata
 
 **Evento:** il test del nudge di un nodo isolato in Studio21 era verde, ma non copriva un contenitore e i suoi figli. Su un modello di prova iniettato nel vero Studio21 originale, con `section`, card figlia, immagine figlia e link, [Actions 45037096198](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198) fallisce perché la tastiera muove solo la sezione. Il movimento pointer aveva già la propagazione ai figli: il divario è **tra due gesti nativi**, non fra due formati.
