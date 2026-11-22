@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Proiezioni private e ritorno AI: candidato verificato, pubblico invariato
+
+**Difetto originale documentato:** un link marcato `private:true` fra nodi pubblici restava nella copia HTML pubblica, nell'AI JSON senza appunti e nei template, benché `publicSceneForComparison` lo escludesse già. [Test caratterizzazione](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-privacy.browser.py) sul runtime vero IT/EN. Non confondere con un link pendente a nodo privato, già filtrato.
+
+**Correzione candidata, non release:** [builder proiezioni](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tools/build_studio21_public_projection.py) applicato al candidato Arrow in directory temporanea, con quattro esclusioni esplicite `l.private!==true`; HTML distribuiti e sito invariati. [CI 45040754731](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040754731) entrambi i job riusciti: dati lavoro preservati, HTML pubblico/AI/template senza link privato, immagini remote respinte in import, [handback JSON selettivo](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-ai-roundtrip.browser.py) con modifiche pubbliche integrate, note/link locali protetti, Undo/Redo, precedenti prove di movimento mantenute. Prove Chrome Linux IT/EN 1440/390 su fixture sintetica.
+
+**Prossimo discriminante:** privacy di testi e dettagli non marcati, import/template avversi più ampi, touch/annidamento, accessibilità e Chrome Windows file://. PR #2 draft, nessun merge, nessun deploy né attestazione di sicurezza universale; l'owner [GUIDE](GUIDE.md) conserva la distinzione proiezione / legame privato / rappresentazione delle note.
+
 ## 22 novembre — Drag di sezione composto: regressione pointer verde
 
 **Prova nuova e separata da Arrow:** sul ramo [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) il [test reale pointer](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-pointer-relations.browser.py) trascina una sezione con tre figli (due card e una immagine) e due link (interno/esterno). Verifica il bersaglio reale prima del gesto e poi salva ed esamina il modello, preservando coordinate relative, `containerId`, immagine, ID/endpoint dei link, geometria del percorso, Undo/Redo.
