@@ -1,5 +1,11 @@
 # MetaEditor neutro — prova di accettazione Chrome Windows
 
+## Seconda prova (v2) dopo il primo screenshot Windows
+
+Nel primo screenshot dell'operatore il file si apre da `file://`, ma due titoli aggiunti appaiono sul margine sinistro fuori dall'allineamento del contenuto. Il controller precedente appendeva alla `section` invece che al suo flusso testuale interno. Una [CI a quattro job verdi](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45059052731) verifica ora parent/colonna/livello del titolo sulle topologie supportate, senza sostituire la conferma visiva Windows.
+
+**Ripetizione minima:** usare il **nuovo** `MetaEditor_Prova_Neutra_v2.html` (artefatto `metaeditor-neutral-windows-preview`, ID `14768332537`, run `45059052731`) e non la precedente pagina già aperta. Selezionare `H1: Pagina campione`, mantenere la prima sezione come destinazione, premere `+ Titolo` due volte: entrambi devono comparire allineati al testo interno della fascia chiara, non al margine sinistro. Provare Undo e Redo. Se l'errore persiste, conservare screenshot ed esito; non dichiarare completata la prova.
+
 **Stato:** candidato, non rilascio. Questa prova non è sostituita dai test GitHub Actions Linux Chrome. Non è richiesto installare server o collegare credenziali.
 
 ## Identità della prova
