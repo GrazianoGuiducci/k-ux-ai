@@ -1,5 +1,12 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Passo successivo esercitato: export browser riusabile
+
+**Ora raggiungibile:** [`static-page-source-adapter.js`](meta-editor-lab/static-page-source-adapter.js) nel ramo K-UX-AI, test Node [`tests/metaeditor-static-page-source.test.js`](../../tests/metaeditor-static-page-source.test.js); il modulo sostituisce la parte di export della R3 MDN ma **non** i suoi gesture/editor. [Versione R3 con adapter](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/MetaEditor_MDN_R3_Shared_Source_Adapter_20261122.html) e builder vincolato conservati nel ramo privato del documento, blob output `2b2a6045fe2faf56f34b4730db6310c5ed11b65e`. I test locali Node e Chromium 1440/390 su MDN e fixture diverso, più uso integrato UI R3 con insert/Undo/export, sono passati nei percorsi; errore di attributo quotato non chiuso individuato e corretto.
+
+**Competenza aggiornata:** K-UX-AI MetaEditor CURRENT e GUIDE; distinzione mantenuta fra il precedente patcher Python (trasformazione della sorgente già revisionata da un receiver) e il nuovo exporter browser (ripulisce DOM transitorio e confronta baseline immutabile). I limiti della prova sono in quelle sorgenti. `CURRENT.html` Bridge11, MetaCanvas pubblico e `maios_it/main` sono invariati. **Gate B parziale**: non dichiarare portabilità universale né release; il prossimo passo può esercitare l'editing/export su altre strutture supportate e la regressione completa prima di pubblicare. Il cambio istanza resta facoltativo.
+
+
 **Scopo:** ridurre la lunghezza e il costo dei rientri in ChatGPT, conservando l'avanzamento reale senza ripetere l'intera conversazione. Questo è un cursore operativo, non autorità su release o prova esterna.
 
 ## Verifica successiva — R3 già persistita, lavoro continuabile nella stessa istanza
