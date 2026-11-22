@@ -1,5 +1,14 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Studio21 IT/EN reale: inserimento e history esercitati in CI
+
+**Differenza di prova:** il contratto `MetaEditorCompositionCommands.execute('insert')`, che prima aveva solo un mock per il modello di scena, è stato esercitato sui veri HTML pubblici Studio21 IT/EN attraverso [Playwright browser test](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-composition.browser.py) nel ramo candidato K-UX-AI. Il test carica gli HTML standalone originali in Chrome Linux, con origine HTTP locale simulata e richieste di rete bloccate; misura i nodi `#canvas .node[data-id]`, la nascita di un solo ID nuovo, la conservazione degli esistenti e `#undoBtn/#redoBtn` nativi. Dopo il Redo inserisce anche un `card`. Le richieste con tipo pagina e `position` pagina sono rifiutate senza effetti.
+
+**Evidenza:** [GitHub Actions run 45030544046](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046), jobs `verify` e `studio21-browser` completati con `success`, 1440×844 e 390×844 su versioni IT/EN, nessun pageerror nel percorso. Il primo run 45030431494 falliva **prima** dell'esercizio per installazione Chromium nel runner; è stato corretto il mezzo di prova usando Chrome presente nell'immagine Actions. Non attribuire il fallimento iniziale al prodotto.
+
+**Effetto e confini:** il contratto comune ha adesso evidenza browser sui due carrier di pagina (Bridge11 e R3 MDN) **e** sul vero carrier di scena Studio21. Non ne consegue ancora rilascio: spostamento/diagrammi/template, usabilità, file:// Chrome Windows, accessibilità e tutti i gate rimanenti sono separati. Nessun download pubblico o documento di cliente modificato.
+
+
 ## 22 novembre — Composizione: un comando di inserimento, due motori nativi
 
 **Risultante concreta:** dopo l'export browser R3, il ramo candidato K-UX-AI contiene [`metaeditor-composition-commands.js`](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/metaeditor-composition-commands.js), con [contratto e limiti](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/COMPOSITION_COMMANDS.md). L'azione `insert` è una richiesta condivisa; su pagina usa il controller `addBlock`, su Studio il nativo `addNode`/`commit`. Non inventa un documento comune, history o toolbar. I tipi e la posizione supportati sono specifici del carrier: pagina `paragraph/heading/list/callout` (end/before/after dove consentito); scena `text/card/tag/section/circle/oval/pill/note` senza semantica della posizione pagina. `move` non è ancora estratto.
