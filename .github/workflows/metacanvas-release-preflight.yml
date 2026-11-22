@@ -8,6 +8,7 @@ on:
       - "tools/test_metacanvas_distribution.py"
       - "tools/metaeditor_region_patch.py"
       - "tools/test_metaeditor_region_patch.py"
+      - "tests/metaeditor-static-page-source.test.js"
       - ".github/workflows/metacanvas-release-preflight.yml"
   workflow_dispatch:
 
