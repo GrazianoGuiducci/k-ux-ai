@@ -1,5 +1,16 @@
 # MetaEditor Evolution — guida viva
 
+## 22 novembre — Da un Bridge riuscito a un portatore neutro e alla release
+
+Il riscontro positivo dell'operatore su Bridge11 è un fatto di usabilità situata; la richiesta successiva seleziona la stabilizzazione e la pubblicazione finale di MetaEditor e MetaCanvas come **risultante da costruire**, non un certificato implicito di generalità. Le cinque copie del MetaCanvas pubblico sono già presenti nella repository del sito e identiche per Git blob al prodotto K-UX-AI; la vecchia Studio20 rimane storia. Questo evita un falso task di prima pubblicazione e concentra la costruzione dove la capacità manca.
+
+**Banco formativo:** la trasposizione esatta del Bridge11 privato su HTML sintetico senza il sito MAIOS ha mantenuto l'editor, il rich text e l'Undo. Il primo export non funzionava perché il controller accedeva senza guardia a `navToggle` e a `[data-site-nav]`, assenti nel nuovo portatore. Una volta corretta questa dipendenza, il link del download statico creato fuori da `#local-editor` veniva bloccato dal listener capture `blockPageAction`; il rimedio è stato inserire temporaneamente il link nel perimetro autorizzato, lasciando attiva la protezione di navigazione. Il R2 ora produce lavoro HTML riapribile e HTML statico senza la shell. I controlli (1440/390) hanno esercitato inserimento, spostamento, Undo, HTML export e preservazione di un paragrafo protetto.
+
+**Saper fare trasformato:** per distinguere portabilità e apparenza neutra, trovare le dipendenze **implicite dal documento** (nav, regione, palette, selector, struttura container, URL/asset e dati recuperati) con prove che li rimuovono o cambiano; mantenere il comando proprietario dell'effetto in un adapter esplicito, non introdurre un importer universale per somiglianza visiva. Documentare lo stato di una funzione su ogni carrier e l'effetto di export. Evitare di usare l'HTML Consulenza con contenuti incorporati come download pubblico.
+
+**Sorgente e continuità:** [R2 e builder esatti in workbench privato](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/README.md); [gate pubblici su ramo candidato](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/RELEASE_STABILIZATION_20261122.md). Il generatore ha un controllo SHA della sorgente. La prova `set_content` non dimostra Chrome Windows reale, accessibilità assistiva, altri siti, né l'equivalenza di rich text DOM e scene `ccm.document.v1`. La nuova distribuzione resta un effetto indipendente, ancora aperto.
+
+
 ## 21 novembre — Dall'HTML di conversazione al workbench recuperabile
 
 **Problema emerso:** l'operatore chiede se gli artefatti Bridge09–11 siano anche nella repository, osservando che il lavoro potrebbe già servire alle attività e dovrebbe restare disponibile dopo ogni aggiornamento. La verifica GitHub ha mostrato che K-UX-AI custodiva soltanto il sapere e i builder fino a Bridge08.1, mentre i file HTML completi successivi vivevano soltanto nella conversazione. Il difetto era **di consegna/discovery dell'artefatto**, non di assenza della competenza di editor.
