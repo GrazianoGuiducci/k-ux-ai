@@ -134,7 +134,9 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument('--chromium',default=None,help='Chromium executable for local exercise')
     p.add_argument('--channel',default=None,help='Use browser channel, e.g. preinstalled Chrome in GitHub Actions')
+    p.add_argument('--candidate-root',type=Path,default=None,help='Exercise candidate Studio21 files from the specified directory')
     a=p.parse_args()
+    files=a.candidate_root or STUDIO
     module=MODULE.read_text(encoding='utf-8')
     move_module=MOVE_MODULE.read_text(encoding='utf-8')
     with sync_playwright() as playwright:
@@ -146,7 +148,7 @@ def main():
         browser=playwright.chromium.launch(**launch)
         try:
             for name in ('MetaCanvas_Studio21_Consulenza_IT.html','MetaCanvas_Studio21_Consulenza_EN.html'):
-                html=(STUDIO/name).read_text(encoding='utf-8')
+                html=(files/name).read_text(encoding='utf-8')
                 for width in (1440,390):
                     exercise(browser,html,module,move_module,name,width)
         finally:
