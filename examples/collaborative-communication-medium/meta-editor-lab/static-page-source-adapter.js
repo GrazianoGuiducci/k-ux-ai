@@ -44,7 +44,7 @@
         else if (c === '"' || c === "'") quote = c;
         else if (c === '>') break;
       }
-      if (index > source.length || source[index - 1] !== '>') fail('unterminated HTML tag');
+      if (quote || index > source.length || source[index - 1] !== '>') fail('unterminated HTML tag');
       const selfClosing = /\/\s*>$/.test(source.slice(lt, index));
       if (name === 'main') {
         if (selfClosing) fail('self-closed main not supported');
