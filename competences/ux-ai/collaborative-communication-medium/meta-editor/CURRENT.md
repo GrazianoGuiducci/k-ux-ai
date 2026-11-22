@@ -1,5 +1,14 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Composizione: un comando di inserimento, due motori nativi
+
+**Risultante concreta:** dopo l'export browser R3, il ramo candidato K-UX-AI contiene [`metaeditor-composition-commands.js`](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/metaeditor-composition-commands.js), con [contratto e limiti](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/COMPOSITION_COMMANDS.md). L'azione `insert` è una richiesta condivisa; su pagina usa il controller `addBlock`, su Studio il nativo `addNode`/`commit`. Non inventa un documento comune, history o toolbar. I tipi e la posizione supportati sono specifici del carrier: pagina `paragraph/heading/list/callout` (end/before/after dove consentito); scena `text/card/tag/section/circle/oval/pill/note` senza semantica della posizione pagina. `move` non è ancora estratto.
+
+**Prove distinte:** 6 test Node del contratto e GitHub Actions della PR #2 verdi sul commit dei test; Chromium 1440/390 su vero Bridge11 e R3 MDN con inserimento/Undo e nessun pageerror nel percorso. Il carrier di scena è stato letto nella sorgente Studio21 e verificato finora contro pulsanti nativi **simulati**, non con un browser test dello Studio21 completo. Il test browser riproducibile è nel workbench privato `maios_it/work/metaeditor-current/workbench/metaeditor/experiments/test_composition_native_bridge.py`.
+
+**Correzione emersa:** quando un target esplicito cambia sezione ma il punto `before/after` non è valido, il comando deve ripristinare la selezione originale. Test di regressione aggiunto. Il controller nativo mantiene il solo Undo del documento. **Gate B ancora parziale, PR in bozza, prodotto e sito pubblici invariati.**
+
+
 ## 22 novembre — Sorgente immutabile: esportazione browser estratta dalla R3
 
 **Nuova risultante esercitata:** la logica di confronto/esportazione della R3 non è più soltanto dentro il file MDN. Un [adattatore JavaScript condiviso](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/static-page-source-adapter.js) risiede nel ramo candidato K-UX-AI e offre `MetaEditorStaticPageAdapter.create({sourceHtml, regionElement, runtimeRootAttributes})` con `exportHtml()` e scansione conservativa di un unico `main`. Distingue testo in commenti/script/attributi, rifiuta `main` ambigui, markup attivo nella regione, attributi riservati e variazioni non autorizzate della radice; rimuove marcatori dell'editor solo dalla copia. Con no-op restituisce il testo sorgente esatto; con modifica sostituisce solo il contenuto della regione. È una **capacità di export dal browser**, non un importatore e non un editor completo.
