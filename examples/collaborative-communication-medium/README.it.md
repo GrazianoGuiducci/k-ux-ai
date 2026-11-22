@@ -1,5 +1,12 @@
 # AI Collaboration Studio — anteprima pubblica
 
+## Baseline pubblicato corrente — 22 novembre 2026
+
+Il file canonico generale `AI_Collaboration_Studio.html` comprende il successivo miglioramento del contorno/viewport del canvas (Git blob `d057d68c60061dd9e8f5c2d704cfff2016ea19b1`), identico per contenuto al download MAIOS `editor-generale-aaa6702-it.bin`. La versione Studio20 precedente da 272.490 byte, SHA-256 `c8c1be74...`, resta una **edizione storica**, ancora raggiungibile nel sito come `studio-20-it.bin`. Le dimensioni e l'hash di Studio20 indicati più sotto non identificano il file generale corrente. Non è stata stabilita una nuova edizione Studio22 né l'integrazione del Bridge11 di MetaEditor nella distribuzione.
+
+Anche i Playground r4 IT/EN e le demo Studio21 IT/EN coincidono byte per byte con le copie di distribuzione secondo i Git blob. [Baseline versionato](distribution-manifest.json) · [criteri di stabilizzazione e rilascio](RELEASE_STABILIZATION_20261122.md). Sono già pubblici, ma **una nuova release stabilizzata con l'editor di pagine non è ancora stata esercitata e rilasciata**. Le descrizioni storiche sottostanti mantengono la loro data e il proprio riferimento.
+
+
 ## Demo Consulenza AI — Studio 21 IT/EN
 
 Oltre al tool generale Studio 20, la repository distribuisce **due demo autonome** costruite a partire dalla pagina Consulenza AI aggiornata fornita dall'operatore:
