@@ -249,11 +249,18 @@
       const copy = doc.documentElement.cloneNode(true);
       copy.querySelector('#me-neutral-toolbar')?.remove();
       copy.querySelector('#me-neutral-style')?.remove();
-      const clean = cleanedRoot();
+      const workRoot = main.cloneNode(true);
+      for (const element of [workRoot, ...workRoot.querySelectorAll('*')]) {
+        element.removeAttribute('contenteditable');
+        element.removeAttribute('data-local-selected');
+        element.removeAttribute('data-local-editing');
+      }
       const target = copy.querySelector('main');
-      target.replaceWith(clean);
-      // A saved work document retains original baseline and installed controller,
-      // but never the UI state, browser history or selected contentEditable.
+      target.replaceWith(workRoot);
+      // data-local-block remains in the editable working file so that a
+      // newly inserted block can still be moved after reopening. Clean
+      // export strips that marker via the source-preserving adapter.
+      // A work document retains its immutable original baseline.
       return '<!doctype html>\n' + copy.outerHTML;
     }
     function download(name, contents) {
