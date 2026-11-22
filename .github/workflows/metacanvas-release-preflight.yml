@@ -6,6 +6,8 @@ on:
       - "examples/collaborative-communication-medium/**"
       - "tools/verify_metacanvas_distribution.py"
       - "tools/test_metacanvas_distribution.py"
+      - "tools/metaeditor_region_patch.py"
+      - "tools/test_metaeditor_region_patch.py"
       - ".github/workflows/metacanvas-release-preflight.yml"
   workflow_dispatch:
 
@@ -33,6 +35,8 @@ jobs:
         run: npm test
       - name: Validate release preflight itself (positive and negative tests)
         run: python -m unittest discover -s tools -p test_metacanvas_distribution.py
+      - name: Validate MetaEditor source-preserving region patch contract
+        run: python -m unittest discover -s tools -p test_metaeditor_region_patch.py
       - name: Verify five public MetaCanvas source files
         run: python tools/verify_metacanvas_distribution.py
       - name: Explain evidence boundary
