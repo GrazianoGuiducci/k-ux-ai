@@ -92,13 +92,16 @@ def exercise(browser, html, module, name, width):
 
 def main():
     p=argparse.ArgumentParser()
-    p.add_argument('--chromium',default=None,help='Chromium executable for local exercise (CI installs Playwright Chromium)')
+    p.add_argument('--chromium',default=None,help='Chromium executable for local exercise')
+    p.add_argument('--channel',default=None,help='Use browser channel, e.g. preinstalled Chrome in GitHub Actions')
     a=p.parse_args()
     module=MODULE.read_text(encoding='utf-8')
     with sync_playwright() as playwright:
         launch={'headless':True,'args':['--no-sandbox']}
         if a.chromium:
             launch['executable_path']=a.chromium
+        elif a.channel:
+            launch['channel']=a.channel
         browser=playwright.chromium.launch(**launch)
         try:
             for name in ('MetaCanvas_Studio21_Consulenza_IT.html','MetaCanvas_Studio21_Consulenza_EN.html'):
