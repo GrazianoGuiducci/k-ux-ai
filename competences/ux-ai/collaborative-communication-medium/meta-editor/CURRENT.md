@@ -1,5 +1,16 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Portabilità R3 su HTML esterno: sorgente immutabile ed export fedele
+
+**Evento verificato:** dopo il banco neutro R2 è stata selezionata una seconda topologia HTML: la pagina `mdn/learning-area/html/introduction-to-html/document_and_website_structure/index.html`, sorgente CC0-1.0 del repository MDN, con `main > article`, sottosezioni, `aside` laterale, header/nav/form e stylesheet esterno. Il file originale è stato confrontato con il Git blob MDN `0a2636f1c1bb30ffa6515141c831e348b9bd6150`; la pagina sperimentale R3 e il suo builder/test sono conservati nel [workbench privato](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/README.md).
+
+**Risultante:** MetaEditor R3 SHA-256 `8af2f8b18605f25f8a0e2da9e965c46364cb2756964699c52af7ef940cf75189`, Git blob `5b1dcb244dfcfc9d90f545174ce2a58ae5eb4734`. L'esercizio via Chromium `set_content` a 1440×844 e 390×844 dimostra selezione articolo, inserimento, Undo/Redo, export statico *byte-identico all'HTML di partenza quando non ci sono modifiche*, export modificato confinato a `main`, salvataggio e riapertura del lavoro con un unico editor e seconda esportazione corrispondente. Nessun `pageerror` nei percorsi.
+
+**Difetto corretto nel test:** dopo la riapertura l'export di una versione precedente prendeva come baseline il DOM di lavoro già modificato, rischiando di restituire l'originale e perdere gli interventi. La baseline ora proviene dalla **sorgente originale immutabile incorporata** nel portatore. La differenza causale cambia il metodo della competenza, non solo un pulsante.
+
+**Confini:** builder ancora source-pinned al caso MDN e derivato dal portatore Bridge11 privato; CSS originale resta come asset separato e i font esterni non sono offline. HTML arbitrario/CMS/React e script non fidati non sono supportati; nemmeno file:// Windows, touch, accessibilità generale o il rilascio pubblico sono provati. Gate B progredisce ma **non è chiuso**. La PR #2 resta in bozza.
+
+
 ## 22 novembre — Stabilizzazione selezionata e prima prova di portabilità R2
 
 **Fonte dell'operatore:** «Finiamo di fare tutto quello che serve fare per fare bene, l'obiettivo finale è pubblicare tutto e stabilizzare il progetto metaeditor e metacanvas». Questo cambia il bersaglio dalla prosecuzione di prototipi sequenziali a un **prodotto verificabile e distribuibile** senza perdere identità, contenuto o capacità dei carrier distinti.
