@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Ripresa dopo limite di istanza: pointer composto provato
+
+La nuova istanza ha ripreso l'effetto pendente senza ricreare Bridge né modificare la produzione. Sul ramo K-UX-AI PR #2 è stato aggiunto [test pointer Studio21](../../tests/metaeditor-studio21-pointer-relations.browser.py) e integrato nel [workflow](../../.github/workflows/metacanvas-release-preflight.yml). La prima [CI 45039940356](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45039940356) non rilevava movimento da un punto fisso, senza verificare che fosse il bersaglio reale; dopo la correzione del test (`elementFromPoint`, target sezione e gesto più ampio) la [CI 45040063638](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040063638) è **verde in entrambi i job**.
+
+**Copertura precisa:** Studio21 originale e candidato Arrow, IT/EN, 1440/390; sezione con due card + immagine, link interno/esterno, posizioni dei figli traslate con la sezione, IDs/ancore preservati, immagine intatta, link path aggiornati, lavoro esportato, Undo/Redo. Mouse in Chromium Linux a viewport mobile non significa touch fisico. Il primo run negativo non autorizza a retrodatare un bug del prodotto; l'owner [MetaEditor Evolution GUIDE](../../competences/ux-ai/collaborative-communication-medium/meta-editor/GUIDE.md) e CURRENT hanno ricevuto il metodo e la prova. `tm7/chatgpt/KERNEL_EVOLUTION` v3.105 conserva la risultante.
+
+**Prossimo materiale già selezionato:** esercitare importazione/roundtrip ed esportazione della scena con dati potenzialmente privati o avversi, distinguendo lavoro, versione pubblica, template e AI roundtrip. Restano inoltre touch, contenitori annidati, accessibilità e Windows file://. PR #2 **draft**; nessun deploy, nessun bump, nessuna modifica dei cinque download pubblici.
+
 ## 22 novembre — Candidato Studio21: sezione + figli + immagine + link coerenti
 
 **Nuova risultante di questo movimento:** sul file Studio21 originale, il nudge da tastiera di una `section` lasciava fermi i figli: fallimento riprodotto in [CI 45037096198](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198) con runtime reale e `ccm-data` fixture. Il [builder vincolato alle sorgenti originali](../../tools/build_studio21_keyboard_section_move.py) prepara candidati IT/EN temporanei correggendo soltanto l'Arrow handler: sezione e figli si muovono nello stesso checkpoint. I download pubblici rimangono intatti.
