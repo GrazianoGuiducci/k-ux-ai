@@ -92,7 +92,11 @@ def inspect(browser, name, width, html: str, model: dict, expect_leak: bool):
         page.locator("#saveBtn").wait_for(state="attached", timeout=15000)
         work = parse_html(downloaded(page, "#saveBtn"))
         work_scene = work["scenes"][0]
-        assert work_scene["notes"] == NOTE_MARKER
+        # The loader may migrate scene.notes into a private note element.
+        assert (work_scene.get("notes") == NOTE_MARKER or any(
+            n.get("text") == NOTE_MARKER and n.get("private") is True
+            for n in work_scene["elements"]
+        )), "private work note was not preserved"
         assert any(n["id"] == NOTE_ID for n in work_scene["elements"])
         assert any(l["id"] == LINK_ID and l.get("private") is True for l in work_scene["links"])
 
