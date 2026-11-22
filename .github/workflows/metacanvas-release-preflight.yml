@@ -12,6 +12,7 @@ on:
       - "tests/metaeditor-static-page-source.test.js"
       - "tests/metaeditor-studio21-composition.browser.py"
       - "tests/metaeditor-studio21-relations.browser.py"
+      - "tests/metaeditor-studio21-pointer-relations.browser.py"
       - "tests/metaeditor-native-move.test.js"
       - "tests/metaeditor-composition-commands.test.js"
       - ".github/workflows/metacanvas-release-preflight.yml"
@@ -74,6 +75,10 @@ jobs:
         run: python tests/metaeditor-studio21-composition.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
       - name: Verify candidate section, children, linked raster, and Undo/Redo
         run: python tests/metaeditor-studio21-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
+      - name: Verify original Studio21 real pointer drag relationships
+        run: python tests/metaeditor-studio21-pointer-relations.browser.py --channel chrome
+      - name: Verify candidate Studio21 real pointer drag relationships
+        run: python tests/metaeditor-studio21-pointer-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
       - name: Evidence boundary
         run: |
           echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
