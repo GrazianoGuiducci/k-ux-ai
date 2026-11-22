@@ -7,6 +7,7 @@ on:
       - "tools/verify_metacanvas_distribution.py"
       - "tools/test_metacanvas_distribution.py"
       - "tools/metaeditor_region_patch.py"
+      - "tools/build_studio21_keyboard_section_move.py"
       - "tools/test_metaeditor_region_patch.py"
       - "tests/metaeditor-static-page-source.test.js"
       - "tests/metaeditor-studio21-composition.browser.py"
@@ -67,8 +68,12 @@ jobs:
           google-chrome --version
       - name: Exercise real Studio21 IT/EN with shared insertion and native history
         run: python tests/metaeditor-studio21-composition.browser.py --channel chrome
-      - name: Verify complex Studio21 section, children and linked raster movement
-        run: python tests/metaeditor-studio21-relations.browser.py --channel chrome
+      - name: Build source-verified Studio21 candidate in temporary directory
+        run: python tools/build_studio21_keyboard_section_move.py --output-root "${{ runner.temp }}/studio21-candidate"
+      - name: Check earlier scene insert and nudge behavior on the candidate
+        run: python tests/metaeditor-studio21-composition.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
+      - name: Verify candidate section, children, linked raster, and Undo/Redo
+        run: python tests/metaeditor-studio21-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
       - name: Evidence boundary
         run: |
           echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
