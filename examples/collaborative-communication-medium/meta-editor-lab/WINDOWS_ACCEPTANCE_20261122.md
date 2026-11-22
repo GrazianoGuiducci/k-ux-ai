@@ -1,5 +1,11 @@
 # MetaEditor neutro — prova di accettazione Chrome Windows
 
+## Terza prova (v3) — comandi contestuali e pannello riducibile
+
+Nuova candidata: [Actions 45066893656](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656), artefatto `metaeditor-neutral-windows-preview` ID `14771900985`, pagina sintetica e istruzioni. Il browser test Linux Chrome è verde; **non abbiamo ancora attestazione manuale `file://` Windows della v3**.
+
+Percorso minimo: aprire il nuovo file v3, osservare che il gruppo `Gestisci blocco aggiunto` inizialmente non compare; scegliere `H1: Pagina campione`, verificare che appaia `Modifica testo`; entrare in modifica, provare `Termina modifica` ed Escape e controllare che `Grassetto/Corsivo` appaiano solo durante editing. Premere `+ Titolo` e verificare l'allineamento alla colonna; controllare che il nuovo blocco abiliti la gestione del solo blocco aggiunto. Provare `Riduci/Espandi`, Undo/Redo, Salva lavoro e l'export pulito. Annotare soltanto le differenze osservate, senza presumere un gate completo.
+
 ## Seconda prova (v2) dopo il primo screenshot Windows
 
 Nel primo screenshot dell'operatore il file si apre da `file://`, ma due titoli aggiunti appaiono sul margine sinistro fuori dall'allineamento del contenuto. Il controller precedente appendeva alla `section` invece che al suo flusso testuale interno. Una [CI a quattro job verdi](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45059052731) verifica ora parent/colonna/livello del titolo sulle topologie supportate, senza sostituire la conferma visiva Windows.
