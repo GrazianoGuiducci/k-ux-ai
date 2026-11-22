@@ -1,5 +1,12 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 22 novembre — Prova delle relazioni nello spostamento, candidato ancora privato al rilascio
+
+Il vecchio test Studio21 aveva verificato il movimento di un nodo isolato. Il [nuovo test sulle relazioni](../../tests/metaeditor-studio21-relations.browser.py) ha dimostrato che il runtime Studio21 originale (IT/EN) muoveva la sola sezione su Arrow: [CI negativa 45037096198](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198). Il [builder IT/EN source-pinned](../../tools/build_studio21_keyboard_section_move.py) applica una correzione di un solo handler a copie temporanee e il [test CI positivo 45037298632](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037298632) conferma che i figli, compresa un'immagine, accompagnano la sezione, `containerId` e link restano coerenti, il percorso si aggiorna e Undo/Redo serializzati funzionano a 1440/390. La suite precedente rimane verde.
+
+**Gate:** l'invariante sul movimento composto via tastiera è ora provato **nel candidato**, non nell'asset pubblico. Pointer/touch, import/AI roundtrip, privacy, accessibilità, Chrome Windows `file://`, versionamento IT/EN e pubblicazione restano da verificare. Nessun passaggio di gate B–F è stato dichiarato globalmente chiuso.
+
+
 ## 22 novembre — Inserimento scene: test E2E ora acquisito
 
 Il [contratto compositivo `insert`](meta-editor-lab/COMPOSITION_COMMANDS.md), prima verificato per le pagine reali e per le scene soltanto con mock, è stato esercitato nello [Studio21 standalone IT/EN](../../tests/metaeditor-studio21-composition.browser.py) in GitHub Actions (Chrome Linux 1440/390, richiesta `text`/`card`, integrità ID e scene visibile, Undo/Redo, invalid request). [Workflow riuscito 45030544046](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046). **Questo chiude la lacuna del test scena per l'azione insert**, non i gate B/C/D complessivi: movimento, import/export scena, template, privacy e compatibilità richiedono ulteriori prove e un release decision separato.
