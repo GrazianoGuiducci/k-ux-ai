@@ -46,8 +46,8 @@ def load(page, work: str, address: str):
     assert page.locator('#me-neutral-style').count() == 1
 
 
-def run(browser, name: str, selector: str, width: int):
-    source = (FIXTURES / name).read_text(encoding='utf-8')
+def run(browser, name: str, selector: str, width: int, source_path: Path | None = None):
+    source = (source_path or (FIXTURES / name)).read_text(encoding='utf-8')
     adapter, controller = [(LAB / path).read_text(encoding='utf-8') for path in MODULES]
     work = build(source, adapter, controller)
     assert source not in work or 'me-neutral-original-source' in work
@@ -58,7 +58,8 @@ def run(browser, name: str, selector: str, width: int):
     try:
         load(page, work, base + 'work.html')
         result = page.evaluate('() => window.metaEditorPage.status()')
-        assert result['carrier'] == 'static-page' and result['regions'] == 2
+        assert result['carrier'] == 'static-page' and result['regions'] >= 2
+        assert result['regions'] == page.locator(selector).count()
         assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == source, (name,width,'no-op changed source')
 
         # Select a real author paragraph; editing is opt-in and does not
@@ -147,7 +148,7 @@ def run(browser, name: str, selector: str, width: int):
             assert second.evaluate('() => window.metaEditorPage.cleanHtml()') == clean, (name,width,'work reopen drift')
             assert second.locator('main [data-local-block]').count() == 1
             assert second.locator('#me-neutral-toolbar').count() == 1
-            assert second.evaluate('() => window.metaEditorPage.status().regions') == 2
+            assert second.evaluate('() => window.metaEditorPage.status().regions') == page.locator(selector).count()
             # Moving an existing block after reopening must remain possible.
             second.evaluate('() => window.metaEditorPage.select(document.querySelector("main [data-local-block]"))')
             second.locator('#me-neutral-section').select_option('0')
@@ -194,7 +195,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--channel', default=None)
     parser.add_argument('--chromium', default=None)
+    parser.add_argument('--site-source', type=Path,
+                        help='Trusted original MAIOS HTML from a separate private site checkout')
+    parser.add_argument('--site-only', action='store_true',
+                        help='Run only the explicit --site-source integration case')
     args = parser.parse_args()
+    if args.site_only and not args.site_source:
+        parser.error('--site-only requires --site-source')
     negative_cases()
     opts = {'headless': True, 'args':['--no-sandbox']}
     if args.channel: opts['channel'] = args.channel
@@ -202,9 +209,15 @@ def main():
     with sync_playwright() as play:
         browser = play.chromium.launch(**opts)
         try:
-            for case in CASES:
+            if not args.site_only:
+                for name, selector in CASES:
+                    for width in (1440,390):
+                        run(browser,name,selector,width)
+            if args.site_source:
+                if not args.site_source.is_file():
+                    raise FileNotFoundError(args.site_source)
                 for width in (1440,390):
-                    run(browser,*case,width)
+                    run(browser,'MAIOS-original', 'main > section', width, args.site_source)
         finally:
             browser.close()
 
