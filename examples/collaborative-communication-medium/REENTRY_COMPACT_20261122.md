@@ -1,5 +1,15 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Primo MetaEditor neutro esercitato: copia lavoro distinta dall'export pulito
+
+**Risultante:** [MetaEditor Neutral Static Workpage](meta-editor-lab/NEUTRAL_WORKPAGE.md) è ora nel ramo PR #2 come candidato: [controller](meta-editor-lab/neutral-static-page-editor.js), [builder non source-pinned](../../tools/build_metaeditor_neutral_workpage.py) e [test browser](../../tests/metaeditor-neutral-static-page.browser.py). Il controller riusa l'export source-preserving; supporta una pagina HTML statica fiduciata con una sola `main` e sezioni `main > section` o `main > article > section`; non trasforma la pagina in `ccm.document.v1` né riusa Bridge11 come falso editor universale.
+
+**Prova:** [CI 45043342858](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45043342858) tre job verdi, incluso il nuovo job indipendente `neutral-static-browser`: quattro esercizi Chrome Linux (1440/390 × pagina sintetica simil-MAIOS e pagina MDN CC0 reale) di no-op byte-identico, testo/bold, inserimento, trasferimento, storia Undo/Redo, salvataggio/reopen e Undo completo che restituisce il sorgente esatto. Nel primo sviluppo lo snapshot rimuoveva `data-local-block`: visivamente il blocco riappariva, ma non restava spostabile. Ora history e lavoro conservano quell'identità, mentre l'export pulito la esclude. La prima ricerca di `data-local-selected` sull'intero HTML lavoro era un falso positivo nel codice JS; la verifica è ristretta alla regione `main`.
+
+**Altri portatori distinti:** nel ramo privato `GrazianoGuiducci/maios_it/work/metaeditor-current` è presente `.github/workflows/metaeditor-neutral-site-integration.yml` per provare il sito MAIOS vero `consulting-ai.html` con blob Git `0fda8ce...` e sorgente K-UX-AI pin. La creazione del workflow è verificata, **la sua CI push non è interrogabile con il receiver corrente, esito non attestato**. Nessun contenuto della pagina MAIOS in bozza è stato inserito nel repository prodotto; nessun deploy in `maios_it/main`.
+
+**Prossima differenza materiale, non da riaprire per inerzia:** recuperare la ricevuta del test sul sito reale tramite il controller GitHub appropriato/receiver Codex; controllare la compatibilità comportamentale con Bridge11 (rich text/caret/focus, UX), accessibilità e Windows Chrome `file://`, poi decidere la superficie neutra da stabilizzare. Gate B ancora parziale, release IT/EN separata. PR #2 draft; cinque download pubblici e runtime MetaCanvas invariati.
+
 ## 22 novembre — Dati privati e ritorno AI: nuovo candidato e test completi
 
 **Difetto confermato sul baseline:** se un collegamento ha `private:true` ma unisce due nodi pubblici, nell'originale Studio21 passava nella copia HTML pubblica, nel JSON AI senza dati privati e nel template. La [prova di caratterizzazione](../../tests/metaeditor-studio21-privacy.browser.py) ha riprodotto il caso con soli dati sintetici. Il codice originale sapeva già filtrare tale legame nel confronto della review, ma non in queste proiezioni.
