@@ -119,6 +119,20 @@ jobs:
           google-chrome --version
       - name: Exercise neutral static workpage on two source topologies
         run: python tests/metaeditor-neutral-static-page.browser.py --channel chrome
+      - name: Build user-testable Windows file preview from synthetic page
+        run: |
+          python tools/build_metaeditor_neutral_workpage.py \
+            --source tests/fixtures/metaeditor/maios_topology_synthetic.html \
+            --output "${{ runner.temp }}/MetaEditor_Prova_Neutra.html"
+      - name: Attach synthetic workpage and Windows acceptance guide
+        uses: actions/upload-artifact@v4
+        with:
+          name: metaeditor-neutral-windows-preview
+          path: |
+            ${{ runner.temp }}/MetaEditor_Prova_Neutra.html
+            examples/collaborative-communication-medium/meta-editor-lab/WINDOWS_ACCEPTANCE_20261122.md
+          if-no-files-found: error
+          retention-days: 14
       - name: Evidence boundary
         run: |
           echo "Original MAIOS source is not part of public fixtures."
