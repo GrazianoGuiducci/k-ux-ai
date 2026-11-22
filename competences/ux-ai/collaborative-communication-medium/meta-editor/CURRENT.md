@@ -1,5 +1,12 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Bridge11: nessun problema segnalato nell'uso
+
+**Fonte diretta dell'operatore:** «Nella versione 11 non vedo problemi». È un riscontro favorevole sull'uso della versione 11, non una nuova prova automatica di tutti i gesti e neppure una certificazione indistinta dell'adattamento Collaborazioni su HTML aggiornato.
+
+**Conseguenza:** non inventare un difetto o riaprire un ciclo di riparazione per inerzia. La diversa versione `maios_it/main:collaborazioni.html`, aggiornata dopo la bozza di lavoro del 21 novembre, è drift del **contenuto della pagina**, non prova di difetto dell'editor Bridge11. Per evolvere il mezzo, cercare la prossima capacità realmente utile (per esempio immagini, diagrammi o composizioni riutilizzabili) dopo aver verificato quali funzioni Studio21 e altri adattatori già possiedono. Conservare inalterato Bridge11 nel workbench privato.
+
+
 ## 21 novembre — Bridge11 esercitato come adattamento documentale Collaborazioni
 
 **Fonte dell'operatore:** rivedere la pagina Collaborazioni usando MetaCanvas/MetaEditor prima del passaggio a Codex, partendo dalla versione più aggiornata del repository e confrontandola, se possibile, con il sito pubblico. La forma desiderata nasce da una nuova direzione di collaborazione: «Cerco collaborazioni», ricerca fuori dal Lab, sguardo esterno sul team e trasformazione dell'esperienza in capacità.
