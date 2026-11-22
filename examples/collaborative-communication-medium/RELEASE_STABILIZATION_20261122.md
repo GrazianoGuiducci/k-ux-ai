@@ -1,5 +1,9 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 22 novembre — Progressive disclosure del MetaEditor: gate UX candidato
+
+[Controller neutro](meta-editor-lab/neutral-static-page-editor.js) e [test browser](../../tests/metaeditor-neutral-static-page.browser.py) aggiornati: il pannello mostra i comandi solo quando hanno un referente esercitabile, mantiene persistenti le azioni sul documento, usa stato contestuale e toggle senza mutare la sorgente, conclude l'editing da comando e Escape. [CI 45066893656](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) con quattro job verdi (compresa pagina MAIOS originale letta in sola lettura). L'[artefatto Windows v3](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) permette la prova reale ma **non è una ricevuta di accettazione umana**. Non è una conferma di accessibilità completa o sanitizzazione clipboard. Nessun merge/deploy; PR #2 draft.
+
 ## 22 novembre — Gate B: sorgente live verificato, prossimo gate umano Windows
 
 **Prova puntuale:** [CI 45045287380](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45045287380), **quattro job verdi**, include nuovo test in sola lettura sul `consulting-ai.html` pubblicato su MAIOS.it, eseguito soltanto dopo confronto byte-esatto (Git blob `0fda8ce0...`) con l'originale `maios_it`. Riusciti a 1440 e 390 pixel (Chrome Linux) editing, formattazione, picker dei testi, blocchi aggiunti duplicati/eliminati, spostamenti, Undo/Redo, esportazione pulita e riapertura del lavoro. Nessuna copia dell'HTML MAIOS pubblicata in K-UX-AI; nessun effetto sul sito. La PR #2 resta draft.
