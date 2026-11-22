@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 22 novembre — Feedback Windows: layout fuori colonna corretto nel candidato
+
+**Osservato direttamente:** nel file HTML locale di prova Windows il pannello MetaEditor si carica, ma due titoli aggiunti compaiono sul margine sinistro fuori dalla colonna dell'autore. Non è una conferma dell'intero gate `file://`: è una prova parziale che ha rivelato un difetto concreto. Analisi del codice: inserimento/trasferimento diretto con `section.append(node)`, mentre testo e stili sono contenuti in flussi interni. La verifica precedente controllava solo appartenenza alla sezione.
+
+**Correzione e prova:** [controller](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js) modificato per collocare rispetto a un elemento testuale selezionato o a titolo/ancora autoriale della sezione, e per rifiutare destinazioni non riconosciute. Livello dei nuovi titoli relativo al titolo della sezione. [Test regressivo](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-neutral-static-page.browser.py) ora confronta parent e coordinate dei titoli e dei trasferimenti, oltre a storia/esportazione. [CI 45059052731](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45059052731) quattro job verdi su sorgenti supportati; artefatto aggiornato per Windows v2 generato da [Actions 45059052731](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45059052731).
+
+**Ancora da provare dall'operatore:** aprire il nuovo HTML locale v2 (il precedente non si aggiorna automaticamente), aggiungere due titoli nella prima sezione, verificarne l'allineamento e lo storico. Restano UX della toolbar, formattazione, accessibilità, sicurezza paste/HTML e Gate B–F. PR #2 draft; nessun deploy.
+
 ## 22 novembre — Gate B: pagina MAIOS identica al sorgente esercitata; parità Bridge11 circoscritta
 
 **Prova live indipendente:** [CI GitHub 45045287380](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45045287380), **4 job verdi**: `verify`, `studio21-browser`, `neutral-static-browser` e `neutral-live-site-browser`. Il job live ha scaricato `https://maios.it/consulting-ai.html`, verificato prima il Git blob `0fda8ce0d9c1da544999d39fe5d9c05f54bc771d` identico a `maios_it/consulting-ai.html`, quindi usato il vero sorgente nel test neutro a 1440/390 Chrome Linux, senza modificare produzione. Il workflow privato su `push` mantiene la propria identità e non può essere valutato dall'endpoint usato per soli run PR; non confondere `[]` con un fallimento.
