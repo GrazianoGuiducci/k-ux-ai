@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 22 novembre — Comando compositivo comune, esecuzione owner-native
+
+**Fonte e problema:** il successivo movimento selezionato dall'operatore parte dall'export R3 separato. Il vecchio Bridge07 espone già `MetaEditorCommands` per modifica diretta e storia nei due modelli, ma i gesti di inserimento sono ancora raggiungibili soltanto attraverso controlli distinti. Bridge11 possiede `addBlock` e spostamento preciso; Studio21 possiede `addNode`, identità dei nodi e `commit`. Non creare un terzo editor o una nuova history per far sembrare comune l'azione.
+
+**Metodo riusabile:** `MetaEditorCompositionCommands.create({carrier,document}).execute('insert',{type,position?,sectionIndex?})` valida le possibilità del carrier, invoca **l'unico comando nativo** e dichiara successo soltanto dopo il nuovo oggetto DOM verificato. Tipi di blocco pagina e tipi di nodo scena restano distinti. Un ancoraggio disabilitato genera `ok:false`, non un inserimento altrove; se si era cambiata sezione per la richiesta, la selezione viene ripristinata. Questo risultato non modifica `window.MetaEditorCommands`, che continua a possedere testo e storia; nessun automatismo di conversione DOM ↔ `ccm.document.v1`.
+
+**Evidenza:** modulo e 6 test Node, più prova Chromium locale su Bridge11 e MDN R3 a 1440/390 con vero comando insert, un Undo nativo e zero pageerror. Il solo contratto scena è testato per ora su fixture simulato; il sorgente Studio21 è stato verificato per `[data-add]` → `addNode` → `commit` → render, **ma non esercitato come intero runtime browser**. La UI Bridge11, i contenuti di pagina e i download MAIOS non cambiano. Il prossimo caso discriminante può provare il vero portatore Studio21 e solo dopo considerare spostamento, diagrammi o template; non imporre equivalenze di oggetti.
+
+
 ## 22 novembre — Contratto di export browser con sorgente immutabile
 
 **Caso e conseguenza:** R3 conservava la differenza fra HTML originale, DOM editato e file di lavoro; il suo `clean-export` era però un handler specifico del carrier MDN. La componente `static-page-source-adapter.js` nel ramo di stabilizzazione K-UX-AI è la funzione riusabile che confronta una copia del DOM senza marcatori con il `main` della sorgente originale. Se non c'è una differenza restituisce esattamente la sorgente; in caso contrario cambia solo l'interno di `main`, conservando la testata e il piè di pagina byte per byte e l'opening/closing tag originali. L'HTML con il suo editor rimane un carrier separato, non il componente.
