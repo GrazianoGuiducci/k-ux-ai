@@ -62,6 +62,47 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
         assert result['regions'] == page.locator(selector).count()
         assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == source, (name,width,'no-op changed source')
 
+        # UX regression: only context-relevant commands are exposed, not
+        # sixteen simultaneous buttons with disabled actions.
+        toolbar = page.locator('#me-neutral-toolbar')
+        assert toolbar.locator('#me-neutral-context').is_visible()
+        assert toolbar.locator('[data-me-group="edit"]').is_hidden()
+        assert toolbar.locator('[data-me-group="format"]').is_hidden()
+        assert toolbar.locator('[data-me-group="block"]').is_hidden()
+        assert toolbar.locator('[data-me-action="work"]').is_visible()
+        assert toolbar.locator('[data-me-action="clean"]').is_visible()
+        assert toolbar.locator('[data-me-action="insert-h"]').is_visible()
+
+        # Collapsing the panel changes only presentation: not the document,
+        # history or export. It must remain keyboard reachable.
+        collapsed = page.evaluate('() => window.metaEditorPage.cleanHtml()')
+        toolbar.locator('#me-neutral-toggle').click()
+        assert toolbar.locator('#me-neutral-body').is_hidden()
+        assert toolbar.locator('#me-neutral-toggle').get_attribute('aria-expanded') == 'false'
+        assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == collapsed
+        toolbar.locator('#me-neutral-toggle').click()
+        assert toolbar.locator('#me-neutral-body').is_visible()
+        assert toolbar.locator('#me-neutral-toggle').get_attribute('aria-expanded') == 'true'
+
+        picker = toolbar.locator('#me-neutral-element')
+        picker.select_option(index=1)
+        assert toolbar.locator('[data-me-group="edit"]').is_visible()
+        assert toolbar.locator('[data-me-group="format"]').is_hidden()
+        assert toolbar.locator('[data-me-group="block"]').is_hidden()
+        assert 'Testo selezionato' in toolbar.locator('#me-neutral-context').inner_text()
+        toolbar.locator('[data-me-action="edit"]').click()
+        assert toolbar.locator('[data-me-group="format"]').is_visible()
+        assert toolbar.locator('[data-me-action="edit"]').inner_text() == 'Termina modifica'
+        assert page.locator('main [contenteditable="true"]').count() == 1
+        toolbar.locator('[data-me-action="edit"]').click()
+        assert toolbar.locator('[data-me-group="format"]').is_hidden()
+        assert page.locator('main [contenteditable="true"]').count() == 0
+        toolbar.locator('[data-me-action="edit"]').click()
+        page.locator('main [contenteditable="true"]').press('Escape')
+        assert toolbar.locator('[data-me-group="format"]').is_hidden()
+        assert page.locator('main [contenteditable="true"]').count() == 0
+        assert page.evaluate('() => window.metaEditorPage.cleanHtml()') == source
+
         # Human Windows feedback: two new titles previously landed at x≈9
         # outside the authored .shell / .site-shell text column. Prove the
         # actual parent and on-screen horizontal alignment, not just section
@@ -151,6 +192,8 @@ def run(browser, name: str, selector: str, width: int, source_path: Path | None 
         assert moved['changed'], (name,width,'block did not transfer')
         assert page.locator(selector).nth(1).locator('[data-local-block]').count() == 1
         assert 'Portable added block' in page.locator(selector).nth(1).inner_text()
+        assert toolbar.locator('[data-me-group="block"]').is_visible()
+        assert toolbar.locator('[data-me-group="format"]').is_hidden()
         moved_parent = page.evaluate("""(selector) => {
             const second = document.querySelectorAll(selector)[1];
             const heading = second.querySelector('h1,h2,h3,h4,h5,h6');
