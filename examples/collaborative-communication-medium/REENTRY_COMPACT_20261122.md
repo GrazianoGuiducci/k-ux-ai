@@ -2,6 +2,18 @@
 
 **Scopo:** ridurre la lunghezza e il costo dei rientri in ChatGPT, conservando l'avanzamento reale senza ripetere l'intera conversazione. Questo è un cursore operativo, non autorità su release o prova esterna.
 
+## Verifica successiva — R3 già persistita, lavoro continuabile nella stessa istanza
+
+**Correzione alla comprensione del checkpoint precedente:** la frase sotto («non risulta un commit GitHub verificato di R3») descrive la verifica incompleta di quel momento, **non lo stato attuale**. Il 22 novembre alle 12:05–12:08 UTC la repository privata `GrazianoGuiducci/maios_it`, ramo `work/metaeditor-current`, aveva già acquisito HTML R3, sorgente MDN, CSS, generatore, test e spiegazione. La loro presenza e i blob sono stati riletti nel movimento successivo; non retrodatare questa verifica né interpretare l'assenza del rilievo come assenza dell'effetto.
+
+**Identità comprovate:**
+- [HTML MetaEditor MDN R3](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/MetaEditor_MDN_Independent_R3_20261122.html), Git blob `5b1dcb244dfcfc9d90f545174ce2a58ae5eb4734`, SHA-256 `8af2f8b18605f25f8a0e2da9e965c46364cb2756964699c52af7ef940cf75189`.
+- [Builder R3](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/build_mdn_bridge_r3.py), Git blob `a6e16b7bcea6f01b397b87afbfa0f65bc737ada1`; [test R3](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/test_mdn_bridge_r3.py), blob `a7f47a2f62d883fe585da67b0c2b4c632a045b23`.
+- [Sorgente MDN CC0](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/mdn_page_original.html), blob `0a2636f1c1bb30ffa6515141c831e348b9bd6150`, e CSS, blob `ff73dc352eb854b511a2caf2d2d016a3f5d2789a`.
+- Builder rieseguito localmente con input R2 e MDN verificati: output SHA-256 identico all'HTML R3 archiviato. Test Chromium rieseguiti con successo a 1440×844 e 390×844 per no-op, undo, modifica ed export limitato a `main`, lavoro salvato e riaperto. I test non certificano compatibilità generalizzata o Windows file://.
+
+**Nuovo orientamento operativo:** possiamo **continuare in questa istanza** e trasferirci solo quando diventi realmente onerosa, senza una migrazione preventiva. La prossima differenza tecnica è delimitare/estrarre l'adattatore di pagina riutilizzabile dalla R3 privata, con fixture ed export verificabili, non recuperare nuovamente file che sono già raggiungibili. Gate B rimane **parziale**. Il prossimo ricevente prende questo checkpoint, [release gate](RELEASE_STABILIZATION_20261122.md), [handoff](WORK_HANDOFF_STABILIZATION_20261122.md) e [owner MetaEditor CURRENT](../../competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md), non tutta la conversazione. Per ogni avanzamento: output, prova, commit/readback e una sola differenza rilevante nella competenza; non generare copie narrative ridondanti.
+
 ## Risultato effettivo
 - MetaCanvas generale, Playground r4 IT/EN e Studio21 IT/EN: cinque sorgenti K-UX-AI confrontate con copie della repository del sito `maios_it`, blob Git corrispondenti.
 - [PR K-UX-AI #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) su `work/metacanvas-metaeditor-stabilization-20261122`: aperta **in bozza**, controlli di baseline/CI riusciti; non equivale a rilascio stabilizzato.
@@ -13,7 +25,7 @@
 ## Blocco materiale, non narrativo
 La R3 resta un esercizio documentale in chat: occorre renderla raggiungibile con sorgente/build/test riproducibili nell'owner corretto e chiarire quali invarianti del documento l'adattatore può garantire. Il Gate B di [RELEASE_STABILIZATION_20261122.md](RELEASE_STABILIZATION_20261122.md) è **parziale**, non chiuso. Poi i gate C–F (regressioni MetaCanvas, accessibilità/compatibilità, candidata e distribuzione) restano aperti.
 
-## Prossimo movimento, in una nuova istanza
+## Prossimo movimento, nella stessa istanza o al rientro
 1. Leggere soltanto questo checkpoint, la [guida di stabilizzazione](RELEASE_STABILIZATION_20261122.md), l'[handoff implementativo](WORK_HANDOFF_STABILIZATION_20261122.md) e [MetaEditor CURRENT](../../competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md); rivalidare PR e branch, senza rigiocare tutta la chat.
 2. Recuperare gli artefatti R3 della conversazione o dal file Library **prima** di dichiararli disponibili; controllare SHA e ricostruibilità. Se non materializzabili, non inventare l'HTML: il codice/fixture va ricostruito dal builder verificato.
 3. Chiudere soltanto il prossimo gate: consegna dell'adattatore e fixture neutri con test di regressione e prova di preservazione del documento; nel ricevente Codex usare il suo checkout nativo, non fingere di averlo modificato da ChatGPT.
