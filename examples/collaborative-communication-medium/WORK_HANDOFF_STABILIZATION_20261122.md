@@ -1,5 +1,11 @@
 # MetaCanvas / MetaEditor — handoff per receiver implementativo
 
+## 22 novembre — Nuove prove disponibili senza cambiare il mandato
+
+Il gate Studio21 ha ora un candidato combinato e verificabile: [spostamento Arrow](../../tools/build_studio21_keyboard_section_move.py) e [proiezioni con link privati protetti](../../tools/build_studio21_public_projection.py) su HTML originali IT/EN, sempre in directory temporanee. I [test di trascinamento](../../tests/metaeditor-studio21-pointer-relations.browser.py), [proiezione privacy](../../tests/metaeditor-studio21-privacy.browser.py) e [ritorno AI selettivo](../../tests/metaeditor-studio21-ai-roundtrip.browser.py) sono integrati nella [CI verde 45040754731](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45040754731). Il lavoro privato resta nel documento; link `private:true` con entrambi gli estremi pubblici non devono uscire per inerzia. L'esercizio AI applica solo la modifica selezionata e preserva la parte privata locale con Undo/Redo.
+
+Queste prove **non sostituiscono la candidata neutra MetaEditor** richiesta da questo handoff. Il receiver che prosegue non deve rifare Bridge11/R3, i test nativi o gli stessi controlli privacy per riottenere contesto. Deve formare il prossimo risultato proprio del Gate B: un adattatore non vincolato al file sorgente, con prova sulle due topologie pagina MAIOS e non-MAIOS e con preservazione reale di HTML/export. I successivi gate touch/Windows/accessibilità e distribuzione restano distinti; non convertire automaticamente il successo CI in release.
+
 **Data:** 22 novembre 2026  
 **Mandato autoriale:** «Finiamo di fare tutto quello che serve fare per fare bene, l'obiettivo finale è pubblicare tutto e stabilizzare il progetto metaeditor e metacanvas.»  
 **Modo scelto in questa fonte:** `PRIVATE_BUILD + VERIFY`; **non** `PUBLIC_EFFECT`.  
