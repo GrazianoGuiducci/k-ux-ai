@@ -1,5 +1,12 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 22 novembre — Chiuso il buco di prova sul vero Studio21
+
+**Risultante ultima:** il comando condiviso `insert` ora ha un [test E2E sul vero Studio21 standalone IT/EN](../../tests/metaeditor-studio21-composition.browser.py) nel ramo K-UX-AI PR #2. [CI 45030544046](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046) `verify` e `studio21-browser` verdi: Chrome Linux a 1440/390, inserimento `text`/`card`, ID distinti, integrità dei nodi esistenti, Undo/Redo e richieste non supportate senza mutazione. Il primo run 45030431494 è fallito prima del test per l'installazione di Chromium; non era un errore Studio. Nessuna modifica agli HTML sorgente o ai download.
+
+**Per il prossimo lavoro:** il contratto `insert` non necessita di un nuovo mock: prova completata sui carrier pagina e scena. Gate B e release complessiva rimangono aperti; confrontare i gesti di spostamento in Bridge11 e Studio21 prima di valutare un contratto `move`, senza rimuovere la storia nativa o interpretare l'assenza di problemi come compatibilità universale. Continuare in istanza presente con checkpoint breve per ogni nuova differenza; cambiare istanza solo se realmente necessario.
+
+
 ## 22 novembre — Inserimento nativo condiviso, provato su due portatori pagina
 
 **Nuovo punto d'appoggio:** [`metaeditor-composition-commands.js`](meta-editor-lab/metaeditor-composition-commands.js), [contratto](meta-editor-lab/COMPOSITION_COMMANDS.md) e [6 test Node](../../tests/metaeditor-composition-commands.test.js) nel ramo candidato K-UX-AI. Aggiunge soltanto `execute('insert', …)`, mappando la richiesta sul comando nativo del carrier: pagina HTML `addBlock`, scena Studio21 `addNode`. Non tocca `MetaEditorCommands` Bridge07, storia, formati o UI dei prodotti. Test Chromium 1440/390 su vero Bridge11 e R3 MDN con inserimento e Undo: superati, senza pageerror; test browser ripetibile salvato nel workbench privato `maios_it/work/metaeditor-current/workbench/metaeditor/experiments/test_composition_native_bridge.py`.
