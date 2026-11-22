@@ -40,6 +40,14 @@ Sono ammessi refactoring, moduli, adapter, test browser, librerie sostenibili o 
 4. Suite MetaCanvas separata: scene, collegamenti, diagrammi, immagini, template, import AI basato sui dati, note private, copia pubblica e fallback/undo; input avversi (schema errato, duplicati, immagini remote, dati privati).
 5. Se un criterio non è dimostrabile nel receiver, segnalarlo come blocco con fonte e stato, non chiamarlo passato.
 
+## Nuova conseguenza del 22 novembre — seconda topologia e source-preserving patch
+
+Il [Gate B](RELEASE_STABILIZATION_20261122.md) è avanzato con [R3 MDN indipendente](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/experiments/README.md): `main > article` con sottosezioni, sidebar e CSS distinto. In Chromium desktop/mobile, il no-op pulito torna ai byte originali; dopo una modifica si altera soltanto `main`; Undo/Redo e roundtrip work→clean conservano gli interventi. La prova di un editor generale non è ancora stata ottenuta. Il difetto emerso dal ritorno a un HTML di lavoro è istruttivo: **non prendere il documento salvato come nuovo originale**, altrimenti l'export può annullare le modifiche.
+
+Come capacità di infrastruttura già esercitata nel ramo K-UX-AI sono disponibili [patch source-preserving](../../tools/metaeditor_region_patch.py) e [test positivi/negativi](../../tools/test_metaeditor_region_patch.py). Non rappresentano un importer o un sanitizzatore: l'editor deve validare il frammento prima dell'effetto e decidere se un documento esterno è supportato. Il receiver può riusarli o proporre una migliore implementazione, ma deve dimostrare l'equivalente contratto di conservazione dei dati **su un unico adapter realmente usato da più documenti**, non su due build vincolate separatamente.
+
+**Prossimo discriminante:** produrre un modulo/adattatore non source-pinned che si installi esplicitamente su HTML statici dichiarati, con una sola UI e un insieme di comandi consentiti dalle loro regioni, e ripetere la stessa prova su un documento MAIOS e uno esterno, conservando fedeltà e limiti. L'uso Chrome Windows per il nuovo adapter e la pubblicazione restano effetti distinti.
+
 ## Contratto di ritorno
 
 Restituire nel ramo candidato di K-UX-AI **sorgenti, fixture non sensibili, test automatici, README di utilizzo e istruzioni di build**; nel ramo privato `maios_it/work/metaeditor-current` soltanto gli artefatti di bozza che appartengono al documento. Informare K-UX-AI / MetaEditor Evolution delle modifiche di capacità che devono essere apprese e rese discoverable.
