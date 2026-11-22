@@ -1,5 +1,12 @@
 # MetaCanvas — consegna per Risorse → Tool su MAIOS.it
 
+## 22 novembre 2026 — consegna già completata e prossimo rilascio distinto
+
+Le pagine MetaCanvas **IT ed EN sono già disponibili** in Risorse → Strumenti su MAIOS.it; i download Playground r4 IT/EN, Studio21 IT/EN e l'editor generale sono già copiati nella repository del sito. I cinque file corrispondono ai rispettivi Git blob K-UX-AI, come [registrato qui](distribution-manifest.json). L'editor generale corrente è quello con miglioramento del canvas, Git blob `d057d68c60061dd9e8f5c2d704cfff2016ea19b1`; il precedente Studio20 `c8c1be74...` in questa guida è storia della prima consegna. **Non eseguire nuovamente la creazione delle pagine come task pendente.** Il sito live richiede readback autonomo per confermare le copie effettivamente servite.
+
+La nuova direzione dell'operatore è consolidare MetaCanvas e MetaEditor fino a un rilascio affidabile. Il percorso del nuovo candidato è [stabilizzazione del prodotto](RELEASE_STABILIZATION_20261122.md), poi eventuali asset *nuovamente versionati* e modifica della pagina da parte dell'owner sito. Bridge11, ancora workbench privato, non va pubblicato come copia del prodotto o come sorgente HTML della pagina Consulenza. Il presente raccordo corregge la raggiungibilità della fonte senza trasformare il passato in una pubblicazione già avvenuta alla data del vecchio handoff.
+
+
 ## Studio 21 — due demo distinte per le pagine italiane e inglesi (13 novembre 2026)
 
 **Decisione dell'operatore:** MAIOS.it avrà una pagina italiana e una pagina inglese nella categoria **Risorse → Tool**; ciascuna rimanderà alla **propria versione HTML autonoma pubblicata in K-UX-AI**. Il selettore interno EN/IT non è il modello di distribuzione. La coppia è stata pubblicata, mentre **le due pagine del sito restano da realizzare con Codex**.
