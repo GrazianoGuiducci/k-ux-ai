@@ -8,6 +8,11 @@ status: source_formed_local_exercise_observed_runtime_not_integrated
 
 # Collaborative Communication Medium — competenza K-UX-AI
 
+## 22 novembre 2026 — Connettori interattivi e lavagne Claude: discriminazione del medium
+
+Quando un lavoro propone di portare MetaCanvas/MetaEditor dentro Claude o un altro host AI, raggiungi la [comparazione source-bound MCP Apps, Whiteboards e Advisor](references/CLAUDE_MCP_APPS_WHITEBOARDS_ADVISOR_20261122.md). Conserva distinta l'interfaccia dentro l'host dal documento autonomo e dal suo owner; `ui/update-model-context` non prova continuità semantica, un Advisor non è una competenza, e un PNG di Whiteboards non sostituisce un documento modificabile. Prima di integrare testa con referente sintetico, ID, diff, permessi ed effetti realmente autorizzati. La ricognizione è conoscenza su funzionalità esterne, **non** integrazione/test di un MCP App MAIOS né rilascio MetaCanvas.
+
+
 ## Funzione
 
 Formare e far evolvere un **artefatto comunicativo collaborativo** nel quale l'operatore può esprimere, modificare e organizzare idee, concetti, relazioni e dinamiche; il sistema AI può comprenderne le distinzioni raggiungibili, contribuire alla loro formazione e restituire una versione comunicabile; gli interlocutori possono incontrare la rappresentazione, porre domande e produrre nuove conseguenze.
