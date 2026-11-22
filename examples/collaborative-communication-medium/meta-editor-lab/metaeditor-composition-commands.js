@@ -36,6 +36,14 @@
       const position=request.position??'end';
       if(!PAGE_POSITIONS.includes(position)) return fail('unsupported insertion position','page');
       const sectionIndex=request.sectionIndex;
+      const previousSection=sectionPicker.value;
+      let navigated=false;
+      const restoreSection=()=>{
+        if(navigated && sectionPicker.value!==previousSection){
+          sectionPicker.value=previousSection;
+          sectionPicker.dispatchEvent(new doc.defaultView.Event('change',{bubbles:true}));
+        }
+      };
       if(sectionIndex!==undefined) {
         if(!Number.isInteger(sectionIndex) || sectionIndex<0) return fail('invalid section index','page');
         const option=[...sectionPicker.options].find(item=>item.value===String(sectionIndex));
@@ -43,19 +51,20 @@
         if(sectionPicker.value!==option.value) {
           sectionPicker.value=option.value;
           sectionPicker.dispatchEvent(new doc.defaultView.Event('change',{bubbles:true}));
+          navigated=true;
         }
       }
       const kind=[...kindPicker.options].find(item=>item.value===request.type);
-      if(!kind || kind.disabled) return fail('native block type unavailable','page');
+      if(!kind || kind.disabled) {restoreSection();return fail('native block type unavailable','page');}
       const choice=[...positionPicker.options].find(item=>item.value===position);
-      if(!choice || choice.disabled) return fail('native insertion anchor unavailable','page');
+      if(!choice || choice.disabled) {restoreSection();return fail('native insertion anchor unavailable','page');}
       kindPicker.value=kind.value;
       positionPicker.value=choice.value;
       const previous=main.querySelectorAll('[data-local-block]').length;
       button.click(); // Only the native editor can change the document and record Undo.
       const created=main.querySelectorAll('[data-local-block]').length-previous;
-      return created===1 ? Object.freeze({ok:true,carrier:'page',effect:'inserted',type:request.type,position})
-        : fail('native insertion did not create exactly one block','page');
+      if(created!==1){restoreSection();return fail('native insertion did not create exactly one block','page');}
+      return Object.freeze({ok:true,carrier:'page',effect:'inserted',type:request.type,position});
     }
 
     function insertScene(request) {
