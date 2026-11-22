@@ -198,19 +198,59 @@
       syncButtons();
       return {ok:true,changed,...(output || {})};
     }
+    // A section is a semantic boundary, not necessarily its content column.
+    // In MAIOS and other real layouts the text lives inside nested flow wrappers.
+    // Inserting directly into <section> can put new blocks outside the layout.
+    const flowTags = 'p,h1,h2,h3,h4,h5,h6,blockquote';
+    function flowChild(node, section) {
+      const parent = node?.parentElement;
+      return !!(node && parent && section.contains(node) &&
+        node.matches(flowTags) &&
+        ['div','section','article'].includes(parent.localName) &&
+        !parent.closest('nav,aside,form,figure,ul,ol,table'));
+    }
+    function insertionPoint(section, useSelection = true) {
+      if (!section) return null;
+      if (useSelection && flowChild(selected, section)) {
+        return {parent:selected.parentElement, after:selected};
+      }
+      const headings = [...section.querySelectorAll('h1,h2,h3,h4,h5,h6')];
+      const labelled = (section.getAttribute('aria-labelledby') || '')
+        .trim().split(/\s+/).filter(Boolean);
+      const heading = labelled.length ?
+        headings.find(h => labelled.includes(h.id)) :
+        headings.find(h => flowChild(h, section));
+      if (!flowChild(heading, section)) return null;
+      const parent = heading.parentElement;
+      // Only direct text-flow siblings: never append to a CSS grid, list,
+      // nav or wrapper guessed from its class name.
+      const siblings = [...parent.children].filter(n =>
+        flowChild(n, section) && n.parentElement === parent);
+      return {parent, after:siblings[siblings.length - 1] || heading};
+    }
+    function insertAtPoint(node, point) {
+      if (!point || point.after.parentElement !== point.parent) return false;
+      point.after.insertAdjacentElement('afterend', node);
+      return true;
+    }
     function insert(tag) {
       const sections = sectionRoots();
       const index = Number(selector.value);
       if (!['p','h3'].includes(tag) || !Number.isInteger(index) || !sections[index]) {
         return {ok:false,reason:'no supported destination'};
       }
+      leaveEditing();
+      const point = insertionPoint(sections[index]);
+      if (!point) {
+        return {ok:false,reason:'layout destination ambiguous: select a text paragraph or heading in this section'};
+      }
       return transact(() => {
         const node = doc.createElement(tag);
         node.setAttribute('data-local-block', 'true');
         node.textContent = tag === 'p' ? 'Nuovo paragrafo' : 'Nuovo titolo';
-        sections[index].append(node);
+        insertAtPoint(node, point);
         select(node);
-        notify('Blocco aggiunto. Modifica testo per personalizzarlo.');
+        notify('Blocco aggiunto nel contenitore del testo selezionato.');
       });
     }
     function move(action) {
@@ -222,10 +262,15 @@
         const sections = sectionRoots();
         const next = sections[Number(selector.value)];
         if (!next) return {ok:false,reason:'invalid destination'};
+        // A transfer to the current section is a no-op, not an opportunity
+        // to silently relocate an existing block across grid/layout groups.
+        if (next.contains(node)) return {ok:true,changed:false};
+        const point = insertionPoint(next, false);
+        if (!point) return {ok:false,reason:'layout destination ambiguous: cannot transfer safely'};
         return transact(() => {
-          if (node.parentElement === next && node === next.lastElementChild) return;
-          next.append(node);
-          notify('Blocco trasferito alla sezione selezionata.');
+          insertAtPoint(node, point);
+          select(node);
+          notify('Blocco trasferito nel contenitore testuale di destinazione.');
         });
       }
       if (action === 'up' && node.previousElementSibling) {
