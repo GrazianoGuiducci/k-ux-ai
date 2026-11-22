@@ -1,5 +1,14 @@
 # MetaEditor Evolution — guida viva
 
+## 22 novembre — Un gesto non copre le relazioni di un contenitore
+
+La prima prova del movimento scena aveva controllato un nodo e i suoi ID; il modello supporta però `section` con figli `containerId`, immagini incorporate e link. Confrontando i controller emerge una differenza: il pointer move propaga le coordinate ai figli, mentre l'Arrow handler original non lo faceva. Il [test negativo sul vero Studio21](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037096198) è prova di difetto, non un errore di browser setup.
+
+**Metodo acquisito dall'owner:** verificare i movimenti composti su un fixture che eserciti insieme layout, figlio testuale, figlio immagine, link verso altro nodo e serializzazione di `ccm.document.v1`. Per il medesimo spostamento, il testo e l'immagine devono mantenere `containerId`, traslare coerentemente, il link conservare ID/from/to/anchor mentre il percorso grafico si aggiorna, Undo e Redo ripristinare/ripetere esattamente le parti interessate. Il solo successo di un `keydown` su `.node` non prova tutto ciò.
+
+**Applicazione limitata:** il [builder di candidato](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tools/build_studio21_keyboard_section_move.py) fa una sostituzione esatta sul gestore nativo Arrow IT/EN, lasciando al controller originale `commit`, history, render e `ccm.document.v1`. I figli si spostano nello stesso checkpoint. Il [test browser](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-studio21-relations.browser.py) è riuscito nella [CI 45037298632](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45037298632). Non sostituire il drag nativo, non pubblicare il candidato prima degli altri gate, non affermare compatibilità universale.
+
+
 ## 22 novembre — Lo spostamento è una richiesta, non un secondo motore
 
 **Metodo appreso:** interrogare la possibilità nativa prima di aggiungere un comando. Bridge11 possiede già `transfer` con destinazione, riferimento sicuro, `before/after/end`, checkpoint unico e protezione dei componenti originali. Studio21 possiede già movimento geometrico tramite tastiera/pointer, clamp e `commit` con `setContainerAfterMove`. Il contratto [MetaEditorNativeMove](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/MOVE_COMMANDS.md) espone `create({carrier,document}).execute(request)` e delega; non inventa Undo né converte `ccm.document.v1` in DOM.
