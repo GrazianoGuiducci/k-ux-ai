@@ -1,5 +1,10 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 22 novembre — Inserimento scene: test E2E ora acquisito
+
+Il [contratto compositivo `insert`](meta-editor-lab/COMPOSITION_COMMANDS.md), prima verificato per le pagine reali e per le scene soltanto con mock, è stato esercitato nello [Studio21 standalone IT/EN](../../tests/metaeditor-studio21-composition.browser.py) in GitHub Actions (Chrome Linux 1440/390, richiesta `text`/`card`, integrità ID e scene visibile, Undo/Redo, invalid request). [Workflow riuscito 45030544046](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45030544046). **Questo chiude la lacuna del test scena per l'azione insert**, non i gate B/C/D complessivi: movimento, import/export scena, template, privacy e compatibilità richiedono ulteriori prove e un release decision separato.
+
+
 **Formato:** piano di esecuzione e criteri di accettazione, 22 novembre 2026  
 **Owner prodotto e metodo:** K-UX-AI / Collaborative Communication Medium / MetaEditor Evolution  
 **Owner sito e distribuzione:** `maios_it`  
