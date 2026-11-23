@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Perimetro MetaEditor 1.0 definito e packaging RC verificato
+
+**Nuova direzione autoriale:** test umano d'uso soltanto dopo maturità; dare al progetto un termine anziché accumulare funzioni. Owner di contratto: [MetaEditor 1.0](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md), otto percorsi e fuori-perimetro espliciti. MetaEditor è distribuzione locale di HTML statico da quattro template, non CMS/editor di scene; MetaCanvas rimane prodotto distinto con patch privacy Studio21 non ancora pubblicata.
+
+**Effetti esercitati:** builder ZIP ora `1.0.0-rc.1` e manifest con hash dei file, doppia build byte-identica controllata nel test; workflow produce **un solo artefatto RC** `metaeditor-1-0-rc1` ID `14815467429`, senza l'antica preview per singola funzione. [CI 45168573050](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45168573050) **5/5 job verdi**, includendo nuovo `neutral-windows-chrome` su Windows runner, `file://`, 4 template, editing, download/reopen, paste e protezione componenti; regressioni Studio21, MAIOS live e Linux verdi. Questo chiude il perimetro automatico, **non** la prova d'uso fisica e non autorizza merge/deploy.
+
+**Prossima azione realmente selezionata:** smettere di ampliare la UI salvo impedimento al contratto; revisione licenze/packaging e poi *una prova integrata* dell'operatore quando il candidato è idoneo; dopo gli esiti, decisione distinta sulla distribuzione. PR #2 draft, nessun effetto su `maios_it/main`.
+
 ## 23 novembre — Mixed layout: readonly autoriale, ID lavoro, history realmente distinta
 
 **L'operatore chiede di risolvere la composizione mista** di schede con testi, link, immagini e oggetti protetti, proseguendo senza collaudo umano. Nella [fixture mista](../../tests/fixtures/metaeditor/mixed_protected_composition.html) il controller ha rivelato tre differenze reali: l'adattatore rifiutava anche il `contenteditable=false` autoriale, l'inserimento poteva riferirsi a isole protette, e lo scambio di due blocchi nuovi identici non veniva registrato perché i due HTML erano serializzati uguali.
