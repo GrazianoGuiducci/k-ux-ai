@@ -1,5 +1,9 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — MetaEditor 1.0 RC completata tecnicamente; resta una prova d'uso
+
+Contratto definitivo di questa candidata: [otto percorsi MetaEditor 1.0](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) per un editor locale da quattro template; non CMS o MetaCanvas. Un solo pacchetto `1.0.0-rc.1` con launcher, quattro workpage, guida, manifest SHA-256, licenza MPL-2.0 e notice d'autore. [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) **5/5 verde** (Linux e Windows Chrome `file://`, MAIOS live read-only, Studio21, contratti); artefatto `metaeditor-1-0-rc1` ID `14816910606`. **No test umano ancora, no merge/deploy.** Prossimo movimento: una prova integrata d'uso e correzioni soltanto dei veri blocchi; rilascio è movimento distinto. MetaCanvas rimane separato con patch privacy da distribuire/readback.
+
 ## 23 novembre — Perimetro MetaEditor 1.0 definito e packaging RC verificato
 
 **Nuova direzione autoriale:** test umano d'uso soltanto dopo maturità; dare al progetto un termine anziché accumulare funzioni. Owner di contratto: [MetaEditor 1.0](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md), otto percorsi e fuori-perimetro espliciti. MetaEditor è distribuzione locale di HTML statico da quattro template, non CMS/editor di scene; MetaCanvas rimane prodotto distinto con patch privacy Studio21 non ancora pubblicata.
