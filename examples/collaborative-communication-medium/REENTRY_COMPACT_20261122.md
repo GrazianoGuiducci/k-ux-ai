@@ -1,5 +1,15 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Mixed layout: readonly autoriale, ID lavoro, history realmente distinta
+
+**L'operatore chiede di risolvere la composizione mista** di schede con testi, link, immagini e oggetti protetti, proseguendo senza collaudo umano. Nella [fixture mista](../../tests/fixtures/metaeditor/mixed_protected_composition.html) il controller ha rivelato tre differenze reali: l'adattatore rifiutava anche il `contenteditable=false` autoriale, l'inserimento poteva riferirsi a isole protette, e lo scambio di due blocchi nuovi identici non veniva registrato perché i due HTML erano serializzati uguali.
+
+**Risultato:** adapter ora preserva readonly autoriale nel work e nell'export e rifiuta editing di sorgente attivo; controller esclude `inert` e readonly dal campo degli interventi, permette quick-move solo tra blocchi propri contigui, mantiene posizionamento esplicito oltre gli elementi originali. I nuovi blocchi e le duplicazioni posseggono `data-local-block-id` persistente nello storico/lavoro e assente dal clean HTML; legacy work senza identità viene normalizzato. Un click sulla caption di figura aggiunta seleziona la figura intera, doppio clic permette testo.
+
+**Evidenza:** [CI 45153539786](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45153539786) **4 job verdi** (test composizione mista, altre topologie, Studio21, MAIOS live source-identical). [Test misto](../../tests/metaeditor-mixed-protected.browser.py) verifica quattro card sintetiche, immagini e link originali immutati, import PNG, trasferimento e Undo/Redo, file lavoro/clean riaperti e Undo completo identico all'originale, 1440/390 `file://` Chrome Linux. Dopo questa prova è stata aggiunta una asserzione per ID univoci anche su duplicazione media: è soggetta alla successiva CI, non assumerne il successo.
+
+**Prossimo:** completare il readback del test di duplicazione media, registrare eventuali differenze, poi stabilizzare ulteriormente le composizioni solo se c'è una lacuna materiale. Nessun nuovo pacchetto Windows a ogni commit, PR #2 draft, produzione intatta.
+
 ## 23 novembre — Composizione controllata in card/grid: riferimento prima/dopo, non sezione soltanto
 
 **Causa e differenza:** con link e media già verificati, il limite successivo era il punto d'inserimento nei layout composti. La regola precedente trovava un titolo nella sezione, ma una sezione con più flussi indipendenti può contenere card distinte: appartenenza alla `section` e allineamento non provano il referente corretto. Il controller neutro ha acquisito un `Posizionamento preciso` opzionale che sceglie un elemento testuale interno al gruppo di destinazione e la relazione prima/dopo; il referente persiste come identità DOM, non indice. Se auto-destinazione ha più gruppi senza selezione o riferimento autoriale, viene rifiutata senza mutazione; non si inventa una scelta.
