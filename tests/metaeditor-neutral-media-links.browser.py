@@ -166,14 +166,23 @@ def run(browser, root, original_path, width):
 
         clean = page.evaluate("() => window.metaEditorPage.cleanHtml()")
         working = page.evaluate("() => window.metaEditorPage.workHtml()")
-        assert "data:image/png;base64," in clean and "Logo di prova" in clean
+        assert "data:image/png;base64," in clean and "Logo blu su sfondo chiaro" in clean
         assert "data-local-block" not in clean
         assert "data:image/png;base64," in working
         assert "data-local-block" in working
+        # The three media transactions remain separate history entries:
+        # transfer -> accessible description -> original image insertion.
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.locator("main section").first.locator("figure[data-local-block]").count() == 1
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.locator("main figure img").get_attribute("alt") == "Logo di prova"
         assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
         assert page.locator("main figure[data-local-block]").count() == 0
-        assert page.evaluate("() => window.metaEditorPage.redo()")["changed"]
-        assert page.locator("main figure[data-local-block]").count() == 1
+        for _ in range(3):
+            assert page.evaluate("() => window.metaEditorPage.redo()")["changed"]
+        assert page.locator("main section").nth(1).locator("figure[data-local-block]").count() == 1
+        assert page.locator("main figure img").get_attribute("alt") == "Logo blu su sfondo chiaro"
+        assert page.evaluate("() => window.metaEditorPage.cleanHtml()") == clean
 
         # The real work file must reopen with the image and managed block
         # ownership still present; clean HTML must open without editor UI.
