@@ -133,6 +133,35 @@ def run(browser, root, original_path, width):
         assert img.get_attribute("src").startswith("data:image/png;base64,")
         assert figure.locator("figcaption").inner_text() == "Logo di prova"
         assert abs(figure.bounding_box()["x"] - hleft) <= 8
+
+        # Alt text is accessible semantics, not a decorative caption.
+        # Changing it uses one history checkpoint, and cannot destroy
+        # an independently edited visible caption.
+        page.evaluate("""() => window.metaEditorPage.select(
+            document.querySelector('main figure[data-local-block]'))""")
+        alt_button = page.locator('[data-me-action="image-alt"]')
+        assert alt_button.is_visible()
+        page.locator('#me-neutral-image-alt').fill("Logo blu su sfondo chiaro")
+        alt_button.click()
+        assert img.get_attribute("alt") == "Logo blu su sfondo chiaro"
+        assert figure.locator("figcaption").inner_text() == "Logo blu su sfondo chiaro"
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert img.get_attribute("alt") == "Logo di prova"
+        assert page.evaluate("() => window.metaEditorPage.redo()")["changed"]
+        assert img.get_attribute("alt") == "Logo blu su sfondo chiaro"
+
+        # Media blocks participate in the SAME transfer and Undo/Redo
+        # controller as authored text blocks, never a parallel media state.
+        page.evaluate("""() => window.metaEditorPage.select(
+            document.querySelector('main figure[data-local-block]'))""")
+        page.locator('#me-neutral-section').select_option('1')
+        moved = page.evaluate("() => window.metaEditorPage.move('transfer')")
+        assert moved["changed"], (original_path.stem,width,"media transfer refused")
+        assert page.locator("main section").nth(1).locator('figure[data-local-block]').count() == 1
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.locator("main section").first.locator('figure[data-local-block]').count() == 1
+        assert page.evaluate("() => window.metaEditorPage.redo()")["changed"]
+        assert page.locator("main section").nth(1).locator('figure[data-local-block]').count() == 1
         assert page.evaluate("() => window.metaEditorPage.status().dirty") is True
 
         clean = page.evaluate("() => window.metaEditorPage.cleanHtml()")
@@ -166,7 +195,7 @@ def run(browser, root, original_path, width):
             plain.goto(clean_path.as_uri())
             assert plain.locator("#me-neutral-toolbar").count() == 0
             assert plain.locator("main figure img").count() == 1
-            assert plain.locator("main figure img").get_attribute("alt") == "Logo di prova"
+            assert plain.locator("main figure img").get_attribute("alt") == "Logo blu su sfondo chiaro"
         finally:
             plain.close()
         assert not errors, (original_path.stem,width,errors)
