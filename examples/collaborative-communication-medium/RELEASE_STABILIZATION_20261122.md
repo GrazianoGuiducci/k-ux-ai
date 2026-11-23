@@ -1,5 +1,9 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — Funzioni HTML link/media nel candidato, non autorizzazione alla release
+
+Il portatore neutro ha acquisito link sicuri (nuovi o semplici link autore modificati) e immagini locali incorporate con alt/didascalia, che restano nel medesimo modello di Undo/Redo e di work/clean export. [CI 45135851508](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45135851508) esercita regressioni browser `file://` su due topologie e viewport, incluso trasferimento di un'immagine e riapertura. Nessuna sostituzione dei template `ccm.document.v1` e nessuna importazione di remote-media. Non confondere prove PNG da fixture con robustezza generale di tutte le immagini, Windows o sicurezza universale. Gate B ancora aperto per UX/accessibilità/layout più complessi, PR #2 draft e nessun effetto su `maios_it/main` o versione pubblica.
+
 ## 23 novembre — Editing sicuro nel perimetro: CI verde, esperienza umana differita
 
 Dopo l'introduzione della scelta template, l'operatore ha chiesto di continuare senza testare manualmente ogni candidata. La modifica al [controller neutro](meta-editor-lab/neutral-static-page-editor.js) riguarda dati incollati, integrità dei blocchi e salvataggio: solo testo semplice da clipboard, rifiuto drop e Enter che cambia la struttura, `Ctrl+S` al formato lavoro, indicatore di modifiche pendenti e Undo che riporta all'origine. [CI 45133248996](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45133248996) quattro job verdi, con prove `file://` su paste/drop sintetici e **download reali di entrambi i file** su ciascun modello; prove Studio21 e MAIOS live ancora verdi. Non si confondano download richiesto e scrittura durabile, né test Linux di clipboard sintetico e prova fisica Chrome Windows. **Gate B ancora parziale, nessun deploy e PR #2 draft.**
