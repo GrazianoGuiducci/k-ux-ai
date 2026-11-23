@@ -70,8 +70,21 @@ def exercise(browser, root: Path, width: int) -> None:
                 x0 = heading.bounding_box()["x"]
                 x1 = added.bounding_box()["x"]
                 assert abs(x0 - x1) <= 8, (name,width,"inserted block escaped text column",x0,x1)
-                work = page.evaluate("() => window.metaEditorPage.workHtml()")
-                clean = page.evaluate("() => window.metaEditorPage.cleanHtml()")
+                # Test the ACTUAL browser download actions, not only the
+                # JavaScript serialization helpers. The downloaded work copy
+                # is what a person will reopen on Windows.
+                with page.expect_download() as event:
+                    page.locator('[data-me-action="work"]').click()
+                download_work = event.value
+                assert download_work.suggested_filename == "MetaEditor_Lavoro_Modificabile.html"
+                work = Path(download_work.path()).read_text(encoding="utf-8")
+                with page.expect_download() as event:
+                    page.locator('[data-me-action="clean"]').click()
+                download_clean = event.value
+                assert download_clean.suggested_filename == "MetaEditor_Pagina_Pulita.html"
+                clean = Path(download_clean.path()).read_text(encoding="utf-8")
+                assert work == page.evaluate("() => window.metaEditorPage.workHtml()")
+                assert clean == page.evaluate("() => window.metaEditorPage.cleanHtml()")
                 assert "Nuovo paragrafo" in clean
                 assert "data-local-block" not in clean
                 assert "me-neutral-toolbar" not in clean
