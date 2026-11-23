@@ -1,5 +1,9 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — Gate B: posizionamento esplicito nei layout annidati
+
+La [CI 45149431000](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45149431000) è verde in tutti e quattro i job, compreso il nuovo test `file://` su quattro card CSS-grid a due viewport. Il controller neutro possiede un riferimento prima/dopo per la composizione tra gruppi, più una regola di rifiuto se auto-destinazione è ambigua: non usa l'ordine dei nodi per scegliere la scheda. La storia unica conserva inserimento e trasferimento stessa/altra sezione; l'export pulito e full Undo mantengono la fedeltà. La prova non estende l'ambito ad HTML arbitrario né autorizza il rilascio. Restano prove su layout rappresentativi complessi, accessibilità e Windows umano, politiche di packaging/security e approvazione owner. PR #2 resta draft; nessun merge/deploy.
+
 ## 23 novembre — Funzioni HTML link/media nel candidato, non autorizzazione alla release
 
 Il portatore neutro ha acquisito link sicuri (nuovi o semplici link autore modificati) e immagini locali incorporate con alt/didascalia, che restano nel medesimo modello di Undo/Redo e di work/clean export. [CI 45135851508](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45135851508) esercita regressioni browser `file://` su due topologie e viewport, incluso trasferimento di un'immagine e riapertura. Nessuna sostituzione dei template `ccm.document.v1` e nessuna importazione di remote-media. Non confondere prove PNG da fixture con robustezza generale di tutte le immagini, Windows o sicurezza universale. Gate B ancora aperto per UX/accessibilità/layout più complessi, PR #2 draft e nessun effetto su `maios_it/main` o versione pubblica.
