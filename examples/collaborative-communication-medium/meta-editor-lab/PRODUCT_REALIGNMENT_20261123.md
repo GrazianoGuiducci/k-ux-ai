@@ -1,5 +1,9 @@
 # MetaEditor / MetaCanvas — recupero della direzione di prodotto
 
+## Primo passo esercitato: R1 contestuale in Studio21 · 23 novembre
+
+Il [builder visual R1](../../../tools/build_studio21_visual_actions.py) non genera un altro editor. Sulla **vera scena Studio21** collega la selezione di un nodo ai comandi native `Modifica testo`, `Stile`, `Dimensioni`, `Duplica` vicino al punto di lavoro, conservando history e salvataggio già posseduti. [CI 45234069873](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45234069873): 5 job verdi; [regressione browser](../../../tests/metacanvas-studio21-visual-actions.browser.py) su IT/EN, 1440/390, edit, Undo/Redo, work/public export. L'artefatto `metacanvas-studio21-visual-r1` ID `14848068598` è una candidata **non pubblicata**. Screenshots reali `14848043425` ispezionati: il gesto è percepibile sul desktop, ma a 390px il canvas rimane sacrificato dall'intestazione/intro e dal pannello schede. Questo è il **prossimo attrito di esperienza da correggere**, non un problema risolto per aver superato CI.
+
 **Data del feedback:** 23 novembre 2026. **Owner della capacità:** `competences/ux-ai/collaborative-communication-medium/meta-editor`. **Stato:** riesame autoriale, non nuova release, non deploy, non sostituzione dei portatori.
 
 > Operatore: «È ancora abbastanza poco utilizzabile. Non credo, non vedo tanti sviluppi da dove eravamo partiti».
