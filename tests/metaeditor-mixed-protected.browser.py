@@ -72,6 +72,21 @@ def run(browser, tmp: Path, width: int):
                 "tail":page.content()[-600:]
             }) from exc
         assert page.evaluate("() => window.metaEditorPage.cleanHtml()") == original
+        # Authored read-only islands are allowed, but imported active
+        # contentEditable must still fail at the source adapter boundary.
+        active_source = page.evaluate("""() => {
+            const source = JSON.parse(document.querySelector(
+                '#me-neutral-original-source').textContent).source;
+            const active = source.replace('contenteditable="false"',
+                                           'contenteditable="true"');
+            try {
+                window.MetaEditorStaticPageAdapter.create({
+                    sourceHtml:active, regionElement:document.querySelector('main')
+                });
+                return 'unexpectedly-accepted';
+            } catch (err) { return String(err.message); }
+        }""")
+        assert "editor-reserved attributes: contenteditable" in active_source, active_source
         baseline = original_islands(page)
         assert page.locator("main .card").count() == 4
         for selector in ("#locked-card h2", "#locked-asset-link",
