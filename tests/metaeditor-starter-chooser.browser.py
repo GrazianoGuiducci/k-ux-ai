@@ -156,7 +156,11 @@ def main():
         )
         with zipfile.ZipFile(archive_path) as archive:
             names = set(archive.namelist())
-            expected = {"Apri_MetaEditor.html","LEGGIMI.txt",MANIFEST} | {
+            expected = {
+                "Apri_MetaEditor.html", "LEGGIMI.txt", MANIFEST,
+                "LICENZA_MPL-2.0.txt", "NOTICE_ORIGINALE.md",
+                "CREDITI_E_CONDIZIONI.txt"
+            } | {
                 "Modelli/" + name + ".html" for name in EXPECTED
             }
             assert names == expected, names
@@ -164,6 +168,10 @@ def main():
             assert manifest["schema"] == "metaeditor.local-pack.v1"
             assert manifest["version"] == VERSION
             assert manifest["status"] == "release-candidate-not-published"
+            license_text = archive.read("LICENZA_MPL-2.0.txt")
+            assert b"Mozilla Public License Version 2.0" in license_text
+            assert b"Graziano Guiducci" in archive.read("NOTICE_ORIGINALE.md")
+            assert b"MetaEditor 1.0 RC" in archive.read("CREDITI_E_CONDIZIONI.txt")
             hashes = manifest["files_sha256"]
             assert set(hashes) == names - {MANIFEST}
             for name, digest in hashes.items():
