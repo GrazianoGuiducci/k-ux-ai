@@ -1,5 +1,11 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — MetaEditor 1.0: un percorso di chiusura, due prodotti distinti
+
+**Decisione di perimetro:** [METAEDITOR_1_0_RELEASE_CONTRACT.md](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) definisce otto percorsi per un editor locale di pagine HTML statiche da quattro template, e delimita ciò che passa a versioni successive. MetaCanvas `ccm.document.v1` resta distinto e già pubblico, ma **non ancora chiuso**: la correzione candidata della proiezione di link privati Studio21 richiede release IT/EN e readback separati, non nuove funzioni.
+
+**Prove prodotto:** `1.0.0-rc.1` ha uno ZIP unico e un manifest di integrità per i file distribuiti; test deterministico di due build. [CI 45168573050](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45168573050) **5/5 job verdi**, inclusi Windows Chrome `file://`, Linux Chrome, Studio21, MAIOS live source-identical e contratti; artefatto `metaeditor-1-0-rc1` ID `14815467429`. Restano collaudo umano integrato, packaging/licenze finale e decisione dell'owner di pubblicazione. Niente merge né interventi produttivi; [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) draft.
+
 ## 23 novembre — Gate B composizioni miste: capacità risolta entro perimetro
 
 La [CI 45153539786](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45153539786) è verde in tutti e quattro i job: sulla nuova fixture con card composte, readonly/inert, link e immagini autoriali, è stata provata la protezione dei referenti originali, il posizionamento dei nuovi blocchi, identità proprie nel work/history, file riaperti, clean export e Undo al sorgente. L'owner ha distinto `contenteditable=false` dell'autore (da preservare) dallo stato di editing temporaneo (da eliminare), e introdotto ID interni che permettono storia corretta anche per nodi identici. Il [run successivo 45153723331](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45153723331) è anch'esso verde nei quattro job e include la distinzione degli ID per duplicazioni media con Undo. Nessuna conclusione di supporto universale HTML, editor CMS, sicurezza generale o Windows. PR #2 draft, sito e asset pubblici invariati.
