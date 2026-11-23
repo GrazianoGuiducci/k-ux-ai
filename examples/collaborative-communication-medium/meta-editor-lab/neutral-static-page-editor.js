@@ -164,10 +164,14 @@
       return section ? [...section.querySelectorAll('h1,h2,h3,h4,h5,h6,p,blockquote')]
         .filter(node => flowChild(node, section)) : [];
     }
+    let explicitAnchorNode = null;
     function refreshAnchors() {
       const section = sectionRoots()[Number(selector.value)];
       const candidates = anchorCandidates(section);
-      const former = anchorPicker.value;
+      // Preserve identity, not an array index: adding a block before an
+      // anchor must not silently redirect the next operation elsewhere.
+      if (explicitAnchorNode && !candidates.includes(explicitAnchorNode))
+        explicitAnchorNode = null;
       anchorPicker.replaceChildren();
       const automatic = doc.createElement('option');
       automatic.value = '';
@@ -180,17 +184,13 @@
         option.textContent = (index+1)+'. '+node.localName.toUpperCase()+' · '+(preview||'Senza testo');
         anchorPicker.append(option);
       });
-      if (former && [...anchorPicker.options].some(x=>x.value===former)) {
-        anchorPicker.value = former;
-      }
+      const current = explicitAnchorNode ? candidates.indexOf(explicitAnchorNode) : -1;
+      anchorPicker.value = current >= 0 ? String(current) : '';
       return candidates;
     }
     function chosenAnchor(section) {
-      const value = anchorPicker.value;
-      if (value === '') return null;
-      const index = Number(value);
-      const candidates = anchorCandidates(section);
-      return Number.isInteger(index) && index >= 0 ? candidates[index] || null : null;
+      return explicitAnchorNode && flowChild(explicitAnchorNode, section) ?
+        explicitAnchorNode : null;
     }
     function refreshSections() {
       const former = selector.value;
@@ -335,7 +335,7 @@
       if (!section) return null;
       const mode = placementPicker.value === 'before' ? 'before' : 'after';
       const explicit = chosenAnchor(section);
-      if (anchorPicker.value !== '') {
+      if (explicitAnchorNode) {
         // An explicit but stale reference must not silently fall back to a
         // different card; it is a request to reselect a valid destination.
         return flowChild(explicit, section) ?
@@ -534,7 +534,7 @@
         if (!next) return {ok:false,reason:'invalid destination'};
         // A transfer to the current section is a no-op, not an opportunity
         // to silently relocate an existing block across grid/layout groups.
-        if (next.contains(node) && anchorPicker.value === '') return {ok:true,changed:false};
+        if (next.contains(node) && !explicitAnchorNode) return {ok:true,changed:false};
         const point = insertionPoint(next, false);
         if (!point) return {ok:false,reason:'Destinazione non univoca: scegli un riferimento preciso.'};
         if (point.reference === node || node.contains(point.reference) ||
@@ -647,8 +647,16 @@
     }
 
     selector.addEventListener('change', () => {
-      anchorPicker.value = '';
+      explicitAnchorNode = null;
       refreshAnchors();
+    });
+    anchorPicker.addEventListener('change', () => {
+      const value = anchorPicker.value;
+      const section = sectionRoots()[Number(selector.value)];
+      const candidates = anchorCandidates(section);
+      const index = value === '' ? -1 : Number(value);
+      explicitAnchorNode = Number.isInteger(index) && index >= 0 ?
+        candidates[index] || null : null;
     });
     imageFileInput.addEventListener('change', async () => {
       const file = imageFileInput.files?.[0];
