@@ -1,5 +1,15 @@
 # MetaEditor Evolution — guida viva
 
+## 23 novembre — Competenza di chiusura: dal prototipo aperto al prodotto verificabile
+
+**Problema corretto:** aggiungere una possibilità a ogni iterazione rendeva il traguardo MetaEditor mobile, pur con test verdi. L'operatore chiede una **forma finita**, specificando che la sua responsabilità saranno test *d'uso*, non di regression tecnica. La risposta competente è determinare la prima versione sul portatore che possiede già i gesti necessari, non aumentare indiscriminatamente i pulsanti.
+
+**Contratto owner-native:** [MetaEditor 1.0](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) è una distribuzione locale di editor per HTML statico da quattro template, con otto percorsi chiusi: scelta, testo, link, immagini locali, composizione bounded, protezione, history, work/export. Tutto il resto — HTML/CMS universale, scene, cloud, editing completo di CSS e publish — passa a versioni future anziché riaprire 1.0 per inerzia. MetaCanvas non è assorbito da MetaEditor; la patch privata Studio21 è un proprio gate di release.
+
+**Metodo eseguibile:** un solo ZIP `1.0.0-rc.1` con entrypoint e manifest SHA-256, build deterministica; esercizio browser Linux e Windows `file://` in CI; un solo successivo collaudo d'uso sul PC dell'operatore, e release/merge/deploy soltanto come effetto distinto approvato dall'owner. [Actions 45168573050](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45168573050) ha **cinque job verdi**, compreso Windows runner; artefatto `metaeditor-1-0-rc1` ID `14815467429`. La prova di Chrome in CI è esercitata; la comprensione del flusso da parte di una persona reale è ancora **unknown**. Non chiedere nuove micro-prove manuali o generare pacchetti senza identità a ogni commit.
+
+**Apprendimento riusabile:** la profondità non consiste nell'aggiungere ancora un livello. Definire il contratto di release, congelare il perimetro e lasciare aperto soltanto ciò che blocca la versione è una trasformazione della competenza proprietaria. Una prova verde non trasferisce autorità sul sito o sulla pubblicazione.
+
 ## 23 novembre — Composizione mista: protezione dell'autore e identità degli elementi identici
 
 **Nuova differenza emersa dal test su card miste:** il controller era capace di inserire blocchi intorno a paragrafi, figure e link, ma i possibili riferimenti comprendevano ancora testi entro `contenteditable="false"` e i tasti ↑/↓ potevano scavalcare componenti autoriali. Il primo test con una fixture che preserva esplicitamente queste aree non montava l'editor: lo [source adapter](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/static-page-source-adapter.js) rifiutava per definizione ogni `contenteditable`, compreso `false`. Rimuovere la protezione per soddisfare il test avrebbe sostituito l'intento autoriale.
