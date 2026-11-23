@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Composizione controllata in card/grid: riferimento prima/dopo, non sezione soltanto
+
+**Causa e differenza:** con link e media già verificati, il limite successivo era il punto d'inserimento nei layout composti. La regola precedente trovava un titolo nella sezione, ma una sezione con più flussi indipendenti può contenere card distinte: appartenenza alla `section` e allineamento non provano il referente corretto. Il controller neutro ha acquisito un `Posizionamento preciso` opzionale che sceglie un elemento testuale interno al gruppo di destinazione e la relazione prima/dopo; il referente persiste come identità DOM, non indice. Se auto-destinazione ha più gruppi senza selezione o riferimento autoriale, viene rifiutata senza mutazione; non si inventa una scelta.
+
+**Prova:** [CI 45149431000](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45149431000) quattro job verdi, tra cui [nested-layout.browser.py](../../tests/metaeditor-nested-layout.browser.py) su 4 card CSS grid, file `file://`, 1440/390: ambiguità rifiutata senza history, inserimento prima di scheda D, spostamento dopo scheda C della stessa sezione, poi scheda B di sezione diversa, Undo/Redo, clean export e Undo totale byte-identico. Regressioni già precedenti e MAIOS live source-identical verdi. Nessun contenuto privato importato, nessuna copia pubblicata, PR #2 draft.
+
+**Prossimo discriminante:** controllare con esempi rappresentativi di composizioni più reali (es. cards con elementi protetti e layout misti) quando la destinazione è realmente supportata, senza promuovere per analogia il prodotto a editor HTML universale. Non chiedere nuovi test manuali prima che il candidato raggiunga una forma abbastanza completa.
+
 ## 23 novembre — Blocchi link e immagini nel portatore neutro; nessun collaudo umano richiesto
 
 Dal checkpoint precedente sulla sicurezza dell'incolla il passo è proseguito sulla **completezza del documento**. Ora [neutral-static-page-editor.js](meta-editor-lab/neutral-static-page-editor.js) crea o aggiorna link semplici validando HTTP(S), mailto, tel e frammenti `#id` reali; incorpora PNG/JPEG/WebP/GIF dal computer (firma, limite, decode, alt) come data URI, rifiutando SVG e remoto. Figura, link, selezione, trasferimento, Undo/Redo, file lavoro e clean export condividono lo stesso owner. La descrizione alt può essere aggiornata; una didascalia indipendentemente editata non viene riscritta.
