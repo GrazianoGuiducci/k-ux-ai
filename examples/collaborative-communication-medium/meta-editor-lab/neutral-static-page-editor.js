@@ -22,8 +22,13 @@
     const allowedMain = doc.querySelectorAll('main');
     if (allowedMain.length !== 1) fail('exactly one main required');
     const sectionRoots = () => [...main.querySelectorAll(':scope > section, :scope > article > section')];
+    // Authored non-editable/inert islands are outside every editing action,
+    // including selection, precise placement and work-history transfers.
+    const protectedIsland = node => !!node?.closest(
+      '[contenteditable="false"],[inert],form,nav,aside,script,style,template,dialog'
+    );
     const safeNode = node => node && main.contains(node) && node.matches(SELECTABLE) &&
-      !node.closest('[contenteditable="false"],form,nav,aside,script,style');
+      !protectedIsland(node);
     let selected = null, editing = null, beforeTyping = null;
     let history = [], future = [];
     let dirty = false;
@@ -263,7 +268,14 @@
       button('bold').disabled = !isEditing;
       button('italic').disabled = !isEditing;
       button('edit').textContent = isEditing ? 'Termina modifica' : 'Modifica testo';
-      for (const action of ['up','down','transfer','duplicate','delete']) button(action).disabled = !movable;
+      for (const action of ['transfer','duplicate','delete']) button(action).disabled = !movable;
+      // Quick arrows reorder only adjacent editor-owned blocks. Passing an
+      // authored media, link, figure or protected widget needs an explicit
+      // destination reference instead of silently crossing its boundary.
+      button('up').disabled = !movable ||
+        !selected.previousElementSibling?.hasAttribute('data-local-block');
+      button('down').disabled = !movable ||
+        !selected.nextElementSibling?.hasAttribute('data-local-block');
       button('undo').disabled = history.length === 0;
       button('redo').disabled = future.length === 0;
       button('insert-p').disabled = sectionRoots().length === 0;
@@ -327,9 +339,10 @@
     function flowChild(node, section) {
       const parent = node?.parentElement;
       return !!(node && parent && section.contains(node) &&
-        node.matches(flowTags) &&
+        node.matches(flowTags) && !protectedIsland(node) &&
         ['div','section','article'].includes(parent.localName) &&
-        !parent.closest('nav,aside,form,figure,ul,ol,table'));
+        !parent.closest('figure,ul,ol,table,details') &&
+        !node.closest('figure,ul,ol,table,details'));
     }
     function insertionPoint(section, useSelection = true) {
       if (!section) return null;
@@ -547,10 +560,10 @@
           notify('Blocco trasferito nel contenitore testuale di destinazione.');
         });
       }
-      if (action === 'up' && node.previousElementSibling) {
+      if (action === 'up' && node.previousElementSibling?.hasAttribute('data-local-block')) {
         return transact(() => node.parentElement.insertBefore(node, node.previousElementSibling));
       }
-      if (action === 'down' && node.nextElementSibling) {
+      if (action === 'down' && node.nextElementSibling?.hasAttribute('data-local-block')) {
         return transact(() => node.parentElement.insertBefore(node.nextElementSibling, node));
       }
       return {ok:true,changed:false};
