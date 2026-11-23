@@ -1,5 +1,9 @@
 # MetaEditor Evolution — guida viva
 
+## 23 novembre — Dal prodotto incompleto alla release candidate finita
+
+L'operatore richiede che i suoi test siano **d'uso** e che il progetto trovi una forma definita. La [specifica owner-native MetaEditor 1.0](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) fissa otto percorsi, esclude nuovi sviluppi non necessari e concentra il rilascio in uno ZIP verificato `1.0.0-rc.1`, con licenza, crediti e SHA-256. [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) 5/5 verde su Linux/Windows Chrome e precedenti regressioni; non equivale a prova d'uso sul PC personale. **Non aggiungere funzioni per inerzia**: il prossimo passaggio è un unico collaudo d'uso; soltanto errori che impediscono percorsi dichiarati possono riaprire codice. Merge/deploy e MetaCanvas privacy patch rimangono decisioni owner distinte.
+
 ## 23 novembre — Competenza di chiusura: dal prototipo aperto al prodotto verificabile
 
 **Problema corretto:** aggiungere una possibilità a ogni iterazione rendeva il traguardo MetaEditor mobile, pur con test verdi. L'operatore chiede una **forma finita**, specificando che la sua responsabilità saranno test *d'uso*, non di regression tecnica. La risposta competente è determinare la prima versione sul portatore che possiede già i gesti necessari, non aumentare indiscriminatamente i pulsanti.
