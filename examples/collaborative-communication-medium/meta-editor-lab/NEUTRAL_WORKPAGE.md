@@ -1,5 +1,11 @@
 # MetaEditor — Neutral Static Workpage (candidate, 22 November 2026)
 
+## 23 November — Explicit link and embedded local-image composition
+
+The neutral static workpage now supports safe simple links (new local paragraph or update existing unstructured anchor) and local images only: PNG/JPEG/WebP/GIF file selection, signature/decode, max 1.5 MiB and bounded pixel dimensions, required alt text and a visible caption. A selected newly inserted figure can have its alt updated without rewriting an independently modified caption. Images embed directly as `data:image/...;base64`; they do not reference local `file://` paths, remote image URLs or unsupported SVG. Added figures are editor-owned blocks for native movement/duplicate/delete/Undo/Redo. Both editable work and clean exported HTML retain embedded bytes; only the work copy retains editor metadata. Malformed/forbidden URLs and unsupported files are rejected without a document change.
+
+[Browser regression](../../../tests/metaeditor-neutral-media-links.browser.py) runs against two supported local `file://` HTML topologies at 1440/390 with rejected URL/SVG, valid links/PNG, accessible alt changes, media transfer, three-stage history and work/clean reopen; [Actions 45135851508](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45135851508). The supported input set is intentionally narrow: this is not a general HTML importer, remote media manager or proof of complete Windows accessibility.
+
 ## 23 November — Template-first entry for non-expert authors
 
 The bounded neutral editor remains unchanged as a workpage controller. A separate [beginner chooser](starter-templates/README.md) now supplies four **synthetic, trusted static HTML source templates** and uses the existing builder to prepare individually editable files. The launcher is HTML-only, does not replace any already open document, and offers a recommended introductory page plus project, article and almost-empty options. MetaCanvas `metacanvas.templates.v1` scene templates are not interchangeable with these source HTML files. The [CI 45124239776](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45124239776) exercised chooser-to-work-to-save/reopen/clean-export/Undo for all models over real Linux Chrome `file://` at two widths. Human Windows usability remains unverified; no site deployment.
