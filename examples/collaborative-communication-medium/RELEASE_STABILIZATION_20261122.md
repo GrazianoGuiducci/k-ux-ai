@@ -1,5 +1,11 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — Rettifica della dichiarazione di prontezza MetaEditor 1.0
+
+Il feedback d'uso dell'operatore rende **non più valida** la conclusione che la RC neutra avesse raggiunto la forma di prodotto desiderata. Le regressioni CI di MetaEditor, inclusi Windows Chrome, source fidelity, link/media e layout supportati, restano prove di un **laboratorio tecnico**. Non attestano selezione e modifica realmente visuali, gestione organica di sezioni/dimensioni/colori, composizione e template riutilizzabili già visibili nei portatori Bridge11 e Studio20.
+
+Rif. [riesame di prodotto](meta-editor-lab/PRODUCT_REALIGNMENT_20261123.md), [contratto ridotto superseduto](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md). Il nuovo gate non è «un unico collaudo sulla RC1», ma la costruzione e dimostrazione di una superficie visuale coerente con la competenza owner-native MetaEditor Evolution, conservando ogni buon test nei suoi confini. La PR #2 rimane draft; MetaCanvas Studio21 privacy RC1 è un effetto distinto, non la soluzione a questo problema di usabilità. Nessun deploy.
+
 ## 23 novembre — Decisione di chiusura tecnica MetaEditor 1.0
 
 [Contratto di prodotto](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md): otto percorsi, quattro template, nessun nuovo scope per inerzia. Pacchetto `metaeditor-1-0-rc1` ID `14816910606` con licenza MPL-2.0 e manifest SHA-256, doppia build riproducibile; [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) **5/5 verde**, incluso Windows Chrome `file://`. **In attesa soltanto del test umano d'uso e di una distinta decisione di rilascio**, senza mergiare la PR o modificare il sito. MetaCanvas rimane un altro prodotto: privacy patch Studio21 candidata, non ancora pubblicata con readback IT/EN.
