@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 23 novembre — Posizionamento preciso nei layout annidati, CI verde
+
+**Nuovo portatore candidato:** [neutral-static-page-editor.js](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js) distingue la `section` dal gruppo di testo effettivo e permette di scegliere un riferimento prima/dopo tramite `Posizionamento preciso`. La scelta rimane nascosta sotto un `details` finché serve; viene conservata per identità del nodo, non per indice che può spostarsi. I flussi multipli senza referente autoriale o selezione sicura vengono rifiutati, senza cambiare documento o history. Inserimento, link, immagine e trasferimento usano il medesimo posizionamento; una scheda della stessa sezione può essere nuova destinazione esplicita.
+
+**Evidenza:** [CI 45149431000](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45149431000) quattro job verdi, incluso [test nested grid](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-nested-layout.browser.py) su fixture sintetica con quattro schede, viewport 1440/390 e URL `file://`: rifiuto dell'ambiguo, prima/dopo sul card corretto, stesso/altra sezione, Undo/Redo, clean HTML e pieno ritorno ai byte originali. Regressioni su Studio21, altri HTML statici e pagina MAIOS reale source-identical rimangono verdi. Non certifica HTML/CSS arbitrario, Chrome Windows fisico, accessibilità completa o release.
+
+**Stato e direzione:** [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) draft; `maios_it/main` e pubblicazione invariati. L'operatore ha differito i test manuali fino a un prodotto più completo. Resta da valutare il campo di possibilità di layout/template realmente supportati e la futura verifica umana del flusso, senza indurre a nuovi micro-test. Il metodo è in [GUIDE](GUIDE.md).
+
 ## 23 novembre — Link e immagini incorporati: candidato HTML neutro
 
 **Nuove capacità nel ramo [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2):** creazione di link come blocchi HTML e aggiornamento di link semplici esistenti, con schema sicuro e ancore locali esistenti; importazione di PNG/JPEG/WebP/GIF locali verificati, con firma/decodifica/limite 1,5 MiB, incorporati come data URI, alt e didascalia. SVG, indirizzi immagine remoti e URL di collegamento pericolosi non sono accettati. Figura e link usano selezione, storia, spostamento, salvataggio e export del documento; la descrizione accessibile resta distinta dalla didascalia editata.
