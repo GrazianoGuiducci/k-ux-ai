@@ -467,7 +467,7 @@
         notify('Posiziona il cursore nel testo prima di incollare.');
         return;
       }
-      const plain = raw.replace(/\\r\\n?|\\n/g, ' ');
+      const plain = raw.replace(/\r\n?|\n/g, ' ');
       // execCommand inserts text as a native editing action and preserves
       // selection/caret behavior; the source/history adapter remains owner.
       if (!doc.execCommand('insertText', false, plain)) {
