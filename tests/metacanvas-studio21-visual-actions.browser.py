@@ -63,6 +63,10 @@ def exercise(browser, name, width, html):
     try:
         page.goto("https://studio21.invalid/visual-r1",wait_until="domcontentloaded")
         page.locator("#canvas .node[data-id='d1-h']").wait_for(state="visible",timeout=15000)
+        intro=page.locator("#publicFirstUse").inner_text()
+        assert ("Click an object" if name.endswith("_EN.html") else "Clicca un oggetto") in intro, (
+            name,width,"direct editing entry instructions are not visible"
+        )
         assert page.locator("#me-visual-actions").count()==0 or page.locator("#me-visual-actions").is_hidden()
         bar=select(page)
         en=name.endswith("_EN.html")
