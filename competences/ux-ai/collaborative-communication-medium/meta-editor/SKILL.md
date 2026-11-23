@@ -3,7 +3,7 @@ name: meta-editor-evolution
 description: Formare ed evolvere il MetaEditor di MetaCanvas come capacità riusabile di modifica diretta, composizione e trasformazione documentale per pagine web e presentazioni; attivare quando il gesto, l'architettura o la fedeltà dell'editing richiedono costruzione o correzione.
 owner: GrazianoGuiducci/k-ux-ai
 parent: competences/ux-ai/collaborative-communication-medium
-status: candidate-with-neutral-lab01-observed-2026-11-16
+status: active-visual-product-realignment-2026-11-23
 ---
 
 # MetaEditor Evolution — competenza di costruzione ed evoluzione
@@ -12,6 +12,12 @@ status: candidate-with-neutral-lab01-observed-2026-11-16
 Questa competenza è il **saper formare, esercitare e migliorare l'editor** con cui l'operatore costruisce oggetti, testo, diagrammi, sezioni e documenti. MetaCanvas è il prodotto/medium; MetaEditor è una facoltà specializzata del [Collaborative Communication Medium](../SKILL.md), dentro K-UX-AI. Non è un nuovo kernel, un agente autonomo, un rifacimento indiscriminato delle pagine o la promessa di adattarsi a qualsiasi sito.
 
 Il gesto umano è il referente operativo: seleziono un oggetto, modifico **sul posto** la parola, sposto, duplico, compongo e salvo; il sistema conserva identità, relazioni, differenza e possibilità di tornare indietro. Le capacità di pagina e di presentazione possono condividere interazione, storia, componenti e conoscenza, senza supporre che DOM responsive e scene 16:9 siano lo stesso documento.
+
+## 23 novembre — Ingresso vincolante: la validazione del sottoinsieme non sostituisce il prodotto
+
+**Correzione dall'uso:** il laboratorio neutro HTML `1.0.0-rc.1` ha prove tecniche verdi, ma **non** raggiunge la facilità e la composizione visuale dell'editor di cui questa competenza è proprietaria. L'operatore ha segnalato che è ancora poco utilizzabile e che non riconosce gli sviluppi originari. **Non routare richieste di sviluppo o rilascio del MetaEditor al solo RC neutro perché possiede CI e artifact.** Prima di determinare il prossimo movimento, confrontare il [riesame di prodotto](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/PRODUCT_REALIGNMENT_20261123.md) con il portatore owner-native [Bridge11](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/CURRENT.html) e [MetaCanvas Studio20](https://github.com/GrazianoGuiducci/k-ux-ai/blob/main/examples/collaborative-communication-medium/AI_Collaboration_Studio.html). Questa è una **correzione di ingresso/attivazione di sapere già presente in questa SKILL**, non un nuovo obiettivo inventato.
+
+Il gesto diretto, la forma del documento, il controllo visivo, le possibilità di composizione e il riuso dei template vengono **prima** di dichiarare un prodotto pronto. Preservare la distinzione fra HTML DOM di pagina e scene MetaCanvas, e riusare le loro capacità possedute invece di costruire un terzo editor ridotto. Le verifiche source/Undo/export del laboratorio restano disponibili per i portatori coerenti; non definiscono da sole la riuscita del prodotto. Gli eventuali test richiesti all'operatore sono **d'uso**, non QA tecnica.
 
 ## 21 novembre — Artefatto operativo raggiungibile dalle attività
 
