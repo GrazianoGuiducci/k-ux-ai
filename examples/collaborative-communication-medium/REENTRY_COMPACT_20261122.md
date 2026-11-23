@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Blocchi link e immagini nel portatore neutro; nessun collaudo umano richiesto
+
+Dal checkpoint precedente sulla sicurezza dell'incolla il passo è proseguito sulla **completezza del documento**. Ora [neutral-static-page-editor.js](meta-editor-lab/neutral-static-page-editor.js) crea o aggiorna link semplici validando HTTP(S), mailto, tel e frammenti `#id` reali; incorpora PNG/JPEG/WebP/GIF dal computer (firma, limite, decode, alt) come data URI, rifiutando SVG e remoto. Figura, link, selezione, trasferimento, Undo/Redo, file lavoro e clean export condividono lo stesso owner. La descrizione alt può essere aggiornata; una didascalia indipendentemente editata non viene riscritta.
+
+**Prova:** [CI 45135851508](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45135851508), [nuovo test](../../tests/metaeditor-neutral-media-links.browser.py) su 2 strutture × 1440/390 file `file://`, incluse operazioni rifiutate senza mutazione, link originale aggiornato, PNG incorporato, update alt, trasferimento fra sezioni, tre Undo/Redo fino all'inserimento originale, lavoro riaperto e clean senza UI. La prima verifica ampliata usava assunzioni obsolete sulla storia (un Undo dopo trasferimento non elimina l'immagine): corretto il test, non il comportamento. Studio21, siti e asset pubblici rimangono distinti; PR #2 draft.
+
+**Restano differenze sostanziali:** media più complessi, riuso e layout nelle pagine reali, accessibilità/paste fisica e packaging/rilascio. Nessun nuovo ZIP o richiesta di prova all'operatore fino a un prodotto più maturo.
+
 ## 23 novembre — Nessuna prova manuale richiesta fino a prodotto più maturo
 
 **Nuova direzione esplicita dell'operatore:** «Farò dei test quando avremo un prodotto abbastanza valido. Andiamo avanti». Non ripresentare ogni artefatto Windows chiedendo micro-verifiche; usare competenza, evidenze e test browser per costruire un risultato di qualità più completo prima del successivo passaggio umano.
