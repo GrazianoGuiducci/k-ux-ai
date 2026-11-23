@@ -45,7 +45,8 @@
       "<button data-me-action=\"link\" type=\"button\">Inserisci collegamento</button></details>" +
       "<details class=\"me-neutral-group\" id=\"me-neutral-image-group\"><summary>Inserisci immagine dal computer</summary>" +
       "<label for=\"me-neutral-image-alt\">Descrizione dell’immagine</label><input id=\"me-neutral-image-alt\" type=\"text\" maxlength=\"160\" placeholder=\"Che cosa rappresenta?\">" +
-      "<label for=\"me-neutral-image-file\">File PNG, JPEG, WebP o GIF (max 1,5 MB)</label><input id=\"me-neutral-image-file\" type=\"file\" accept=\"image/png,image/jpeg,image/webp,image/gif\"></details>" +
+      "<label for=\"me-neutral-image-file\">File PNG, JPEG, WebP o GIF (max 1,5 MB)</label><input id=\"me-neutral-image-file\" type=\"file\" accept=\"image/png,image/jpeg,image/webp,image/gif\">" +
+      "<button data-me-action=\"image-alt\" type=\"button\" hidden>Aggiorna descrizione immagine</button></details>" +
       "<details class=\"me-neutral-group\" data-me-group=\"block\" hidden><summary>Gestisci blocco aggiunto</summary>" +
       "<p>Lo spostamento usa la sezione scelta sopra.</p>" +
       "<div class=\"me-neutral-actions\"><button data-me-action=\"up\">↑ Sposta</button><button data-me-action=\"down\">↓ Sposta</button><button data-me-action=\"transfer\">Sposta a sezione</button><button data-me-action=\"duplicate\">Duplica</button><button data-me-action=\"delete\">Elimina blocco</button></div></details>" +
@@ -94,6 +95,8 @@
     const linkButton = toolbar.querySelector('[data-me-action="link"]');
     const imageFileInput = toolbar.querySelector('#me-neutral-image-file');
     const imageAltInput = toolbar.querySelector('#me-neutral-image-alt');
+    const imageAltButton = toolbar.querySelector('[data-me-action="image-alt"]');
+    const imageGroup = toolbar.querySelector('#me-neutral-image-group');
     const contextLine = toolbar.querySelector('#me-neutral-context');
     const editGroup = toolbar.querySelector('[data-me-group="edit"]');
     const formatGroup = toolbar.querySelector('[data-me-group="format"]');
@@ -196,6 +199,10 @@
           linkUrlInput.value = selected.getAttribute('href') || '';
           linkGroup.open = true;
         }
+        if (selected.matches('figure[data-local-block]')) {
+          imageAltInput.value = selected.querySelector('img')?.alt || '';
+          imageGroup.open = true;
+        }
         const section = sectionRoots().findIndex(section => section.contains(selected));
         if (section >= 0) selector.value = String(section);
       }
@@ -227,6 +234,7 @@
       const sectionName = section>=0 ? selector.options[section]?.textContent || '' : '';
       linkButton.textContent = active && selected.matches('a') ?
         'Aggiorna collegamento' : 'Inserisci collegamento';
+      imageAltButton.hidden = !(active && selected.matches('figure[data-local-block]'));
       contextLine.textContent = isEditing ?
         'Modifica in corso: '+heading+' · termina la modifica prima di cambiare blocco.' :
         active ? (movable?'Blocco aggiunto: ':'Testo selezionato: ')+heading+
@@ -437,6 +445,27 @@
         insertAtPoint(figure,point);
         select(figure);
         notify('Immagine locale incorporata. Salva il lavoro per conservarla.');
+      });
+    }
+    function updateImageDescription() {
+      leaveEditing();
+      if (!selected?.matches('figure[data-local-block]') || !selected.isConnected)
+        return {ok:false,reason:'Seleziona un’immagine aggiunta dall’editor.'};
+      const description = imageAltInput.value.trim();
+      if (!description || description.length > 160)
+        return {ok:false,reason:'La descrizione dell’immagine non può essere vuota.'};
+      const figure = selected;
+      const img = figure.querySelector(':scope > img');
+      const caption = figure.querySelector(':scope > figcaption');
+      if (!img) return {ok:false,reason:'Figura priva di immagine gestibile.'};
+      return transact(() => {
+        const oldAlt = img.alt;
+        img.alt = description;
+        // If an author has edited the caption independently, preserve it:
+        // the accessible alt and the visible caption have distinct meaning.
+        if (caption && caption.textContent === oldAlt) caption.textContent = description;
+        select(figure);
+        notify('Descrizione accessibile aggiornata. Annulla e Ripristina disponibili.');
       });
     }
     function move(action) {
@@ -698,7 +727,7 @@
       const results = {
         edit: edit, bold: () => format('bold'), italic: () => format('italic'),
         'insert-p': () => insert('p'), 'insert-h': () => insert('h3'),
-        link: linkAction,
+        link: linkAction, 'image-alt': updateImageDescription,
         up: () => move('up'), down: () => move('down'), transfer: () => move('transfer'),
         duplicate: () => changeAddedBlock('duplicate'), delete: () => changeAddedBlock('delete'),
         undo, redo,
@@ -717,7 +746,7 @@
     return Object.freeze({
       status: () => Object.freeze({carrier:'static-page',regions:sectionRoots().length,dirty,
                                     canUndo:history.length>0,canRedo:future.length>0}),
-      select, edit, format, insert, move, linkAction, addLocalImage, changeAddedBlock, undo, redo, cleanHtml, workHtml,
+      select, edit, format, insert, move, linkAction, addLocalImage, updateImageDescription, changeAddedBlock, undo, redo, cleanHtml, workHtml,
       toolbar, main
     });
   }
