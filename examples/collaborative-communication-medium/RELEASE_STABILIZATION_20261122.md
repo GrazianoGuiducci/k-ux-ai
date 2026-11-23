@@ -1,5 +1,11 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — Starter chooser: avvio utilizzabile, release separata
+
+L'ingresso del MetaEditor neutro non è più una singola pagina campione. [Starter chooser](meta-editor-lab/starter-templates/README.md) genera una selezione di quattro modelli HTML (essenziale, progetto, articolo, minima), ognuno come workpage autonoma. Il riuso riguarda il principio di scelta, non una conversione da `metacanvas.templates.v1` di Studio21. [CI 45124239776](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45124239776) quattro job verdi, fra cui test `file://` con link reali, editing, work save/reopen, clean export, Undo e originali immutati su tutti i modelli a 1440/390. Il pacchetto è `metaeditor-template-starter-pack` ID `14795300603`.
+
+**Blocco ancora aperto:** accettazione su PC Windows e comprensione della prima scelta da parte dell'operatore; accessibilità, paste safety, HTML fiduciato e packaging pubblico. Il candidato non modifica gli asset pubblici né il sito. Gate B non chiuso, [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) ancora draft.
+
 ## 22 novembre — Progressive disclosure del MetaEditor: gate UX candidato
 
 [Controller neutro](meta-editor-lab/neutral-static-page-editor.js) e [test browser](../../tests/metaeditor-neutral-static-page.browser.py) aggiornati: il pannello mostra i comandi solo quando hanno un referente esercitabile, mantiene persistenti le azioni sul documento, usa stato contestuale e toggle senza mutare la sorgente, conclude l'editing da comando e Escape. [CI 45066893656](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) con quattro job verdi (compresa pagina MAIOS originale letta in sola lettura). L'[artefatto Windows v3](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45066893656) permette la prova reale ma **non è una ricevuta di accettazione umana**. Non è una conferma di accessibilità completa o sanitizzazione clipboard. Nessun merge/deploy; PR #2 draft.
