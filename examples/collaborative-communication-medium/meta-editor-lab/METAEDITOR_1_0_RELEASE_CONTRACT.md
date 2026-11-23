@@ -12,6 +12,8 @@ La forma della prima versione è **un solo ZIP versione 1.0 con entrypoint, quat
 
 **MetaCanvas è un prodotto distinto**, rivolto a scene e presentazioni `ccm.document.v1` e template `metacanvas.templates.v1`. I cinque asset MetaCanvas già pubblicati rimangono invariati durante la chiusura di MetaEditor. Non serve convertire scene MetaCanvas in HTML per dichiarare riuscita questa release.
 
+**La chiusura di MetaCanvas ha un unico problema di rilascio separato già individuato:** Studio21 originale IT/EN può includere un collegamento marcato `private:true` nelle proiezioni pubbliche se collega due nodi pubblici. La [regressione browser](../../../tests/metaeditor-studio21-privacy.browser.py) e il [builder candidato](../../../tools/build_studio21_public_projection.py) caratterizzano e correggono il difetto nella candidata; la **pubblicazione degli asset corretti e il readback del sito** sono ancora un effetto distinto. Per chiudere MetaCanvas non serve creare nuove funzioni: serve applicare e verificare la correzione nelle copie versionate IT/EN con decisione dell'owner del sito. Fino ad allora non dichiarare MetaCanvas completamente chiuso.
+
 ## 2. Funzioni comprese, congelate per la 1.0
 
 | Percorso | Risultato minimo che deve funzionare |
