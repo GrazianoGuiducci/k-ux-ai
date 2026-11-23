@@ -731,7 +731,10 @@
       }
     });
     main.addEventListener('click', event => {
-      const node = event.target.closest(SELECTABLE);
+      // The image and its visible caption form one editor-owned component.
+      // One click selects the figure; double click still edits figcaption.
+      const node = event.target.closest('figure[data-local-block]') ||
+        event.target.closest(SELECTABLE);
       if (!node || !safeNode(node)) return;
       if (event.target.closest('a')) event.preventDefault();
       select(node);
