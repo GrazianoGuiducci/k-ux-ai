@@ -1,5 +1,9 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — Editing sicuro nel perimetro: CI verde, esperienza umana differita
+
+Dopo l'introduzione della scelta template, l'operatore ha chiesto di continuare senza testare manualmente ogni candidata. La modifica al [controller neutro](meta-editor-lab/neutral-static-page-editor.js) riguarda dati incollati, integrità dei blocchi e salvataggio: solo testo semplice da clipboard, rifiuto drop e Enter che cambia la struttura, `Ctrl+S` al formato lavoro, indicatore di modifiche pendenti e Undo che riporta all'origine. [CI 45133248996](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45133248996) quattro job verdi, con prove `file://` su paste/drop sintetici e **download reali di entrambi i file** su ciascun modello; prove Studio21 e MAIOS live ancora verdi. Non si confondano download richiesto e scrittura durabile, né test Linux di clipboard sintetico e prova fisica Chrome Windows. **Gate B ancora parziale, nessun deploy e PR #2 draft.**
+
 ## 23 novembre — Starter chooser: avvio utilizzabile, release separata
 
 L'ingresso del MetaEditor neutro non è più una singola pagina campione. [Starter chooser](meta-editor-lab/starter-templates/README.md) genera una selezione di quattro modelli HTML (essenziale, progetto, articolo, minima), ognuno come workpage autonoma. Il riuso riguarda il principio di scelta, non una conversione da `metacanvas.templates.v1` di Studio21. [CI 45124239776](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45124239776) quattro job verdi, fra cui test `file://` con link reali, editing, work save/reopen, clean export, Undo e originali immutati su tutti i modelli a 1440/390. Il pacchetto è `metaeditor-template-starter-pack` ID `14795300603`.
