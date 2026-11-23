@@ -1,5 +1,15 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Dalla pagina di prova all'ingresso per modelli
+
+**Nuova differenza dall'operatore:** «se non mi dai un template da selezionare anche partire direttamente da uno a vuoto è piuttosto difficile per chi prende confidenza». Non è una richiesta di nuovi strumenti d'impaginazione, né l'autorizzazione a sostituire un lavoro già aperto: manca una **scelta iniziale comprensibile**.
+
+**Materializzato sul candidato PR #2:** [schermata di scelta](meta-editor-lab/starter-templates/Apri_MetaEditor.html) con quattro proposte originali e sintetiche — essenziale, progetto/servizio, articolo, pagina minima — e [builder di pacchetto](../../tools/build_metaeditor_starter_pack.py) che impiega il generatore neutro già verificato. Ogni scelta apre una **pagina di lavoro indipendente**, senza cambiare un altro file. Il modello originario, il lavoro da salvare e l'HTML pulito restano distinti. La collezione `metacanvas.templates.v1` delle scene Studio21 rimane altro formato e altro owner; non sono stati importati template di scene in HTML.
+
+**Prova:** [CI 45124239776](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45124239776) quattro job verdi, inclusi test di ingresso `file://` su tutte e quattro le scelte a 1440/390: modificare, inserire, salvare e riaprire, esportare, Undo esatto, file distribuito invariato. Lo ZIP `metaeditor-template-starter-pack` (artifact ID `14795300603`) è stato scaricato come `MetaEditor_Scegli_Modello.zip` e ispezionato: galleria, quattro workpage e LEGGIMI. La galleria è stata resa in Chromium tramite `set_content` senza errori; l'esercizio reale del pacchetto in Windows Chrome è ancora **non attestato**. Il Gate B resta parziale, PR draft, nessun deploy.
+
+**Prossimo movimento:** feedback sulla scelta del modello e sulla prima modifica, non nuove funzioni indeterminate; verificare se l'orientamento è sufficiente senza istruzioni aggiuntive e se serve una preview più fedele. La competenza owner-native MetaEditor Evolution GUIDE/CURRENT ha assimilato il metodo di ingresso.
+
 ## 22 novembre — UI contestuale: meno controlli permanenti, stessi oggetti di lavoro
 
 Dopo il difetto di posizionamento corretto sul candidato v2, il movimento successivo ha trattato l'orientamento dell'operatore nell'editor. Il pannello neutro precedente mostrava tutte le azioni e molte disabilitate. **Non sono state aggiunte nuove capacità sul documento**: in [neutral-static-page-editor.js](meta-editor-lab/neutral-static-page-editor.js) ora la modifica appare dopo selezione, il formato soltanto in editing, e le azioni sui blocchi sotto `Gestisci blocco aggiunto` solo per elementi inseriti dall'editor. La selezione mostra referente e sezione; il pannello si riduce con un toggle. `Termina modifica` ed Escape concludono l'editing senza riaprire il campo per un blur involontario. Salvataggio lavoro, export pulito e storia nativa sono sempre accessibili.
