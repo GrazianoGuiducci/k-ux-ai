@@ -52,7 +52,7 @@ def select(page, node_id="d1-h"):
     return bar
 
 
-def exercise(browser, name, width, html):
+def exercise(browser, name, width, html, screenshots=None):
     page=browser.new_page(viewport={"width":width,"height":850},accept_downloads=True)
     errors=[]
     page.on("pageerror",lambda error:errors.append(str(error)))
@@ -69,6 +69,12 @@ def exercise(browser, name, width, html):
         )
         assert page.locator("#me-visual-actions").count()==0 or page.locator("#me-visual-actions").is_hidden()
         bar=select(page)
+        if screenshots is not None:
+            screenshots.mkdir(parents=True,exist_ok=True)
+            page.screenshot(
+                path=str(screenshots / f"{Path(name).stem}-{width}-selected.png"),
+                full_page=False,
+            )
         en=name.endswith("_EN.html")
         label=bar.locator('[data-visual-action="text"]').inner_text()
         assert label==("Edit text" if en else "Modifica testo"),label
@@ -158,6 +164,7 @@ def main():
     p.add_argument("--source-root",type=Path,required=True)
     p.add_argument("--channel",default=None)
     p.add_argument("--chromium",default=None)
+    p.add_argument("--screenshot-dir",type=Path,default=None)
     args=p.parse_args()
     options={"headless":True,"args":["--no-sandbox"]}
     if args.channel:options["channel"]=args.channel
@@ -168,7 +175,7 @@ def main():
             for name in ("MetaCanvas_Studio21_Consulenza_IT.html","MetaCanvas_Studio21_Consulenza_EN.html"):
                 html=(args.source_root/name).read_text(encoding="utf-8")
                 for width in (1440,390):
-                    exercise(browser,name,width,html)
+                    exercise(browser,name,width,html,args.screenshot_dir)
         finally:
             browser.close()
 
