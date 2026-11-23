@@ -1,5 +1,11 @@
 # MetaEditor 1.0 — perimetro di chiusura e release candidate
 
+## Stato del primo candidato tecnico — 23 novembre 2026
+
+**A · Definizione:** otto percorsi funzionali e funzionalità escluse fissati qui sotto; non ampliare la 1.0 con nuove competenze non necessarie. **B · Pacchetto:** builder `tools/build_metaeditor_starter_pack.py` produce `1.0.0-rc.1` in uno ZIP deterministico, con `VERSIONE_E_FILE.json` e checksum SHA-256 per ciascuno dei sei file d'uso. I test confrontano due build byte per byte e verificano tutti gli hash. **C · Piattaforme:** [CI 45168573050](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45168573050), **5/5 job verdi**, compreso Chrome su Windows e Linux con `file://`; i test indipendenti Studio21 e MAIOS live sono verdi. Il pacchetto generato da quel run è l'artefatto `metaeditor-1-0-rc1` (ID `14815467429`), non un annuncio pubblico. **D · Uso umano:** non ancora esercitato; resta un solo percorso integrato sul PC dell'operatore quando scegliamo la candidata.
+
+**Lavoro rimasto per la decisione 1.0:** mantenere verde la CI su ogni correzione materiale, riesaminare packaging/licenze e guida d'uso, eseguire il singolo collaudo d'uso D e risolvere solo gli impedimenti emersi. Il test automatico Windows non chiude D. La patch privacy di MetaCanvas rimane un'altra linea di distribuzione.
+
 **Stato:** definizione di prodotto per il ramo candidato [K-UX-AI PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2). Non è un annuncio, un merge o una pubblicazione su MAIOS.it. Data di determinazione: 23 novembre 2026.
 
 ## 1. Che cos'è la 1.0
