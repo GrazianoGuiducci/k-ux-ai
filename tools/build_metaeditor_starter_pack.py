@@ -8,6 +8,8 @@ instructions. No MetaCanvas ccm.document.v1 templates are converted.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import tempfile
 import zipfile
 from pathlib import Path
@@ -22,6 +24,8 @@ TEMPLATES = {
 }
 ROOT = LAB / "starter-templates"
 GALLERY = ROOT / "Apri_MetaEditor.html"
+VERSION = "1.0.0-rc.1"
+MANIFEST = "VERSIONE_E_FILE.json"
 
 GUIDE = """MetaEditor — scegli da dove iniziare
 
@@ -39,9 +43,39 @@ La scelta del modello non sovrascrive file esistenti. La schermata
 di scelta e i quattro modelli sono esempi sintetici, senza dati
 riservati e senza collegamenti a servizi remoti.
 
-Questa è una candidata di prova locale per pagine HTML statiche.
-I template per le scene di MetaCanvas sono un altro formato.
-Non sostituisce una verifica umana di Chrome Windows file://.
+MetaEditor 1.0 RC — una prima versione con confini precisi
+
+COSA PUOI FARE:
+- Modificare il testo e la formattazione semplice di una pagina modello.
+- Inserire titoli, paragrafi, collegamenti e immagini locali supportate.
+- Riordinare i blocchi aggiunti e posizionarli con riferimenti precisi.
+- Annullare/ripristinare e salvare una copia di lavoro modificabile.
+- Esportare una pagina HTML pulita, senza il pannello di modifica.
+
+UN PERCORSO COMPLETO:
+1. Apri Pagina essenziale.
+2. Cambia il titolo, poi termina la modifica.
+3. Aggiungi un paragrafo e un collegamento.
+4. Scegli una tua immagine PNG/JPEG/WebP/GIF (max 1,5 MB)
+   e scrivi la descrizione accessibile.
+5. Annulla e ripristina una modifica.
+6. Premi Salva lavoro o Ctrl+S: controlla che il file HTML sia scaricato.
+7. Riapri quel file: deve ritornare l'editor con il lavoro conservato.
+8. Premi Esporta pagina pulita: controlla che il file scaricato
+   contenga la pagina senza l'interfaccia MetaEditor.
+
+COSA NON È:
+- Un CMS, un editor HTML universale o un sistema di pubblicazione.
+- Un editor di scene/presentazioni MetaCanvas.
+- Un programma con salvataggio automatico permanente.
+- Uno strumento per aprire codice HTML sconosciuto o non fidato.
+
+Le quattro pagine sono esempi locali e non inviano dati a server.
+Lo ZIP contiene un manifest VERSIONE_E_FILE.json con gli SHA-256
+di tutti i file distribuiti; non include pagine MAIOS riservate.
+La copia di lavoro incorpora l'intero originale: trattala come privata.
+Questa è una candidata RC, non una release pubblica approvata.
+La prova umana di usabilità rimane distinta dai test automatici.
 """
 
 
@@ -67,6 +101,27 @@ def stage(destination: Path) -> list[Path]:
     guide = destination / "LEGGIMI.txt"
     guide.write_text(GUIDE, encoding="utf-8")
     produced.append(guide)
+
+    files = {
+        file.relative_to(destination).as_posix():
+            hashlib.sha256(file.read_bytes()).hexdigest()
+        for file in produced
+    }
+    manifest = {
+        "schema": "metaeditor.local-pack.v1",
+        "product": "MetaEditor",
+        "version": VERSION,
+        "status": "release-candidate-not-published",
+        "entrypoint": "Apri_MetaEditor.html",
+        "source_scope": "four built-in trusted static HTML examples only",
+        "files_sha256": dict(sorted(files.items())),
+    }
+    manifest_path = destination / MANIFEST
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    produced.append(manifest_path)
     return produced
 
 
@@ -80,9 +135,9 @@ def pack(path: Path) -> None:
         produced = stage(base)
         with zipfile.ZipFile(path, "x", compression=zipfile.ZIP_DEFLATED,
                              compresslevel=9) as archive:
-            for file in produced:
+            for file in sorted(produced, key=lambda f: f.relative_to(base).as_posix()):
                 info = zipfile.ZipInfo(file.relative_to(base).as_posix())
-                info.date_time = (2026, 11, 22, 10, 0, 0)
+                info.date_time = (2026, 11, 23, 10, 0, 0)
                 info.compress_type = zipfile.ZIP_DEFLATED
                 info.external_attr = 0o644 << 16
                 archive.writestr(info, file.read_bytes())
