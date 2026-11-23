@@ -26,6 +26,27 @@ ROOT = LAB / "starter-templates"
 GALLERY = ROOT / "Apri_MetaEditor.html"
 VERSION = "1.0.0-rc.1"
 MANIFEST = "VERSIONE_E_FILE.json"
+LICENSE_SOURCE = LAB.parent / "LICENSE"
+NOTICE_SOURCE = LAB.parent / "NOTICE.md"
+CREDITS = """MetaEditor 1.0 RC — crediti e ambito di licenza
+
+Il pacchetto include codice dell'editor nella directory:
+GrazianoGuiducci/k-ux-ai/examples/collaborative-communication-medium/
+
+Copyright (c) 2026 Graziano Guiducci.
+Licenza del codice coperto: Mozilla Public License 2.0.
+Il testo integrale della licenza è in LICENZA_MPL-2.0.txt.
+La nota originale del tool è in NOTICE_ORIGINALE.md.
+
+La licenza del codice dell'editor non trasferisce automaticamente
+la titolarità delle pagine, dei testi, delle immagini e dei contenuti
+realizzati da chi usa lo strumento, che seguono i propri diritti.
+
+Sorgente del tool:
+https://github.com/GrazianoGuiducci/k-ux-ai
+Il progetto non concede diritti su marchi o loghi.
+Questo archivio è un release candidate non ancora pubblicato.
+"""
 
 GUIDE = """MetaEditor — scegli da dove iniziare
 
@@ -71,7 +92,8 @@ COSA NON È:
 - Uno strumento per aprire codice HTML sconosciuto o non fidato.
 
 Le quattro pagine sono esempi locali e non inviano dati a server.
-Lo ZIP contiene un manifest VERSIONE_E_FILE.json con gli SHA-256
+Lo ZIP include la licenza del codice MPL-2.0, i crediti originali e
+un manifest VERSIONE_E_FILE.json con gli SHA-256
 di tutti i file distribuiti; non include pagine MAIOS riservate.
 La copia di lavoro incorpora l'intero originale: trattala come privata.
 Questa è una candidata RC, non una release pubblica approvata.
@@ -101,6 +123,17 @@ def stage(destination: Path) -> list[Path]:
     guide = destination / "LEGGIMI.txt"
     guide.write_text(GUIDE, encoding="utf-8")
     produced.append(guide)
+    if not LICENSE_SOURCE.is_file() or not NOTICE_SOURCE.is_file():
+        raise FileNotFoundError("Missing owner-native MPL license or notice")
+    license_file = destination / "LICENZA_MPL-2.0.txt"
+    license_file.write_bytes(LICENSE_SOURCE.read_bytes())
+    produced.append(license_file)
+    notice_file = destination / "NOTICE_ORIGINALE.md"
+    notice_file.write_bytes(NOTICE_SOURCE.read_bytes())
+    produced.append(notice_file)
+    credit_file = destination / "CREDITI_E_CONDIZIONI.txt"
+    credit_file.write_text(CREDITS, encoding="utf-8")
+    produced.append(credit_file)
 
     files = {
         file.relative_to(destination).as_posix():
