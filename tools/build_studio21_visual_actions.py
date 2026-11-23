@@ -162,10 +162,30 @@ PATCHES = (
 )
 
 
+FIRST_USE_SOURCE = (
+    ' Nella colonna Schede scegli <b>Demo MAIOS</b> per presentarla o '
+    '<b>Canvas vuoto</b> per iniziare. Usa Salva lavoro per scaricare il tuo HTML.'
+)
+FIRST_USE_IT = (
+    ' Scegli <b>Demo MAIOS</b> o <b>Canvas vuoto</b> nelle Schede. '
+    '<b>Clicca un oggetto</b> per modificare testo, stile e dimensioni direttamente '
+    'nel canvas. Usa Salva lavoro per conservarlo.'
+)
+FIRST_USE_EN = (
+    ' Choose <b>MAIOS Demo</b> or <b>Blank Canvas</b> in Slides. '
+    '<b>Click an object</b> to edit text, style and size directly '
+    'on the canvas. Use Save Work to keep a copy.'
+)
+
+
 def patch_source(original: str) -> str:
     if original.count("</style>") < 1:
         raise ValueError("Studio21 style element missing")
     result=original.replace("</style>",STYLE+"\n</style>",1)
+    if result.count(FIRST_USE_SOURCE)!=1:
+        raise ValueError("Studio21 first-use entry drift")
+    en='<html lang="en">' in original
+    result=result.replace(FIRST_USE_SOURCE,FIRST_USE_EN if en else FIRST_USE_IT,1)
     for before, after in PATCHES:
         if result.count(before)!=1:
             raise ValueError("Studio21 source drift at "+before[:75])
