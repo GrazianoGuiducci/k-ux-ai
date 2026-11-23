@@ -122,7 +122,14 @@ jobs:
       - name: Build R1 visual contextual actions on native Studio21 IT/EN
         run: python tools/build_studio21_visual_actions.py --output-dir "${{ runner.temp }}/studio21-visual-r1"
       - name: Exercise real single-click contextual editing, history and export
-        run: python tests/metacanvas-studio21-visual-actions.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-visual-r1"
+        run: python tests/metacanvas-studio21-visual-actions.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-visual-r1" --screenshot-dir "${{ runner.temp }}/studio21-visual-screens"
+      - name: Attach visual R1 desktop/mobile inspection screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-studio21-visual-r1-screens
+          path: ${{ runner.temp }}/studio21-visual-screens/*.png
+          if-no-files-found: error
+          retention-days: 14
       - name: Attach visual R1 source-pinned Studio21 IT/EN candidates
         uses: actions/upload-artifact@v4
         with:
