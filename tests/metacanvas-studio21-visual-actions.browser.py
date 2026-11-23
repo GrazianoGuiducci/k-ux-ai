@@ -36,6 +36,10 @@ def download(page, selector: str) -> str:
 
 
 def select(page, node_id="d1-h"):
+    # Studio21 intentionally treats two clicks within 570 ms as a
+    # double-click opening its full editor. Each test selection is a fresh
+    # SINGLE click, not an accidental double-click in a fast CI runner.
+    page.wait_for_timeout(650)
     node=page.locator('#canvas .node[data-id="'+node_id+'"]')
     node.wait_for(state="visible",timeout=15000)
     node.click(position={"x":15,"y":15},force=True)
