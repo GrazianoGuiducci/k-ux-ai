@@ -8,6 +8,7 @@
   'use strict';
   const LOCAL = 'data-local-';
   const EDITABLE = 'p,h1,h2,h3,h4,h5,h6,li,blockquote,figcaption';
+  const SELECTABLE = EDITABLE + ',a,figure[data-local-block]';
   const fail = message => { throw new Error('MetaEditor static workbench: ' + message); };
   const escapeHtml = text => String(text).replace(/[&<>"]/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -21,7 +22,7 @@
     const allowedMain = doc.querySelectorAll('main');
     if (allowedMain.length !== 1) fail('exactly one main required');
     const sectionRoots = () => [...main.querySelectorAll(':scope > section, :scope > article > section')];
-    const safeNode = node => node && main.contains(node) && node.matches(EDITABLE) &&
+    const safeNode = node => node && main.contains(node) && node.matches(SELECTABLE) &&
       !node.closest('[contenteditable="false"],form,nav,aside,script,style');
     let selected = null, editing = null, beforeTyping = null;
     let history = [], future = [];
@@ -38,6 +39,13 @@
       "<div class=\"me-neutral-actions\" data-me-group=\"format\" hidden><button data-me-action=\"bold\">Grassetto</button><button data-me-action=\"italic\">Corsivo</button></div></div>" +
       "<div class=\"me-neutral-group\"><label for=\"me-neutral-section\">Sezione in cui inserire</label><select id=\"me-neutral-section\"></select>" +
       "<div class=\"me-neutral-actions\"><button data-me-action=\"insert-p\">+ Paragrafo</button><button data-me-action=\"insert-h\">+ Titolo</button></div></div>" +
+      "<details class=\"me-neutral-group\" id=\"me-neutral-link-group\"><summary>Aggiungi o modifica collegamento</summary>" +
+      "<label for=\"me-neutral-link-text\">Testo del collegamento</label><input id=\"me-neutral-link-text\" type=\"text\" maxlength=\"200\" placeholder=\"Testo del link\">" +
+      "<label for=\"me-neutral-link-url\">Indirizzo (https, email o #sezione)</label><input id=\"me-neutral-link-url\" type=\"text\" placeholder=\"https://esempio.it\" spellcheck=\"false\">" +
+      "<button data-me-action=\"link\" type=\"button\">Inserisci collegamento</button></details>" +
+      "<details class=\"me-neutral-group\" id=\"me-neutral-image-group\"><summary>Inserisci immagine dal computer</summary>" +
+      "<label for=\"me-neutral-image-alt\">Descrizione dell’immagine</label><input id=\"me-neutral-image-alt\" type=\"text\" maxlength=\"160\" placeholder=\"Che cosa rappresenta?\">" +
+      "<label for=\"me-neutral-image-file\">File PNG, JPEG, WebP o GIF (max 1,5 MB)</label><input id=\"me-neutral-image-file\" type=\"file\" accept=\"image/png,image/jpeg,image/webp,image/gif\"></details>" +
       "<details class=\"me-neutral-group\" data-me-group=\"block\" hidden><summary>Gestisci blocco aggiunto</summary>" +
       "<p>Lo spostamento usa la sezione scelta sopra.</p>" +
       "<div class=\"me-neutral-actions\"><button data-me-action=\"up\">↑ Sposta</button><button data-me-action=\"down\">↓ Sposta</button><button data-me-action=\"transfer\">Sposta a sezione</button><button data-me-action=\"duplicate\">Duplica</button><button data-me-action=\"delete\">Elimina blocco</button></div></details>" +
@@ -58,7 +66,8 @@
       "#me-neutral-context{background:#eff7f4;color:#174439;border-radius:5px;padding:8px;margin:0 0 8px;line-height:1.45;overflow-wrap:anywhere}",
       "#me-neutral-toolbar .me-neutral-group{border:0;border-top:1px solid #dce6e1;padding:9px 0 0;margin-top:9px}",
       "#me-neutral-toolbar label{display:block;margin-bottom:4px;font-weight:650}",
-      "#me-neutral-toolbar select{width:100%;padding:6px;margin-bottom:6px;min-height:34px;background:white;color:#182d37;border:1px solid #b9c9c2;border-radius:5px}",
+      "#me-neutral-toolbar select,#me-neutral-toolbar input{width:100%;padding:6px;margin-bottom:6px;min-height:34px;background:white;color:#182d37;border:1px solid #b9c9c2;border-radius:5px;font:inherit}",
+      "#me-neutral-toolbar input[type=file]{font-size:12px;max-width:100%}",
       "#me-neutral-toolbar .me-neutral-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px}",
       "#me-neutral-toolbar .me-neutral-actions>button:only-child{grid-column:span 2}",
       "#me-neutral-toolbar button{cursor:pointer;min-height:32px;padding:7px 6px;background:#f1f7f5;border:1px solid #a7c6ba;border-radius:5px;color:#123128;font:inherit}",
@@ -79,6 +88,12 @@
     doc.body.append(toolbar);
     const selector = toolbar.querySelector('#me-neutral-section');
     const elementPicker = toolbar.querySelector('#me-neutral-element');
+    const linkGroup = toolbar.querySelector('#me-neutral-link-group');
+    const linkTextInput = toolbar.querySelector('#me-neutral-link-text');
+    const linkUrlInput = toolbar.querySelector('#me-neutral-link-url');
+    const linkButton = toolbar.querySelector('[data-me-action="link"]');
+    const imageFileInput = toolbar.querySelector('#me-neutral-image-file');
+    const imageAltInput = toolbar.querySelector('#me-neutral-image-alt');
     const contextLine = toolbar.querySelector('#me-neutral-context');
     const editGroup = toolbar.querySelector('[data-me-group="edit"]');
     const formatGroup = toolbar.querySelector('[data-me-group="format"]');
@@ -115,7 +130,7 @@
       dirty = pending;
     }
     function notify(message) { status.textContent = message; }
-    const selectableNodes = () => [...main.querySelectorAll(EDITABLE)].filter(safeNode);
+    const selectableNodes = () => [...main.querySelectorAll(SELECTABLE)].filter(safeNode);
     function refreshElements() {
       const nodes = selectableNodes();
       elementPicker.replaceChildren();
@@ -176,6 +191,11 @@
       selected = safeNode(element) ? element : null;
       if (selected) {
         selected.setAttribute('data-local-selected','true');
+        if (selected.matches('a')) {
+          linkTextInput.value = selected.textContent;
+          linkUrlInput.value = selected.getAttribute('href') || '';
+          linkGroup.open = true;
+        }
         const section = sectionRoots().findIndex(section => section.contains(selected));
         if (section >= 0) selector.value = String(section);
       }
@@ -185,12 +205,13 @@
     }
     function syncButtons() {
       const active = !!(selected && selected.isConnected);
+      const textSelected = active && selected.matches(EDITABLE);
       const isEditing = !!(editing && editing.isConnected);
       const movable = active && selected.hasAttribute('data-local-block');
-      editGroup.hidden = !active;
+      editGroup.hidden = !textSelected;
       formatGroup.hidden = !isEditing;
       blockGroup.hidden = !movable;
-      for (const action of ['edit','bold','italic']) button(action).disabled = !active;
+      for (const action of ['edit','bold','italic']) button(action).disabled = !textSelected;
       button('bold').disabled = !isEditing;
       button('italic').disabled = !isEditing;
       button('edit').textContent = isEditing ? 'Termina modifica' : 'Modifica testo';
@@ -199,9 +220,13 @@
       button('redo').disabled = future.length === 0;
       button('insert-p').disabled = sectionRoots().length === 0;
       button('insert-h').disabled = sectionRoots().length === 0;
-      const heading = active ? selected.textContent.trim().replace(/\s+/g,' ').slice(0,48) : '';
+      const heading = active ? (selected.matches('figure') ?
+        selected.querySelector('img')?.alt || 'Immagine' :
+        selected.textContent.trim().replace(/\s+/g,' ').slice(0,48)) : '';
       const section = active ? sectionRoots().findIndex(item=>item.contains(selected)) : -1;
       const sectionName = section>=0 ? selector.options[section]?.textContent || '' : '';
+      linkButton.textContent = active && selected.matches('a') ?
+        'Aggiorna collegamento' : 'Inserisci collegamento';
       contextLine.textContent = isEditing ?
         'Modifica in corso: '+heading+' · termina la modifica prima di cambiare blocco.' :
         active ? (movable?'Blocco aggiunto: ':'Testo selezionato: ')+heading+
@@ -209,7 +234,8 @@
           'Seleziona un testo nella pagina o dall’elenco, oppure aggiungi un blocco.';
     }
     function edit() {
-      if (!selected || !selected.isConnected) return {ok:false,reason:'select text first'};
+      if (!selected || !selected.isConnected || !selected.matches(EDITABLE))
+        return {ok:false,reason:'select a text block first'};
       if (editing === selected) {
         leaveEditing();
         notify('Modifica terminata. Annulla e Ripristina rimangono disponibili.');
@@ -302,6 +328,115 @@
         insertAtPoint(node, point);
         select(node);
         notify('Blocco aggiunto nel contenitore del testo selezionato.');
+      });
+    }
+
+    // Links are supported as explicit author actions, never as HTML pasted
+    // into contenteditable. An existing plain <a> may be updated in place.
+    function normalizedLink(raw) {
+      const value = String(raw || '').trim();
+      if (!value || value.length > 2048 || /[\s\u0000-\u001f\u007f]/.test(value)) return null;
+      if (value.startsWith('#')) {
+        const id = value.slice(1);
+        return /^[A-Za-z][A-Za-z0-9_.:-]*$/.test(id) && doc.getElementById(id) ? value : null;
+      }
+      if (/^mailto:[a-z0-9.!#$%&'*+/=?^_~-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(value))
+        return value;
+      if (/^tel:\+?[0-9().-]{5,25}$/i.test(value)) return value;
+      try {
+        const parsed = new URL(value);
+        if (!['http:','https:'].includes(parsed.protocol) ||
+            !parsed.hostname || parsed.username || parsed.password) return null;
+        return parsed.href;
+      } catch (_) { return null; }
+    }
+    function linkAction() {
+      leaveEditing();
+      const label = linkTextInput.value.trim();
+      const href = normalizedLink(linkUrlInput.value);
+      if (!label || label.length > 200) return {ok:false,reason:'Scrivi un testo breve per il collegamento.'};
+      if (!href) return {ok:false,reason:'Indirizzo non supportato. Usa https, email, telefono o una #sezione esistente.'};
+      if (selected?.isConnected && selected.matches('a')) {
+        if (selected.children.length) return {ok:false,reason:'Collegamento strutturato: modifica non supportata.'};
+        const node = selected;
+        return transact(() => {
+          node.textContent = label;
+          node.setAttribute('href',href);
+          select(node);
+          notify('Collegamento aggiornato con una modifica annullabile.');
+        });
+      }
+      const section = sectionRoots()[Number(selector.value)];
+      const point = insertionPoint(section);
+      if (!point) return {ok:false,reason:'Scegli un testo nella sezione di destinazione.'};
+      return transact(() => {
+        const p = doc.createElement('p');
+        p.setAttribute('data-local-block','true');
+        const a = doc.createElement('a');
+        a.textContent = label;
+        a.setAttribute('href',href);
+        p.append(a);
+        insertAtPoint(p,point);
+        select(p);
+        notify('Collegamento inserito nel flusso della pagina.');
+      });
+    }
+    function imageType(bytes) {
+      if (bytes.length < 12) return null;
+      if (bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e &&
+          bytes[3] === 0x47 && bytes[4] === 0x0d && bytes[5] === 0x0a &&
+          bytes[6] === 0x1a && bytes[7] === 0x0a) return 'image/png';
+      if (bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) return 'image/jpeg';
+      const ascii = slice => String.fromCharCode(...slice);
+      if (ascii(bytes.slice(0,4)) === 'RIFF' && ascii(bytes.slice(8,12)) === 'WEBP')
+        return 'image/webp';
+      if (['GIF87a','GIF89a'].includes(ascii(bytes.slice(0,6)))) return 'image/gif';
+      return null;
+    }
+    async function addLocalImage(file, alt) {
+      leaveEditing();
+      const description = String(alt || '').trim();
+      if (!description || description.length > 160)
+        return {ok:false,reason:'Scrivi una descrizione breve dell’immagine prima di scegliere il file.'};
+      if (!file || file.size < 12 || file.size > 1572864)
+        return {ok:false,reason:'File assente o superiore a 1,5 MB.'};
+      const type = imageType(new Uint8Array(await file.slice(0,16).arrayBuffer()));
+      if (!type || (file.type && file.type !== type))
+        return {ok:false,reason:'Sono ammesse solo immagini PNG, JPEG, WebP e GIF valide.'};
+      const url = await new Promise((resolve,reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error || new Error('Image read failed'));
+        reader.readAsDataURL(file);
+      });
+      if (typeof url !== 'string' || !url.startsWith('data:'+type+';base64,'))
+        return {ok:false,reason:'Impossibile incorporare i dati dell’immagine.'};
+      const probe = new Image();
+      probe.src = url;
+      try { await probe.decode(); } catch (_) {
+        return {ok:false,reason:'I dati dell’immagine non sono decodificabili.'};
+      }
+      if (!probe.naturalWidth || !probe.naturalHeight ||
+          probe.naturalWidth > 6000 || probe.naturalHeight > 6000 ||
+          probe.naturalWidth * probe.naturalHeight > 25000000)
+        return {ok:false,reason:'Dimensioni dell’immagine non supportate.'};
+      // Re-evaluate destination AFTER async work.
+      const point = insertionPoint(sectionRoots()[Number(selector.value)]);
+      if (!point) return {ok:false,reason:'Seleziona un punto di inserimento nella sezione.'};
+      return transact(() => {
+        const figure = doc.createElement('figure');
+        figure.setAttribute('data-local-block','true');
+        figure.style.maxWidth = '100%';
+        figure.style.margin = '1.3em 0';
+        const img = doc.createElement('img');
+        img.src = url; img.alt = description;
+        img.style.maxWidth = '100%'; img.style.height = 'auto'; img.style.display = 'block';
+        const caption = doc.createElement('figcaption');
+        caption.textContent = description;
+        figure.append(img,caption);
+        insertAtPoint(figure,point);
+        select(figure);
+        notify('Immagine locale incorporata. Salva il lavoro per conservarla.');
       });
     }
     function move(action) {
@@ -423,6 +558,14 @@
       notify('Download richiesto: verifica il file e riaprilo prima dell’uso.');
     }
 
+    imageFileInput.addEventListener('change', async () => {
+      const file = imageFileInput.files?.[0];
+      try {
+        const result = await addLocalImage(file, imageAltInput.value);
+        if (result.ok === false) notify(result.reason);
+      } catch (error) { notify('Immagine rifiutata: ' + String(error.message)); }
+      finally { imageFileInput.value = ''; }
+    });
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       if (expanded) leaveEditing();
@@ -441,14 +584,14 @@
       }
     });
     main.addEventListener('click', event => {
-      const node = event.target.closest(EDITABLE);
+      const node = event.target.closest(SELECTABLE);
       if (!node || !safeNode(node)) return;
       if (event.target.closest('a')) event.preventDefault();
       select(node);
     });
     main.addEventListener('dblclick', event => {
-      const node = event.target.closest(EDITABLE);
-      if (safeNode(node)) { select(node); edit(); }
+      const node = event.target.closest(SELECTABLE);
+      if (safeNode(node)) { select(node); if (node.matches(EDITABLE)) edit(); }
     });
     main.addEventListener('input', event => {
       if (editing && editing.contains(event.target)) refreshSaveState();
@@ -555,6 +698,7 @@
       const results = {
         edit: edit, bold: () => format('bold'), italic: () => format('italic'),
         'insert-p': () => insert('p'), 'insert-h': () => insert('h3'),
+        link: linkAction,
         up: () => move('up'), down: () => move('down'), transfer: () => move('transfer'),
         duplicate: () => changeAddedBlock('duplicate'), delete: () => changeAddedBlock('delete'),
         undo, redo,
@@ -573,7 +717,7 @@
     return Object.freeze({
       status: () => Object.freeze({carrier:'static-page',regions:sectionRoots().length,dirty,
                                     canUndo:history.length>0,canRedo:future.length>0}),
-      select, edit, format, insert, move, changeAddedBlock, undo, redo, cleanHtml, workHtml,
+      select, edit, format, insert, move, linkAction, addLocalImage, changeAddedBlock, undo, redo, cleanHtml, workHtml,
       toolbar, main
     });
   }
