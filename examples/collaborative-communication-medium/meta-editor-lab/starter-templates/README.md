@@ -1,5 +1,11 @@
 # MetaEditor — scelta del modello iniziale
 
+## 23 novembre — Conservazione del lavoro e incolla
+
+Dopo la scelta di un modello, **Salva lavoro** e `Ctrl+S` richiedono lo stesso download del file HTML modificabile; non usare `Salva pagina con nome` di Chrome per conservare lo stato dell'editor. `Esporta pagina pulita` produce invece l'HTML senza i controlli MetaEditor. Le modifiche rispetto al file aperto sono segnalate dalla UI, e Annulla completo le riporta a zero; i browser possono avvertire quando si chiude una scheda con modifiche, ma non sempre mostrano l'avviso. Controlla che il download esista prima di chiudere una pagina importante.
+
+Il campo testuale accetta incolla **solo come testo semplice**, trasformando gli a capo in spazi per evitare la creazione implicita di altri blocchi. Per creare un nuovo elemento usa `+ Paragrafo` o `+ Titolo`. Il trascinamento dall'esterno nel testo non è supportato. Questi comportamenti sono esercitati nei test, ma non costituiscono una garanzia generale di sanitizzazione di HTML arbitrario. [CI 45133248996](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45133248996) è verde su quattro job.
+
 **Stato:** candidato non pubblicato; parte del ramo K-UX-AI [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2).
 
 ## Il problema che risolve
