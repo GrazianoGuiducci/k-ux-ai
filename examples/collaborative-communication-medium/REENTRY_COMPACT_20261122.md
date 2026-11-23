@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Due candidate complete; gate umano/pubblicazione ancora separati
+
+**MetaEditor 1.0 RC1** è raggiungibile come ZIP `1.0.0-rc.1` **SHA-256 `867c271915221bcc3a1d2f3d9164798c0448258768ed96f91b9d5293ab29dfaf`**. Estratto direttamente dall'artifact [45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) ID `14816910606`; tutti i **9 file** con checksum corretti. Resta solo una **prova d'uso integrata** dell'operatore e poi decisione di release.
+
+**MetaCanvas Studio21 Privacy RC1** è raggiungibile come coppia IT/EN dentro ZIP **SHA-256 `830c5b40894164b993ae66d027338e97a5067da3e736ca738f97a62c5e88c4e0`**. [CI 45171725612](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45171725612) **5/5 job verdi** e [artefatto `metacanvas-studio21-privacy-rc1`](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45171725612) ID `14816672688`; tutti i **5 file** del manifest integri nel file scaricato. [Handoff al site owner](MAIOS_RESOURCE_TOOL_HANDOFF.md) definisce release IT/EN con asset versionati e readback pubblico, **non ancora esercitata**.
+
+**Distinzione di chiusura:** creare/validare scaricabile non equivale a prova umana né a installazione nei download pubblici. Non aggiungere funzioni o rigenerare RC per inerzia. La [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2) resta draft e `maios_it/main` non è stato toccato.
+
 ## 23 novembre — MetaEditor 1.0 RC completata tecnicamente; resta una prova d'uso
 
 Contratto definitivo di questa candidata: [otto percorsi MetaEditor 1.0](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) per un editor locale da quattro template; non CMS o MetaCanvas. Un solo pacchetto `1.0.0-rc.1` con launcher, quattro workpage, guida, manifest SHA-256, licenza MPL-2.0 e notice d'autore. [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) **5/5 verde** (Linux e Windows Chrome `file://`, MAIOS live read-only, Studio21, contratti); artefatto `metaeditor-1-0-rc1` ID `14816910606`. **No test umano ancora, no merge/deploy.** Prossimo movimento: una prova integrata d'uso e correzioni soltanto dei veri blocchi; rilascio è movimento distinto. MetaCanvas rimane separato con patch privacy da distribuire/readback.
