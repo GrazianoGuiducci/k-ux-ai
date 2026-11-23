@@ -43,7 +43,8 @@
       "<div class=\"me-neutral-actions\"><button data-me-action=\"up\">↑ Sposta</button><button data-me-action=\"down\">↓ Sposta</button><button data-me-action=\"transfer\">Sposta a sezione</button><button data-me-action=\"duplicate\">Duplica</button><button data-me-action=\"delete\">Elimina blocco</button></div></details>" +
       "<div class=\"me-neutral-group me-neutral-persistent\"><div class=\"me-neutral-actions\"><button data-me-action=\"undo\">Annulla</button><button data-me-action=\"redo\">Ripristina</button></div>" +
       "<div class=\"me-neutral-actions\"><button data-me-action=\"work\">Salva lavoro</button><button data-me-action=\"clean\">Esporta pagina pulita</button></div></div>" +
-      "<p id=\"me-neutral-status\" role=\"status\" aria-live=\"polite\"></p></div>";
+      "<p id=\"me-neutral-status\" role=\"status\" aria-live=\"polite\"></p>" +
+      "<p id=\"me-neutral-save-state\" aria-live=\"polite\">Nessuna modifica da salvare · Ctrl+S per Salvare lavoro</p></div>";
     const style = doc.createElement('style');
     style.id = 'me-neutral-style';
     style.textContent = [
@@ -69,6 +70,7 @@
       "#me-neutral-toolbar [data-me-action=\"work\"]{background:#dcefe8}",
       "#me-neutral-toolbar [data-me-action=\"delete\"]{color:#79351e}",
       "#me-neutral-status{margin:8px 0 0;font-size:12px;color:#3a5149}",
+      "#me-neutral-save-state{margin:8px 0 0;font-size:11px;color:#49645b}",
       "main [data-local-selected]{outline:2px solid #087b70;outline-offset:2px}",
       "main [data-local-editing]{outline:2px dashed #087b70;outline-offset:2px}",
       "@media(max-width:500px){#me-neutral-toolbar{top:auto;bottom:8px;max-height:42dvh}}"
@@ -84,6 +86,7 @@
     const toggle = toolbar.querySelector('#me-neutral-toggle');
     const body = toolbar.querySelector('#me-neutral-body');
     const status = toolbar.querySelector('#me-neutral-status');
+    const saveState = toolbar.querySelector('#me-neutral-save-state');
     const button = action => toolbar.querySelector('[data-me-action="' + action + '"]');
     const pristineSource = sourceHtml;
 
@@ -100,6 +103,17 @@
       return clone;
     }
     const snapshot = () => workRootSnapshot().innerHTML;
+    // A reopened work document is already the baseline for this session.
+    // Pending edits are a document difference, not a count of history steps.
+    const openedSnapshot = snapshot();
+    function pendingWork() { return snapshot() !== openedSnapshot; }
+    function refreshSaveState() {
+      const pending = pendingWork();
+      saveState.textContent = pending ?
+        'Modifiche da conservare · Ctrl+S richiede il download del lavoro' :
+        'Nessuna modifica da conservare · Ctrl+S salva il lavoro';
+      dirty = pending;
+    }
     function notify(message) { status.textContent = message; }
     const selectableNodes = () => [...main.querySelectorAll(EDITABLE)].filter(safeNode);
     function refreshElements() {
@@ -142,7 +156,7 @@
       history.push(before);
       if (history.length > 80) history.shift();
       future = [];
-      dirty = true;
+      refreshSaveState();
       syncButtons();
       return true;
     }
@@ -363,7 +377,7 @@
       const previous = history.pop();
       future.push(before);
       restore(previous);
-      dirty = true;
+      refreshSaveState();
       notify('Annullato.');
       return {ok:true,changed:true};
     }
@@ -374,7 +388,7 @@
       history.push(before);
       const next = future.pop();
       restore(next);
-      dirty = true;
+      refreshSaveState();
       notify('Ripristinato.');
       return {ok:true,changed:true};
     }
@@ -435,6 +449,9 @@
     main.addEventListener('dblclick', event => {
       const node = event.target.closest(EDITABLE);
       if (safeNode(node)) { select(node); edit(); }
+    });
+    main.addEventListener('input', event => {
+      if (editing && editing.contains(event.target)) refreshSaveState();
     });
     main.addEventListener('focusout', event => {
       if (editing && event.target === editing) {
@@ -511,6 +528,22 @@
         notify('Modifica terminata. Le modifiche sono disponibili in Annulla.');
       }
     });
+    doc.addEventListener('keydown', event => {
+      if ((event.ctrlKey || event.metaKey) && !event.shiftKey && !event.altKey &&
+          String(event.key).toLowerCase() === 's') {
+        event.preventDefault();
+        // Never delegate Ctrl+S to Chrome's Save Page, which can produce a
+        // browser-serialized document rather than the owned work format.
+        download('MetaEditor_Lavoro_Modificabile.html', workHtml());
+      }
+    }, true);
+    root.addEventListener('beforeunload', event => {
+      if (!pendingWork()) return;
+      // Browsers decide whether to show the confirmation dialog, usually
+      // requiring prior user activation. Do not claim a download succeeded.
+      event.preventDefault();
+      event.returnValue = '';
+    });
     toolbar.addEventListener('pointerdown', event => {
       const formatControl = event.target.closest('[data-me-action="bold"],[data-me-action="italic"]');
       const finishingEdit = editing && event.target.closest('[data-me-action="edit"]');
@@ -535,6 +568,7 @@
     });
     refreshSections();
     syncButtons();
+    refreshSaveState();
     notify('Le modifiche rimangono nel file di lavoro finché non scegli Salva lavoro.');
     return Object.freeze({
       status: () => Object.freeze({carrier:'static-page',regions:sectionRoots().length,dirty,
