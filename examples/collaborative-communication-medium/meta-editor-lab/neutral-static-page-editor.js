@@ -443,7 +443,67 @@
         leaveEditing();
       }
     });
+    // This is a bounded text editor, not an HTML importer. Clipboard HTML
+    // is never inserted; only text/plain is accepted into the active block.
+    // Each authored heading/paragraph remains one structural element.
+    function hasTextSelectionInside(target) {
+      const range = doc.getSelection();
+      return !!(range && range.rangeCount && target &&
+        target.contains(range.anchorNode) && target.contains(range.focusNode));
+    }
+    main.addEventListener('paste', event => {
+      if (!editing || !editing.contains(event.target)) return;
+      event.preventDefault();
+      const raw = event.clipboardData?.getData('text/plain') || '';
+      if (!raw) {
+        notify('Il contenuto copiato non contiene testo semplice da incollare.');
+        return;
+      }
+      if (raw.length > 50000) {
+        notify('Testo troppo lungo per un singolo blocco (limite 50.000 caratteri).');
+        return;
+      }
+      if (!hasTextSelectionInside(editing)) {
+        notify('Posiziona il cursore nel testo prima di incollare.');
+        return;
+      }
+      const plain = raw.replace(/\\r\\n?|\\n/g, ' ');
+      // execCommand inserts text as a native editing action and preserves
+      // selection/caret behavior; the source/history adapter remains owner.
+      if (!doc.execCommand('insertText', false, plain)) {
+        notify('Incolla non riuscito: il documento non è stato modificato.');
+        return;
+      }
+      notify(plain !== raw ? 'Testo incollato senza formattazione; gli a capo sono stati convertiti in spazi.' :
+        'Testo incollato senza formattazione esterna.');
+    });
+    main.addEventListener('beforeinput', event => {
+      if (!editing || !editing.contains(event.target)) return;
+      if (event.inputType === 'insertFromDrop' ||
+          event.inputType === 'insertFromPaste' ||
+          event.inputType === 'insertFromPasteAsQuotation') {
+        // The paste handler above owns the text insertion; never allow
+        // default rich-HTML paste or drop to bypass that route.
+        event.preventDefault();
+      }
+    });
+    main.addEventListener('dragover', event => {
+      if (editing && editing.contains(event.target)) event.preventDefault();
+    });
+    main.addEventListener('drop', event => {
+      if (!editing || !editing.contains(event.target)) return;
+      event.preventDefault();
+      notify('Il trascinamento nel testo non è supportato. Usa Incolla come testo.');
+    });
     main.addEventListener('keydown', event => {
+      if (event.key === 'Enter' && editing && editing.contains(event.target) &&
+          editing.matches('h1,h2,h3,h4,h5,h6,p,blockquote,figcaption,li')) {
+        // Keep the source document's block structure intact. Add separate
+        // paragraphs/headings through explicit composition commands.
+        event.preventDefault();
+        notify('Per un nuovo blocco usa + Paragrafo o + Titolo.');
+        return;
+      }
       if (event.key === 'Escape' && editing && editing.contains(event.target)) {
         event.preventDefault();
         leaveEditing();
