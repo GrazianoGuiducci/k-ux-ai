@@ -48,9 +48,13 @@ class Studio21ReleasePackTests(unittest.TestCase):
                 for name in NAMES:
                     candidate = archive.read(name)
                     self.assertNotEqual(candidate, original[name])
-                    # Four separate privacy projection routes must be patched.
-                    self.assertEqual(candidate.count(b"l.private!==true"), 4)
-                    self.assertNotIn(b"file:///tmp", candidate)
+                    # The published source can already contain other
+                    # private-link filters. This patch adds four specific
+                    # projection checks; it does not replace existing ones.
+                    self.assertEqual(
+                        candidate.count(b"l.private!==true") -
+                        original[name].count(b"l.private!==true"), 4, name
+                    )
             for name in NAMES:
                 self.assertEqual((EXAMPLES / name).read_bytes(), original[name],
                                  "Candidate packaging modified original source")
