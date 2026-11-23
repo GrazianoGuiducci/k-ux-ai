@@ -1,5 +1,9 @@
 # MetaEditor Evolution — CURRENT
 
+## 23 novembre — MetaEditor 1.0 RC completo: fermata l'espansione di scope
+
+L'[owner del contratto 1.0](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) determina **otto percorsi di uso da quattro modelli HTML statici** e separa fuori scope CMS/editor universale, scene MetaCanvas e publish. Il builder genera `1.0.0-rc.1` riproducibile con manifest SHA-256, launcher, quattro workpage, guida, licenza MPL-2.0, NOTICE e crediti. [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) **5/5 verde**, incluso Chrome Windows `file://`, Linux, Studio21 e sito MAIOS verificato read-only; artefatto `metaeditor-1-0-rc1` ID `14816910606`. **Resta un solo collaudo umano d'uso integrato e una decisione distinta di rilascio; PR #2 draft, nessun sito modificato.** Le nuove capacità fuori dagli otto percorsi appartengono al backlog, non riaprono la 1.0. MetaCanvas ha un gate privacy/publish separato.
+
 ## 23 novembre — MetaEditor 1.0 determinato: fermare l'espansione, chiudere i gate
 
 **Nuova determinazione dell'operatore:** i test umani saranno **d'uso**, e il progetto deve assumere una forma finita. Il contratto di prodotto è [METAEDITOR_1_0_RELEASE_CONTRACT.md](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md): editor locale di pagine HTML statiche **da quattro template**, con otto percorsi chiusi; esclusi CMS universale, arbitrario import HTML, editing di scene MetaCanvas e pubblicazione automatica. Le altre possibilità sono backlog, non nuovi gate. MetaCanvas pubblico resta prodotto distinto; sua patch privacy Studio21 candidata ma non distribuita.
