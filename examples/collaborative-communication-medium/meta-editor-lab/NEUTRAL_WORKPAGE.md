@@ -1,5 +1,11 @@
 # MetaEditor — Neutral Static Workpage (candidate, 22 November 2026)
 
+## 23 November — Precise placement in nested flow groups
+
+Semantic sections may have multiple independent layout containers (for example, several cards inside CSS grid). The neutral editor now has an optional **Precise placement** section. Choose a text element within the destination section and place the new block **before** or **after** it. This same placement rule applies to paragraphs, headings, link blocks, embedded images and transfer between groups, including within one semantic section. Target identity is maintained as a DOM node reference, not a shifting list index. When no reference is chosen and the section offers multiple independent text parents without an author-defined anchor, the operation is rejected as ambiguous without changing the HTML or recording history.
+
+[CI 45149431000](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45149431000) passed four jobs, including [nested-layout browser regression](../../../tests/metaeditor-nested-layout.browser.py) against a wholly synthetic four-card CSS grid at 1440/390 using `file://`: before/after, same/cross-section moves, refusal of ambiguity, clean export and full Undo to exact original. Still not an arbitrary CMS/layout editor; physical Windows and wider accessibility not certified.
+
 ## 23 November — Explicit link and embedded local-image composition
 
 The neutral static workpage now supports safe simple links (new local paragraph or update existing unstructured anchor) and local images only: PNG/JPEG/WebP/GIF file selection, signature/decode, max 1.5 MiB and bounded pixel dimensions, required alt text and a visible caption. A selected newly inserted figure can have its alt updated without rewriting an independently modified caption. Images embed directly as `data:image/...;base64`; they do not reference local `file://` paths, remote image URLs or unsupported SVG. Added figures are editor-owned blocks for native movement/duplicate/delete/Undo/Redo. Both editable work and clean exported HTML retain embedded bytes; only the work copy retains editor metadata. Malformed/forbidden URLs and unsupported files are rejected without a document change.
