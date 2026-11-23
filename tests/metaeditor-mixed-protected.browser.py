@@ -144,8 +144,14 @@ def run(browser, tmp: Path, width: int):
         second = page.evaluate("() => window.metaEditorPage.insert('p')")
         assert second["changed"], second
         assert card_b.locator("p[data-local-block]").count() == 2
+        ids_before = card_b.locator("p[data-local-block]").evaluate_all(
+            "(nodes) => nodes.map(n=>n.getAttribute('data-local-block-id'))")
+        assert len(set(ids_before)) == 2 and all(ids_before), ids_before
         up = page.evaluate("() => window.metaEditorPage.move('up')")
-        assert up["changed"], up
+        assert up["changed"], (up, ids_before)
+        ids_after = card_b.locator("p[data-local-block]").evaluate_all(
+            "(nodes) => nodes.map(n=>n.getAttribute('data-local-block-id'))")
+        assert ids_after == list(reversed(ids_before)), (ids_before,ids_after)
         assert card_b.locator("p[data-local-block]").count() == 2
         assert original_islands(page) == baseline
 
@@ -193,7 +199,11 @@ def run(browser, tmp: Path, width: int):
         clean = page.evaluate("() => window.metaEditorPage.cleanHtml()")
         working = page.evaluate("() => window.metaEditorPage.workHtml()")
         assert "data-local-block" not in clean
+        assert "data-local-block-id" not in clean
         assert "me-neutral-toolbar" not in clean
+        assert "data-local-block-id" in working
+        assert 'contenteditable="false"' in working
+        assert 'contenteditable="false"' in clean
         assert "data:image/png;base64," in clean
         assert clean.count('href="#target-content"') == original.count('href="#target-content"')
         saved = tmp / f"mixed-saved-{width}.html"
