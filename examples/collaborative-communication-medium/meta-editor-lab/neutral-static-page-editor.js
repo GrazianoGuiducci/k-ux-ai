@@ -38,7 +38,11 @@
       "<div class=\"me-neutral-actions\" data-me-group=\"edit\" hidden><button data-me-action=\"edit\">Modifica testo</button></div>" +
       "<div class=\"me-neutral-actions\" data-me-group=\"format\" hidden><button data-me-action=\"bold\">Grassetto</button><button data-me-action=\"italic\">Corsivo</button></div></div>" +
       "<div class=\"me-neutral-group\"><label for=\"me-neutral-section\">Sezione in cui inserire</label><select id=\"me-neutral-section\"></select>" +
-      "<div class=\"me-neutral-actions\"><button data-me-action=\"insert-p\">+ Paragrafo</button><button data-me-action=\"insert-h\">+ Titolo</button></div></div>" +
+      "<div class=\"me-neutral-actions\"><button data-me-action=\"insert-p\">+ Paragrafo</button><button data-me-action=\"insert-h\">+ Titolo</button></div>" +
+      "<details id=\"me-neutral-position-group\"><summary>Posizionamento preciso (opzionale)</summary>" +
+      "<label for=\"me-neutral-anchor\">Vicino a quale elemento?</label><select id=\"me-neutral-anchor\" aria-label=\"Riferimento per inserimento\"></select>" +
+      "<label for=\"me-neutral-placement\">Posizione</label><select id=\"me-neutral-placement\" aria-label=\"Posizione rispetto al riferimento\"><option value=\"after\">Dopo</option><option value=\"before\">Prima</option></select>" +
+      "<p>Se la sezione ha più gruppi, scegli il testo della scheda desiderata.</p></details></div>" +
       "<details class=\"me-neutral-group\" id=\"me-neutral-link-group\"><summary>Aggiungi o modifica collegamento</summary>" +
       "<label for=\"me-neutral-link-text\">Testo del collegamento</label><input id=\"me-neutral-link-text\" type=\"text\" maxlength=\"200\" placeholder=\"Testo del link\">" +
       "<label for=\"me-neutral-link-url\">Indirizzo (https, email o #sezione)</label><input id=\"me-neutral-link-url\" type=\"text\" placeholder=\"https://esempio.it\" spellcheck=\"false\">" +
@@ -88,6 +92,8 @@
     doc.head.append(style);
     doc.body.append(toolbar);
     const selector = toolbar.querySelector('#me-neutral-section');
+    const anchorPicker = toolbar.querySelector('#me-neutral-anchor');
+    const placementPicker = toolbar.querySelector('#me-neutral-placement');
     const elementPicker = toolbar.querySelector('#me-neutral-element');
     const linkGroup = toolbar.querySelector('#me-neutral-link-group');
     const linkTextInput = toolbar.querySelector('#me-neutral-link-text');
@@ -152,6 +158,40 @@
       elementPicker.value = String(current);
       return nodes;
     }
+    // Exact DOM nodes are chosen only from the selected semantic section,
+    // never from a global query or from a visual CSS class assumption.
+    function anchorCandidates(section) {
+      return section ? [...section.querySelectorAll('h1,h2,h3,h4,h5,h6,p,blockquote')]
+        .filter(node => flowChild(node, section)) : [];
+    }
+    function refreshAnchors() {
+      const section = sectionRoots()[Number(selector.value)];
+      const candidates = anchorCandidates(section);
+      const former = anchorPicker.value;
+      anchorPicker.replaceChildren();
+      const automatic = doc.createElement('option');
+      automatic.value = '';
+      automatic.textContent = 'Automatico, se non ambiguo';
+      anchorPicker.append(automatic);
+      candidates.forEach((node, index) => {
+        const option = doc.createElement('option');
+        option.value = String(index);
+        const preview = node.textContent.trim().replace(/\s+/g,' ').slice(0,55);
+        option.textContent = (index+1)+'. '+node.localName.toUpperCase()+' · '+(preview||'Senza testo');
+        anchorPicker.append(option);
+      });
+      if (former && [...anchorPicker.options].some(x=>x.value===former)) {
+        anchorPicker.value = former;
+      }
+      return candidates;
+    }
+    function chosenAnchor(section) {
+      const value = anchorPicker.value;
+      if (value === '') return null;
+      const index = Number(value);
+      const candidates = anchorCandidates(section);
+      return Number.isInteger(index) && index >= 0 ? candidates[index] || null : null;
+    }
     function refreshSections() {
       const former = selector.value;
       const sections = sectionRoots();
@@ -165,6 +205,7 @@
       });
       if (sections.length && [...selector.options].some(o => o.value === former)) selector.value = former;
       refreshElements();
+      refreshAnchors();
       return sections;
     }
     function record(before) {
@@ -292,26 +333,40 @@
     }
     function insertionPoint(section, useSelection = true) {
       if (!section) return null;
-      if (useSelection && flowChild(selected, section)) {
-        return {parent:selected.parentElement, after:selected};
+      const mode = placementPicker.value === 'before' ? 'before' : 'after';
+      const explicit = chosenAnchor(section);
+      if (anchorPicker.value !== '') {
+        // An explicit but stale reference must not silently fall back to a
+        // different card; it is a request to reselect a valid destination.
+        return flowChild(explicit, section) ?
+          {parent:explicit.parentElement, reference:explicit, mode} : null;
       }
-      const headings = [...section.querySelectorAll('h1,h2,h3,h4,h5,h6')];
+      if (useSelection && flowChild(selected, section)) {
+        return {parent:selected.parentElement, reference:selected, mode};
+      }
+      const candidates = anchorCandidates(section);
+      const headings = candidates.filter(node=>node.matches('h1,h2,h3,h4,h5,h6'));
       const labelled = (section.getAttribute('aria-labelledby') || '')
         .trim().split(/\s+/).filter(Boolean);
       const heading = labelled.length ?
-        headings.find(h => labelled.includes(h.id)) :
-        headings.find(h => flowChild(h, section));
-      if (!flowChild(heading, section)) return null;
-      const parent = heading.parentElement;
-      // Only direct text-flow siblings: never append to a CSS grid, list,
-      // nav or wrapper guessed from its class name.
-      const siblings = [...parent.children].filter(n =>
-        flowChild(n, section) && n.parentElement === parent);
-      return {parent, after:siblings[siblings.length - 1] || heading};
+        headings.find(h => labelled.includes(h.id)) : null;
+      if (heading) {
+        const group = candidates.filter(node=>node.parentElement===heading.parentElement);
+        const reference = group[group.length-1] || heading;
+        return {parent:heading.parentElement, reference, mode};
+      }
+      // Multiple independent text-flow parents indicate multiple cards or
+      // nested composition zones. DOM order is NOT a sufficient choice.
+      const groups = new Set(candidates.map(node=>node.parentElement));
+      if (groups.size !== 1) return null;
+      const reference = candidates[candidates.length-1];
+      return reference ? {parent:reference.parentElement, reference, mode} : null;
     }
     function insertAtPoint(node, point) {
-      if (!point || point.after.parentElement !== point.parent) return false;
-      point.after.insertAdjacentElement('afterend', node);
+      if (!point || !point.reference || point.reference.parentElement !== point.parent ||
+          point.reference === node || node.contains(point.reference)) return false;
+      point.reference.insertAdjacentElement(
+        point.mode === 'before' ? 'beforebegin' : 'afterend', node);
       return true;
     }
     function insert(tag) {
@@ -479,9 +534,13 @@
         if (!next) return {ok:false,reason:'invalid destination'};
         // A transfer to the current section is a no-op, not an opportunity
         // to silently relocate an existing block across grid/layout groups.
-        if (next.contains(node)) return {ok:true,changed:false};
+        if (next.contains(node) && anchorPicker.value === '') return {ok:true,changed:false};
         const point = insertionPoint(next, false);
-        if (!point) return {ok:false,reason:'layout destination ambiguous: cannot transfer safely'};
+        if (!point) return {ok:false,reason:'Destinazione non univoca: scegli un riferimento preciso.'};
+        if (point.reference === node || node.contains(point.reference) ||
+            (node.parentElement===point.parent &&
+              (point.mode==='before'?node.nextElementSibling:node.previousElementSibling)===point.reference))
+          return {ok:true,changed:false};
         return transact(() => {
           insertAtPoint(node, point);
           select(node);
@@ -587,6 +646,10 @@
       notify('Download richiesto: verifica il file e riaprilo prima dell’uso.');
     }
 
+    selector.addEventListener('change', () => {
+      anchorPicker.value = '';
+      refreshAnchors();
+    });
     imageFileInput.addEventListener('change', async () => {
       const file = imageFileInput.files?.[0];
       try {
