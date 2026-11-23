@@ -17,6 +17,8 @@ on:
       - "tests/metaeditor-studio21-ai-roundtrip.browser.py"
       - "tools/build_studio21_public_projection.py"
       - "tools/build_metacanvas_studio21_release_pack.py"
+      - "tools/build_studio21_visual_actions.py"
+      - "tests/metacanvas-studio21-visual-actions.browser.py"
       - "tools/test_metacanvas_studio21_release_pack.py"
       - "tools/build_metaeditor_neutral_workpage.py"
       - "tools/build_metaeditor_starter_pack.py"
@@ -115,6 +117,17 @@ jobs:
         with:
           name: metacanvas-studio21-privacy-rc1
           path: ${{ runner.temp }}/MetaCanvas_Studio21_Privacy_RC1.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Build R1 visual contextual actions on native Studio21 IT/EN
+        run: python tools/build_studio21_visual_actions.py --output-dir "${{ runner.temp }}/studio21-visual-r1"
+      - name: Exercise real single-click contextual editing, history and export
+        run: python tests/metacanvas-studio21-visual-actions.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-visual-r1"
+      - name: Attach visual R1 source-pinned Studio21 IT/EN candidates
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-studio21-visual-r1
+          path: ${{ runner.temp }}/studio21-visual-r1/*.html
           if-no-files-found: error
           retention-days: 14
       - name: Evidence boundary
