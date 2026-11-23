@@ -1,5 +1,9 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — Gate B composizioni miste: capacità risolta entro perimetro
+
+La [CI 45153539786](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45153539786) è verde in tutti e quattro i job: sulla nuova fixture con card composte, readonly/inert, link e immagini autoriali, è stata provata la protezione dei referenti originali, il posizionamento dei nuovi blocchi, identità proprie nel work/history, file riaperti, clean export e Undo al sorgente. L'owner ha distinto `contenteditable=false` dell'autore (da preservare) dallo stato di editing temporaneo (da eliminare), e introdotto ID interni che permettono storia corretta anche per nodi identici. Un'ulteriore prova di ID univoco nelle duplicazioni media è stata aggiunta dopo il run verde. Nessuna conclusione di supporto universale HTML, editor CMS, sicurezza generale o Windows. PR #2 draft, sito e asset pubblici invariati.
+
 ## 23 novembre — Gate B: posizionamento esplicito nei layout annidati
 
 La [CI 45149431000](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45149431000) è verde in tutti e quattro i job, compreso il nuovo test `file://` su quattro card CSS-grid a due viewport. Il controller neutro possiede un riferimento prima/dopo per la composizione tra gruppi, più una regola di rifiuto se auto-destinazione è ambigua: non usa l'ordine dei nodi per scegliere la scheda. La storia unica conserva inserimento e trasferimento stessa/altra sezione; l'export pulito e full Undo mantengono la fedeltà. La prova non estende l'ambito ad HTML arbitrario né autorizza il rilascio. Restano prove su layout rappresentativi complessi, accessibilità e Windows umano, politiche di packaging/security e approvazione owner. PR #2 resta draft; nessun merge/deploy.
