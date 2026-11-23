@@ -1,5 +1,9 @@
 # MetaEditor — Neutral Static Workpage (candidate, 22 November 2026)
 
+## 23 November — Template-first entry for non-expert authors
+
+The bounded neutral editor remains unchanged as a workpage controller. A separate [beginner chooser](starter-templates/README.md) now supplies four **synthetic, trusted static HTML source templates** and uses the existing builder to prepare individually editable files. The launcher is HTML-only, does not replace any already open document, and offers a recommended introductory page plus project, article and almost-empty options. MetaCanvas `metacanvas.templates.v1` scene templates are not interchangeable with these source HTML files. The [CI 45124239776](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45124239776) exercised chooser-to-work-to-save/reopen/clean-export/Undo for all models over real Linux Chrome `file://` at two widths. Human Windows usability remains unverified; no site deployment.
+
 ## 22 November — Source-identical live MAIOS test and bounded usability additions
 
 **Verified outside a synthetic page:** [Actions 45045287380](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45045287380) passed all four jobs. The read-only `neutral-live-site-browser` job downloaded `https://maios.it/consulting-ai.html` and checked its complete Git blob against `0fda8ce0d9c1da544999d39fe5d9c05f54bc771d` from `maios_it/consulting-ai.html`; only then did the browser test run on the full published MAIOS source at 1440/390. **No production edit was attempted.**
