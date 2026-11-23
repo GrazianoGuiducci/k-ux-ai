@@ -250,7 +250,13 @@
           imageGroup.open = true;
         }
         const section = sectionRoots().findIndex(section => section.contains(selected));
-        if (section >= 0) selector.value = String(section);
+        if (section >= 0 && selector.value !== String(section)) {
+          selector.value = String(section);
+          // Programmatic selection changes the semantic destination too;
+          // keep its reference list tied to that section, not the old one.
+          explicitAnchorNode = null;
+          refreshAnchors();
+        }
       }
       refreshElements();
       syncButtons();
