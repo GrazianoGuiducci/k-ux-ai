@@ -1,5 +1,11 @@
 # MetaEditor 1.0 — perimetro di chiusura e release candidate
 
+## Stato attuale — superseduto come criterio di rilascio del prodotto
+
+**23 novembre 2026 · Correzione autoriale successiva alla verifica tecnica.** Questo documento è conservato come **contratto storico del laboratorio HTML neutro**, non è più una definizione sufficiente per chiudere **MetaEditor come prodotto**. L'operatore ha verificato l'uso e segnalato che l'esperienza rimane «abbastanza poco utilizzabile» e non manifesta gli sviluppi del punto di partenza. La correzione è documentata in [PRODUCT_REALIGNMENT_20261123.md](PRODUCT_REALIGNMENT_20261123.md) e acquisita nella competenza MetaEditor Evolution.
+
+Le prove CI 5/5, i manifest integri, i test Windows automatici e gli artifact precedenti restano **veri per ciò che hanno esercitato**: il sottoinsieme neutro di editing HTML. Le frasi sotto che descrivono B/C come conclusi vanno lette nel loro contesto tecnico di allora, **non** come accettazione d'uso o equivalenza al MetaEditor visuale già presente in Bridge11 e MetaCanvas. **Non usare più questo contratto per autorizzare la 1.0, chiedere la prova finale sull'RC1, chiudere la PR o promuovere il pacchetto.** Nessuna riscrittura retroattiva delle verifiche.
+
 ## Stato del primo candidato tecnico — 23 novembre 2026
 
 **Aggiornamento del pacchetto completo:** [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830), **5/5 job verdi**, inclusi Windows Chrome e Linux `file://`, MAIOS live read-only e Studio21. Artefatto `metaeditor-1-0-rc1` **ID `14816910606`**: sei file d'uso, `VERSIONE_E_FILE.json`, testo integrale MPL-2.0, avviso originale e crediti. I test verificano licenza, notice, manifest SHA-256 e byte-identità di due build. **Gate tecnico B/C soddisfatto nel perimetro; gate D (un solo collaudo d'uso umano) non ancora esercitato, rilascio non autorizzato.**
