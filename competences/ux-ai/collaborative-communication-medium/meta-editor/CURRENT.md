@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 23 novembre — Consegna effettiva delle due RC e arresto dello sviluppo per inerzia
+
+**Azione concreta:** il pacchetto MetaEditor `1.0.0-rc.1` è stato scaricato dall'[artifact 14816910606](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830), estratto dal wrapper CI e verificato in questo host, SHA-256 `867c271915221bcc3a1d2f3d9164798c0448258768ed96f91b9d5293ab29dfaf`, **9 checksum file corretti**. È disponibile per un **unico collaudo d'uso umano**, ma questa disponibilità non chiude il gate.
+
+**Linea distinta MetaCanvas Studio21:** da due sorgenti IT/EN source-pinned il [builder release](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tools/build_metacanvas_studio21_release_pack.py) forma un ZIP di privacy+movimento con manifest, licenza e NOTICE. [CI 45171725612](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45171725612) **5/5 verde**; artefatto `metacanvas-studio21-privacy-rc1` ID `14816672688`, ZIP SHA-256 `830c5b40894164b993ae66d027338e97a5067da3e736ca738f97a62c5e88c4e0`, 5 file verificati dopo estrazione. Pubblicazione IT/EN da parte dell'owner sito e readback **non esercitati**. La correzione della prima prova del pacchetto ha riguardato un assert di conteggio: nella sorgente esisteva già un filtro `private`; il test ora verifica i quattro nuovi filtri *in differenza*, preservando la prova precedente.
+
+**Orientamento:** niente nuovi prototipi o miglioramenti indeterminati. I due artefatti sono raggiungibili e verificati. Procedere soltanto ai loro gate rimasti, riconoscendo competenza, oggetto, owner e autorità distinti.
+
 ## 23 novembre — MetaEditor 1.0 RC completo: fermata l'espansione di scope
 
 L'[owner del contratto 1.0](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) determina **otto percorsi di uso da quattro modelli HTML statici** e separa fuori scope CMS/editor universale, scene MetaCanvas e publish. Il builder genera `1.0.0-rc.1` riproducibile con manifest SHA-256, launcher, quattro workpage, guida, licenza MPL-2.0, NOTICE e crediti. [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) **5/5 verde**, incluso Chrome Windows `file://`, Linux, Studio21 e sito MAIOS verificato read-only; artefatto `metaeditor-1-0-rc1` ID `14816910606`. **Resta un solo collaudo umano d'uso integrato e una decisione distinta di rilascio; PR #2 draft, nessun sito modificato.** Le nuove capacità fuori dagli otto percorsi appartengono al backlog, non riaprono la 1.0. MetaCanvas ha un gate privacy/publish separato.
