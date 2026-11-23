@@ -16,6 +16,8 @@ on:
       - "tests/metaeditor-studio21-privacy.browser.py"
       - "tests/metaeditor-studio21-ai-roundtrip.browser.py"
       - "tools/build_studio21_public_projection.py"
+      - "tools/build_metacanvas_studio21_release_pack.py"
+      - "tools/test_metacanvas_studio21_release_pack.py"
       - "tools/build_metaeditor_neutral_workpage.py"
       - "tools/build_metaeditor_starter_pack.py"
       - "tests/metaeditor-starter-chooser.browser.py"
@@ -61,6 +63,8 @@ jobs:
         run: python -m unittest discover -s tools -p test_metaeditor_region_patch.py
       - name: Verify five public MetaCanvas source files
         run: python tools/verify_metacanvas_distribution.py
+      - name: Verify deterministic MetaCanvas Studio21 release package and drift refusal
+        run: python -m unittest discover -s tools -p test_metacanvas_studio21_release_pack.py
       - name: Explain evidence boundary
         run: |
           echo "This job does not check the separately owned maios_it site copies or a live deployment."
@@ -104,6 +108,15 @@ jobs:
         run: python tests/metaeditor-studio21-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-private-candidate"
       - name: Exercise real AI JSON selective import and private-preserving Undo/Redo
         run: python tests/metaeditor-studio21-ai-roundtrip.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Package source-pinned Studio21 IT/EN candidate for site-owner review
+        run: python tools/build_metacanvas_studio21_release_pack.py --output-zip "${{ runner.temp }}/MetaCanvas_Studio21_Privacy_RC1.zip"
+      - name: Attach one MetaCanvas Studio21 IT/EN privacy release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-studio21-privacy-rc1
+          path: ${{ runner.temp }}/MetaCanvas_Studio21_Privacy_RC1.zip
+          if-no-files-found: error
+          retention-days: 14
       - name: Evidence boundary
         run: |
           echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
