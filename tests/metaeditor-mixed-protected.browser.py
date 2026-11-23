@@ -196,6 +196,18 @@ def run(browser, tmp: Path, width: int):
         assert card_b.locator("figure[data-local-block]").count() == 0
         assert original_islands(page) == baseline
 
+        # Duplicating an owned image must not duplicate its private block ID.
+        page.evaluate("""() => window.metaEditorPage.select(
+            document.querySelector('#editable-card-c figure[data-local-block]'))""")
+        copy = page.evaluate("() => window.metaEditorPage.changeAddedBlock('duplicate')")
+        assert copy["changed"], copy
+        media_ids = card_c.locator("figure[data-local-block]").evaluate_all(
+            "(nodes) => nodes.map(n => n.getAttribute('data-local-block-id'))")
+        assert len(media_ids) == 2 and len(set(media_ids)) == 2, (width,media_ids)
+        assert original_islands(page) == baseline
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert card_c.locator("figure[data-local-block]").count() == 1
+
         # The work and clean file each preserve every protected original;
         # added media remains embedded and original navigation still resolves.
         clean = page.evaluate("() => window.metaEditorPage.cleanHtml()")
