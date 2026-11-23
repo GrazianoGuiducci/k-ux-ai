@@ -21,6 +21,7 @@ on:
       - "tests/metaeditor-starter-chooser.browser.py"
       - "examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js"
       - "tests/metaeditor-neutral-static-page.browser.py"
+      - "tests/metaeditor-neutral-paste.browser.py"
       - "tests/fixtures/metaeditor/**"
       - "tests/metaeditor-native-move.test.js"
       - "tests/metaeditor-composition-commands.test.js"
@@ -121,6 +122,8 @@ jobs:
           google-chrome --version
       - name: Exercise neutral static workpage on two source topologies
         run: python tests/metaeditor-neutral-static-page.browser.py --channel chrome
+      - name: Verify local-file text paste boundary and editing undo
+        run: python tests/metaeditor-neutral-paste.browser.py --channel chrome
       - name: Exercise beginner chooser and all four templates through Chrome file URL
         run: python tests/metaeditor-starter-chooser.browser.py --channel chrome
       - name: Build complete beginner ZIP with selectable starter templates
