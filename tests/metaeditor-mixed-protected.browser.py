@@ -184,6 +184,8 @@ def run(browser, tmp: Path, width: int):
         # Transfer only the new figure to card C (another section). Existing
         # card media, linked fragments, relative orders remain unchanged.
         figure.click()
+        assert figure.get_attribute("data-local-selected") == "true", (
+            width,"figure caption click selected a child rather than the media component")
         page.locator("#me-neutral-section").select_option("1")
         choose_anchor(page, "Area compositiva C")
         page.locator("#me-neutral-placement").select_option("after")
