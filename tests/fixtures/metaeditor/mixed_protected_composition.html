@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Composizione mista protetta — fixture MetaEditor</title>
+<style>
+*{box-sizing:border-box}body{font-family:system-ui,sans-serif;margin:0;color:#1d3342;background:#f8fafb}
+header,footer{padding:20px 5%;background:#e5ebee}
+section{padding:32px 4%;border-bottom:1px solid #dce6ea}
+.shell{max-width:1100px;margin:0 auto}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{background:white;border:1px solid #b6c7cc;border-radius:10px;padding:24px;min-width:0}
+.locked{background:#f0f2f5}.editable{background:#ebf7f6}
+h2{font-size:24px;margin:0 0 12px}p{font-size:16px;line-height:1.6}
+figure{margin:18px 0}img{display:block;max-width:100%;height:auto}
+.widget{padding:12px;background:#f3eade;border-radius:8px}
+@media(max-width:650px){.cards{grid-template-columns:1fr}.card{padding:16px}}
+</style></head><body>
+<header>Composizione mista: testo, link, media e aree originali protette</header>
+<main>
+<section id="overview"><div class="shell"><div class="cards">
+<div id="locked-card" class="card locked" contenteditable="false">
+<h2>Componente protetto A</h2><p>Testo proprietario che non deve essere modificato.</p>
+<figure id="locked-figure"><a id="locked-asset-link" href="#target-content"><img alt="Immagine originale protetta" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+yK9kAAAAASUVORK5CYII="></a><figcaption>Didascalia originale protetta</figcaption></figure>
+</div>
+<div id="editable-card" class="card editable">
+<h2>Area compositiva B</h2>
+<p id="original-paragraph">Un testo d'autore con <a id="original-link" href="#target-content">riferimento locale</a> da preservare.</p>
+<div id="protected-widget" class="widget" contenteditable="false">
+<h3>Widget originale protetto</h3><p>Contenuto del widget da non attraversare implicitamente.</p>
+<a id="protected-widget-link" href="#target-content">Link widget</a>
+</div>
+<figure id="author-figure" contenteditable="false">
+<img alt="Immagine originale nella scheda B" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+yK9kAAAAASUVORK5CYII=">
+<figcaption>Media originale non modificabile</figcaption></figure>
+<p id="target-content">Testo finale della scheda, collegato dal documento.</p>
+</div></div></div></section>
+<section id="details"><div class="shell"><div class="cards">
+<div id="editable-card-c" class="card editable"><h2>Area compositiva C</h2>
+<p>Contenuto destinazione con un <a id="next-link" href="https://example.org/info">collegamento originale</a>.</p></div>
+<div id="locked-card-d" class="card locked" inert>
+<h2>Componente inerte D</h2><p>Isola autonoma che non può ricevere inserimenti.</p>
+</div>
+</div></div></section>
+</main><footer>Footer originale con collegamento <a href="#overview">alla prima sezione</a>.</footer></body></html>
