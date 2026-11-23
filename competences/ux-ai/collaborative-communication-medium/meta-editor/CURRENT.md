@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 23 novembre — Link e immagini incorporati: candidato HTML neutro
+
+**Nuove capacità nel ramo [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2):** creazione di link come blocchi HTML e aggiornamento di link semplici esistenti, con schema sicuro e ancore locali esistenti; importazione di PNG/JPEG/WebP/GIF locali verificati, con firma/decodifica/limite 1,5 MiB, incorporati come data URI, alt e didascalia. SVG, indirizzi immagine remoti e URL di collegamento pericolosi non sono accettati. Figura e link usano selezione, storia, spostamento, salvataggio e export del documento; la descrizione accessibile resta distinta dalla didascalia editata.
+
+**Esercizio:** [CI 45135851508](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45135851508) con test [`media-links.browser.py`](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-neutral-media-links.browser.py) su file locali Linux Chrome, 2 topologie × 2 viewport, includendo URL negati, SVG negato, PNG valido, modifica alt, trasferimento, storico a tre passi, salvataggio/reopen ed export pulito. L'arresto della prima CI dopo l'estensione dell'alt derivava da **assert obsoleti sul test**, non da un'immagine sparita: corretto conservando l'ordine causale delle modifiche. Altri job di regressione indipendenti invariati.
+
+**Confini ancora aperti:** editing media più ricco, gestione del peso e delle dimensioni delle pagine, layout complessi, accessibilità, Windows fisico e prodotto pubblicabile; il collaudo dell'operatore rimane differito come richiesto. PR draft, nessun deploy. Il criterio e le distinzioni sono nella [GUIDE](GUIDE.md).
+
 ## 23 novembre — Incolla e salvataggio propri, CI verde, prova umana differita
 
 **Stato della candidata:** il [controller statico neutro](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js) gestisce `paste` come testo semplice soltanto, rifiuta il contenuto HTML/drop nel blocco e protegge la struttura di titoli/paragrafi da Enter nativo. `Ctrl+S` richiede il download del **file di lavoro modificabile**, non Save Page di Chrome; stato modifiche calcolato sulla differenza dalla copia aperta, con ritorno a pulito dopo Undo completo, tentativo `beforeunload` su modifiche pendenti. Non si dichiara il download salvato senza ricevuta del browser/disco.
