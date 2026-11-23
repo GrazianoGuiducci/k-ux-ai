@@ -1,5 +1,13 @@
 # MetaEditor — Neutral Static Workpage (candidate, 22 November 2026)
 
+## 23 November — Authored readonly islands and stable work-block identity
+
+Mixed card layouts now preserve authored `contenteditable="false"` and `inert` elements as immutable islands. The source adapter accepts **only** authored `contenteditable="false"`, rejecting active editing attributes; editor-generated contenteditable state is removed from clean output. Precise insertion references and text selection cannot enter authored protected islands. Quick up/down actions only reorder adjacent editor-owned blocks; crossing original components requires an explicit before/after destination.
+
+Every added/duplicated block has a unique `data-local-block-id` in the working copy and history, including upgrade of older work copies without IDs. This allows Undo/Redo to detect different object orderings even when the blocks have identical visible text and markup. Clean HTML discards these private IDs but preserves authored readonly attributes and media/link references. Single-clicking an owned figure (including its caption) selects the whole component; double-clicking the caption enters text editing.
+
+[CI 45153539786](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45153539786) passed four jobs. Its mixed composition test uses a synthetic four-card HTML source with linked protected images, readonly widgets, inert blocks, and editable text/media, at 1440/390 Chrome Linux `file://`. It asserts preservation of authored islands across editing, work save/reopen and clean export, with full Undo byte-equal to the original. The source stays trusted/static; Windows acceptance, arbitrary HTML/CMS and accessibility remain outside this proof.
+
 ## 23 November — Precise placement in nested flow groups
 
 Semantic sections may have multiple independent layout containers (for example, several cards inside CSS grid). The neutral editor now has an optional **Precise placement** section. Choose a text element within the destination section and place the new block **before** or **after** it. This same placement rule applies to paragraphs, headings, link blocks, embedded images and transfer between groups, including within one semantic section. Target identity is maintained as a DOM node reference, not a shifting list index. When no reference is chosen and the section offers multiple independent text parents without an author-defined anchor, the operation is rejected as ambiguous without changing the HTML or recording history.
