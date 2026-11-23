@@ -79,7 +79,7 @@ def run(browser, root: Path, name: str, width: int):
         assert result["prevented"], (name,width,"paste did not stop native rich HTML",result)
         assert result["unsafe"] == 0
         assert page.locator("main img,main [onerror],main [onclick]").count() == 0
-        assert page.locator("main p").first.inner_text() == "Una riga di testo una seconda riga", (name,width,result)
+        assert page.locator("main p").first.text_content() == "Una riga di testo una seconda riga", (name,width,result)
         assert page.locator("main p").first.locator("div,br,img,script").count() == 0
 
         # Neither HTML-only clipboard nor drag/drop may inject content.
