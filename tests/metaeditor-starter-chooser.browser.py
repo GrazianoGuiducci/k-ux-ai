@@ -56,6 +56,7 @@ def exercise(browser, root: Path, width: int) -> None:
                 raw = (STARTERS / "sources" / TEMPLATES[name]).read_text(encoding="utf-8")
                 no_op = page.evaluate("() => window.metaEditorPage.cleanHtml()")
                 assert no_op == raw, (name,width,"chooser changed original source before editing")
+                assert page.evaluate("() => window.metaEditorPage.status().dirty") is False
                 heading = page.locator("main h1")
                 assert heading.count() == 1, (name,width,"missing editable title")
                 heading.click()
@@ -63,6 +64,7 @@ def exercise(browser, root: Path, width: int) -> None:
                 heading.fill("Titolo scelto da un modello")
                 page.locator('[data-me-action="edit"]').click()
                 assert "Titolo scelto da un modello" in page.evaluate("() => window.metaEditorPage.cleanHtml()")
+                assert page.evaluate("() => window.metaEditorPage.status().dirty") is True
                 page.locator('#me-neutral-section').select_option('0')
                 page.locator('[data-me-action="insert-p"]').click()
                 added = page.locator("main [data-local-block]")
@@ -78,6 +80,13 @@ def exercise(browser, root: Path, width: int) -> None:
                 download_work = event.value
                 assert download_work.suggested_filename == "MetaEditor_Lavoro_Modificabile.html"
                 work = Path(download_work.path()).read_text(encoding="utf-8")
+                with page.expect_download() as event:
+                    page.keyboard.press("Control+s")
+                shortcut = event.value
+                assert shortcut.suggested_filename == "MetaEditor_Lavoro_Modificabile.html"
+                assert Path(shortcut.path()).read_text(encoding="utf-8") == work, (
+                    name,width,"Ctrl+S did not produce owned work format"
+                )
                 with page.expect_download() as event:
                     page.locator('[data-me-action="clean"]').click()
                 download_clean = event.value
@@ -103,6 +112,7 @@ def exercise(browser, root: Path, width: int) -> None:
                     assert reopened.locator("#me-neutral-toolbar").count() == 1
                     assert reopened.evaluate("() => window.metaEditorPage.cleanHtml()") == clean
                     assert reopened.locator("main [data-local-block]").count() == 1
+                    assert reopened.evaluate("() => window.metaEditorPage.status().dirty") is False
                 finally:
                     reopened.close()
                 for _ in range(4):
@@ -112,6 +122,7 @@ def exercise(browser, root: Path, width: int) -> None:
                 assert page.evaluate("() => window.metaEditorPage.cleanHtml()") == raw, (
                     name,width,"full undo changed original document"
                 )
+                assert page.evaluate("() => window.metaEditorPage.status().dirty") is False
                 assert not errors, (name,width,errors)
                 print("PASS",width,name,"file:// chooser->work, insert, reopen, Undo, original unchanged")
             finally:
