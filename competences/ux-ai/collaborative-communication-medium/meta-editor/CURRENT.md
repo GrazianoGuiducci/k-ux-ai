@@ -1,5 +1,15 @@
 # MetaEditor Evolution — CURRENT
 
+## 23 novembre — Composizioni miste con isole autoriali protette
+
+**Stato nel ramo [PR #2](https://github.com/GrazianoGuiducci/k-ux-ai/pull/2):** la [candidata neutra](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js) esclude da selezione e posizionamento le isole `contenteditable="false"` e `inert`, impedisce ai movimenti rapidi di scavalcare nodi originali e mantiene come opzione la destinazione esplicita prima/dopo. L'[adapter sorgente](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/static-page-source-adapter.js) conserva il `contenteditable=false` autoriale nei file lavoro e pulito, rifiutando invece editabilità autoriale attiva.
+
+**Identità work/history:** `data-local-block-id` stabile e distinto per ogni blocco creato o duplicato, compresa migrazione delle copie lavoro precedenti che hanno `data-local-block` ma non un ID. Lo scambio di due paragrafi con markup identico è ora rilevabile da history; clean HTML rimuove i metadati. Un click sulla caption di una figura aggiunta seleziona l'intera figura; doppio clic permette editing del testo.
+
+**Verifica:** [CI 45153539786](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45153539786) quattro job verdi: [test mixed protected](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-mixed-protected.browser.py) a 1440/390 Chrome Linux `file://` esercita card con immagini e link originali, readonly e inert, inserimento/media/trasferimento, originale invariato, esportazione e reopen, Undo totale; restano verdi Studio21, altri test neutri e la pagina MAIOS source-identical. Il controllo finale su identificativi distinti anche nelle copie media è stato aggiunto dopo questa prima CI e va mantenuto sotto verifica dedicata.
+
+**Confini:** niente merge o produzione; prova umana Windows differita come richiesto, release Gate B ancora parziale. Il metodo è in [GUIDE](GUIDE.md).
+
 ## 23 novembre — Posizionamento preciso nei layout annidati, CI verde
 
 **Nuovo portatore candidato:** [neutral-static-page-editor.js](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js) distingue la `section` dal gruppo di testo effettivo e permette di scegliere un riferimento prima/dopo tramite `Posizionamento preciso`. La scelta rimane nascosta sotto un `details` finché serve; viene conservata per identità del nodo, non per indice che può spostarsi. I flussi multipli senza referente autoriale o selezione sicura vengono rifiutati, senza cambiare documento o history. Inserimento, link, immagine e trasferimento usano il medesimo posizionamento; una scheda della stessa sezione può essere nuova destinazione esplicita.
