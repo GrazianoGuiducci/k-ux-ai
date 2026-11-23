@@ -71,14 +71,19 @@
     return found;
   }
 
-  const attrsToStrip = name => name === 'contenteditable' ||
+  // An author's contenteditable="false" is a genuine read-only contract,
+  // not editing runtime state. All other contenteditable values would
+  // activate editing in the imported source and remain unsupported.
+  const authoredReadOnly = el => (el.getAttribute('contenteditable') || '').toLowerCase() === 'false';
+  const attrsToStrip = (name, el) =>
+    (name === 'contenteditable' && !authoredReadOnly(el)) ||
     name.startsWith('data-local-') || name.startsWith('data-me0') || name.startsWith('data-me1');
 
   function stripRuntime(element) {
     const copy = element.cloneNode(true);
     for (const el of [copy, ...copy.querySelectorAll('*')]) {
       for (const attribute of el.getAttributeNames()) {
-        if (attrsToStrip(attribute)) el.removeAttribute(attribute);
+        if (attrsToStrip(attribute, el)) el.removeAttribute(attribute);
       }
     }
     // A selected text fragment should never be exported as an active input.
@@ -95,7 +100,7 @@
       fail('active/embedded content inside editable main is unsupported');
     for (const el of [original, ...original.querySelectorAll('*')]) {
       for (const name of el.getAttributeNames()) {
-        if (attrsToStrip(name)) fail('author source uses editor-reserved attributes: ' + name);
+        if (attrsToStrip(name, el)) fail('author source uses editor-reserved attributes: ' + name);
       }
     }
     const originalRootAttrs = [...original.attributes].map(a => [a.name, a.value]);
