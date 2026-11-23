@@ -1,5 +1,15 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Nessuna prova manuale richiesta fino a prodotto più maturo
+
+**Nuova direzione esplicita dell'operatore:** «Farò dei test quando avremo un prodotto abbastanza valido. Andiamo avanti». Non ripresentare ogni artefatto Windows chiedendo micro-verifiche; usare competenza, evidenze e test browser per costruire un risultato di qualità più completo prima del successivo passaggio umano.
+
+**Nuova prova owner-native:** [MetaEditor Evolution GUIDE/CURRENT](../../competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md) conservano la distinzione. Il [controller neutro](meta-editor-lab/neutral-static-page-editor.js) filtra HTML incollato in favore di testo semplice, rifiuta drop/input HTML nel campo testuale e Enter che modifichi la struttura del blocco. `Ctrl+S` attiva il download proprio del lavoro; la differenza del documento indica modifiche pendenti e Undo completo ripristina stato pulito. La conferma prima di chiudere è subordinata al comportamento del browser, e la richiesta di download non equivale a file confermato sul disco.
+
+**Esercizio:** [CI 45133248996](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45133248996), quattro job verdi. La [regressione paste/drop](../../tests/metaeditor-neutral-paste.browser.py) esercita clipboard sintetica in Chrome Linux `file://` su HTML originali essenziale/articolo, esclude markup esterno, verifica storia/reopen; la [regressione starter](../../tests/metaeditor-starter-chooser.browser.py) esercita download reali lavoro/clean/`Ctrl+S` su quattro modelli, riapertura e status dirty/Undo. Studio21 e MAIOS live invariati. **Nessuna accettazione umana Windows**, nessun nuovo package rilasciato, PR #2 draft e nessuna modifica di `maios_it/main`.
+
+**Prossimo movimento utile:** osservare il campo delle lacune funzionali del documento neutro rispetto alle capacità già possedute in Bridge11 e nel medium (in particolare riferimenti e media), distinguendo ciò che la prima versione può supportare coerentemente. No rigenerazione di demo per inerzia e no promozione automatica da CI a release.
+
 ## 23 novembre — Dalla pagina di prova all'ingresso per modelli
 
 **Nuova differenza dall'operatore:** «se non mi dai un template da selezionare anche partire direttamente da uno a vuoto è piuttosto difficile per chi prende confidenza». Non è una richiesta di nuovi strumenti d'impaginazione, né l'autorizzazione a sostituire un lavoro già aperto: manca una **scelta iniziale comprensibile**.
