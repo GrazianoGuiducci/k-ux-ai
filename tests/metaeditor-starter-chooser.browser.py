@@ -8,6 +8,8 @@ exact original source. Only synthetic originals are packaged.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import sys
 import tempfile
 import zipfile
@@ -17,7 +19,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-from build_metaeditor_starter_pack import TEMPLATES, ROOT as STARTERS, pack
+from build_metaeditor_starter_pack import TEMPLATES, ROOT as STARTERS, MANIFEST, VERSION, pack
 
 EXPECTED = {"Articolo", "Da_zero", "Essenziale", "Progetto"}
 
@@ -145,12 +147,29 @@ def main():
         root = Path(folder)
         archive_path = root / "MetaEditor_Scegli_Modello.zip"
         pack(archive_path)
+        # A release candidate is reproducible, not another anonymous ZIP:
+        # independent builds from identical inputs must have identical bytes.
+        second_archive = root / "Seconda_Build.zip"
+        pack(second_archive)
+        assert archive_path.read_bytes() == second_archive.read_bytes(), (
+            "Starter pack is nondeterministic"
+        )
         with zipfile.ZipFile(archive_path) as archive:
             names = set(archive.namelist())
-            expected = {"Apri_MetaEditor.html","LEGGIMI.txt"} | {
+            expected = {"Apri_MetaEditor.html","LEGGIMI.txt",MANIFEST} | {
                 "Modelli/" + name + ".html" for name in EXPECTED
             }
             assert names == expected, names
+            manifest = json.loads(archive.read(MANIFEST).decode("utf-8"))
+            assert manifest["schema"] == "metaeditor.local-pack.v1"
+            assert manifest["version"] == VERSION
+            assert manifest["status"] == "release-candidate-not-published"
+            hashes = manifest["files_sha256"]
+            assert set(hashes) == names - {MANIFEST}
+            for name, digest in hashes.items():
+                assert hashlib.sha256(archive.read(name)).hexdigest() == digest, (
+                    "Artifact hash does not match manifest", name
+                )
             archive.extractall(root / "opened")
         with sync_playwright() as play:
             browser = play.chromium.launch(**opts)
