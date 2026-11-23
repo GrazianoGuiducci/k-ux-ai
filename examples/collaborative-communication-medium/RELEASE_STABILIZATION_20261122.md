@@ -1,5 +1,9 @@
 # MetaCanvas + MetaEditor — consolidamento e rilascio
 
+## 23 novembre — Decisione di chiusura tecnica MetaEditor 1.0
+
+[Contratto di prodotto](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md): otto percorsi, quattro template, nessun nuovo scope per inerzia. Pacchetto `metaeditor-1-0-rc1` ID `14816910606` con licenza MPL-2.0 e manifest SHA-256, doppia build riproducibile; [CI 45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) **5/5 verde**, incluso Windows Chrome `file://`. **In attesa soltanto del test umano d'uso e di una distinta decisione di rilascio**, senza mergiare la PR o modificare il sito. MetaCanvas rimane un altro prodotto: privacy patch Studio21 candidata, non ancora pubblicata con readback IT/EN.
+
 ## 23 novembre — MetaEditor 1.0: un percorso di chiusura, due prodotti distinti
 
 **Decisione di perimetro:** [METAEDITOR_1_0_RELEASE_CONTRACT.md](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) definisce otto percorsi per un editor locale di pagine HTML statiche da quattro template, e delimita ciò che passa a versioni successive. MetaCanvas `ccm.document.v1` resta distinto e già pubblico, ma **non ancora chiuso**: la correzione candidata della proiezione di link privati Studio21 richiede release IT/EN e readback separati, non nuove funzioni.
