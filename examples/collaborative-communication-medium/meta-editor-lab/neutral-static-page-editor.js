@@ -119,10 +119,34 @@
     const button = action => toolbar.querySelector('[data-me-action="' + action + '"]');
     const pristineSource = sourceHtml;
 
+    // Work/history objects require stable identity independent of their
+    // visible text and markup. Two identical paragraphs exchanged in the
+    // DOM must still be a real ordering change to the editing history.
+    // This identity is editor-private and stripped from clean/public HTML.
+    let blockSequence = 0;
+    function assignBlockIdentity(node) {
+      const occupied = new Set([...main.querySelectorAll('[data-local-block-id]')]
+        .filter(other => other !== node)
+        .map(other => other.getAttribute('data-local-block-id')));
+      let id;
+      do { id = 'b' + (++blockSequence).toString(36); } while (occupied.has(id));
+      node.setAttribute('data-local-block-id',id);
+      return id;
+    }
+    const observedIdentities = new Set();
+    for (const node of main.querySelectorAll('[data-local-block]')) {
+      let id = node.getAttribute('data-local-block-id');
+      if (!id || observedIdentities.has(id)) id = assignBlockIdentity(node);
+      observedIdentities.add(id);
+    }
+
     function workRootSnapshot() {
       const clone = main.cloneNode(true);
       for (const element of [clone, ...clone.querySelectorAll('*')]) {
-        element.removeAttribute('contenteditable');
+        // Respect authored contenteditable="false" islands in the saved
+        // working document; only active editing state is transient.
+        if ((element.getAttribute('contenteditable') || '').toLowerCase() !== 'false')
+          element.removeAttribute('contenteditable');
         element.removeAttribute('data-local-selected');
         element.removeAttribute('data-local-editing');
       }
@@ -406,6 +430,7 @@
       return transact(() => {
         const node = doc.createElement(actualTag);
         node.setAttribute('data-local-block', 'true');
+        assignBlockIdentity(node);
         node.textContent = tag === 'p' ? 'Nuovo paragrafo' : 'Nuovo titolo';
         insertAtPoint(node, point);
         select(node);
@@ -454,6 +479,7 @@
       return transact(() => {
         const p = doc.createElement('p');
         p.setAttribute('data-local-block','true');
+        assignBlockIdentity(p);
         const a = doc.createElement('a');
         a.textContent = label;
         a.setAttribute('href',href);
@@ -508,6 +534,7 @@
       return transact(() => {
         const figure = doc.createElement('figure');
         figure.setAttribute('data-local-block','true');
+        assignBlockIdentity(figure);
         figure.style.maxWidth = '100%';
         figure.style.margin = '1.3em 0';
         const img = doc.createElement('img');
@@ -587,6 +614,7 @@
         }
         return transact(() => {
           const copy = node.cloneNode(true);
+          assignBlockIdentity(copy);
           copy.removeAttribute('data-local-selected');
           copy.removeAttribute('data-local-editing');
           copy.removeAttribute('contenteditable');
