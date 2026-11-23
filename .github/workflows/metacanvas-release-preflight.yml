@@ -17,6 +17,8 @@ on:
       - "tests/metaeditor-studio21-ai-roundtrip.browser.py"
       - "tools/build_studio21_public_projection.py"
       - "tools/build_metaeditor_neutral_workpage.py"
+      - "tools/build_metaeditor_starter_pack.py"
+      - "tests/metaeditor-starter-chooser.browser.py"
       - "examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js"
       - "tests/metaeditor-neutral-static-page.browser.py"
       - "tests/fixtures/metaeditor/**"
@@ -119,6 +121,17 @@ jobs:
           google-chrome --version
       - name: Exercise neutral static workpage on two source topologies
         run: python tests/metaeditor-neutral-static-page.browser.py --channel chrome
+      - name: Exercise beginner chooser and all four templates through Chrome file URL
+        run: python tests/metaeditor-starter-chooser.browser.py --channel chrome
+      - name: Build complete beginner ZIP with selectable starter templates
+        run: python tools/build_metaeditor_starter_pack.py --output-zip "${{ runner.temp }}/MetaEditor_Scegli_Modello.zip"
+      - name: Attach beginner starter chooser pack
+        uses: actions/upload-artifact@v4
+        with:
+          name: metaeditor-template-starter-pack
+          path: ${{ runner.temp }}/MetaEditor_Scegli_Modello.zip
+          if-no-files-found: error
+          retention-days: 14
       - name: Build user-testable Windows file preview from synthetic page
         run: |
           python tools/build_metaeditor_neutral_workpage.py \
