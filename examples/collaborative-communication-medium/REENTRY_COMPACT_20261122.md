@@ -1,5 +1,13 @@
 # MetaCanvas + MetaEditor — checkpoint di rientro compatto · 22 novembre 2026
 
+## 23 novembre — Feedback che corregge la falsa chiusura del prodotto
+
+**Nuova differenza di origine autoriale:** «È ancora abbastanza poco utilizzabile ... non vedo tanti sviluppi da dove eravamo partiti». Il confronto delle sorgenti [Bridge11](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/CURRENT.html), [Studio20](AI_Collaboration_Studio.html) e [controller neutro](meta-editor-lab/neutral-static-page-editor.js) conferma: la RC1 non esercita buona parte delle capacità dirette, compositive e visuali da cui era iniziato il lavoro. La [comparazione Bridge11](meta-editor-lab/BRIDGE11_COMPARISON_20261122.md) le documentava già: mancato routing di conoscenza disponibile, non ignoranza inevitabile.
+
+**Ricomposizione:** [PRODUCT_REALIGNMENT_20261123.md](meta-editor-lab/PRODUCT_REALIGNMENT_20261123.md) stabilisce il significato attuale, senza falsificare prove passate. La RC1 neutra, ZIP/hash/CI verdi rimane **harness tecnico** per source/undo/export, **non** release candidate sufficiente del MetaEditor come prodotto. Il [contratto v1 ridotto](meta-editor-lab/METAEDITOR_1_0_RELEASE_CONTRACT.md) è superseduto nel suo gate di utilità. La competenza [MetaEditor Evolution GUIDE/CURRENT](../../competences/ux-ai/collaborative-communication-medium/meta-editor/CURRENT.md) ha corretto entry/routing verso il proprio SKILL.md, Bridge11 e Studio20 prima di qualsiasi nuovo intervento.
+
+**Prossimo passo:** R1 superficie visuale diretta, R2 composizione di forma/template nel carrier appropriato, R3 anteprima e persistenza. Non rigenerare RC neutre e non imporre un nuovo piano universale. Test dell'operatore restano **d'uso**; il feedback attuale vale come prova negativa della proposta RC1. Nessun merge/deploy o modifica a `maios_it/main`; pubblicazione MetaCanvas privacy segue owner separato.
+
 ## 23 novembre — Due candidate complete; gate umano/pubblicazione ancora separati
 
 **MetaEditor 1.0 RC1** è raggiungibile come ZIP `1.0.0-rc.1` **SHA-256 `867c271915221bcc3a1d2f3d9164798c0448258768ed96f91b9d5293ab29dfaf`**. Estratto direttamente dall'artifact [45169380830](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45169380830) ID `14816910606`; tutti i **9 file** con checksum corretti. Resta solo una **prova d'uso integrata** dell'operatore e poi decisione di release.
