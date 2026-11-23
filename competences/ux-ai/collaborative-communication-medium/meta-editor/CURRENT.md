@@ -1,5 +1,13 @@
 # MetaEditor Evolution — CURRENT
 
+## 23 novembre — Primo avvio con scelta del modello (candidato esercitato)
+
+**Differenza risolta nel candidato:** l'operatore osserva che partire direttamente da una pagina vuota o da un solo file dimostrativo è difficile per chi prende confidenza con MetaEditor. La nuova [schermata di selezione](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/starter-templates/Apri_MetaEditor.html) offre pagina essenziale, progetto/servizio, articolo e pagina minima. [Builder e contratto](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/starter-templates/README.md) realizzano un ZIP offline con quattro copie lavoro autonome: scegliere non sostituisce un'altra sessione né cambia l'originale. Distinta da template JSON delle scene MetaCanvas.
+
+**Evidenza:** [Actions 45124239776](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45124239776) quattro job verdi; [test browser](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/tests/metaeditor-starter-chooser.browser.py) ha esercitato tutti i quattro percorsi con `file://`, editor, modifica, inserimento, riapertura, Undo esatto e modello immutabile a 1440/390. Artifatto ZIP `metaeditor-template-starter-pack` ID `14795300603`. Scaricato, estratto e ispezionato; visualizzazione della galleria senza errori. Non è attestata ancora la comprensione reale in Chrome Windows, né la pubblicazione.
+
+**Prossimo passo:** valutazione dell'operatore sulla prima scelta e sulle prime modifiche; poi eventuale rifinitura delle card e dell'onboarding. PR #2 draft, Gate B parziale, produzione invariata. Nuovo metodo e differenze nella [GUIDE](GUIDE.md).
+
 ## 22 novembre — UI neutra contestuale verificata, prova Windows v3 ancora aperta
 
 **Capacità candidata:** in [neutral-static-page-editor.js](https://github.com/GrazianoGuiducci/k-ux-ai/blob/work/metacanvas-metaeditor-stabilization-20261122/examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js) il pannello ora è compatto e riducibile, con selezione e inserimento in evidenza; modifica solo con selezione, formato solo durante edit, gruppo di gestione solo sui blocchi aggiunti. Messaggio di contesto dinamico, `Termina modifica` esplicito e tasto Escape coerente con la history. `workHtml` e `cleanHtml` rimangono distinti.
