@@ -62,13 +62,13 @@ def run(browser, tmp: Path, width: int):
             raise AssertionError({
                 "startup":str(exc), "width":width, "pageerrors":errors,
                 "scripts":page.locator("script").count(),
-                "mount":page.evaluate("() => ({
+                "mount":page.evaluate("""() => ({
                     adapter:!!window.MetaEditorStaticPageAdapter,
                     controller:!!window.MetaEditorNeutralStaticPage,
                     mounted:!!window.metaEditorPage,
                     state:document.readyState,
                     hasMain:!!document.querySelector('main')
-                })"),
+                })"""),
                 "tail":page.content()[-600:]
             }) from exc
         assert page.evaluate("() => window.metaEditorPage.cleanHtml()") == original
