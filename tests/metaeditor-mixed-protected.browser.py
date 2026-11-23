@@ -56,7 +56,21 @@ def run(browser, tmp: Path, width: int):
     page.on("pageerror", lambda e: errors.append(str(e)))
     try:
         page.goto(workfile.as_uri())
-        page.wait_for_function("() => !!window.metaEditorPage")
+        try:
+            page.wait_for_function("() => !!window.metaEditorPage", timeout=6000)
+        except Exception as exc:
+            raise AssertionError({
+                "startup":str(exc), "width":width, "pageerrors":errors,
+                "scripts":page.locator("script").count(),
+                "mount":page.evaluate("() => ({
+                    adapter:!!window.MetaEditorStaticPageAdapter,
+                    controller:!!window.MetaEditorNeutralStaticPage,
+                    mounted:!!window.metaEditorPage,
+                    state:document.readyState,
+                    hasMain:!!document.querySelector('main')
+                })"),
+                "tail":page.content()[-600:]
+            }) from exc
         assert page.evaluate("() => window.metaEditorPage.cleanHtml()") == original
         baseline = original_islands(page)
         assert page.locator("main .card").count() == 4
