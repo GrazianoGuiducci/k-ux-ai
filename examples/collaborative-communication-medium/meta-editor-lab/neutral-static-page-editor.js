@@ -353,13 +353,38 @@
       if (success) notify('Formattazione applicata; esci dal testo per registrarla.');
       return {ok:!!success};
     }
-    function transact(effect) {
+    // Bridge11's revealSelection principle, adapted to the actual neutral
+    // toolbar and DOM viewport. Keep the current caret, selection and history.
+    function revealSelection(node) {
+      if (!safeNode(node) || !node.isConnected) return false;
+      const view = doc.defaultView;
+      const rect = node.getBoundingClientRect();
+      if (!rect.width || !rect.height) return false;
+      let top = 12, bottom = view.innerHeight - 12;
+      const panel = toolbar.getBoundingClientRect();
+      const overlapsHorizontally = panel.left < rect.right && panel.right > rect.left;
+      if (overlapsHorizontally && panel.width && panel.height) {
+        // Neutral toolbar is top/right on desktop and bottom-docked on mobile.
+        if (panel.bottom >= view.innerHeight - 28) bottom = Math.min(bottom, panel.top - 12);
+        else if (panel.top <= 28) top = Math.max(top, panel.bottom + 12);
+      }
+      // Do not move the page to an impossible or even less useful position.
+      const available = bottom - top;
+      if (available < 72) return false;
+      if (rect.top >= top && rect.bottom <= bottom) return true;
+      const destination = rect.height > available ? top : top + (available - rect.height) / 2;
+      const delta = rect.top - destination;
+      if (Math.abs(delta) > 3) view.scrollBy({top:Math.round(delta),behavior:'instant'});
+      return true;
+    }
+    function transact(effect, reveal=false) {
       leaveEditing();
       const before = snapshot();
       const output = effect();
       const changed = record(before);
       refreshSections();
       syncButtons();
+      if (changed && reveal) revealSelection(selected);
       return {ok:true,changed,...(output || {})};
     }
     // A section is a semantic boundary, not necessarily its content column.
@@ -435,7 +460,7 @@
         insertAtPoint(node, point);
         select(node);
         notify('Blocco aggiunto nel contenitore del testo selezionato.');
-      });
+      }, true);
     }
 
     // Links are supported as explicit author actions, never as HTML pasted
@@ -591,7 +616,7 @@
           insertAtPoint(node, point);
           select(node);
           notify('Blocco trasferito nel contenitore testuale di destinazione.');
-        });
+        }, true);
       }
       if (action === 'up' && node.previousElementSibling?.hasAttribute('data-local-block')) {
         return transact(() => node.parentElement.insertBefore(node, node.previousElementSibling));
@@ -621,7 +646,7 @@
           node.insertAdjacentElement('afterend', copy);
           select(copy);
           notify('Blocco aggiunto duplicato. La modifica è annullabile.');
-        });
+        }, true);
       }
       if (action === 'delete') {
         return transact(() => {
@@ -726,7 +751,7 @@
       const node = Number.isInteger(index) && index >= 0 ? nodes[index] : null;
       select(node);
       if (node) {
-        node.scrollIntoView({block:'center', behavior:'auto'});
+        revealSelection(node);
         notify('Elemento selezionato. Premi Modifica testo per lavorarci.');
       }
     });

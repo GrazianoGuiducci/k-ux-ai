@@ -139,6 +139,57 @@ def run(browser, tmp, width):
         page.close()
 
 
+def exercise_reveal(browser,tmp,width):
+    # A long but synthetic page makes an offscreen target and available
+    # scroll range explicit. No MAIOS content is used.
+    original=FIXTURE.read_text(encoding="utf-8").replace(
+        "</style>", "header{min-height:1100px} footer{min-height:1000px}</style>",1)
+    adapter,controller=[(LAB/name).read_text(encoding="utf-8") for name in MODULES]
+    local=tmp/f"reveal-{width}.html"
+    local.write_text(build(original,adapter,controller),encoding="utf-8")
+    page=browser.new_page(viewport={"width":width,"height":850},accept_downloads=True)
+    errors=[]
+    page.on("pageerror",lambda e:errors.append(str(e)))
+    try:
+        page.goto(local.as_uri())
+        page.wait_for_function("() => !!window.metaEditorPage")
+        page.locator("#me-neutral-section").select_option("1")
+        page.locator("#me-neutral-position-group summary").click()
+        choose_anchor(page,"Scheda D")
+        page.locator("#me-neutral-placement").select_option("after")
+        page.evaluate("window.scrollTo(0,0)")
+        page.locator('[data-me-action="insert-p"]').click()
+        selected=page.locator("main [data-local-selected][data-local-block]")
+        assert selected.count()==1
+        assert selected.locator("xpath=..").locator("h2").inner_text().startswith("Scheda D")
+        assert page.evaluate("window.scrollY")>0
+        def visible_selection():
+            assert page.evaluate("""() => {
+              const node=document.querySelector('main [data-local-selected][data-local-block]');
+              const r=node.getBoundingClientRect(), p=document.querySelector('#me-neutral-toolbar').getBoundingClientRect();
+              const overlap=r.left<p.right&&r.right>p.left&&r.top<p.bottom&&r.bottom>p.top;
+              return r.top>=0&&r.bottom<=innerHeight&&!overlap;
+            }"""), "selected block is obscured or outside viewport"
+        # At 390 the fixed bottom toolbar must not obscure the insertion.
+        # At desktop the right card overlaps the toolbar horizontally;
+        # a sufficiently tall viewport band is required.
+        visible_selection()
+        page.locator("#me-neutral-section").select_option("0")
+        choose_anchor(page,"Scheda A")
+        page.locator("#me-neutral-placement").select_option("after")
+        page.locator('[data-me-group="block"] summary').click()
+        page.locator('[data-me-action="transfer"]').click()
+        assert selected.locator("xpath=..").locator("h2").inner_text().startswith("Scheda A")
+        visible_selection()
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.evaluate("() => window.metaEditorPage.cleanHtml()")==original
+        assert not errors,errors
+        print("PASS",width,"real insert and transfer reveal selected DOM block; full Undo")
+    finally:
+        page.close()
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--channel", default=None)
@@ -153,6 +204,7 @@ def main():
             try:
                 for width in (1440,390):
                     run(browser,Path(tmp),width)
+                    exercise_reveal(browser,Path(tmp),width)
             finally:
                 browser.close()
 
