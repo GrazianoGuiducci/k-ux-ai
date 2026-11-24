@@ -16,6 +16,8 @@ on:
       - "tests/metaeditor-studio21-privacy.browser.py"
       - "tests/metaeditor-studio21-ai-roundtrip.browser.py"
       - "tools/build_studio21_public_projection.py"
+      - "tools/build_metacanvas_integrity_candidates.py"
+      - "tests/metacanvas-integrity-candidates.browser.py"
       - "tools/build_metacanvas_studio21_release_pack.py"
       - "tools/build_studio21_visual_actions.py"
       - "tests/metacanvas-studio21-visual-actions.browser.py"
@@ -141,6 +143,25 @@ jobs:
         run: |
           echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
           echo "This does not verify Windows file://, screen readers or public-site deployment."
+
+  metacanvas-five-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install playwright==1.57.0
+      - name: Exercise the five manifest-pinned integrity candidates
+        run: python tests/metacanvas-integrity-candidates.browser.py --channel chrome --output-root "${{ runner.temp }}/metacanvas-integrity"
+      - name: Attach all five unpublished candidates and receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-five-integrity
+          path: ${{ runner.temp }}/metacanvas-integrity/
+          if-no-files-found: error
+          retention-days: 14
 
   neutral-static-browser:
     runs-on: ubuntu-latest

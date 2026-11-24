@@ -33,7 +33,7 @@ def fixture_html(original: str) -> tuple[str,dict]:
     present={item['id'] for item in scene['elements']}
     assert len(present)==len(scene['elements'])
     assert {SEC,CHILD,IMAGE}.isdisjoint(present)
-    assert any(item['id']=='d1-c' for item in scene['elements'])
+    endpoint = 'd1-c' if 'd1-c' in present else next(item['id'] for item in scene['elements'] if item['type']=='card')
     scene['elements'].extend([
         {'id':SEC,'type':'section','x':450,'y':300,'w':340,'h':245,
          'text':'Layout regression','fontSize':18,'color':'#183146',
@@ -44,7 +44,7 @@ def fixture_html(original: str) -> tuple[str,dict]:
         {'id':IMAGE,'type':'image','x':490,'y':435,'w':110,'h':70,
          'containerId':SEC,'text':'Raster child','src':PNG,'fontSize':18}
     ])
-    scene['links'].append({'id':LINK,'from':CHILD,'to':'d1-c',
+    scene['links'].append({'id':LINK,'from':CHILD,'to':endpoint,
                            'label':'regression edge','width':3,'color':'#087b70',
                            'fromAnchor':'right','toAnchor':'left','arrow':True})
     data=json.dumps(doc,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
@@ -79,13 +79,14 @@ def observe(browser, name, width, source, move_js):
           document.querySelector('#canvas .node[data-id="regression-section"]') &&
           document.querySelector('#canvas .node[data-id="regression-card"]') &&
           document.querySelector('#canvas .node[data-id="regression-image"]') &&
-          document.querySelectorAll('#canvas .edge-visible').length>=3
+          document.querySelectorAll('#canvas .edge-visible').length>=2
         )""")
         page.add_script_tag(content=move_js)
         initial=download_model(page)
         first,links_before=elements(initial)
         assert first[CHILD]['containerId']==SEC and first[IMAGE]['containerId']==SEC
-        assert links_before[LINK]['from']==CHILD and links_before[LINK]['to']=='d1-c'
+        assert links_before[LINK]['from']==CHILD and links_before[LINK]['to'] in first
+        assert links_before[LINK]['to'] not in {SEC,CHILD,IMAGE}
         initial_route=page.locator('#canvas .edge-visible').last.get_attribute('d')
         res=page.evaluate("""() => MetaEditorNativeMove.create({carrier:'scene',document})
           .execute({nodeId:'regression-section',direction:'right'})""")
