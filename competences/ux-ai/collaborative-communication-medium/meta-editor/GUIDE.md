@@ -1,5 +1,9 @@
 # MetaEditor Evolution — guida viva
 
+## 24 novembre — La semplicità dipende dalla situazione d'uso
+
+Il [caso Playground / Visual Flow](https://github.com/GrazianoGuiducci/k-ux-ai/blob/5cda5d7cc62c9aa32e920180bd6c3d9e8996dc32/examples/collaborative-communication-medium/meta-editor-lab/VISUAL_FLOW_GUIDE_TRANSITION_20261124.md) mostra una differenza: Flat e strumenti nascosti nella guida non sono una facoltà assente; sono una scelta di disclosure progressiva che tutela l'apprendimento. L'interfaccia completa deve essere raggiungibile dal gesto nativo di esplorazione e lasciare disponibile il ritorno senza perdere i contenuti. Un'aggiunta comune non deve scavalcare la specificità del documento. Quando si verifica fluidità, osservare il gesto e il suo effetto (modifica reale di una proprietà, referente, spazio utile, salvataggio e riapertura), non soltanto la presenza dei controlli. Il commit 5cda5d7 contiene la correzione e i test candidati, non una nuova prova verde; attendere riscontro del commit esatto prima di attribuire riuscita.
+
 ## 24 novembre — Fluidità e riduzione delle latenze dell'esperienza
 
 **Direzione dell'operatore:** «Controllare sempre se non possiamo fare di meglio ... offrire l'esperienza utente migliore possibile togliendo attriti e creando il design fluido che riduce le latenze». La qualità emerge dalla continuità fra intenzione, referente, gesto, conseguenza percepibile e prossima possibilità. Nella costruzione riconoscere anche i costi introdotti dal design: ricerca dei comandi, passaggi, perdita di spazio, selezioni concorrenti, ripetizione di operazioni, ridisegni inutili e attesa. Quando un'alternativa nativa o una composizione più semplice può migliorare realmente il gesto, farla partecipare prima di determinare una nuova funzione; preservare controllo, accessibilità, persistenza e Undo. Il miglioramento resta aperto al confronto con l'uso, non diventa revisione rituale o ottimizzazione infinita.
