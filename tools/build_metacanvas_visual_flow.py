@@ -21,7 +21,9 @@ body.hide-slide-rail:not(.presenting):not(.reading-mode) .editor-shell {
   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
 }
 /* Flat is the existing focus surface: preserve the user's guide outside it. */
-body.flat-layout:not(.reading-mode):not(.public-copy) #publicFirstUse {display:none!important}
+body.flat-layout:not(.reading-mode):not(.public-copy) #publicFirstUse:not(:has(#guideOptions)) {display:none!important}
+/* The guided tutorial already has its own compact focus and progression. */
+body.guided-playground #me-template-entry {display:none!important}
 /* Preserve usable width when a side inspector and the slide rail compete. */
 @media(min-width:1001px) and (max-width:1280px) {
  body.panel-open:not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .editor-shell {
@@ -78,6 +80,15 @@ window.addEventListener('resize',visualActionsSchedule);""")
                 "syncEditBar();scheduleFlatFit();requestAnimationFrame(updateFloatGrip);")
     html = once(html, "if(e.key==='Enter'){e.preventDefault();openQuick('node',n.id)}",
                 "if(e.key==='Enter'){e.preventDefault();if(editingId)cancelDirectEdit(true);selectNode(n.id,false);openQuick('node',n.id)}")
+    # Keep the native inspector connected to the actual selected object.
+    html = once(html, "renderLayers();visualActionsSync(); // La selezione",
+                "renderLayers();if($('#propertyPanel').classList.contains('drawer-open'))renderInspector();visualActionsSync(); // La selezione")
+    html = once(html, "updateLinkPositions();renderLayers();visualActionsHide();}",
+                "updateLinkPositions();renderLayers();if($('#propertyPanel').classList.contains('drawer-open'))renderInspector();visualActionsHide();}")
+    # Return focus to the object after closing its inspector, including in the
+    # guided surface where the general Tools button is intentionally hidden.
+    html = once(html, "const target=which==='properties'&&selectedId?",
+                "const target=(which==='properties'||(!which&&property.contains(focusBefore)))&&selectedId&&!readingMode?")
     # Restore the same selected object after a no-op or close; native history is untouched.
     html = once(html, "if(commitText&&value!==n.text)commit(()=>n.text=value);else{d.textContent=n.text;}",
                 "if(commitText&&value!==n.text)commit(()=>n.text=value);else{d.textContent=n.text;}visualActionsSchedule();")
@@ -89,7 +100,7 @@ window.addEventListener('resize',visualActionsSchedule);""")
     html = once(html, "$('#toggleSlideRail').onclick=()=>toggleSlideRail();",
                 """$('#toggleSlideRail').onclick=()=>toggleSlideRail();
 function visualOpenTools(templates){
- if(publicMode||presenting)return;
+ if(publicMode||presenting||document.body.classList.contains('guided-playground'))return;
  if(editingId)cancelDirectEdit(true);
  flushQuick();closeQuick();
  if(templates&&readingMode)changeView(false);
@@ -103,7 +114,7 @@ function visualOpenTools(templates){
 }
 $('#me-template-entry').onclick=()=>visualOpenTools(true);
 document.addEventListener('keydown',e=>{
- if(e.defaultPrevented||e.isComposing||publicMode||presenting||editingId||!$('#quickEditor').hidden||e.target.closest('input,textarea,select,[contenteditable="true"]'))return;
+ if(e.defaultPrevented||e.isComposing||publicMode||presenting||document.body.classList.contains('guided-playground')||editingId||!$('#quickEditor').hidden||e.target.closest('input,textarea,select,[contenteditable="true"]'))return;
  if((e.ctrlKey||e.metaKey)&&e.shiftKey&&e.key.toLowerCase()==='p'){e.preventDefault();visualOpenTools(false)}
 });""")
     before, after = MODEL.search(original), MODEL.search(html)

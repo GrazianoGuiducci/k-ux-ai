@@ -1,0 +1,7 @@
+# Visual Flow — distinzione guida/editor e verifica del gesto
+
+Run [45364564564](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45364564564) sul commit ce0233e: 6/7 job verdi. Integrità dei cinque portatori verde. Visual flow del generale passa 1440/1024/390 e regressioni privacy/movimento. Il nuovo job si interrompe al primo Playground: Flat è nascosto intenzionalmente durante `guided-playground`, non per un errore del suo pulsante. Il sorgente possiede `guideExplore`, che conserva il documento e commuta la guida.
+
+La correzione preserva i due ambienti: la guida mantiene il proprio percorso e non espone il nuovo accesso Template; nel lavoro completo Flat non nasconde il comando che permette di tornare alla guida. Il test esercita la transizione nativa, il ritorno e la successiva composizione. La lettura del codice ha anche evidenziato che il cambio del referente selezionato non aggiorna necessariamente il pannello proprietà aperto: il candidato lo risincronizza dalle funzioni native di selezione e restituisce il focus al nodo quando si chiudono le sue proprietà. La prova ora modifica una larghezza effettiva, registra la geometria prima/dopo l'apertura e riapre in una nuova pagina l'HTML di lavoro scaricato dopo l'inserimento del template. Nessuna prova del nuovo commit ereditata dal precedente, nessun deploy.
+
+Il significato per la competenza è situato: un controllo nascosto può essere una scelta di design utile in un ambiente didattico, non una capacità mancante; la progressione fra ambienti deve preservare la via di ritorno.
