@@ -66,10 +66,10 @@
     const style = doc.createElement('style');
     style.id = 'me-neutral-style';
     style.textContent = [
-      "#me-neutral-toolbar{position:fixed;z-index:2147483000;right:12px;top:12px;width:min(318px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;background:#fff;color:#182d37;border:1px solid #a5bcb6;border-radius:10px;box-shadow:0 5px 25px #0003;font:13px/1.4 system-ui,sans-serif}",
+      "#me-neutral-toolbar{position:fixed;z-index:2147483000;right:12px;top:12px;width:min(318px,calc(100vw - 24px));max-height:min(60dvh,calc(100dvh - 24px));overflow:auto;box-sizing:border-box;background:#fff;color:#182d37;border:1px solid #a5bcb6;border-radius:10px;box-shadow:0 5px 25px #0003;font:13px/1.4 system-ui,sans-serif}",
       "#me-neutral-toolbar *{box-sizing:border-box}",
       "#me-neutral-toolbar [hidden]{display:none!important}",
-      "#me-neutral-toolbar .me-neutral-head{display:flex;align-items:center;gap:9px;justify-content:space-between;padding:10px 11px;background:#f5faf8;border-radius:10px 10px 0 0}",
+      "#me-neutral-toolbar .me-neutral-head{display:flex;align-items:center;gap:9px;justify-content:space-between;padding:10px 11px;background:#f5faf8;border-radius:10px 10px 0 0;position:sticky;top:0;z-index:2}",
       "#me-neutral-toolbar strong{display:block;font-size:15px}",
       "#me-neutral-toolbar .me-neutral-head span{display:block;font-size:11px;color:#536b63}",
       "#me-neutral-body{padding:10px 11px}",
@@ -365,8 +365,8 @@
       const overlapsHorizontally = panel.left < rect.right && panel.right > rect.left;
       if (overlapsHorizontally && panel.width && panel.height) {
         // Neutral toolbar is top/right on desktop and bottom-docked on mobile.
-        if (panel.bottom >= view.innerHeight - 28) bottom = Math.min(bottom, panel.top - 12);
-        else if (panel.top <= 28) top = Math.max(top, panel.bottom + 12);
+        if (panel.top <= 28) top = Math.max(top, panel.bottom + 12);
+        else if (panel.bottom >= view.innerHeight - 28) bottom = Math.min(bottom, panel.top - 12);
       }
       // Do not move the page to an impossible or even less useful position.
       const available = bottom - top;

@@ -176,6 +176,14 @@ jobs:
       - run: python -m pip install playwright==1.57.0
       - name: Exercise visual flow on all five integrity-patched carriers
         run: python tests/metacanvas-visual-flow.browser.py --channel chrome --output-root "${{ runner.temp }}/metacanvas-visual-flow" --screenshots "${{ runner.temp }}/metacanvas-flow-screens"
+      - name: Attach diagnostic screenshots if tests fail
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-flow-diagnostics
+          path: ${{ runner.temp }}/metacanvas-flow-screens/
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Attach candidates and screenshots after tests
         uses: actions/upload-artifact@v4
         with:

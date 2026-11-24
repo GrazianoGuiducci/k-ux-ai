@@ -162,7 +162,14 @@ def exercise_reveal(browser,tmp,width):
         selected=page.locator("main [data-local-selected][data-local-block]")
         assert selected.count()==1
         assert selected.locator("xpath=..").locator("h2").inner_text().startswith("Scheda D")
-        assert page.evaluate("window.scrollY")>0
+        geometry=page.evaluate("""() => {
+          const r=document.querySelector('main [data-local-selected]').getBoundingClientRect();
+          const p=document.querySelector('#me-neutral-toolbar').getBoundingClientRect();
+          return {scrollY:scrollY,node:{top:r.top,bottom:r.bottom,left:r.left,right:r.right},
+                  panel:{top:p.top,bottom:p.bottom,left:p.left,right:p.right},height:innerHeight};
+        }""")
+        print("PAGE REVEAL",width,geometry,flush=True)
+        assert geometry['scrollY']>0,geometry
         def visible_selection():
             assert page.evaluate("""() => {
               const node=document.querySelector('main [data-local-selected][data-local-block]');

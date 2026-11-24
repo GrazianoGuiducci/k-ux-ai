@@ -77,7 +77,9 @@ def exercise(browser, path, width, screenshots):
             assert after_rect['x']+after_rect['width']<=panel_rect['x']+2,(path.name,width,'side inspector covers canvas',after_rect,panel_rect)
         # Actually modify a native property, not merely open its inspector.
         node=next(n for n in model['scenes'][0]['elements'] if n['id']==a)
-        field=page.locator('#inspectorContent').get_by_label('Larghezza',exact=True)
+        # English carriers translate native labels at runtime. Accept the
+        # actual accessible label, not a presumed Italian source string.
+        field=page.locator('#inspectorContent').get_by_label('Width' if path.name.endswith('_EN.html') else 'Larghezza',exact=True)
         new_width=int(node['w'])-10 if node['w']>75 else int(node['w'])+5
         field.fill(str(new_width))
         field.press('Tab')
@@ -145,6 +147,11 @@ def exercise(browser, path, width, screenshots):
         assert 'id="me-visual-actions"' not in public
         assert not errors,(path.name,width,errors)
         print("PASS",path.name,width,"visual lifecycle, native template, export")
+    except Exception:
+        if screenshots:
+            screenshots.mkdir(parents=True,exist_ok=True)
+            page.screenshot(path=str(screenshots/f'{path.stem}-{width}-FAIL.png'))
+        raise
     finally:
         page.close()
 
@@ -159,18 +166,27 @@ def main():
     if args.channel:options["channel"]=args.channel
     with sync_playwright() as play:
         browser=play.chromium.launch(**options)
+        failures=[]
+        def check(name,fn,*values):
+            try:
+                fn(*values)
+            except Exception as error:
+                failures.append(f"{name}: {error}")
+                print("FAIL",name,repr(error),flush=True)
         try:
             for path in paths:
                 for width in (1440,1024,390):
-                    exercise(browser,path,width,args.screenshots)
+                    check(f"{path.name} {width} visual",exercise,browser,path,width,args.screenshots)
                 html=path.read_text(encoding="utf-8")
                 private,model=privacy.fixture(html)
                 move,_=rel.fixture_html(html)
                 for width in (1440,390):
-                    privacy.inspect(browser,path.name,width,private,model,False)
-                    rel.observe(browser,path.name,width,move,rel.MOVE.read_text(encoding="utf-8"))
+                    check(f"{path.name} {width} privacy",privacy.inspect,browser,path.name,width,private,model,False)
+                    check(f"{path.name} {width} movement",rel.observe,browser,path.name,width,move,rel.MOVE.read_text(encoding="utf-8"))
         finally:
             browser.close()
+        if failures:
+            raise AssertionError("\n".join(failures))
 
 if __name__=="__main__":
     main()
