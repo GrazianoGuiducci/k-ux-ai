@@ -1,5 +1,9 @@
 # MetaEditor Evolution — CURRENT
 
+## 24 novembre — composizione nativa MAIOS in verifica
+
+Il [run 45442388150](https://github.com/GrazianoGuiducci/maios_it/actions/runs/45442388150) sul CURRENT adottato 12282ce è verde; blob 4012fd56 e ramo privato riletti. Il [commit 121bceb](https://github.com/GrazianoGuiducci/maios_it/commit/121bceb47b49aca1288cc30a9e0802f25fbc92b4) estende addSection nel portatore reale con testo/colonne adattive/riquadro, usando la shell e i token MAIOS, il posizionamento dentro la colonna e riferimenti precisi del transfer. Il test reale a 1440/390 verifica geometria, inserimento, download/riapertura e Undo. [Run 45468826227](https://github.com/GrazianoGuiducci/maios_it/actions/runs/45468826227) avviato, nuovo esito da acquisire. CURRENT resta quello verificato, nessun nuovo pacchetto né deploy. Codex deve ancora riconciliare il generatore effettivamente usato nel workspace locale. Non riprendere l'evoluzione delle varianti neutre.
+
 ## 24 novembre — adozione nel portatore nativo
 
 **Consolidamento nativo:** [prova](https://github.com/GrazianoGuiducci/maios_it/actions/runs/45442120505) verde a 1440/390 per digitazione/recovery/pagehide/riapertura/discard/save. [Adozione nel medesimo CURRENT](https://github.com/GrazianoGuiducci/maios_it/commit/12282ce5fc136bd7956ebd287461137850e4f82f) verificata tramite blob `4012fd567976fc0e9a6cfd65a7d09c1979747cf4` e confronto testuale al risultato generato; SHA256 candidato `57e4bfcd456d94aada731dcf3c48270ed5f7ed21986bb5df66a19b6bfd276fb3`. Il vecchio Bridge11 è base storica, non ingresso alternativo; nessun nuovo pacchetto per l'operatore. Verifica CI sul file adottato separata. Workspace/generatore locale Codex ancora da riconciliare. Nessuna modifica sito.

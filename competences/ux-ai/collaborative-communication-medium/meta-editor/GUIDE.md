@@ -1,5 +1,9 @@
 # MetaEditor Evolution — guida viva
 
+## 24 novembre — recuperare la composizione nel vero addSection
+
+Nel portatore MAIOS la gestione nativa delle sezioni, stile, resize, history, anteprima ed export è già presente. La lacuna è la scelta della forma della nuova sezione e il riferimento d'inserimento entro una nuova colonna. Il [caso nativo](https://github.com/GrazianoGuiducci/maios_it/commit/121bceb47b49aca1288cc30a9e0802f25fbc92b4) recupera da R2 neutro la composizione adattiva senza importare toolbar, schema o copy; usa un solo addSection, site-shell e CSS del documento. Un nuovo contenitore verticale deve partecipare anche a insertionAnchor e safeTargets, altrimenti il gesto prima/dopo agisce su un livello superiore. Prova del portatore e adozione restano distinte; test integrati senza imporre altre varianti all'operatore. Conservare il generatore Codex locale come identità da risolvere, non assumere che il repo lo abbia aggiornato.
+
 ## 24 novembre — adozione nel portatore nativo
 
 **Consolidamento nativo:** [prova](https://github.com/GrazianoGuiducci/maios_it/actions/runs/45442120505) verde a 1440/390 per digitazione/recovery/pagehide/riapertura/discard/save. [Adozione nel medesimo CURRENT](https://github.com/GrazianoGuiducci/maios_it/commit/12282ce5fc136bd7956ebd287461137850e4f82f) verificata tramite blob `4012fd567976fc0e9a6cfd65a7d09c1979747cf4` e confronto testuale al risultato generato; SHA256 candidato `57e4bfcd456d94aada731dcf3c48270ed5f7ed21986bb5df66a19b6bfd276fb3`. Il vecchio Bridge11 è base storica, non ingresso alternativo; nessun nuovo pacchetto per l'operatore. Verifica CI sul file adottato separata. Workspace/generatore locale Codex ancora da riconciliare. Nessuna modifica sito.
