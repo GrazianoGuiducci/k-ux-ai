@@ -1,5 +1,9 @@
 # MetaEditor Evolution — guida viva
 
+## 24 novembre — Provare la superficie nella lingua reale e riservare spazio alla risultante
+
+Il [caso di consolidamento](https://github.com/GrazianoGuiducci/k-ux-ai/blob/650b696e97ef034ede3ca06acda1e7727d33c59e/examples/collaborative-communication-medium/meta-editor-lab/CONSOLIDATION_REAL_LANGUAGE_AND_SPACE_20261124.md) recupera una proprietà già presente nei sorgenti EN (localizzazione dinamica); un test ancorato alla stringa italiana non esercita il comando reale. Il fallimento di una variante non deve nascondere la risultante delle altre: raccogliere la matrice intera, mantenendo il gate rosso se un caso fallisce e tenendo separati screenshot diagnostici e candidato distribuibile. Nel controller pagina la capacità Bridge11 di rivelare un elemento richiede una banda libera reale; quando la toolbar la consuma, il problema non si risolve con più scroll o un test forzato, ma correggendo la composizione spaziale. Limitare il pannello, conservare controllo e scroll interno, misurare il referente prima di chiudere. Le prove del candidato 650b696 sono ancora pendenti; non trasferire una prova precedente.
+
 ## 24 novembre — Visibilità della conseguenza e raggiungibilità del comando
 
 Il [caso di raggiungibilità](https://github.com/GrazianoGuiducci/k-ux-ai/blob/cc4a68667cb118ec4b8e7577f1b74d98eee3a6ed/examples/collaborative-communication-medium/meta-editor-lab/VISUAL_FLOW_REACHABILITY_20261124.md) separa la mera presenza di un controllo dal gesto realmente effettuabile: un mini-editor può intercettare OK e una misura del canvas scrollabile può sovrastimare lo spazio utile. Osservare intersezioni, viewport, percorsi nativi e conseguenze, senza forzare il click o trasferire prove del portatore precedente.
