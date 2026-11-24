@@ -49,6 +49,11 @@ def exercise(browser, path, width, screenshots):
         target.press("Enter")
         page.locator("#quickEditor").wait_for(state="visible")
         assert target.evaluate("(n)=>n.classList.contains('is-selected')")
+        if width<=700:
+            quick_rect=page.locator('#quickEditor').bounding_box()
+            confirm_rect=page.locator('#editOk').bounding_box()
+            assert quick_rect and confirm_rect
+            assert quick_rect['y']+quick_rect['height']<=confirm_rect['y'],(path.name,width,quick_rect,confirm_rect)
         page.locator("#editOk").click()
         bar=page.locator("#me-visual-actions")
         bar.wait_for(state="visible")
@@ -67,6 +72,9 @@ def exercise(browser, path, width, screenshots):
         panel_rect=page.locator('#propertyPanel').bounding_box()
         after_rect=canvas.bounding_box()
         print('GEOMETRY',path.name,width,'before',before_rect,'after',after_rect,'panel',panel_rect,flush=True)
+        if width>=1001 and is_guide:
+            assert before_rect['width']>=width*0.48,(path.name,width,'guide canvas collapsed',before_rect)
+            assert after_rect['x']+after_rect['width']<=panel_rect['x']+2,(path.name,width,'side inspector covers canvas',after_rect,panel_rect)
         # Actually modify a native property, not merely open its inspector.
         node=next(n for n in model['scenes'][0]['elements'] if n['id']==a)
         field=page.locator('#inspectorContent').get_by_label('Larghezza',exact=True)

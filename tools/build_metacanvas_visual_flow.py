@@ -17,7 +17,7 @@ from build_studio21_keyboard_section_move import blob_sha
 
 CSS = r"""
 /* A hidden rail must not leave an empty grid column at medium widths. */
-body.hide-slide-rail:not(.presenting):not(.reading-mode) .editor-shell {
+body.hide-slide-rail:not(.guided-playground):not(.presenting):not(.reading-mode) .editor-shell {
   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
 }
 /* Flat is the existing focus surface: preserve the user's guide outside it. */
@@ -26,22 +26,46 @@ body.flat-layout:not(.reading-mode):not(.public-copy) #publicFirstUse:not(:has(#
 body.guided-playground #me-template-entry {display:none!important}
 /* Preserve usable width when a side inspector and the slide rail compete. */
 @media(min-width:1001px) and (max-width:1280px) {
- body.panel-open:not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .editor-shell {
+ body.panel-open:not(.guided-playground):not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .editor-shell {
    grid-template-columns:minmax(0,1fr)!important;
  }
- body.panel-open:not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .slide-rail {
+ body.panel-open:not(.guided-playground):not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .slide-rail {
    position:relative!important;top:auto!important;width:100%!important;min-width:0!important;max-width:none!important;max-height:108px!important;overflow:auto!important;padding:5px 8px!important;
  }
- body.panel-open:not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .slide-rail-list {
+ body.panel-open:not(.guided-playground):not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .slide-rail-list {
    display:flex;flex-direction:row;gap:6px;overflow-x:auto;
  }
- body.panel-open:not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .slide-rail-chip {min-width:125px!important}
- body.panel-open:not(.reading-mode):not(.presenting):has(#propertyPanel.drawer-open) .slide-rail .mini {display:none}
+ body.panel-open:not(.guided-playground):not(.reading-mode):not(.presenting):is([data-dock="left"],[data-dock="right"]):has(#propertyPanel.drawer-open) .slide-rail-chip {min-width:125px!important}
+ body.panel-open:not(.guided-playground):not(.reading-mode):not(.presenting):has(#propertyPanel.drawer-open) .slide-rail .mini {display:none}
 }
 /* Flat's padding shorthand must not allow the inspector to cover the canvas. */
 @media(min-width:1001px) {
  body.flat-layout[data-dock="right"].panel-open:has(#propertyPanel.drawer-open) .work {padding-right:calc(var(--property-panel-width,360px) + 16px)!important}
  body.flat-layout[data-dock="left"].panel-open:has(#propertyPanel.drawer-open) .work {padding-left:calc(var(--property-panel-width,360px) + 16px)!important}
+}
+/* The guided viewport is its own layout, never a two-column standard editor.
+   Opening a side inspector must not silently cover the subject. */
+@media(min-width:1001px) {
+ body.guided-playground[data-dock="right"].panel-open:has(#propertyPanel.drawer-open) .work {padding-right:calc(var(--property-panel-width,360px) + 16px)!important}
+ body.guided-playground[data-dock="left"].panel-open:has(#propertyPanel.drawer-open) .work {padding-left:calc(var(--property-panel-width,360px) + 16px)!important}
+}
+body.guided-playground:not(.reading-mode):not(.presenting) .work .editor-shell {
+ display:block!important;grid-template-columns:none!important;
+}
+/* On touch-size screens keep the editor and its native confirmation in
+   separate viewport bands. The mini-editor remains scrollable. */
+@media(max-width:700px) {
+ body[data-theme]:has(#quickEditor:not([hidden])) #quickEditor {
+  top:6px!important;left:6px!important;right:auto!important;bottom:auto!important;
+  width:calc(100vw - 12px)!important;max-width:calc(100vw - 12px)!important;
+  height:auto!important;min-height:0!important;max-height:calc(100dvh - 76px)!important;
+  resize:none!important;overflow:auto;
+ }
+ body:not(.presenting):not(.public-copy):has(#quickEditor:not([hidden])) #editActionBar {
+  position:fixed!important;bottom:8px!important;top:auto!important;left:50%!important;right:auto!important;
+  transform:translateX(-50%)!important;z-index:185!important;margin:0!important;
+  max-width:calc(100vw - 12px)!important;justify-self:auto!important;
+ }
 }
 /* Fit first on phones in Flat; native zoom remains the intentional pan route. */
 @media(max-width:510px) {
