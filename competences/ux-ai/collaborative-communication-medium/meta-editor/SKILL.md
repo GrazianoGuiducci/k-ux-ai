@@ -8,6 +8,11 @@ status: active-visual-product-realignment-2026-11-23
 
 # MetaEditor Evolution — competenza di costruzione ed evoluzione
 
+## 24 novembre — referente autoriale selezionato: il MetaEditor di Codex/MAIOS
+
+Per il lavoro corrente sul MetaEditor l'operatore seleziona il mezzo che usa realmente con Codex per modificare le pagine MAIOS. Raggiungere il [workbench privato](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/README.md) e riconciliare con l'owner Codex il generatore e il file effettivo; il CURRENT noto non certifica che il workspace locale sia identico. Non costruire un altro prodotto neutro per chiudere una suite: i laboratori e il MetaCanvas di scene sono fonti di capacità da recuperare quando cambiano questo gesto. Conservare il contenuto autoriale e l'ingresso stabile, verificare il gesto e la compatibilità nativa prima di aggiornare il portatore. Distinguere editor, generatore, pagina in bozza, pagina pubblica. Nessuna promozione automatica dei risultati precedenti.
+
+
 ## Funzione
 Questa competenza è il **saper formare, esercitare e migliorare l'editor** con cui l'operatore costruisce oggetti, testo, diagrammi, sezioni e documenti. MetaCanvas è il prodotto/medium; MetaEditor è una facoltà specializzata del [Collaborative Communication Medium](../SKILL.md), dentro K-UX-AI. Non è un nuovo kernel, un agente autonomo, un rifacimento indiscriminato delle pagine o la promessa di adattarsi a qualsiasi sito.
 
