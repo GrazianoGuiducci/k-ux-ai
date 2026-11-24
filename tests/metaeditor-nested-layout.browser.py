@@ -9,6 +9,7 @@ It runs on an entirely synthetic local HTML fixture, at desktop/mobile width.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import tempfile
 from pathlib import Path
@@ -324,6 +325,79 @@ def exercise_composition(browser,tmp,width):
         page.close()
 
 
+def exercise_reuse(browser,tmp,width):
+    original=FIXTURE.read_text(encoding="utf-8")
+    adapter,controller=[(LAB/name).read_text(encoding="utf-8") for name in MODULES]
+    local=tmp/f"reuse-{width}.html"
+    local.write_text(build(original,adapter,controller),encoding="utf-8")
+    page=browser.new_page(viewport={"width":width,"height":850},accept_downloads=True)
+    page.on('dialog',lambda d:d.accept())
+    errors=[]
+    page.on("pageerror",lambda e:errors.append(str(e)))
+    try:
+        page.goto(local.as_uri())
+        page.wait_for_function("() => !!window.metaEditorPage")
+        page.locator("#me-neutral-section").select_option("0")
+        page.locator("#me-neutral-sections summary").click()
+        page.locator("#me-neutral-section-template").select_option("columns")
+        page.locator('[data-me-action="section-add"]').click()
+        section=page.locator('main > section[data-local-section="columns"]')
+        heading=section.locator('h2')
+        assert heading.get_attribute('data-local-selected')=='true'
+        page.locator('[data-me-action="edit"]').click()
+        heading.fill('Modello di progetto')
+        # Instrument only the actual main clone call while typing.
+        page.evaluate("""() => {window.cloneCount=0;const original=Element.prototype.cloneNode;
+            Element.prototype.cloneNode=function(...args){if(this.localName==='main')window.cloneCount++;return original.apply(this,args)}}""")
+        heading.press('End')
+        heading.press_sequentially(' riusabile',delay=0)
+        assert page.evaluate("window.cloneCount")==0
+        heading.press('Control+Enter')
+        assert heading.get_attribute("contenteditable") is None
+        assert heading.inner_text()=="Modello di progetto riusabile"
+        assert page.evaluate("window.cloneCount")>0
+        page.locator('#me-neutral-appearance summary').click()
+        page.locator('#me-neutral-font-size').fill('28')
+        page.locator('#me-neutral-font-size').press('Tab')
+        with page.expect_download() as info:
+            page.locator('[data-me-action="section-export"]').click()
+        packfile=tmp/f"section-{width}.json"
+        info.value.save_as(packfile)
+        pack=json.loads(packfile.read_text(encoding="utf-8"))
+        assert pack['schema']=='metaeditor.section.v1'
+        assert pack['kind']=='columns'
+        # Import into a distinct work document, not the source.
+        target=browser.new_page(viewport={"width":width,"height":850})
+        try:
+            target.goto(local.as_uri())
+            target.wait_for_function("() => !!window.metaEditorPage")
+            target.locator('#me-neutral-section').select_option('1')
+            target.locator('#me-neutral-sections summary').click()
+            target.locator('#me-neutral-section-import').set_input_files(str(packfile))
+            imported=target.locator('main > section[data-local-section="columns"]')
+            imported.wait_for(state='attached')
+            assert imported.locator('h2').inner_text()=="Modello di progetto riusabile"
+            assert imported.locator('h2').evaluate("(n)=>n.style.fontSize")=="28px"
+            assert imported.locator('h3').count()==2
+            assert target.evaluate("() => window.metaEditorPage.undo()")["changed"]
+            assert target.evaluate("() => window.metaEditorPage.cleanHtml()")==original
+            # No imported HTML, arbitrary attributes or URL CSS.
+            malformed=dict(pack)
+            malformed['tree']=dict(pack['tree'],style={'background-image':'url(https://invalid.example/a)'})
+            bad=tmp/f"bad-{width}.json"
+            bad.write_text(json.dumps(malformed),encoding='utf-8')
+            target.locator('#me-neutral-section-import').set_input_files(str(bad))
+            target.wait_for_function("document.querySelector('#me-neutral-status').textContent.includes('rifiutato')")
+            assert target.evaluate("() => window.metaEditorPage.cleanHtml()")==original
+            assert target.evaluate("() => !window.metaEditorPage.status().canUndo")
+        finally:
+            target.close()
+        assert not errors,errors
+        print("PASS",width,"portable section JSON roundtrip, invalid style refused, zero whole-main clones during typing")
+    finally:
+        page.close()
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--channel", default=None)
@@ -341,6 +415,7 @@ def main():
                     exercise_reveal(browser,Path(tmp),width)
                     exercise_direct(browser,Path(tmp),width)
                     exercise_composition(browser,Path(tmp),width)
+                    exercise_reuse(browser,Path(tmp),width)
             finally:
                 browser.close()
 

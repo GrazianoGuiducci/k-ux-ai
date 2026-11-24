@@ -48,7 +48,7 @@
       "<label for=\"me-neutral-anchor\">Vicino a quale elemento?</label><select id=\"me-neutral-anchor\" aria-label=\"Riferimento per inserimento\"></select>" +
       "<label for=\"me-neutral-placement\">Posizione</label><select id=\"me-neutral-placement\" aria-label=\"Posizione rispetto al riferimento\"><option value=\"after\">Dopo</option><option value=\"before\">Prima</option></select>" +
       "<p>Se la sezione ha più gruppi, scegli il testo della scheda desiderata.</p></details></div>" +
-      "<details class=\"me-neutral-group\" id=\"me-neutral-sections\"><summary>Componi la pagina</summary><label for=\"me-neutral-section-template\">Modello di sezione</label><select id=\"me-neutral-section-template\"><option value=\"text\">Titolo e testo</option><option value=\"columns\">Due colonne adattive</option><option value=\"callout\">Riquadro in evidenza</option></select><button type=\"button\" data-me-action=\"section-add\">+ Sezione dopo quella scelta</button><div class=\"me-neutral-actions\" id=\"me-neutral-section-management\" hidden><button type=\"button\" data-me-action=\"section-up\">↑ Sezione</button><button type=\"button\" data-me-action=\"section-down\">↓ Sezione</button><button type=\"button\" data-me-action=\"section-copy\">Duplica sezione</button><button type=\"button\" data-me-action=\"section-delete\">Elimina sezione</button></div></details>" +
+      "<details class=\"me-neutral-group\" id=\"me-neutral-sections\"><summary>Componi la pagina</summary><label for=\"me-neutral-section-template\">Modello di sezione</label><select id=\"me-neutral-section-template\"><option value=\"text\">Titolo e testo</option><option value=\"columns\">Due colonne adattive</option><option value=\"callout\">Riquadro in evidenza</option></select><button type=\"button\" data-me-action=\"section-add\">+ Sezione dopo quella scelta</button><div class=\"me-neutral-actions\" id=\"me-neutral-section-management\" hidden><button type=\"button\" data-me-action=\"section-up\">↑ Sezione</button><button type=\"button\" data-me-action=\"section-down\">↓ Sezione</button><button type=\"button\" data-me-action=\"section-copy\">Duplica sezione</button><button type=\"button\" data-me-action=\"section-delete\">Elimina sezione</button></div><div class=\"me-neutral-actions\"><button type=\"button\" data-me-action=\"section-export\" disabled>Salva modello di sezione</button></div><label for=\"me-neutral-section-import\">Riusa un modello salvato</label><input type=\"file\" id=\"me-neutral-section-import\" accept=\".json,application/json\"></details>" +
       "<details class=\"me-neutral-group\" id=\"me-neutral-appearance\" hidden><summary>Stile e dimensioni</summary><label for=\"me-neutral-font-size\">Dimensione testo (px)</label><input id=\"me-neutral-font-size\" type=\"number\" min=\"10\" max=\"96\" step=\"1\"><label for=\"me-neutral-color\">Colore testo</label><input id=\"me-neutral-color\" type=\"color\"><label for=\"me-neutral-background\">Sfondo</label><input id=\"me-neutral-background\" type=\"color\"><label for=\"me-neutral-align\">Allineamento</label><select id=\"me-neutral-align\"><option value=\"start\">Inizio</option><option value=\"center\">Centro</option><option value=\"end\">Fine</option><option value=\"justify\">Giustificato</option></select><label for=\"me-neutral-width\">Larghezza massima</label><select id=\"me-neutral-width\"><option value=\"\">Automatica / originale</option><option value=\"100%\">100%</option><option value=\"75%\">75%</option><option value=\"50%\">50%</option></select></details>" +
       "<details class=\"me-neutral-group\" id=\"me-neutral-link-group\"><summary>Aggiungi o modifica collegamento</summary>" +
       "<label for=\"me-neutral-link-text\">Testo del collegamento</label><input id=\"me-neutral-link-text\" type=\"text\" maxlength=\"200\" placeholder=\"Testo del link\">" +
@@ -205,6 +205,7 @@
     const pristineSource = sourceHtml;
     const sectionTemplate=toolbar.querySelector('#me-neutral-section-template');
     const sectionManagement=toolbar.querySelector('#me-neutral-section-management');
+    const sectionImport=toolbar.querySelector('#me-neutral-section-import');
     const appearance=toolbar.querySelector('#me-neutral-appearance');
     const appearanceFields={
       fontSize:toolbar.querySelector('#me-neutral-font-size'),
@@ -255,13 +256,15 @@
     // Pending edits are a document difference, not a count of history steps.
     const openedSnapshot = snapshot();
     function pendingWork() { return snapshot() !== openedSnapshot; }
-    function refreshSaveState() {
-      const pending = pendingWork();
+    function setSaveState(pending) {
+      if (dirty===pending&&saveState.dataset.pending===String(pending)) return;
       saveState.textContent = pending ?
         'Modifiche da conservare · Ctrl+S richiede il download del lavoro' :
         'Nessuna modifica da conservare · Ctrl+S salva il lavoro';
-      dirty = pending;
+      saveState.dataset.pending=String(pending);
+      dirty=pending;
     }
+    function refreshSaveState() {setSaveState(pendingWork());}
     function notify(message) { status.textContent = message; }
     const selectableNodes = () => [...main.querySelectorAll(SELECTABLE)].filter(safeNode);
     function refreshElements() {
@@ -349,7 +352,7 @@
       editing = null; beforeTyping = null;
       current.removeAttribute('contenteditable');
       current.removeAttribute('data-local-editing');
-      record(previous);
+      if (!record(previous)) refreshSaveState();
       refreshElements();
       syncButtons();
     }
@@ -501,6 +504,7 @@
     function syncCompositionControls() {
       const section=sectionAt(), own=ownedSection(section);
       sectionManagement.hidden=!own;
+      button('section-export').disabled=!own;
       button('section-up').disabled=!own||!safeSectionNeighbor(section,-1);
       button('section-down').disabled=!own||!safeSectionNeighbor(section,1);
       const active=safeNode(selected) && selected.isConnected && !editing &&
@@ -602,6 +606,122 @@
         notify('Sezione eliminata · Annulla per recuperarla.');
       });
       return {ok:false,reason:'Azione non supportata.'};
+    }
+    // Native scene template portability inspires a page-specific, structured
+    // section file. No HTML parsing, external stylesheet or executable content.
+    // Export and import use the same bounded representation.
+    const sectionSchema='metaeditor.section.v1';
+    const sectionTags=new Set(['section','div','h2','h3','h4','h5','h6','p','strong','em','b','i','u','s','span','br','ul','ol','li','blockquote','a']);
+    const sectionStyles=new Set(['padding','padding-top','padding-right','padding-bottom','padding-left','max-width','min-width','margin-inline','margin-inline-start','margin-inline-end','display','flex-wrap','gap','row-gap','column-gap','align-items','flex','flex-grow','flex-shrink','flex-basis','border','border-width','border-style','border-color','border-top-width','border-right-width','border-bottom-width','border-left-width','border-top-style','border-right-style','border-bottom-style','border-left-style','border-top-color','border-right-color','border-bottom-color','border-left-color','border-radius','border-top-left-radius','border-top-right-radius','border-bottom-left-radius','border-bottom-right-radius','background-color','color','font-size','text-align','font-weight','font-style','text-decoration','text-decoration-line','text-decoration-style','text-decoration-color','text-decoration-thickness']);
+    const sectionKinds=new Set(['text','columns','callout']);
+    function sectionStyleValue(property,value) {
+      if (!sectionStyles.has(property)||typeof value!=='string'||value.length>180||
+          !/^[#a-zA-Z0-9.,()%+ \-]+$/.test(value)||
+          /url|image|var\(|attr\(|expression|javascript/i.test(value)) return false;
+      // Only CSS values for this exact property, never arbitrary declarations.
+      if (property==='display' && !['flex','block','inline','inline-block'].includes(value)) return false;
+      return doc.defaultView.CSS.supports(property,value);
+    }
+    function sectionTemplateLink(value) {
+      if (typeof value!=='string'||value.startsWith('#')) return null;
+      return normalizedLink(value);
+    }
+    function sectionBudget() {return {nodes:0,text:0};}
+    function checkSectionBudget(budget,depth) {
+      if (++budget.nodes>500||depth>18||budget.text>80000) throw Error('Modello troppo complesso.');
+    }
+    function packSectionNode(node,budget,depth=0) {
+      checkSectionBudget(budget,depth);
+      if (node.nodeType===3) {
+        budget.text+=node.data.length;
+        if (budget.text>80000) throw Error('Testo del modello troppo lungo.');
+        return node.data;
+      }
+      if (node.nodeType!==1||!sectionTags.has(node.localName)||(depth===0)!==(node.localName==='section'))
+        throw Error('Il modello contiene elementi non ancora trasferibili, per esempio immagini.');
+      const out={tag:node.localName,children:[]};
+      for (const attr of node.getAttributeNames()) {
+        if (['style','data-local-selected','data-local-editing','data-local-block-id','data-local-block','data-local-section'].includes(attr)) continue;
+        if (attr==='href'&&node.localName==='a') {
+          const href=sectionTemplateLink(node.getAttribute(attr));
+          if (!href) throw Error('Il collegamento dipende dalla pagina originale.');
+          out.href=href;continue;
+        }
+        throw Error('Il modello contiene attributi o riferimenti dipendenti dalla pagina.');
+      }
+      if (node.hasAttribute('data-local-block')) out.block=true;
+      if (node.style.length) {
+        out.style={};
+        for (const property of node.style) {
+          const value=node.style.getPropertyValue(property);
+          if (node.style.getPropertyPriority(property)||!sectionStyleValue(property,value))
+            throw Error('Stile non trasferibile: '+property);
+          out.style[property]=value;
+        }
+      }
+      out.children=[...node.childNodes].map(child=>packSectionNode(child,budget,depth+1));
+      return out;
+    }
+    function unpackSectionNode(value,budget,depth=0) {
+      checkSectionBudget(budget,depth);
+      if (typeof value==='string') {
+        budget.text+=value.length;
+        if (budget.text>80000) throw Error('Testo del modello troppo lungo.');
+        return doc.createTextNode(value);
+      }
+      if (!value||typeof value!=='object'||Array.isArray(value)||
+          Object.keys(value).some(key=>!['tag','children','style','block','href'].includes(key))||
+          !sectionTags.has(value.tag)||(depth===0)!==(value.tag==='section')||
+          !Array.isArray(value.children)) throw Error('Struttura di modello non supportata.');
+      const node=doc.createElement(value.tag);
+      if (value.href!==undefined) {
+        const href=sectionTemplateLink(value.href);
+        if (value.tag!=='a'||!href) throw Error('Collegamento non trasferibile.');
+        node.setAttribute('href',href);
+      } else if (value.tag==='a') throw Error('Collegamento senza destinazione.');
+      if (value.style!==undefined) {
+        if (!value.style||typeof value.style!=='object'||Array.isArray(value.style)) throw Error('Stile non valido.');
+        for (const [property,val] of Object.entries(value.style)) {
+          if (!sectionStyleValue(property,val)) throw Error('Stile non trasferibile.');
+          node.style.setProperty(property,val);
+        }
+      }
+      if (value.block!==undefined) {
+        if (value.block!==true||!['p','h2','h3','h4','h5','h6','blockquote'].includes(value.tag))
+          throw Error('Tipo di blocco non valido.');
+        node.setAttribute('data-local-block','true');
+      }
+      for (const child of value.children) node.append(unpackSectionNode(child,budget,depth+1));
+      return node;
+    }
+    function exportSectionTemplate() {
+      leaveEditing();
+      const section=sectionAt();
+      if (!ownedSection(section)||!sectionKinds.has(section.dataset.localSection))
+        return {ok:false,reason:'Seleziona una sezione creata con MetaEditor.'};
+      const pack={schema:sectionSchema,kind:section.dataset.localSection,tree:packSectionNode(section,sectionBudget())};
+      const raw=JSON.stringify(pack,null,2);
+      if (new Blob([raw]).size>300000) return {ok:false,reason:'Modello troppo grande.'};
+      if (!doc.defaultView.confirm('Il modello contiene testo e stili della sezione. Salvarlo come JSON riutilizzabile?')) return {ok:true,changed:false};
+      download('MetaEditor_Modello_Sezione.json',raw,'application/json;charset=utf-8');
+      return {ok:true,changed:false};
+    }
+    async function importSectionTemplate(file) {
+      if (!file||file.size>300000) throw Error('File modello assente o troppo grande.');
+      const pack=JSON.parse(await file.text());
+      if (!pack||pack.schema!==sectionSchema||!sectionKinds.has(pack.kind)||
+          Object.keys(pack).some(key=>!['schema','kind','tree'].includes(key))) throw Error('Formato modello di sezione non valido.');
+      const section=unpackSectionNode(pack.tree,sectionBudget());
+      if (section.localName!=='section'||!section.querySelector('h2,h3,p')) throw Error('Sezione incompleta.');
+      section.dataset.localSection=pack.kind;
+      const reference=sectionAt();
+      if (reference&&protectedIsland(reference)) throw Error('Sezione protetta.');
+      return transact(()=>{
+        if (reference) reference.after(section);else main.append(section);
+        for (const node of section.querySelectorAll('[data-local-block]')) assignBlockIdentity(node);
+        refreshSections();select(section.querySelector('h2,h3,p'));
+        notify('Modello inserito · Annulla per rimuoverlo.');
+      },true);
     }
     // A section is a semantic boundary, not necessarily its content column.
     // In MAIOS and other real layouts the text lives inside nested flow wrappers.
@@ -922,8 +1042,8 @@
       // A work document retains its immutable original baseline.
       return '<!doctype html>\n' + copy.outerHTML;
     }
-    function download(name, contents) {
-      const blob = new Blob([contents], {type:'text/html;charset=utf-8'});
+    function download(name, contents, mime='text/html;charset=utf-8') {
+      const blob = new Blob([contents], {type:mime});
       const url = URL.createObjectURL(blob);
       const a = doc.createElement('a');
       a.href = url; a.download = name;
@@ -939,6 +1059,11 @@
       explicitAnchorNode = null;
       refreshAnchors();
       syncCompositionControls();
+    });
+    sectionImport.addEventListener('change',async()=>{
+      try { await importSectionTemplate(sectionImport.files?.[0]); }
+      catch(error){notify('Modello rifiutato: '+String(error.message));}
+      finally {sectionImport.value='';}
     });
     for (const [property,field] of Object.entries(appearanceFields)) {
       field.addEventListener('change',()=>{
@@ -993,7 +1118,9 @@
       if (safeNode(node)) { select(node); if (node.matches(EDITABLE)) edit(); }
     });
     main.addEventListener('input', event => {
-      if (editing && editing.contains(event.target)) refreshSaveState();
+      // Typing must not clone the entire document for each character.
+      // Exact no-op/dirty reconciliation happens on leaveEditing and unload.
+      if (editing && editing.contains(event.target)) setSaveState(true);
     });
     main.addEventListener('focusout', event => {
       if (editing && event.target === editing) {
@@ -1099,7 +1226,7 @@
         edit: edit, bold: () => format('bold'), italic: () => format('italic'),
         'insert-p': () => insert('p'), 'insert-h': () => insert('h3'),
         link: linkAction, 'image-alt': updateImageDescription,
-        'section-add':()=>createSection(sectionTemplate.value),
+        'section-add':()=>createSection(sectionTemplate.value),'section-export':exportSectionTemplate,
         'section-up':()=>changeSection('up'),'section-down':()=>changeSection('down'),
         'section-copy':()=>changeSection('copy'),'section-delete':()=>changeSection('delete'),
         up: () => move('up'), down: () => move('down'), transfer: () => move('transfer'),
