@@ -48,6 +48,8 @@
       "<label for=\"me-neutral-anchor\">Vicino a quale elemento?</label><select id=\"me-neutral-anchor\" aria-label=\"Riferimento per inserimento\"></select>" +
       "<label for=\"me-neutral-placement\">Posizione</label><select id=\"me-neutral-placement\" aria-label=\"Posizione rispetto al riferimento\"><option value=\"after\">Dopo</option><option value=\"before\">Prima</option></select>" +
       "<p>Se la sezione ha più gruppi, scegli il testo della scheda desiderata.</p></details></div>" +
+      "<details class=\"me-neutral-group\" id=\"me-neutral-sections\"><summary>Componi la pagina</summary><label for=\"me-neutral-section-template\">Modello di sezione</label><select id=\"me-neutral-section-template\"><option value=\"text\">Titolo e testo</option><option value=\"columns\">Due colonne adattive</option><option value=\"callout\">Riquadro in evidenza</option></select><button type=\"button\" data-me-action=\"section-add\">+ Sezione dopo quella scelta</button><div class=\"me-neutral-actions\" id=\"me-neutral-section-management\" hidden><button type=\"button\" data-me-action=\"section-up\">↑ Sezione</button><button type=\"button\" data-me-action=\"section-down\">↓ Sezione</button><button type=\"button\" data-me-action=\"section-copy\">Duplica sezione</button><button type=\"button\" data-me-action=\"section-delete\">Elimina sezione</button></div></details>" +
+      "<details class=\"me-neutral-group\" id=\"me-neutral-appearance\" hidden><summary>Stile e dimensioni</summary><label for=\"me-neutral-font-size\">Dimensione testo (px)</label><input id=\"me-neutral-font-size\" type=\"number\" min=\"10\" max=\"96\" step=\"1\"><label for=\"me-neutral-color\">Colore testo</label><input id=\"me-neutral-color\" type=\"color\"><label for=\"me-neutral-background\">Sfondo</label><input id=\"me-neutral-background\" type=\"color\"><label for=\"me-neutral-align\">Allineamento</label><select id=\"me-neutral-align\"><option value=\"start\">Inizio</option><option value=\"center\">Centro</option><option value=\"end\">Fine</option><option value=\"justify\">Giustificato</option></select><label for=\"me-neutral-width\">Larghezza massima</label><select id=\"me-neutral-width\"><option value=\"\">Automatica / originale</option><option value=\"100%\">100%</option><option value=\"75%\">75%</option><option value=\"50%\">50%</option></select></details>" +
       "<details class=\"me-neutral-group\" id=\"me-neutral-link-group\"><summary>Aggiungi o modifica collegamento</summary>" +
       "<label for=\"me-neutral-link-text\">Testo del collegamento</label><input id=\"me-neutral-link-text\" type=\"text\" maxlength=\"200\" placeholder=\"Testo del link\">" +
       "<label for=\"me-neutral-link-url\">Indirizzo (https, email o #sezione)</label><input id=\"me-neutral-link-url\" type=\"text\" placeholder=\"https://esempio.it\" spellcheck=\"false\">" +
@@ -91,6 +93,7 @@
       "#me-neutral-toolbar label{display:block;margin-bottom:4px;font-weight:650}",
       "#me-neutral-toolbar select,#me-neutral-toolbar input{width:100%;padding:6px;margin-bottom:6px;min-height:34px;background:white;color:#182d37;border:1px solid #b9c9c2;border-radius:5px;font:inherit}",
       "#me-neutral-toolbar input[type=file]{font-size:12px;max-width:100%}",
+      "#me-neutral-toolbar input[type=color]{height:34px;padding:3px;cursor:pointer}",
       "#me-neutral-toolbar .me-neutral-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px}",
       "#me-neutral-toolbar .me-neutral-actions>button:only-child{grid-column:span 2}",
       "#me-neutral-toolbar button{cursor:pointer;min-height:32px;padding:7px 6px;background:#f1f7f5;border:1px solid #a7c6ba;border-radius:5px;color:#123128;font:inherit}",
@@ -200,6 +203,16 @@
     const saveState = toolbar.querySelector('#me-neutral-save-state');
     const button = action => toolbar.querySelector('[data-me-action="' + action + '"]');
     const pristineSource = sourceHtml;
+    const sectionTemplate=toolbar.querySelector('#me-neutral-section-template');
+    const sectionManagement=toolbar.querySelector('#me-neutral-section-management');
+    const appearance=toolbar.querySelector('#me-neutral-appearance');
+    const appearanceFields={
+      fontSize:toolbar.querySelector('#me-neutral-font-size'),
+      color:toolbar.querySelector('#me-neutral-color'),
+      backgroundColor:toolbar.querySelector('#me-neutral-background'),
+      textAlign:toolbar.querySelector('#me-neutral-align'),
+      maxWidth:toolbar.querySelector('#me-neutral-width')
+    };
 
     // Work/history objects require stable identity independent of their
     // visible text and markup. Two identical paragraphs exchanged in the
@@ -406,6 +419,7 @@
           (sectionName?' · '+sectionName:'') :
           'Seleziona un testo nella pagina o dall’elenco, oppure aggiungi un blocco.';
       if (!active || isEditing) contextual.hidden=true;
+      syncCompositionControls();
       scheduleContextual();
     }
     function edit() {
@@ -470,6 +484,124 @@
       syncButtons();
       if (changed && reveal) revealSelection(selected);
       return {ok:true,changed,...(output || {})};
+    }
+    // Bridge11's section and appearance capacities are adapted to the
+    // neutral DOM owner. Use semantic elements and responsive flow, not MAIOS
+    // classes, absolute coordinates, a second history or editable HTML input.
+    const sectionAt=()=>sectionRoots()[Number(selector.value)] || null;
+    const ownedSection=node=>!!(node && sectionRoots().includes(node) && node.hasAttribute('data-local-section') && !protectedIsland(node));
+    function safeSectionNeighbor(section,direction) {
+      const node=direction<0?section?.previousElementSibling:section?.nextElementSibling;
+      return node && sectionRoots().includes(node) && !protectedIsland(node) ? node : null;
+    }
+    function colorValue(value,fallback) {
+      const m=String(value).match(/^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/);
+      return m?'#'+m.slice(1).map(n=>Number(n).toString(16).padStart(2,'0')).join(''):fallback;
+    }
+    function syncCompositionControls() {
+      const section=sectionAt(), own=ownedSection(section);
+      sectionManagement.hidden=!own;
+      button('section-up').disabled=!own||!safeSectionNeighbor(section,-1);
+      button('section-down').disabled=!own||!safeSectionNeighbor(section,1);
+      const active=safeNode(selected) && selected.isConnected && !editing &&
+        !selected.querySelector('[inert],[contenteditable="false"],form,nav,aside');
+      appearance.hidden=!active;
+      if (!active) return;
+      const style=doc.defaultView.getComputedStyle(selected);
+      appearanceFields.fontSize.value=String(Math.round(parseFloat(style.fontSize)||16));
+      appearanceFields.color.value=colorValue(style.color,'#183146');
+      appearanceFields.backgroundColor.value=colorValue(style.backgroundColor,'#ffffff');
+      appearanceFields.textAlign.value=({left:'start',right:'end'})[style.textAlign]||style.textAlign;
+      appearanceFields.maxWidth.value=['100%','75%','50%'].includes(selected.style.maxWidth)?selected.style.maxWidth:'';
+    }
+    function changeAppearance(property,value) {
+      if (!safeNode(selected)||editing||selected.querySelector('[inert],[contenteditable="false"],form,nav,aside'))
+        return {ok:false,reason:'Seleziona un elemento modificabile.'};
+      let next;
+      if (property==='fontSize' && /^\d{1,2}$/.test(value) && Number(value)>=10 && Number(value)<=96) next=value+'px';
+      else if (['color','backgroundColor'].includes(property) && /^#[0-9a-f]{6}$/i.test(value)) next=value;
+      else if (property==='textAlign' && ['start','center','end','justify'].includes(value)) next=value;
+      else if (property==='maxWidth' && ['','100%','75%','50%'].includes(value)) next=value;
+      else return {ok:false,reason:'Valore di stile non supportato.'};
+      const target=selected;
+      return transact(()=>{
+        target.style[property]=next;
+        if (!target.style.length) target.removeAttribute('style');
+        notify('Aspetto aggiornato · Annulla per ripristinare.');
+      });
+    }
+    function createSection(kind) {
+      if (!['text','columns','callout'].includes(kind)) return {ok:false,reason:'Modello non disponibile.'};
+      const reference=sectionAt();
+      // A document without sections can still start from a semantic section.
+      // Do not move authored nodes or cross a protected insertion boundary.
+      if (reference && protectedIsland(reference)) return {ok:false,reason:'Sezione protetta.'};
+      return transact(()=>{
+        const section=doc.createElement('section');
+        section.dataset.localSection=kind;
+        section.style.cssText='padding:clamp(20px,4vw,56px) 4%;';
+        const shell=doc.createElement('div');
+        shell.style.cssText='max-width:1080px;margin-inline:auto;';
+        section.append(shell);
+        const heading=doc.createElement('h2');
+        heading.textContent=kind==='columns'?'Due colonne':kind==='callout'?'In evidenza':'Nuova sezione';
+        shell.append(heading);
+        const paragraph=parent=>{
+          const p=doc.createElement('p');
+          p.textContent='Scrivi qui il contenuto.';
+          parent.append(p);
+        };
+        if (kind==='columns') {
+          const flow=doc.createElement('div');
+          flow.style.cssText='display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;';
+          for (const name of ['Prima colonna','Seconda colonna']) {
+            const cell=doc.createElement('div');
+            cell.style.cssText='flex:1 1 220px;min-width:0;';
+            const title=doc.createElement('h3');title.textContent=name;
+            cell.append(title);paragraph(cell);flow.append(cell);
+          }
+          shell.append(flow);
+        } else {
+          if (kind==='callout') shell.style.cssText+='padding:24px;border:1px solid #c7d7dc;border-radius:12px;background:#f4faf8;color:#183146;';
+          paragraph(shell);
+        }
+        if (reference) reference.after(section); else main.append(section);
+        refreshSections();
+        select(heading);
+        notify('Sezione aggiunta · modifica il testo direttamente.');
+      },true);
+    }
+    function changeSection(action) {
+      const section=sectionAt();
+      if (!ownedSection(section)) return {ok:false,reason:'Gestione strutturale disponibile per le sezioni aggiunte.'};
+      if (action==='up'||action==='down') {
+        const neighbor=safeSectionNeighbor(section,action==='up'?-1:1);
+        if (!neighbor) return {ok:true,changed:false};
+        return transact(()=>{
+          if (action==='up') neighbor.before(section);else neighbor.after(section);
+          refreshSections();
+          selector.value=String(sectionRoots().indexOf(section));explicitAnchorNode=null;refreshAnchors();
+          select(section.querySelector('h2,h3,p')); 
+        },true);
+      }
+      if (action==='copy') {
+        if (section.id||section.querySelector('[id],[inert],[contenteditable="false"]'))
+          return {ok:false,reason:'La sezione contiene riferimenti o elementi protetti.'};
+        return transact(()=>{
+          const copy=section.cloneNode(true);
+          for (const item of copy.querySelectorAll('[data-local-block]')) assignBlockIdentity(item);
+          for (const item of copy.querySelectorAll('[data-local-selected],[data-local-editing]')) {
+            item.removeAttribute('data-local-selected');item.removeAttribute('data-local-editing');
+          }
+          section.after(copy);refreshSections();
+          select(copy.querySelector('h2,h3,p'));
+        },true);
+      }
+      if (action==='delete') return transact(()=>{
+        section.remove();select(null);explicitAnchorNode=null;
+        notify('Sezione eliminata · Annulla per recuperarla.');
+      });
+      return {ok:false,reason:'Azione non supportata.'};
     }
     // A section is a semantic boundary, not necessarily its content column.
     // In MAIOS and other real layouts the text lives inside nested flow wrappers.
@@ -806,7 +938,14 @@
     selector.addEventListener('change', () => {
       explicitAnchorNode = null;
       refreshAnchors();
+      syncCompositionControls();
     });
+    for (const [property,field] of Object.entries(appearanceFields)) {
+      field.addEventListener('change',()=>{
+        const result=changeAppearance(property,field.value);
+        if (result.ok===false) notify(result.reason);
+      });
+    }
     anchorPicker.addEventListener('change', () => {
       const value = anchorPicker.value;
       const section = sectionRoots()[Number(selector.value)];
@@ -916,7 +1055,7 @@
       notify('Il trascinamento nel testo non è supportato. Usa Incolla come testo.');
     });
     main.addEventListener('keydown', event => {
-      if (event.key === 'Enter' && editing && editing.contains(event.target) &&
+      if (event.key === 'Enter' && !(event.ctrlKey||event.metaKey) && editing && editing.contains(event.target) &&
           editing.matches('h1,h2,h3,h4,h5,h6,p,blockquote,figcaption,li')) {
         // Keep the source document's block structure intact. Add separate
         // paragraphs/headings through explicit composition commands.
@@ -924,10 +1063,11 @@
         notify('Per un nuovo blocco usa + Paragrafo o + Titolo.');
         return;
       }
-      if (event.key === 'Escape' && editing && editing.contains(event.target)) {
+      if ((event.key === 'Escape' || (event.key==='Enter'&&(event.ctrlKey||event.metaKey))) && editing && editing.contains(event.target)) {
         event.preventDefault();
         leaveEditing();
-        button('edit').focus();
+        if (!body.hidden) button('edit').focus();
+        else { scheduleContextual(); }
         notify('Modifica terminata. Le modifiche sono disponibili in Annulla.');
       }
     });
@@ -959,6 +1099,9 @@
         edit: edit, bold: () => format('bold'), italic: () => format('italic'),
         'insert-p': () => insert('p'), 'insert-h': () => insert('h3'),
         link: linkAction, 'image-alt': updateImageDescription,
+        'section-add':()=>createSection(sectionTemplate.value),
+        'section-up':()=>changeSection('up'),'section-down':()=>changeSection('down'),
+        'section-copy':()=>changeSection('copy'),'section-delete':()=>changeSection('delete'),
         up: () => move('up'), down: () => move('down'), transfer: () => move('transfer'),
         duplicate: () => changeAddedBlock('duplicate'), delete: () => changeAddedBlock('delete'),
         undo, redo,

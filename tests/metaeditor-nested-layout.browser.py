@@ -255,6 +255,75 @@ def exercise_direct(browser,tmp,width):
         page.close()
 
 
+def exercise_composition(browser,tmp,width):
+    original=FIXTURE.read_text(encoding="utf-8")
+    adapter,controller=[(LAB/name).read_text(encoding="utf-8") for name in MODULES]
+    local=tmp/f"composition-{width}.html"
+    local.write_text(build(original,adapter,controller),encoding="utf-8")
+    page=browser.new_page(viewport={"width":width,"height":850},accept_downloads=True)
+    errors=[]
+    page.on("pageerror",lambda e:errors.append(str(e)))
+    try:
+        page.goto(local.as_uri())
+        page.wait_for_function("() => !!window.metaEditorPage")
+        page.locator("#me-neutral-section").select_option("0")
+        page.locator("#me-neutral-sections summary").click()
+        page.locator("#me-neutral-section-template").select_option("columns")
+        page.locator('[data-me-action="section-add"]').click()
+        section=page.locator('main > section[data-local-section="columns"]')
+        assert section.count()==1
+        assert page.locator("main > section").nth(1).get_attribute("data-local-section")=="columns"
+        assert section.locator("h3").count()==2
+        heading=section.locator("h2")
+        assert heading.get_attribute("data-local-selected")=="true"
+        page.locator("#me-neutral-appearance summary").click()
+        field=page.locator("#me-neutral-font-size")
+        field.fill("30")
+        field.press("Tab")
+        assert heading.evaluate("(n)=>n.style.fontSize")=="30px"
+        page.locator("#me-neutral-align").select_option("center")
+        assert heading.evaluate("(n)=>n.style.textAlign")=="center"
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert heading.evaluate("(n)=>n.style.textAlign")==""
+        assert page.evaluate("() => window.metaEditorPage.redo()")["changed"]
+        assert heading.evaluate("(n)=>n.style.textAlign")=="center"
+        # Section choice remains native; management applies only to generated sections.
+        page.locator("#me-neutral-section").select_option("1")
+        page.locator('[data-me-action="section-copy"]').click()
+        assert section.count()==2
+        assert section.nth(1).locator("h2").evaluate("(n)=>n.style.fontSize")=="30px"
+        page.locator('[data-me-action="section-down"]').click()
+        assert page.locator("main > section").last.get_attribute("data-local-section")=="columns"
+        page.locator('[data-me-action="section-delete"]').click()
+        assert section.count()==1
+        clean=page.evaluate("() => window.metaEditorPage.cleanHtml()")
+        work=page.evaluate("() => window.metaEditorPage.workHtml()")
+        assert "data-local-section" not in clean
+        assert "flex-wrap: wrap" in clean
+        assert "data-local-section" in work
+        # Verify actual responsive columns and styles on the clean page.
+        path=tmp/f"composition-clean-{width}.html"
+        path.write_text(clean,encoding="utf-8")
+        public=browser.new_page(viewport={"width":width,"height":850})
+        try:
+            public.goto(path.as_uri())
+            cells=public.locator("main > section").nth(1).locator("h3")
+            a,b=cells.nth(0).bounding_box(),cells.nth(1).bounding_box()
+            if width==390: assert b["y"]>a["y"],(a,b)
+            else: assert b["x"]>a["x"],(a,b)
+            assert public.locator("#me-neutral-toolbar").count()==0
+        finally:
+            public.close()
+        for _ in range(12):
+            if not page.evaluate("() => window.metaEditorPage.status().canUndo"):break
+            assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.evaluate("() => window.metaEditorPage.cleanHtml()")==original
+        assert not errors,errors
+        print("PASS",width,"responsive section composition, style, copy/move/delete, exact Undo")
+    finally:
+        page.close()
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--channel", default=None)
@@ -271,6 +340,7 @@ def main():
                     run(browser,Path(tmp),width)
                     exercise_reveal(browser,Path(tmp),width)
                     exercise_direct(browser,Path(tmp),width)
+                    exercise_composition(browser,Path(tmp),width)
             finally:
                 browser.close()
 
