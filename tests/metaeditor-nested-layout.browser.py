@@ -197,6 +197,64 @@ def exercise_reveal(browser,tmp,width):
         page.close()
 
 
+def exercise_direct(browser,tmp,width):
+    original=FIXTURE.read_text(encoding="utf-8").replace(
+        "</style>","header{min-height:400px} footer{min-height:900px}</style>",1)
+    adapter,controller=[(LAB/name).read_text(encoding="utf-8") for name in MODULES]
+    local=tmp/f"direct-{width}.html"
+    local.write_text(build(original,adapter,controller),encoding="utf-8")
+    page=browser.new_page(viewport={"width":width,"height":850},accept_downloads=True)
+    errors=[]
+    page.on("pageerror",lambda e:errors.append(str(e)))
+    try:
+        page.goto(local.as_uri())
+        page.wait_for_function("() => !!window.metaEditorPage")
+        # Native panel is reduced, not replaced; the local gesture must work
+        # without navigating dropdowns or an action menu.
+        page.locator('#me-neutral-toggle').click()
+        title=page.locator("main .card").first.locator("h2")
+        title.evaluate("(n)=>n.scrollIntoView({block:'center',behavior:'instant'})")
+        title.click()
+        actions=page.locator('#me-neutral-context-actions')
+        actions.wait_for(state='visible')
+        assert title.get_attribute('data-local-selected')=='true'
+        actions.locator('[data-me-context-action="insert-p"]').click()
+        added=page.locator("main .card").first.locator('p[data-local-block]')
+        assert added.count()==1
+        assert title.evaluate("(n)=>n.nextElementSibling.matches('p[data-local-block]')")
+        assert added.get_attribute('data-local-selected')=='true'
+        actions.wait_for(state='visible')
+        actions.locator('[data-me-context-action="edit"]').click()
+        assert added.get_attribute('contenteditable')=='true'
+        assert actions.is_hidden()
+        added.fill('Testo creato direttamente nella scheda')
+        added.press('Escape')
+        assert added.inner_text()=='Testo creato direttamente nella scheda'
+        assert added.get_attribute('contenteditable') is None
+        clean=page.evaluate("() => window.metaEditorPage.cleanHtml()")
+        work=page.evaluate("() => window.metaEditorPage.workHtml()")
+        assert 'Testo creato direttamente nella scheda' in clean
+        assert 'id="me-neutral-context-actions"' not in clean
+        assert 'id="me-neutral-context-actions"' not in work
+        saved=tmp/f"direct-reopen-{width}.html"
+        saved.write_text(work,encoding="utf-8")
+        reopened=browser.new_page(viewport={"width":width,"height":850})
+        try:
+            reopened.goto(saved.as_uri())
+            reopened.wait_for_function("() => !!window.metaEditorPage")
+            assert reopened.locator('#me-neutral-context-actions').count()==1
+            assert reopened.locator("main .card").first.locator('p[data-local-block]').inner_text()=='Testo creato direttamente nella scheda'
+        finally:
+            reopened.close()
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.evaluate("() => window.metaEditorPage.undo()")["changed"]
+        assert page.evaluate("() => window.metaEditorPage.cleanHtml()")==original
+        assert not errors,errors
+        print("PASS",width,"contextual click insertion/edit, reopen with one UI, exact full Undo")
+    finally:
+        page.close()
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--channel", default=None)
@@ -212,6 +270,7 @@ def main():
                 for width in (1440,390):
                     run(browser,Path(tmp),width)
                     exercise_reveal(browser,Path(tmp),width)
+                    exercise_direct(browser,Path(tmp),width)
             finally:
                 browser.close()
 

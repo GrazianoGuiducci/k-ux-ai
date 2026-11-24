@@ -63,6 +63,19 @@
       "<div class=\"me-neutral-actions\"><button data-me-action=\"work\">Salva lavoro</button><button data-me-action=\"clean\">Esporta pagina pulita</button></div></div>" +
       "<p id=\"me-neutral-status\" role=\"status\" aria-live=\"polite\"></p>" +
       "<p id=\"me-neutral-save-state\" aria-live=\"polite\">Nessuna modifica da salvare · Ctrl+S per Salvare lavoro</p></div>";
+    // One runtime-only entry to native commands, outside the editable source.
+    const contextual = doc.createElement('div');
+    contextual.id = 'me-neutral-context-actions';
+    contextual.hidden = true;
+    contextual.setAttribute('role','group');
+    contextual.setAttribute('aria-label','Azioni sull’elemento selezionato');
+    for (const [action,label] of [['edit','Modifica testo'],['insert-p','+ Paragrafo'],['insert-h','+ Titolo'],['duplicate','Duplica']]) {
+      const control = doc.createElement('button');
+      control.type='button';
+      control.dataset.meContextAction=action;
+      control.textContent=label;
+      contextual.append(control);
+    }
     const style = doc.createElement('style');
     style.id = 'me-neutral-style';
     style.textContent = [
@@ -90,12 +103,81 @@
       "#me-neutral-toolbar [data-me-action=\"delete\"]{color:#79351e}",
       "#me-neutral-status{margin:8px 0 0;font-size:12px;color:#3a5149}",
       "#me-neutral-save-state{margin:8px 0 0;font-size:11px;color:#49645b}",
+      "#me-neutral-context-actions{position:fixed;z-index:2147482999;display:flex;align-items:center;gap:4px;flex-wrap:wrap;max-width:calc(100vw - 16px);padding:5px;background:#fff;border:1px solid #a5bcb6;border-radius:8px;box-shadow:0 4px 18px #0003;font:13px/1.3 system-ui,sans-serif}",
+      "#me-neutral-context-actions[hidden],#me-neutral-context-actions button[hidden]{display:none!important}",
+      "#me-neutral-context-actions button{font:inherit;color:#123128;background:#f1f7f5;border:1px solid #a7c6ba;border-radius:5px;min-height:32px;padding:5px 7px;cursor:pointer;white-space:nowrap}",
+      "#me-neutral-context-actions button:focus-visible{outline:2px solid #087b70;outline-offset:2px}",
       "main [data-local-selected]{outline:2px solid #087b70;outline-offset:2px}",
       "main [data-local-editing]{outline:2px dashed #087b70;outline-offset:2px}",
       "@media(max-width:500px){#me-neutral-toolbar{top:auto;bottom:8px;max-height:42dvh}}"
     ].join('');
     doc.head.append(style);
-    doc.body.append(toolbar);
+    doc.body.append(toolbar,contextual);
+    const contextButton = action => contextual.querySelector('[data-me-context-action="'+action+'"]');
+    let contextFrame = 0;
+    function scheduleContextual() {
+      if (contextFrame) return;
+      contextFrame = doc.defaultView.requestAnimationFrame(() => {
+        contextFrame=0;
+        positionContextual();
+      });
+    }
+    function positionContextual() {
+      if (!safeNode(selected) || !selected.isConnected || editing) {
+        contextual.hidden=true; return;
+      }
+      const section=sectionRoots().find(s=>s.contains(selected));
+      const anchor=flowChild(selected,section || main) && !!section;
+      contextButton('edit').hidden=!selected.matches(EDITABLE);
+      contextButton('insert-p').hidden=!anchor;
+      contextButton('insert-h').hidden=!anchor;
+      contextButton('duplicate').hidden=!selected.hasAttribute('data-local-block');
+      if ([...contextual.children].every(b=>b.hidden)) {contextual.hidden=true;return;}
+      const r=selected.getBoundingClientRect(), panel=toolbar.getBoundingClientRect();
+      const view=doc.defaultView, vw=view.innerWidth, vh=view.innerHeight;
+      if (r.bottom<8 || r.top>vh-8 || r.right<8 || r.left>vw-8 || !r.width || !r.height) {
+        contextual.hidden=true;return;
+      }
+      contextual.hidden=false;
+      const size=contextual.getBoundingClientRect(), w=size.width,h=size.height,gap=7;
+      const clamp=(x,min,max)=>Math.min(Math.max(x,min),max);
+      const x=clamp(r.left,8,Math.max(8,vw-w-8));
+      const positions=[
+        [x,r.top-h-gap],[x,r.bottom+gap],
+        [r.right+gap,clamp(r.top,8,Math.max(8,vh-h-8))],
+        [r.left-w-gap,clamp(r.top,8,Math.max(8,vh-h-8))]
+      ];
+      const overlaps=(px,py,q)=>px<q.right&&px+w>q.left&&py<q.bottom&&py+h>q.top;
+      const place=positions.find(([px,py])=>px>=8&&py>=8&&px+w<=vw-8&&py+h<=vh-8&&!overlaps(px,py,panel)&&!overlaps(px,py,r));
+      if (!place) {contextual.hidden=true;return;}
+      contextual.style.left=Math.round(place[0])+'px';
+      contextual.style.top=Math.round(place[1])+'px';
+    }
+    contextual.addEventListener('pointerdown',event=>event.preventDefault());
+    contextual.addEventListener('click',event=>{
+      const control=event.target.closest('[data-me-context-action]');
+      if (!control || control.hidden || contextual.hidden || !safeNode(selected) || editing) return;
+      const action=control.dataset.meContextAction;
+      let result;
+      if (action==='edit') result=edit();
+      else if (action==='duplicate') result=changeAddedBlock('duplicate');
+      else if (action==='insert-p'||action==='insert-h') {
+        const section=sectionRoots().findIndex(s=>s.contains(selected));
+        if (section<0 || !flowChild(selected,sectionRoots()[section])) return;
+        // This gesture explicitly names the current visual anchor; do not
+        // inherit a different destination from the advanced placement picker.
+        selector.value=String(section);
+        explicitAnchorNode=selected;
+        placementPicker.value='after';
+        refreshAnchors();
+        result=insert(action==='insert-p'?'p':'h3');
+      }
+      if (result?.ok===false) notify(result.reason);
+      scheduleContextual();
+    });
+    doc.defaultView.addEventListener('scroll',scheduleContextual,true);
+    doc.defaultView.addEventListener('resize',scheduleContextual);
+    if (doc.defaultView.ResizeObserver) new doc.defaultView.ResizeObserver(scheduleContextual).observe(toolbar);
     const selector = toolbar.querySelector('#me-neutral-section');
     const anchorPicker = toolbar.querySelector('#me-neutral-anchor');
     const placementPicker = toolbar.querySelector('#me-neutral-placement');
@@ -323,6 +405,8 @@
         active ? (movable?'Blocco aggiunto: ':'Testo selezionato: ')+heading+
           (sectionName?' · '+sectionName:'') :
           'Seleziona un testo nella pagina o dall’elenco, oppure aggiungi un blocco.';
+      if (!active || isEditing) contextual.hidden=true;
+      scheduleContextual();
     }
     function edit() {
       if (!selected || !selected.isConnected || !selected.matches(EDITABLE))
@@ -695,6 +779,7 @@
       leaveEditing();
       const copy = doc.documentElement.cloneNode(true);
       copy.querySelector('#me-neutral-toolbar')?.remove();
+      copy.querySelector('#me-neutral-context-actions')?.remove();
       copy.querySelector('#me-neutral-style')?.remove();
       const workRoot = workRootSnapshot();
       const target = copy.querySelector('main');
