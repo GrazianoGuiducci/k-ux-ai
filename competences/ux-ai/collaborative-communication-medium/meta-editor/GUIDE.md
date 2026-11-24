@@ -1,5 +1,9 @@
 # MetaEditor Evolution — guida viva
 
+## 24 novembre — adozione nel portatore nativo
+
+**Consolidamento nativo:** [prova](https://github.com/GrazianoGuiducci/maios_it/actions/runs/45442120505) verde a 1440/390 per digitazione/recovery/pagehide/riapertura/discard/save. [Adozione nel medesimo CURRENT](https://github.com/GrazianoGuiducci/maios_it/commit/12282ce5fc136bd7956ebd287461137850e4f82f) verificata tramite blob `4012fd567976fc0e9a6cfd65a7d09c1979747cf4` e confronto testuale al risultato generato; SHA256 candidato `57e4bfcd456d94aada731dcf3c48270ed5f7ed21986bb5df66a19b6bfd276fb3`. Il vecchio Bridge11 è base storica, non ingresso alternativo; nessun nuovo pacchetto per l'operatore. Verifica CI sul file adottato separata. Workspace/generatore locale Codex ancora da riconciliare. Nessuna modifica sito.
+
 ## 24 novembre — evitare la sostituzione del portatore d'uso con i banchi
 
 La correzione dell'operatore cambia il referente: il lavoro si forma nel MetaEditor usato con Codex per MAIOS, non nella somma delle varianti. La prova verde di una capacità su un banco resta valida nel suo perimetro e diventa sorgente per trasferirla nell'owner nativo. [Primo caso](https://github.com/GrazianoGuiducci/maios_it/commit/90a132a64b5ed112fb41d345cb289610cdd21cbe): showDirty Bridge11 clona main a ogni input, ma il suo draftHTML alimenta recovery e save; una copia letterale della patch neutra perderebbe la relazione. Riconciliazione prima del writeRecovery, a fine campo e al save, mantenendo il debounce e gli eventi pagehide/visibilitychange. Non attribuire al portatore la prova del banco. Se il generatore effettivo Codex è locale o non raggiungibile, documentare il limite e riconciliare con Codex invece di costruire altri HTML da mostrare all'operatore.
