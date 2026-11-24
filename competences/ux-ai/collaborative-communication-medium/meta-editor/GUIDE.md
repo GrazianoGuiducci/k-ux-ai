@@ -1,5 +1,11 @@
 # MetaEditor Evolution — guida viva
 
+## 24 novembre — Fluidità e riduzione delle latenze dell'esperienza
+
+**Direzione dell'operatore:** «Controllare sempre se non possiamo fare di meglio ... offrire l'esperienza utente migliore possibile togliendo attriti e creando il design fluido che riduce le latenze». La qualità emerge dalla continuità fra intenzione, referente, gesto, conseguenza percepibile e prossima possibilità. Nella costruzione riconoscere anche i costi introdotti dal design: ricerca dei comandi, passaggi, perdita di spazio, selezioni concorrenti, ripetizione di operazioni, ridisegni inutili e attesa. Quando un'alternativa nativa o una composizione più semplice può migliorare realmente il gesto, farla partecipare prima di determinare una nuova funzione; preservare controllo, accessibilità, persistenza e Undo. Il miglioramento resta aperto al confronto con l'uso, non diventa revisione rituale o ottimizzazione infinita.
+
+**Esercizio candidato:** [Visual Flow, commit ce0233e](https://github.com/GrazianoGuiducci/k-ux-ai/commit/ce0233e046f3f283782256756d075c42648907b8) compone R1 con le cinque sorgenti di integrità. Il passaggio nativo `syncEditBar` rende raggiungibile la sincronizzazione anche senza commit; il modo di lettura su telefono è rispettato, con ingresso esplicito in composizione. Flat, ricerca e template condividono le loro capacità già presenti. Lo spazio effettivo e la latenza percepita restano da misurare su questo candidato: l'accorpamento per frame non certifica prestazioni. Il [resoconto](https://github.com/GrazianoGuiducci/k-ux-ai/blob/ce0233e046f3f283782256756d075c42648907b8/examples/collaborative-communication-medium/meta-editor-lab/VISUAL_FLOW_20261124.md) conserva le modifiche e il confine di prova.
+
 ## 23 novembre — Recuperare un gesto visuale attraverso il motore esistente
 
 **Situazione causale:** invece di aggiungere funzioni all'editor neutro, l'owner ha osservato che Studio21 possiede già editing testo, mini-editor, ispettore dimensioni, duplicazione, Undo/Redo e salvataggio, ma questi gesti non sono immediatamente visibili dopo la selezione del nodo. La lacuna era **partecipazione dell'azione disponibile al punto di contatto**, non assenza di un secondo motore di editing.
