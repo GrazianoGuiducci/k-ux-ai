@@ -75,6 +75,11 @@ def observe(browser, name, width, source, move_js):
         status=200,headers={'content-type':'text/html; charset=utf-8'},body=source))
     try:
         page.goto('https://studio21.invalid/standalone',wait_until='domcontentloaded')
+        # The Playground may intentionally start in reading mode on narrow screens.
+        # Enter composition by the native visible control, not by changing the model.
+        if page.locator('body').evaluate("(b)=>b.classList.contains('reading-mode')"):
+            page.locator('#viewBtn').click()
+        assert not page.locator('body').evaluate("(b)=>b.classList.contains('reading-mode')")
         page.wait_for_function("""() => (
           document.querySelector('#canvas .node[data-id="regression-section"]') &&
           document.querySelector('#canvas .node[data-id="regression-card"]') &&

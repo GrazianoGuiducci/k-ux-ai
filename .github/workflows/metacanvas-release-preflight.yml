@@ -18,6 +18,8 @@ on:
       - "tools/build_studio21_public_projection.py"
       - "tools/build_metacanvas_integrity_candidates.py"
       - "tests/metacanvas-integrity-candidates.browser.py"
+      - "tools/build_metacanvas_visual_flow.py"
+      - "tests/metacanvas-visual-flow.browser.py"
       - "tools/build_metacanvas_studio21_release_pack.py"
       - "tools/build_studio21_visual_actions.py"
       - "tests/metacanvas-studio21-visual-actions.browser.py"
@@ -160,6 +162,27 @@ jobs:
         with:
           name: metacanvas-five-integrity
           path: ${{ runner.temp }}/metacanvas-integrity/
+          if-no-files-found: error
+          retention-days: 14
+
+  metacanvas-visual-flow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install playwright==1.57.0
+      - name: Exercise visual flow on all five integrity-patched carriers
+        run: python tests/metacanvas-visual-flow.browser.py --channel chrome --output-root "${{ runner.temp }}/metacanvas-visual-flow" --screenshots "${{ runner.temp }}/metacanvas-flow-screens"
+      - name: Attach candidates and screenshots after tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-visual-flow
+          path: |
+            ${{ runner.temp }}/metacanvas-visual-flow/
+            ${{ runner.temp }}/metacanvas-flow-screens/
           if-no-files-found: error
           retention-days: 14
 
