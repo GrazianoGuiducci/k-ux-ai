@@ -1,5 +1,9 @@
 # MetaEditor Evolution — guida viva
 
+## 24 novembre — riuso situato e continuità del ricevente Codex
+
+Il riuso fra pagine MAIOS non trasferisce lo schema delle scene o il formato del banco neutro. Il [caso nativo](https://github.com/GrazianoGuiducci/maios_it/commit/f8b25f19029031ed1149988f4c6783b5a3e4b031) conserva shell/classi ammesse, token MAIOS, testo e dimensioni tramite albero DOM validato, senza importare HTML eseguibile. La destinazione è una sezione reale, ancora connessa dopo lettura del file. I riferimenti locali, ID, immagini e componenti non trasferibili restano limiti osservabili; non ridurre silenziosamente un modello. Il controllo dell'import deve precedere la storia e l'effetto. [NOTA_CODEX](https://github.com/GrazianoGuiducci/maios_it/blob/work/metaeditor-current/workbench/metaeditor/NOTA_CODEX.md) è il ponte operativo richiesto dall'operatore, collegato al ricevente che deve riconciliare il generatore realmente usato, non un altro prodotto. Prova del nuovo candidato da acquisire, nessuna assimilazione o adozione presunta.
+
 ## 24 novembre — recuperare la composizione nel vero addSection
 
 Nel portatore MAIOS la gestione nativa delle sezioni, stile, resize, history, anteprima ed export è già presente. La lacuna è la scelta della forma della nuova sezione e il riferimento d'inserimento entro una nuova colonna. Il [caso nativo](https://github.com/GrazianoGuiducci/maios_it/commit/121bceb47b49aca1288cc30a9e0802f25fbc92b4) recupera da R2 neutro la composizione adattiva senza importare toolbar, schema o copy; usa un solo addSection, site-shell e CSS del documento. Un nuovo contenitore verticale deve partecipare anche a insertionAnchor e safeTargets, altrimenti il gesto prima/dopo agisce su un livello superiore. Prova del portatore e adozione restano distinte; test integrati senza imporre altre varianti all'operatore. Conservare il generatore Codex locale come identità da risolvere, non assumere che il repo lo abbia aggiornato.
