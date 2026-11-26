@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Griglia annidata — prova sintetica MetaEditor</title>
+<style>
+*{box-sizing:border-box}body{font-family:system-ui,sans-serif;margin:0;color:#243644;background:#fafafa}
+header,footer{padding:18px 5%;background:#e4e8ea}
+section{padding:28px 4%;border-bottom:1px solid #ddd}
+.shell{max-width:1020px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{padding:22px;background:#fff;border:1px solid #cbd6d9;border-radius:14px;min-width:0}
+.card.blue{background:#eaf4f9}.card.orange{background:#fbf2e7}
+h1{font-size:34px;margin:0 0 15px}h2{font-size:23px;margin:0 0 10px}p{font-size:16px;line-height:1.55}
+@media(max-width:620px){.cards{grid-template-columns:1fr}.card{padding:18px}}
+</style></head><body>
+<header>Pagina originale dimostrativa — griglia di schede</header>
+<main>
+<section aria-labelledby="layout-title"><div class="shell">
+<h1 id="layout-title">Una pagina con contenitori diversi</h1>
+<p>Il titolo della sezione ha un riferimento esplicito.</p>
+<div class="cards">
+<div class="card blue"><h2>Scheda A — capacità</h2><p>Una descrizione all'interno della prima scheda.</p></div>
+<div class="card orange"><h2>Scheda B — risultati</h2><p>Una descrizione all'interno della seconda scheda.</p></div>
+</div></div></section>
+<section><div class="shell"><div class="cards">
+<div class="card blue"><h2>Scheda C — contesto</h2><p>Un testo che appartiene esclusivamente alla terza scheda.</p></div>
+<div class="card orange"><h2>Scheda D — possibilità</h2><p>Un testo che appartiene esclusivamente alla quarta scheda.</p></div>
+</div></div></section>
+</main><footer>Originale sintetico · contenuti non riservati</footer></body></html>

@@ -1,0 +1,60 @@
+{
+  "schema": "metacanvas.distribution-baseline.v1",
+  "observed_date": "2026-11-22",
+  "status": "published-baseline; not a new stable release",
+  "product_owner": "GrazianoGuiducci/k-ux-ai",
+  "site_owner": "GrazianoGuiducci/maios_it",
+  "artifacts": [
+    {
+      "name": "MetaCanvas general editor (current viewport refinement)",
+      "source": "examples/collaborative-communication-medium/AI_Collaboration_Studio.html",
+      "site_asset": "assets/downloads/metacanvas/editor-generale-aaa6702-it.bin",
+      "sha256": "cbbafe1486d07969b17a844867af47a1a075fb4bee5fa1876fdb42abf7c938ab",
+      "git_blob": "d057d68c60061dd9e8f5c2d704cfff2016ea19b1",
+      "scenes": 4,
+      "locale": "it"
+    },
+    {
+      "name": "MetaCanvas interactive playground IT r4",
+      "source": "examples/collaborative-communication-medium/MetaCanvas_Guida_Playground_r4_IT.html",
+      "site_asset": "assets/downloads/metacanvas/playground-r4-it.bin",
+      "sha256": "58437069b10fcf4f43a3ebd0ece9679b3784c0dbbeeea7f307557e221d36ad5d",
+      "git_blob": "e26321eca0a00a4f840fb3b47bc2e4c45e511464",
+      "scenes": 4,
+      "locale": "it"
+    },
+    {
+      "name": "MetaCanvas interactive playground EN r4",
+      "source": "examples/collaborative-communication-medium/MetaCanvas_Guida_Playground_r4_EN.html",
+      "site_asset": "assets/downloads/metacanvas/playground-r4-en.bin",
+      "sha256": "35420b05ffb5a2f6fbf621ce2244ce438fc18f2419a7eaca27e2691ac1cfe8e9",
+      "git_blob": "f5e6cb9c9ce3d5156cf6f12b331c2e9d0b6dc808",
+      "scenes": 4,
+      "locale": "en"
+    },
+    {
+      "name": "MetaCanvas Studio21 Consulting IT demo",
+      "source": "examples/collaborative-communication-medium/MetaCanvas_Studio21_Consulenza_IT.html",
+      "site_asset": "assets/downloads/metacanvas/studio-21-it.bin",
+      "sha256": "abbdbd9e749453434fddb140505c0586ce594990739742c8106f37ab542165df",
+      "git_blob": "cba76881d4afbb48c0fa38f76bbd04eda764f7c9",
+      "scenes": 7,
+      "locale": "it"
+    },
+    {
+      "name": "MetaCanvas Studio21 Consulting EN demo",
+      "source": "examples/collaborative-communication-medium/MetaCanvas_Studio21_Consulenza_EN.html",
+      "site_asset": "assets/downloads/metacanvas/studio-21-en.bin",
+      "sha256": "066f604c62ef761d9ee6a2db2d6cdcd7e8c6f79423fa6b5039f3126fb185faab",
+      "git_blob": "dfddc6d1de728b45996a3f6628ea657da8db33f9",
+      "scenes": 7,
+      "locale": "en"
+    }
+  ],
+  "legacy_asset_not_primary": {
+    "site_asset": "assets/downloads/metacanvas/studio-20-it.bin",
+    "sha256": "c8c1be74c7d9b91d99b0c7888c40cee387579ca26f3079d0fa44ea81f1817a19",
+    "git_blob": "dd9192515930c55fd70741b32510450440f2a8f4"
+  },
+  "proof_boundary": "Git blob equality between current K-UX-AI source and MAIOS site assets observed through GitHub; historical SHA-256 pins drawn from the site-owner distribution ledger. The preflight must recompute hashes on local files before releasing. No browser, accessibility or live deployment certification is implied."
+}

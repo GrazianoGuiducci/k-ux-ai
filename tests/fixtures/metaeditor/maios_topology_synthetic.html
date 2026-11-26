@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Laboratorio statico — struttura simile a MAIOS, contenuti sintetici</title>
+  <style>
+    :root { color-scheme: light; }
+    .shell {max-width:880px;margin:0 auto;padding:15px;font:17px/1.5 system-ui,sans-serif}
+    .shell section {padding:15px;border:1px solid #b8c7c8;margin-bottom:16px}
+    .page-hero {background:#f4faf8}
+  </style>
+  <script>window.__fixtureOutsideMain = "author script unaffected";</script>
+</head>
+<body>
+  <header class="shell"><nav aria-label="Menu pubblico"><a href="#intro">Vai al contenuto</a></nav></header>
+  <main id="main-content" tabindex="-1">
+    <section id="intro" class="page-hero" aria-labelledby="title-intro">
+      <div class="shell">
+        <h1 id="title-intro">Pagina campione</h1>
+        <p id="lead">Testo sintetico con <strong>formattazione originale</strong> e un <a href="#details">collegamento locale</a>.</p>
+      </div>
+    </section>
+    <section id="details" aria-labelledby="title-details">
+      <div class="shell">
+        <h2 id="title-details">Seconda sezione</h2>
+        <p class="keep-original">Questo testo non deve cambiare se si modifica un altro blocco.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="shell"><a href="mailto:example@example.invalid">Contatto fittizio</a></footer>
+</body>
+</html>

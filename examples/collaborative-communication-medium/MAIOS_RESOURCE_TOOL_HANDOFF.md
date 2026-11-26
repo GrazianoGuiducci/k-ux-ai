@@ -1,5 +1,20 @@
 # MetaCanvas — consegna per Risorse → Tool su MAIOS.it
 
+## 23 novembre — Studio21 IT/EN: un solo pacchetto di correzione, non ancora pubblicato
+
+**Risultante tecnica:** il candidato esistente di movimento da tastiera e filtraggio link privati è stato confezionato in un unico archivio `MetaCanvas_Studio21_Privacy_RC1.zip`, identificato come `Studio21-privacy-rc.1`. Il builder owner-native è [`tools/build_metacanvas_studio21_release_pack.py`](../../tools/build_metacanvas_studio21_release_pack.py); esegue le due trasformazioni **source-pinned** già esercitate e non modifica i file IT/EN originali. Lo ZIP contiene i due HTML, `VERSIONE_E_FILE.json` con SHA-256, guida di consegna, MPL-2.0 e NOTICE. La build è byte-riproducibile e rifiuta un sorgente driftato o un output esistente.
+
+**Ricevuta:** [CI 45171725612](https://github.com/GrazianoGuiducci/k-ux-ai/actions/runs/45171725612), **5/5 job verdi** incluse regressioni di privacy, comportamento nativo Studio21, MetaEditor Windows e read-only MAIOS live. Artifatto `metacanvas-studio21-privacy-rc1` **ID `14816672688`**. Il pacchetto estratto è stato verificato in questo host: SHA-256 dell'intero ZIP `830c5b40894164b993ae66d027338e97a5067da3e736ca738f97a62c5e88c4e0`, **5/5 file nel manifest integri**. I due HTML finali sono candidati alla versione successiva, non copie identiche alla baseline pubblicata.
+
+**Contratto di consegna per owner del sito, non autorizzazione all'effetto:** verificare sorgenti/licenza, scegliere nomi *versionati* per gli asset IT/EN, aggiornare i collegamenti delle pagine Tool nella propria branch e controllare il byte/hash dei due download realmente serviti dopo un rilascio autorizzato. Conservare i vecchi download storici; non mutare `maios_it/main` solo perché la CI passa. MetaEditor 1.0 resta un prodotto HTML distinto con un proprio ZIP e un proprio collaudo d'uso.
+
+## 22 novembre 2026 — consegna già completata e prossimo rilascio distinto
+
+Le pagine MetaCanvas **IT ed EN sono già disponibili** in Risorse → Strumenti su MAIOS.it; i download Playground r4 IT/EN, Studio21 IT/EN e l'editor generale sono già copiati nella repository del sito. I cinque file corrispondono ai rispettivi Git blob K-UX-AI, come [registrato qui](distribution-manifest.json). L'editor generale corrente è quello con miglioramento del canvas, Git blob `d057d68c60061dd9e8f5c2d704cfff2016ea19b1`; il precedente Studio20 `c8c1be74...` in questa guida è storia della prima consegna. **Non eseguire nuovamente la creazione delle pagine come task pendente.** Il sito live richiede readback autonomo per confermare le copie effettivamente servite.
+
+La nuova direzione dell'operatore è consolidare MetaCanvas e MetaEditor fino a un rilascio affidabile. Il percorso del nuovo candidato è [stabilizzazione del prodotto](RELEASE_STABILIZATION_20261122.md), poi eventuali asset *nuovamente versionati* e modifica della pagina da parte dell'owner sito. Bridge11, ancora workbench privato, non va pubblicato come copia del prodotto o come sorgente HTML della pagina Consulenza. Il presente raccordo corregge la raggiungibilità della fonte senza trasformare il passato in una pubblicazione già avvenuta alla data del vecchio handoff.
+
+
 ## Studio 21 — due demo distinte per le pagine italiane e inglesi (13 novembre 2026)
 
 **Decisione dell'operatore:** MAIOS.it avrà una pagina italiana e una pagina inglese nella categoria **Risorse → Tool**; ciascuna rimanderà alla **propria versione HTML autonoma pubblicata in K-UX-AI**. Il selettore interno EN/IT non è il modello di distribuzione. La coppia è stata pubblicata, mentre **le due pagine del sito restano da realizzare con Codex**.

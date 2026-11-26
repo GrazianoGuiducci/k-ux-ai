@@ -1,5 +1,12 @@
 # AI Collaboration Studio — public preview
 
+## Current published baseline — 22 November 2026
+
+The canonical general editor `AI_Collaboration_Studio.html` has the later viewport/canvas refinement (Git blob `d057d68c60061dd9e8f5c2d704cfff2016ea19b1`), and the current MAIOS site download `editor-generale-aaa6702-it.bin` has the **same Git blob**. The previous 272,490-byte Studio20 edition with SHA-256 `c8c1be74...` remains a historical version, still retrievable on the site as `studio-20-it.bin`; its size/hash below must not be used to identify the current canonical file. The current editor is not automatically a new numbered Studio22 or a combined MetaEditor/page adapter.
+
+The Playground r4 pair and Studio21 IT/EN demos also have source/site Git blob equivalence. [Pinned baseline](distribution-manifest.json) · [stabilization and release gates](RELEASE_STABILIZATION_20261122.md). This baseline is already published; a **new stabilized MetaEditor/MetaCanvas release has not yet passed its gates**. The separate private Bridge11 page editor is not part of the public downloads. Historical paragraphs below retain their date-specific meaning.
+
+
 ## AI Consulting demo — Studio 21 IT/EN
 
 Alongside the generic Studio 20 editor, this repository distributes **two separate standalone demonstration files** adapted from the latest AI consulting page supplied by the operator:

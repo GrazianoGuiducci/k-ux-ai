@@ -1,0 +1,298 @@
+name: MetaCanvas baseline and release preflight
+
+on:
+  pull_request:
+    paths:
+      - "examples/collaborative-communication-medium/**"
+      - "tools/verify_metacanvas_distribution.py"
+      - "tools/test_metacanvas_distribution.py"
+      - "tools/metaeditor_region_patch.py"
+      - "tools/build_studio21_keyboard_section_move.py"
+      - "tools/test_metaeditor_region_patch.py"
+      - "tests/metaeditor-static-page-source.test.js"
+      - "tests/metaeditor-studio21-composition.browser.py"
+      - "tests/metaeditor-studio21-relations.browser.py"
+      - "tests/metaeditor-studio21-pointer-relations.browser.py"
+      - "tests/metaeditor-studio21-privacy.browser.py"
+      - "tests/metaeditor-studio21-ai-roundtrip.browser.py"
+      - "tools/build_studio21_public_projection.py"
+      - "tools/build_metacanvas_integrity_candidates.py"
+      - "tests/metacanvas-integrity-candidates.browser.py"
+      - "tools/build_metacanvas_visual_flow.py"
+      - "tests/metacanvas-visual-flow.browser.py"
+      - "tools/build_metacanvas_studio21_release_pack.py"
+      - "tools/build_studio21_visual_actions.py"
+      - "tests/metacanvas-studio21-visual-actions.browser.py"
+      - "tools/test_metacanvas_studio21_release_pack.py"
+      - "tools/build_metaeditor_neutral_workpage.py"
+      - "tools/build_metaeditor_starter_pack.py"
+      - "tests/metaeditor-starter-chooser.browser.py"
+      - "examples/collaborative-communication-medium/meta-editor-lab/neutral-static-page-editor.js"
+      - "tests/metaeditor-neutral-static-page.browser.py"
+      - "tests/metaeditor-neutral-paste.browser.py"
+      - "tests/metaeditor-neutral-media-links.browser.py"
+      - "tests/metaeditor-nested-layout.browser.py"
+      - "tests/metaeditor-mixed-protected.browser.py"
+      - "tests/fixtures/metaeditor/mixed_protected_composition.html"
+      - "tests/fixtures/metaeditor/nested_composition_grid.html"
+      - "tests/fixtures/metaeditor/**"
+      - "tests/metaeditor-native-move.test.js"
+      - "tests/metaeditor-composition-commands.test.js"
+      - ".github/workflows/metacanvas-release-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout product source
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install pinned project dependencies
+        run: npm ci
+      - name: Run K-UX-AI contract tests
+        run: npm test
+      - name: Validate release preflight itself (positive and negative tests)
+        run: python -m unittest discover -s tools -p test_metacanvas_distribution.py
+      - name: Validate MetaEditor source-preserving region patch contract
+        run: python -m unittest discover -s tools -p test_metaeditor_region_patch.py
+      - name: Verify five public MetaCanvas source files
+        run: python tools/verify_metacanvas_distribution.py
+      - name: Verify deterministic MetaCanvas Studio21 release package and drift refusal
+        run: python -m unittest discover -s tools -p test_metacanvas_studio21_release_pack.py
+      - name: Explain evidence boundary
+        run: |
+          echo "This job does not check the separately owned maios_it site copies or a live deployment."
+          echo "Run the same script with --site /path/to/maios_it before selecting a public release."
+
+  studio21-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout MetaCanvas source
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install browser test dependency
+        run: python -m pip install playwright==1.57.0
+      - name: Check preinstalled Chrome
+        run: |
+          command -v google-chrome
+          google-chrome --version
+      - name: Exercise real Studio21 IT/EN with shared insertion and native history
+        run: python tests/metaeditor-studio21-composition.browser.py --channel chrome
+      - name: Build source-verified Studio21 candidate in temporary directory
+        run: python tools/build_studio21_keyboard_section_move.py --output-root "${{ runner.temp }}/studio21-candidate"
+      - name: Check earlier scene insert and nudge behavior on the candidate
+        run: python tests/metaeditor-studio21-composition.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
+      - name: Verify candidate section, children, linked raster, and Undo/Redo
+        run: python tests/metaeditor-studio21-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
+      - name: Verify original Studio21 real pointer drag relationships
+        run: python tests/metaeditor-studio21-pointer-relations.browser.py --channel chrome
+      - name: Verify candidate Studio21 real pointer drag relationships
+        run: python tests/metaeditor-studio21-pointer-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-candidate"
+      - name: Characterize original privacy projection with synthetic private edge
+        run: python tests/metaeditor-studio21-privacy.browser.py --channel chrome --expect-private-link-leak
+      - name: Build source-pinned private-data-safe Studio21 candidates
+        run: python tools/build_studio21_public_projection.py --source-root "${{ runner.temp }}/studio21-candidate" --output-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Verify private-data-safe HTML, AI export, templates, and invalid remote image rejection
+        run: python tests/metaeditor-studio21-privacy.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Preserve movement behavior in private-data-safe candidate
+        run: python tests/metaeditor-studio21-relations.browser.py --channel chrome --candidate-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Exercise real AI JSON selective import and private-preserving Undo/Redo
+        run: python tests/metaeditor-studio21-ai-roundtrip.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-private-candidate"
+      - name: Package source-pinned Studio21 IT/EN candidate for site-owner review
+        run: python tools/build_metacanvas_studio21_release_pack.py --output-zip "${{ runner.temp }}/MetaCanvas_Studio21_Privacy_RC1.zip"
+      - name: Attach one MetaCanvas Studio21 IT/EN privacy release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-studio21-privacy-rc1
+          path: ${{ runner.temp }}/MetaCanvas_Studio21_Privacy_RC1.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Build R1 visual contextual actions on native Studio21 IT/EN
+        run: python tools/build_studio21_visual_actions.py --output-dir "${{ runner.temp }}/studio21-visual-r1"
+      - name: Exercise real single-click contextual editing, history and export
+        run: python tests/metacanvas-studio21-visual-actions.browser.py --channel chrome --source-root "${{ runner.temp }}/studio21-visual-r1" --screenshot-dir "${{ runner.temp }}/studio21-visual-screens"
+      - name: Attach visual R1 desktop/mobile inspection screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-studio21-visual-r1-screens
+          path: ${{ runner.temp }}/studio21-visual-screens/*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Attach visual R1 source-pinned Studio21 IT/EN candidates
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-studio21-visual-r1
+          path: ${{ runner.temp }}/studio21-visual-r1/*.html
+          if-no-files-found: error
+          retention-days: 14
+      - name: Evidence boundary
+        run: |
+          echo "Real standalone Studio21 tested in Linux Chromium desktop/mobile."
+          echo "This does not verify Windows file://, screen readers or public-site deployment."
+
+  metacanvas-five-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install playwright==1.57.0
+      - name: Exercise the five manifest-pinned integrity candidates
+        run: python tests/metacanvas-integrity-candidates.browser.py --channel chrome --output-root "${{ runner.temp }}/metacanvas-integrity"
+      - name: Attach all five unpublished candidates and receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-five-integrity
+          path: ${{ runner.temp }}/metacanvas-integrity/
+          if-no-files-found: error
+          retention-days: 14
+
+  metacanvas-visual-flow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install playwright==1.57.0
+      - name: Exercise visual flow on all five integrity-patched carriers
+        run: python tests/metacanvas-visual-flow.browser.py --channel chrome --output-root "${{ runner.temp }}/metacanvas-visual-flow" --screenshots "${{ runner.temp }}/metacanvas-flow-screens"
+      - name: Attach diagnostic screenshots if tests fail
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-flow-diagnostics
+          path: ${{ runner.temp }}/metacanvas-flow-screens/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Attach candidates and screenshots after tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: metacanvas-visual-flow
+          path: |
+            ${{ runner.temp }}/metacanvas-visual-flow/
+            ${{ runner.temp }}/metacanvas-flow-screens/
+          if-no-files-found: error
+          retention-days: 14
+
+  neutral-static-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout candidate MetaEditor sources
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install browser test dependency
+        run: python -m pip install playwright==1.57.0
+      - name: Check preinstalled Chrome
+        run: |
+          command -v google-chrome
+          google-chrome --version
+      - name: Exercise neutral static workpage on two source topologies
+        run: python tests/metaeditor-neutral-static-page.browser.py --channel chrome
+      - name: Verify local-file text paste boundary and editing undo
+        run: python tests/metaeditor-neutral-paste.browser.py --channel chrome
+      - name: Verify native links and embedded local images across HTML exports
+        run: python tests/metaeditor-neutral-media-links.browser.py --channel chrome
+      - name: Verify precise before-after placement in nested grid/cards
+        run: python tests/metaeditor-nested-layout.browser.py --channel chrome
+      - name: Verify mixed protected cards with owned links and media
+        run: python tests/metaeditor-mixed-protected.browser.py --channel chrome
+      - name: Exercise beginner chooser and all four templates through Chrome file URL
+        run: python tests/metaeditor-starter-chooser.browser.py --channel chrome
+      - name: Build versioned MetaEditor 1.0 RC package
+        run: python tools/build_metaeditor_starter_pack.py --output-zip "${{ runner.temp }}/MetaEditor_1.0.0-rc.1.zip"
+      - name: Attach single versioned MetaEditor RC package
+        uses: actions/upload-artifact@v4
+        with:
+          name: metaeditor-1-0-rc1
+          path: ${{ runner.temp }}/MetaEditor_1.0.0-rc.1.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Evidence boundary
+        run: |
+          echo "Original MAIOS source is not part of public fixtures."
+          echo "Linux Chrome synthetic MAIOS/MDN does not certify Windows file:// or arbitrary HTML."
+
+  neutral-windows-chrome:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout MetaEditor 1.0 RC candidate
+        uses: actions/checkout@v4
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pinned Playwright and Windows Chrome
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install chrome
+      - name: Verify Windows file-local chooser, deterministic package, download and reopen
+        run: python tests/metaeditor-starter-chooser.browser.py --channel chrome
+      - name: Verify Windows local editing, clipboard boundary and history
+        run: python tests/metaeditor-neutral-paste.browser.py --channel chrome
+      - name: Verify Windows protected mixed components and images
+        run: python tests/metaeditor-mixed-protected.browser.py --channel chrome
+      - name: Evidence boundary
+        run: |
+          Write-Output "This is automated Chrome on a GitHub-hosted Windows runner."
+          Write-Output "Human Windows usability remains a separate release gate."
+
+  neutral-live-site-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout candidate MetaEditor
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install browser test dependency
+        run: python -m pip install playwright==1.57.0
+      - name: Fetch published MAIOS page read-only and require exact source identity
+        run: |
+          curl --fail --silent --show-error --location --retry 2 --max-time 25 --proto '=https' --proto-redir '=https' \
+            https://maios.it/consulting-ai.html -o "${{ runner.temp }}/consulting-ai.html"
+          observed="$(git hash-object "${{ runner.temp }}/consulting-ai.html")"
+          expected="0fda8ce0d9c1da544999d39fe5d9c05f54bc771d"
+          echo "Published file Git blob SHA: $observed"
+          if [ "$observed" != "$expected" ]; then
+            echo "::error::Live page differs from pinned maios_it source. No editor test run."
+            exit 1
+          fi
+      - name: Check preinstalled Chrome
+        run: |
+          command -v google-chrome
+          google-chrome --version
+      - name: Exercise neutral editor on the source-identical published MAIOS HTML
+        run: |
+          python tests/metaeditor-neutral-static-page.browser.py \
+            --channel chrome --site-only --site-source "${{ runner.temp }}/consulting-ai.html"
+      - name: Evidence boundary
+        run: |
+          echo "Live MAIOS HTML is downloaded in CI and never committed or modified."
+          echo "This does not assert Windows file:// support, human UX or production editing."
