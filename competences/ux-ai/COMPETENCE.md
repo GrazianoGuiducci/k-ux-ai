@@ -35,6 +35,8 @@ i propri owner; il LLM esercita la composizione con i mezzi del ricevente.
 
 ## Il lavoro forma l'interfaccia
 
+La formazione della comprensione è parte del servizio percettivo: il medium nasce anche dalla realtà di chi lo incontra, dalle conoscenze, esperienze, capacità e condizioni che possono rendere intelligibile il lavoro. A partire dal contesto disponibile, individua quali relazioni devono essere percepite prima affinché le successive possano essere comprese; lascia che questa conoscenza determini gerarchia, ordine, lessico, profondità, tempi e interazioni. Una stessa relazione può essere resa comprensibile con forme differenti senza impoverirne il significato. Le ipotesi sulle capacità del destinatario rimangono rivedibili; non sono profili fissi. L'interfaccia può anche sviluppare la capacità della persona, non soltanto adattarsi ad essa. Componi comunicazione e design quando pertinenti; la capacità vale per testo, documentazione, pagine e altri medium, non solo per UI interattive. Nessun percorso didattico o controller aggiunto per principio.
+
 Comprendi ciò che sta accadendo, l'oggetto che deve restare riconoscibile,
 le fonti e ciò che la persona può comprendere o cambiare. La comprensione
 partecipa alla scelta del codice, della forma e del gesto. Una visualizzazione,
